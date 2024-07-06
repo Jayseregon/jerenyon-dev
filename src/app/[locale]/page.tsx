@@ -4,10 +4,13 @@ import { Code } from "@nextui-org/code";
 import { button as buttonStyles } from "@nextui-org/theme";
 
 import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
+import { title, subtitle } from "@/components/typography";
 import { ColorCard, ColorCardScale } from "@/components/ColorCard";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
+  const t = useTranslations("HomePage");
+
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
       <div className="inline-block max-w-lg text-center justify-center">
@@ -15,18 +18,16 @@ export default function Home() {
           {siteConfig.name}
         </h1>
         <br />
-        <h1 className={title()}>{siteConfig.hero_descr}</h1>
-        <h2 className={subtitle({ class: "mt-4" })}>
-          {siteConfig.description}
-        </h2>
+        <h1 className={title()}>{t("HeroTitle")}</h1>
+        <h2 className={subtitle({ class: "mt-4" })}>{t("HeroSubtitle")}</h2>
       </div>
 
-      <div className="mt-8 gap-20">
+      <div className="mt-8">
         <Snippet
           hideCopyButton
           hideSymbol
           variant="flat">
-          <span>Currently in development.</span>
+          <span>{t("code")}</span>
         </Snippet>
       </div>
 

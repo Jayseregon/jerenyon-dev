@@ -1,13 +1,17 @@
 import "@/styles/globals.css";
 import type { Metadata, Viewport } from "next";
 import clsx from "clsx";
-
 import { Providers } from "./providers";
-
+import { ReactNode } from "react";
 import { HeartFooterIcon } from "@/components/icons";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
+
+type Props = {
+  children: ReactNode;
+  //   params: { locale: string };
+};
 
 export const metadata: Metadata = {
   title: {
@@ -31,11 +35,7 @@ export const viewport: Viewport = {
   // userScalable: false,
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: Props) {
   return (
     <html
       suppressHydrationWarning
@@ -47,20 +47,7 @@ export default function RootLayout({
           fontSans.variable
         )}>
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col h-screen">
-            <Navbar />
-
-            <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
-              {children}
-            </main>
-
-            <footer className="w-full flex items-center justify-center py-3 text-default-300 space-x-1">
-              <span>Made with</span>
-              <HeartFooterIcon size={20} />
-              <span>in Canada</span>
-              <span>&copy; {new Date().getFullYear()} Jayseregon</span>
-            </footer>
-          </div>
+          {children}
         </Providers>
       </body>
     </html>

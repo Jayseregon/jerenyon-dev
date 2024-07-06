@@ -33,6 +33,7 @@ import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Logo } from "@/components/icons";
 import { SearchInput } from "@/components/SearchInput";
+import LocaleSwitcher from "./LocaleSwitcher";
 
 export const Navbar = () => {
   // Navbar state
@@ -92,6 +93,9 @@ export const Navbar = () => {
         </NavbarItem>
         <NavbarItem>
           <ThemeSwitch />
+        </NavbarItem>
+        <NavbarItem>
+          <LocaleSwitcher />
         </NavbarItem>
       </NavbarContent>
 

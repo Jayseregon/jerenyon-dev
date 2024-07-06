@@ -1,4 +1,5 @@
 import { tv } from "tailwind-variants";
+import { useTranslations } from 'next-intl';
 
 export const title = tv({
   base: "tracking-tight inline font-semibold",

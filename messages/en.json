@@ -1,0 +1,35 @@
+{
+  "HomePage": {
+    "HeroTitle": "Showcasing the Digital Craftsmanship",
+    "HeroSubtitle": "Dive into the world of Jayseregon, where technology meets creativity. Explore projects that blend innovative coding with aesthetic design to solve real-world problems.",
+    "code": "Currently in development"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, fr {🇫🇷 Français} en {🇬🇧 English} other {Unknown}}"
+  },
+  "About": {
+    "h1_title": "About",
+    "subtitle": ""
+  },
+  "Blog": {
+    "h1_title": "Blog",
+    "subtitle": ""
+  },
+  "CodeSnippet": {
+    "h1_title": "Code Snippet",
+    "subtitle": ""
+  },
+  "Contact": {
+    "h1_title": "Contact",
+    "subtitle": ""
+  },
+  "Projects": {
+    "h1_title": "Projects",
+    "subtitle": ""
+  },
+  "Resume": {
+    "h1_title": "Resume",
+    "subtitle": ""
+  }
+}

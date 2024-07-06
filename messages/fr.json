@@ -1,0 +1,35 @@
+{
+  "HomePage": {
+    "HeroTitle": "Mise en valeur de l'artisanat numérique",
+    "HeroSubtitle": "Plongez dans le monde de Jayseregon, où la technologie rencontre la créativité. Explorez des projets qui allient codage innovant et design esthétique pour résoudre des problèmes concrets.",
+    "code": "En cours de développement"
+  },
+  "LocaleSwitcher": {
+    "label": "Changer de langue",
+    "locale": "{locale, select, fr {🇫🇷 Français} en {🇬🇧 English} other {Inconnu}}"
+  },
+  "About": {
+    "h1_title": "About",
+    "subtitle": ""
+  },
+  "Blog": {
+    "h1_title": "Blog",
+    "subtitle": ""
+  },
+  "CodeSnippet": {
+    "h1_title": "Code Snippet",
+    "subtitle": ""
+  },
+  "Contact": {
+    "h1_title": "Contact",
+    "subtitle": ""
+  },
+  "Projects": {
+    "h1_title": "Projects",
+    "subtitle": ""
+  },
+  "Resume": {
+    "h1_title": "Resume",
+    "subtitle": ""
+  }
+}

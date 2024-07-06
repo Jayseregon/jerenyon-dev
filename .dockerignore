@@ -3,4 +3,7 @@
 .gitignore
 .env_local
 _dev*/
-quiz.ipynb
+npm-debug.log
+Dockerfile
+.dockerignore
+README.md

@@ -4,8 +4,8 @@
 
 1. [Technologies Used](#technologies-used)
 2. [How to Use](#how-to-use)
-    - [Prerequisites](#prerequisites)
-    - [Local Development](#local-development)
+   - [Prerequisites](#prerequisites)
+   - [Local Development](#local-development)
 3. [License](#license)
 4. [Contact](#contact)
 
@@ -32,9 +32,9 @@
 
 This will use the `Dockerfile` for building the image and `docker-compose.yml` for running the container with the necessary settings for local development.
 
-    ```bash
-    docker-compose up -d --build
-    ```
+```bash
+docker-compose up -d --build
+```
 
 ## License
 
@@ -48,5 +48,5 @@ For any questions or further clarification, please don't hesitate to contact the
 
 - **Name:** Jeremie Bitsch
 - **Email:** [jayseregon@gmail.com](mailto:jayseregon@gmail.com)
-- **GitHub:** [YourGitHubUsername](https://github.com/YourGitHubUsername) *(Optional)*
-- **LinkedIn:** [YourLinkedInProfile](https://www.linkedin.com/in/YourLinkedInProfile) *(Optional)*
+- **GitHub:** [YourGitHubUsername](https://github.com/YourGitHubUsername) _(Optional)_
+- **LinkedIn:** [YourLinkedInProfile](https://www.linkedin.com/in/YourLinkedInProfile) _(Optional)_
