@@ -1,4 +1,4 @@
-export default function PricingLayout({
+export default function AppsLayout({
   children,
 }: {
   children: React.ReactNode;

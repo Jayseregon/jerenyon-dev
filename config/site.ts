@@ -1,69 +1,62 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Next.js + NextUI",
-  description: "Make beautiful websites regardless of your design experience.",
+  name: "Jayseregon",
+  hero_descr: "Showcasing the Digital Craftsmanship",
+  description:
+    "Dive into the world of Jayseregon, where technology meets creativity. Explore projects that blend innovative coding with aesthetic design to solve real-world problems.",
+  icon: "/favicon.ico",
   navItems: [
-    {
-      label: "Home",
-      href: "/",
-    },
-    {
-      label: "Docs",
-      href: "/docs",
-    },
-    {
-      label: "Pricing",
-      href: "/pricing",
-    },
-    {
-      label: "Blog",
-      href: "/blog",
-    },
     {
       label: "About",
       href: "/about",
     },
-  ],
-  navMenuItems: [
     {
-      label: "Profile",
-      href: "/profile",
-    },
-    {
-      label: "Dashboard",
-      href: "/dashboard",
+      label: "Resume",
+      href: "/resume",
     },
     {
       label: "Projects",
       href: "/projects",
     },
     {
-      label: "Team",
-      href: "/team",
+      label: "Code Snippets",
+      href: "/code-snippets",
     },
     {
-      label: "Calendar",
-      href: "/calendar",
+      label: "Blog",
+      href: "/blog",
     },
     {
-      label: "Settings",
-      href: "/settings",
-    },
-    {
-      label: "Help & Feedback",
-      href: "/help-feedback",
-    },
-    {
-      label: "Logout",
-      href: "/logout",
+      label: "Contact",
+      href: "/contact",
     },
   ],
-  links: {
-    github: "https://github.com/nextui-org/nextui",
-    twitter: "https://twitter.com/getnextui",
-    docs: "https://nextui.org",
-    discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://patreon.com/jrgarciadev",
-  },
+  navMenuToggleItems: [
+    {
+      label: "About",
+      href: "/about",
+    },
+    {
+      label: "Resume",
+      href: "/resume",
+    },
+    {
+      label: "Projects",
+      href: "/projects",
+    },
+    {
+      label: "Code Snippets",
+      href: "/code-snippets",
+    },
+    {
+      label: "Blog",
+      href: "/blog",
+    },
+    {
+      label: "Contact",
+      href: "/contact",
+    },
+  ],
+  links: {},
 };

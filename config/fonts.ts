@@ -1,8 +1,9 @@
-import { Fira_Code as FontMono, Inter as FontSans } from "next/font/google";
+import { Fira_Code as FontMono, Italiana, Roboto } from "next/font/google";
 
-export const fontSans = FontSans({
+export const fontSans = Roboto({
   subsets: ["latin"],
   variable: "--font-sans",
+  weight: "400",
 });
 
 export const fontMono = FontMono({
