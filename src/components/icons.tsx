@@ -12,19 +12,14 @@ export const Logo: React.FC<IconIcoProps> = ({ size = 36 }) => (
   />
 );
 
-export const HeartFooterIcon = ({
-  size = 24,
-  width,
-  height,
-  ...props
-}: IconSvgProps) => (
+export const HeartFooterIcon = ({ size = 24, ...props }: IconSvgProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     aria-hidden="true"
     focusable="false"
-    height={size || height}
-    width={size || width}
+    height={size}
+    width={size}
     role="presentation"
     viewBox="0 0 24 24"
     strokeWidth={1.5}
@@ -39,19 +34,14 @@ export const HeartFooterIcon = ({
   </svg>
 );
 
-export const MoonThemeIcon = ({
-  size = 24,
-  width,
-  height,
-  ...props
-}: IconSvgProps) => (
+export const MoonThemeIcon = ({ size = 24, ...props }: IconSvgProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     aria-hidden="true"
     focusable="false"
-    height={size || height}
-    width={size || width}
+    height={size}
+    width={size}
     role="presentation"
     viewBox="0 0 24 24"
     strokeWidth={1.5}
@@ -66,19 +56,14 @@ export const MoonThemeIcon = ({
   </svg>
 );
 
-export const SunThemeIcon = ({
-  size = 24,
-  width,
-  height,
-  ...props
-}: IconSvgProps) => (
+export const SunThemeIcon = ({ size = 24, ...props }: IconSvgProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     aria-hidden="true"
     focusable="false"
-    height={size || height}
-    width={size || width}
+    height={size}
+    width={size}
     role="presentation"
     viewBox="0 0 24 24"
     strokeWidth={1.5}

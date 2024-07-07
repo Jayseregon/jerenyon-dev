@@ -6,30 +6,31 @@
   },
   "LocaleSwitcher": {
     "label": "Changer de langue",
-    "locale": "{locale, select, fr {🇫🇷 Français} en {🇬🇧 English} other {Inconnu}}"
+    "locale": "{locale, select, fr {🇫🇷 French} en {🇬🇧 English} other {🚫 Inconnu}}",
+    "localeFlag": "{locale, select, fr {🇫🇷} en {🇬🇧} other {🚫}}"
   },
   "About": {
     "h1_title": "About",
-    "subtitle": ""
+    "subtitle": "Cette page contiendra des informations à mon sujet."
   },
   "Blog": {
     "h1_title": "Blog",
-    "subtitle": ""
+    "subtitle": "Page optionnelle, si j'ai quelque chose à partager."
   },
   "CodeSnippet": {
     "h1_title": "Code Snippet",
-    "subtitle": ""
+    "subtitle": "Cette page pourrait contenir des extraits et des exemples de défis surmontés."
   },
   "Contact": {
     "h1_title": "Contact",
-    "subtitle": ""
+    "subtitle": "Formulaire de contact futur pour entrer en contact avec moi."
   },
   "Projects": {
-    "h1_title": "Projects",
-    "subtitle": ""
+    "h1_title": "Projets",
+    "subtitle": "Cette page contiendra les projets pertinents sur lesquels j'ai travaillé."
   },
   "Resume": {
     "h1_title": "Resume",
-    "subtitle": ""
+    "subtitle": "Cela contiendrait mon CV et mon expérience professionnelle."
   }
 }

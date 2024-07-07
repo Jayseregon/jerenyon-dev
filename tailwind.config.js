@@ -11,9 +11,22 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)"],
-        mono: ["var(--font-geist-mono)"],
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', 'monospace'],
+        serif: ['var(--font-serif)', 'serif'],
+        display: ['var(--font-display)', 'serif'],
+        sansAlt: ['var(--font-sans-alt)', 'sans-serif'],
       },
+      fontWeight: {
+        normal: 400,
+        bold: 700,
+      },
+    },
+  },
+  variants: {
+    extend: {
+      fontStyle: ['responsive', 'hover', 'focus', 'active'],
+      fontWeight: ['responsive', 'hover', 'focus', 'active'],
     },
   },
   darkMode: "class",

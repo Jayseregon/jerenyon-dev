@@ -31,7 +31,7 @@ export default function middleware(req: NextRequest) {
     const url = req.nextUrl.clone();
 
     // Ensure we do not add the locale multiple times
-    const segments = req.nextUrl.pathname.split('/');
+    const segments = req.nextUrl.pathname.split("/");
     if (segments[1] === nextLocale) {
       // Locale is already present in the path
       return response;

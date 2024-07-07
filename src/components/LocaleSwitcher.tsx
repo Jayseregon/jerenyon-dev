@@ -24,7 +24,10 @@ export default function LocaleSwitcher() {
     if (preferredLocale && preferredLocale !== locale) {
       document.cookie = `NEXT_LOCALE=${preferredLocale}; path=/; max-age=31536000; SameSite=Lax`;
       startTransition(() => {
-        router.replace({ pathname }, { locale: preferredLocale as "en" | "fr" | undefined });
+        router.replace(
+          { pathname },
+          { locale: preferredLocale as "en" | "fr" | undefined }
+        );
       });
     }
   }, [locale, pathname, router, startTransition]);
@@ -34,21 +37,43 @@ export default function LocaleSwitcher() {
     document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000; SameSite=Lax`;
 
     startTransition(() => {
-      router.replace({ pathname }, { locale: locale as "en" | "fr" | undefined });
+      router.replace(
+        { pathname },
+        { locale: locale as "en" | "fr" | undefined }
+      );
     });
   }
 
   return (
-    <Dropdown>
-      <DropdownTrigger>{t("locale", { locale })}</DropdownTrigger>
+    <Dropdown
+      radius="sm"
+      classNames={{
+        content: "p-0 border-small border-divider bg-background",
+      }}>
+      <DropdownTrigger>{t("localeFlag", { locale })}</DropdownTrigger>
       <DropdownMenu
+        className="p-2"
+        itemClasses={{
+          base: [
+            "rounded-md",
+            "transition-opacity",
+            "data-[hover=true]:text-foreground",
+            "data-[hover=true]:bg-primary-200",
+            "dark:data-[hover=true]:bg-primary-400",
+            "data-[selectable=true]:focus:bg-primary-200",
+            "data-[pressed=true]:opacity-70",
+            "data-[focus-visible=true]:ring-primary-500",
+          ],
+        }}
         aria-label={t("label")}
+        selectionMode="single"
         selectedKeys={[locale]}
         onAction={(key) => onSelectChange(key as string)}>
         {locales.map((curLocale) => (
           <DropdownItem
             key={curLocale}
-            textValue={curLocale}>
+            textValue={curLocale}
+            className="h-13">
             {t("locale", { locale: curLocale })}
           </DropdownItem>
         ))}
