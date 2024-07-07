@@ -5,8 +5,15 @@ import { Providers } from "./providers";
 import { ReactNode } from "react";
 import { HeartFooterIcon } from "@/components/icons";
 import { siteConfig } from "@/config/site";
-import { fontSans, fontMono, fontSerif, fontDisplay, fontSansAlt } from "@/config/fonts";
+import {
+  fontSans,
+  fontMono,
+  fontSerif,
+  fontDisplay,
+  fontSansAlt,
+} from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 type Props = {
   children: ReactNode;
@@ -48,8 +55,9 @@ export default function RootLayout({ children }: Props) {
           fontMono.variable,
           fontSerif.variable,
           fontDisplay.variable,
-          fontSansAlt.variable,
+          fontSansAlt.variable
         )}>
+        <SpeedInsights />
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           {children}
         </Providers>
