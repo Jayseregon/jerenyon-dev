@@ -14,6 +14,7 @@ import {
 } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { headers } from "next/headers";
 
 type Props = {
   children: ReactNode;
@@ -43,11 +44,13 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: Props) {
+  const nonce = headers().get("x-nonce");
+
   return (
     <html
       suppressHydrationWarning
-      lang="en">
-      <head />
+      lang="en" nonce={nonce || undefined}>
+      <head nonce={nonce || undefined} />
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
@@ -56,7 +59,8 @@ export default function RootLayout({ children }: Props) {
           fontSerif.variable,
           fontDisplay.variable,
           fontSansAlt.variable
-        )}>
+        )}
+        nonce={nonce || undefined}>
         <SpeedInsights />
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           {children}
