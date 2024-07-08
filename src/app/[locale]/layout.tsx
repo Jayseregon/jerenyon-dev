@@ -15,7 +15,7 @@ export default async function LocaleLayout({
   return (
       <NextIntlClientProvider messages={messages}>
         <div className="relative flex flex-col h-screen" nonce={nonce || undefined}>
-          <Navbar />
+          {/* <Navbar /> */}
 
           <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow" nonce={nonce || undefined}>
             {children}
