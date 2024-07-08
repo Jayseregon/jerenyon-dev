@@ -1,4 +1,5 @@
-// nonceContext.js
+"use client";
+
 import { createContext, useContext, ReactNode } from "react";
 
 interface NonceContextProps {

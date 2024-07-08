@@ -56,6 +56,7 @@ function cspMiddleware(response: NextResponse) {
     form-action 'self';
     frame-ancestors 'none';
     upgrade-insecure-requests;
+    report-uri /csp-violation-report-endpoint;
   `.replace(/\s{2,}/g, ' ').trim();
 
   response.headers.set('Content-Security-Policy', cspHeader);

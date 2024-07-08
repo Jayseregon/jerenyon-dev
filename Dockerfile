@@ -21,8 +21,7 @@ RUN npm ci --only=production
 FROM base AS builder
 WORKDIR /app
 
-# Copy the installed node_modules alongside the copied package.json to avoid re-installing dependencies
-COPY --from=base /app/node_modules ./node_modules
+# Copy the application source code excluding node_modules
 COPY . .
 
 # Build the Next.js application
@@ -38,13 +37,12 @@ ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
 # Create a non-root user and group
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+RUN addgroup --system --gid 1001 nodejs && \
+	adduser --system --uid 1001 nextjs
 
-# Copy the build output and node_modules to the dev stage
+# Copy the build output to the dev stage, excluding node_modules as it will be mounted
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
 
 # Set the correct permissions for the Next.js application
 RUN chown -R nextjs:nodejs .next

@@ -6,21 +6,6 @@ const withNextIntl = createNextIntlPlugin();
 
 const isDev = process.env.NODE_ENV === 'development';
 
-// const nonce = crypto.randomBytes(16).toString('base64');
-// const cspHeader = `
-//     default-src 'self';
-//     script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
-//     style-src 'self' 'nonce-${nonce}';
-//     img-src 'self' blob: data:;
-//     font-src 'self';
-//     object-src 'none';
-//     base-uri 'self';
-//     form-action 'self';
-//     frame-ancestors 'none';
-//     upgrade-insecure-requests;
-// `.replace(/\n/g, '');
-
-
 const permissionsPolicy = `
   accelerometer=(), 
   ambient-light-sensor=(), 
@@ -61,7 +46,6 @@ const nextConfig = {
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'X-DNS-Prefetch-Control', value: 'on' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-          // { key: 'Content-Security-Policy', value: cspHeader },
           { key: 'Permissions-Policy', value: permissionsPolicy },
           // { key: 'Expect-CT', value: 'max-age=86400, enforce, report-uri="https://yourdomain.com/report"' },
         ],
