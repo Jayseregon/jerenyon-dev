@@ -9,14 +9,20 @@ import { ThemeProviderProps } from "next-themes/dist/types";
 export interface ProvidersProps {
   children: React.ReactNode;
   themeProps?: ThemeProviderProps;
+  nonce?: string;
 }
 
-export function Providers({ children, themeProps }: ProvidersProps) {
+export function Providers({ children, themeProps, nonce }: ProvidersProps) {
   const router = useRouter();
 
   return (
     <NextUIProvider navigate={router.push}>
-      <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
+      {/* Ensure nonce passed as a prop takes precedence over nonce in themeProps */}
+      <NextThemesProvider
+        {...themeProps}
+        nonce={nonce}>
+        {children}
+      </NextThemesProvider>
     </NextUIProvider>
   );
 }
