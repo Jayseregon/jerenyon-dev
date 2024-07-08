@@ -1,13 +1,8 @@
 import { HeartFooterIcon } from "@/components/icons";
 import { Navbar } from "@/components/navbar";
 import { NextIntlClientProvider } from "next-intl";
-import {
-  getMessages,
-  getTranslations,
-  unstable_setRequestLocale,
-} from "next-intl/server";
+import { getMessages } from "next-intl/server";
 import { headers } from "next/headers";
-import { NonceProvider } from "@/src/components/nonceContext";
 
 export default async function LocaleLayout({
   children,
@@ -15,10 +10,9 @@ export default async function LocaleLayout({
   children: React.ReactNode;
 }) {
   const messages = await getMessages();
-  const nonce = headers().get("x-nonce");
+  // const nonce = headers().get("x-nonce");
 
   return (
-    <NonceProvider nonce={nonce ?? ""}>
       <NextIntlClientProvider messages={messages}>
         <div className="relative flex flex-col h-screen">
           <Navbar />
@@ -35,6 +29,5 @@ export default async function LocaleLayout({
           </footer>
         </div>
       </NextIntlClientProvider>
-    </NonceProvider>
   );
 }

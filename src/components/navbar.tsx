@@ -10,21 +10,11 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from "@nextui-org/navbar";
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownSection,
-  DropdownItem,
-} from "@nextui-org/dropdown";
-import { Avatar, AvatarGroup, AvatarIcon } from "@nextui-org/avatar";
-import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
-import { Input } from "@nextui-org/input";
 import { link as linkStyles } from "@nextui-org/theme";
 
 // NextJS components
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import NextLink from "next/link";
 import clsx from "clsx";
 
