@@ -64,7 +64,6 @@ export default function RootLayout({ children }: Props) {
         nonce={nonce || undefined}>
         <SpeedInsights />
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <p>Nonce value [root]: {nonce || undefined}</p>
           {children}
         </Providers>
       </body>
