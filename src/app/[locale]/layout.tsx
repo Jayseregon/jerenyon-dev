@@ -19,6 +19,7 @@ export default async function LocaleLayout({
 
           <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow" nonce={nonce || undefined}>
             {children}
+            <p>Nonce value [locale]: {nonce || undefined}</p>
           </main>
 
           <footer className="w-full flex items-center justify-center py-3 text-default-300 space-x-1" nonce={nonce || undefined}>
