@@ -37,7 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
       onMenuOpenChange={setIsMenuOpen}
       isBordered
       nonce={nonce}>
-      {/* <NavbarContent nonce={nonce}>
+      <NavbarContent nonce={nonce}>
         <NavbarBrand
           as="li"
           className="gap-3 max-w-fit"
@@ -46,11 +46,11 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
             className="flex justify-start items-center gap-4"
             href="/"
             nonce={nonce}>
-            <Logo />
+            <Logo nonce={nonce}/>
             <p className="font-bold text-inherit">{siteConfig.name}</p>
           </NextLink>
         </NavbarBrand>
-      </NavbarContent> */}
+      </NavbarContent>
 
       {/* navbar menu  */}
       <NavbarContent

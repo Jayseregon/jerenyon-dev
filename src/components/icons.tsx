@@ -3,12 +3,13 @@ import Image from "next/image";
 import { IconSvgProps, IconIcoProps } from "@/src/types";
 import { siteConfig } from "@/config/site";
 
-export const Logo: React.FC<IconIcoProps> = ({ size = 36 }) => (
+export const Logo: React.FC<IconIcoProps> = ({ size = 36, nonce }) => (
   <Image
     src={siteConfig.icon}
     alt="{siteConfig.name} Logo"
     width={size}
     height={size}
+    nonce={nonce}
   />
 );
 
