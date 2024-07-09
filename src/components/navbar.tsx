@@ -37,7 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
       onMenuOpenChange={setIsMenuOpen}
       isBordered
       nonce={nonce}>
-      <NavbarContent nonce={nonce}>
+      {/* <NavbarContent nonce={nonce}>
         <NavbarBrand
           as="li"
           className="gap-3 max-w-fit"
@@ -50,21 +50,21 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
             <p className="font-bold text-inherit">{siteConfig.name}</p>
           </NextLink>
         </NavbarBrand>
-      </NavbarContent>
+      </NavbarContent> */}
 
       {/* navbar menu  */}
-      {/* <NavbarContent
+      <NavbarContent
         justify="center"
-        nonce={nonce}> */}
+        nonce={nonce}>
         {/* toggle menu */}
-        {/* <NavbarMenuToggle
+        <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
           className="md:hidden"
           nonce={nonce}
-        /> */}
+        />
 
         {/* or list items menu */}
-        {/* <ul className="hidden md:flex items-start justify-start gap-16">
+        <ul className="hidden md:flex items-start justify-start gap-16">
           {siteConfig.navItems.map((item) => (
             <NavbarItem
               key={item.href}
@@ -82,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
             </NavbarItem>
           ))}
         </ul>
-      </NavbarContent> */}
+      </NavbarContent>
 
       {/* avatar menu with theme switch and search */}
       <NavbarContent
