@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@nextui-org/react";
 import { useTheme } from "next-themes";
 import { SunIcon, MoonIcon } from "@/components/icons";
@@ -13,19 +13,32 @@ export const ThemeSwitch: React.FC<ThemeSwitchProps> = ({
   nonce,
 }) => {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // Component is now mounted, and we can safely perform client-side operations
+    setMounted(true);
+  }, []);
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
+  // Only render the button after the component has mounted
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <div>
       <Button
-        isIconOnly
-        color="primary"
+        isIconOnly={true}
+        color={undefined}
         aria-label="Toggle theme"
-        onClick={toggleTheme}
+        size="sm"
+        onPress={toggleTheme}
         className={className}
+        variant={undefined}
         nonce={nonce}>
         {theme === "dark" ? <SunIcon /> : <MoonIcon />}
       </Button>

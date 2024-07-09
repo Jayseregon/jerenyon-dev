@@ -94,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
           <SearchInput />
         </NavbarItem>
         <NavbarItem nonce={nonce}>
-          <ThemeSwitch nonce={nonce}/>
+          <ThemeSwitch nonce={nonce} className="text-foreground bg-transparent hover:bg-primary-100"/>
         </NavbarItem>
         <NavbarItem nonce={nonce}>
           <LocaleSwitcher nonce={nonce}/>

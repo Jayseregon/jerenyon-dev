@@ -56,7 +56,7 @@ export default function LocaleSwitcher({nonce}: LocaleSwitcherProps) {
         content: "p-0 border-small border-divider bg-background",
       }}
       nonce={nonce}>
-      <DropdownTrigger nonce={nonce} className="px-3 py-1 rounded-lg bg-primary-400">{t("localeFlag", { locale })}</DropdownTrigger>
+      <DropdownTrigger nonce={nonce} className="px-2 py-1 rounded-lg hover:bg-primary-100">{t("localeFlag", { locale })}</DropdownTrigger>
       <DropdownMenu
         className="p-2"
         itemClasses={{
