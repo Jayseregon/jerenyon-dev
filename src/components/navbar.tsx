@@ -1,6 +1,5 @@
 "use client";
 
-// NextUI components
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -12,20 +11,21 @@ import {
 } from "@nextui-org/navbar";
 import { Link } from "@nextui-org/link";
 import { link as linkStyles } from "@nextui-org/theme";
-
-// NextJS components
-import { useState } from "react";
+import React, { useState } from "react";
 import NextLink from "next/link";
 import clsx from "clsx";
-
-// Custom components
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Logo } from "@/components/icons";
 import { SearchInput } from "@/components/SearchInput";
 import LocaleSwitcher from "./LocaleSwitcher";
 
-export const Navbar = () => {
+
+interface NavbarProps {
+  nonce?: string; 
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
   // Navbar state
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -36,14 +36,17 @@ export const Navbar = () => {
       position="sticky"
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      isBordered>
-      <NavbarContent>
+      isBordered
+      nonce={nonce}>
+      <NavbarContent nonce={nonce}>
         <NavbarBrand
           as="li"
-          className="gap-3 max-w-fit">
+          className="gap-3 max-w-fit"
+          nonce={nonce}>
           <NextLink
             className="flex justify-start items-center gap-4"
-            href="/">
+            href="/"
+            nonce={nonce}>
             <Logo />
             <p className="font-bold text-inherit">{siteConfig.name}</p>
           </NextLink>
@@ -51,24 +54,26 @@ export const Navbar = () => {
       </NavbarContent>
 
       {/* navbar menu  */}
-      <NavbarContent justify="center">
+      <NavbarContent justify="center" nonce={nonce}>
         {/* toggle menu */}
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
           className="md:hidden"
+          nonce={nonce}
         />
 
         {/* or list items menu */}
         <ul className="hidden md:flex items-start justify-start gap-16">
           {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
+            <NavbarItem key={item.href} nonce={nonce}>
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
                   "data-[active=true]:text-primary data-[active=true]:font-medium"
                 )}
                 color="foreground"
-                href={item.href}>
+                href={item.href}
+                nonce={nonce}>
                 {item.label}
               </NextLink>
             </NavbarItem>
@@ -77,26 +82,27 @@ export const Navbar = () => {
       </NavbarContent>
 
       {/* avatar menu with theme switch and search */}
-      <NavbarContent justify="end">
-        <NavbarItem className="hidden md:flex">
+      <NavbarContent justify="end" nonce={nonce}>
+        <NavbarItem className="hidden md:flex" nonce={nonce}>
           <SearchInput />
         </NavbarItem>
-        <NavbarItem>
+        <NavbarItem nonce={nonce}>
           <ThemeSwitch />
         </NavbarItem>
-        <NavbarItem>
+        <NavbarItem nonce={nonce}>
           <LocaleSwitcher />
         </NavbarItem>
       </NavbarContent>
 
       {/* menu definition when toggled */}
-      <NavbarMenu>
+      <NavbarMenu nonce={nonce}>
         <SearchInput alwaysExpanded={true} />
         <div className="mx-4 mt-2 flex flex-col gap-3">
           {siteConfig.navMenuToggleItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
+            <NavbarMenuItem key={`${item}-${index}`} nonce={nonce}>
               <Link
                 color="foreground"
+                nonce={nonce}
                 className="w-full"
                 href={item.href}
                 size="lg"
