@@ -10,8 +10,13 @@ import {
 import { useEffect, useTransition } from "react";
 import { useRouter, usePathname } from "@/navigation";
 import { locales } from "@/config";
+import { Switch } from "@nextui-org/react";
 
-export default function LocaleSwitcher() {
+export interface LocaleSwitcherProps {
+  nonce?: string;
+}
+
+export default function LocaleSwitcher({nonce}: LocaleSwitcherProps) {
   const t = useTranslations("LocaleSwitcher");
   const locale = useLocale();
   const router = useRouter();
@@ -32,52 +37,26 @@ export default function LocaleSwitcher() {
     }
   }, [locale, pathname, router, startTransition]);
 
-  function onSelectChange(locale: string) {
-    localStorage.setItem("preferredLocale", locale);
-    document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000; SameSite=Lax`;
+  function onLocaleToggle() {
+    const newLocale = locale === "en" ? "fr" : "en"; // Assuming only two locales for simplicity
+    localStorage.setItem("preferredLocale", newLocale);
+    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
 
     startTransition(() => {
-      router.replace(
-        { pathname },
-        { locale: locale as "en" | "fr" | undefined }
-      );
+      router.replace({ pathname }, { locale: newLocale as "en" | "fr" | undefined });
     });
   }
 
   return (
-    <Dropdown
-      radius="sm"
-      classNames={{
-        content: "p-0 border-small border-divider bg-background",
-      }}>
-      <DropdownTrigger>{t("localeFlag", { locale })}</DropdownTrigger>
-      <DropdownMenu
-        className="p-2"
-        itemClasses={{
-          base: [
-            "rounded-md",
-            "transition-opacity",
-            "data-[hover=true]:text-foreground",
-            "data-[hover=true]:bg-primary-200",
-            "dark:data-[hover=true]:bg-primary-400",
-            "data-[selectable=true]:focus:bg-primary-200",
-            "data-[pressed=true]:opacity-70",
-            "data-[focus-visible=true]:ring-primary-500",
-          ],
-        }}
-        aria-label={t("label")}
-        selectionMode="single"
-        selectedKeys={[locale]}
-        onAction={(key) => onSelectChange(key as string)}>
-        {locales.map((curLocale) => (
-          <DropdownItem
-            key={curLocale}
-            textValue={curLocale}
-            className="h-13">
-            {t("locale", { locale: curLocale })}
-          </DropdownItem>
-        ))}
-      </DropdownMenu>
-    </Dropdown>
+    <Switch
+      defaultSelected={locale === locales[0]}
+      onChange={onLocaleToggle}
+      size="md"
+      color="primary"
+      thumbIcon={({ isSelected, className }) =>
+        isSelected ? t("localeFlag", { locale: locales[0] }) : t("localeFlag", { locale: locales[1] })
+      }
+      nonce={nonce}
+    />
   );
 }

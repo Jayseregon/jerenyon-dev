@@ -1,87 +1,35 @@
-"use client";
-
-import { FC } from "react";
-import { VisuallyHidden } from "@react-aria/visually-hidden";
-import { SwitchProps, useSwitch } from "@nextui-org/switch";
+import React, { FC } from "react";
+import { Switch } from "@nextui-org/react";
 import { useTheme } from "next-themes";
-import { useIsSSR } from "@react-aria/ssr";
-import clsx from "clsx";
-
-import { SunThemeIcon, MoonThemeIcon } from "@/components/icons";
+import { SunIcon, MoonIcon } from "@/components/icons";
 
 export interface ThemeSwitchProps {
   className?: string;
-  classNames?: SwitchProps["classNames"];
   nonce?: string;
 }
 
-export const ThemeSwitch: FC<ThemeSwitchProps> = ({
-  className,
-  classNames,
-  nonce,
-}) => {
+export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, nonce }) => {
   const { theme, setTheme } = useTheme();
-  const isSSR = useIsSSR();
 
-  const onChange = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    const checked = event.target.checked;
+    setTheme(checked ? "dark" : "light");
   };
 
-  const {
-    Component,
-    slots,
-    isSelected,
-    getBaseProps,
-    getInputProps,
-    getWrapperProps,
-  } = useSwitch({
-    isSelected: theme === "light" || isSSR,
-    "aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : "light"} mode`,
-    onChange,
-    nonce: nonce,
-  });
-
   return (
-    <Component
-      {...getBaseProps({
-        className: clsx(
-          "px-px transition-opacity hover:opacity-80 cursor-pointer",
-          className,
-          classNames?.base
-        ),
-      })}
-      nonce={nonce}>
-      <VisuallyHidden>
-        <input
-          {...getInputProps()}
-          nonce={nonce}
-        />
-      </VisuallyHidden>
-      <div
-        {...getWrapperProps()}
-        className={slots.wrapper({
-          class: clsx(
-            [
-              "w-auto h-auto",
-              "bg-transparent",
-              "rounded-lg",
-              "flex items-center justify-center",
-              "group-data-[selected=true]:bg-transparent",
-              "!text-default-500",
-              "pt-px",
-              "px-0",
-              "mx-0",
-            ],
-            classNames?.wrapper
-          ),
-        })}
-        nonce={nonce}>
-        {!isSelected || isSSR ? (
-          <SunThemeIcon size={22} />
+    <Switch
+      defaultSelected
+      onChange={handleChange}
+      size="md"
+      color="primary"
+      thumbIcon={({ isSelected, className }) =>
+        isSelected ? (
+          <SunIcon className={className} />
         ) : (
-          <MoonThemeIcon size={22} />
-        )}
-      </div>
-    </Component>
+          <MoonIcon className={className} />
+        )
+      }
+      className={className}
+      nonce={nonce}></Switch>
   );
 };

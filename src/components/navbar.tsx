@@ -97,7 +97,7 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
           <ThemeSwitch nonce={nonce}/>
         </NavbarItem>
         <NavbarItem nonce={nonce}>
-          <LocaleSwitcher />
+          <LocaleSwitcher nonce={nonce}/>
         </NavbarItem>
       </NavbarContent>
 
