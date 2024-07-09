@@ -20,9 +20,8 @@ import { Logo } from "@/components/icons";
 import { SearchInput } from "@/components/SearchInput";
 import LocaleSwitcher from "./LocaleSwitcher";
 
-
 interface NavbarProps {
-  nonce?: string; 
+  nonce?: string;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
@@ -54,7 +53,9 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
       </NavbarContent>
 
       {/* navbar menu  */}
-      <NavbarContent justify="center" nonce={nonce}>
+      <NavbarContent
+        justify="center"
+        nonce={nonce}>
         {/* toggle menu */}
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
@@ -65,7 +66,9 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
         {/* or list items menu */}
         <ul className="hidden md:flex items-start justify-start gap-16">
           {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href} nonce={nonce}>
+            <NavbarItem
+              key={item.href}
+              nonce={nonce}>
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
@@ -82,12 +85,16 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
       </NavbarContent>
 
       {/* avatar menu with theme switch and search */}
-      <NavbarContent justify="end" nonce={nonce}>
-        <NavbarItem className="hidden md:flex" nonce={nonce}>
+      <NavbarContent
+        justify="end"
+        nonce={nonce}>
+        <NavbarItem
+          className="hidden md:flex"
+          nonce={nonce}>
           <SearchInput />
         </NavbarItem>
         <NavbarItem nonce={nonce}>
-          <ThemeSwitch />
+          <ThemeSwitch nonce={nonce}/>
         </NavbarItem>
         <NavbarItem nonce={nonce}>
           <LocaleSwitcher />
@@ -99,7 +106,9 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
         <SearchInput alwaysExpanded={true} />
         <div className="mx-4 mt-2 flex flex-col gap-3">
           {siteConfig.navMenuToggleItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`} nonce={nonce}>
+            <NavbarMenuItem
+              key={`${item}-${index}`}
+              nonce={nonce}>
               <Link
                 color="foreground"
                 nonce={nonce}

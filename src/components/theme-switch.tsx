@@ -12,11 +12,13 @@ import { SunThemeIcon, MoonThemeIcon } from "@/components/icons";
 export interface ThemeSwitchProps {
   className?: string;
   classNames?: SwitchProps["classNames"];
+  nonce?: string;
 }
 
 export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   className,
   classNames,
+  nonce,
 }) => {
   const { theme, setTheme } = useTheme();
   const isSSR = useIsSSR();
@@ -36,6 +38,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     isSelected: theme === "light" || isSSR,
     "aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : "light"} mode`,
     onChange,
+    nonce: nonce,
   });
 
   return (
@@ -46,9 +49,13 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           className,
           classNames?.base
         ),
-      })}>
+      })}
+      nonce={nonce}>
       <VisuallyHidden>
-        <input {...getInputProps()} />
+        <input
+          {...getInputProps()}
+          nonce={nonce}
+        />
       </VisuallyHidden>
       <div
         {...getWrapperProps()}
@@ -67,7 +74,8 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
             ],
             classNames?.wrapper
           ),
-        })}>
+        })}
+        nonce={nonce}>
         {!isSelected || isSSR ? (
           <SunThemeIcon size={22} />
         ) : (
