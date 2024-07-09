@@ -53,18 +53,18 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
       </NavbarContent>
 
       {/* navbar menu  */}
-      <NavbarContent
+      {/* <NavbarContent
         justify="center"
-        nonce={nonce}>
+        nonce={nonce}> */}
         {/* toggle menu */}
-        <NavbarMenuToggle
+        {/* <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
           className="md:hidden"
           nonce={nonce}
-        />
+        /> */}
 
         {/* or list items menu */}
-        <ul className="hidden md:flex items-start justify-start gap-16">
+        {/* <ul className="hidden md:flex items-start justify-start gap-16">
           {siteConfig.navItems.map((item) => (
             <NavbarItem
               key={item.href}
@@ -82,17 +82,17 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
             </NavbarItem>
           ))}
         </ul>
-      </NavbarContent>
+      </NavbarContent> */}
 
       {/* avatar menu with theme switch and search */}
       <NavbarContent
         justify="end"
         nonce={nonce}>
-        {/* <NavbarItem
+        <NavbarItem
           className="hidden md:flex"
           nonce={nonce}>
           <SearchInput />
-        </NavbarItem> */}
+        </NavbarItem>
         <NavbarItem nonce={nonce}>
           <ThemeSwitch nonce={nonce} className="text-foreground bg-transparent hover:bg-primary-100"/>
         </NavbarItem>
@@ -115,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
                 className="w-full"
                 href={item.href}
                 size="lg"
-                onClick={() => {
+                onPress={() => {
                   setIsMenuOpen((prev) => !prev);
                 }}>
                 {item.label}
