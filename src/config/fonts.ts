@@ -3,8 +3,8 @@ import { Fira_Code as FontMono, Italiana, Roboto, Lora, Open_Sans } from "next/f
 export const fontSans = Roboto({
   subsets: ["latin"],
   variable: "--font-sans",
-  weight: ["100", "300", "400", "500", "700", "900",], // Specify the weights you need
-  style: ["normal", "italic"], // Specify the styles you need
+  weight: ["100", "300", "400", "500", "700", "900",],
+  style: ["normal", "italic"],
 });
 
 export const fontMono = FontMono({

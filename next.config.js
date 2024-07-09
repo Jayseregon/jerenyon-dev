@@ -1,9 +1,6 @@
 const createNextIntlPlugin = require('next-intl/plugin');
 const path = require('path');
-const crypto = require('crypto');
-
 const withNextIntl = createNextIntlPlugin();
-
 const isDev = process.env.NODE_ENV === 'development';
 
 const permissionsPolicy = `

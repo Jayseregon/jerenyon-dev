@@ -17,7 +17,6 @@ export function Providers({ children, themeProps, nonce }: ProvidersProps) {
 
   return (
     <NextUIProvider navigate={router.push}>
-      {/* Ensure nonce passed as a prop takes precedence over nonce in themeProps */}
       <NextThemesProvider
         {...themeProps}
         nonce={nonce}>
