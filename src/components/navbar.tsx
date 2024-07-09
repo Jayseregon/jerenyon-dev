@@ -88,11 +88,11 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
       <NavbarContent
         justify="end"
         nonce={nonce}>
-        <NavbarItem
+        {/* <NavbarItem
           className="hidden md:flex"
           nonce={nonce}>
           <SearchInput />
-        </NavbarItem>
+        </NavbarItem> */}
         <NavbarItem nonce={nonce}>
           <ThemeSwitch nonce={nonce} className="text-foreground bg-transparent hover:bg-primary-100"/>
         </NavbarItem>
