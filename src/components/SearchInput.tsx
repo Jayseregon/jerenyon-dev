@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Input, Kbd } from "@nextui-org/react";
+
 import { SearchIcon } from "@/components/icons";
 
 export const SearchInput = ({ alwaysExpanded = false }) => {
@@ -32,6 +33,7 @@ export const SearchInput = ({ alwaysExpanded = false }) => {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -47,9 +49,7 @@ export const SearchInput = ({ alwaysExpanded = false }) => {
             input: "text-sm",
           }}
           endContent={
-            <Kbd
-              className="hidden lg:inline-block"
-              keys={["command"]}>
+            <Kbd className="hidden lg:inline-block" keys={["command"]}>
               K
             </Kbd>
           }
@@ -61,10 +61,7 @@ export const SearchInput = ({ alwaysExpanded = false }) => {
           type="search"
         />
       ) : (
-        <SearchIcon
-          className="cursor-pointer"
-          onClick={toggleSearch}
-        />
+        <SearchIcon className="cursor-pointer" onClick={toggleSearch} />
       )}
     </div>
   );

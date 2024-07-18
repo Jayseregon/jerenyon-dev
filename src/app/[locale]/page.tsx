@@ -1,14 +1,17 @@
-import { Link } from "@nextui-org/link";
 import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code";
-import { button as buttonStyles } from "@nextui-org/theme";
+import { unstable_setRequestLocale } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/typography";
 import { ColorCard, ColorCardScale } from "@/components/ColorCard";
-import { useTranslations } from "next-intl";
 
-export default function Home() {
+export default function Home({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  unstable_setRequestLocale(locale);
   const t = useTranslations("HomePage");
 
   return (
@@ -23,10 +26,7 @@ export default function Home() {
       </div>
 
       <div className="mt-8">
-        <Snippet
-          hideCopyButton
-          hideSymbol
-          variant="flat">
+        <Snippet hideCopyButton hideSymbol variant="flat">
           <span>{t("code")}</span>
         </Snippet>
       </div>

@@ -9,17 +9,11 @@ interface PageTmpCardProps {
 }
 
 export const PageTmpCard: React.FC<PageTmpCardProps> = ({ subtitle }) => {
-
   return (
     <>
-      <Card
-        shadow="lg"
-        className="bg-secondary-200">
+      <Card className="bg-secondary-200" shadow="lg">
         <CardHeader className="items-start space-x-3">
-          <Spinner
-            size="sm"
-            color="warning"
-          />
+          <Spinner color="warning" size="sm" />
           <p className="text-italic font-thin text-warning">in progress</p>
         </CardHeader>
 

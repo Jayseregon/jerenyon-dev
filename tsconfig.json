@@ -24,9 +24,11 @@
       "@/*": ["./*", "./src/*"],
       "@/components/*": ["src/components/*"],
       "@/config/*": ["src/config/*"],
-      "@/types/*": ["src/types/*"]
+      "@/types/*": ["src/types/*"],
+      "@/lib/*": ["src/lib/*"],
+      "#site/content": ["./.velite"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "**/*.mdx"],
   "exclude": ["node_modules"]
 }

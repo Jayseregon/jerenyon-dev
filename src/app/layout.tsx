@@ -1,9 +1,11 @@
 import "@/styles/globals.css";
 import type { Metadata, Viewport } from "next";
+
 import clsx from "clsx";
-import { Providers } from "./providers";
 import { ReactNode } from "react";
-import { HeartFooterIcon } from "@/components/icons";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { headers } from "next/headers";
+
 import { siteConfig } from "@/config/site";
 import {
   fontSans,
@@ -12,9 +14,8 @@ import {
   fontDisplay,
   fontSansAlt,
 } from "@/config/fonts";
-import { Navbar } from "@/components/navbar";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { headers } from "next/headers";
+
+import { Providers } from "./providers";
 
 type Props = {
   children: ReactNode;
@@ -47,10 +48,7 @@ export default function RootLayout({ children }: Props) {
   const nonce = headers().get("x-nonce");
 
   return (
-    <html
-      suppressHydrationWarning
-      lang="en"
-      nonce={nonce || undefined}>
+    <html suppressHydrationWarning lang="en" nonce={nonce || undefined}>
       <head nonce={nonce || undefined} />
       <body
         className={clsx(
@@ -59,11 +57,15 @@ export default function RootLayout({ children }: Props) {
           fontMono.variable,
           fontSerif.variable,
           fontDisplay.variable,
-          fontSansAlt.variable
+          fontSansAlt.variable,
         )}
-        nonce={nonce || undefined}>
+        nonce={nonce || undefined}
+      >
         <SpeedInsights />
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark"}} nonce={nonce || undefined}>
+        <Providers
+          nonce={nonce || undefined}
+          themeProps={{ attribute: "class", defaultTheme: "dark" }}
+        >
           {children}
         </Providers>
       </body>

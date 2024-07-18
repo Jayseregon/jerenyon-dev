@@ -1,20 +1,46 @@
-import { title } from "@/components/typography";
 import { useTranslations } from "next-intl";
-import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
-import { Divider } from "@nextui-org/react";
-import { Spinner } from "@nextui-org/spinner";
-import { PageTmpCard } from "@/src/components/PageTmpCard";
+import { headers } from "next/headers";
+import { Link } from "@nextui-org/link";
+import { unstable_setRequestLocale } from "next-intl/server";
 
-export default function AppsPage() {
+import { PageTmpCard } from "@/src/components/PageTmpCard";
+import { getListOfFiles } from "@/src/lib/mdReader";
+import { title } from "@/components/typography";
+
+export default function AboutPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  unstable_setRequestLocale(locale);
   const t = useTranslations("About");
+  const mdFiles = getListOfFiles("posts");
+  const nonce = headers().get("x-nonce");
 
   return (
     <div>
       <h1 className={title()}>{t("h1_title")}</h1>
 
-      <div className="py-3"></div>
+      <div className="py-3" />
 
       <PageTmpCard subtitle={t("subtitle")} />
+
+      <div className="py-20" />
+
+      <div>
+        {mdFiles.map((file, index) => (
+          <ul key={index}>
+            <li key={`${index}-${file}`}>
+              <Link
+                href={`/about/${file.replace(".mdx", "")}`}
+                nonce={nonce || undefined}
+              >
+                {file}
+              </Link>
+            </li>
+          </ul>
+        ))}
+      </div>
     </div>
   );
 }
