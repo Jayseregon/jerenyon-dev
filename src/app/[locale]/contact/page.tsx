@@ -21,9 +21,6 @@ export default function AppsPage() {
 
       <div className="py-5" />
 
-      <div className="prose prose-lightTheme dark:prose-darkTheme">
-        <MDXContent code={post.code} />
-      </div>
     </div>
   );
 }
