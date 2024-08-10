@@ -1,18 +1,15 @@
-import { useTranslations } from "next-intl";
-
+import { siteConfig } from "@/src/config/site";
 import { title } from "@/components/typography";
 import { PageTmpCard } from "@/src/components/PageTmpCard";
 
 export default function ProjectPage() {
-  const t = useTranslations("Projects");
-
   return (
     <div>
-      <h1 className={title()}>{t("h1_title")}</h1>
+      <h1 className={title()}>{siteConfig.Projects.h1_title}</h1>
 
       <div className="py-3" />
 
-      <PageTmpCard subtitle={t("subtitle")} />
+      <PageTmpCard subtitle={siteConfig.Projects.subtitle} />
     </div>
   );
 }

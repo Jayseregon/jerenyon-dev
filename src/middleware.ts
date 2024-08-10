@@ -1,54 +1,7 @@
-import type { NextRequest } from "next/server";
-
-import createMiddleware from "next-intl/middleware";
-import { NextResponse } from "next/server";
-
-import { localePrefix, defaultLocale, locales, pathnames } from "./config";
-
-// Existing middleware configuration
-const intlMiddleware = createMiddleware({
-  defaultLocale,
-  locales,
-  localePrefix,
-  pathnames,
-  localeDetection: false,
-});
-
-// Refactored locale middleware function
-function localeMiddleware(req: NextRequest) {
-  // Use the existing intl middleware to handle initial locale setup
-  const response = intlMiddleware(req);
-
-  // Check if the NEXT_LOCALE cookie is set and if it's different from the current locale
-  const currentLocale = req.nextUrl.locale;
-  const nextLocale = req.cookies.get("NEXT_LOCALE")?.value;
-
-  if (
-    nextLocale &&
-    typeof nextLocale === "string" &&
-    currentLocale !== nextLocale &&
-    locales.includes(nextLocale as "en" | "fr")
-  ) {
-    // If the locale has changed, redirect to the same URL with the new locale
-    const url = req.nextUrl.clone();
-
-    // Ensure we do not add the locale multiple times
-    const segments = req.nextUrl.pathname.split("/");
-
-    if (segments[1] === nextLocale) {
-      // Locale is already present in the path
-      return response;
-    }
-    url.pathname = `/${nextLocale}${req.nextUrl.pathname}`;
-
-    return NextResponse.redirect(url);
-  }
-
-  return response;
-}
+import { NextRequest, NextResponse } from "next/server";
 
 // New CSP middleware function
-function cspMiddleware(response: NextResponse) {
+function cspMiddleware(req: NextRequest): NextResponse {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
   const cspHeader = `
     default-src 'self';
@@ -65,8 +18,18 @@ function cspMiddleware(response: NextResponse) {
     .replace(/\s{2,}/g, " ")
     .trim();
 
+  const requestHeaders = new Headers(req.headers);
+
+  requestHeaders.set("x-nonce", nonce);
+  requestHeaders.set("Content-Security-Policy", cspHeader);
+
+  const response = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
+
   response.headers.set("Content-Security-Policy", cspHeader);
-  response.headers.set("x-nonce", nonce);
 
   return response;
 }
@@ -74,11 +37,12 @@ function cspMiddleware(response: NextResponse) {
 // Combined middleware function
 export function middleware(req: NextRequest) {
   const isDev = process.env.NODE_ENV === "development";
-
-  let response = localeMiddleware(req);
+  let response: NextResponse;
 
   if (!isDev) {
-    response = cspMiddleware(response);
+    response = cspMiddleware(req);
+  } else {
+    response = NextResponse.next();
   }
 
   return response;
@@ -87,7 +51,6 @@ export function middleware(req: NextRequest) {
 export const config = {
   matcher: [
     "/", // Redirect to a matching locale at the root
-    "/(fr|en)/:path*", // Set a cookie to remember the previous locale
     "/((?!_next|_vercel|.*\\..*).*)", // Exclude image paths and /docs/auto-loops from locale prefixing
     "/((?!api|_next/static|_next/image|static|favicon.ico).*)", // Match all paths except API, static files, and favicon
   ],

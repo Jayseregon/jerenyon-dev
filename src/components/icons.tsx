@@ -14,7 +14,7 @@ export const Logo: React.FC<IconIcoProps> = ({ size = 36, nonce }) => (
   />
 );
 
-export const HeartFooterIcon = ({ size = 24, ...props }: IconSvgProps) => (
+export const HeartFooterIcon = ({ size = 10, ...props }: IconSvgProps) => (
   <svg
     aria-hidden="true"
     className="size-6"

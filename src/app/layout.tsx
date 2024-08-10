@@ -6,6 +6,7 @@ import { ReactNode } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { headers } from "next/headers";
 
+import { Navbar } from "@/components/navbar";
 import { siteConfig } from "@/config/site";
 import {
   fontSans,
@@ -14,12 +15,12 @@ import {
   fontDisplay,
   fontSansAlt,
 } from "@/config/fonts";
+import { Footer } from "@/components/footer";
 
 import { Providers } from "./providers";
 
 type Props = {
   children: ReactNode;
-  //   params: { locale: string };
 };
 
 export const metadata: Metadata = {
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
   },
-  description: siteConfig.description,
+  description: siteConfig.heroDescription,
   icons: {
     icon: siteConfig.icon,
   },
@@ -66,7 +67,21 @@ export default function RootLayout({ children }: Props) {
           nonce={nonce || undefined}
           themeProps={{ attribute: "class", defaultTheme: "dark" }}
         >
-          {children}
+          <div
+            className="relative flex flex-col h-screen"
+            nonce={nonce || undefined}
+          >
+            <Navbar nonce={nonce || undefined} />
+
+            <main
+              className="container mx-auto max-w-7xl pt-16 px-6 flex-grow"
+              nonce={nonce || undefined}
+            >
+              {children}
+            </main>
+
+            <Footer nonce={nonce || undefined} />
+          </div>
         </Providers>
       </body>
     </html>

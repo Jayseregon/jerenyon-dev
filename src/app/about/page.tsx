@@ -1,29 +1,22 @@
-import { useTranslations } from "next-intl";
 import { headers } from "next/headers";
 import { Link } from "@nextui-org/link";
-import { unstable_setRequestLocale } from "next-intl/server";
 
 import { PageTmpCard } from "@/src/components/PageTmpCard";
 import { getListOfFiles } from "@/src/lib/mdReader";
 import { title } from "@/components/typography";
+import { siteConfig } from "@/src/config/site";
 
-export default function AboutPage({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  unstable_setRequestLocale(locale);
-  const t = useTranslations("About");
+export default function AboutPage() {
   const mdFiles = getListOfFiles("posts");
   const nonce = headers().get("x-nonce");
 
   return (
     <div>
-      <h1 className={title()}>{t("h1_title")}</h1>
+      <h1 className={title()}>{siteConfig.About.h1_title}</h1>
 
       <div className="py-3" />
 
-      <PageTmpCard subtitle={t("subtitle")} />
+      <PageTmpCard subtitle={siteConfig.About.subtitle} />
 
       <div className="py-20" />
 

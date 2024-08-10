@@ -20,8 +20,6 @@ import { ThemeSwitch } from "@/components/theme-switch";
 import { Logo } from "@/components/icons";
 import { SearchInput } from "@/components/SearchInput";
 
-import LocaleSwitcher from "./LocaleSwitcher";
-
 interface NavbarProps {
   nonce?: string;
 }
@@ -92,9 +90,6 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
             className="text-foreground bg-transparent hover:bg-primary-100"
             nonce={nonce}
           />
-        </NavbarItem>
-        <NavbarItem nonce={nonce}>
-          <LocaleSwitcher nonce={nonce} />
         </NavbarItem>
       </NavbarContent>
 

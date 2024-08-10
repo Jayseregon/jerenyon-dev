@@ -1,9 +1,4 @@
-// import { useTranslations } from "next-intl";
 import type { Metadata } from "next";
-
-import { unstable_setRequestLocale } from "next-intl/server";
-
-// import { headers } from "next/headers";
 
 import { title } from "@/src/components/typography";
 import { posts } from "#site/content";
@@ -20,12 +15,10 @@ function getPageBySlug(slug: string) {
 }
 
 export default function MdPage({
-  params: { locale, slug },
+  params: { slug },
 }: {
-  params: { locale: string; slug: string };
+  params: { slug: string };
 }) {
-  unstable_setRequestLocale(locale);
-  // const t = useTranslations("About");
   // const nonce = headers().get("x-nonce");
   const post = getPageBySlug(slug);
 

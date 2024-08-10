@@ -1,9 +1,6 @@
-import createNextIntlPlugin from 'next-intl/plugin';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { build } from 'velite';
-
-const withNextIntl = createNextIntlPlugin();
 
 const isLocalDev = process.env.NODE_ENV === 'development';
 
@@ -67,16 +64,16 @@ const nextConfig = {
       },
     ];
   },
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    config.resolve.alias['@'] = path.resolve(__dirname);
-    config.resolve.alias['@/components'] = path.resolve(__dirname, 'src/components');
-    config.resolve.alias['@/config'] = path.resolve(__dirname, 'src/config');
-    config.resolve.alias['@/lib'] = path.resolve(__dirname, 'src/lib');
+  // webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+  //   config.resolve.alias['@'] = path.resolve(__dirname);
+  //   config.resolve.alias['@/components'] = path.resolve(__dirname, 'src/components');
+  //   config.resolve.alias['@/config'] = path.resolve(__dirname, 'src/config');
+  //   config.resolve.alias['@/lib'] = path.resolve(__dirname, 'src/lib');
 
-    config.plugins.push(new VeliteWebpackPlugin())
+  //   config.plugins.push(new VeliteWebpackPlugin())
 
-    return config;
-  },
+  //   return config;
+  // },
 };
 
 
@@ -94,4 +91,4 @@ class VeliteWebpackPlugin {
   }
 }
 
-export default withNextIntl(nextConfig);
+export default nextConfig;
