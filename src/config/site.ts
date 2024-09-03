@@ -6,7 +6,7 @@ export const siteConfig = {
   heroDescription:
     "Dive into the world of Jayseregon, where technology meets creativity. Explore projects that blend innovative coding with aesthetic design to solve real-world problems.",
   code: "Currently in development",
-  icon: "/favicon.ico",
+  icon: "/favicon.png",
   navItems: [
     {
       label: "About",

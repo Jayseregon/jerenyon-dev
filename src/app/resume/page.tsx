@@ -1,6 +1,7 @@
 import { title } from "@/components/typography";
 import { PageTmpCard } from "@/src/components/PageTmpCard";
 import { siteConfig } from "@/config/site";
+import { Timeline } from "@/src/components/Timeline";
 
 export default function ResumePage() {
   return (
@@ -9,7 +10,7 @@ export default function ResumePage() {
 
       <div className="py-3" />
 
-      <PageTmpCard subtitle={siteConfig.Resume.subtitle} />
+      <Timeline />
     </div>
   );
 }

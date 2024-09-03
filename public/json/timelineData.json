@@ -1,0 +1,75 @@
+[
+  {
+    "date": "June 2022 - Present",
+    "jobTitle": "Continuous Improvement Advisor",
+    "company": "Telecon",
+    "city": "Montréal, QC",
+    "keywords": [
+      "Python",
+      "Django",
+      "DRF",
+      "OpenAI",
+      "React",
+      "Next.js",
+      "Tailwind",
+      "Postgres",
+      "Docker",
+      "Azure",
+      "GIS"
+    ],
+    "description": "Driving digital transformation through Python automation, GIS technology, and modern web development, while integrating LLM for enhanced capabilities.",
+    "responsibilities": [
+      "Converted the Django platform into a REST API using DRF, with Next.js for the client.",
+      "Led GIS adoption, enhancing team capabilities from design to civil engineering.",
+      "Mentored teams in best practices, driving technical excellence."
+    ],
+    "timelineIcon": "work"
+  },
+  {
+    "date": "Sept 2021 - Present",
+    "jobTitle": "CEO & Co-Founder",
+    "city": "Montréal, QC",
+    "company": "NJAE Plume",
+    "keywords": [
+      "Python",
+      "React",
+      "Next.js",
+      "Swift",
+      "SwiftUI",
+      "Vercel",
+      "Resend",
+      "E-commerce"
+    ],
+    "description": "Overseeing all technical, engineering, and development aspects of our creative venture.",
+    "responsibilities": [
+      "Defined the strategic roadmap for product development.",
+      "Led the transition from WordPress to a custom Django platform.",
+      "Managed all technical operations, including full-stack development, architecture, and system integration."
+    ],
+    "timelineIcon": "school"
+  },
+  {
+    "date": "July 2018 - June 2022",
+    "jobTitle": "Fiber Network Designer & Automation Engineer",
+    "company": "Telecon",
+    "city": "Montréal, QC",
+    "keywords": [
+      "Python",
+      "Django",
+      "Bootstrap",
+      "Docker",
+      "Azure",
+      "GIS",
+      "PostGIS",
+      "AutoCAD"
+    ],
+    "description": "Started as a Fiber Network Designer, quickly transitioning into GIS technology integration and Python automation, leading the Django platform project.",
+    "responsibilities": [
+      "Introduced GIS technologies and Python automations to streamline network design processes.",
+      "Developed a Django platform to enhance efficiency and data management.",
+      "Collaborated with cross-functional teams to ensure the successful implementation of new technologies."
+    ],
+
+    "timelineIcon": "award"
+  }
+]

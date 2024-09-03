@@ -49,7 +49,10 @@ export default function RootLayout({ children }: Props) {
   const nonce = headers().get("x-nonce");
 
   return (
-    <html suppressHydrationWarning lang="en" nonce={nonce || undefined}>
+    <html
+      suppressHydrationWarning
+      lang="en"
+      nonce={nonce || undefined}>
       <head nonce={nonce || undefined} />
       <body
         className={clsx(
@@ -58,25 +61,21 @@ export default function RootLayout({ children }: Props) {
           fontMono.variable,
           fontSerif.variable,
           fontDisplay.variable,
-          fontSansAlt.variable,
+          fontSansAlt.variable
         )}
-        nonce={nonce || undefined}
-      >
+        nonce={nonce || undefined}>
         <SpeedInsights />
         <Providers
           nonce={nonce || undefined}
-          themeProps={{ attribute: "class", defaultTheme: "dark" }}
-        >
+          themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div
             className="relative flex flex-col h-screen"
-            nonce={nonce || undefined}
-          >
+            nonce={nonce || undefined}>
             <Navbar nonce={nonce || undefined} />
 
             <main
-              className="container mx-auto max-w-7xl pt-16 px-6 flex-grow"
-              nonce={nonce || undefined}
-            >
+              className="container mx-auto pt-16 flex-grow"
+              nonce={nonce || undefined}>
               {children}
             </main>
 

@@ -94,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
       </NavbarContent>
 
       {/* menu definition when toggled */}
-      <NavbarMenu nonce={nonce}>
+      <NavbarMenu nonce={nonce} className="z-50">
         <SearchInput alwaysExpanded={true} />
         <div className="mx-4 mt-2 flex flex-col gap-3">
           {siteConfig.navMenuToggleItems.map((item, index) => (

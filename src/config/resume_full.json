@@ -1,0 +1,188 @@
+{
+  "categories": [
+    {
+      "name": "Summary",
+      "items": [
+        {
+          "title": "About Me",
+          "content": "As a highly skilled Python Backend Engineer, I specialize in leveraging GIS technologies, cloud development, and AI/ML integration to drive digital transformation and optimize processes. My systemic approach to problem-solving allows me to create innovative, data-driven solutions that enhance operational efficiency and provide actionable insights."
+        },
+        {
+          "title": "Key Accomplishments",
+          "points": [
+            "Led the transformation of disparate custom Python SaaS tools into a unified Django-based platform, significantly enhancing efficiency and user experience.",
+            "Improved data handling by automating interactions with external Postgres/PostGIS databases using Python ORM libraries within Django applications.",
+            "Streamlined data cleaning, engineering, and integration processes with custom Python pipelines, boosting productivity.",
+            "Ensured scalable, maintainable applications by leveraging Azure for production deployments and Docker for containerization."
+          ]
+        },
+        {
+          "title": "Leadership and Excellence",
+          "points": [
+            "Promoted software development best practices through Git, Azure DevOps/GitHub, test automation, and CI/CD workflows, fostering a culture of excellence.",
+            "Enhanced team capabilities by conducting hands-on training sessions on industry standards and emerging technologies."
+          ]
+        },
+        {
+          "title": "AI/ML Development",
+          "points": [
+            "Developed AI-powered solutions, focusing on chains, agents, and multimodal Retrieval-Augmented Generation (RAG) systems.",
+            "Integrated machine learning models to enhance data-driven decision-making, utilizing tools like Hugging Face, Langchain, and powerful LLMs like OpenAI and Gemini."
+          ]
+        },
+        {
+          "title": "Continuous Learning and Innovation",
+          "points": [
+            "Deepening proficiency in React/Next.js to boost frontend capabilities, while advancing in machine learning and deep learning to drive innovation in Django applications.",
+            "Engaging in continuous R&D to adopt cutting-edge AI/ML technologies, ensuring adaptability and innovation within automated applications."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Experience",
+      "items": [
+        {
+          "title": "Continuous Improvement Advisor",
+          "company": "Telecon",
+          "date": "June 2022 - Present",
+          "location": "City, Country",
+          "details": "I drive digital transformation and process optimization initiatives, combining Python automations and GIS technologies to deliver innovative solutions.",
+          "responsibilities": [
+            "Led GIS technologies adoption, enhancing team capabilities from FTTH network design to civil engineering analysis.",
+            "Established complex visualization solutions for permitting and construction maps.",
+            "Mentored and trained a new developer team, fostering best practices (Git, DevOps, testing).",
+            "Provided GIS and Python training to equip team members and ensure smooth technical handover.",
+            "Architected a centralized cloud-based Django application, consolidating and enhancing Python SaaS tools into a scalable, user-friendly platform.",
+            "Improved maintainability and accessibility, leveraging Azure for cloud computing and deployment strategies (CI/CD).",
+            "Designed Python SaaS tools for data cleaning/engineering, spatial analysis, and database management, reducing administrative overhead.",
+            "Led the R&D team in exploring new technologies and integrating tailored ML capabilities, emphasizing user-friendliness."
+          ],
+          "tech_stack": [
+            "Python",
+            "Django",
+            "DRF",
+            "REST API",
+            "JavaScript",
+            "React",
+            "Next.js",
+            "QGIS",
+            "ArcGIS Pro",
+            "Postgres/PostGIS",
+            "Azure",
+            "Docker",
+            "Git",
+            "GitHub",
+            "Pandas/Geopandas",
+            "SQLAlchemy",
+            "NumPy",
+            "TensorFlow",
+            "Langchain"
+          ]
+        },
+        {
+          "title": "Fiber Network Designer & Automation Engineer",
+          "company": "Telecon",
+          "date": "July 2018 - June 2022",
+          "location": "City, Country",
+          "details": "Results-driven Fiber Network Designer and Python-GIS Automation Engineer.",
+          "responsibilities": [
+            "Drafting and updating deliverables such as splicing sheets and schematics.",
+            "Conducting quality control checks to maintain design accuracy and quality.",
+            "Performing load calculations for aerial structures using SimPAS software.",
+            "Collaborating with cross-functional teams to achieve project objectives.",
+            "Creating custom tools using AutoLISP for AutoCAD and AutoCAD Map 3D.",
+            "Orchestrated initiatives to implement and manage GIS systems with QGIS, and develop custom geoprocessing models.",
+            "Led the development of a suite of Python automations, enhancing efficiency, reducing manual labor, and streamlining processes."
+          ],
+          "tech_stack": [
+            "Python",
+            "AutoLISP",
+            "QGIS",
+            "AutoCAD",
+            "AutoCAD Map 3D",
+            "Postgres/PostGIS",
+            "Git",
+            "GitHub",
+            "Azure",
+            "Pandas/Geopandas",
+            "NumPy",
+            "PySide6",
+            "PyInstaller"
+          ]
+        },
+        {
+          "title": "CEO & Co-Founder",
+          "company": "NJAE Plume",
+          "date": "September 2021 - Present",
+          "location": "City, Country",
+          "details": "As the CEO and co-founder, I guide the strategic vision and technical direction of our creative venture.",
+          "responsibilities": [
+            "Define the overarching vision and strategic roadmap for NJAE Plume.",
+            "Lead the technical development and implementation of our e-commerce platform, transitioning from Wordpress to a Django-based solution.",
+            "Defined our tech stack strategy, enabling smooth integration with React for frontend development and laying the foundation for future expansion.",
+            "Manage all aspects of the business, including administrative tasks, finances, and regulatory compliance."
+          ],
+          "tech_stack": [
+            "Python",
+            "Django",
+            "DRF",
+            "JavaScript",
+            "React",
+            "Bootstrap",
+            "Tailwind",
+            "Postgres",
+            "Redis",
+            "Git",
+            "GitHub",
+            "Docker",
+            "Cloudflare",
+            "DigitalOcean",
+            "Aiven",
+            "Bunny",
+            "Stripe",
+            "Northflank",
+            "Swift",
+            "SwiftUI"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Education",
+      "items": [
+        {
+          "title": "Master's Degree (MSc) in Geography",
+          "institution": "University of Caen Normandie",
+          "date": "2014-2016",
+          "location": "Caen, France",
+          "details": "Spatial analysis, environmental studies and coastal risks management. Hydrogeomorphology and climatology. Cartography and GIS (ArcGIS, QGIS)."
+        },
+        {
+          "title": "Bachelor's Degree in Geography",
+          "institution": "University of Caen Normandie",
+          "date": "2011-2014",
+          "location": "Caen, France",
+          "details": "Fundamentals of Geography. Geomorphology, hydrology and climatology. Environmental hazards and risks management. Cartography and GIS (ArcGIS, QGIS)."
+        }
+      ]
+    },
+    {
+      "name": "Certifications",
+      "items": [
+        {
+          "title": "Machine Learning",
+          "provider": "Coursera",
+          "date": "Year",
+          "details": "Certificate in Machine Learning covering supervised learning, unsupervised learning, and best practices in machine learning."
+        },
+        {
+          "title": "Deep Learning",
+          "provider": "Coursera",
+          "date": "Year",
+          "details": "Certificate in Deep Learning focusing on neural networks, CNNs, RNNs, and advanced machine learning techniques."
+        }
+      ]
+    }
+  ]
+}
