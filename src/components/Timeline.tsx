@@ -66,7 +66,7 @@ export const Timeline = () => {
           </div>
 
           <div
-            className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:text-right" : "md:text-left"} z-30 sm:w-full sm:text-center sm:pe-0 sm:ps-0`}>
+            className={`w-full md:w-1/2 sm:hidden md:inline-block ${index % 2 === 0 ? "md:text-right" : "md:text-left"} z-30 sm:w-full sm:text-center sm:pe-0 sm:ps-0`}>
             <div className="sm:hidden md:inline-block">
               <div
                 className={`${item.timelineIcon == "work" ? "text-purple-800 dark:text-purple-300 border-purple-800 dark:border-purple-300" : item.timelineIcon == "award" ? "text-cyan-800 dark:text-cyan-300 border-cyan-800 dark:border-cyan-300" : "text-amber-800 dark:text-amber-300 border-amber-800 dark:border-amber-300"}  font-light border-2 py-1 italic ${index % 2 === 0 ? "md:pe-6 ps-3 rounded-s-3xl" : "md:ps-6 pe-3 rounded-e-3xl"}`}>

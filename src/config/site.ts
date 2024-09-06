@@ -33,32 +33,6 @@ export const siteConfig = {
       href: "/contact",
     },
   ],
-  navMenuToggleItems: [
-    {
-      label: "About",
-      href: "/about",
-    },
-    {
-      label: "Resume",
-      href: "/resume",
-    },
-    {
-      label: "Projects",
-      href: "/projects",
-    },
-    {
-      label: "Code Snippets",
-      href: "/code-snippets",
-    },
-    {
-      label: "Blog",
-      href: "/blog",
-    },
-    {
-      label: "Contact",
-      href: "/contact",
-    },
-  ],
   links: {},
   About: {
     h1_title: "About",

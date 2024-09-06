@@ -36,23 +36,28 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
       maxWidth="2xl"
       nonce={nonce}
       position="sticky"
-      onMenuOpenChange={setIsMenuOpen}
-    >
+      onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent nonce={nonce}>
-        <NavbarBrand as="li" className="gap-3 max-w-fit" nonce={nonce}>
+        <NavbarBrand
+          as="li"
+          className="gap-3 max-w-fit"
+          nonce={nonce}>
           <NextLink
             className="flex justify-start items-center gap-4"
             href="/"
-            nonce={nonce}
-          >
+            nonce={nonce}>
             <Logo nonce={nonce} />
-            <p className="font-bold text-inherit">{siteConfig.name}</p>
+            <p className="font-bold text-inherit hidden md:block">
+              {siteConfig.name}
+            </p>
           </NextLink>
         </NavbarBrand>
       </NavbarContent>
 
       {/* navbar menu  */}
-      <NavbarContent justify="center" nonce={nonce}>
+      <NavbarContent
+        justify="center"
+        nonce={nonce}>
         {/* toggle menu */}
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
@@ -63,16 +68,17 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
         {/* or list items menu */}
         <ul className="hidden md:flex items-start justify-start gap-16">
           {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href} nonce={nonce}>
+            <NavbarItem
+              key={item.href}
+              nonce={nonce}>
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  "data-[active=true]:text-primary data-[active=true]:font-medium"
                 )}
                 color="foreground"
                 href={item.href}
-                nonce={nonce}
-              >
+                nonce={nonce}>
                 {item.label}
               </NextLink>
             </NavbarItem>
@@ -81,8 +87,12 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
       </NavbarContent>
 
       {/* avatar menu with theme switch and search */}
-      <NavbarContent justify="end" nonce={nonce}>
-        <NavbarItem className="hidden md:flex" nonce={nonce}>
+      <NavbarContent
+        justify="end"
+        nonce={nonce}>
+        <NavbarItem
+          className="hidden md:flex"
+          nonce={nonce}>
           <SearchInput />
         </NavbarItem>
         <NavbarItem nonce={nonce}>
@@ -94,11 +104,15 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
       </NavbarContent>
 
       {/* menu definition when toggled */}
-      <NavbarMenu nonce={nonce} className="z-50">
+      <NavbarMenu
+        nonce={nonce}
+        className="z-50">
         <SearchInput alwaysExpanded={true} />
         <div className="mx-4 mt-2 flex flex-col gap-3">
-          {siteConfig.navMenuToggleItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`} nonce={nonce}>
+          {siteConfig.navItems.map((item, index) => (
+            <NavbarMenuItem
+              key={`${item}-${index}`}
+              nonce={nonce}>
               <Link
                 className="w-full"
                 color="foreground"
@@ -107,8 +121,7 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
                 size="lg"
                 onPress={() => {
                   setIsMenuOpen((prev) => !prev);
-                }}
-              >
+                }}>
                 {item.label}
               </Link>
             </NavbarMenuItem>
