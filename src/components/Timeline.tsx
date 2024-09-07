@@ -42,11 +42,11 @@ export const Timeline = () => {
       {timelineData.map((item, index) => (
         <div
           key={index}
-          className={`sm:mb-12 md:mb-8 flex justify-between items-center w-full ${
+          className={`mb-12 md:mb-8 flex justify-between items-center w-full ${
             index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
-          } relative sm:flex-col sm:items-center`}>
+          } relative flex-col items-center`}>
           <div
-            className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:ps-10" : "md:pe-10"} z-40 sm:w-full sm:px-0`}>
+            className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:ps-10" : "md:pe-10"} z-40`}>
             {item.timelineIcon == "work" ? (
               <WorkExperienceCardItem
                 item={item}
@@ -65,7 +65,7 @@ export const Timeline = () => {
             )}
           </div>
 
-          <div className={`w-full md:w-1/2 hidden md:inline-block ${index % 2 === 0 ? "md:text-right" : "md:text-left"} z-30 sm:w-full sm:text-center sm:pe-0 sm:ps-0`}>
+          <div className={`w-full md:w-1/2 hidden md:inline-block ${index % 2 === 0 ? "md:text-right" : "md:text-left"} z-30`}>
             <div className="hidden md:inline-block">
               <div className={`hidden md:inline-block ${item.timelineIcon == "work" ? "text-purple-800 dark:text-purple-300 border-purple-800 dark:border-purple-300" : item.timelineIcon == "award" ? "text-cyan-800 dark:text-cyan-300 border-cyan-800 dark:border-cyan-300" : "text-amber-800 dark:text-amber-300 border-amber-800 dark:border-amber-300"} font-light border-2 py-1 italic ${index % 2 === 0 ? "md:pe-6 ps-3 rounded-s-3xl" : "md:ps-6 pe-3 rounded-e-3xl"}`}>
                 {item.date}
@@ -130,7 +130,7 @@ export const WorkExperienceCardItem = ({
       </CardHeader>
 
       <CardHeader
-        className={`flex justify-between items-start w-full sm:text-left ${
+        className={`flex justify-between items-start w-full text-left ${
           index % 2 === 0 ? "md:text-left" : "md:flex-row-reverse md:text-right"
         } relative`}>
         <div>
@@ -145,7 +145,7 @@ export const WorkExperienceCardItem = ({
       </CardHeader>
 
       <CardBody
-        className={`grid grid-cols gap-2 sm:text-left ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
+        className={`grid grid-cols gap-2 text-left ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
         <p>{item.description}</p>
         <div>
           {item.keywords.map((keyword, idx) => (
@@ -165,7 +165,7 @@ export const WorkExperienceCardItem = ({
       </CardBody>
 
       <CardFooter
-        className={`flex w-full sm:justify-end ${
+        className={`flex w-full justify-end ${
           index % 2 === 0 ? "md:justify-end" : "md:justify-start"
         }`}>
         <Link
@@ -209,7 +209,7 @@ export const EducationCardItem = ({
       </CardHeader>
 
       <CardHeader
-        className={`flex justify-between items-start w-full sm:text-left ${
+        className={`flex justify-between items-start w-full text-left ${
           index % 2 === 0 ? "md:text-left" : "md:flex-row-reverse md:text-right"
         } relative`}>
         <div>
@@ -224,7 +224,7 @@ export const EducationCardItem = ({
       </CardHeader>
 
       <CardBody
-        className={`grid grid-cols gap-2 sm:text-left ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
+        className={`grid grid-cols gap-2 text-left ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
         <p>{item.description}</p>
         <div>
           {item.keywords.map((keyword, idx) => (
@@ -244,7 +244,7 @@ export const EducationCardItem = ({
       </CardBody>
 
       <CardFooter
-        className={`flex w-full sm:justify-end ${
+        className={`flex w-full justify-end ${
           index % 2 === 0 ? "md:justify-end" : "md:justify-start"
         }`}>
         <Link
@@ -288,7 +288,7 @@ export const CertificateCardItem = ({
       </CardHeader>
 
       <CardHeader
-        className={`flex justify-between items-start w-full sm:text-left ${
+        className={`flex justify-between items-start w-full text-left ${
           index % 2 === 0 ? "md:text-left" : "md:flex-row-reverse md:text-right"
         } relative`}>
         <div>
@@ -303,7 +303,7 @@ export const CertificateCardItem = ({
       </CardHeader>
 
       <CardBody
-        className={`grid grid-cols gap-2 sm:text-left ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
+        className={`grid grid-cols gap-2 text-left ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
         <p>{item.description}</p>
         <div>
           {item.keywords.map((keyword, idx) => (
@@ -323,7 +323,7 @@ export const CertificateCardItem = ({
       </CardBody>
 
       <CardFooter
-        className={`flex w-full sm:justify-end ${
+        className={`flex w-full justify-end ${
           index % 2 === 0 ? "md:justify-end" : "md:justify-start"
         }`}>
         <Link
