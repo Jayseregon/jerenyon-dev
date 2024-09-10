@@ -1,0 +1,144 @@
+{
+  "tiers": [
+    {
+      "name": "Standard",
+      "subtitle": "Ideal for small businesses and startups seeking a professional online presence.",
+      "starting_price": "3,000",
+      "sections": [
+        {
+          "name": "Base Development",
+          "optional": false,
+          "starting_price": "3,000",
+          "whats_included": [
+            "Custom design & prototype",
+            "Up to 5 pages/features with responsive design",
+            "Basic API integrations and deployment",
+            "Basic authentication (e.g. email, Facebook, Google)",
+            "Basic Legal Pages generation (e.g. Privacy Policy, Terms of Service)",
+            "1 month of maintenance support"
+          ]
+        },
+        {
+          "name": "Process Automation",
+          "optional": true,
+          "starting_price": "1,500",
+          "whats_included": [
+            "Basic automation of routine tasks",
+            "Integration with third-party services or APIs",
+            "Geospatial data handling and processing",
+            "Simple data transformation and ingestion pipelines",
+            "Basic error handling and notifications"
+          ]
+        },
+        {
+          "name": "E-commerce Development",
+          "optional": true,
+          "starting_price": "1,500",
+          "whats_included": [
+            "Basic e-commerce setup (e.g. shopping cart, checkout)",
+            "Simple order management tools",
+            "Integration with payment gateways",
+            "Basic inventory management and reporting"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Advanced",
+      "subtitle": "Best suited for growing businesses and teams needing advanced functionality and scalability.",
+      "starting_price": "5,000",
+      "sections": [
+        {
+          "name": "Base Development",
+          "optional": false,
+          "starting_price": "5,000",
+          "whats_included": [
+            "Advanced backend logic and API development",
+            "Up to 8 pages/features with advanced functionality",
+            "Full QA process and testing",
+            "Advanced authentication and role-based permissions",
+            "Advanced Legal Pages generation (e.g. GDPR, CCPR compliance)",
+            "3 months of maintenance support"
+          ]
+        },
+        {
+          "name": "Process Automation",
+          "optional": true,
+          "starting_price": "2,500",
+          "whats_included": [
+            "Complex automation workflows and custom triggers",
+            "Full integration with multiple services or APIs",
+            "Advanced geospatial data transformation, ingestion, and analysis",
+            "Custom data augmentation pipelines",
+            "Advanced error handling and automated recovery"
+          ]
+        },
+        {
+          "name": "E-commerce Development",
+          "optional": true,
+          "starting_price": "2,500",
+          "whats_included": [
+            "Advanced e-commerce features and customization",
+            "Custom order management and analytics integration",
+            "Advanced inventory management and reporting",
+            "Enhanced security and fraud prevention measures"
+          ]
+        }
+      ]
+    }
+  ],
+  "addons": [
+    {
+      "name": "SEO Optimization",
+      "starting_price": "500"
+    },
+    {
+      "name": "Multi-language Support",
+      "starting_price": "750"
+    },
+    {
+      "name": "Analytics & Reporting",
+      "starting_price": "1,000"
+    },
+    {
+      "name": "Advanced Security",
+      "starting_price": "1,200"
+    },
+    {
+      "name": "CMS Integration",
+      "starting_price": "1,500"
+    },
+    {
+      "name": "Geospatial Data Analysis Tools",
+      "starting_price": "1,500"
+    },
+    {
+      "name": "Custom Feature Development",
+      "starting_price": "2,000"
+    },
+    {
+      "name": "LLM Integration (Large Language Models)",
+      "starting_price": "2,500"
+    },
+    {
+      "name": "RAG (Retrieval-Augmented Generation) Implementation",
+      "starting_price": "2,500"
+    }
+  ],
+  "maintenance": {
+    "basic": {
+      "monthly": "100/month",
+      "yearly": "1,000/year",
+      "description": ["Regular updates", "Minor bug fixes", "Security patches"]
+    },
+    "advanced": {
+      "monthly": "200/month",
+      "yearly": "2,000/year",
+      "description": [
+        "Includes basic services",
+        "Feature enhancements",
+        "Priority support"
+      ]
+    }
+  }
+}

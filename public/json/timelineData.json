@@ -1,7 +1,7 @@
 [
   {
     "date": "June 2022 - Present",
-    "jobTitle": "Continuous Improvement Advisor",
+    "label": "Continuous Improvement Advisor",
     "company": "Telecon",
     "city": "Montréal, QC",
     "keywords": [
@@ -17,17 +17,18 @@
       "Azure",
       "GIS"
     ],
-    "description": "Driving digital transformation through Python automation, GIS technology, and modern web development, while integrating LLM for enhanced capabilities.",
-    "responsibilities": [
+    "summary": "Driving digital transformation through Python automation, GIS technology, and modern web development, while integrating LLM for enhanced capabilities.",
+    "description": [
       "Converted the Django platform into a REST API using DRF, with Next.js for the client.",
       "Led GIS adoption, enhancing team capabilities from design to civil engineering.",
       "Mentored teams in best practices, driving technical excellence."
     ],
-    "timelineIcon": "work"
+    "timelineIcon": "work",
+    "href": ""
   },
   {
     "date": "Sept 2021 - Present",
-    "jobTitle": "CEO & Co-Founder",
+    "label": "CEO & Co-Founder",
     "city": "Montréal, QC",
     "company": "NJAE Plume",
     "keywords": [
@@ -40,17 +41,18 @@
       "Resend",
       "E-commerce"
     ],
-    "description": "Overseeing all technical, engineering, and development aspects of our creative venture.",
-    "responsibilities": [
+    "summary": "Overseeing all technical, engineering, and development aspects of our creative venture.",
+    "description": [
       "Defined the strategic roadmap for product development.",
       "Led the transition from WordPress to a custom Django platform.",
       "Managed all technical operations, including full-stack development, architecture, and system integration."
     ],
-    "timelineIcon": "school"
+    "timelineIcon": "school",
+    "href": ""
   },
   {
     "date": "July 2018 - June 2022",
-    "jobTitle": "Fiber Network Designer & Automation Engineer",
+    "label": "Fiber Network Designer & Automation Engineer",
     "company": "Telecon",
     "city": "Montréal, QC",
     "keywords": [
@@ -63,13 +65,80 @@
       "PostGIS",
       "AutoCAD"
     ],
-    "description": "Started as a Fiber Network Designer, quickly transitioning into GIS technology integration and Python automation, leading the Django platform project.",
-    "responsibilities": [
+    "summary": "Started as a Fiber Network Designer, quickly transitioning into GIS technology integration and Python automation, leading the Django platform project.",
+    "description": [
       "Introduced GIS technologies and Python automations to streamline network design processes.",
       "Developed a Django platform to enhance efficiency and data management.",
       "Collaborated with cross-functional teams to ensure the successful implementation of new technologies."
     ],
 
-    "timelineIcon": "award"
+    "timelineIcon": "work",
+    "href": ""
+  },
+  {
+    "date": "Jan 2023",
+    "label": "TensorFlow Developer Specialization",
+    "company": "DeepLearning.AI, Coursera",
+    "city": "",
+    "keywords": [
+      "RNNs",
+      "Computer Vision",
+      "Convolutional Neural Network",
+      "Forecasting",
+      "Transfer Learning",
+      "Python",
+      "Tokenization",
+      "Dropouts",
+      "Natural Language Processing",
+      "TensorFlow",
+      "Augmentation"
+    ],
+    "summary": "Completed TensorFlow Developer Professional Certificate, mastering neural network training, image recognition with convolutions, and NLP. Gained practical skills in building AI solutions using TensorFlow.",
+    "description": [],
+    "timelineIcon": "award",
+    "href": "https://coursera.org/share/044bfdd0bccbc91b4c673f8feec27713"
+  },
+  {
+    "date": "Dec 2022",
+    "label": "Deep Learning Specialization",
+    "company": "DeepLearning.AI, Coursera",
+    "city": "",
+    "keywords": [
+      "Recurrent Neural Network",
+      "Tensorflow",
+      "Computer Vision",
+      "Network Architecture",
+      "Python",
+      "Convolutional Neural Network",
+      "Artificial Neural Network",
+      "Transformers"
+    ],
+    "summary": "Completed Deep Learning Specialization, mastering neural networks, including CNNs, RNNs, LSTMs, and Transformers. Gained expertise in applying these models to real-world tasks like NLP, speech recognition, and more using Python and TensorFlow.",
+    "description": [],
+    "timelineIcon": "award",
+    "href": "https://coursera.org/share/a93febee65e0ce9ede416e0706c60271"
+  },
+  {
+    "date": "Nov 2022",
+    "label": "Machine Learning Specialization",
+    "company": "Stanford University, Coursera",
+    "city": "",
+    "keywords": [
+      "Machine Learning",
+      "Machine Learning Algorithms",
+      "Applied Machine Learning",
+      "Algorithms",
+      "Deep Learning",
+      "Artificial Neural Networks",
+      "Human Learning",
+      "Python",
+      "Regression",
+      "Critical Thinking",
+      "Network Model"
+    ],
+    "summary": "Completed Machine Learning Specialization, mastering key techniques like supervised and unsupervised learning, recommender systems, and reinforcement learning. Gained practical skills to apply these methods to real-world challenges.",
+    "description": [],
+    "timelineIcon": "award",
+    "href": "https://coursera.org/share/7a613f9b7798a93c8f60fb750320fa56"
   }
 ]

@@ -32,6 +32,10 @@ export const siteConfig = {
       label: "Contact",
       href: "/contact",
     },
+    {
+      label: "Pricing",
+      href: "/pricing",
+    },
   ],
   links: {},
   About: {
@@ -57,6 +61,10 @@ export const siteConfig = {
   },
   Resume: {
     h1_title: "Resume",
+    subtitle: "This would hold my resume and professional experience.",
+  },
+  Pricing: {
+    h1_title: "Pricing",
     subtitle: "This would hold my resume and professional experience.",
   },
 };
