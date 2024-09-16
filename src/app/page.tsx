@@ -7,7 +7,6 @@ import Link from "next/link";
 import BaseButton from "@/components/buttons/BaseButton";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/typography";
-import CoverImage from "public/static/landing-page-img.png";
 
 export default function RootPage() {
   const t = useTranslations("homepage");
@@ -17,14 +16,13 @@ export default function RootPage() {
       {/* Cover Image */}
       <div
         className="relative w-screen h-screen overflow-hidden"
-        id="cover-image"
-      >
+        id="cover-image">
         <Image
           fill
           alt="Cover Image"
           className="absolute top-0 left-0 w-full h-full"
           quality={100}
-          src={CoverImage}
+          src="/coverImage.png"
           style={{ objectFit: "cover" }}
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50">
@@ -64,7 +62,10 @@ export default function RootPage() {
             </div>
           </div>
           <Link href={t("services.cta_link")}>
-            <BaseButton className="w-40" content={t("services.cta_button")} />
+            <BaseButton
+              className="w-40"
+              content={t("services.cta_button")}
+            />
           </Link>
         </div>
 
