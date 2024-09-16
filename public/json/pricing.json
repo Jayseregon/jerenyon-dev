@@ -2,13 +2,13 @@
   "tiers": [
     {
       "name": "Standard",
-      "subtitle": "Ideal for small businesses and startups seeking a professional online presence.",
-      "starting_price": "3,000",
+      "subtitle": "For small businesses & startups.",
+      "starting_price": 3000,
       "sections": [
         {
           "name": "Base Development",
           "optional": false,
-          "starting_price": "3,000",
+          "starting_price": 3000,
           "whats_included": [
             "Custom design & prototype",
             "Up to 5 pages/features with responsive design",
@@ -21,7 +21,7 @@
         {
           "name": "Process Automation",
           "optional": true,
-          "starting_price": "1,500",
+          "starting_price": 1500,
           "whats_included": [
             "Basic automation of routine tasks",
             "Integration with third-party services or APIs",
@@ -33,7 +33,7 @@
         {
           "name": "E-commerce Development",
           "optional": true,
-          "starting_price": "1,500",
+          "starting_price": 1500,
           "whats_included": [
             "Basic e-commerce setup (e.g. shopping cart, checkout)",
             "Simple order management tools",
@@ -45,13 +45,13 @@
     },
     {
       "name": "Advanced",
-      "subtitle": "Best suited for growing businesses and teams needing advanced functionality and scalability.",
-      "starting_price": "5,000",
+      "subtitle": "For growing businesses & teams.",
+      "starting_price": 5000,
       "sections": [
         {
           "name": "Base Development",
           "optional": false,
-          "starting_price": "5,000",
+          "starting_price": 5000,
           "whats_included": [
             "Advanced backend logic and API development",
             "Up to 8 pages/features with advanced functionality",
@@ -64,7 +64,7 @@
         {
           "name": "Process Automation",
           "optional": true,
-          "starting_price": "2,500",
+          "starting_price": 2500,
           "whats_included": [
             "Complex automation workflows and custom triggers",
             "Full integration with multiple services or APIs",
@@ -76,7 +76,7 @@
         {
           "name": "E-commerce Development",
           "optional": true,
-          "starting_price": "2,500",
+          "starting_price": 2500,
           "whats_included": [
             "Advanced e-commerce features and customization",
             "Custom order management and analytics integration",
@@ -85,44 +85,82 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Custom",
+      "subtitle": "Tailored with long-term goals.",
+      "starting_price": 0,
+      "sections": [
+        {
+          "name": "Phase 1: Discovery, Requirements & Prototyping",
+          "optional": false,
+          "starting_price": 0,
+          "whats_included": [
+            "Client interviews to determine goals, timelines, and features",
+            "Research feasibility, APIs, and necessary integrations",
+            "Develop basic website skeleton for feedback",
+            "Create project roadmap with milestones and deliverables"
+          ]
+        },
+        {
+          "name": "Phase 2: Core Feature Development",
+          "optional": false,
+          "starting_price": 0,
+          "whats_included": [
+            "Build main website based on feedback",
+            "Deliver core features and legal pages",
+            "Ensure website is production-ready"
+          ]
+        },
+        {
+          "name": "Phase 3: Advanced Features & Iterations",
+          "optional": false,
+          "starting_price": 0,
+          "whats_included": [
+            "Ongoing feature development and enhancements",
+            "Add new features according to the roadmap",
+            "Continuously iterate based on feedback"
+          ]
+        }
+      ]
     }
   ],
   "addons": [
     {
       "name": "SEO Optimization",
-      "starting_price": "500"
+      "starting_price": 500
     },
     {
       "name": "Multi-language Support",
-      "starting_price": "750"
+      "starting_price": 750
     },
     {
       "name": "Analytics & Reporting",
-      "starting_price": "1,000"
+      "starting_price": 1000
     },
     {
       "name": "Advanced Security",
-      "starting_price": "1,200"
+      "starting_price": 1200
     },
     {
       "name": "CMS Integration",
-      "starting_price": "1,500"
+      "starting_price": 1500
     },
     {
       "name": "Geospatial Data Analysis Tools",
-      "starting_price": "1,500"
+      "starting_price": 1500
     },
     {
       "name": "Custom Feature Development",
-      "starting_price": "2,000"
+      "starting_price": 2000
     },
     {
       "name": "LLM Integration (Large Language Models)",
-      "starting_price": "2,500"
+      "starting_price": 2500
     },
     {
       "name": "RAG (Retrieval-Augmented Generation) Implementation",
-      "starting_price": "2,500"
+      "starting_price": 2500
     }
   ],
   "maintenance": {

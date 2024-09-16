@@ -4,14 +4,15 @@ import { NextRequest, NextResponse } from "next/server";
 function cspMiddleware(req: NextRequest): NextResponse {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
   const cspHeader = `
-    default-src 'self';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
-    style-src 'self' 'nonce-${nonce}';
-    img-src 'self' blob: data:;
-    font-src 'self';
+    default-src 'self' https://www.jerenyon.dev;
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.jerenyon.dev https://www.google.com https://www.gstatic.com;
+    style-src 'self' 'nonce-${nonce}' https://www.jerenyon.dev;
+    img-src 'self' blob: data: https://www.jerenyon.dev;
+    font-src 'self' https://www.jerenyon.dev;
     object-src 'none';
-    base-uri 'self';
-    form-action 'self';
+    base-uri 'self' https://www.jerenyon.dev;
+    form-action 'self' https://www.jerenyon.dev;
+    frame-src 'self' https://www.google.com;
     frame-ancestors 'none';
     upgrade-insecure-requests;
   `

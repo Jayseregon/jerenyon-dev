@@ -1,7 +1,9 @@
+import createNextIntlPlugin from 'next-intl/plugin';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { build } from 'velite';
 
+const withNextIntl = createNextIntlPlugin();
 const isLocalDev = process.env.NODE_ENV === 'development';
 
 const permissionsPolicy = `
@@ -91,4 +93,4 @@ class VeliteWebpackPlugin {
   }
 }
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

@@ -1,33 +1,33 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Jayseregon",
-  heroTitle: "Showcasing the Digital Craftsmanship",
+  name: "Jerenyon Dev",
+  heroTitle: "Process Automation & Web Development",
   heroDescription:
     "Dive into the world of Jayseregon, where technology meets creativity. Explore projects that blend innovative coding with aesthetic design to solve real-world problems.",
   code: "Currently in development",
   icon: "/favicon.png",
   navItems: [
-    {
-      label: "About",
-      href: "/about",
-    },
+    // {
+    //   label: "About",
+    //   href: "/about",
+    // },
     {
       label: "Resume",
       href: "/resume",
     },
-    {
-      label: "Projects",
-      href: "/projects",
-    },
-    {
-      label: "Code Snippets",
-      href: "/code-snippets",
-    },
-    {
-      label: "Blog",
-      href: "/blog",
-    },
+    // {
+    //   label: "Projects",
+    //   href: "/projects",
+    // },
+    // {
+    //   label: "Code Snippets",
+    //   href: "/code-snippets",
+    // },
+    // {
+    //   label: "Blog",
+    //   href: "/blog",
+    // },
     {
       label: "Contact",
       href: "/contact",
@@ -51,20 +51,12 @@ export const siteConfig = {
     subtitle:
       "This page could contains snippets and examples of overcame challenges.",
   },
-  Contact: {
-    h1_title: "Contact",
-    subtitle: "Future contact form to get in touch with me.",
-  },
   Projects: {
     h1_title: "Projects",
     subtitle: "This page will contain relevant projects I have worked on.",
   },
   Resume: {
     h1_title: "Resume",
-    subtitle: "This would hold my resume and professional experience.",
-  },
-  Pricing: {
-    h1_title: "Pricing",
     subtitle: "This would hold my resume and professional experience.",
   },
 };

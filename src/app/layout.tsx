@@ -1,10 +1,12 @@
 import "@/styles/globals.css";
 import type { Metadata, Viewport } from "next";
 
+import { NextIntlClientProvider } from "next-intl";
 import clsx from "clsx";
 import { ReactNode } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { headers } from "next/headers";
+import { getLocale, getMessages } from "next-intl/server";
 
 import { Navbar } from "@/components/navbar";
 import { siteConfig } from "@/config/site";
@@ -45,12 +47,20 @@ export const viewport: Viewport = {
   // userScalable: false,
 };
 
-export default function RootLayout({ children }: Props) {
+const locales = ["en", "fr"];
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({ children }: Props) {
   const nonce = headers().get("x-nonce");
+  const locale = await getLocale();
+  const messages = await getMessages();
 
   return (
-    <html suppressHydrationWarning lang="en" nonce={nonce || undefined}>
-      <head nonce={nonce || undefined} />
+    <html suppressHydrationWarning lang={locale} {...(nonce ? { nonce } : {})}>
+      <head {...(nonce ? { nonce } : {})} />
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
@@ -60,28 +70,25 @@ export default function RootLayout({ children }: Props) {
           fontDisplay.variable,
           fontSansAlt.variable,
         )}
-        nonce={nonce || undefined}
+        {...(nonce ? { nonce } : {})}
       >
         <SpeedInsights />
         <Providers
           nonce={nonce || undefined}
           themeProps={{ attribute: "class", defaultTheme: "dark" }}
         >
-          <div
-            className="relative flex flex-col h-screen"
-            nonce={nonce || undefined}
-          >
-            <Navbar nonce={nonce || undefined} />
-
-            <main
-              className="container mx-auto pt-10 flex-grow"
-              nonce={nonce || undefined}
+          <NextIntlClientProvider messages={messages}>
+            <div
+              className="relative flex flex-col h-screen"
+              {...(nonce ? { nonce } : {})}
             >
-              {children}
-            </main>
+              <Navbar nonce={nonce || undefined} />
 
-            <Footer nonce={nonce || undefined} />
-          </div>
+              <main {...(nonce ? { nonce } : {})}>{children}</main>
+
+              <Footer nonce={nonce || undefined} />
+            </div>
+          </NextIntlClientProvider>
         </Providers>
       </body>
     </html>

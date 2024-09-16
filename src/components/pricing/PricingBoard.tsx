@@ -14,7 +14,7 @@ export const PricingBoard = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-20 mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-10 mx-auto">
       {pricingData.map((tier, index) => (
         <PricingTier key={index} tier={tier} />
       ))}

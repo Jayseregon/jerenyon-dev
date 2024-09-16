@@ -1,0 +1,97 @@
+{
+  "homepage": {
+    "hero": {
+      "title": "Transforming Ideas Into Intelligent Solutions",
+      "subtitle": "Web App Development, Automation & Geospatial Expertise"
+    },
+    "about": {
+      "title": "Who I Am",
+      "description": "I'm Jérémie, a full-stack developer with a focus on Python automation and geospatial solutions, offering tailored web app development, e-commerce platforms, and GIS-driven process automation."
+    },
+    "services": {
+      "title": "What I Do",
+      "service1": {
+        "title": "Custom Web App Development",
+        "description": "Building tailored web applications that serve e-commerce, automation, and geospatial needs—creating solutions that scale with your business."
+      },
+      "service2": {
+        "title": "E-commerce Solutions",
+        "description": "I develop scalable, secure e-commerce platforms integrated with payment gateways, inventory management, and performance analytics to boost your online business."
+      },
+      "service3": {
+        "title": "Automation & GIS Solutions",
+        "description": "From automating repetitive processes to geospatial data analysis, I create systems that streamline workflows and reduce manual tasks, with a focus on Python and GIS technologies."
+      },
+      "cta_button": "Get Started",
+      "cta_link": "/services"
+    },
+    "cta_section": {
+      "title": "Let's Bring Your Project to Life",
+      "description": "Whether you’re looking to automate tasks, build a new web platform, or launch an e-commerce site, I’m here to help. Let’s work together to create a solution that works for you.",
+      "cta_button": "Contact Me",
+      "cta_link": "/contact"
+    },
+    "resume_portfolio": {
+      "title": "Explore My Work",
+      "description": "Check out my resume and portfolio to learn more about the projects I've delivered, including automation systems, web applications, and geospatial tools.",
+      "resume_link": "View Resume",
+      "portfolio_link": "View Portfolio"
+    }
+  },
+  "footer": {
+    "copyright1": "Jerenyon Dev",
+    "copyright2": "All rights reserved",
+    "google1": "This site is protected by reCAPTCHA and the Google ",
+    "gpp": "Privacy Policy",
+    "gts": "Terms of Service",
+    "gtxt1": " and ",
+    "gtxt2": " apply."
+  },
+  "localeSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, fr {🇫🇷 French} en {🇬🇧 English} other {🚫 Unknown}}",
+    "localeFlag": "{locale, select, fr {🇫🇷} en {🇬🇧} other {🚫}}"
+  },
+  "resume": {
+    "title": "Resume",
+    "hero": {
+      "title": "My Professional Journey.",
+      "subtitle": "Explore the path that transformed me into a full-stack developer and automation engineer."
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "hero": {
+      "title": "Get in Touch with Me.",
+      "subtitle": {
+        "line1": "Have a question, a project in mind, or need support?",
+        "line2": "I will help you move forward."
+      }
+    },
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message",
+    "honeypot": "honeypot",
+    "btn": "Send",
+    "btn_pending": "Sending...",
+    "success": "Email sent successfully!",
+    "error1": "Oops!",
+    "error2": "There was a problem sending your email.",
+    "error3": "Please try again later."
+  },
+  "pricing": {
+    "title": "Pricing",
+    "hero": {
+      "title": "Unlock Your Online Potential.",
+      "subtitle": "From custom websites to advanced e-commerce and automation, delivering exactly what you need - today and tomorrow."
+    },
+    "addons": "Enhance your package with additional features and services.",
+    "disclaimer": {
+      "line1": "The prices listed are estimates and may vary based on the specific requirements of your project.",
+      "line2": "Final costs will be determined after a detailed discussion of your needs.",
+      "line3": "Additional features or services may incur extra charges."
+    }
+  }
+}

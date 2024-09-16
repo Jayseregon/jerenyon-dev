@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@nextui-org/react";
 import { useTheme } from "next-themes";
 
-import { SunIcon, MoonIcon } from "@/components/icons";
+import { SunThemeIcon, MoonThemeIcon } from "@/components/icons";
 
 interface ThemeSwitchProps {
   className?: string;
@@ -42,7 +42,7 @@ export const ThemeSwitch: React.FC<ThemeSwitchProps> = ({
         variant={undefined}
         onPress={toggleTheme}
       >
-        {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+        {theme === "dark" ? <SunThemeIcon /> : <MoonThemeIcon />}
       </Button>
     </div>
   );

@@ -30,7 +30,7 @@ export const Maintenance = () => {
   }, []);
 
   return (
-    <Card className="bg-background rounded-lg shadow-lg border border-purple-800 dark:border-purple-300 mb-8 mt-5 w-full">
+    <Card className="bg-background rounded-lg shadow-xl border border-purple-800 dark:border-purple-300 mb-8 mt-5 w-full">
       <CardHeader className="p-0 m-0 flex justify-center">
         <div className="grid grid-cols gap-2 text-background bg-purple-800 dark:bg-purple-300 rounded-b-2xl px-6 py-1">
           <h2 className="grid grid-cols-1 uppercase text-lg font-semibold">
@@ -49,7 +49,7 @@ export const Maintenance = () => {
               classNames={{
                 wrapper: "p-0 h-4 overflow-visible",
                 thumb: cn(
-                  "w-6 h-6 border-2 shadow-lg",
+                  "w-6 h-6 border-2 shadow-xl",
                   "group-data-[hover=true]:border-primary",
                   // selected
                   "group-data-[selected=true]:ml-6",
