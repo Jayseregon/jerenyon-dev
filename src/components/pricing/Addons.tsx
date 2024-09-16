@@ -28,13 +28,13 @@ export const Addons = () => {
       </CardHeader>
 
       <CardBody className="p-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
           {addons.map((addon, index) => (
-            <div key={index} className="mb-6">
+            <div key={index} className="mb-2">
               <h3 className="text-lg font-semibold text-purple-800 dark:text-purple-300">
                 {addon.name}
               </h3>
-              <p className="text-md italic text-purple-800/70 dark:text-purple-300/70 mt-1">
+              <p className="text-md italic text-purple-800/70 dark:text-purple-300/70">
                 <span className="text-sm pe-2">starting at</span>
                 <span className="align-text-top text-sm">$</span>
                 {addon.starting_price}

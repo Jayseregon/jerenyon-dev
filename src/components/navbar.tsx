@@ -61,7 +61,7 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo on the left */}
-          <div className="flex items-center flex-shrink-0">
+          <div className="flex items-center">
             <NextLink className="flex items-center gap-4" href="/">
               <Logo size={28} />
               <span className="font-bold text-white hidden md:block">
@@ -82,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
             ))}
           </div>
           {/* Search and switches on the right */}
-          <div className="hidden md:flex items-center space-x-4 flex-shrink-0">
+          <div className="hidden md:flex items-center space-x-4">
             <SearchInput />
             <ThemeSwitch className="text-white bg-transparent hover:bg-primary-100" />
             <LocaleSwitcher />
@@ -90,7 +90,7 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center justify-center w-full relative">
             <button
-              className="text-foreground focus:outline-none"
+              className="text-foreground focus:outline-none pr-7"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <svg
@@ -141,11 +141,6 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
                 {item.label}
               </NextLink>
             ))}
-            <div className="border-t border-gray-200 my-4 max-w-xs mx-auto" />
-            <div className="flex justify-between">
-              <ThemeSwitch className="text-foreground bg-transparent hover:bg-primary-100" />
-              <LocaleSwitcher />
-            </div>
           </div>
         </div>
       )}

@@ -27,8 +27,6 @@ export default function PricingPage() {
       <Addons />
       <Maintenance />
 
-      <div className="py-3" />
-
       <p className="text-center text-sm text-purple-800/70 dark:text-purple-300/70 mt-5">
         <span className="align-super text-sm">*</span>
         {t("disclaimer.line1")}
