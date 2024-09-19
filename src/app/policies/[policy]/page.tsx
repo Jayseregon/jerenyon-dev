@@ -24,13 +24,11 @@ export default function PolicyPage() {
 
   return (
     // <div>
-    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6 md:p-8">
-      {/* <h1 className="text-purple-800 dark:text-purple-300 mb-3"> */}
-      <h1 className="text-purple-800 dark:text-purple-300 mb-3 text-2xl sm:text-3xl md:text-4xl">
+    <div className="w-full max-w-4xl md:max-w-5xl mx-auto">
+      <h1 className="text-purple-800 dark:text-purple-300 mb-3">
         {t(`${policyData.translationId}.title`)}
       </h1>
-      {/* <h2 className="text-5xl font-bold max-w-xl mx-auto"> */}
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold max-w-xl mx-auto">
+      <h2 className="text-5xl font-bold max-w-xl mx-auto">
         {t(`${policyData.translationId}.heroTitle`)}
       </h2>
 
