@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 
 import { NextIntlClientProvider } from "next-intl";
 import clsx from "clsx";
@@ -37,17 +37,6 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
-  width: "device-width",
-  initialScale: 1,
-  // maximumScale: 1,
-  // userScalable: false,
-};
-
 const locales = ["en", "fr"];
 
 export function generateStaticParams() {
@@ -62,6 +51,9 @@ export default async function RootLayout({ children }: Props) {
   return (
     <html suppressHydrationWarning lang={locale} {...(nonce ? { nonce } : {})}>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="white" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="black" media="(prefers-color-scheme: dark)" />
         <link href="//privacy-proxy.usercentrics.eu" rel="preconnect" />
         <link
           as="script"

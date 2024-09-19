@@ -35,7 +35,7 @@ export const Policy = ({ policyKey }: Props) => {
           ? "?" + policyElement.dataset.extra
           : "";
         const response = await axios.get(
-          termageddonAPIPath + policyKey + pol_extra,
+          termageddonAPIPath + policyKey + pol_extra
         );
         const sanitizedContent = DOMPurify.sanitize(response.data);
 
@@ -150,8 +150,7 @@ export const Policy = ({ policyKey }: Props) => {
     <div
       className="text-justify w-full max-w-5xl mx-auto p-4 sm:p-6 md:p-8 overflow-x-auto"
       data-extra="no-title=true"
-      id="policy"
-    >
+      id="policy">
       {error ? (
         <p>{error}</p>
       ) : policyContent ? (
