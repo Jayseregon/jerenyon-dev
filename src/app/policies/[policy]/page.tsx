@@ -1,8 +1,9 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { Policy } from "@/src/components/legals/Policy";
 import { useTranslations } from "next-intl";
+
+import { Policy } from "@/src/components/legals/Policy";
 
 const policyKeys = {
   privacy: {

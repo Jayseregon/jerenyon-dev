@@ -12,7 +12,8 @@ export const Footer: React.FC<FooterProps> = ({ nonce }) => {
   return (
     <footer
       className="w-full py-4 bg-purple-200 dark:bg-purple-950 text-purple-950 dark:text-purple-200 text-xs text-center antialiased mt-auto"
-      nonce={nonce || undefined}>
+      nonce={nonce || undefined}
+    >
       <div className="mb-2">
         <p>
           <span>
@@ -22,14 +23,10 @@ export const Footer: React.FC<FooterProps> = ({ nonce }) => {
         </p>
       </div>
       <div className="flex justify-center space-x-2 mb-2">
-        <Link
-          className="underline"
-          href="/policies/privacy">
+        <Link className="underline" href="/policies/privacy">
           Privacy Policy
         </Link>
-        <Link
-          className="underline"
-          href="/policies/cookies">
+        <Link className="underline" href="/policies/cookies">
           Cookie Policy
         </Link>
       </div>
@@ -38,13 +35,12 @@ export const Footer: React.FC<FooterProps> = ({ nonce }) => {
           {t("google1")}
           <Link
             className="underline"
-            href="https://policies.google.com/privacy">
+            href="https://policies.google.com/privacy"
+          >
             {t("gpp")}
           </Link>
           {t("gtxt1")}
-          <Link
-            className="underline"
-            href="https://policies.google.com/terms">
+          <Link className="underline" href="https://policies.google.com/terms">
             {t("gts")}
           </Link>
           {t("gtxt2")}

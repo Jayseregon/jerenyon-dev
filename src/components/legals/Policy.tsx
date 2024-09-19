@@ -9,11 +9,13 @@ type Props = {
 export const Policy = ({ policyKey }: Props) => {
   useEffect(() => {
     const policyElement = document.getElementById("policy_embed_div");
+
     if (policyElement) {
       policyElement.setAttribute("data-policy-key", policyKey);
     }
 
     const script = document.createElement("script");
+
     script.src =
       "https://app.termageddon.com/js/termageddon-init-compatibility.js";
     script.async = true;
@@ -26,15 +28,17 @@ export const Policy = ({ policyKey }: Props) => {
 
   return (
     <div
-      id="policy_embed_div"
       className="text-justify"
-      data-extra="css-compatibility=true&no-title=true">
+      data-extra="css-compatibility=true&no-title=true"
+      id="policy_embed_div"
+    >
       Please wait while the policy is loaded. If it does not load, please
       <a
-        rel="nofollow"
+        aria-label="View Privacy Policy"
         href={`https://app.termageddon.com/api/policy/${policyKey}?css-compatibility=true&h-align=left&table-style=accordion`}
+        rel="nofollow"
         target="_blank"
-        aria-label="View Privacy Policy">
+      >
         click here to view the privacy policy
       </a>
       .

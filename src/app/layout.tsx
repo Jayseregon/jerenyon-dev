@@ -60,29 +60,26 @@ export default async function RootLayout({ children }: Props) {
   const messages = await getMessages();
 
   return (
-    <html
-      suppressHydrationWarning
-      lang={locale}
-      {...(nonce ? { nonce } : {})}>
+    <html suppressHydrationWarning lang={locale} {...(nonce ? { nonce } : {})}>
       <Head>
+        <link href="//privacy-proxy.usercentrics.eu" rel="preconnect" />
         <link
-          rel="preconnect"
-          href="//privacy-proxy.usercentrics.eu"
-        />
-        <link
-          rel="preload"
-          href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           as="script"
+          href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
+          rel="preload"
         />
         <script
+          async
+          src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           type="application/javascript"
-          src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"></script>
+        />
         <script
+          async
+          data-settings-id="4vZk6dB-s7Fi9_"
           id="usercentrics-cmp"
           src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
-          data-settings-id="4vZk6dB-s7Fi9_"
-          async></script>
-        <script>
+        />
+        <script async>
           {`uc.setCustomTranslations('https://termageddon.ams3.cdn.digitaloceanspaces.com/translations/');`}
         </script>
       </Head>
@@ -93,19 +90,24 @@ export default async function RootLayout({ children }: Props) {
           fontMono.variable,
           fontSerif.variable,
           fontDisplay.variable,
-          fontSansAlt.variable
+          fontSansAlt.variable,
         )}
-        {...(nonce ? { nonce } : {})}>
+        {...(nonce ? { nonce } : {})}
+      >
         <SpeedInsights />
         <Providers
           nonce={nonce || undefined}
-          themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+          themeProps={{ attribute: "class", defaultTheme: "dark" }}
+        >
           <NextIntlClientProvider messages={messages}>
             <div
-              className="relative flex flex-col h-screen"
-              {...(nonce ? { nonce } : {})}>
+              className="relative flex flex-col min-h-screen"
+              {...(nonce ? { nonce } : {})}
+            >
               <Navbar nonce={nonce || undefined} />
-              <main {...(nonce ? { nonce } : {})}>{children}</main>
+              <main className="flex-grow" {...(nonce ? { nonce } : {})}>
+                {children}
+              </main>
               <Footer nonce={nonce || undefined} />
             </div>
           </NextIntlClientProvider>
