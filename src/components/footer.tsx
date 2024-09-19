@@ -30,7 +30,7 @@ export const Footer: React.FC<FooterProps> = ({ nonce }) => {
           Cookie Policy
         </Link>
       </div>
-      <div className="text-xs text-purple-950/50 dark:text-purple-200/50">
+      <div className="text-xs max-w-4md md:max-w-4xl mx-auto text-purple-950/50 dark:text-purple-200/50">
         <p>
           {t("google1")}
           <Link
