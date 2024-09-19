@@ -5,9 +5,9 @@ function cspMiddleware(req: NextRequest): NextResponse {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
   const cspHeader = `
     default-src 'self' https://www.jerenyon.dev;
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.jerenyon.dev https://www.google.com https://www.gstatic.com;
-    style-src 'self' 'nonce-${nonce}' https://www.jerenyon.dev;
-    img-src 'self' blob: data: https://www.jerenyon.dev;
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com;
+    style-src 'self' 'nonce-${nonce}' https://www.jerenyon.dev https://app.termageddon.com;
+    img-src 'self' blob: data: https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net;
     font-src 'self' https://www.jerenyon.dev;
     object-src 'none';
     base-uri 'self' https://www.jerenyon.dev;

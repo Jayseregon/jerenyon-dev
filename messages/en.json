@@ -93,5 +93,15 @@
       "line2": "Final costs will be determined after a detailed discussion of your needs.",
       "line3": "Additional features or services may incur extra charges."
     }
+  },
+  "policies": {
+    "privacy_policy": {
+      "title": "Privacy Policy",
+      "heroTitle": "Your Data, Your Rights."
+    },
+    "cookies_policy": {
+      "title": "Cookie Policy",
+      "heroTitle": "Taileored Experiences, Powered by Cookies."
+    }
   }
 }

@@ -3,7 +3,7 @@ import {
   Italiana,
   Roboto,
   Lora,
-  Open_Sans,
+  Inter,
 } from "next/font/google";
 
 export const fontSans = Roboto({
@@ -32,7 +32,7 @@ export const fontDisplay = Italiana({
   weight: "400",
 });
 
-export const fontSansAlt = Open_Sans({
+export const fontSansAlt = Inter({
   subsets: ["latin"],
   variable: "--font-sans-alt",
   weight: ["300", "400", "600", "700"],

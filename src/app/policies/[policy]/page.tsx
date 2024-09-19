@@ -1,0 +1,40 @@
+"use client";
+
+import { useParams } from "next/navigation";
+import { Policy } from "@/src/components/legals/Policy";
+import { useTranslations } from "next-intl";
+
+const policyKeys = {
+  privacy: {
+    apiKey: process.env.NEXT_PUBLIC_TERMAGEDDON_PRIVACY_POLICY || "",
+    translationId: "privacy_policy",
+  },
+  cookies: {
+    apiKey: process.env.NEXT_PUBLIC_TERMAGEDDON_COOKIE_POLICY || "",
+    translationId: "cookies_policy",
+  },
+};
+
+export default function PolicyPage() {
+  const { policy } = useParams();
+  const t = useTranslations("policies");
+
+  const policyData = policyKeys[policy as keyof typeof policyKeys];
+
+  return (
+    <div>
+      <h1 className="text-purple-800 dark:text-purple-300 mb-3">
+        {t(`${policyData.translationId}.title`)}
+      </h1>
+      <h2 className="text-5xl font-bold max-w-xl mx-auto">
+        {t(`${policyData.translationId}.heroTitle`)}
+      </h2>
+
+      <div className="py-3" />
+
+      <Policy policyKey={policyData.apiKey} />
+
+      <div className="py-3" />
+    </div>
+  );
+}

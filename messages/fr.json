@@ -94,5 +94,15 @@
       "line2": "Les coûts finaux seront déterminés après une discussion détaillée de vos besoins.",
       "line3": "Des fonctionnalités ou services supplémentaires peuvent entraîner des frais supplémentaires."
     }
+  },
+  "policies": {
+    "privacy_policy": {
+      "title": "Politique de confidentialité",
+      "heroTitle": "Vos données, vos droits."
+    },
+    "cookies_policy": {
+      "title": "Politique de cookies",
+      "heroTitle": "Expériences sur mesure, optimisées par les cookies."
+    }
   }
 }

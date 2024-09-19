@@ -33,7 +33,7 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
       ([entry]) => {
         setIsVisible(!entry.isIntersecting);
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
 
     const coverImage = document.querySelector("#cover-image");
@@ -54,17 +54,18 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
       className={clsx(
         "fixed top-0 left-0 w-full transition-transform duration-300 z-50",
         isVisible ? "translate-y-0" : "-translate-y-full",
-        isVisible ? "bg-background" : "bg-transparent",
+        isVisible ? "bg-background" : "bg-transparent"
       )}
-      {...(nonce ? { nonce } : {})}
-    >
+      {...(nonce ? { nonce } : {})}>
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo on the left */}
           <div className="flex items-center">
-            <NextLink className="flex items-center gap-4" href="/">
+            <NextLink
+              className="flex items-center gap-4"
+              href="/">
               <Logo size={28} />
-              <span className="font-bold text-white hidden md:block">
+              <span className="font-bold text-foreground hidden md:block">
                 {siteConfig.name}
               </span>
             </NextLink>
@@ -74,9 +75,8 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
             {siteConfig.navItems.map((item) => (
               <NextLink
                 key={item.href}
-                className="text-white hover:text-primary transition-colors"
-                href={item.href}
-              >
+                className="text-foreground hover:text-primary transition-colors"
+                href={item.href}>
                 {item.label}
               </NextLink>
             ))}
@@ -84,22 +84,20 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
           {/* Search and switches on the right */}
           <div className="hidden md:flex items-center space-x-4">
             <SearchInput />
-            <ThemeSwitch className="text-white bg-transparent hover:bg-primary-100" />
+            <ThemeSwitch className="text-foreground bg-transparent hover:bg-primary-100" />
             <LocaleSwitcher />
           </div>
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center justify-center w-full relative">
             <button
               className="text-foreground focus:outline-none pr-7"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
+              onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <svg
                 className="h-6 w-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+                xmlns="http://www.w3.org/2000/svg">
                 {isMenuOpen ? (
                   <path
                     d="M6 18L18 6M6 6l12 12"
@@ -136,8 +134,7 @@ export const Navbar: React.FC<NavbarProps> = ({ nonce }) => {
                 key={item.href}
                 className="block text-foreground hover:text-primary transition-colors indent-6 max-w-xl mx-auto"
                 href={item.href}
-                onClick={() => setIsMenuOpen(false)}
-              >
+                onClick={() => setIsMenuOpen(false)}>
                 {item.label}
               </NextLink>
             ))}
