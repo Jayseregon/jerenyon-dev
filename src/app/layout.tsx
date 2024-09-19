@@ -51,9 +51,17 @@ export default async function RootLayout({ children }: Props) {
   return (
     <html suppressHydrationWarning lang={locale} {...(nonce ? { nonce } : {})}>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="white" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="black" media="(prefers-color-scheme: dark)" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta
+          content="white"
+          media="(prefers-color-scheme: light)"
+          name="theme-color"
+        />
+        <meta
+          content="black"
+          media="(prefers-color-scheme: dark)"
+          name="theme-color"
+        />
         <link href="//privacy-proxy.usercentrics.eu" rel="preconnect" />
         <link
           as="script"
