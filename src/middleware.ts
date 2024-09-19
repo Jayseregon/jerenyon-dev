@@ -9,6 +9,7 @@ function cspMiddleware(req: NextRequest): NextResponse {
     style-src 'self' 'nonce-${nonce}' https://www.jerenyon.dev https://app.termageddon.com;
     img-src 'self' blob: data: https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net;
     font-src 'self' https://www.jerenyon.dev;
+    connect-src 'self' https://app.termageddon.com;
     object-src 'none';
     base-uri 'self' https://www.jerenyon.dev;
     form-action 'self' https://www.jerenyon.dev;
