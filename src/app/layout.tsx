@@ -7,6 +7,7 @@ import { ReactNode } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { headers } from "next/headers";
 import { getLocale, getMessages } from "next-intl/server";
+import Head from "next/head";
 
 import { Navbar } from "@/components/navbar";
 import { siteConfig } from "@/config/site";
@@ -59,8 +60,32 @@ export default async function RootLayout({ children }: Props) {
   const messages = await getMessages();
 
   return (
-    <html suppressHydrationWarning lang={locale} {...(nonce ? { nonce } : {})}>
-      <head {...(nonce ? { nonce } : {})} />
+    <html
+      suppressHydrationWarning
+      lang={locale}
+      {...(nonce ? { nonce } : {})}>
+      <Head>
+        <link
+          rel="preconnect"
+          href="//privacy-proxy.usercentrics.eu"
+        />
+        <link
+          rel="preload"
+          href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
+          as="script"
+        />
+        <script
+          type="application/javascript"
+          src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"></script>
+        <script
+          id="usercentrics-cmp"
+          src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
+          data-settings-id="4vZk6dB-s7Fi9_"
+          async></script>
+        <script>
+          {`uc.setCustomTranslations('https://termageddon.ams3.cdn.digitaloceanspaces.com/translations/');`}
+        </script>
+      </Head>
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
@@ -68,24 +93,19 @@ export default async function RootLayout({ children }: Props) {
           fontMono.variable,
           fontSerif.variable,
           fontDisplay.variable,
-          fontSansAlt.variable,
+          fontSansAlt.variable
         )}
-        {...(nonce ? { nonce } : {})}
-      >
+        {...(nonce ? { nonce } : {})}>
         <SpeedInsights />
         <Providers
           nonce={nonce || undefined}
-          themeProps={{ attribute: "class", defaultTheme: "dark" }}
-        >
+          themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <NextIntlClientProvider messages={messages}>
             <div
               className="relative flex flex-col h-screen"
-              {...(nonce ? { nonce } : {})}
-            >
+              {...(nonce ? { nonce } : {})}>
               <Navbar nonce={nonce || undefined} />
-
               <main {...(nonce ? { nonce } : {})}>{children}</main>
-
               <Footer nonce={nonce || undefined} />
             </div>
           </NextIntlClientProvider>

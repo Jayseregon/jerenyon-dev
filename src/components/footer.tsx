@@ -11,7 +11,7 @@ export const Footer: React.FC<FooterProps> = ({ nonce }) => {
 
   return (
     <footer
-      className="w-full flex flex-col items-center justify-center py-4 bg-purple-200 dark:bg-purple-950 text-purple-950 dark:text-purple-200 text-xs text-center antialiased"
+      className="w-full py-4 bg-purple-200 dark:bg-purple-950 text-purple-950 dark:text-purple-200 text-xs text-center antialiased mt-auto"
       nonce={nonce || undefined}>
       <div className="mb-2">
         <p>
@@ -21,7 +21,7 @@ export const Footer: React.FC<FooterProps> = ({ nonce }) => {
           </span>
         </p>
       </div>
-      <div className="flex space-x-2 mb-2">
+      <div className="flex justify-center space-x-2 mb-2">
         <Link
           className="underline"
           href="/policies/privacy">
