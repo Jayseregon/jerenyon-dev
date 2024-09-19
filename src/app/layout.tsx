@@ -70,6 +70,7 @@ export default async function RootLayout({ children }: Props) {
         />
         <script
           async
+          nonce={nonce || undefined}
           src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           type="application/javascript"
         />
@@ -77,9 +78,10 @@ export default async function RootLayout({ children }: Props) {
           async
           data-settings-id="4vZk6dB-s7Fi9_"
           id="usercentrics-cmp"
+          nonce={nonce || undefined}
           src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
         />
-        <script async>
+        <script async nonce={nonce || undefined}>
           {`uc.setCustomTranslations('https://termageddon.ams3.cdn.digitaloceanspaces.com/translations/');`}
         </script>
       </Head>
