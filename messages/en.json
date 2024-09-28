@@ -2,7 +2,7 @@
   "homepage": {
     "hero": {
       "title": "Transforming Ideas Into Intelligent Solutions",
-      "subtitle": "Web App Development, Automation & Geospatial Expertise"
+      "subtitle": "Web Development, Geospatial Expertise & Automation"
     },
     "about": {
       "title": "Who I Am",
@@ -38,6 +38,19 @@
       "portfolio_link": "View Portfolio"
     }
   },
+  "collapsedMenu": {
+    "about": "About",
+    "resume": "Resume",
+    "contact": "Contact",
+    "pricing": "Pricing",
+    "privacy_policy": "Privacy Policy",
+    "cookies_policy": "Cookie Policy",
+    "searchBar": "Search...",
+    "menuSection": "Menu",
+    "darkModeSwitch": "Dark Mode",
+    "languageSwitch": "Language",
+    "settingsSection": "Settings"
+  },
   "footer": {
     "copyright1": "Jerenyon Dev",
     "copyright2": "All rights reserved",
@@ -46,11 +59,6 @@
     "gts": "Terms of Service",
     "gtxt1": " and ",
     "gtxt2": " apply."
-  },
-  "localeSwitcher": {
-    "label": "Change language",
-    "locale": "{locale, select, fr {🇫🇷 French} en {🇬🇧 English} other {🚫 Unknown}}",
-    "localeFlag": "{locale, select, fr {🇫🇷} en {🇬🇧} other {🚫}}"
   },
   "resume": {
     "title": "Resume",

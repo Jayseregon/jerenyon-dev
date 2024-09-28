@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 
-import { Timeline } from "@/src/components/Timeline";
+import { Timeline } from "@/src/components/resume/Timeline";
 
 export default function ResumePage() {
   const t = useTranslations("resume");

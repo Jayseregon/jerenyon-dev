@@ -1,9 +1,9 @@
 import * as runtime from "react/jsx-runtime";
 
-import Callout from "./callout";
-import Snippet from "./snippet";
-import { LoadDynamicImage } from "./loadImages";
-import Quote from "./quote";
+import Callout from "./Callout";
+import Snippet from "./Snippet";
+import LoadDynamicImage from "./LoadDynamicImage";
+import Quote from "./Quote";
 
 const useMDXComponent = (code: string) => {
   const fn = new Function(code);

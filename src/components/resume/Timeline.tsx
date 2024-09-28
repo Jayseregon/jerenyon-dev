@@ -10,7 +10,11 @@ import {
   Link,
 } from "@nextui-org/react";
 
-import { AwardCertificatIcon, SchoolBackpackIcon, LaptopIcon } from "./icons";
+import {
+  AwardCertificatIcon,
+  SchoolBackpackIcon,
+  LaptopIcon,
+} from "@/src/components/icons";
 
 interface TimelineItem {
   date: string;

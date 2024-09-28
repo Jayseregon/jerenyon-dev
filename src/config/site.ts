@@ -13,7 +13,7 @@ export const siteConfig = {
     //   href: "/about",
     // },
     {
-      label: "Resume",
+      label: "resume",
       href: "/resume",
     },
     // {
@@ -29,11 +29,11 @@ export const siteConfig = {
     //   href: "/blog",
     // },
     {
-      label: "Contact",
+      label: "contact",
       href: "/contact",
     },
     {
-      label: "Pricing",
+      label: "pricing",
       href: "/pricing",
     },
   ],

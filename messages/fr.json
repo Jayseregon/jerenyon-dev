@@ -3,7 +3,7 @@
     "code": "En cours de développement",
     "hero": {
       "title": "Transformer les idées en solutions intelligentes",
-      "subtitle": "Développement d'applications web, automatisation et expertise géospatiale"
+      "subtitle": "Développement web, expertise géospatiale et automatisation"
     },
     "about": {
       "title": "Qui je suis",
@@ -39,6 +39,19 @@
       "portfolio_link": "Voir le portfolio"
     }
   },
+  "collapsedMenu": {
+    "about": "À propos",
+    "resume": "Curriculum",
+    "contact": "Contact",
+    "pricing": "Tarifs",
+    "privacy_policy": "Politique de confidentialité",
+    "cookies_policy": "Politique de cookies",
+    "searchBar": "Rechercher...",
+    "menuSection": "Menu",
+    "darkModeSwitch": "Mode sombre",
+    "languageSwitch": "Langue",
+    "settingsSection": "Paramètres"
+  },
   "footer": {
     "copyright1": "Jerenyon Dev",
     "copyright2": "Tous droits réservés",
@@ -47,11 +60,6 @@
     "gts": "Conditions d'utilisation",
     "gtxt1": " et ",
     "gtxt2": " s'appliquent."
-  },
-  "localeSwitcher": {
-    "label": "Changer de langue",
-    "locale": "{locale, select, fr {🇫🇷 French} en {🇬🇧 English} other {🚫 Inconnu}}",
-    "localeFlag": "{locale, select, fr {🇫🇷} en {🇬🇧} other {🚫}}"
   },
   "resume": {
     "title": "Curriculum",

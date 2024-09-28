@@ -1,19 +1,19 @@
 import {
-  Fira_Code as FontMono,
+  Fira_Code,
   Italiana,
-  Roboto,
   Lora,
   Inter,
+  Inconsolata,
 } from "next/font/google";
 
-export const fontSans = Roboto({
+export const fontSans = Inconsolata({
   subsets: ["latin"],
   variable: "--font-sans",
-  weight: ["100", "300", "400", "500", "700", "900"],
-  style: ["normal", "italic"],
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal"],
 });
 
-export const fontMono = FontMono({
+export const fontMono = Fira_Code({
   subsets: ["latin"],
   variable: "--font-mono",
   weight: ["400", "700"],

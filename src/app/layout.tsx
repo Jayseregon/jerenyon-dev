@@ -9,8 +9,8 @@ import { headers } from "next/headers";
 import { getLocale, getMessages } from "next-intl/server";
 import Head from "next/head";
 
-import { Navbar } from "@/components/navbar";
 import { siteConfig } from "@/config/site";
+import RootLayoutStyling from "@/components/ui/RootLayoutStyling";
 import {
   fontSans,
   fontMono,
@@ -18,7 +18,6 @@ import {
   fontDisplay,
   fontSansAlt,
 } from "@/config/fonts";
-import { Footer } from "@/components/footer";
 
 import { Providers } from "./providers";
 
@@ -102,16 +101,9 @@ export default async function RootLayout({ children }: Props) {
           themeProps={{ attribute: "class", defaultTheme: "dark" }}
         >
           <NextIntlClientProvider messages={messages}>
-            <div
-              className="relative flex flex-col min-h-screen"
-              {...(nonce ? { nonce } : {})}
-            >
-              <Navbar nonce={nonce || undefined} />
-              <main className="flex-grow" {...(nonce ? { nonce } : {})}>
-                {children}
-              </main>
-              <Footer nonce={nonce || undefined} />
-            </div>
+            <RootLayoutStyling nonce={nonce || undefined}>
+              {children}
+            </RootLayoutStyling>
           </NextIntlClientProvider>
         </Providers>
       </body>

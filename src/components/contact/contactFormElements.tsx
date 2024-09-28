@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslations } from "next-intl";
 
-import { EmailErrorIcon, EmailSuccessIcon } from "./icons";
+import { EmailErrorIcon, EmailSuccessIcon } from "@/components/icons";
 
 interface FieldInputProps {
   fieldTarget: string;

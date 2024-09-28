@@ -9,11 +9,11 @@ type LoadImageProps = {
   height?: number;
 };
 
-export const LoadDynamicImage: React.FC<LoadImageProps> = ({
+export default function LoadDynamicImage({
   imageName,
   width = 200,
   height = 200,
-}) => {
+}: LoadImageProps) {
   const imgSrc = `/docs/${imageName}.jpg`;
 
   return (
@@ -27,4 +27,4 @@ export const LoadDynamicImage: React.FC<LoadImageProps> = ({
       />
     </span>
   );
-};
+}

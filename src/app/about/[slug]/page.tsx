@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { title } from "@/src/components/typography";
 import { posts } from "#site/content";
-import MDXContent from "@/src/components/MDXRenderer";
+import MDXContent from "@/src/components/mdx/MDXRenderer";
 
 interface Props {
   params: {
