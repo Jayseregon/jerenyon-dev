@@ -37,10 +37,20 @@ export default function RootPage() {
         </div> */}
 
       {/* Parallax Image */}
-      <ParallaxImage />
+      <div>
+        {/* Example for small screens */}
+        <div className="block md:hidden">
+          <ParallaxImage height="50vh" marginTopClass="mt-16" width="100%" />
+        </div>
+
+        {/* Example for medium and large screens */}
+        <div className="hidden md:block">
+          <ParallaxImage height="80vh" marginTopClass="mt-12" width="80%" />
+        </div>
+      </div>
 
       {/* Hero Title */}
-      <div className="absolute bottom-0 left-0 w-full grid grid-cols-1 gap-2 items-center justify-center bg-none z-50">
+      <div className="absolute bottom-0 left-0 w-full grid grid-cols-1 gap-2 items-center justify-center bg-none z-40">
         <div className="inline-block text-center w-full">
           <h2
             className="text-5xl font-bold text-foreground max-w-xl mx-auto"
@@ -63,25 +73,3 @@ export default function RootPage() {
     </div>
   );
 }
-
-// {/* Hero Title */}
-// <div className="absolute inset-0 pt-16 flex flex-col items-center justify-end bg-none z-30">
-//   <div className="inline-block text-center justify-center">
-//     <h2
-//       className="text-5xl font-bold text-foreground"
-//       id="hero-title">
-//       {t("hero.title")}
-//     </h2>
-//   </div>
-// </div>
-
-// {/* Hero Subtitle */}
-// <div className="absolute inset-0 pb-2 flex flex-col items-center justify-end bg-none z-30">
-//   <div className="inline-block text-center justify-center">
-//     <h3
-//       className="text-2xl font-semibold mt-2 text-foreground max-w-3xl mx-auto p-5"
-//       id="hero-subtitle">
-//       {t("hero.subtitle")}
-//     </h3>
-//   </div>
-// </div>

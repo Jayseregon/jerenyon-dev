@@ -2,7 +2,17 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
-export default function ParallaxImage() {
+interface ParallaxImageProps {
+  width?: string;
+  height?: string;
+  marginTopClass?: string;
+}
+
+export default function ParallaxImage({
+  width = "100%",
+  height = "100%",
+  marginTopClass = "mt-0",
+}: ParallaxImageProps) {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [deviceTilt, setDeviceTilt] = useState({ x: 0, y: 0 });
   const { theme } = useTheme();
@@ -51,179 +61,77 @@ export default function ParallaxImage() {
     return null; // Render nothing on the server
   }
 
-  const darkThemeStyles = {
-    backgroundImage: "url(/landingPage/shadows-neons-dark.png)",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-    backgroundSize: "contain",
-    objectFit: "contain",
-    objectPosition: "center",
-    filter: "blur(0.4px)",
-  };
+  const layers = [
+    {
+      depth: 5,
+      zIndex: 0,
+      darkImage: "shadows-neons-dark.png",
+      lightImage: "shadows-neons-light.png",
+      blur: "0.4px",
+    },
+    { depth: 5, zIndex: 0, image: "layer-neons.png", blur: "0.4px" },
+    {
+      depth: 7,
+      zIndex: 10,
+      darkImage: "shadows-base-dark.png",
+      lightImage: "shadows-base-light.png",
+      blur: "0.3px",
+    },
+    {
+      depth: 7,
+      zIndex: 10,
+      darkImage: "layer-base-dark.png",
+      lightImage: "layer-base-light.png",
+      blur: "0.2px",
+    },
+    {
+      depth: 10,
+      zIndex: 20,
+      darkImage: "shadows-texts-dark.png",
+      lightImage: "shadows-texts-light.png",
+      blur: "0.2px",
+    },
+    { depth: 10, zIndex: 30, image: "layer-texts.png", blur: "0.0px" },
+  ];
 
-  const lightThemeStyles = {
-    backgroundImage: "url(/landingPage/shadows-neons-light.png)",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-    backgroundSize: "contain",
-    objectFit: "contain",
-    objectPosition: "center",
-    filter: "blur(0.4px)",
-    opacity: 0.5,
+  const renderLayers = (theme: "dark" | "light") => {
+    return layers.map((layer, index) => {
+      const image =
+        theme === "dark"
+          ? layer.darkImage || layer.image
+          : layer.lightImage || layer.image;
+
+      return (
+        <motion.div
+          key={index}
+          animate={{
+            x: calcMovement(layer.depth, "x"),
+            y: calcMovement(layer.depth, "y"),
+          }}
+          className={`absolute inset-0 z-${layer.zIndex}`}
+          style={
+            {
+              backgroundImage: `url(/landingPage/${image})`,
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundSize: "contain",
+              objectFit: "contain",
+              objectPosition: "center",
+              filter: `blur(${layer.blur})`,
+            } as React.CSSProperties
+          }
+          transition={{ type: "spring", stiffness: 50, damping: 20 }}
+        />
+      );
+    });
   };
 
   return (
-    <div className="relative h-screen w-screen md:scale-[0.7] z-30">
-      {theme === "dark" ? (
-        <motion.div>
-          <motion.div
-            animate={{ x: calcMovement(5, "x"), y: calcMovement(6, "y") }}
-            className="absolute inset-0 z-0"
-            style={darkThemeStyles as React.CSSProperties}
-            transition={{ type: "spring", stiffness: 50, damping: 20 }}
-          />
-
-          <motion.div
-            animate={{ x: calcMovement(5, "x"), y: calcMovement(6, "y") }}
-            className="absolute inset-0 z-0"
-            style={
-              {
-                ...darkThemeStyles,
-                backgroundImage: "url(/landingPage/layer-neons.png)",
-              } as React.CSSProperties
-            }
-            transition={{ type: "spring", stiffness: 50, damping: 20 }}
-          />
-
-          <motion.div
-            animate={{ x: calcMovement(7, "x"), y: calcMovement(7, "y") }}
-            className="absolute inset-0 z-10"
-            style={
-              {
-                ...darkThemeStyles,
-                backgroundImage: "url(/landingPage/shadows-base-dark.png)",
-                filter: "blur(0.3px)",
-              } as React.CSSProperties
-            }
-            transition={{ type: "spring", stiffness: 50, damping: 20 }}
-          />
-
-          <motion.div
-            animate={{ x: calcMovement(7, "x"), y: calcMovement(7, "y") }}
-            className="absolute inset-0 z-10"
-            style={
-              {
-                ...darkThemeStyles,
-                backgroundImage: "url(/landingPage/layer-base-dark.png)",
-                filter: "blur(0.2px)",
-              } as React.CSSProperties
-            }
-            transition={{ type: "spring", stiffness: 50, damping: 20 }}
-          />
-
-          <motion.div
-            animate={{ x: calcMovement(10, "x"), y: calcMovement(9, "y") }}
-            className="absolute inset-0 z-20"
-            style={
-              {
-                ...darkThemeStyles,
-                backgroundImage: "url(/landingPage/shadows-texts-dark.png)",
-                filter: "blur(0.2px)",
-              } as React.CSSProperties
-            }
-            transition={{ type: "spring", stiffness: 50, damping: 20 }}
-          />
-
-          <motion.div
-            animate={{ x: calcMovement(10, "x"), y: calcMovement(10, "y") }}
-            className="absolute inset-0 z-30"
-            style={
-              {
-                ...darkThemeStyles,
-                backgroundImage: "url(/landingPage/layer-texts.png)",
-              } as React.CSSProperties
-            }
-            transition={{ type: "spring", stiffness: 50, damping: 20 }}
-          />
-        </motion.div>
-      ) : (
-        <>
-          <motion.div
-            animate={{ x: calcMovement(5, "x"), y: calcMovement(6, "y") }}
-            className="absolute inset-0 z-0"
-            style={lightThemeStyles as React.CSSProperties}
-            transition={{ type: "spring", stiffness: 50, damping: 20 }}
-          />
-
-          <motion.div
-            animate={{ x: calcMovement(5, "x"), y: calcMovement(6, "y") }}
-            className="absolute inset-0 z-0"
-            style={
-              {
-                ...lightThemeStyles,
-                backgroundImage: "url(/landingPage/layer-neons.png)",
-                opacity: 1,
-              } as React.CSSProperties
-            }
-            transition={{ type: "spring", stiffness: 50, damping: 20 }}
-          />
-
-          <motion.div
-            animate={{ x: calcMovement(7, "x"), y: calcMovement(7, "y") }}
-            className="absolute inset-0 z-10"
-            style={
-              {
-                ...lightThemeStyles,
-                backgroundImage: "url(/landingPage/shadows-base-light.png)",
-                filter: "blur(0.3px)",
-                opacity: 1,
-              } as React.CSSProperties
-            }
-            transition={{ type: "spring", stiffness: 50, damping: 20 }}
-          />
-
-          <motion.div
-            animate={{ x: calcMovement(7, "x"), y: calcMovement(7, "y") }}
-            className="absolute inset-0 z-10"
-            style={
-              {
-                ...lightThemeStyles,
-                backgroundImage: "url(/landingPage/layer-base-light.png)",
-                filter: "blur(0.2px)",
-                opacity: 1,
-              } as React.CSSProperties
-            }
-            transition={{ type: "spring", stiffness: 50, damping: 20 }}
-          />
-
-          <motion.div
-            animate={{ x: calcMovement(10, "x"), y: calcMovement(9, "y") }}
-            className="absolute inset-0 z-20"
-            style={
-              {
-                ...lightThemeStyles,
-                backgroundImage: "url(/landingPage/shadows-texts-light.png)",
-                filter: "blur(0.2px)",
-                opacity: 0.5,
-              } as React.CSSProperties
-            }
-            transition={{ type: "spring", stiffness: 50, damping: 20 }}
-          />
-
-          <motion.div
-            animate={{ x: calcMovement(10, "x"), y: calcMovement(10, "y") }}
-            className="absolute inset-0 z-30"
-            style={
-              {
-                ...lightThemeStyles,
-                backgroundImage: "url(/landingPage/layer-texts.png)",
-                opacity: 1,
-              } as React.CSSProperties
-            }
-            transition={{ type: "spring", stiffness: 50, damping: 20 }}
-          />
-        </>
-      )}
+    <div
+      className={`relative z-30 mx-auto ${marginTopClass} border-2 border-teal-500`}
+      style={{ width, height }}
+    >
+      {theme === "dark" ? renderLayers("dark") : renderLayers("light")}
     </div>
   );
 }

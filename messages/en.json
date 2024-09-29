@@ -58,7 +58,9 @@
     "gpp": "Privacy Policy",
     "gts": "Terms of Service",
     "gtxt1": " and ",
-    "gtxt2": " apply."
+    "gtxt2": " apply.", 
+    "privacy": "Privacy Policy",
+    "cookies": "Cookie Policy"
   },
   "resume": {
     "title": "Resume",

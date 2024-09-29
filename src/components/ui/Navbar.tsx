@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import NextLink from "next/link";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
@@ -15,7 +15,7 @@ import LocaleSwitcher from "./LocaleSwitcher";
 import SearchInput from "./SearchInput";
 
 interface HamburgerMenuButtonProps {
-  toggleMenu: () => void;
+  toggleMenu: (event: React.PointerEvent<HTMLButtonElement>) => void;
   menuButtonVariants: {
     open: { rotate: number };
     closed: { rotate: number };
@@ -47,7 +47,10 @@ export default function Navbar() {
   /**
    * Toggles the state of the mobile menu.
    */
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleMenu = (event: React.PointerEvent<HTMLButtonElement>) => {
+    event.stopPropagation(); // Prevent the click event from propagating to the document
+    setIsMenuOpen((prev) => !prev);
+  };
 
   // Variants for the hamburger menu button animation
   const menuButtonVariants = {
@@ -90,7 +93,7 @@ export default function Navbar() {
     );
   } else {
     return (
-      <nav className="absolute top-0 left-0 w-full z-50">
+      <nav className="sticky top-0 left-0 w-full z-50 bg-background">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo on the left */}
@@ -180,7 +183,8 @@ export const HamburgerMenuButton = ({
     <div className={`flex items-center justify-end w-full ${styling} relative`}>
       <button
         className={`${isMenuOpen ? "text-purple-800 dark:text-purple-300" : "text-foreground"} focus:outline-none pr-2`}
-        onClick={toggleMenu}
+        onPointerDown={toggleMenu}
+        onPointerUp={(e) => e.stopPropagation()} // Prevent the pointerup event from propagating to the document
       >
         <motion.svg
           animate={isMenuOpen ? "open" : "closed"}
@@ -218,15 +222,39 @@ export const CollapsedMenu = ({
   isMenuOpen,
   setIsMenuOpen,
 }: CollapsedMenuProps) => {
-  const t = useTranslations("collapsedMenu");
+  const t = useTranslations();
+
+  // Create a ref for the collapsed menu
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Close the menu if clicking outside the menu area
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener("pointerdown", handleClickOutside);
+    } else {
+      document.removeEventListener("pointerdown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("pointerdown", handleClickOutside);
+    };
+  }, [isMenuOpen, setIsMenuOpen]);
 
   return (
     <div className="absolute">
       <motion.div
+        ref={menuRef}
         animate={{ scale: isMenuOpen ? 1 : 0 }}
-        className={`${isMenuOpen ? "block" : "hidden"} fixed top-16 right-4 bg-background text-foreground w-[90%] h-[90%] max-w-xs max-h-[400px] rounded-2xl border border-purple-800 dark:border-purple-300 overflow-hidden shadow-2xl z-10`}
+        className={`${isMenuOpen ? "block" : "hidden"} fixed top-16 right-4 bg-background text-foreground w-[90%] h-[90%] max-w-xs max-h-[400px] rounded-2xl border border-purple-800 dark:border-purple-300 overflow-hidden shadow-2xl z-50`}
         initial={{ scale: 0 }}
         transition={{ duration: 0.2, ease: "easeInOut" }}
+        onPointerDown={(e) => e.stopPropagation()} // Prevent pointerdown event from propagating to the document
       >
         {/* Search input field */}
         <div className="p-4 max-w-full mx-auto">
@@ -234,7 +262,7 @@ export const CollapsedMenu = ({
         </div>
         {/* Menu section title */}
         <motion.p className="px-4 text-purple-800 dark:text-purple-300">
-          {t("menuSection")}
+          {t("collapsedMenu.menuSection")}
         </motion.p>
         <motion.div className="px-4">
           <motion.ul
@@ -259,7 +287,7 @@ export const CollapsedMenu = ({
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {t(item.label)}
+                  {t(`collapsedMenu.${item.label}`)}
                 </motion.div>
               </NextLink>
             ))}
@@ -280,7 +308,7 @@ export const CollapsedMenu = ({
             <motion.div className="ps-4 inline-flex items-center space-x-2">
               <ThemeSwitch />
               <motion.span className="ps-2 text-purple-800 dark:text-purple-300">
-                {t("darkModeSwitch")}
+                {t("collapsedMenu.darkModeSwitch")}
               </motion.span>
             </motion.div>
 
@@ -288,10 +316,19 @@ export const CollapsedMenu = ({
             <motion.div className="ps-4 inline-flex items-center space-x-2">
               <LocaleSwitcher />
               <motion.span className="ps-2 text-purple-800 dark:text-purple-300">
-                {t("languageSwitch")}
+                {t("collapsedMenu.languageSwitch")}
               </motion.span>
             </motion.div>
           </motion.div>
+        </motion.div>
+
+        <motion.div className="absolute bottom-0 left-0 right-0 mb-2 flex flex-col items-center justify-center space-y-2 text-purple-950 dark:text-purple-200 text-xs text-center antialiased">
+          <NextLink className="underline" href="/policies/privacy">
+            {t("footer.privacy")}
+          </NextLink>
+          <NextLink className="underline" href="/policies/cookies">
+            {t("footer.cookies")}
+          </NextLink>
         </motion.div>
       </motion.div>
     </div>

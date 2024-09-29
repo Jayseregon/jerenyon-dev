@@ -32,10 +32,10 @@ export default function Footer({ nonce }: FooterProps) {
         </div>
         <div className="flex justify-center space-x-2 mb-2">
           <Link className="underline" href="/policies/privacy">
-            Privacy Policy
+            {t("privacy")}
           </Link>
           <Link className="underline" href="/policies/cookies">
-            Cookie Policy
+            {t("cookies")}
           </Link>
         </div>
         <div className="text-xs max-w-4md md:max-w-4xl mx-auto text-purple-950/50 dark:text-purple-200/50">
