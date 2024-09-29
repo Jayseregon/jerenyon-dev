@@ -4,21 +4,46 @@ import { useTheme } from "next-themes";
 
 export default function ParallaxImage() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [deviceTilt, setDeviceTilt] = useState({ x: 0, y: 0 });
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-  }, []);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    setMousePos({ x: e.clientX, y: e.clientY });
-  };
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+
+    const handleDeviceOrientation = (e: DeviceOrientationEvent) => {
+      const tiltX = e.gamma || 0; // Left to right tilt (gamma)
+      const tiltY = e.beta || 0; // Front to back tilt (beta)
+      setDeviceTilt({ x: tiltX, y: tiltY });
+    };
+
+    // Add mouse event listener for desktops
+    window.addEventListener("mousemove", handleMouseMove);
+
+    // Add device motion event listener for mobile
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener("deviceorientation", handleDeviceOrientation);
+    }
+
+    // Clean up event listeners
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("deviceorientation", handleDeviceOrientation);
+    };
+  }, []);
 
   const calcMovement = (layerDepth: number, axis: "x" | "y") => {
     const movementFactor = axis === "x" ? mousePos.x : mousePos.y;
+    const tiltFactor = axis === "x" ? deviceTilt.x : deviceTilt.y;
 
-    return -movementFactor * (layerDepth / 200); // Inverted movement factor
+    return (
+      -movementFactor * (layerDepth / 200) + // Mouse-based movement
+      tiltFactor * (layerDepth / 5) // Device tilt-based movement
+    );
   };
 
   if (!mounted) {
@@ -47,10 +72,7 @@ export default function ParallaxImage() {
   };
 
   return (
-    <div
-      className="relative h-screen w-screen scale-90 md:scale-[0.7] z-30"
-      onMouseMove={handleMouseMove}
-    >
+    <div className="relative h-screen w-screen scale-90 md:scale-[0.7] z-30">
       {theme === "dark" ? (
         <>
           <motion.div
