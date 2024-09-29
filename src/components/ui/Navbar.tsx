@@ -251,7 +251,7 @@ export const CollapsedMenu = ({
       <motion.div
         ref={menuRef}
         animate={{ scale: isMenuOpen ? 1 : 0 }}
-        className={`${isMenuOpen ? "block" : "hidden"} fixed top-16 right-4 bg-background text-foreground w-[90%] h-[90%] max-w-xs max-h-[400px] rounded-2xl border border-purple-800 dark:border-purple-300 overflow-hidden shadow-2xl z-50`}
+        className={`${isMenuOpen ? "block" : "hidden"} fixed top-16 right-4 bg-background text-foreground xs: w-full w-[90%] h-[90%] max-w-xs xs:max-w-full max-h-[400px] rounded-2xl border border-purple-800 dark:border-purple-300 overflow-hidden shadow-2xl z-50`}
         initial={{ scale: 0 }}
         transition={{ duration: 0.2, ease: "easeInOut" }}
         onPointerDown={(e) => e.stopPropagation()} // Prevent pointerdown event from propagating to the document
