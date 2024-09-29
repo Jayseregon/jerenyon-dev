@@ -9,7 +9,7 @@ import Footer from "./Footer";
 
 type Props = {
   children: ReactNode;
-  nonce?: string;
+  nonce: string;
 };
 
 export default function RootLayoutStyling({ children, nonce }: Props) {
@@ -18,17 +18,18 @@ export default function RootLayoutStyling({ children, nonce }: Props) {
 
   return (
     <div
+      nonce={nonce}
       className={clsx("relative flex flex-col", {
         "h-screen": isMainPage,
         "min-h-screen": !isMainPage,
-      })}
-      {...(nonce ? { nonce } : {})}
-    >
-      <Navbar />
-      <main className="flex-grow" {...(nonce ? { nonce } : {})}>
+      })}>
+      <Navbar nonce={nonce}/>
+      <main
+        nonce={nonce}
+        className="flex-grow">
         {children}
       </main>
-      <Footer nonce={nonce || undefined} />
+      <Footer nonce={nonce} />
     </div>
   );
 }

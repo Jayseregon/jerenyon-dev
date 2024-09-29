@@ -48,9 +48,15 @@ export default async function RootLayout({ children }: Props) {
   const messages = await getMessages();
 
   return (
-    <html suppressHydrationWarning lang={locale} {...(nonce ? { nonce } : {})}>
+    <html
+      suppressHydrationWarning
+      lang={locale}
+      {...(nonce ? { nonce } : {})}>
       <Head>
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta
+          content="width=device-width, initial-scale=1"
+          name="viewport"
+        />
         <meta
           content="white"
           media="(prefers-color-scheme: light)"
@@ -96,17 +102,15 @@ export default async function RootLayout({ children }: Props) {
           fontMono.variable,
           fontSerif.variable,
           fontDisplay.variable,
-          fontSansAlt.variable,
+          fontSansAlt.variable
         )}
-        {...(nonce ? { nonce } : {})}
-      >
+        {...(nonce ? { nonce } : {})}>
         <SpeedInsights />
         <Providers
           nonce={nonce || undefined}
-          themeProps={{ attribute: "class", defaultTheme: "dark" }}
-        >
+          themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <NextIntlClientProvider messages={messages}>
-            <RootLayoutStyling nonce={nonce || undefined}>
+            <RootLayoutStyling nonce={nonce || ""}>
               {children}
             </RootLayoutStyling>
           </NextIntlClientProvider>
