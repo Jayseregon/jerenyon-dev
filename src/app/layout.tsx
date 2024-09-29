@@ -82,6 +82,7 @@ export const metadata: Metadata = {
       "fr-CA": undefined,
     },
   },
+  metadataBase: new URL(siteConfig.siteUrl),
 };
 
 const locales = ["en", "fr"];
