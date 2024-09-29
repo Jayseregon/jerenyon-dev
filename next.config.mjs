@@ -7,7 +7,7 @@ const withNextIntl = createNextIntlPlugin();
 const isLocalDev = process.env.NODE_ENV === 'development';
 
 const permissionsPolicy = `
-  accelerometer=(), 
+  accelerometer=(self), 
   ambient-light-sensor=(), 
   autoplay=(), 
   battery=(), 
@@ -17,7 +17,7 @@ const permissionsPolicy = `
   encrypted-media=(), 
   fullscreen=(), 
   geolocation=(), 
-  gyroscope=(), 
+  gyroscope=(self), 
   layout-animations=(), 
   legacy-image-formats=(), 
   magnetometer=(), 

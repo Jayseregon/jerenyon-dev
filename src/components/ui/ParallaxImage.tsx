@@ -18,6 +18,7 @@ export default function ParallaxImage() {
     const handleDeviceOrientation = (e: DeviceOrientationEvent) => {
       const tiltX = e.gamma || 0; // Left to right tilt (gamma)
       const tiltY = e.beta || 0; // Front to back tilt (beta)
+
       setDeviceTilt({ x: tiltX, y: tiltY });
     };
 
@@ -51,7 +52,7 @@ export default function ParallaxImage() {
   }
 
   const darkThemeStyles = {
-    backgroundImage: "url(/layers/imageShadowsDark.png)",
+    backgroundImage: "url(/landingPage/shadows-neons-dark.png)",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "contain",
@@ -61,7 +62,7 @@ export default function ParallaxImage() {
   };
 
   const lightThemeStyles = {
-    backgroundImage: "url(/layers/imageShadowsLight.png)",
+    backgroundImage: "url(/landingPage/shadows-neons-light.png)",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "contain",
@@ -72,23 +73,23 @@ export default function ParallaxImage() {
   };
 
   return (
-    <div className="relative h-screen w-screen scale-90 md:scale-[0.7] z-30">
+    <div className="relative h-screen w-screen md:scale-[0.7] z-30">
       {theme === "dark" ? (
-        <>
+        <motion.div>
           <motion.div
-            animate={{ x: calcMovement(6, "x"), y: calcMovement(6, "y") }}
-            className="absolute inset-0 z-10"
+            animate={{ x: calcMovement(5, "x"), y: calcMovement(6, "y") }}
+            className="absolute inset-0 z-0"
             style={darkThemeStyles as React.CSSProperties}
             transition={{ type: "spring", stiffness: 50, damping: 20 }}
           />
 
           <motion.div
-            animate={{ x: calcMovement(6, "x"), y: calcMovement(6, "y") }}
-            className="absolute inset-0 z-20"
+            animate={{ x: calcMovement(5, "x"), y: calcMovement(6, "y") }}
+            className="absolute inset-0 z-0"
             style={
               {
                 ...darkThemeStyles,
-                backgroundImage: "url(/layers/layer5.png)",
+                backgroundImage: "url(/landingPage/layer-neons.png)",
               } as React.CSSProperties
             }
             transition={{ type: "spring", stiffness: 50, damping: 20 }}
@@ -96,11 +97,11 @@ export default function ParallaxImage() {
 
           <motion.div
             animate={{ x: calcMovement(7, "x"), y: calcMovement(7, "y") }}
-            className="absolute inset-0 z-30"
+            className="absolute inset-0 z-10"
             style={
               {
                 ...darkThemeStyles,
-                backgroundImage: "url(/layers/layer3.png)",
+                backgroundImage: "url(/landingPage/shadows-base-dark.png)",
                 filter: "blur(0.3px)",
               } as React.CSSProperties
             }
@@ -109,11 +110,11 @@ export default function ParallaxImage() {
 
           <motion.div
             animate={{ x: calcMovement(7, "x"), y: calcMovement(7, "y") }}
-            className="absolute inset-0 z-30"
+            className="absolute inset-0 z-10"
             style={
               {
                 ...darkThemeStyles,
-                backgroundImage: "url(/layers/layer2.png)",
+                backgroundImage: "url(/landingPage/layer-base-dark.png)",
                 filter: "blur(0.2px)",
               } as React.CSSProperties
             }
@@ -121,12 +122,12 @@ export default function ParallaxImage() {
           />
 
           <motion.div
-            animate={{ x: calcMovement(9, "x"), y: calcMovement(9, "y") }}
-            className="absolute inset-0 z-40"
+            animate={{ x: calcMovement(10, "x"), y: calcMovement(9, "y") }}
+            className="absolute inset-0 z-20"
             style={
               {
                 ...darkThemeStyles,
-                backgroundImage: "url(/layers/textShadowsDark.png)",
+                backgroundImage: "url(/landingPage/shadows-texts-dark.png)",
                 filter: "blur(0.2px)",
               } as React.CSSProperties
             }
@@ -135,32 +136,32 @@ export default function ParallaxImage() {
 
           <motion.div
             animate={{ x: calcMovement(10, "x"), y: calcMovement(10, "y") }}
-            className="absolute inset-0 z-50"
+            className="absolute inset-0 z-30"
             style={
               {
                 ...darkThemeStyles,
-                backgroundImage: "url(/layers/layer1.png)",
+                backgroundImage: "url(/landingPage/layer-texts.png)",
               } as React.CSSProperties
             }
             transition={{ type: "spring", stiffness: 50, damping: 20 }}
           />
-        </>
+        </motion.div>
       ) : (
         <>
           <motion.div
-            animate={{ x: calcMovement(6, "x"), y: calcMovement(6, "y") }}
-            className="absolute inset-0 z-10"
+            animate={{ x: calcMovement(5, "x"), y: calcMovement(6, "y") }}
+            className="absolute inset-0 z-0"
             style={lightThemeStyles as React.CSSProperties}
             transition={{ type: "spring", stiffness: 50, damping: 20 }}
           />
 
           <motion.div
-            animate={{ x: calcMovement(6, "x"), y: calcMovement(6, "y") }}
-            className="absolute inset-0 z-20"
+            animate={{ x: calcMovement(5, "x"), y: calcMovement(6, "y") }}
+            className="absolute inset-0 z-0"
             style={
               {
                 ...lightThemeStyles,
-                backgroundImage: "url(/layers/layer5.png)",
+                backgroundImage: "url(/landingPage/layer-neons.png)",
                 opacity: 1,
               } as React.CSSProperties
             }
@@ -169,11 +170,11 @@ export default function ParallaxImage() {
 
           <motion.div
             animate={{ x: calcMovement(7, "x"), y: calcMovement(7, "y") }}
-            className="absolute inset-0 z-30"
+            className="absolute inset-0 z-10"
             style={
               {
                 ...lightThemeStyles,
-                backgroundImage: "url(/layers/layer3.png)",
+                backgroundImage: "url(/landingPage/shadows-base-light.png)",
                 filter: "blur(0.3px)",
                 opacity: 1,
               } as React.CSSProperties
@@ -183,11 +184,11 @@ export default function ParallaxImage() {
 
           <motion.div
             animate={{ x: calcMovement(7, "x"), y: calcMovement(7, "y") }}
-            className="absolute inset-0 z-30"
+            className="absolute inset-0 z-10"
             style={
               {
                 ...lightThemeStyles,
-                backgroundImage: "url(/layers/layer2.png)",
+                backgroundImage: "url(/landingPage/layer-base-light.png)",
                 filter: "blur(0.2px)",
                 opacity: 1,
               } as React.CSSProperties
@@ -196,12 +197,12 @@ export default function ParallaxImage() {
           />
 
           <motion.div
-            animate={{ x: calcMovement(9, "x"), y: calcMovement(9, "y") }}
-            className="absolute inset-0 z-40"
+            animate={{ x: calcMovement(10, "x"), y: calcMovement(9, "y") }}
+            className="absolute inset-0 z-20"
             style={
               {
                 ...lightThemeStyles,
-                backgroundImage: "url(/layers/textShadowsLight.png)",
+                backgroundImage: "url(/landingPage/shadows-texts-light.png)",
                 filter: "blur(0.2px)",
                 opacity: 0.5,
               } as React.CSSProperties
@@ -211,11 +212,11 @@ export default function ParallaxImage() {
 
           <motion.div
             animate={{ x: calcMovement(10, "x"), y: calcMovement(10, "y") }}
-            className="absolute inset-0 z-50"
+            className="absolute inset-0 z-30"
             style={
               {
                 ...lightThemeStyles,
-                backgroundImage: "url(/layers/layer1.png)",
+                backgroundImage: "url(/landingPage/layer-texts.png)",
                 opacity: 1,
               } as React.CSSProperties
             }
