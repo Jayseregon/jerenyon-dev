@@ -31,8 +31,56 @@ export const metadata: Metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.heroDescription,
+  keywords: siteConfig.keywords,
+  authors: [{ name: "Jeremie Bitsch", url: siteConfig.siteUrl }],
+  openGraph: {
+    title: siteConfig.heroTitle,
+    description:
+      "Web Development, Geospatial Expertise & Automation. Providing Python automation and cloud-based geospatial solutions.",
+    url: siteConfig.siteUrl,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.icon.dark,
+        width: 1200,
+        height: 630,
+        alt: "Web development and geospatial expertise",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.heroTitle,
+    description: siteConfig.heroSubtitle,
+    images: [
+      {
+        url: siteConfig.icon.dark,
+        width: 1200,
+        height: 630,
+        alt: "Web development and geospatial expertise",
+      },
+    ],
+  },
   icons: {
-    icon: siteConfig.icon,
+    icon: siteConfig.icon.dark,
+    shortcut: siteConfig.icon.dark,
+    apple: siteConfig.icon.dark,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    "max-snippet": -1,
+    "max-image-preview": "large",
+    "max-video-preview": -1,
+  },
+  alternates: {
+    canonical: siteConfig.siteUrl,
+    languages: {
+      "en-US": undefined,
+      "fr-CA": undefined,
+    },
   },
 };
 
@@ -61,33 +109,6 @@ export default async function RootLayout({ children }: Props) {
           media="(prefers-color-scheme: dark)"
           name="theme-color"
         />
-        {/* <link
-          href="//privacy-proxy.usercentrics.eu"
-          rel="preconnect"
-        />
-        <link
-          as="script"
-          href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
-          rel="preload"
-        />
-        <script
-          async
-          nonce={nonce || undefined}
-          src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
-          type="application/javascript"
-        />
-        <script
-          async
-          data-settings-id="4vZk6dB-s7Fi9_"
-          id="usercentrics-cmp"
-          nonce={nonce || undefined}
-          src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
-        />
-        <script
-          async
-          nonce={nonce || undefined}>
-          {`uc.setCustomTranslations('https://termageddon.ams3.cdn.digitaloceanspaces.com/translations/');`}
-        </script> */}
       </Head>
       <body
         className={clsx(

@@ -54,6 +54,6 @@ export const config = {
   matcher: [
     "/", // Redirect to a matching locale at the root
     "/((?!_next|_vercel|.*\\..*).*)", // Exclude image paths and /docs/auto-loops from locale prefixing
-    "/((?!api|_next/static|_next/image|static|favicon.ico|favicon.png).*)", // Match all paths except API, static files, and favicon
+    "/((?!api|_next/static|_next/image|static|favicon.ico|favicon.png|favicon-light.png|favicon-dark.png).*)", // Match all paths except API, static files, and favicon
   ],
 };

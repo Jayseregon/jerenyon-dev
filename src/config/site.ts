@@ -2,11 +2,34 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: "Jerenyon Dev",
-  heroTitle: "Process Automation & Web Development",
+  siteUrl: "https://www.jerenyon.dev",
+  heroTitle: "Transforming Ideas Into Intelligent Solutions",
+  heroSubtitle: "Web Development, Geospatial Expertise & Automation.",
   heroDescription:
-    "Dive into the world of Jayseregon, where technology meets creativity. Explore projects that blend innovative coding with aesthetic design to solve real-world problems.",
-  code: "Currently in development",
-  icon: "/favicon.png",
+    "Web Development, Geospatial Expertise & Automation. Providing Python automation and cloud-based geospatial solutions.",
+  keywords: [
+    "Web Development",
+    "Geospatial Solutions",
+    "GIS",
+    "Python",
+    "Python Automation",
+    "Cloud Applications",
+    "Next.js",
+    "Data Processing",
+    "Full Stack Development",
+    "Geospatial Expertise",
+    "Automation",
+    "Backend Development",
+    "Frontend Development",
+    "Machine Learning",
+    "Artificial Intelligence",
+    "Retrieval-Augmented Generation",
+    "RAG",
+  ],
+  icon: {
+    dark: "/favicon-dark.png",
+    light: "/favicon-light.png",
+  },
   navItems: [
     // {
     //   label: "About",

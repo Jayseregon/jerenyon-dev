@@ -1,6 +1,7 @@
 import * as React from "react";
 import Image from "next/image";
 import { SVGProps, ImgHTMLAttributes } from "react";
+import { useTheme } from "next-themes";
 
 import { siteConfig } from "@/config/site";
 
@@ -15,16 +16,30 @@ export type IconIcoProps = ImgHTMLAttributes<HTMLImageElement> & {
   nonce?: string;
 };
 
-export const Logo = ({ size = 36, nonce }: IconIcoProps) => (
-  <Image
-    alt="{siteConfig.name} Logo"
-    height={size}
-    nonce={nonce}
-    src={siteConfig.icon}
-    style={{ width: "auto", height: "auto" }}
-    width={size}
-  />
-);
+export const Logo = ({ size = 36, nonce }: IconIcoProps) => {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    // Render a placeholder or nothing on the server
+    return null;
+  }
+
+  return (
+    <Image
+      alt={`${siteConfig.name} Logo`}
+      height={size}
+      nonce={nonce}
+      src={theme === "dark" ? siteConfig.icon.dark : siteConfig.icon.light}
+      style={{ width: "auto", height: "auto" }}
+      width={size}
+    />
+  );
+};
 
 export const HeartFooterIcon = ({ size = 10, ...props }: IconSvgProps) => (
   <svg
