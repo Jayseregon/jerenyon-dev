@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
+import { headers } from "next/headers";
 
 import ParallaxImage from "@/components/ui/ParallaxImage";
-import { headers } from "next/headers";
 
 export default function RootPage() {
   const t = useTranslations("homepage");
@@ -16,8 +16,8 @@ export default function RootPage() {
           <ParallaxImage
             height="50vh"
             marginTopClass="mt-16"
-            width="100%"
             nonce={nonce ?? undefined}
+            width="100%"
           />
         </div>
 
@@ -26,8 +26,8 @@ export default function RootPage() {
           <ParallaxImage
             height="80vh"
             marginTopClass="mt-12"
-            width="80%"
             nonce={nonce ?? undefined}
+            width="80%"
           />
         </div>
       </div>
@@ -37,7 +37,8 @@ export default function RootPage() {
         <div className="inline-block text-center w-full">
           <h2
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mx-auto border-2"
-            id="hero-title">
+            id="hero-title"
+          >
             {t("hero.title")}
           </h2>
         </div>
@@ -46,7 +47,8 @@ export default function RootPage() {
         <div className="inline-block text-center w-full">
           <h3
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mt-2 text-foreground mx-auto py-3 border-2"
-            id="hero-subtitle">
+            id="hero-subtitle"
+          >
             {t("hero.subtitle")}
           </h3>
         </div>

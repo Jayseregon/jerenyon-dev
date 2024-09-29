@@ -18,15 +18,14 @@ export default function RootLayoutStyling({ children, nonce }: Props) {
 
   return (
     <div
-      nonce={nonce}
       className={clsx("relative flex flex-col", {
         "h-screen": isMainPage,
         "min-h-screen": !isMainPage,
-      })}>
-      <Navbar nonce={nonce}/>
-      <main
-        nonce={nonce}
-        className="flex-grow">
+      })}
+      nonce={nonce}
+    >
+      <Navbar nonce={nonce} />
+      <main className="flex-grow" nonce={nonce}>
         {children}
       </main>
       <Footer nonce={nonce} />

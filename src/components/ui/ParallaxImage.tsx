@@ -104,6 +104,7 @@ export default function ParallaxImage({
         theme === "dark"
           ? layer.darkImage || layer.image
           : layer.lightImage || layer.image;
+
       return (
         <motion.div
           key={index}
@@ -112,17 +113,19 @@ export default function ParallaxImage({
             y: calcMovement(layer.depth, "y"),
           }}
           className={`absolute inset-0 z-${layer.zIndex}`}
-          style={{
-            backgroundImage: `url(/landingPage/${image})`,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            backgroundSize: "contain",
-            objectFit: "contain",
-            objectPosition: "center",
-            filter: `blur(${layer.blur})`,
-          } as React.CSSProperties}
-          transition={{ type: "spring", stiffness: 50, damping: 20 }}
           nonce={nonce}
+          style={
+            {
+              backgroundImage: `url(/landingPage/${image})`,
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundSize: "contain",
+              objectFit: "contain",
+              objectPosition: "center",
+              filter: `blur(${layer.blur})`,
+            } as React.CSSProperties
+          }
+          transition={{ type: "spring", stiffness: 50, damping: 20 }}
         />
       );
     });

@@ -41,47 +41,50 @@ export default function ThemeSwitch({ className, nonce }: ThemeSwitchProps) {
 
   return (
     <motion.div
-      nonce={nonce}
       className={cn(
         "relative flex items-center p-1 rounded-full w-16 h-8 border border-purple-800 dark:border-purple-300 cursor-pointer",
-        className
+        className,
       )}
+      nonce={nonce}
       whileTap={{ scale: 0.95 }}
-      onClick={toggleTheme}>
+      onClick={toggleTheme}
+    >
       <motion.div
-        nonce={nonce}
         className={cn(
           "absolute right-1 w-6 h-6 flex items-center justify-center",
           {
             "text-amber-600": theme === "light",
             hidden: theme === "dark",
-          }
-        )}>
+          },
+        )}
+        nonce={nonce}
+      >
         <SunThemeIcon nonce={nonce} />
       </motion.div>
       <motion.div
-        nonce={nonce}
         className={cn(
           "absolute left-1 w-6 h-6 flex items-center justify-center",
           {
             hidden: theme === "light",
             "text-purple-600": theme === "dark",
-          }
-        )}>
+          },
+        )}
+        nonce={nonce}
+      >
         <MoonThemeIcon nonce={nonce} />
       </motion.div>
       <motion.div
         layout
-        nonce={nonce}
         animate={{ x: theme === "dark" ? 30 : 0 }}
         className={cn(
           "w-6 h-6 border-2 shadow-xl rounded-full flex items-center justify-center",
           {
             "bg-amber-300 border-amber-400": theme === "light",
             "bg-purple-600 border-purple-700": theme === "dark",
-          }
+          },
         )}
         initial={{ x: theme === "dark" ? 30 : 0 }}
+        nonce={nonce}
         transition={{ type: "spring", stiffness: 300 }}
       />
     </motion.div>
