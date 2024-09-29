@@ -61,7 +61,10 @@ export default async function RootLayout({ children }: Props) {
           media="(prefers-color-scheme: dark)"
           name="theme-color"
         />
-        <link href="//privacy-proxy.usercentrics.eu" rel="preconnect" />
+        {/* <link
+          href="//privacy-proxy.usercentrics.eu"
+          rel="preconnect"
+        />
         <link
           as="script"
           href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
@@ -80,9 +83,11 @@ export default async function RootLayout({ children }: Props) {
           nonce={nonce || undefined}
           src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
         />
-        <script async nonce={nonce || undefined}>
+        <script
+          async
+          nonce={nonce || undefined}>
           {`uc.setCustomTranslations('https://termageddon.ams3.cdn.digitaloceanspaces.com/translations/');`}
-        </script>
+        </script> */}
       </Head>
       <body
         className={clsx(
