@@ -113,7 +113,7 @@ export default async function RootLayout({ children }: Props) {
       </Head>
       <body
         className={clsx(
-          "min-h-screen bg-background font-sans antialiased",
+          "bg-background font-sans antialiased",
           fontSans.variable,
           fontMono.variable,
           fontSerif.variable,
