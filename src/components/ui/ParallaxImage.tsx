@@ -95,7 +95,13 @@ export default function ParallaxImage({
       lightImage: "shadows-texts-light.png",
       blur: "0.2px",
     },
-    { depth: 10, zIndex: 30, image: "layer-texts.png", blur: "0.0px" },
+    {
+      depth: 10,
+      zIndex: 30,
+      darkImage: "layer-texts-dark.png",
+      lightImage: "layer-texts-light.png",
+      blur: "0.0px",
+    },
   ];
 
   const renderLayers = (theme: "dark" | "light") => {
@@ -134,8 +140,7 @@ export default function ParallaxImage({
   return (
     <div
       className={`relative z-30 mx-auto ${marginTopClass} border-2 border-teal-500`}
-      style={{ width, height }}
-    >
+      style={{ width, height }}>
       {theme === "dark" ? renderLayers("dark") : renderLayers("light")}
     </div>
   );
