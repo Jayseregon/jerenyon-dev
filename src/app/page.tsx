@@ -14,7 +14,7 @@ export default function RootPage() {
   const nonce = headers().get("x-nonce");
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden grid grid-rows-[minmax(0,1fr)_minmax(0,auto)]">
+    <div className="relative h-screen w-screen overflow-hidden grid grid-rows-[minmax(0,2fr)_minmax(0,1fr)] sm:grid-rows-[minmax(0,1fr)_minmax(0,auto)]">
       {/* Parallax Image */}
       <div className="row-span-1">
         <ParallaxImage
@@ -35,11 +35,6 @@ export default function RootPage() {
         </div>
 
         <div className="text-center w-full mt-2 max-w-full overflow-hidden">
-          {/* <h3
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground mx-auto py-3 border-2"
-            id="hero-subtitle">
-            {t("hero.subtitle")}
-          </h3> */}
           <h3 className="text-purple-800 dark:text-purple-300">
             {t("hero.subtitle")}
           </h3>
