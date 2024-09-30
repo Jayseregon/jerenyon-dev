@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Fix for Safari overflow issue */
+html,
+body {
+  overflow-x: hidden;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .grid {
+    height: -webkit-fill-available;
+  }
+}
