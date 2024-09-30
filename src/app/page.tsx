@@ -25,19 +25,22 @@ export default function RootPage() {
       </div>
 
       {/* Hero Title and Subtitle */}
-      <div className="flex flex-col items-center justify-center p-2 border-2 border-lime-500">
+      <div className="flex flex-col-reverse items-center justify-center p-2 border-2 border-lime-500">
         <div className="text-center w-full max-w-full overflow-hidden">
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mx-auto border-2"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mx-auto"
             id="hero-title">
             {t("hero.title")}
           </h2>
         </div>
 
         <div className="text-center w-full mt-2 max-w-full overflow-hidden">
-          <h3
+          {/* <h3
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground mx-auto py-3 border-2"
             id="hero-subtitle">
+            {t("hero.subtitle")}
+          </h3> */}
+          <h3 className="text-purple-800 dark:text-purple-300">
             {t("hero.subtitle")}
           </h3>
         </div>
