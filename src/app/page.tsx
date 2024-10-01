@@ -14,7 +14,7 @@ export default function RootPage() {
   const nonce = headers().get("x-nonce");
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden grid grid-rows-[minmax(0,80%)_minmax(0,25%)]">
+    <div className="relative h-screen w-screen overflow-hidden grid grid-rows-[minmax(0,70%)_minmax(0,30%)] sm:grid-rows-[minmax(0,80%)_minmax(0,25%)]">
       {/* <div className="relative h-screen w-screen overflow-hidden grid grid-rows-[minmax(0,2fr)_minmax(0,1fr)] sm:grid-rows-[minmax(0,1fr)_minmax(0,auto)]"> */}
       {/* Parallax Image */}
       <div className="row-span-1 max-h-[70vh] mt-16">
