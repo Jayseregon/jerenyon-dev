@@ -138,9 +138,8 @@ export default function ParallaxImage({
 
   return (
     <div
-      className={`relative z-30 mx-auto ${marginTopClass} border-2 border-teal-500`}
-      style={{ width, height }}
-    >
+      className={`relative z-30 mx-auto ${marginTopClass}`}
+      style={{ width, height }}>
       {theme === "dark" ? renderLayers("dark") : renderLayers("light")}
     </div>
   );
