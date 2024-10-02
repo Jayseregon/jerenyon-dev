@@ -1,4 +1,5 @@
 import { Card, CardHeader, CardBody } from "@nextui-org/react";
+
 import { CheckIcon } from "../icons";
 
 export interface Section {
