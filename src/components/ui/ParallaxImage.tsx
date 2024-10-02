@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { Link, Button } from "@nextui-org/react";
 
 interface ParallaxImageProps {
   width?: string;
@@ -71,36 +72,31 @@ export default function ParallaxImage({
       zIndex: 0,
       darkImage: "shadows-neons-dark.png",
       lightImage: "shadows-neons-light.png",
-      // blur: "0.4px",
     },
-    { depth: 5, zIndex: 0, image: "layer-neons.png" /* blur: "0.4px" */ },
+    { depth: 5, zIndex: 0, image: "layer-neons.png" },
     {
       depth: 7,
       zIndex: 10,
       darkImage: "shadows-base-dark.png",
       lightImage: "shadows-base-light.png",
-      // blur: "0.3px",
     },
     {
       depth: 7,
       zIndex: 10,
       darkImage: "layer-base-dark.png",
       lightImage: "layer-base-light.png",
-      // blur: "0.2px",
     },
     {
       depth: 10,
       zIndex: 20,
       darkImage: "shadows-texts-dark.png",
       lightImage: "shadows-texts-light.png",
-      // blur: "0.2px",
     },
     {
       depth: 10,
       zIndex: 30,
       darkImage: "layer-texts-dark.png",
       lightImage: "layer-texts-light.png",
-      // blur: "0.0px",
     },
   ];
 
@@ -120,16 +116,12 @@ export default function ParallaxImage({
           }}
           className={`absolute inset-0 z-${layer.zIndex}`}
           nonce={nonce}
-          style={
-            {
-              backgroundImage: `url(/landingPage/${image})`,
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              backgroundSize: "contain",
-              objectFit: "contain",
-              objectPosition: "center",
-            } as React.CSSProperties
-          }
+          style={{
+            backgroundImage: `url(/landingPage/${image})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "contain",
+          }}
           transition={{ type: "spring", stiffness: 50, damping: 20 }}
         />
       );
@@ -142,6 +134,51 @@ export default function ParallaxImage({
       style={{ width, height }}
     >
       {theme === "dark" ? renderLayers("dark") : renderLayers("light")}
+
+      {/* Buttons */}
+      <div className="absolute inset-0 z-50 flex items-center justify-center">
+        <div className="relative w-full h-full max-w-lg md:max-w-4xl">
+          <Button
+            showAnchorIcon
+            as={Link}
+            className="absolute top-5 left-5 bg-blue-500 text-white p-2 rounded-xl"
+            href="/resume"
+            variant="solid"
+          >
+            Resume
+          </Button>
+
+          <Button
+            showAnchorIcon
+            as={Link}
+            className="absolute top-5 right-5 bg-green-500 text-white p-2 rounded-xl"
+            href="/contact"
+            variant="solid"
+          >
+            Contact
+          </Button>
+
+          <Button
+            showAnchorIcon
+            as={Link}
+            className="absolute bottom-5 left-5 bg-red-500 text-white p-2 rounded-xl"
+            href="/pricing"
+            variant="solid"
+          >
+            Pricing
+          </Button>
+
+          <Button
+            showAnchorIcon
+            as={Link}
+            className="absolute bottom-5 right-5 bg-yellow-500 text-white p-2 rounded-xl"
+            href="#"
+            variant="solid"
+          >
+            Demo
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }

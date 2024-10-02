@@ -40,7 +40,7 @@ export const Policy = ({ policyKey }: Props) => {
         const sanitizedContent = DOMPurify.sanitize(response.data);
 
         setPolicyContent(sanitizedContent);
-      } catch (err) {
+      } catch {
         // console.error("Error! Could not load policy.", err);
         setError("There has been an error loading this policy!");
       }

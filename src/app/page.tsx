@@ -15,9 +15,8 @@ export default function RootPage() {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden grid grid-rows-[minmax(0,70%)_minmax(0,30%)] sm:grid-rows-[minmax(0,80%)_minmax(0,25%)]">
-      {/* <div className="relative h-screen w-screen overflow-hidden grid grid-rows-[minmax(0,2fr)_minmax(0,1fr)] sm:grid-rows-[minmax(0,1fr)_minmax(0,auto)]"> */}
       {/* Parallax Image */}
-      <div className="row-span-1 max-h-[70vh] mt-16">
+      <div className="relative row-span-1 max-h-[70vh] mt-16">
         <ParallaxImage height="100%" nonce={nonce ?? undefined} width="100%" />
       </div>
 
@@ -33,7 +32,7 @@ export default function RootPage() {
             </h2>
             <h2
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mx-auto"
-              id="hero-title1"
+              id="hero-title2"
             >
               {t("hero.title2")}
             </h2>

@@ -65,7 +65,7 @@ export default function ContactPage() {
       const result = await res.json();
 
       setResponse(result);
-    } catch (error) {
+    } catch {
       setResponse({ error: "An error occurred while sending the email" });
     } finally {
       setLoading(false);
