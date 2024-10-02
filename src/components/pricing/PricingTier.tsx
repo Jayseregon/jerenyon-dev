@@ -1,5 +1,4 @@
 import { Card, CardHeader, CardBody } from "@nextui-org/react";
-
 import { CheckIcon } from "../icons";
 
 export interface Section {
@@ -61,14 +60,14 @@ export const PricingTier = ({ tier }: PricingTierProps) => {
               </span>
             </h3>
             <p className="text-md italic text-purple-800/70 dark:text-purple-300/70 mt-1">
-              {tier.starting_price > 0 ?? (
+              {tier.starting_price > 0 ? (
                 <>
                   <span className="text-sm pe-2">starting at</span>
                   <span className="align-text-top text-sm">$</span>
                   {section.starting_price}
                   <span className="align-super text-sm">*</span>
                 </>
-              )}
+              ) : null}
             </p>
             <ul className="list-none mt-3 space-y-2">
               {section.whats_included.map((item, idx) => (
