@@ -134,12 +134,12 @@ export default function ParallaxImage({
       className={`relative z-30 mx-auto ${marginTopClass}`}
       style={{ width, height }}
     >
-      {theme === "dark" ? renderLayers("dark") : renderLayers("light")}
-
       {/* Buttons */}
-      <div className="absolute inset-0 z-50 flex items-center justify-center">
+      <div className="absolute inset-0 flex items-center justify-center">
         <FrontButtons />
       </div>
+
+      {theme === "dark" ? renderLayers("dark") : renderLayers("light")}
     </div>
   );
 }
