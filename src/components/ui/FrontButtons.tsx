@@ -101,7 +101,8 @@ export default function FrontButtons() {
               points = [
                 { x: buttonX, y: buttonY },
                 { x: buttonX, y: buttonY + centerY - 10 },
-                { x: centerX, y: centerY + 130 },
+                { x: centerX / 2 - 20, y: centerY + 50 },
+                { x: centerX, y: centerY },
               ];
             }
             break;
@@ -110,10 +111,9 @@ export default function FrontButtons() {
             if (screenWidth < 640) {
               // xs
               points = [
-                { x: buttonX, y: buttonY },
-                { x: buttonX - 10, y: buttonY },
-                { x: buttonX - 10, y: buttonY + centerY - 40 },
-                { x: centerX, y: centerY },
+                { x: buttonX + 40, y: buttonY },
+                { x: buttonX + 40, y: buttonY + centerY - 30 },
+                { x: centerX, y: centerY + 30 },
               ];
             } else if (screenWidth < 768) {
               // sm
@@ -133,24 +133,89 @@ export default function FrontButtons() {
             break;
           // pricing button
           case 2:
-            points = [
-              { x: buttonX, y: buttonY },
-              { x: buttonX, y: (buttonY + centerY) / 2 },
-              { x: (buttonX + centerX) / 2, y: (buttonY + centerY) / 2 },
-              { x: (buttonX + centerX) / 2, y: centerY },
-              { x: centerX, y: centerY },
-            ];
+            if (screenWidth < 640) {
+              // xs
+              points = [
+                { x: buttonX, y: buttonY },
+                { x: buttonX, y: (buttonY + centerY) / 2 + 80 },
+                {
+                  x: (buttonX + centerX) / 2 + 30,
+                  y: (buttonY + centerY) / 2 + 80,
+                },
+                {
+                  x: (buttonX + centerX) / 2 + 30,
+                  y: (buttonY + centerY) / 2 - 40,
+                },
+              ];
+            } else if (screenWidth < 768) {
+              // sm
+              points = [
+                { x: buttonX, y: buttonY },
+                { x: buttonX, y: (buttonY + centerY) / 2 + 80 },
+                {
+                  x: (buttonX + centerX) / 2 + 30,
+                  y: (buttonY + centerY) / 2 + 80,
+                },
+                {
+                  x: (buttonX + centerX) / 2 + 30,
+                  y: (buttonY + centerY) / 2 - 40,
+                },
+              ];
+            } else {
+              // md
+              points = [
+                { x: buttonX, y: buttonY },
+                { x: buttonX, y: (buttonY + centerY) / 2 + 80 },
+                {
+                  x: (buttonX + centerX) / 3 - 30,
+                  y: (buttonY + centerY) / 2 + 80,
+                },
+                {
+                  x: (buttonX + centerX) / 3 - 30,
+                  y: (buttonY + centerY) / 2 - 10,
+                },
+                { x: centerX, y: centerY },
+              ];
+            }
             break;
           // demo button
           case 3:
-            points = [
-              { x: buttonX, y: buttonY },
-              { x: (buttonX + centerX) / 2, y: buttonY },
-              { x: (buttonX + centerX) / 2, y: (buttonY + centerY) / 2 },
-              { x: centerX, y: (buttonY + centerY) / 2 },
-              { x: centerX, y: centerY },
-            ];
+            if (screenWidth < 640) {
+              // xs
+              points = [
+                { x: buttonX, y: buttonY },
+                { x: (buttonX + centerX) / 2, y: buttonY },
+                {
+                  x: (buttonX + centerX) / 2,
+                  y: (buttonY + centerY) / 2 - 30,
+                },
+                { x: centerX, y: centerY },
+              ];
+            } else if (screenWidth < 768) {
+              // sm
+              points = [
+                { x: buttonX, y: buttonY },
+                { x: (buttonX + centerX) / 2, y: buttonY },
+                {
+                  x: (buttonX + centerX) / 2,
+                  y: (buttonY + centerY) / 2 - 30,
+                },
+                { x: centerX, y: centerY },
+              ];
+            } else {
+              // md
+              points = [
+                { x: buttonX, y: buttonY },
+                { x: (buttonX + centerX) / 2 - 10, y: buttonY },
+                {
+                  x: (buttonX + centerX) / 2 - 10,
+                  y: (buttonY + centerY) / 2 + 20,
+                },
+                { x: centerX, y: centerY + 50 },
+              ];
+            }
             break;
+
           default:
             points = [
               { x: buttonX, y: buttonY },
@@ -179,31 +244,60 @@ export default function FrontButtons() {
     };
   }, [mousePos.x, mousePos.y, deviceTilt.x, deviceTilt.y]);
 
-  if (!mounted) {
-    return null; // Render nothing on the server
-  }
-
   return (
     <div
       ref={containerRef}
       className="relative w-full h-full max-w-lg sm:max-w-xl md:max-w-4xl border-2"
     >
       <svg className="absolute inset-0 w-full h-full">
+        <defs>
+          <filter id="neon-blur">
+            <feGaussianBlur result="blur" stdDeviation="3" />
+            <feDropShadow dx="0" dy="0" floodColor="#eec3a3" stdDeviation="6" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+            <feDropShadow dx="0" dy="0" floodColor="#eec3a3" stdDeviation="9" />
+          </filter>
+        </defs>
         {paths.map((d, index) => (
-          <motion.path
-            key={index}
-            animate={{
-              pathLength: 1,
-              x: calcMovement(5, "x"),
-              y: calcMovement(5, "y"),
-            }}
-            d={d}
-            fill="none"
-            initial={{ pathLength: 0 }}
-            stroke="#fef08a"
-            strokeWidth="2"
-            transition={{ duration: 2 }}
-          />
+          <React.Fragment key={index}>
+            {/* Background path with reduced blur and shadow */}
+            <motion.path
+              animate={{
+                pathLength: 1,
+                x: calcMovement(5, "x"),
+                y: calcMovement(5, "y"),
+              }}
+              d={d}
+              fill="none"
+              initial={{ pathLength: 0 }}
+              stroke="#eec3a3"
+              strokeWidth="3"
+              style={{
+                filter: "url(#neon-blur)",
+              }}
+              transition={{ duration: 2 }}
+            />
+            {/* Foreground path with lighter blur */}
+            <motion.path
+              animate={{
+                pathLength: 1,
+                x: calcMovement(5, "x"),
+                y: calcMovement(5, "y"),
+              }}
+              d={d}
+              fill="none"
+              initial={{ pathLength: 0 }}
+              stroke="#fbf8b1"
+              strokeWidth="1"
+              style={{
+                filter: "url(#neon-blur)",
+              }}
+              transition={{ duration: 2 }}
+            />
+          </React.Fragment>
         ))}
       </svg>
 
