@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link, Button } from "@nextui-org/react";
+import { useTheme } from "next-themes";
 
 export default function FrontButtons() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -12,14 +13,12 @@ export default function FrontButtons() {
     useRef<HTMLButtonElement>(null),
     useRef<HTMLButtonElement>(null),
   ];
+  const { theme } = useTheme();
   const [paths, setPaths] = useState<string[]>([]);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [deviceTilt, setDeviceTilt] = useState({ x: 0, y: 0 });
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
@@ -247,23 +246,29 @@ export default function FrontButtons() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full max-w-lg sm:max-w-xl md:max-w-4xl border-2"
+      className="relative w-full h-full max-w-lg sm:max-w-xl md:max-w-4xl"
     >
       <svg className="absolute inset-0 w-full h-full">
         <defs>
           <filter id="neon-blur">
-            <feGaussianBlur result="blur" stdDeviation="3" />
-            <feDropShadow dx="0" dy="0" floodColor="#eec3a3" stdDeviation="6" />
+            <feGaussianBlur result="blur" stdDeviation="2" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
-            <feDropShadow dx="0" dy="0" floodColor="#eec3a3" stdDeviation="9" />
+          </filter>
+          <filter id="shadow">
+            <feDropShadow
+              dx="4"
+              dy="4"
+              floodColor={theme === "dark" ? "#000039" : "#967b93"}
+              stdDeviation="3"
+            />
           </filter>
         </defs>
         {paths.map((d, index) => (
           <React.Fragment key={index}>
-            {/* Background path with reduced blur and shadow */}
+            {/* Background path with shadow */}
             <motion.path
               animate={{
                 pathLength: 1,
@@ -273,10 +278,10 @@ export default function FrontButtons() {
               d={d}
               fill="none"
               initial={{ pathLength: 0 }}
-              stroke="#eec3a3"
+              stroke="#eec198"
               strokeWidth="3"
               style={{
-                filter: "url(#neon-blur)",
+                filter: "url(#shadow)",
               }}
               transition={{ duration: 2 }}
             />
@@ -290,7 +295,7 @@ export default function FrontButtons() {
               d={d}
               fill="none"
               initial={{ pathLength: 0 }}
-              stroke="#fbf8b1"
+              stroke="#fbf8b7"
               strokeWidth="1"
               style={{
                 filter: "url(#neon-blur)",
