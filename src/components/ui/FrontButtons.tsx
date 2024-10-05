@@ -62,7 +62,6 @@ export default function FrontButtons() {
       const containerRect = containerRef.current.getBoundingClientRect();
       const centerX = containerRect.width / 2;
       const centerY = containerRect.height / 2;
-      const isLandscape = containerRect.width > containerRect.height;
 
       const newPaths = buttonRefs.map((ref, index) => {
         if (!ref.current) return "";
@@ -75,6 +74,8 @@ export default function FrontButtons() {
 
         // Define unique points for each button's path
         const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+        const isLandscape = screenWidth > screenHeight;
         let points;
 
         switch (index) {
@@ -85,7 +86,6 @@ export default function FrontButtons() {
                 // xs landscape
                 points = [
                   { x: buttonX, y: buttonY },
-                  { x: buttonX, y: buttonY + centerY - 20 },
                   { x: centerX, y: centerY },
                 ];
               } else {
@@ -122,8 +122,7 @@ export default function FrontButtons() {
                 // xs landscape
                 points = [
                   { x: buttonX, y: buttonY },
-                  { x: buttonX, y: buttonY + centerY - 15 },
-                  { x: centerX, y: centerY + 15 },
+                  { x: centerX, y: centerY },
                 ];
               } else {
                 // xs portrait
@@ -156,11 +155,6 @@ export default function FrontButtons() {
                 // xs landscape
                 points = [
                   { x: buttonX, y: buttonY },
-                  { x: (buttonX + centerX) / 2 - 30, y: buttonY },
-                  {
-                    x: (buttonX + centerX) / 2 - 30,
-                    y: (buttonY + centerY) / 2 - 15,
-                  },
                   { x: centerX, y: centerY },
                 ];
               } else {
@@ -216,11 +210,6 @@ export default function FrontButtons() {
                 // xs landscape
                 points = [
                   { x: buttonX, y: buttonY },
-                  { x: (buttonX + centerX) / 2 - 30, y: buttonY },
-                  {
-                    x: (buttonX + centerX) / 2 - 30,
-                    y: (buttonY + centerY) / 2 - 15,
-                  },
                   { x: centerX, y: centerY },
                 ];
               } else {
