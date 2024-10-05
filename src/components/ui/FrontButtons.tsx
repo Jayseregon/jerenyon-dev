@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Link, Button } from "@nextui-org/react";
 import { useTheme } from "next-themes";
 
-export default function FrontButtons() {
+const FrontButtons = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRefs = [
     useRef<HTMLButtonElement>(null),
@@ -76,6 +76,12 @@ export default function FrontButtons() {
         const screenWidth = window.innerWidth;
         const screenHeight = window.innerHeight;
         const isLandscape = screenWidth > screenHeight;
+
+        // Log screen dimensions and isLandscape
+        console.log(
+          `Screen Width: ${screenWidth}, Screen Height: ${screenHeight}, isLandscape: ${isLandscape}`,
+        );
+
         let points;
 
         switch (index) {
@@ -85,13 +91,13 @@ export default function FrontButtons() {
               if (isLandscape) {
                 // xs landscape
                 points = [
-                  { x: buttonX, y: buttonY },
+                  { x: buttonX, y: buttonY + 10 },
                   { x: centerX, y: centerY },
                 ];
               } else {
                 // xs portrait
                 points = [
-                  { x: buttonX, y: buttonY },
+                  { x: buttonX, y: buttonY + 10 },
                   { x: buttonX - 15, y: buttonY },
                   { x: buttonX - 15, y: buttonY + centerY - 40 },
                   { x: centerX, y: centerY },
@@ -100,7 +106,7 @@ export default function FrontButtons() {
             } else if (screenWidth < 768) {
               // sm
               points = [
-                { x: buttonX, y: buttonY },
+                { x: buttonX, y: buttonY + 10 },
                 { x: buttonX - 40, y: buttonY },
                 { x: buttonX - 40, y: buttonY + centerY - 30 },
                 { x: centerX, y: centerY + 100 },
@@ -108,7 +114,7 @@ export default function FrontButtons() {
             } else {
               // md
               points = [
-                { x: buttonX, y: buttonY },
+                { x: buttonX, y: buttonY + 10 },
                 { x: buttonX, y: buttonY + centerY - 10 },
                 { x: centerX / 2 - 20, y: centerY + 50 },
                 { x: centerX, y: centerY },
@@ -121,13 +127,13 @@ export default function FrontButtons() {
               if (isLandscape) {
                 // xs landscape
                 points = [
-                  { x: buttonX, y: buttonY },
+                  { x: buttonX, y: buttonY + 10 },
                   { x: centerX, y: centerY },
                 ];
               } else {
                 // xs portrait
                 points = [
-                  { x: buttonX + 40, y: buttonY },
+                  { x: buttonX + 40, y: buttonY + 10 },
                   { x: buttonX + 40, y: buttonY + centerY - 30 },
                   { x: centerX, y: centerY + 30 },
                 ];
@@ -135,14 +141,14 @@ export default function FrontButtons() {
             } else if (screenWidth < 768) {
               // sm
               points = [
-                { x: buttonX + 40, y: buttonY },
+                { x: buttonX + 40, y: buttonY + 10 },
                 { x: buttonX + 40, y: buttonY + centerY - 30 },
                 { x: centerX, y: centerY + 30 },
               ];
             } else {
               // md
               points = [
-                { x: buttonX + 20, y: buttonY },
+                { x: buttonX + 20, y: buttonY + 10 },
                 { x: buttonX + 20, y: buttonY + centerY - 30 },
                 { x: centerX, y: centerY + 50 },
               ];
@@ -259,7 +265,7 @@ export default function FrontButtons() {
         // Generate the path string
         const path = points
           .map((point, i) =>
-            i === 0 ? `M ${point.x} ${point.y}` : `L ${point.x} ${point.y}`
+            i === 0 ? `M ${point.x} ${point.y}` : `L ${point.x} ${point.y}`,
           )
           .join(" ");
 
@@ -280,14 +286,12 @@ export default function FrontButtons() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full max-w-lg sm:max-w-xl md:max-w-4xl">
+      className="relative w-full h-full max-w-lg sm:max-w-xl md:max-w-4xl"
+    >
       <svg className="absolute inset-0 w-full h-full">
         <defs>
           <filter id="neon-blur">
-            <feGaussianBlur
-              result="blur"
-              stdDeviation="2"
-            />
+            <feGaussianBlur result="blur" stdDeviation="2" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -346,9 +350,10 @@ export default function FrontButtons() {
         ref={buttonRefs[0]}
         showAnchorIcon
         as={Link}
-        className="absolute top-5 left-5 bg-blue-500 text-white p-2 rounded-xl z-50"
+        className={`absolute top-5 left-5 bg-background border-2 border-[#eec198] shadow-lg ${theme === "dark" ? "shadow-[#000039]" : "shadow-[#967b93]"} text-foreground p-2 z-50`}
         href="/resume"
-        variant="solid">
+        radius="full"
+      >
         Resume
       </Button>
 
@@ -356,9 +361,10 @@ export default function FrontButtons() {
         ref={buttonRefs[1]}
         showAnchorIcon
         as={Link}
-        className="absolute top-5 right-5 bg-green-500 text-white p-2 rounded-xl z-50"
+        className={`absolute top-5 right-5 bg-background border-2 border-[#eec198] shadow-lg ${theme === "dark" ? "shadow-[#000039]" : "shadow-[#967b93]"} text-foreground p-2 z-50`}
         href="/contact"
-        variant="solid">
+        radius="full"
+      >
         Contact
       </Button>
 
@@ -366,9 +372,10 @@ export default function FrontButtons() {
         ref={buttonRefs[2]}
         showAnchorIcon
         as={Link}
-        className="absolute bottom-5 left-5 bg-red-500 text-white p-2 rounded-xl z-50"
+        className={`absolute bottom-5 left-5 bg-background border-2 border-[#eec198] shadow-lg ${theme === "dark" ? "shadow-[#000039]" : "shadow-[#967b93]"} text-foreground p-2 z-50`}
         href="/pricing"
-        variant="solid">
+        radius="full"
+      >
         Pricing
       </Button>
 
@@ -376,11 +383,14 @@ export default function FrontButtons() {
         ref={buttonRefs[3]}
         showAnchorIcon
         as={Link}
-        className="absolute bottom-5 right-5 bg-yellow-500 text-white p-2 rounded-xl z-50"
+        className={`absolute bottom-5 right-5 bg-background border-2 border-[#eec198] shadow-lg ${theme === "dark" ? "shadow-[#000039]" : "shadow-[#967b93]"} text-foreground p-2 z-50`}
         href="#"
-        variant="solid">
+        radius="full"
+      >
         Demo
       </Button>
     </div>
   );
-}
+};
+
+export default FrontButtons;

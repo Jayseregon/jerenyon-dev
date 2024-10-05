@@ -3,7 +3,6 @@ import { headers } from "next/headers";
 
 import ParallaxImage from "@/components/ui/ParallaxImage";
 
-import ScreenSizeDisplay from "../components/_dev/ScreenSizeDisplay";
 import { siteConfig } from "../config/site";
 
 export const metadata = {
@@ -18,13 +17,8 @@ export default function RootPage() {
     <div className="relative h-screen w-screen overflow-hidden grid grid-rows-[minmax(0,70%)_minmax(0,30%)] sm:grid-rows-[minmax(0,80%)_minmax(0,25%)]">
       {/* Parallax Image */}
       <div className="relative row-span-1 max-h-[70vh] mt-16">
-        <ParallaxImage
-          height="100%"
-          nonce={nonce ?? undefined}
-          width="100%"
-        />
+        <ParallaxImage height="100%" nonce={nonce ?? undefined} width="100%" />
       </div>
-      <ScreenSizeDisplay />
 
       {/* Hero Title and Subtitle */}
       <div className="flex flex-col items-center justify-start pb-5 overflow-hidden">
@@ -32,12 +26,14 @@ export default function RootPage() {
           <div className="grid grid-cols-1 gap-1">
             <h2
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mx-auto"
-              id="hero-title1">
+              id="hero-title1"
+            >
               {t("hero.title1")}
             </h2>
             <h2
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mx-auto"
-              id="hero-title2">
+              id="hero-title2"
+            >
               {t("hero.title2")}
             </h2>
           </div>
