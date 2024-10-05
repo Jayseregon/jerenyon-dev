@@ -83,8 +83,8 @@ export default function FrontButtons() {
               // xs
               points = [
                 { x: buttonX, y: buttonY },
-                { x: buttonX - 10, y: buttonY },
-                { x: buttonX - 10, y: buttonY + centerY - 40 },
+                { x: buttonX - 20, y: buttonY },
+                { x: buttonX - 20, y: buttonY + centerY - 40 },
                 { x: centerX, y: centerY },
               ];
             } else if (screenWidth < 768) {
@@ -136,10 +136,10 @@ export default function FrontButtons() {
               // xs
               points = [
                 { x: buttonX, y: buttonY },
-                { x: buttonX, y: (buttonY + centerY) / 2 + 80 },
+                { x: buttonX, y: (buttonY + centerY) / 2 },
                 {
                   x: (buttonX + centerX) / 2 + 30,
-                  y: (buttonY + centerY) / 2 + 80,
+                  y: (buttonY + centerY) / 2,
                 },
                 {
                   x: (buttonX + centerX) / 2 + 30,
@@ -183,9 +183,9 @@ export default function FrontButtons() {
               // xs
               points = [
                 { x: buttonX, y: buttonY },
-                { x: (buttonX + centerX) / 2, y: buttonY },
+                { x: (buttonX + centerX) / 2 - 50, y: buttonY },
                 {
-                  x: (buttonX + centerX) / 2,
+                  x: (buttonX + centerX) / 2 - 50,
                   y: (buttonY + centerY) / 2 - 30,
                 },
                 { x: centerX, y: centerY },
@@ -225,7 +225,7 @@ export default function FrontButtons() {
         // Generate the path string
         const path = points
           .map((point, i) =>
-            i === 0 ? `M ${point.x} ${point.y}` : `L ${point.x} ${point.y}`,
+            i === 0 ? `M ${point.x} ${point.y}` : `L ${point.x} ${point.y}`
           )
           .join(" ");
 
@@ -246,12 +246,14 @@ export default function FrontButtons() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full max-w-lg sm:max-w-xl md:max-w-4xl"
-    >
+      className="relative w-full h-full max-w-lg sm:max-w-xl md:max-w-4xl">
       <svg className="absolute inset-0 w-full h-full">
         <defs>
           <filter id="neon-blur">
-            <feGaussianBlur result="blur" stdDeviation="2" />
+            <feGaussianBlur
+              result="blur"
+              stdDeviation="2"
+            />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -312,8 +314,7 @@ export default function FrontButtons() {
         as={Link}
         className="absolute top-5 left-5 bg-blue-500 text-white p-2 rounded-xl z-50"
         href="/resume"
-        variant="solid"
-      >
+        variant="solid">
         Resume
       </Button>
 
@@ -323,8 +324,7 @@ export default function FrontButtons() {
         as={Link}
         className="absolute top-5 right-5 bg-green-500 text-white p-2 rounded-xl z-50"
         href="/contact"
-        variant="solid"
-      >
+        variant="solid">
         Contact
       </Button>
 
@@ -334,8 +334,7 @@ export default function FrontButtons() {
         as={Link}
         className="absolute bottom-5 left-5 bg-red-500 text-white p-2 rounded-xl z-50"
         href="/pricing"
-        variant="solid"
-      >
+        variant="solid">
         Pricing
       </Button>
 
@@ -345,8 +344,7 @@ export default function FrontButtons() {
         as={Link}
         className="absolute bottom-5 right-5 bg-yellow-500 text-white p-2 rounded-xl z-50"
         href="#"
-        variant="solid"
-      >
+        variant="solid">
         Demo
       </Button>
     </div>
