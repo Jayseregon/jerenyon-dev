@@ -74,19 +74,31 @@ export default function FrontButtons() {
 
         // Define unique points for each button's path
         const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+        const isLandscape = screenWidth > screenHeight;
         let points;
 
         switch (index) {
           // resume button
           case 0:
             if (screenWidth < 640) {
-              // xs
-              points = [
-                { x: buttonX, y: buttonY },
-                { x: buttonX - 15, y: buttonY },
-                { x: buttonX - 15, y: buttonY + centerY - 40 },
-                { x: centerX, y: centerY },
-              ];
+              if (isLandscape) {
+                // xs landscape
+                points = [
+                  { x: buttonX, y: buttonY },
+                  { x: buttonX - 15, y: buttonY },
+                  { x: buttonX - 15, y: buttonY + centerY - 20 },
+                  { x: centerX, y: centerY },
+                ];
+              } else {
+                // xs portrait
+                points = [
+                  { x: buttonX, y: buttonY },
+                  { x: buttonX - 15, y: buttonY },
+                  { x: buttonX - 15, y: buttonY + centerY - 40 },
+                  { x: centerX, y: centerY },
+                ];
+              }
             } else if (screenWidth < 768) {
               // sm
               points = [
@@ -108,12 +120,21 @@ export default function FrontButtons() {
           // contact button
           case 1:
             if (screenWidth < 640) {
-              // xs
-              points = [
-                { x: buttonX + 40, y: buttonY },
-                { x: buttonX + 40, y: buttonY + centerY - 30 },
-                { x: centerX, y: centerY + 30 },
-              ];
+              if (isLandscape) {
+                // xs landscape
+                points = [
+                  { x: buttonX + 40, y: buttonY },
+                  { x: buttonX + 40, y: buttonY + centerY - 15 },
+                  { x: centerX, y: centerY + 15 },
+                ];
+              } else {
+                // xs portrait
+                points = [
+                  { x: buttonX + 40, y: buttonY },
+                  { x: buttonX + 40, y: buttonY + centerY - 30 },
+                  { x: centerX, y: centerY + 30 },
+                ];
+              }
             } else if (screenWidth < 768) {
               // sm
               points = [
@@ -133,19 +154,35 @@ export default function FrontButtons() {
           // pricing button
           case 2:
             if (screenWidth < 640) {
-              // xs
-              points = [
-                { x: buttonX, y: buttonY },
-                { x: buttonX, y: (buttonY + centerY) / 2 + 30 },
-                {
-                  x: (buttonX + centerX) / 2 + 30,
-                  y: (buttonY + centerY) / 2 + 30,
-                },
-                {
-                  x: (buttonX + centerX) / 2 + 30,
-                  y: (buttonY + centerY) / 2 - 40,
-                },
-              ];
+              if (isLandscape) {
+                // xs landscape
+                points = [
+                  { x: buttonX, y: buttonY },
+                  { x: buttonX, y: (buttonY + centerY) / 2 + 15 },
+                  {
+                    x: (buttonX + centerX) / 2 + 15,
+                    y: (buttonY + centerY) / 2 + 15,
+                  },
+                  {
+                    x: (buttonX + centerX) / 2 + 15,
+                    y: (buttonY + centerY) / 2 - 20,
+                  },
+                ];
+              } else {
+                // xs portrait
+                points = [
+                  { x: buttonX, y: buttonY },
+                  { x: buttonX, y: (buttonY + centerY) / 2 + 30 },
+                  {
+                    x: (buttonX + centerX) / 2 + 30,
+                    y: (buttonY + centerY) / 2 + 30,
+                  },
+                  {
+                    x: (buttonX + centerX) / 2 + 30,
+                    y: (buttonY + centerY) / 2 - 40,
+                  },
+                ];
+              }
             } else if (screenWidth < 768) {
               // sm
               points = [
@@ -180,16 +217,29 @@ export default function FrontButtons() {
           // demo button
           case 3:
             if (screenWidth < 640) {
-              // xs
-              points = [
-                { x: buttonX, y: buttonY },
-                { x: (buttonX + centerX) / 2 - 50, y: buttonY },
-                {
-                  x: (buttonX + centerX) / 2 - 50,
-                  y: (buttonY + centerY) / 2 - 30,
-                },
-                { x: centerX, y: centerY },
-              ];
+              if (isLandscape) {
+                // xs landscape
+                points = [
+                  { x: buttonX, y: buttonY },
+                  { x: (buttonX + centerX) / 2 - 25, y: buttonY },
+                  {
+                    x: (buttonX + centerX) / 2 - 25,
+                    y: (buttonY + centerY) / 2 - 15,
+                  },
+                  { x: centerX, y: centerY },
+                ];
+              } else {
+                // xs portrait
+                points = [
+                  { x: buttonX, y: buttonY },
+                  { x: (buttonX + centerX) / 2 - 50, y: buttonY },
+                  {
+                    x: (buttonX + centerX) / 2 - 50,
+                    y: (buttonY + centerY) / 2 - 30,
+                  },
+                  { x: centerX, y: centerY },
+                ];
+              }
             } else if (screenWidth < 768) {
               // sm
               points = [
@@ -225,7 +275,7 @@ export default function FrontButtons() {
         // Generate the path string
         const path = points
           .map((point, i) =>
-            i === 0 ? `M ${point.x} ${point.y}` : `L ${point.x} ${point.y}`
+            i === 0 ? `M ${point.x} ${point.y}` : `L ${point.x} ${point.y}`,
           )
           .join(" ");
 
@@ -246,14 +296,12 @@ export default function FrontButtons() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full max-w-lg sm:max-w-xl md:max-w-4xl">
+      className="relative w-full h-full max-w-lg sm:max-w-xl md:max-w-4xl"
+    >
       <svg className="absolute inset-0 w-full h-full">
         <defs>
           <filter id="neon-blur">
-            <feGaussianBlur
-              result="blur"
-              stdDeviation="2"
-            />
+            <feGaussianBlur result="blur" stdDeviation="2" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -314,7 +362,8 @@ export default function FrontButtons() {
         as={Link}
         className="absolute top-5 left-5 bg-blue-500 text-white p-2 rounded-xl z-50"
         href="/resume"
-        variant="solid">
+        variant="solid"
+      >
         Resume
       </Button>
 
@@ -324,7 +373,8 @@ export default function FrontButtons() {
         as={Link}
         className="absolute top-5 right-5 bg-green-500 text-white p-2 rounded-xl z-50"
         href="/contact"
-        variant="solid">
+        variant="solid"
+      >
         Contact
       </Button>
 
@@ -334,7 +384,8 @@ export default function FrontButtons() {
         as={Link}
         className="absolute bottom-5 left-5 bg-red-500 text-white p-2 rounded-xl z-50"
         href="/pricing"
-        variant="solid">
+        variant="solid"
+      >
         Pricing
       </Button>
 
@@ -344,7 +395,8 @@ export default function FrontButtons() {
         as={Link}
         className="absolute bottom-5 right-5 bg-yellow-500 text-white p-2 rounded-xl z-50"
         href="#"
-        variant="solid">
+        variant="solid"
+      >
         Demo
       </Button>
     </div>
