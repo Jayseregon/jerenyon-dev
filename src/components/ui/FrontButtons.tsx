@@ -83,8 +83,8 @@ export default function FrontButtons() {
               // xs
               points = [
                 { x: buttonX, y: buttonY },
-                { x: buttonX - 20, y: buttonY },
-                { x: buttonX - 20, y: buttonY + centerY - 40 },
+                { x: buttonX - 15, y: buttonY },
+                { x: buttonX - 15, y: buttonY + centerY - 40 },
                 { x: centerX, y: centerY },
               ];
             } else if (screenWidth < 768) {
@@ -136,10 +136,10 @@ export default function FrontButtons() {
               // xs
               points = [
                 { x: buttonX, y: buttonY },
-                { x: buttonX, y: (buttonY + centerY) / 2 },
+                { x: buttonX, y: (buttonY + centerY) / 2 + 30 },
                 {
                   x: (buttonX + centerX) / 2 + 30,
-                  y: (buttonY + centerY) / 2,
+                  y: (buttonY + centerY) / 2 + 30,
                 },
                 {
                   x: (buttonX + centerX) / 2 + 30,
