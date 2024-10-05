@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 
 import ParallaxImage from "@/components/ui/ParallaxImage";
 
+import ScreenSizeDisplay from "../components/_dev/ScreenSizeDisplay";
 import { siteConfig } from "../config/site";
 
 export const metadata = {
@@ -44,6 +45,8 @@ export default function RootPage() {
             {t("hero.subtitle")}
           </h3>
         </div>
+
+        <ScreenSizeDisplay />
       </div>
     </div>
   );
