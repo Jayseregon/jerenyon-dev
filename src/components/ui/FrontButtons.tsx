@@ -62,6 +62,7 @@ export default function FrontButtons() {
       const containerRect = containerRef.current.getBoundingClientRect();
       const centerX = containerRect.width / 2;
       const centerY = containerRect.height / 2;
+      const isLandscape = containerRect.width > containerRect.height;
 
       const newPaths = buttonRefs.map((ref, index) => {
         if (!ref.current) return "";
@@ -74,8 +75,6 @@ export default function FrontButtons() {
 
         // Define unique points for each button's path
         const screenWidth = window.innerWidth;
-        const screenHeight = window.innerHeight;
-        const isLandscape = screenWidth > screenHeight;
         let points;
 
         switch (index) {
