@@ -5,7 +5,7 @@ export default function ResumeLayout({
 }) {
   return (
     <div className="flex flex-col items-center justify-center w-full">
-      <div className="inline-block text-center justify-center w-full pt-10 md:pt-20">
+      <div className="inline-block text-center justify-center w-full pt-10 md:pt-20 pb-5">
         {children}
       </div>
     </div>

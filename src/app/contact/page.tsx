@@ -11,6 +11,7 @@ import {
   ErrorDisplay,
   SuccessDisplay,
 } from "@/src/components/contact/contactFormElements";
+import { Button } from "@nextui-org/react";
 
 interface FormData {
   firstName: string;
@@ -41,7 +42,7 @@ export default function ContactPage() {
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData({
       ...formData,
@@ -94,7 +95,9 @@ export default function ContactPage() {
         <div className="py-3" />
 
         <div className="max-w-fit mx-auto p-4">
-          <form className="space-y-4" onSubmit={handleSubmit}>
+          <form
+            className="space-y-4"
+            onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <FieldInput
                 fieldTarget="firstName"
@@ -148,13 +151,13 @@ export default function ContactPage() {
               />
             </div>
 
-            <button
-              className="w-full bg-foreground text-background py-2 px-4 rounded-md hover:bg-purple-800 hover:dark:text-purple-300 focus:outline-none"
+            <Button
+              className="w-full bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:bg-purple-800 hover:text-background hover:dark:text-purple-300 focus:outline-none"
               disabled={loading || !recaptchaToken}
-              type="submit"
-            >
+              radius="full"
+              type="submit">
               {loading ? t("btn_pending") : t("btn")}
-            </button>
+            </Button>
           </form>
         </div>
       </div>

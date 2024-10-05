@@ -44,13 +44,12 @@ export const FieldInput = ({
     <div>
       <label
         className="block text-sm font-medium text-start"
-        htmlFor={fieldTarget}
-      >
+        htmlFor={fieldTarget}>
         {t(fieldTarget)}
       </label>
       <input
         required
-        className="mt-1 block w-full bg-white text-black border border-foreground rounded-md py-2 px-3 focus:outline-none focus:ring-primary-400 focus:border-primary-400"
+        className="mt-1 block w-full bg-white text-black border border-purple-800 dark:border-purple-300 rounded-md py-2 px-3 focus:outline-none focus:ring-primary-400 focus:border-primary-400"
         id={fieldTarget}
         name={fieldTarget}
         type={type}
@@ -71,13 +70,12 @@ export const TextInput = ({
     <div>
       <label
         className="block text-sm font-medium text-start"
-        htmlFor={fieldTarget}
-      >
+        htmlFor={fieldTarget}>
         {t(fieldTarget)}
       </label>
       <textarea
         required
-        className="mt-1 block w-full bg-white text-black border border-foreground rounded-md py-2 px-3 focus:outline-none focus:ring-primary-400 focus:border-primary-400"
+        className="mt-1 block w-full bg-white text-black border border-purple-800 dark:border-purple-300 rounded-md py-2 px-3 focus:outline-none focus:ring-primary-400 focus:border-primary-400"
         id={fieldTarget}
         name={fieldTarget}
         value={value}
@@ -92,12 +90,11 @@ export const HoneypotField = ({ t, value, onChange }: HoneypotProps) => {
     <div className="hidden">
       <label
         className="block text-sm font-medium text-start"
-        htmlFor="honeypot"
-      >
+        htmlFor="honeypot">
         {t("honeypot")}
       </label>
       <input
-        className="mt-1 block w-full bg-white text-black border border-foreground rounded-md py-2 px-3 focus:outline-none focus:ring-primary-400 focus:border-primary-400"
+        className="mt-1 block w-full bg-white text-black border border-purple-800 dark:border-purple-300 rounded-md py-2 px-3 focus:outline-none focus:ring-primary-400 focus:border-primary-400"
         id="honeypot"
         name="honeypot"
         type="text"
@@ -115,8 +112,7 @@ export const ErrorDisplay: React.FC<ErrorDisplayProps> = ({ t }) => {
       <EmailErrorIcon size={65} />
       <div
         className="p-4 mb-4 grid grid-cols-1 gap-4 text-danger-700 bg-danger-100 rounded-lg dark:bg-danger-200 dark:text-danger-800"
-        role="alert"
-      >
+        role="alert">
         <p className="font-medium grid grid-cols-1 gap-1">
           <span className="text-2xl">{t("error1")}</span>
           <span>{t("error2")}</span>
@@ -134,8 +130,7 @@ export const SuccessDisplay: React.FC<SuccessDisplayProps> = ({ t }) => {
       <EmailSuccessIcon size={65} />
       <div
         className="p-4 mb-4 grid grid-cols-1 gap-4 text-success-700 bg-success-100 rounded-lg dark:bg-success-200 dark:text-success-800"
-        role="alert"
-      >
+        role="alert">
         <p className="font-medium">{t("success")}</p>
       </div>
     </div>
