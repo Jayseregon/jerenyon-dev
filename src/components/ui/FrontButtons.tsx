@@ -63,6 +63,7 @@ export default function FrontButtons() {
       const centerX = containerRect.width / 2;
       const centerY = containerRect.height / 2;
       const isLandscape = containerRect.width > containerRect.height;
+      const isIPhone = /iPhone/.test(navigator.userAgent);
 
       const newPaths = buttonRefs.map((ref, index) => {
         if (!ref.current) return "";
@@ -81,8 +82,8 @@ export default function FrontButtons() {
           // resume button
           case 0:
             if (screenWidth < 640) {
-              if (isLandscape) {
-                // xs landscape
+              if (isLandscape && isIPhone) {
+                // xs landscape on iPhone
                 points = [
                   { x: buttonX, y: buttonY },
                   { x: buttonX, y: buttonY + centerY - 20 },
@@ -118,8 +119,8 @@ export default function FrontButtons() {
           // contact button
           case 1:
             if (screenWidth < 640) {
-              if (isLandscape) {
-                // xs landscape
+              if (isLandscape && isIPhone) {
+                // xs landscape on iPhone
                 points = [
                   { x: buttonX, y: buttonY },
                   { x: buttonX, y: buttonY + centerY - 15 },
@@ -152,8 +153,8 @@ export default function FrontButtons() {
           // pricing button
           case 2:
             if (screenWidth < 640) {
-              if (isLandscape) {
-                // xs landscape
+              if (isLandscape && isIPhone) {
+                // xs landscape on iPhone
                 points = [
                   { x: buttonX, y: buttonY },
                   { x: (buttonX + centerX) / 2 - 30, y: buttonY },
@@ -212,8 +213,8 @@ export default function FrontButtons() {
           // demo button
           case 3:
             if (screenWidth < 640) {
-              if (isLandscape) {
-                // xs landscape
+              if (isLandscape && isIPhone) {
+                // xs landscape on iPhone
                 points = [
                   { x: buttonX, y: buttonY },
                   { x: (buttonX + centerX) / 2 - 30, y: buttonY },
