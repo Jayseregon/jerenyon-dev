@@ -77,6 +77,12 @@
       "line1": "The prices listed are estimates and may vary based on the specific requirements of your project.",
       "line2": "Final costs will be determined after a detailed discussion of your needs.",
       "line3": "Additional features or services may incur extra charges."
+    },
+    "devNotice": {
+      "title": "Coming Back Soon!",
+      "line1": "We are currently working on improving our estimate tool.",
+      "line2": "Very soon it will be back online with new features and a fresh look.",
+      "line3": "Thank you for your patience!"
     }
   },
   "policies": {

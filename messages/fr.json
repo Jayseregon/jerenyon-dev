@@ -77,6 +77,12 @@
       "line1": "Les prix indiqués sont des estimations et peuvent varier en fonction des exigences spécifiques de votre projet.",
       "line2": "Les coûts finaux seront déterminés après une discussion détaillée de vos besoins.",
       "line3": "Des fonctionnalités ou services supplémentaires peuvent entraîner des frais supplémentaires."
+    },
+    "devNotice": {
+      "title": "Bientôt de Retour !",
+      "line1": "Nous travaillons actuellement à l'amélioration de notre outil d'estimation.",
+      "line2": "Il sera très bientôt de retour en ligne avec de nouvelles fonctionnalités et un nouveau look.",
+      "line3": "Merci pour votre patience !"
     }
   },
   "policies": {

@@ -35,8 +35,6 @@ export default function ParallaxImage({
       const tiltX = e.gamma || 0; // Left to right tilt (gamma)
       const tiltY = e.beta || 0; // Front to back tilt (beta)
 
-      console.log(`Device Tilt - X: ${tiltX}, Y: ${tiltY}`); // Debugging log
-
       setDeviceTilt({ x: tiltX, y: tiltY });
     };
 
