@@ -6,7 +6,7 @@ import ParallaxImage from "@/components/ui/ParallaxImage";
 import { siteConfig } from "../config/site";
 
 export const metadata = {
-  title: `${siteConfig.heroTitle} - ${siteConfig.name}`,
+  title: `${siteConfig.heroTitle} with ${siteConfig.name}`,
 };
 
 export default function RootPage() {

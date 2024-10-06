@@ -44,7 +44,8 @@ export const FieldInput = ({
     <div>
       <label
         className="block text-sm font-medium text-start"
-        htmlFor={fieldTarget}>
+        htmlFor={fieldTarget}
+      >
         {t(fieldTarget)}
       </label>
       <input
@@ -70,7 +71,8 @@ export const TextInput = ({
     <div>
       <label
         className="block text-sm font-medium text-start"
-        htmlFor={fieldTarget}>
+        htmlFor={fieldTarget}
+      >
         {t(fieldTarget)}
       </label>
       <textarea
@@ -90,7 +92,8 @@ export const HoneypotField = ({ t, value, onChange }: HoneypotProps) => {
     <div className="hidden">
       <label
         className="block text-sm font-medium text-start"
-        htmlFor="honeypot">
+        htmlFor="honeypot"
+      >
         {t("honeypot")}
       </label>
       <input
@@ -108,11 +111,11 @@ export const HoneypotField = ({ t, value, onChange }: HoneypotProps) => {
 export const ErrorDisplay: React.FC<ErrorDisplayProps> = ({ t }) => {
   return (
     <div className="max-w-fit mx-auto p-4">
-      <h1 className="text-5xl font-bold mb-5">{t("title")}</h1>
       <EmailErrorIcon size={65} />
       <div
         className="p-4 mb-4 grid grid-cols-1 gap-4 text-danger-700 bg-danger-100 rounded-lg dark:bg-danger-200 dark:text-danger-800"
-        role="alert">
+        role="alert"
+      >
         <p className="font-medium grid grid-cols-1 gap-1">
           <span className="text-2xl">{t("error1")}</span>
           <span>{t("error2")}</span>
@@ -126,11 +129,11 @@ export const ErrorDisplay: React.FC<ErrorDisplayProps> = ({ t }) => {
 export const SuccessDisplay: React.FC<SuccessDisplayProps> = ({ t }) => {
   return (
     <div className="max-w-fit mx-auto p-4">
-      <h1 className="text-5xl font-bold mb-5">{t("title")}</h1>
       <EmailSuccessIcon size={65} />
       <div
         className="p-4 mb-4 grid grid-cols-1 gap-4 text-success-700 bg-success-100 rounded-lg dark:bg-success-200 dark:text-success-800"
-        role="alert">
+        role="alert"
+      >
         <p className="font-medium">{t("success")}</p>
       </div>
     </div>

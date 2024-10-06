@@ -36,14 +36,6 @@ const permissionsPolicy = `
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// const isDev = process.argv.indexOf('dev') !== -1
-// const isBuild = process.argv.indexOf('build') !== -1
-// if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
-//   process.env.VELITE_STARTED = '1'
-//   const { build } = await import('velite')
-//   await build({ watch: isDev, clean: !isDev })
-// }
-
 /**
  * @type {import('next').NextConfig}
  */
@@ -61,21 +53,10 @@ const nextConfig = {
           { key: 'X-DNS-Prefetch-Control', value: 'on' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'Permissions-Policy', value: permissionsPolicy },
-          // { key: 'Expect-CT', value: 'max-age=86400, enforce, report-uri="https://yourdomain.com/report"' },
         ],
       },
     ];
   },
-  // webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-  //   config.resolve.alias['@'] = path.resolve(__dirname);
-  //   config.resolve.alias['@/components'] = path.resolve(__dirname, 'src/components');
-  //   config.resolve.alias['@/config'] = path.resolve(__dirname, 'src/config');
-  //   config.resolve.alias['@/lib'] = path.resolve(__dirname, 'src/lib');
-
-  //   config.plugins.push(new VeliteWebpackPlugin())
-
-  //   return config;
-  // },
 };
 
 

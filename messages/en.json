@@ -4,46 +4,13 @@
       "title1": "Transforming Ideas Into",
       "title2": "Intelligent Solutions",
       "subtitle": "Web Development, Geospatial Expertise & Automation"
-    },
-    "about": {
-      "title": "Who I Am",
-      "description": "I'm Jérémie, a full-stack developer with a focus on Python automation and geospatial solutions, offering tailored web app development, e-commerce platforms, and GIS-driven process automation."
-    },
-    "services": {
-      "title": "What I Do",
-      "service1": {
-        "title": "Custom Web App Development",
-        "description": "Building tailored web applications that serve e-commerce, automation, and geospatial needs—creating solutions that scale with your business."
-      },
-      "service2": {
-        "title": "E-commerce Solutions",
-        "description": "I develop scalable, secure e-commerce platforms integrated with payment gateways, inventory management, and performance analytics to boost your online business."
-      },
-      "service3": {
-        "title": "Automation & GIS Solutions",
-        "description": "From automating repetitive processes to geospatial data analysis, I create systems that streamline workflows and reduce manual tasks, with a focus on Python and GIS technologies."
-      },
-      "cta_button": "Get Started",
-      "cta_link": "/services"
-    },
-    "cta_section": {
-      "title": "Let's Bring Your Project to Life",
-      "description": "Whether you’re looking to automate tasks, build a new web platform, or launch an e-commerce site, I’m here to help. Let’s work together to create a solution that works for you.",
-      "cta_button": "Contact Me",
-      "cta_link": "/contact"
-    },
-    "resume_portfolio": {
-      "title": "Explore My Work",
-      "description": "Check out my resume and portfolio to learn more about the projects I've delivered, including automation systems, web applications, and geospatial tools.",
-      "resume_link": "View Resume",
-      "portfolio_link": "View Portfolio"
     }
   },
   "collapsedMenu": {
-    "about": "About",
-    "resume": "Resume",
+    "profile": "Profile",
     "contact": "Contact",
-    "pricing": "Pricing",
+    "estimate": "Estimate",
+    "knowledge-hub": "Knowledge Hub",
     "privacy_policy": "Privacy Policy",
     "cookies_policy": "Cookie Policy",
     "searchBar": "Search...",
@@ -59,24 +26,31 @@
     "gpp": "Privacy Policy",
     "gts": "Terms of Service",
     "gtxt1": " and ",
-    "gtxt2": " apply.", 
+    "gtxt2": " apply.",
     "privacy": "Privacy Policy",
     "cookies": "Cookie Policy"
   },
-  "resume": {
-    "title": "Resume",
+  "profile": {
+    "title": "Profile",
     "hero": {
-      "title": "My Professional Journey.",
-      "subtitle": "Explore the path that transformed me into a full-stack developer and automation engineer."
+      "title": "Behind Jerenyon Dev.",
+      "subtitle": "From geospatial expertise to full-stack development and automation, here's how I built Jerenyon Dev."
+    }
+  },
+  "knowledge-hub": {
+    "title": "Knowledge Hub",
+    "hero": {
+      "title": "Explore, Learn, Build.",
+      "subtitle": "Delve into blog posts, How-Tos, and project showcases on automation, development, and geospatial solutions."
     }
   },
   "contact": {
     "title": "Contact",
     "hero": {
-      "title": "Get in Touch with Me.",
+      "title": "Get in Touch.",
       "subtitle": {
         "line1": "Have a question, a project in mind, or need support?",
-        "line2": "I will help you move forward."
+        "line2": "Jerenyon Dev is here to help you move forward."
       }
     },
     "firstName": "First Name",
@@ -92,8 +66,8 @@
     "error2": "There was a problem sending your email.",
     "error3": "Please try again later."
   },
-  "pricing": {
-    "title": "Pricing",
+  "estimate": {
+    "title": "Estimate",
     "hero": {
       "title": "Unlock Your Online Potential.",
       "subtitle": "From custom websites to advanced e-commerce and automation, delivering exactly what you need - today and tomorrow."

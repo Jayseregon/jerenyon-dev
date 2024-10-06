@@ -225,7 +225,7 @@ const FrontButtons = () => {
         // Generate the path string
         const path = points
           .map((point, i) =>
-            i === 0 ? `M ${point.x} ${point.y}` : `L ${point.x} ${point.y}`
+            i === 0 ? `M ${point.x} ${point.y}` : `L ${point.x} ${point.y}`,
           )
           .join(" ");
 
@@ -246,14 +246,12 @@ const FrontButtons = () => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full max-w-lg sm:max-w-xl md:max-w-4xl">
+      className="relative w-full h-full max-w-lg sm:max-w-xl md:max-w-4xl"
+    >
       <svg className="absolute inset-0 w-full h-full">
         <defs>
           <filter id="neon-blur">
-            <feGaussianBlur
-              result="blur"
-              stdDeviation="2"
-            />
+            <feGaussianBlur result="blur" stdDeviation="2" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -313,9 +311,10 @@ const FrontButtons = () => {
         showAnchorIcon
         as={Link}
         className={`absolute top-5 left-5 bg-background border-2 border-[#eec198] shadow-lg ${theme === "dark" ? "shadow-[#000039]" : "shadow-[#967b93]"} text-foreground p-2 z-50`}
-        href="/resume"
-        radius="full">
-        Resume
+        href="/profile"
+        radius="full"
+      >
+        The Journey
       </Button>
 
       <Button
@@ -323,9 +322,10 @@ const FrontButtons = () => {
         showAnchorIcon
         as={Link}
         className={`absolute top-5 right-5 bg-background border-2 border-[#eec198] shadow-lg ${theme === "dark" ? "shadow-[#000039]" : "shadow-[#967b93]"} text-foreground p-2 z-50`}
-        href="/contact"
-        radius="full">
-        Contact
+        href="/knowledge-hub"
+        radius="full"
+      >
+        The Knowledge Hub
       </Button>
 
       <Button
@@ -333,9 +333,10 @@ const FrontButtons = () => {
         showAnchorIcon
         as={Link}
         className={`absolute bottom-5 left-5 bg-background border-2 border-[#eec198] shadow-lg ${theme === "dark" ? "shadow-[#000039]" : "shadow-[#967b93]"} text-foreground p-2 z-50`}
-        href="/pricing"
-        radius="full">
-        Pricing
+        href="/estimate"
+        radius="full"
+      >
+        Tailor Your Quote
       </Button>
 
       <Button
@@ -343,9 +344,10 @@ const FrontButtons = () => {
         showAnchorIcon
         as={Link}
         className={`absolute bottom-5 right-5 bg-background border-2 border-[#eec198] shadow-lg ${theme === "dark" ? "shadow-[#000039]" : "shadow-[#967b93]"} text-foreground p-2 z-50`}
-        href="#"
-        radius="full">
-        Coming Soon
+        href="/contact"
+        radius="full"
+      >
+        Get in Touch
       </Button>
     </div>
   );

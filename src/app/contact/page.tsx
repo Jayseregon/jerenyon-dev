@@ -3,7 +3,10 @@
 import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useTranslations } from "next-intl";
+import { Button } from "@nextui-org/react";
+import { z } from "zod";
 
+import PageTitles from "@/src/components/ui/PageTitles";
 import {
   FieldInput,
   TextInput,
@@ -11,7 +14,16 @@ import {
   ErrorDisplay,
   SuccessDisplay,
 } from "@/src/components/contact/contactFormElements";
-import { Button } from "@nextui-org/react";
+
+// Define Zod schema for form validation
+const formSchema = z.object({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  subject: z.string().min(1, "Subject is required"),
+  email: z.string().email("Invalid email address"),
+  message: z.string().min(1, "Message is required"),
+  honeypot: z.string().optional(),
+});
 
 interface FormData {
   firstName: string;
@@ -42,7 +54,7 @@ export default function ContactPage() {
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({
       ...formData,
@@ -53,6 +65,18 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+
+    // Validate form data using Zod
+    const validation = formSchema.safeParse(formData);
+
+    if (!validation.success) {
+      setResponse({
+        error: validation.error.errors.map((err) => err.message).join(", "),
+      });
+      setLoading(false);
+
+      return;
+    }
 
     try {
       const res = await fetch("/api/contact", {
@@ -74,6 +98,13 @@ export default function ContactPage() {
     }
   };
 
+  const heroSubtitles = (
+    <div className="grid grid-cols-1 gap-2">
+      <span>{t("hero.subtitle.line1")}</span>
+      <span>{t("hero.subtitle.line2")}</span>
+    </div>
+  );
+
   if (response) {
     return (
       <div className="mt-4">
@@ -83,21 +114,16 @@ export default function ContactPage() {
   } else {
     return (
       <div>
-        <h1 className="text-purple-800 dark:text-purple-300 mb-3">
-          {t("title")}
-        </h1>
-        <h2 className="text-5xl font-bold">{t("hero.title")}</h2>
-        <h3 className="grid grid-cols-1 gap-2 text-xl mt-2 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto p-5">
-          <span>{t("hero.subtitle.line1")}</span>
-          <span>{t("hero.subtitle.line2")}</span>
-        </h3>
+        <PageTitles
+          heroSubtitle={heroSubtitles}
+          heroTitle={t("hero.title")}
+          pageTitle={t("title")}
+        />
 
         <div className="py-3" />
 
-        <div className="max-w-fit mx-auto p-4">
-          <form
-            className="space-y-4"
-            onSubmit={handleSubmit}>
+        <section className="max-w-fit mx-auto p-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <FieldInput
                 fieldTarget="firstName"
@@ -155,11 +181,12 @@ export default function ContactPage() {
               className="w-full bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:bg-purple-800 hover:text-background hover:dark:text-purple-300 focus:outline-none"
               disabled={loading || !recaptchaToken}
               radius="full"
-              type="submit">
+              type="submit"
+            >
               {loading ? t("btn_pending") : t("btn")}
             </Button>
           </form>
-        </div>
+        </section>
       </div>
     );
   }

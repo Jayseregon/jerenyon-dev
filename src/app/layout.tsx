@@ -26,13 +26,14 @@ type Props = {
 };
 
 export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
-  },
+  title: siteConfig.name,
+  // title: {
+  //   default: siteConfig.name,
+  //   template: `%s - ${siteConfig.name}`,
+  // },
   description: siteConfig.heroDescription,
   keywords: siteConfig.keywords,
-  authors: [{ name: "Jeremie Bitsch", url: siteConfig.siteUrl }],
+  authors: [{ name: siteConfig.name, url: siteConfig.siteUrl }],
   openGraph: {
     title: siteConfig.heroTitle,
     description:
@@ -84,7 +85,6 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(siteConfig.siteUrl),
 };
-
 const locales = ["en", "fr"];
 
 export function generateStaticParams() {

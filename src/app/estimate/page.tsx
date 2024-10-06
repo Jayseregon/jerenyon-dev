@@ -1,21 +1,22 @@
+"use client";
+
 import { useTranslations } from "next-intl";
 
 import { PricingBoard } from "@/src/components/pricing/PricingBoard";
 import { Addons } from "@/src/components/pricing/Addons";
 import { Maintenance } from "@/src/components/pricing/Maintenance";
+import PageTitles from "@/src/components/ui/PageTitles";
 
-export default function PricingPage() {
-  const t = useTranslations("pricing");
+export default function EstimatePage() {
+  const t = useTranslations("estimate");
 
   return (
     <div>
-      <h1 className="text-purple-800 dark:text-purple-300 mb-3">
-        {t("title")}
-      </h1>
-      <h2 className="text-5xl font-bold">{t("hero.title")}</h2>
-      <h3 className="text-xl mt-2 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto p-5">
-        {t("hero.subtitle")}
-      </h3>
+      <PageTitles
+        heroSubtitle={t("hero.subtitle")}
+        heroTitle={t("hero.title")}
+        pageTitle={t("title")}
+      />
 
       <div className="py-3" />
 

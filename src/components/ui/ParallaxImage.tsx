@@ -35,6 +35,8 @@ export default function ParallaxImage({
       const tiltX = e.gamma || 0; // Left to right tilt (gamma)
       const tiltY = e.beta || 0; // Front to back tilt (beta)
 
+      console.log(`Device Tilt - X: ${tiltX}, Y: ${tiltY}`); // Debugging log
+
       setDeviceTilt({ x: tiltX, y: tiltY });
     };
 
@@ -87,12 +89,13 @@ export default function ParallaxImage({
       darkImage: "layer-base-dark.png",
       lightImage: "layer-base-light.png",
     },
-    {
-      depth: 10,
-      zIndex: 20,
-      darkImage: "shadows-texts-dark.png",
-      lightImage: "shadows-texts-light.png",
-    },
+    // DEACTIVATE SHADOWS TO IMPROVE READABILITY
+    // {
+    //   depth: 10,
+    //   zIndex: 20,
+    //   darkImage: "shadows-texts-dark.png",
+    //   lightImage: "shadows-texts-light.png",
+    // },
     {
       depth: 10,
       zIndex: 30,

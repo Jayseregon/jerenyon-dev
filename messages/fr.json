@@ -4,46 +4,13 @@
       "title1": "Transformer les Idées en",
       "title2": "Solutions Intelligentes",
       "subtitle": "Développement web, expertise géospatiale et automatisation"
-    },
-    "about": {
-      "title": "Qui je suis",
-      "description": "Je suis Jérémie, un développeur full-stack spécialisé dans l'automatisation Python et les solutions géospatiales, offrant des développements d'applications web sur mesure, des plateformes de commerce électronique et l'automatisation des processus basés sur les SIG."
-    },
-    "services": {
-      "title": "Ce que je fais",
-      "service1": {
-        "title": "Développement d'applications web sur mesure",
-        "description": "Création d'applications web sur mesure répondant aux besoins du commerce électronique, de l'automatisation et des géospatiales—créant des solutions évolutives pour votre entreprise."
-      },
-      "service2": {
-        "title": "Solutions de commerce électronique",
-        "description": "Je développe des plateformes de commerce électronique évolutives et sécurisées intégrées avec des passerelles de paiement, la gestion des stocks et des analyses de performance pour booster votre activité en ligne."
-      },
-      "service3": {
-        "title": "Solutions d'automatisation et SIG",
-        "description": "De l'automatisation des processus répétitifs à l'analyse des données géospatiales, je crée des systèmes qui rationalisent les flux de travail et réduisent les tâches manuelles, en mettant l'accent sur Python et les technologies SIG."
-      },
-      "cta_button": "Commencer",
-      "cta_link": "/services"
-    },
-    "cta_section": {
-      "title": "Donnons vie à votre projet",
-      "description": "Que vous cherchiez à automatiser des tâches, à créer une nouvelle plateforme web ou à lancer un site de commerce électronique, je suis là pour vous aider. Travaillons ensemble pour créer une solution qui vous convient.",
-      "cta_button": "Contactez-moi",
-      "cta_link": "/contact"
-    },
-    "resume_portfolio": {
-      "title": "Explorez mon travail",
-      "description": "Consultez mon curriculum et mon portfolio pour en savoir plus sur les projets que j'ai réalisés, y compris les systèmes d'automatisation, les applications web et les outils géospatiaux.",
-      "resume_link": "Voir le curriculum",
-      "portfolio_link": "Voir le portfolio"
     }
   },
   "collapsedMenu": {
-    "about": "À propos",
-    "resume": "Curriculum",
+    "profile": "Profil",
     "contact": "Contact",
-    "pricing": "Tarifs",
+    "estimate": "Estimation",
+    "knowledge-hub": "Pôle Connaissance",
     "privacy_policy": "Politique de confidentialité",
     "cookies_policy": "Politique de cookies",
     "searchBar": "Rechercher...",
@@ -63,20 +30,27 @@
     "privacy": "Politique de confidentialité",
     "cookies": "Politique de cookies"
   },
-  "resume": {
-    "title": "Curriculum",
+  "profile": {
+    "title": "Profil",
     "hero": {
-      "title": "Mon parcours professionnel.",
-      "subtitle": "Explorez le chemin qui m'a transformé en développeur full-stack et ingénieur en automatisation."
+      "title": "Derrière Jerenyon Dev.",
+      "subtitle": "De l'expertise géospatiale au développement full-stack et à l'automatisation, voici comment j'ai construit Jerenyon Dev."
+    }
+  },
+  "knowledge-hub": {
+    "title": "Pôle Connaissance",
+    "hero": {
+      "title": "Explorer, Apprendre, Construire.",
+      "subtitle": "Plongez dans des articles de blog, des tutoriels et des présentations de projets sur l'automatisation, le développement et les solutions géospatiales."
     }
   },
   "contact": {
     "title": "Contact",
     "hero": {
-      "title": "Contactez-moi.",
+      "title": "Prenez contact.",
       "subtitle": {
-        "line1": "Vous avez une question, un projet en tête ou besoin de soutien?",
-        "line2": "Je vous aiderai à avancer."
+        "line1": "Vous avez une question, un projet en tête ou besoin de support?",
+        "line2": "Jerenyon Dev est là pour vous aider à avancer."
       }
     },
     "firstName": "Prénom",
@@ -92,8 +66,8 @@
     "error2": "Il y a eu un problème lors de l'envoi de votre e-mail.",
     "error3": "Veuillez réessayer plus tard."
   },
-  "pricing": {
-    "title": "Tarification",
+  "estimate": {
+    "title": "Estimation",
     "hero": {
       "title": "Libérez votre potentiel en ligne.",
       "subtitle": "Des sites web personnalisés aux solutions avancées de commerce électronique et d'automatisation, offrant exactement ce dont vous avez besoin - aujourd'hui et demain."
