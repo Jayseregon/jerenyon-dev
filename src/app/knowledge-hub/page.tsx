@@ -3,9 +3,28 @@
 import { useTranslations } from "next-intl";
 
 import PageTitles from "@/src/components/ui/PageTitles";
+import { ConeStripedIcon } from "@/src/components/icons";
 
 export default function KnowledgeHubPage() {
   const t = useTranslations("knowledge-hub");
+  const displayDevNotice = process.env.NODE_ENV !== "production";
+
+  const HubContent = <></>;
+
+  const DevNotice = (
+    <div
+      className="bg-yellow-200 dark:bg-yellow-900 border-4 rounded-xl border-yellow-400 dark:border-yellow-500 p-4 space-y-5"
+      role="alert"
+    >
+      <ConeStripedIcon size={100} />
+      <p className="font-bold text-3xl">{t("devNotice.title")}</p>
+      <p className="flex flex-col">
+        <span>{t("devNotice.line1")}</span>
+        <span>{t("devNotice.line2")}</span>
+      </p>
+      <p className="text-xl">{t("devNotice.line3")}</p>
+    </div>
+  );
 
   return (
     <div>
@@ -16,6 +35,8 @@ export default function KnowledgeHubPage() {
       />
 
       <div className="py-3" />
+
+      {displayDevNotice ? DevNotice : HubContent}
     </div>
   );
 }

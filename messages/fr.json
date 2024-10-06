@@ -42,6 +42,12 @@
     "hero": {
       "title": "Explorer, Apprendre, Construire.",
       "subtitle": "Plongez dans des articles de blog, des tutoriels et des présentations de projets sur l'automatisation, le développement et les solutions géospatiales."
+    },
+    "devNotice": {
+      "title": "Bientôt Disponible !",
+      "line1": "Nous sommes ravis d'annoncer que notre Centre de Connaissances est en cours de construction.",
+      "line2": "Il sera bientôt disponible avec une multitude d'articles, de tutoriels et de ressources.",
+      "line3": "Restez à l'écoute ! Et Merci pour votre patience !"
     }
   },
   "contact": {
