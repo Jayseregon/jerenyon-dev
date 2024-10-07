@@ -48,5 +48,17 @@ export const siteConfig = {
       href: "/contact",
     },
   ],
+  hubCategories: [
+    {
+      label: "articles-and-tutorials",
+      href: "/knowledge-hub",
+      imgBg: "/assets/blogs-articles.jpg",
+    },
+    {
+      label: "projects",
+      href: "/knowledge-hub",
+      imgBg: "/assets/projects.jpg",
+    },
+  ],
   links: {},
 };

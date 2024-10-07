@@ -48,6 +48,20 @@
       "line1": "We are excited to announce that our Knowledge Hub is under construction.",
       "line2": "It will soon be available with a wealth of articles, tutorials, and resources.",
       "line3": "Stay tuned! And Thank You for your patience!"
+    },
+    "hubCategories": {
+      "articles-and-tutorials": {
+        "title": "Articles & Turorials",
+        "description": "Explore the latest blog articles and step-by-step guides by Jerenyon Dev.",
+        "imgAlt": "Articles and Tutorials category card background.",
+        "btnLabel": "See More"
+      },
+      "projects": {
+        "title": "Projects",
+        "description": "Showcasing innovative solutions and tools built by Jerenyon Dev.",
+        "imgAlt": "Projects category card background.",
+        "btnLabel": "See More"
+      }
     }
   },
   "contact": {

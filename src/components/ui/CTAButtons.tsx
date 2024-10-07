@@ -1,11 +1,19 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, RefObject } from "react";
 import { motion } from "framer-motion";
-import { Link, Button } from "@nextui-org/react";
 import { useTheme } from "next-themes";
 
-const FrontButtons = () => {
+import FrontButton from "./FrontButton";
+
+interface FrontButtonProps {
+  ref: RefObject<HTMLButtonElement>;
+  href: string;
+  position: string;
+  children: React.ReactNode;
+}
+
+const CTAButtons = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRefs = [
     useRef<HTMLButtonElement>(null),
@@ -306,51 +314,35 @@ const FrontButtons = () => {
         ))}
       </svg>
 
-      <Button
-        ref={buttonRefs[0]}
-        showAnchorIcon
-        as={Link}
-        className={`absolute top-5 left-5 bg-background border-2 border-[#eec198] shadow-lg ${theme === "dark" ? "shadow-[#000039]" : "shadow-[#967b93]"} text-foreground p-2 z-50`}
-        href="/profile"
-        radius="full"
-      >
+      <FrontButton ref={buttonRefs[0]} href="/profile" position="top-5 left-5">
         The Journey
-      </Button>
+      </FrontButton>
 
-      <Button
+      <FrontButton
         ref={buttonRefs[1]}
-        showAnchorIcon
-        as={Link}
-        className={`absolute top-5 right-5 bg-background border-2 border-[#eec198] shadow-lg ${theme === "dark" ? "shadow-[#000039]" : "shadow-[#967b93]"} text-foreground p-2 z-50`}
         href="/knowledge-hub"
-        radius="full"
+        position="top-5 right-5"
       >
         The Knowledge Hub
-      </Button>
+      </FrontButton>
 
-      <Button
+      <FrontButton
         ref={buttonRefs[2]}
-        showAnchorIcon
-        as={Link}
-        className={`absolute bottom-5 left-5 bg-background border-2 border-[#eec198] shadow-lg ${theme === "dark" ? "shadow-[#000039]" : "shadow-[#967b93]"} text-foreground p-2 z-50`}
         href="/estimate"
-        radius="full"
+        position="bottom-5 left-5"
       >
         Tailor Your Quote
-      </Button>
+      </FrontButton>
 
-      <Button
+      <FrontButton
         ref={buttonRefs[3]}
-        showAnchorIcon
-        as={Link}
-        className={`absolute bottom-5 right-5 bg-background border-2 border-[#eec198] shadow-lg ${theme === "dark" ? "shadow-[#000039]" : "shadow-[#967b93]"} text-foreground p-2 z-50`}
         href="/contact"
-        radius="full"
+        position="bottom-5 right-5"
       >
         Get in Touch
-      </Button>
+      </FrontButton>
     </div>
   );
 };
 
-export default FrontButtons;
+export default CTAButtons;

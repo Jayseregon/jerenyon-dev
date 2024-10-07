@@ -48,6 +48,20 @@
       "line1": "Nous sommes ravis d'annoncer que notre Centre de Connaissances est en cours de construction.",
       "line2": "Il sera bientôt disponible avec une multitude d'articles, de tutoriels et de ressources.",
       "line3": "Restez à l'écoute ! Et Merci pour votre patience !"
+    },
+    "hubCategories": {
+      "articles-and-tutorials": {
+        "title": "Articles & Turoriels",
+        "description": "Explorez les derniers articles et guides étape par étape de Jerenyon Dev.",
+        "imgAlt": "Carte d'arrière-plan de la catégorie Articles et Tutoriels.",
+        "btnLabel": "Voir Plus"
+      },
+      "projects": {
+        "title": "Projets",
+        "description": "Exposition de solutions innovantes et d'outils développés par Jerenyon Dev.",
+        "imgAlt": "Arrière-plan de la carte de catégorie Projets.",
+        "btnLabel": "Voir Plus"
+      }
     }
   },
   "contact": {

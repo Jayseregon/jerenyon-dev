@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
-import FrontButtons from "./FrontButtons";
+import CTAButtons from "./CTAButtons";
 
 interface ParallaxImageProps {
   width?: string;
@@ -137,7 +137,7 @@ export default function ParallaxImage({
     >
       {/* Buttons */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <FrontButtons />
+        <CTAButtons />
       </div>
 
       {theme === "dark" ? renderLayers("dark") : renderLayers("light")}
