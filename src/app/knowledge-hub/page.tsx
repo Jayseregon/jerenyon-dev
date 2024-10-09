@@ -6,10 +6,10 @@ import { siteConfig } from "@/src/config/site";
 import PageTitles from "@/src/components/ui/PageTitles";
 import { StarsdIcon } from "@/src/components/icons";
 import MainCategoryCard from "@/src/components/knowledge-hub/MainCategoryCard";
+import WithBlockedViewOverlay from "@/src/components/_dev/WithBlockedViewOverlay";
 
 export default function KnowledgeHubPage() {
   const t = useTranslations("knowledge-hub");
-  const displayDevNotice = process.env.NODE_ENV === "production";
 
   const articles = [
     {
@@ -31,7 +31,7 @@ export default function KnowledgeHubPage() {
 
   const DevNotice = (
     <div
-      className="bg-yellow-200 dark:bg-yellow-900 border-4 rounded-xl border-yellow-400 dark:border-yellow-500 p-4 space-y-5"
+      className="bg-yellow-200/90 dark:bg-yellow-900/90 border-4 rounded-xl border-yellow-400 dark:border-yellow-500 p-4 space-y-5"
       role="alert"
     >
       <StarsdIcon size={100} />
@@ -54,22 +54,22 @@ export default function KnowledgeHubPage() {
 
       <div className="py-3" />
 
-      {/* {displayDevNotice ? DevNotice : <MainDashboard />} */}
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full">
-        {siteConfig.hubCategories.map((category, index) => (
-          <MainCategoryCard
-            key={index}
-            articles={articles}
-            buttonText={t(`hubCategories.${category.label}.btnLabel`)}
-            footerText={t(`hubCategories.${category.label}.description`)}
-            imageAlt={t(`hubCategories.${category.label}.imgAlt`)}
-            imageSrc={category.imgBg}
-            subtitle="New"
-            title={t(`hubCategories.${category.label}.title`)}
-          />
-        ))}
-      </div>
+      <WithBlockedViewOverlay notice={DevNotice}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full">
+          {siteConfig.hubCategories.map((category, index) => (
+            <MainCategoryCard
+              key={index}
+              articles={articles}
+              buttonText={t(`hubCategories.${category.label}.btnLabel`)}
+              footerText={t(`hubCategories.${category.label}.description`)}
+              imageAlt={t(`hubCategories.${category.label}.imgAlt`)}
+              imageSrc={category.imgBg}
+              subtitle="New"
+              title={t(`hubCategories.${category.label}.title`)}
+            />
+          ))}
+        </div>
+      </WithBlockedViewOverlay>
     </div>
   );
 }
