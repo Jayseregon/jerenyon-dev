@@ -18,7 +18,7 @@ const WithBlockedViewOverlay = ({
       {/* Display an overlay with an unauthorized message if the user does not have the required permission */}
       {!hasPermission && (
         <div className="absolute inset-0 rounded-xl bg-background bg-opacity-70 z-10 pointer-events-auto">
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 md:w-3/4">
             {notice}
           </div>
         </div>

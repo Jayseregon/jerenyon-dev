@@ -1,17 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef, useState, RefObject } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 
 import FrontButton from "./FrontButton";
-
-interface FrontButtonProps {
-  ref: RefObject<HTMLButtonElement>;
-  href: string;
-  position: string;
-  children: React.ReactNode;
-}
 
 const CTAButtons = () => {
   const containerRef = useRef<HTMLDivElement>(null);
