@@ -2,11 +2,11 @@
 
 import { useTranslations } from "next-intl";
 
-import { Timeline } from "@/src/components/profile/Timeline";
+import { Timeline } from "@/src/components/about/Timeline";
 import PageTitles from "@/src/components/ui/PageTitles";
 
-export default function ProfielPage() {
-  const t = useTranslations("profile");
+export default function AboutPage() {
+  const t = useTranslations("about");
 
   return (
     <div>

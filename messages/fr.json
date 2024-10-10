@@ -3,11 +3,11 @@
     "hero": {
       "title1": "Transformer les Idées en",
       "title2": "Solutions Intelligentes",
-      "subtitle": "Développement web, expertise géospatiale et automatisation"
+      "subtitle": "Développement web, automatisation et expertise géospatiale"
     }
   },
   "collapsedMenu": {
-    "profile": "Profil",
+    "about": "À Propos",
     "contact": "Contact",
     "estimate": "Estimation",
     "knowledge-hub": "Pôle Connaissance",
@@ -30,8 +30,8 @@
     "privacy": "Politique de confidentialité",
     "cookies": "Politique de cookies"
   },
-  "profile": {
-    "title": "Profil",
+  "about": {
+    "title": "À Propos",
     "hero": {
       "title": "Derrière Jerenyon Dev.",
       "subtitle": "De l'expertise géospatiale au développement full-stack et à l'automatisation, voici comment j'ai construit Jerenyon Dev."

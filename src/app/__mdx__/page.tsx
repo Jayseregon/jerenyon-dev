@@ -4,7 +4,7 @@ import { Link } from "@nextui-org/link";
 import { getListOfFiles } from "@/src/lib/mdReader";
 import { title } from "@/components/typography";
 
-export default function AboutPage() {
+export default function MdxPage() {
   const mdFiles = getListOfFiles("posts");
   const nonce = headers().get("x-nonce");
 

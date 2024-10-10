@@ -307,7 +307,7 @@ const CTAButtons = () => {
         ))}
       </svg>
 
-      <FrontButton ref={buttonRefs[0]} href="/profile" position="top-5 left-5">
+      <FrontButton ref={buttonRefs[0]} href="/about" position="top-5 left-5">
         The Journey
       </FrontButton>
 

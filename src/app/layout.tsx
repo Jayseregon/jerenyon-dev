@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: siteConfig.heroTitle,
     description:
-      "Web Development, Geospatial Expertise & Automation. Providing Python automation and cloud-based geospatial solutions.",
+      "Web Development, Automation & Geospatial Expertise. Providing Python automation and cloud-based geospatial solutions.",
     url: siteConfig.siteUrl,
     siteName: siteConfig.name,
     images: [
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
         url: siteConfig.icon.dark,
         width: 1200,
         height: 630,
-        alt: "Web development and geospatial expertise",
+        alt: "Web development, automation and geospatial expertise",
       },
     ],
     locale: "en_US",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
         url: siteConfig.icon.dark,
         width: 1200,
         height: 630,
-        alt: "Web development and geospatial expertise",
+        alt: "Web development, automation and geospatial expertise",
       },
     ],
   },

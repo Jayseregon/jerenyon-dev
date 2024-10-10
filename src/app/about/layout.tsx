@@ -3,9 +3,9 @@ import { Metadata } from "next";
 import { siteConfig } from "@/src/config/site";
 
 export const metadata: Metadata = {
-  title: `Behind ${siteConfig.name}: My Profile`,
+  title: `About and Behind ${siteConfig.name}`,
   description:
-    "Discover the developer behind Jerenyon Dev. Learn about expertise in Python automation, backend development, Django, and modern web development with Next.js and TypeScript. Explore roles in digital transformation, geospatial solutions, and technical leadership.",
+    "Learn about the developer behind Jerenyon Dev. Explore expertise in Python automation, backend development, Django, and modern web technologies like Next.js and TypeScript, along with geospatial solutions and digital transformation.",
   keywords: [
     "Python",
     "Next.js",
@@ -23,17 +23,17 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: siteConfig.name, url: siteConfig.siteUrl }],
   openGraph: {
-    title: "Profile - Jerenyon Dev",
+    title: "About - Jerenyon Dev",
     description:
-      "Explore the profile behind Jerenyon Dev, showcasing expertise in Python automation, backend development, Django, Next.js, TypeScript, and geospatial technologies.",
-    url: `${siteConfig.siteUrl}/profile`,
+      "Discover the story behind Jerenyon Dev, showcasing expertise in Python automation, backend development, Django, Next.js, TypeScript, and geospatial technologies.",
+    url: `${siteConfig.siteUrl}/about`,
     siteName: siteConfig.name,
     images: [
       {
         url: siteConfig.icon.dark,
         width: 1200,
         height: 630,
-        alt: "Profile - Jerenyon Dev",
+        alt: "About - Jerenyon Dev",
       },
     ],
     locale: "en_US",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Profile - Jerenyon Dev",
+    title: "About - Jerenyon Dev",
     description:
       "Professional expertise in Python automation, backend development, Django, Next.js, and geospatial solutions.",
     images: [
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
         url: siteConfig.icon.dark,
         width: 1200,
         height: 630,
-        alt: "Profile - Jerenyon Dev",
+        alt: "About - Jerenyon Dev",
       },
     ],
   },
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     "max-video-preview": -1,
   },
   alternates: {
-    canonical: `${siteConfig.siteUrl}/profile`,
+    canonical: `${siteConfig.siteUrl}/about`,
     languages: {
       "en-US": undefined,
       "fr-CA": undefined,
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ProfileLayout({
+export default function AboutLayout({
   children,
 }: {
   children: React.ReactNode;

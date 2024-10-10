@@ -4,9 +4,9 @@ export const siteConfig = {
   name: "Jerenyon Dev",
   siteUrl: "https://www.jerenyon.dev",
   heroTitle: "Transforming Ideas Into Intelligent Solutions",
-  heroSubtitle: "Web Development, Geospatial Expertise & Automation.",
+  heroSubtitle: "Web Development, Automation & Geospatial Expertise.",
   heroDescription:
-    "Web Development, Geospatial Expertise & Automation. Providing Python automation and cloud-based geospatial solutions.",
+    "Web Development, Automation & Geospatial Expertise. Providing Python automation and cloud-based geospatial solutions.",
   keywords: [
     "Web Development",
     "Geospatial Solutions",
@@ -32,8 +32,8 @@ export const siteConfig = {
   },
   navItems: [
     {
-      label: "profile",
-      href: "/profile",
+      label: "about",
+      href: "/about",
     },
     {
       label: "knowledge-hub",
