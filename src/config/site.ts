@@ -27,8 +27,8 @@ export const siteConfig = {
     "RAG",
   ],
   icon: {
-    dark: "/favicon-dark.png",
-    light: "/favicon-light.png",
+    dark: "/favicon-dark.webp",
+    light: "/favicon-light.webp",
   },
   navItems: [
     {

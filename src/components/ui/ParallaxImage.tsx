@@ -71,34 +71,27 @@ export default function ParallaxImage({
     {
       depth: 5,
       zIndex: 0,
-      darkImage: "shadows-neons-dark.png",
-      lightImage: "shadows-neons-light.png",
+      darkImage: "shadows-neons-dark.webp",
+      lightImage: "shadows-neons-light.webp",
     },
-    { depth: 5, zIndex: 0, image: "layer-neons.png" },
+    { depth: 5, zIndex: 0, image: "layer-neons.webp" },
     {
       depth: 7,
       zIndex: 10,
-      darkImage: "shadows-base-dark.png",
-      lightImage: "shadows-base-light.png",
+      darkImage: "shadows-base-dark.webp",
+      lightImage: "shadows-base-light.webp",
     },
     {
       depth: 7,
       zIndex: 10,
-      darkImage: "layer-base-dark.png",
-      lightImage: "layer-base-light.png",
+      darkImage: "layer-base-dark.webp",
+      lightImage: "layer-base-light.webp",
     },
-    // DEACTIVATE SHADOWS TO IMPROVE READABILITY
-    // {
-    //   depth: 10,
-    //   zIndex: 20,
-    //   darkImage: "shadows-texts-dark.png",
-    //   lightImage: "shadows-texts-light.png",
-    // },
     {
       depth: 10,
       zIndex: 30,
-      darkImage: "layer-texts-dark.png",
-      lightImage: "layer-texts-light.png",
+      darkImage: "layer-texts-dark.webp",
+      lightImage: "layer-texts-light.webp",
     },
   ];
 
