@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 
 import CTAButtons from "./CTAButtons";
 
@@ -73,25 +74,29 @@ export default function ParallaxImage({
       zIndex: 0,
       darkImage: "shadows-neons-dark.webp",
       lightImage: "shadows-neons-light.webp",
+      altImage: "shadows neons layer",
     },
-    { depth: 5, zIndex: 0, image: "layer-neons.webp" },
+    { depth: 5, zIndex: 0, image: "layer-neons.webp", altImage: "neons layer" },
     {
       depth: 7,
       zIndex: 10,
       darkImage: "shadows-base-dark.webp",
       lightImage: "shadows-base-light.webp",
+      altImage: "shadows base layer",
     },
     {
       depth: 7,
       zIndex: 10,
       darkImage: "layer-base-dark.webp",
       lightImage: "layer-base-light.webp",
+      altImage: "base layer",
     },
     {
       depth: 10,
       zIndex: 30,
       darkImage: "layer-texts-dark.webp",
       lightImage: "layer-texts-light.webp",
+      altImage: "texts layer layer",
     },
   ];
 
@@ -112,13 +117,20 @@ export default function ParallaxImage({
           className={`absolute inset-0 z-${layer.zIndex}`}
           nonce={nonce}
           style={{
-            backgroundImage: `url(/landingPage/${image})`,
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "contain",
           }}
           transition={{ type: "spring", stiffness: 50, damping: 20 }}
-        />
+        >
+          <Image
+            fill
+            priority
+            alt={layer.altImage}
+            src={`/landingPage/${image}`}
+            style={{ objectFit: "contain" }}
+          />
+        </motion.div>
       );
     });
   };

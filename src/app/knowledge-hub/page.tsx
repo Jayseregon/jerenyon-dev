@@ -13,17 +13,17 @@ export default function KnowledgeHubPage() {
 
   const articles = [
     {
-      thumbnail: "/assets/thumbnail-placeholder.jpg",
+      thumbnail: "/assets/thumbnail-placeholder.webp",
       title: "Article 1",
       description: "This is a short description of Article 1.",
     },
     {
-      thumbnail: "/assets/thumbnail-placeholder.jpg",
+      thumbnail: "/assets/thumbnail-placeholder.webp",
       title: "Article 2",
       description: "This is a short description of Article 2.",
     },
     {
-      thumbnail: "/assets/thumbnail-placeholder.jpg",
+      thumbnail: "/assets/thumbnail-placeholder.webp",
       title: "Article 3",
       description: "This is a short description of Article 3.",
     },

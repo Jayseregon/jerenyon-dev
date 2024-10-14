@@ -52,12 +52,12 @@ export const siteConfig = {
     {
       label: "articles-and-tutorials",
       href: "/knowledge-hub",
-      imgBg: "/assets/blogs-articles.jpg",
+      imgBg: "/assets/blogs-articles.webp",
     },
     {
       label: "projects",
       href: "/knowledge-hub",
-      imgBg: "/assets/projects.jpg",
+      imgBg: "/assets/projects.webp",
     },
   ],
   links: {},
