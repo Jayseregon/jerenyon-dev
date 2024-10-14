@@ -5,8 +5,8 @@ function cspMiddleware(req: NextRequest): NextResponse {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
   const cspHeader = `
       default-src 'self' https://www.jerenyon.dev;
-      script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu;
-      style-src 'self' 'nonce-${nonce}' https://www.jerenyon.dev https://app.termageddon.com;
+      script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live;
+      style-src 'self' 'nonce-${nonce}' https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
       img-src 'self' blob: data: https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net;
       font-src 'self' https://www.jerenyon.dev;
       connect-src 'self' https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu;
