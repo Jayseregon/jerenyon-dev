@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: siteConfig.icon.dark,
+        url: siteConfig.icon.light,
         width: 1200,
         height: 630,
         alt: "About - Jerenyon Dev",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
       "Professional expertise in Python automation, backend development, Django, Next.js, and geospatial solutions.",
     images: [
       {
-        url: siteConfig.icon.dark,
+        url: siteConfig.icon.light,
         width: 1200,
         height: 630,
         alt: "About - Jerenyon Dev",
@@ -54,9 +54,9 @@ export const metadata: Metadata = {
     ],
   },
   icons: {
-    icon: siteConfig.icon.dark,
-    shortcut: siteConfig.icon.dark,
-    apple: siteConfig.icon.dark,
+    icon: siteConfig.icon.light,
+    shortcut: siteConfig.icon.light,
+    apple: siteConfig.icon.light,
   },
   robots: {
     index: true,
