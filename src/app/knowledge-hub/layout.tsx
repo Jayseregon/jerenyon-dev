@@ -53,9 +53,9 @@ export const metadata: Metadata = {
     ],
   },
   icons: {
-    icon: siteConfig.icon.light,
-    shortcut: siteConfig.icon.light,
-    apple: siteConfig.icon.light,
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   robots: {
     index: true,
