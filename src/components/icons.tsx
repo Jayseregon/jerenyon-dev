@@ -1,7 +1,6 @@
 import * as React from "react";
 import Image from "next/image";
 import { SVGProps, ImgHTMLAttributes } from "react";
-import { useTheme } from "next-themes";
 
 import { siteConfig } from "@/config/site";
 
@@ -17,7 +16,6 @@ export type IconIcoProps = ImgHTMLAttributes<HTMLImageElement> & {
 };
 
 export const Logo = ({ size = 36, nonce }: IconIcoProps) => {
-  const { theme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -34,7 +32,7 @@ export const Logo = ({ size = 36, nonce }: IconIcoProps) => {
       alt={`${siteConfig.name} Logo`}
       height={size}
       nonce={nonce}
-      src={theme === "dark" ? siteConfig.icon.dark : siteConfig.icon.light}
+      src={siteConfig.icon}
       style={{ width: "auto", height: "auto" }}
       width={size}
     />

@@ -26,10 +26,7 @@ export const siteConfig = {
     "Retrieval-Augmented Generation",
     "RAG",
   ],
-  icon: {
-    dark: "/favicon-dark.webp",
-    light: "/favicon-light.webp",
-  },
+  icon: "/favicon.webp",
   navItems: [
     {
       label: "about",

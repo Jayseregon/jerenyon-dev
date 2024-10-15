@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: siteConfig.icon.light,
+        url: siteConfig.icon,
         width: 1200,
         height: 630,
         alt: "Web development, automation and geospatial expertise",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     description: siteConfig.heroSubtitle,
     images: [
       {
-        url: siteConfig.icon.light,
+        url: siteConfig.icon,
         width: 1200,
         height: 630,
         alt: "Web development, automation and geospatial expertise",
@@ -65,8 +65,8 @@ export const metadata: Metadata = {
     ],
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
     apple: "/apple-touch-icon.png",
   },
   robots: {

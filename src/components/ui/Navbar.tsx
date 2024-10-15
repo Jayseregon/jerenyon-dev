@@ -74,8 +74,8 @@ export default function Navbar({ nonce }: { nonce: string }) {
             {/* Logo on the left */}
             <div className="flex items-center">
               <NextLink className="flex items-center gap-4" href="/">
-                <Logo nonce={nonce} size={28} />
-                <span className="font-bold text-foreground text-nowrap ">
+                <Logo nonce={nonce} size={34} />
+                <span className="font-bold text-foreground text-xl text-nowrap ">
                   {siteConfig.name}
                 </span>
               </NextLink>
@@ -106,8 +106,8 @@ export default function Navbar({ nonce }: { nonce: string }) {
             {/* Logo on the left */}
             <div className="flex items-center">
               <NextLink className="flex items-center gap-4" href="/">
-                <Logo nonce={nonce} size={28} />
-                <span className="font-bold text-foreground text-nowrap">
+                <Logo nonce={nonce} size={34} />
+                <span className="font-bold text-foreground text-xl text-nowrap">
                   {siteConfig.name}
                 </span>
               </NextLink>

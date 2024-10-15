@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: siteConfig.icon.light,
+        url: siteConfig.icon,
         width: 1200,
         height: 630,
         alt: `Knowledge Hub - ${siteConfig.name}`,
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     description: `Explore in-depth tutorials, projects, and articles in Python automation, geospatial solutions, and web development by ${siteConfig.name}.`,
     images: [
       {
-        url: siteConfig.icon.light,
+        url: siteConfig.icon,
         width: 1200,
         height: 630,
         alt: `Knowledge Hub - ${siteConfig.name}`,
@@ -53,8 +53,8 @@ export const metadata: Metadata = {
     ],
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
     apple: "/apple-touch-icon.png",
   },
   robots: {
