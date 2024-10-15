@@ -96,7 +96,7 @@ export default function ParallaxImage({
       zIndex: 30,
       darkImage: "layer-texts-dark.webp",
       lightImage: "layer-texts-light.webp",
-      altImage: "texts layer layer",
+      altImage: "texts layer",
     },
   ];
 
@@ -125,8 +125,9 @@ export default function ParallaxImage({
         >
           <Image
             fill
-            priority
             alt={layer.altImage}
+            fetchPriority={"high"} // Set fetchPriority for LCP image
+            priority={true} // Set priority for LCP image
             src={`/landingPage/${image}`}
             style={{ objectFit: "contain" }}
           />

@@ -27,10 +27,6 @@ type Props = {
 
 export const metadata: Metadata = {
   title: siteConfig.name,
-  // title: {
-  //   default: siteConfig.name,
-  //   template: `%s - ${siteConfig.name}`,
-  // },
   description: siteConfig.heroDescription,
   keywords: siteConfig.keywords,
   authors: [{ name: siteConfig.name, url: siteConfig.siteUrl }],
@@ -96,6 +92,18 @@ export default async function RootLayout({ children }: Props) {
   const locale = await getLocale();
   const messages = await getMessages();
 
+  const parallaxImages = [
+    "shadows-neons-dark.webp",
+    "shadows-neons-light.webp",
+    "layer-neons.webp",
+    "shadows-base-dark.webp",
+    "shadows-base-light.webp",
+    "layer-base-dark.webp",
+    "layer-base-light.webp",
+    "layer-texts-dark.webp",
+    "layer-texts-light.webp",
+  ];
+
   return (
     <html suppressHydrationWarning lang={locale} {...(nonce ? { nonce } : {})}>
       <Head>
@@ -110,6 +118,15 @@ export default async function RootLayout({ children }: Props) {
           media="(prefers-color-scheme: dark)"
           name="theme-color"
         />
+        {/* Preload all parallax images */}
+        {parallaxImages.map((image) => (
+          <link
+            key={image}
+            as="image"
+            href={`/landingPage/${image}`}
+            rel="preload"
+          />
+        ))}
       </Head>
       <body
         className={clsx(

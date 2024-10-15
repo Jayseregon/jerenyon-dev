@@ -43,24 +43,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/knowledge-hub", changeFrequency: "daily", priority: 0.9 },
   ];
 
-  // const sitemap = `
-  //   <?xml version="1.0" encoding="UTF-8"?>
-  //   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  //     ${staticRoutes
-  //       .map(({ path, changeFrequency, priority }) => {
-  //         return `
-  //           <url>
-  //             <loc>${baseUrl}${path}</loc>
-  //             <lastmod>${new Date().toISOString()}</lastmod>
-  //             <changefreq>${changeFrequency}</changefreq>
-  //             <priority>${priority}</priority>
-  //           </url>
-  //         `;
-  //       })
-  //       .join("")}
-  //   </urlset>
-  // `.trim();
-
   return staticRoutes.map(({ path, changeFrequency, priority }) => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date(),
