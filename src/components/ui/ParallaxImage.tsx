@@ -1,5 +1,3 @@
-"use client";
-
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
@@ -126,8 +124,9 @@ export default function ParallaxImage({
           <Image
             fill
             alt={layer.altImage}
-            fetchPriority={"high"} // Set fetchPriority for LCP image
-            priority={true} // Set priority for LCP image
+            fetchPriority={"high"}
+            priority={true}
+            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
             src={`/landingPage/${image}`}
             style={{ objectFit: "contain" }}
           />
