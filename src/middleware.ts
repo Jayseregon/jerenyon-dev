@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// New CSP middleware function
 function cspMiddleware(req: NextRequest): NextResponse {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
+
   const cspHeader = `
     default-src 'self' https://www.jerenyon.dev;
-    script-src 'self' 'nonce-${nonce}' https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback;
+    script-src 'self' 'nonce-${nonce}' blob: https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback;
     style-src 'self' 'nonce-${nonce}' https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
-    img-src 'self' blob: data: https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net;
+    img-src 'self' blob: data: https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net https://app.usercentrics.eu;
     font-src 'self' https://www.jerenyon.dev;
     connect-src 'self' https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live;
     object-src 'none';
@@ -23,7 +23,6 @@ function cspMiddleware(req: NextRequest): NextResponse {
   const requestHeaders = new Headers(req.headers);
 
   requestHeaders.set("x-nonce", nonce);
-  requestHeaders.set("Content-Security-Policy", cspHeader);
 
   const response = NextResponse.next({
     request: {
@@ -36,23 +35,19 @@ function cspMiddleware(req: NextRequest): NextResponse {
   return response;
 }
 
-// Combined middleware function
 export function middleware(req: NextRequest) {
   const isDev = process.env.NODE_ENV === "development";
-  let response: NextResponse;
 
   if (!isDev) {
-    response = cspMiddleware(req);
+    return cspMiddleware(req);
   } else {
-    response = NextResponse.next();
+    return NextResponse.next();
   }
-
-  return response;
 }
 
 export const config = {
   matcher: [
-    "/", // Redirect to a matching locale at the root
+    "/", // Root
     "/((?!_next|_vercel|.*\\..*).*)", // Exclude certain paths
     "/((?!api|_next/static|_next/image|static|favicon.ico|favicon.png|favicon-light.png|favicon-dark.png).*)",
   ],
