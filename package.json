@@ -11,7 +11,7 @@
     "dev:prisma": "prisma generate",
     "build:prisma": "prisma generate && prisma migrate deploy",
     "dev": "concurrently \"npm:dev:*\"",
-    "build": "npm run build:content && build:prisma && npm run build:next",
+    "build": "npm run build:content && npm run build:prisma && npm run build:next",
     "start": "next start",
     "lint": "next lint --fix",
     "test": "jest"
