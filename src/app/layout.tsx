@@ -89,7 +89,7 @@ export function generateStaticParams() {
 }
 
 export default async function RootLayout({ children }: Props) {
-  const nonce = headers().get("x-nonce");
+  const nonce = headers().get("x-nonce") || "";
   const locale = await getLocale();
   const messages = await getMessages();
 
@@ -125,14 +125,20 @@ export default async function RootLayout({ children }: Props) {
             key={image}
             as="image"
             href={`/landingPage/${image}`}
+            nonce={nonce}
             rel="preload"
           />
         ))}
         {/* Preconnect and preload for Usercentrics */}
-        <link href="//privacy-proxy.usercentrics.eu" rel="preconnect" />
+        <link
+          href="//privacy-proxy.usercentrics.eu"
+          nonce={nonce}
+          rel="preconnect"
+        />
         <link
           as="script"
           href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
+          nonce={nonce}
           rel="preload"
         />
       </Head>
@@ -149,16 +155,15 @@ export default async function RootLayout({ children }: Props) {
       >
         <SpeedInsights />
         <Providers
-          nonce={nonce || undefined}
+          nonce={nonce}
           themeProps={{ attribute: "class", defaultTheme: "dark", children }}
         >
           <NextIntlClientProvider messages={messages}>
-            <RootLayoutStyling nonce={nonce || ""}>
-              {children}
-            </RootLayoutStyling>
+            <RootLayoutStyling nonce={nonce}>{children}</RootLayoutStyling>
           </NextIntlClientProvider>
         </Providers>
         <Script
+          nonce={nonce}
           src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           strategy="afterInteractive"
           type="application/javascript"
@@ -166,10 +171,12 @@ export default async function RootLayout({ children }: Props) {
         <Script
           data-settings-id="4vZk6dB-s7Fi9_"
           id="usercentrics-cmp"
+          nonce={nonce}
           src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
           strategy="afterInteractive"
         />
         <Script
+          nonce={nonce}
           src={`https://www.google.com/recaptcha/api.js?render=${process.env.RECAPTCHA_SECRET_KEY}`}
           strategy="afterInteractive"
         />

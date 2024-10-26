@@ -8,7 +8,7 @@ import QuotingTool from "@/src/components/estimate/QuotingTool";
 
 export default function EstimatePage() {
   const t = useTranslations("estimate");
-  const displayDevNotice = process.env.NODE_ENV === "production";
+  const displayDevNotice = process.env.NEXT_PUBLIC_DEV_NOTICE === "true";
 
   const DevNotice = (
     <div
