@@ -34,6 +34,9 @@ export default function Footer({ nonce }: FooterProps) {
           <Link className="underline" href="/policies/privacy">
             {t("privacy")}
           </Link>
+          <Link className="underline" href="/policies/terms">
+            {t("terms")}
+          </Link>
           <Link className="underline" href="/policies/cookies">
             {t("cookies")}
           </Link>

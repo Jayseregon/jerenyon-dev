@@ -3,7 +3,7 @@ import type { Config } from "tailwindcss";
 import { nextui } from "@nextui-org/theme";
 
 /** @type {import("tailwindcss").Config} */
-const config = {
+const config: import("tailwindcss").Config = {
   content: [
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,md,jsx,tsx,mdx}",
@@ -108,9 +108,9 @@ const config = {
   darkMode: "class",
   safelist: [
     {
-      pattern:
-        /bg-(primary|secondary|success|warning|danger)-[5|1|2|3|4|6|7|8|9]00/,
       variants: ["hover", "focus", "active"],
+      pattern:
+        /(bg|border|text)-(amber|purple|blue|green|red|yellow|indigo|pink|gray|teal|primary|secondary|success|warning|danger)-(100|200|300|400|500|600|700|800|900)/,
     },
   ],
   plugins: [

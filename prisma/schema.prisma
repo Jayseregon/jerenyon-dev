@@ -1,0 +1,185 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  schemas  = ["estimate"]
+}
+
+// Quote models
+model Quote {
+  id                 String                 @id @default(cuid())
+  status             QuoteStatus            @default(DRAFT)
+  createdAt          DateTime               @default(now())
+  updatedAt          DateTime               @updatedAt
+  clientName         String
+  clientEmail        String
+  comment            String?
+  totalPrice         Float                  @default(0)
+  // Relationships
+  services           Service[]
+  staticPages        StaticPage?
+  dynamicPages       DynamicPage?
+  authentication     AuthenticationMethod[]
+  legalPages         LegalPage[]
+  maintenancePlan    MaintenancePlan?
+  websiteType        WebsiteType?
+  customFeature      CustomFeature[]
+  automations        Automation[]
+  thirdPartyAPIs     ThirdPartyAPI[]
+  addons             Addons[]
+  // Default value when quote is initialized
+  websiteInitialized Boolean                @default(false)
+  sendDate           DateTime // When the quote is sent
+
+  @@schema("estimate")
+}
+
+enum QuoteStatus {
+  DRAFT
+  SENT
+  FINALIZED
+
+  @@schema("estimate")
+}
+
+model Service {
+  id          String  @id @default(cuid())
+  name        String
+  description String?
+  price       Float   @default(0)
+  // Relations
+  quote       Quote   @relation(fields: [quoteId], references: [id])
+  quoteId     String
+
+  @@schema("estimate")
+}
+
+model StaticPage {
+  id            String @id @default(cuid())
+  selectedPages Int    @default(0)
+  totalPrice    Float
+  // Relations
+  quote         Quote  @relation(fields: [quoteId], references: [id])
+  quoteId       String @unique
+
+  @@schema("estimate")
+}
+
+model DynamicPage {
+  id            String @id @default(cuid())
+  selectedPages Int    @default(0)
+  totalPrice    Float
+  // Relations
+  quote         Quote  @relation(fields: [quoteId], references: [id])
+  quoteId       String @unique
+
+  @@schema("estimate")
+}
+
+model AuthenticationMethod {
+  id      String @id @default(cuid())
+  method  String // e.g. Email, Facebook, Google, etc.
+  price   Float
+  // Relations
+  quote   Quote  @relation(fields: [quoteId], references: [id])
+  quoteId String
+
+  @@schema("estimate")
+}
+
+model LegalPage {
+  id          String  @id @default(cuid())
+  name        String
+  description String?
+  price       Float
+  // Relations
+  quote       Quote?  @relation(fields: [quoteId], references: [id])
+  quoteId     String? @unique
+
+  @@schema("estimate")
+}
+
+model MaintenancePlan {
+  id                 String  @id @default(cuid())
+  type               String // e.g. Monthly, Yearly
+  duration           Int
+  regularUpdates     Boolean
+  securityUpdates    Boolean
+  minorBugFixes      Boolean
+  featureEnhancement Boolean
+  prioritySupport    Boolean
+  // Relations
+  quote              Quote   @relation(fields: [quoteId], references: [id])
+  quoteId            String  @unique
+
+  @@schema("estimate")
+}
+
+model WebsiteType {
+  id      String  @id @default(cuid())
+  type    String // e.g. Ecommerce, Classic Website, Automation Platform
+  price   Float
+  // Relations
+  quote   Quote?  @relation(fields: [quoteId], references: [id])
+  quoteId String? @unique
+
+  @@schema("estimate")
+}
+
+model CustomFeature {
+  id          String  @id @default(cuid())
+  featureName String
+  price       Float
+  description String?
+  // Relations
+  quote       Quote?  @relation(fields: [quoteId], references: [id])
+  quoteId     String? @unique
+
+  @@schema("estimate")
+}
+
+model Automation {
+  id             String  @id @default(cuid())
+  automationType String
+  description    String?
+  price          Float
+  // Relations
+  quote          Quote?  @relation(fields: [quoteId], references: [id])
+  quoteId        String? @unique
+
+  @@schema("estimate")
+}
+
+model ThirdPartyAPI {
+  id          String  @id @default(cuid())
+  apiName     String
+  description String?
+  price       Float
+  // Relations
+  quote       Quote?  @relation(fields: [quoteId], references: [id])
+  quoteId     String? @unique
+
+  @@schema("estimate")
+}
+
+model Addons {
+  id          String  @id @default(cuid())
+  addonName   String
+  description String?
+  price       Float
+  // Relations
+  quote       Quote?  @relation(fields: [quoteId], references: [id])
+  quoteId     String? @unique
+
+  @@schema("estimate")
+}

@@ -28,7 +28,8 @@
     "gtxt1": " and ",
     "gtxt2": " apply.",
     "privacy": "Privacy Policy",
-    "cookies": "Cookie Policy"
+    "cookies": "Cookie Policy",
+    "terms": "Terms of Service"
   },
   "about": {
     "title": "About",
@@ -103,6 +104,17 @@
       "line1": "We are currently working on improving our estimate tool.",
       "line2": "Very soon it will be back online with new features and a fresh look.",
       "line3": "Thank you for your patience!"
+    },
+    "quotingTool": {
+      "clientName": "Enter your name or company name",
+      "clientEmail": "Enter your email address",
+      "clientComments": "Additional comments or requests",
+      "customLegal": "Custom Legal Page",
+      "customAuth": "Custom Authentication Method",
+      "customFeature": "Custom Feature",
+      "customAPI": "Custom API",
+      "customAddon": "Custom Addon",
+      "customAutomation": "Custom Automation"
     }
   },
   "policies": {
@@ -113,6 +125,10 @@
     "cookies_policy": {
       "title": "Cookie Policy",
       "heroTitle": "Tailored Experiences, Powered by Cookies."
+    },
+    "terms_of_service": {
+      "title": "Terms of Service",
+      "heroTitle": "Our Commitment to You."
     }
   }
 }

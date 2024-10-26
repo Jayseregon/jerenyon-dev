@@ -2,36 +2,13 @@
 
 import { useTranslations } from "next-intl";
 
-import { PricingBoard } from "@/src/components/pricing/PricingBoard";
-import { Addons } from "@/src/components/pricing/Addons";
-import { Maintenance } from "@/src/components/pricing/Maintenance";
 import PageTitles from "@/src/components/ui/PageTitles";
 import { ConeStripedIcon } from "@/src/components/icons";
+import QuotingTool from "@/src/components/estimate/QuotingTool";
 
 export default function EstimatePage() {
   const t = useTranslations("estimate");
   const displayDevNotice = process.env.NODE_ENV === "production";
-
-  const PricingContent = (
-    <>
-      <PricingBoard />
-
-      <div className="py-3" />
-
-      <h3 className="text-3xl font-bold">{t("addons")}</h3>
-      <Addons />
-      <Maintenance />
-
-      <p className="text-center text-sm text-purple-800/70 dark:text-purple-300/70 mt-5">
-        <span className="align-super text-sm">*</span>
-        {t("disclaimer.line1")}
-        <br />
-        {t("disclaimer.line2")}
-        <br />
-        {t("disclaimer.line3")}
-      </p>
-    </>
-  );
 
   const DevNotice = (
     <div
@@ -58,7 +35,7 @@ export default function EstimatePage() {
 
       <div className="py-3" />
 
-      {displayDevNotice ? DevNotice : PricingContent}
+      {displayDevNotice ? DevNotice : <QuotingTool />}
     </div>
   );
 }

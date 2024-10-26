@@ -61,6 +61,7 @@ export default function ThemeSwitch({ className, nonce }: ThemeSwitchProps) {
       >
         <SunThemeIcon nonce={nonce} />
       </motion.div>
+
       <motion.div
         className={cn(
           "absolute left-1 w-6 h-6 flex items-center justify-center",
@@ -73,6 +74,7 @@ export default function ThemeSwitch({ className, nonce }: ThemeSwitchProps) {
       >
         <MoonThemeIcon nonce={nonce} />
       </motion.div>
+
       <motion.div
         layout
         animate={{ x: theme === "dark" ? 30 : 0 }}

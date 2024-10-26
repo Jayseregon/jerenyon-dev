@@ -378,6 +378,9 @@ export const CollapsedMenu = ({
           >
             {t("footer.privacy")}
           </NextLink>
+          <NextLink className="underline" href="/policies/terms" nonce={nonce}>
+            {t("footer.terms")}
+          </NextLink>
           <NextLink
             className="underline"
             href="/policies/cookies"

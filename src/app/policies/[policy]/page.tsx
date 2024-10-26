@@ -14,6 +14,10 @@ const policyKeys = {
     apiKey: process.env.NEXT_PUBLIC_TERMAGEDDON_COOKIE_POLICY || "",
     translationId: "cookies_policy",
   },
+  terms: {
+    apiKey: process.env.NEXT_PUBLIC_TERMAGEDDON_TERMS_OF_SERVICE || "",
+    translationId: "terms_of_service",
+  },
 };
 
 export default function PolicyPage() {

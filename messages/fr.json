@@ -28,7 +28,8 @@
     "gtxt1": " et ",
     "gtxt2": " s'appliquent.",
     "privacy": "Politique de confidentialité",
-    "cookies": "Politique de cookies"
+    "cookies": "Politique de cookies",
+    "terms": "Conditions d'utilisation"
   },
   "about": {
     "title": "À Propos",
@@ -103,6 +104,17 @@
       "line1": "Nous travaillons actuellement à l'amélioration de notre outil d'estimation.",
       "line2": "Il sera très bientôt de retour en ligne avec de nouvelles fonctionnalités et un nouveau look.",
       "line3": "Merci pour votre patience !"
+    },
+    "quotingTool": {
+      "clientName": "Entrez votre nom ou nom de votre entreprise",
+      "clientEmail": "Entrez votre adresse e-mail",
+      "clientComments": "Commentaires ou demandes supplémentaires",
+      "customLegal": "Page Légale Personnalisée",
+      "customAuth": "Authentification Personnalisée",
+      "customFeature": "Fonctionnalité Personnalisée",
+      "customAPI": "API Personnalisée",
+      "customAddon": "Addon Personnalisé",
+      "customAutomation": "Automatisation Personnalisée"
     }
   },
   "policies": {
@@ -113,6 +125,10 @@
     "cookies_policy": {
       "title": "Politique de cookies",
       "heroTitle": "Expériences sur mesure, optimisées par les cookies."
+    },
+    "terms_of_service": {
+      "title": "Conditions d'utilisation",
+      "heroTitle": "Notre engagement envers vous."
     }
   }
 }

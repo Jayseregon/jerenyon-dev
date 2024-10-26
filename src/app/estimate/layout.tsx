@@ -4,7 +4,7 @@ import { siteConfig } from "@/src/config/site";
 
 export const metadata: Metadata = {
   title: `Estimate Your Project with ${siteConfig.name}`,
-  description: `Build a custom quote for your project with ${siteConfig.name}'s tailored services. Explore pricing for web development, automation, geospatial solutions, and advanced features with our dynamic estimate tool.`,
+  description: `Build a custom quote for your project with ${siteConfig.name}'s tailored services. Explore flexible pricing for web development, AI integration, geospatial solutions, and automation with our dynamic estimate tool.`,
   keywords: [
     "Custom Project Quote",
     "Web Development Pricing",
@@ -15,14 +15,17 @@ export const metadata: Metadata = {
     "Process Automation",
     "Web Development Services",
     "Custom Software Solutions",
-    "Dynamic Quote",
+    "Dynamic Quote Tool",
+    "AI Integration",
+    "API Integration",
+    "Geospatial Data Processing",
     "E-commerce Development",
     "Advanced Features",
   ],
   authors: [{ name: siteConfig.name, url: siteConfig.siteUrl }],
   openGraph: {
-    title: "Estimate Your Project - Custom Quote",
-    description: `Use the dynamic estimate tool to build a custom project quote for web development, automation, geospatial solutions, and more with ${siteConfig.name}.`,
+    title: "Estimate Your Project - Custom Quote Tool",
+    description: `Use ${siteConfig.name}'s dynamic estimate tool to customize your project quote for web development, automation, AI integration, and geospatial solutions.`,
     url: `${siteConfig.siteUrl}/estimate`,
     siteName: siteConfig.name,
     images: [
@@ -38,8 +41,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Estimate Your Project - Custom Quote",
-    description: `Explore flexible pricing and build a custom quote for your web development, automation, and geospatial projects with ${siteConfig.name}.`,
+    title: "Estimate Your Project - Custom Quote Tool",
+    description: `Explore ${siteConfig.name}'s custom quote tool for flexible pricing on web development, AI, automation, and geospatial solutions.`,
     images: [
       {
         url: siteConfig.icon,
