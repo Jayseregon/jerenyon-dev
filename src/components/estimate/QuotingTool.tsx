@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import cuid from "cuid";
 import { useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
+// import { useTranslations } from "next-intl";
 import { Button } from "@nextui-org/react";
 import { Card, CardBody } from "@nextui-org/card";
 
@@ -17,7 +17,7 @@ import { MaintenanceSection } from "./Quote-MaintenanceSection";
 
 export default function QuotingTool() {
   const router = useRouter();
-  const t = useTranslations("estimate");
+  // const t = useTranslations("estimate");
   const [quote, setQuote] = useState<QuoteForm>({
     clientName: "",
     clientEmail: "",
@@ -44,7 +44,7 @@ export default function QuotingTool() {
     addons: [],
   });
 
-  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [_sessionId, setSessionId] = useState<string | null>(null);
   const [customApiName, setCustomApiName] = useState<string>("");
   const [customAddonName, setCustomAddonName] = useState<string>("");
   const [customAutomation, setCustomAutomation] = useState<string>("");

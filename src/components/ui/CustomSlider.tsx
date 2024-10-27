@@ -33,7 +33,7 @@ export default function CustomSlider({
   };
 
   return (
-    <div className={`relative w-full ${className}`} nonce={nonce}>
+    <div className={`relative w-full ${className}`} id={id} nonce={nonce}>
       <RadixSlider.Root
         ref={ref}
         className="relative flex w-full cursor-grab touch-none select-none items-center py-4 active:cursor-grabbing"

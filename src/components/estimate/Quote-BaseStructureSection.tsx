@@ -1,6 +1,6 @@
 "use client";
 import React, { memo, useMemo } from "react";
-import { useTranslations } from "next-intl";
+// import { useTranslations } from "next-intl";
 
 import { QuoteSectionProps } from "@/interfaces/Quote";
 
@@ -12,7 +12,7 @@ export const BaseStructureSection = memo(function BaseStructureSection({
   quote,
   handleInputChange,
 }: QuoteSectionProps) {
-  const t = useTranslations("estimate");
+  // const t = useTranslations("estimate");
 
   const staticPagesSettings = useMemo(
     () => ({ minValue: 0, maxValue: 20, step: 1 }),

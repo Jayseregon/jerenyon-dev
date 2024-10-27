@@ -1,6 +1,6 @@
 "use client";
 import React, { memo, useMemo } from "react";
-import { useTranslations } from "next-intl";
+// import { useTranslations } from "next-intl";
 
 import { QuoteForm } from "@/interfaces/Quote";
 
@@ -27,7 +27,7 @@ export const AuthPermsSection = memo(function AuthPermsSection({
     checked: boolean,
   ) => void;
 }) {
-  const t = useTranslations("estimate");
+  // const t = useTranslations("estimate");
 
   const selectedMethods = useMemo(
     () => new Set(quote.authentication.map((auth) => auth.method)),

@@ -5,6 +5,7 @@ import React, { useContext } from "react";
 
 import { NonceContext } from "@/src/app/providers";
 import CustomToggleSwitch from "@/components/ui/CustomToggleSwitch";
+import { cn } from "@/src/lib/utils";
 
 interface QuoteSwitchProps {
   isOn: boolean;
@@ -36,9 +37,9 @@ export function QuoteSwitch({
   const nonce = useContext(NonceContext);
 
   return (
-    <div aria-label={ariaLabel} className="flex items-center">
+    <div aria-label={ariaLabel} className="flex items-start space-x-2 py-1.5">
       <CustomToggleSwitch
-        className={className}
+        className={cn("flex-shrink-0", className)}
         height={height}
         isOn={isOn}
         nonce={nonce}
@@ -49,7 +50,7 @@ export function QuoteSwitch({
         onIcon={onIcon}
         onToggle={onToggle}
       />
-      {label && <span className="ml-2">{label}</span>}
+      {label && <span className="leading-tight">{label}</span>}
     </div>
   );
 }

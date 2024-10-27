@@ -4,6 +4,7 @@ import { Card, CardHeader, CardBody } from "@nextui-org/react";
 
 import { NonceContext } from "@/src/app/providers";
 import { CardSectionProps } from "@/interfaces/Quote";
+import { cn } from "@/lib/utils";
 
 // CardSection Component
 export const CardSection = memo(function CardSection({
@@ -19,11 +20,11 @@ export const CardSection = memo(function CardSection({
       nonce={nonce}
     >
       <CardHeader>
-        <h2 className="text-xl font-semibold" nonce={nonce}>
+        <h2 className="text-2xl font-semibold" nonce={nonce}>
           {header}
         </h2>
       </CardHeader>
-      <CardBody className={bodyClassName}>{body}</CardBody>
+      <CardBody className={cn("text-lg", bodyClassName)}>{body}</CardBody>
     </Card>
   );
 });

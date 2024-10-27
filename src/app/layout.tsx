@@ -1,7 +1,6 @@
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 
-import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import clsx from "clsx";
 import { ReactNode } from "react";
@@ -130,7 +129,7 @@ export default async function RootLayout({ children }: Props) {
           />
         ))}
         {/* Preconnect and preload for Usercentrics */}
-        <link
+        {/* <link
           href="//privacy-proxy.usercentrics.eu"
           nonce={nonce}
           rel="preconnect"
@@ -140,7 +139,7 @@ export default async function RootLayout({ children }: Props) {
           href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           nonce={nonce}
           rel="preload"
-        />
+        /> */}
       </Head>
       <body
         className={clsx(
@@ -162,7 +161,7 @@ export default async function RootLayout({ children }: Props) {
             <RootLayoutStyling nonce={nonce}>{children}</RootLayoutStyling>
           </NextIntlClientProvider>
         </Providers>
-        <Script
+        {/* <Script
           nonce={nonce}
           src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           strategy="afterInteractive"
@@ -179,7 +178,7 @@ export default async function RootLayout({ children }: Props) {
           nonce={nonce}
           src={`https://www.google.com/recaptcha/api.js?render=${process.env.RECAPTCHA_SECRET_KEY}`}
           strategy="afterInteractive"
-        />
+        /> */}
       </body>
     </html>
   );
