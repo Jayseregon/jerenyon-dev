@@ -200,10 +200,6 @@ export default async function RootLayout({ children }: Props) {
           id="usercentrics-cmp"
           src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
         />
-
-        <Script id="usercentrics-custom-translations" nonce={nonce}>
-          {`uc.setCustomTranslations("https://termageddon.ams3.cdn.digitaloceanspaces.com/translations/");`}
-        </Script>
       </body>
     </html>
   );
