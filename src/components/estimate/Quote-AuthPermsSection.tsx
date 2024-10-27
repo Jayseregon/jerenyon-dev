@@ -45,11 +45,12 @@ export const AuthPermsSection = memo(function AuthPermsSection({
                 ariaLabel={`${method} Authentication`}
                 isOn={selectedMethods.has(method)}
                 label={
-                  <span className="inline-flex items-center gap-1">
+                  <span>
                     {label}
                     {sup && <sup>{sup}</sup>}
                     {subLabel && (
                       <span className="text-sm text-gray-500 dark:text-gray-400">
+                        {" "}
                         {subLabel}
                       </span>
                     )}

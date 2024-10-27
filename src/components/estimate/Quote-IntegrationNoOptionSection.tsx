@@ -30,11 +30,12 @@ export const IntegrationNoOptionSection = memo(
                 ariaLabel={`${name} Integration`}
                 isOn={customItemNames.has(name)}
                 label={
-                  <span className="space-x-2">
+                  <span>
                     {label}
                     {sup && <sup>{sup}</sup>}
                     {subLabel && (
                       <span className="text-sm text-gray-500 dark:text-gray-400">
+                        {" "}
                         {subLabel}
                       </span>
                     )}

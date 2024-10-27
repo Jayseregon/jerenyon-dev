@@ -1,6 +1,8 @@
 "use client";
-import React, { memo } from "react";
 
+import React, { memo, useContext } from "react";
+
+import { NonceContext } from "@/src/app/providers";
 import {
   FieldInputProps,
   QuoteOptionSliderProps,
@@ -20,6 +22,7 @@ export const FieldInput = memo(function FieldInput({
   radius = "rounded-md",
   variance = "border",
 }: FieldInputProps) {
+  const nonce = useContext(NonceContext);
   const baseClasses = `mt-1 block ${width} ${height} bg-background text-foreground py-2 px-3 focus:outline-none focus:ring-primary-400 focus:border-primary-400`;
   const borderClasses = `${radius} border border-purple-800 dark:border-purple-300`;
   const noBorderClasses =
@@ -31,6 +34,7 @@ export const FieldInput = memo(function FieldInput({
       className={`${baseClasses} ${variance === "border" ? borderClasses : noBorderClasses}`}
       id={fieldTarget}
       name={fieldTarget}
+      nonce={nonce}
       placeholder={t(fieldTarget)}
       type={type}
       value={value}
@@ -50,6 +54,7 @@ export const TextInput = memo(function TextInput({
   radius = "rounded-md",
   variance = "border",
 }: TextInputProps) {
+  const nonce = useContext(NonceContext);
   const baseClasses = `mt-1 block ${width} ${height} bg-background text-foreground  py-2 px-3 focus:outline-none focus:ring-primary-400 focus:border-primary-400`;
   const borderClasses = `${radius} border border-purple-800 dark:border-purple-300`;
   const noBorderClasses =
@@ -61,6 +66,7 @@ export const TextInput = memo(function TextInput({
       className={`${baseClasses} ${variance === "border" ? borderClasses : noBorderClasses}`}
       id={fieldTarget}
       name={fieldTarget}
+      nonce={nonce}
       placeholder={t(fieldTarget)}
       value={value}
       onChange={onChange}
@@ -76,9 +82,15 @@ export const QuoteOptionSlider = memo(function QuoteOptionSlider({
   value,
   onChange,
 }: QuoteOptionSliderProps) {
+  const nonce = useContext(NonceContext);
+
   return (
     <div className="space-y-1">
-      <label className="block text-sm font-medium text-start" htmlFor={id}>
+      <label
+        className="block text-sm font-medium text-start"
+        htmlFor={id}
+        nonce={nonce}
+      >
         {label}
       </label>
       <CustomSlider

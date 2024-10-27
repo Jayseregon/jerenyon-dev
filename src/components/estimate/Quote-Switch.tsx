@@ -1,27 +1,10 @@
 "use client";
 
-import { Sun, Moon, Check } from "lucide-react";
-import React, { useState } from "react";
+import { Check } from "lucide-react";
+import React, { useContext } from "react";
 
+import { NonceContext } from "@/src/app/providers";
 import CustomToggleSwitch from "@/components/ui/CustomToggleSwitch";
-
-export function DemoQuoteSwitch() {
-  const [isOn, setIsOn] = useState(false);
-
-  return (
-    <CustomToggleSwitch
-      height={24}
-      isOn={isOn}
-      nonce="your-nonce-value"
-      offColor="purple"
-      offIcon={<Moon />}
-      width={48}
-      onColor="amber"
-      onIcon={<Sun />}
-      onToggle={() => setIsOn(!isOn)}
-    />
-  );
-}
 
 interface QuoteSwitchProps {
   isOn: boolean;
@@ -35,7 +18,6 @@ interface QuoteSwitchProps {
   offIcon?: React.ReactNode;
   width?: number;
   height?: number;
-  nonce?: string;
 }
 
 export function QuoteSwitch({
@@ -50,8 +32,9 @@ export function QuoteSwitch({
   offIcon = null,
   width = 35,
   height = 20,
-  nonce,
 }: QuoteSwitchProps) {
+  const nonce = useContext(NonceContext);
+
   return (
     <div aria-label={ariaLabel} className="flex items-center">
       <CustomToggleSwitch

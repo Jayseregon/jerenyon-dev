@@ -86,7 +86,7 @@ export const MaintenanceSection = ({
               />
 
               {/* Plan Options */}
-              <div className="flex flex-col md:flex-row gap-4">
+              <div className="grid grid-cols-2 sm: grid-cols-2 gap-4">
                 {/* Regular Plan */}
                 <motion.div
                   animate={

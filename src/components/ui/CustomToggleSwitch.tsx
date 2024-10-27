@@ -28,7 +28,6 @@ const allowedColors = [
   "pink",
   "gray",
   "teal",
-  // Add more colors as needed
 ];
 
 export default function CustomToggleSwitch({
