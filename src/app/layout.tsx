@@ -9,6 +9,7 @@ import { headers } from "next/headers";
 import { getLocale, getMessages } from "next-intl/server";
 import Head from "next/head";
 import Script from "next/script";
+import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
 import RootLayoutStyling from "@/components/ui/RootLayoutStyling";
@@ -136,12 +137,12 @@ export default async function RootLayout({ children }: Props) {
           />
         ))}
         {/* Preconnect and preload for Usercentrics */}
-        <link
+        <Link
           href="//privacy-proxy.usercentrics.eu"
           nonce={nonce}
           rel="preconnect"
         />
-        <link
+        <Link
           as="script"
           href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           nonce={nonce}
@@ -168,24 +169,41 @@ export default async function RootLayout({ children }: Props) {
             <RootLayoutStyling nonce={nonce}>{children}</RootLayoutStyling>
           </NextIntlClientProvider>
         </Providers>
-        <Script
+        {/* <Script
           nonce={nonce}
           src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           strategy="afterInteractive"
           type="application/javascript"
-        />
-        <Script
+        /> */}
+        {/* <Script
           data-settings-id="4vZk6dB-s7Fi9_"
           id="usercentrics-cmp"
           nonce={nonce}
           src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
           strategy="afterInteractive"
-        />
+        /> */}
         <Script
           nonce={nonce}
           src={`https://www.google.com/recaptcha/api.js?render=${process.env.RECAPTCHA_SECRET_KEY}`}
           strategy="afterInteractive"
         />
+
+        <Script
+          nonce={nonce}
+          src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
+          type="application/javascript"
+        />
+
+        <Script
+          async
+          data-settings-id="4vZk6dB-s7Fi9_"
+          id="usercentrics-cmp"
+          src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
+        />
+
+        <Script id="usercentrics-custom-translations" nonce={nonce}>
+          {`uc.setCustomTranslations("https://termageddon.ams3.cdn.digitaloceanspaces.com/translations/");`}
+        </Script>
       </body>
     </html>
   );
