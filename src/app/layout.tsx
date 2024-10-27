@@ -105,9 +105,15 @@ export default async function RootLayout({ children }: Props) {
   ];
 
   return (
-    <html suppressHydrationWarning lang={locale} {...(nonce ? { nonce } : {})}>
+    <html
+      suppressHydrationWarning
+      lang={locale}
+      {...(nonce ? { nonce } : {})}>
       <Head>
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta
+          content="width=device-width, initial-scale=1"
+          name="viewport"
+        />
         <meta
           content="white"
           media="(prefers-color-scheme: light)"
@@ -119,7 +125,7 @@ export default async function RootLayout({ children }: Props) {
           name="theme-color"
         />
         {/* Preload all parallax images */}
-        {parallaxImages.map((image) => (
+        {/* {parallaxImages.map((image) => (
           <link
             key={image}
             as="image"
@@ -127,7 +133,7 @@ export default async function RootLayout({ children }: Props) {
             nonce={nonce}
             rel="preload"
           />
-        ))}
+        ))} */}
         {/* Preconnect and preload for Usercentrics */}
         {/* <link
           href="//privacy-proxy.usercentrics.eu"
@@ -148,15 +154,13 @@ export default async function RootLayout({ children }: Props) {
           fontMono.variable,
           fontSerif.variable,
           fontDisplay.variable,
-          fontSansAlt.variable,
+          fontSansAlt.variable
         )}
-        {...(nonce ? { nonce } : {})}
-      >
+        {...(nonce ? { nonce } : {})}>
         <SpeedInsights />
         <Providers
           nonce={nonce}
-          themeProps={{ attribute: "class", defaultTheme: "dark", children }}
-        >
+          themeProps={{ attribute: "class", defaultTheme: "dark", children }}>
           <NextIntlClientProvider messages={messages}>
             <RootLayoutStyling nonce={nonce}>{children}</RootLayoutStyling>
           </NextIntlClientProvider>
