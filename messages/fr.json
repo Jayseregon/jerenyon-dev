@@ -106,9 +106,9 @@
       "line3": "Merci pour votre patience !"
     },
     "quotingTool": {
-      "clientName": "Entrez votre nom ou nom de votre entreprise",
-      "clientEmail": "Entrez votre adresse e-mail",
-      "clientComments": "Commentaires ou demandes supplémentaires",
+      "clientName": "Nom ou entreprise",
+      "clientEmail": "E-mail",
+      "clientComments": "Commentaires ou requêtes",
       "customLegal": "Page Légale Personnalisée",
       "customAuth": "Authentification Personnalisée",
       "customFeature": "Fonctionnalité Personnalisée",

@@ -93,7 +93,6 @@ export const IntegrationWithOptionSection = memo(
                 t={t}
                 type="text"
                 value={customValue}
-                variance="underline"
                 onChange={(e) => handleCustomValueChange(e.target.value)}
               />
               <div className="h-full content-end" nonce={nonce}>

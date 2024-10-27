@@ -92,8 +92,6 @@ export interface FieldInputProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   width?: string;
   height?: string;
-  radius?: string;
-  variance?: "border" | "underline";
 }
 
 export interface TextInputProps {
@@ -103,8 +101,6 @@ export interface TextInputProps {
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   width?: string;
   height?: string;
-  radius?: string;
-  variance?: "border" | "underline";
 }
 
 export interface CardSectionProps {

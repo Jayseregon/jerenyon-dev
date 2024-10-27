@@ -24,7 +24,6 @@ export const ClientInfoSection = memo(function ClientInfoSection({
             t={t}
             type="text"
             value={quote.clientName}
-            variance="underline"
             onChange={(e) => handleInputChange("clientName", e.target.value)}
           />
           <FieldInput
@@ -33,7 +32,6 @@ export const ClientInfoSection = memo(function ClientInfoSection({
             t={t}
             type="email"
             value={quote.clientEmail}
-            variance="underline"
             onChange={(e) => handleInputChange("clientEmail", e.target.value)}
           />
           <TextInput
@@ -41,7 +39,6 @@ export const ClientInfoSection = memo(function ClientInfoSection({
             fieldTarget="quotingTool.clientComments"
             t={t}
             value={quote.comment}
-            variance="underline"
             onChange={(e) => handleInputChange("comment", e.target.value)}
           />
         </>

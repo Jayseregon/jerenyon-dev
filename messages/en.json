@@ -106,9 +106,9 @@
       "line3": "Thank you for your patience!"
     },
     "quotingTool": {
-      "clientName": "Enter your name or company name",
-      "clientEmail": "Enter your email address",
-      "clientComments": "Additional comments or requests",
+      "clientName": "Name or company",
+      "clientEmail": "Email",
+      "clientComments": "Comments or requests",
       "customLegal": "Custom Legal Page",
       "customAuth": "Custom Authentication Method",
       "customFeature": "Custom Feature",

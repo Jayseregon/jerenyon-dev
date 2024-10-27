@@ -19,19 +19,13 @@ export const FieldInput = memo(function FieldInput({
   onChange,
   width = "w-full",
   height = "h-10",
-  radius = "rounded-md",
-  variance = "border",
 }: FieldInputProps) {
   const nonce = useContext(NonceContext);
-  const baseClasses = `mt-1 block ${width} ${height} bg-background text-foreground py-2 px-3 focus:outline-none focus:ring-primary-400 focus:border-primary-400`;
-  const borderClasses = `${radius} border border-purple-800 dark:border-purple-300`;
-  const noBorderClasses =
-    "border-0 border-b-2 border-purple-800 dark:border-purple-300";
 
   return (
     <input
       required
-      className={`${baseClasses} ${variance === "border" ? borderClasses : noBorderClasses}`}
+      className={`mt-1 block ${width} ${height} border-b-2 border-purple-800 dark:border-purple-300 bg-background text-foreground py-2 px-3 focus:outline-none focus:ring-primary-400 focus:border-primary-400`}
       id={fieldTarget}
       name={fieldTarget}
       nonce={nonce}
@@ -51,19 +45,13 @@ export const TextInput = memo(function TextInput({
   onChange,
   width = "w-full",
   height = "h-16",
-  radius = "rounded-md",
-  variance = "border",
 }: TextInputProps) {
   const nonce = useContext(NonceContext);
-  const baseClasses = `mt-1 block ${width} ${height} bg-background text-foreground  py-2 px-3 focus:outline-none focus:ring-primary-400 focus:border-primary-400`;
-  const borderClasses = `${radius} border border-purple-800 dark:border-purple-300`;
-  const noBorderClasses =
-    "border-0 border-b-2 border-purple-800 dark:border-purple-300";
 
   return (
     <textarea
       required
-      className={`${baseClasses} ${variance === "border" ? borderClasses : noBorderClasses}`}
+      className={`mt-1 block ${width} ${height} border-b-2 border-purple-800 dark:border-purple-300 bg-background text-foreground  py-2 px-3 focus:outline-none focus:ring-primary-400 focus:border-primary-400`}
       id={fieldTarget}
       name={fieldTarget}
       nonce={nonce}
@@ -87,7 +75,7 @@ export const QuoteOptionSlider = memo(function QuoteOptionSlider({
   return (
     <div className="space-y-1">
       <label
-        className="block text-sm font-medium text-start"
+        className="block font-medium text-start"
         htmlFor={id}
         nonce={nonce}
       >
