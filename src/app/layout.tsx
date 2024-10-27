@@ -9,7 +9,6 @@ import { headers } from "next/headers";
 import { getLocale, getMessages } from "next-intl/server";
 import Head from "next/head";
 import Script from "next/script";
-import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
 import RootLayoutStyling from "@/components/ui/RootLayoutStyling";
@@ -107,7 +106,10 @@ export default async function RootLayout({ children }: Props) {
   ];
 
   return (
-    <html suppressHydrationWarning lang={locale} {...(nonce ? { nonce } : {})}>
+    <html
+      suppressHydrationWarning
+      lang={locale}
+      {...(nonce ? { nonce } : {})}>
       <Head>
         <meta
           content="width=device-width, initial-scale=1"
@@ -137,17 +139,17 @@ export default async function RootLayout({ children }: Props) {
           />
         ))}
         {/* Preconnect and preload for Usercentrics */}
-        <Link
+        {/* <link
           href="//privacy-proxy.usercentrics.eu"
           nonce={nonce}
           rel="preconnect"
         />
-        <Link
+        <link
           as="script"
           href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           nonce={nonce}
           rel="preload"
-        />
+        /> */}
       </Head>
       <body
         className={clsx(
@@ -156,15 +158,13 @@ export default async function RootLayout({ children }: Props) {
           fontMono.variable,
           fontSerif.variable,
           fontDisplay.variable,
-          fontSansAlt.variable,
+          fontSansAlt.variable
         )}
-        nonce={nonce}
-      >
+        nonce={nonce}>
         <SpeedInsights />
         <Providers
           nonce={nonce}
-          themeProps={{ attribute: "class", defaultTheme: "dark", children }}
-        >
+          themeProps={{ attribute: "class", defaultTheme: "dark", children }}>
           <NextIntlClientProvider messages={messages}>
             <RootLayoutStyling nonce={nonce}>{children}</RootLayoutStyling>
           </NextIntlClientProvider>
@@ -186,19 +186,6 @@ export default async function RootLayout({ children }: Props) {
           nonce={nonce}
           src={`https://www.google.com/recaptcha/api.js?render=${process.env.RECAPTCHA_SECRET_KEY}`}
           strategy="afterInteractive"
-        />
-
-        <Script
-          nonce={nonce}
-          src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
-          type="application/javascript"
-        />
-
-        <Script
-          async
-          data-settings-id="4vZk6dB-s7Fi9_"
-          id="usercentrics-cmp"
-          src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
         />
       </body>
     </html>
