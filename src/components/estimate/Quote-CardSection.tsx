@@ -19,7 +19,7 @@ export const CardSection = memo(function CardSection({
       className="bg-background rounded-lg shadow-xl border border-purple-800 dark:border-purple-300"
       nonce={nonce}
     >
-      <CardHeader>
+      <CardHeader nonce={nonce}>
         <h2 className="text-2xl font-semibold" nonce={nonce}>
           {header}
         </h2>

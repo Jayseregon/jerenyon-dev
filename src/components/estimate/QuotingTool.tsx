@@ -1,11 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import cuid from "cuid";
 import { useRouter } from "next/navigation";
 // import { useTranslations } from "next-intl";
 import { Button } from "@nextui-org/react";
 import { Card, CardBody } from "@nextui-org/card";
 
+import { NonceContext } from "@/src/app/providers";
 import { QuoteForm } from "@/src/interfaces/Quote";
 
 import { ClientInfoSection } from "./Quote-ClientInfoSection";
@@ -18,6 +19,7 @@ import { MaintenanceSection } from "./Quote-MaintenanceSection";
 export default function QuotingTool() {
   const router = useRouter();
   // const t = useTranslations("estimate");
+  const nonce = useContext(NonceContext);
   const [quote, setQuote] = useState<QuoteForm>({
     clientName: "",
     clientEmail: "",
@@ -546,8 +548,8 @@ export default function QuotingTool() {
   };
 
   return (
-    <div className="p-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div className="p-4" nonce={nonce}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5" nonce={nonce}>
         {/* Client information for submit */}
         <ClientInfoSection
           handleInputChange={handleInputChange}
@@ -628,18 +630,22 @@ export default function QuotingTool() {
           quote={quote}
         />
 
-        <Card className="bg-background rounded-lg shadow-xl border border-purple-800 dark:border-purple-300 mb-8 mt-5 w-full col-span-1 md:col-span-2">
-          <CardBody>
+        <Card
+          className="bg-background rounded-lg shadow-xl border border-purple-800 dark:border-purple-300 mb-8 mt-5 w-full col-span-1 md:col-span-2"
+          nonce={nonce}
+        >
+          <CardBody nonce={nonce}>
             <Button
               fullWidth
               aria-label="Submit Quote"
               color="primary"
+              nonce={nonce}
               variant="flat"
               onClick={handleSubmit}
             >
               Submit Quote
             </Button>
-            <h2 className="text-xl font-semibold mt-4">
+            <h2 className="text-xl font-semibold mt-4" nonce={nonce}>
               Estimated Price: ${quote.totalPrice.toFixed(2)}
             </h2>
           </CardBody>

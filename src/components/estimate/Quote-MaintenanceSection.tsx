@@ -1,8 +1,9 @@
 "use client";
-import React, { useMemo } from "react";
+import React, { useMemo, useContext } from "react";
 import { Circle, CircleCheck, CircleCheckBig } from "lucide-react";
 import { motion } from "framer-motion";
 
+import { NonceContext } from "@/src/app/providers";
 import { MaintenanceSectionProps } from "@/interfaces/Quote";
 import { CustomRadioGroup, CustomRadio } from "@/components/ui/CustomRadio";
 
@@ -15,6 +16,7 @@ export const MaintenanceSection = ({
   handleDurationChange,
   handlePlanOptionChange,
 }: MaintenanceSectionProps) => {
+  const nonce = useContext(NonceContext);
   const { maintenancePlan } = quote;
   const { type, duration } = maintenancePlan;
 
@@ -86,7 +88,10 @@ export const MaintenanceSection = ({
               />
 
               {/* Plan Options */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                nonce={nonce}
+              >
                 {/* Regular Plan */}
                 <motion.div
                   animate={
@@ -97,26 +102,36 @@ export const MaintenanceSection = ({
                       ? "bg-purple-200 dark:bg-purple-950 shadow-md shadow-purple-300 dark:shadow-[#2a0548]"
                       : "bg-background"
                   }`}
+                  nonce={nonce}
                   variants={planVariants}
                   onClick={() => handlePlanClick("regular")}
                 >
-                  <div className="flex items-center mb-4">
-                    <span className="text-lg font-semibold text-foreground">
+                  <div className="flex items-center mb-4" nonce={nonce}>
+                    <span
+                      className="text-lg font-semibold text-foreground"
+                      nonce={nonce}
+                    >
                       Regular Plan
                     </span>
                     {planOptionValue === "regular" && (
                       <CircleCheckBig className="ml-2" color="#22c55e" />
                     )}
                   </div>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2" nonce={nonce}>
                     {regularPlanOptions.map((label) => (
-                      <li key={label} className="flex items-center">
+                      <li
+                        key={label}
+                        className="flex items-center"
+                        nonce={nonce}
+                      >
                         {planOptionValue === "regular" ? (
                           <CircleCheck className="mr-2" color="#22c55e" />
                         ) : (
                           <Circle className="mr-2" color="#9ca3af" />
                         )}
-                        <span className="text-foreground">{label}</span>
+                        <span className="text-foreground" nonce={nonce}>
+                          {label}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -132,30 +147,40 @@ export const MaintenanceSection = ({
                       ? "bg-purple-200 dark:bg-purple-950 shadow-md shadow-purple-300 dark:shadow-[#2a0548]"
                       : "bg-background"
                   }`}
+                  nonce={nonce}
                   variants={planVariants}
                   onClick={() => handlePlanClick("advanced")}
                 >
-                  <div className="flex items-center mb-4">
-                    <span className="text-lg font-semibold text-foreground">
+                  <div className="flex items-center mb-4" nonce={nonce}>
+                    <span
+                      className="text-lg font-semibold text-foreground"
+                      nonce={nonce}
+                    >
                       Advanced Plan
                     </span>
                     {planOptionValue === "advanced" && (
                       <CircleCheckBig className="ml-2" color="#22c55e" />
                     )}
                   </div>
-                  <p className="mb-2 text-foreground break-words">
+                  <p className="mb-2 text-foreground break-words" nonce={nonce}>
                     Includes all features from Regular Plan, plus:
                   </p>
 
-                  <ul className="space-y-2">
+                  <ul className="space-y-2" nonce={nonce}>
                     {advancedPlanOptions.map((label) => (
-                      <li key={label} className="flex items-center">
+                      <li
+                        key={label}
+                        className="flex items-center"
+                        nonce={nonce}
+                      >
                         {planOptionValue === "advanced" ? (
                           <CircleCheck className="mr-2" color="#22c55e" />
                         ) : (
                           <Circle className="mr-2" color="#9ca3af" />
                         )}
-                        <span className="text-foreground">{label}</span>
+                        <span className="text-foreground" nonce={nonce}>
+                          {label}
+                        </span>
                       </li>
                     ))}
                   </ul>

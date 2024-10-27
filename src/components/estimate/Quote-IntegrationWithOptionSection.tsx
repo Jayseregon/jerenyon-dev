@@ -1,9 +1,10 @@
 "use client";
-import React, { memo, useMemo } from "react";
+import React, { memo, useMemo, useContext } from "react";
 import { useTranslations } from "next-intl";
 import { SquarePlus } from "lucide-react";
 import { Button } from "@nextui-org/react";
 
+import { NonceContext } from "@/src/app/providers";
 import { IntegrationWithOptionSectionProps } from "@/interfaces/Quote";
 
 import { CardSection } from "./Quote-CardSection";
@@ -24,6 +25,7 @@ export const IntegrationWithOptionSection = memo(
     handleCustomValueChange,
   }: IntegrationWithOptionSectionProps) {
     const t = useTranslations("estimate");
+    const nonce = useContext(NonceContext);
 
     const predefinedItems = useMemo(() => {
       const customItemNames = new Set(customItems.map((item) => item.name));
@@ -84,7 +86,7 @@ export const IntegrationWithOptionSection = memo(
               />
             ))}
             {/* Input Custom Item */}
-            <div className="flex flex-row gap-2">
+            <div className="flex flex-row gap-2" nonce={nonce}>
               <FieldInput
                 aria-label={`Custom ${header} Name`}
                 fieldTarget={customField}
@@ -94,11 +96,12 @@ export const IntegrationWithOptionSection = memo(
                 variance="underline"
                 onChange={(e) => handleCustomValueChange(e.target.value)}
               />
-              <div className="h-full content-end">
+              <div className="h-full content-end" nonce={nonce}>
                 <Button
                   isIconOnly
                   aria-label={`Add Custom ${header}`}
                   color="primary"
+                  nonce={nonce}
                   radius="sm"
                   variant="light"
                   onClick={handleCustomIntegrationChange}
