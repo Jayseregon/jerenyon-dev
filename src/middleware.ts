@@ -4,11 +4,11 @@ function cspMiddleware(req: NextRequest): NextResponse {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
 
   const cspHeader = `
-  default-src 'self' https://www.jerenyon.dev;
+  default-src 'self' https://www.jerenyon.dev https://api.usercentrics.eu https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://www.google.com https://www.gstatic.com https://vercel.live;
   script-src 'self' 'nonce-${nonce}' https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live;
-  style-src 'self' 'nonce-${nonce}' https://www.jerenyon.dev https://app.termageddon.com https://vercel.live 'unsafe-inline';
+  style-src 'self' 'nonce-${nonce}' https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
   img-src 'self' blob: data: https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net https://vercel.live https://vercel.com;
-  font-src 'self' https://www.jerenyon.dev https://vercel.live https://assets.vercel.com
+  font-src 'self' https://www.jerenyon.dev https://vercel.live https://assets.vercel.com;
   connect-src 'self' https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live wss://ws-us3.pusher.com;
   object-src 'none';
   base-uri 'self' https://www.jerenyon.dev;

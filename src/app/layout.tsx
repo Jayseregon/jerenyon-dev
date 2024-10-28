@@ -130,12 +130,12 @@ export default async function RootLayout({ children }: Props) {
           />
         ))}
         {/* Preconnect and preload for Usercentrics */}
-        <link href="//privacy-proxy.usercentrics.eu" rel="preconnect" />
+        {/* <link href="//privacy-proxy.usercentrics.eu" rel="preconnect" />
         <link
           as="script"
           href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           rel="preload"
-        />
+        /> */}
       </Head>
       <body
         className={clsx(
@@ -157,7 +157,7 @@ export default async function RootLayout({ children }: Props) {
             <RootLayoutStyling nonce={nonce}>{children}</RootLayoutStyling>
           </NextIntlClientProvider>
         </Providers>
-        <Script
+        {/* <Script
           src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           strategy="afterInteractive"
           type="application/javascript"
@@ -167,7 +167,7 @@ export default async function RootLayout({ children }: Props) {
           id="usercentrics-cmp"
           src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
           strategy="afterInteractive"
-        />
+        /> */}
         <Script
           src={`https://www.google.com/recaptcha/api.js?render=${process.env.RECAPTCHA_SECRET_KEY}`}
           strategy="afterInteractive"
