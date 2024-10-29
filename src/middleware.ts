@@ -20,10 +20,12 @@ function cspMiddleware(req: NextRequest): NextResponse {
   //   .replace(/\s{2,}/g, " ")
   //   .trim();
 
+  // script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live;
+
   const cspHeader = `
   default-src 'self' https://www.jerenyon.dev;
-  script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live;
-  style-src 'self' 'nonce-${nonce}' https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
+  script-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live;
+  style-src 'self' 'nonce-${nonce}' 'unsafe-inline' https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
   img-src 'self' blob: data: https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net;
   font-src 'self' https://www.jerenyon.dev;
   connect-src 'self' https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu;

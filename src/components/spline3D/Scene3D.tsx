@@ -18,6 +18,7 @@ export default function Scene3D() {
     <div>
       <Suspense fallback={<Loading />}>
         <Spline scene="/spline/scene2.splinecode" />
+        {/* <Spline scene="/spline/scene2.splinecode" /> */}
       </Suspense>
     </div>
   );
