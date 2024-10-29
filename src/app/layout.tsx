@@ -93,17 +93,17 @@ export default async function RootLayout({ children }: Props) {
   const locale = await getLocale();
   const messages = await getMessages();
 
-  const parallaxImages = [
-    "shadows-neons-dark.webp",
-    "shadows-neons-light.webp",
-    "layer-neons.webp",
-    "shadows-base-dark.webp",
-    "shadows-base-light.webp",
-    "layer-base-dark.webp",
-    "layer-base-light.webp",
-    "layer-texts-dark.webp",
-    "layer-texts-light.webp",
-  ];
+  // const parallaxImages = [
+  //   "shadows-neons-dark.webp",
+  //   "shadows-neons-light.webp",
+  //   "layer-neons.webp",
+  //   "shadows-base-dark.webp",
+  //   "shadows-base-light.webp",
+  //   "layer-base-dark.webp",
+  //   "layer-base-light.webp",
+  //   "layer-texts-dark.webp",
+  //   "layer-texts-light.webp",
+  // ];
 
   return (
     <html suppressHydrationWarning lang={locale} {...(nonce ? { nonce } : {})}>
@@ -120,7 +120,7 @@ export default async function RootLayout({ children }: Props) {
           name="theme-color"
         />
         {/* Preload all parallax images */}
-        {parallaxImages.map((image) => (
+        {/* {parallaxImages.map((image) => (
           <link
             key={image}
             as="image"
@@ -128,9 +128,9 @@ export default async function RootLayout({ children }: Props) {
             nonce={nonce}
             rel="preload"
           />
-        ))}
+        ))} */}
         {/* Preconnect and preload for Usercentrics */}
-        <link
+        {/* <link
           href="//privacy-proxy.usercentrics.eu"
           nonce={nonce}
           rel="preconnect"
@@ -140,7 +140,7 @@ export default async function RootLayout({ children }: Props) {
           href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           nonce={nonce}
           rel="preload"
-        />
+        /> */}
       </Head>
       <body
         className={clsx(
@@ -162,7 +162,7 @@ export default async function RootLayout({ children }: Props) {
             <RootLayoutStyling nonce={nonce}>{children}</RootLayoutStyling>
           </NextIntlClientProvider>
         </Providers>
-        <Script
+        {/* <Script
           nonce={nonce}
           src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           strategy="afterInteractive"
@@ -174,7 +174,7 @@ export default async function RootLayout({ children }: Props) {
           nonce={nonce}
           src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
           strategy="afterInteractive"
-        />
+        /> */}
         <Script
           nonce={nonce}
           src={`https://www.google.com/recaptcha/api.js?render=${process.env.RECAPTCHA_SECRET_KEY}`}
