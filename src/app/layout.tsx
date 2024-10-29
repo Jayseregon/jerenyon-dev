@@ -161,12 +161,14 @@ export default async function RootLayout({ children }: Props) {
           fontSansAlt.variable
         )}
         nonce={nonce}>
-        {/* <SpeedInsights /> */}
         <Providers
           nonce={nonce}
           themeProps={{ attribute: "class", defaultTheme: "dark", children }}>
           <NextIntlClientProvider messages={messages}>
-            <RootLayoutStyling nonce={nonce}>{children}</RootLayoutStyling>
+            <RootLayoutStyling nonce={nonce}>
+              {children}
+              <SpeedInsights />
+            </RootLayoutStyling>
           </NextIntlClientProvider>
         </Providers>
         {/* <Script
