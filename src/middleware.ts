@@ -24,11 +24,11 @@ function cspMiddleware(req: NextRequest): NextResponse {
 
   const cspHeader = `
   default-src 'self' https://www.jerenyon.dev;
-  script-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live;
+  script-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://jerenyon-dev-remote-pull.b-cdn.net;
   style-src 'self' 'nonce-${nonce}' 'unsafe-inline' https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
-  img-src 'self' blob: data: https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net;
+  img-src 'self' blob: data: https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net https://jerenyon-dev-remote-pull.b-cdn.net;
   font-src 'self' https://www.jerenyon.dev;
-  connect-src 'self' https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu;
+  connect-src 'self' https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://unpkg.com https://jerenyon-dev-remote-pull.b-cdn.net;
   object-src 'none';
   base-uri 'self' https://www.jerenyon.dev;
   form-action 'self' https://www.jerenyon.dev;
