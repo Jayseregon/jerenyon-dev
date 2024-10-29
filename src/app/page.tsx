@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { headers } from "next/headers";
 
-import ParallaxImage from "@/components/ui/ParallaxImage";
+import Scene3D from "@/components/spline3D/Scene3D";
 
 import { siteConfig } from "../config/site";
 
@@ -15,17 +15,27 @@ export default function RootPage() {
 
   return (
     <div
-      className="relative h-screen w-screen overflow-hidden grid grid-rows-[minmax(0,70%)_minmax(0,30%)] sm:grid-rows-[minmax(0,80%)_minmax(0,25%)]"
+      className="relative border-2 border-red-500 h-screen w-screen overflow-hidden grid grid-rows-[minmax(0,70%)_minmax(0,30%)] sm:grid-rows-[minmax(0,80%)_minmax(0,25%)]"
       nonce={nonce}
     >
       {/* Parallax Image */}
-      <div className="relative row-span-1 max-h-[70vh] mt-16" nonce={nonce}>
-        <ParallaxImage height="100%" nonce={nonce ?? undefined} width="100%" />
+      <div
+        // className="relative row-span-1 max-h-[70vh] mt-16 border-2"
+        className="relative row-span-1 border-2"
+        nonce={nonce}
+      >
+        {/* <ParallaxImage
+          height="100%"
+          nonce={nonce ?? undefined}
+          width="100%"
+        /> */}
+
+        <Scene3D />
       </div>
 
       {/* Hero Title and Subtitle */}
       <div
-        className="flex flex-col items-center justify-start pb-5 overflow-hidden"
+        className="flex flex-col items-center justify-start pb-5 overflow-hidden border-2"
         nonce={nonce}
       >
         <div
@@ -50,17 +60,15 @@ export default function RootPage() {
           </div>
         </div>
 
-        <div
+        {/* <div
           className="text-center w-full max-w-full my-2 overflow-hidden"
-          nonce={nonce}
-        >
+          nonce={nonce}>
           <h3
             className="text-purple-800 dark:text-purple-300 text-xs sm:text-sm md:text-base"
-            nonce={nonce}
-          >
+            nonce={nonce}>
             {t("hero.subtitle")}
           </h3>
-        </div>
+        </div> */}
       </div>
     </div>
   );

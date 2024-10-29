@@ -37,6 +37,8 @@
     "@radix-ui/react-slider": "^1.2.1",
     "@react-aria/ssr": "3.9.6",
     "@react-aria/visually-hidden": "3.8.16",
+    "@splinetool/react-spline": "^4.0.0",
+    "@splinetool/runtime": "^1.9.35",
     "@types/mdx": "^2.0.13",
     "@vercel/speed-insights": "^1.0.12",
     "axios": "^1.7.7",
