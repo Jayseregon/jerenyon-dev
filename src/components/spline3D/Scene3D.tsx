@@ -17,8 +17,9 @@ export default function Scene3D() {
   return (
     <div>
       <Suspense fallback={<Loading />}>
+        None
         {/* <Spline scene="/spline/scene2.splinecode" /> */}
-        <Spline scene="https://jerenyon-dev-remote-pull.b-cdn.net/spline-scene/landing-codeblock-scene.splinecode" />
+        {/* <Spline scene="https://jerenyon-dev-remote-pull.b-cdn.net/spline-scene/landing-codeblock-scene.splinecode" /> */}
       </Suspense>
     </div>
   );
