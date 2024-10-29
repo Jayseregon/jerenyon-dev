@@ -23,7 +23,11 @@ export function Providers({ children, themeProps, nonce }: ProvidersProps) {
   return (
     <NonceContext.Provider value={nonce}>
       <NextUIProvider navigate={router.push}>
-        <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
+        <NextThemesProvider
+          nonce={nonce}
+          {...themeProps}>
+          {children}
+        </NextThemesProvider>
       </NextUIProvider>
     </NonceContext.Provider>
   );
