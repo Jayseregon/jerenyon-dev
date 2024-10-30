@@ -48,7 +48,7 @@ function splineCspMiddleware(req: NextRequest): NextResponse {
     connect-src 'self' https://unpkg.com https://jerenyon-dev-remote-pull.b-cdn.net https://fonts.gstatic.com;
     object-src 'none';
     base-uri 'self' https://www.jerenyon.dev;
-    frame-ancestors 'none';
+    frame-ancestors 'self' https://www.jerenyon.dev https://staging.jerenyon.dev;
     upgrade-insecure-requests;
   `
     .replace(/\s{2,}/g, " ")
