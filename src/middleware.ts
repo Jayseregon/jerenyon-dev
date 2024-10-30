@@ -29,6 +29,7 @@ function cspMiddleware(req: NextRequest): NextResponse {
   img-src 'self' blob: data: https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net https://jerenyon-dev-remote-pull.b-cdn.net;
   font-src 'self' https://www.jerenyon.dev https://fonts.gstatic.com;
   connect-src 'self' https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://unpkg.com https://jerenyon-dev-remote-pull.b-cdn.net https://fonts.gstatic.com;
+  prefetch-src 'self' https://jerenyon-dev-remote-pull.b-cdn.net;
   object-src 'none';
   base-uri 'self' https://www.jerenyon.dev;
   form-action 'self' https://www.jerenyon.dev;

@@ -1,28 +1,16 @@
-import React, { Suspense } from "react";
+import dynamic from "next/dynamic";
 
 import Loading from "./loading";
-// import Spline from "@splinetool/react-spline/next";
 
-const Spline = React.lazy(() => import("@splinetool/react-spline/next"));
+const SplineScene = dynamic(() => import("./SplineScene"), {
+  ssr: false, // Disable server-side rendering
+  loading: () => <Loading />, // Show loading indicator
+});
 
 export default function Scene3D() {
-  //   const cube = useRef();
-
-  //   function onLoad(spline: any) {
-  //     const obj = spline.findObjectByName("button-estimate");
-  //     cube.current = obj;
-  //     console.log(obj);
-  //   }
-
   return (
-    <div>
-      <Suspense fallback={<Loading />}>
-        None
-        {/* <Spline scene="/spline/scene2.splinecode" /> */}
-        {/* <Spline scene="https://jerenyon-dev-remote-pull.b-cdn.net/spline-scene/landing-codeblock-scene.splinecode" /> */}
-      </Suspense>
+    <div className="relative h-full w-full">
+      <SplineScene />
     </div>
   );
 }
-
-// button-estimate

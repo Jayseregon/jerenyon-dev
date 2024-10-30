@@ -106,10 +106,7 @@ export default async function RootLayout({ children }: Props) {
   // ];
 
   return (
-    <html
-      suppressHydrationWarning
-      lang={locale}
-      {...(nonce ? { nonce } : {})}>
+    <html suppressHydrationWarning lang={locale} {...(nonce ? { nonce } : {})}>
       <Head>
         <meta
           content="width=device-width, initial-scale=1"
@@ -127,6 +124,13 @@ export default async function RootLayout({ children }: Props) {
           media="(prefers-color-scheme: dark)"
           name="theme-color"
           nonce={nonce}
+        />
+        <link
+          as="fetch"
+          crossOrigin="anonymous"
+          href="https://jerenyon-dev-remote-pull.b-cdn.net/spline-scene/landing-codeblock-scene.splinecode"
+          nonce={nonce}
+          rel="preload"
         />
         {/* Preload all parallax images */}
         {/* {parallaxImages.map((image) => (
@@ -158,12 +162,14 @@ export default async function RootLayout({ children }: Props) {
           fontMono.variable,
           fontSerif.variable,
           fontDisplay.variable,
-          fontSansAlt.variable
+          fontSansAlt.variable,
         )}
-        nonce={nonce}>
+        nonce={nonce}
+      >
         <Providers
           nonce={nonce}
-          themeProps={{ attribute: "class", defaultTheme: "dark", children }}>
+          themeProps={{ attribute: "class", defaultTheme: "dark", children }}
+        >
           <NextIntlClientProvider messages={messages}>
             <RootLayoutStyling nonce={nonce}>
               {children}

@@ -14,57 +14,38 @@ export default function RootPage() {
   const nonce = headers().get("x-nonce") ?? "";
 
   return (
-    <div
-      className="relative border-2 border-red-500 h-screen w-screen overflow-hidden grid grid-rows-[minmax(0,70%)_minmax(0,30%)] sm:grid-rows-[minmax(0,80%)_minmax(0,25%)]"
-      nonce={nonce}>
+    <div className="relative h-screen w-screen overflow-hidden" nonce={nonce}>
       {/* Parallax Image */}
-      <div
-        // className="relative row-span-1 max-h-[70vh] mt-16 border-2"
-        className="relative row-span-1 border-2"
-        nonce={nonce}>
-        {/* <ParallaxImage
-          height="100%"
-          nonce={nonce ?? undefined}
-          width="100%"
-        /> */}
-
-        {/* <Scene3D /> */}
+      <div className="relative h-full w-full border-2" nonce={nonce}>
+        <Scene3D />
       </div>
 
       {/* Hero Title and Subtitle */}
       <div
-        className="flex flex-col items-center justify-start pb-5 overflow-hidden border-2"
-        nonce={nonce}>
+        className="absolute bottom-0 w-full flex flex-col items-center justify-center pb-5 border-2"
+        nonce={nonce}
+      >
         <div
           className="text-center w-full max-w-full overflow-hidden"
-          nonce={nonce}>
-          <div
-            className="grid grid-cols-1 gap-1"
-            nonce={nonce}>
+          nonce={nonce}
+        >
+          <div className="grid grid-cols-1 gap-1" nonce={nonce}>
             <h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mx-auto"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mx-auto"
               id="hero-title1"
-              nonce={nonce}>
+              nonce={nonce}
+            >
               {t("hero.title1")}
             </h2>
             <h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mx-auto"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mx-auto"
               id="hero-title2"
-              nonce={nonce}>
+              nonce={nonce}
+            >
               {t("hero.title2")}
             </h2>
           </div>
         </div>
-
-        {/* <div
-          className="text-center w-full max-w-full my-2 overflow-hidden"
-          nonce={nonce}>
-          <h3
-            className="text-purple-800 dark:text-purple-300 text-xs sm:text-sm md:text-base"
-            nonce={nonce}>
-            {t("hero.subtitle")}
-          </h3>
-        </div> */}
       </div>
     </div>
   );
