@@ -41,8 +41,8 @@ function splineCspMiddleware(req: NextRequest): NextResponse {
 
   const cspHeader = `
     default-src 'self' 'unsafe-eval' https://www.jerenyon.dev;
-    script-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://www.jerenyon.dev https://jerenyon-dev-remote-pull.b-cdn.net;
-    style-src 'self' 'nonce-${nonce}' https://www.jerenyon.dev;
+    script-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://www.jerenyon.dev https://jerenyon-dev-remote-pull.b-cdn.net https://vercel.live;
+    style-src 'self' 'nonce-${nonce}' https://www.jerenyon.dev https://vercel.live;
     img-src 'self' blob: data: https://www.jerenyon.dev https://jerenyon-dev-remote-pull.b-cdn.net;
     font-src 'self' https://www.jerenyon.dev https://fonts.gstatic.com;
     connect-src 'self' https://unpkg.com https://jerenyon-dev-remote-pull.b-cdn.net https://fonts.gstatic.com;
