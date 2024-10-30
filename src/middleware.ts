@@ -68,9 +68,12 @@ function splineCspMiddleware(req: NextRequest): NextResponse {
 
   // Validate Referer Header
   const referer = req.headers.get("referer") || "";
-  const allowedOrigin = "https://jerenyon.dev";
+  const allowedOrigins = [
+    "https://www.jerenyon.dev",
+    "https://staging.jerenyon.dev",
+  ];
 
-  if (!referer.startsWith(allowedOrigin)) {
+  if (!allowedOrigins.some((origin) => referer.startsWith(origin))) {
     return new NextResponse("Forbidden", { status: 403 });
   }
 
