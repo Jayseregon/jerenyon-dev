@@ -1,8 +1,6 @@
 import { useTranslations } from "next-intl";
 import { headers } from "next/headers";
 
-import Scene3D from "@/components/spline3D/Scene3D";
-
 import { siteConfig } from "../config/site";
 
 export const metadata = {
@@ -14,15 +12,22 @@ export default function RootPage() {
   const nonce = headers().get("x-nonce") ?? "";
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden" nonce={nonce}>
-      {/* Parallax Image */}
-      <div className="relative h-full w-full border-2" nonce={nonce}>
-        <Scene3D />
-      </div>
+    <div
+      className="relative h-screen w-screen overflow-hidden bg-background"
+      nonce={nonce}
+    >
+      {/* Spline Scene iframe */}
+      <iframe
+        className="relative w-full h-full sm:w-full sm:h-full md:w-full md:h-full lg:w-full lg:h-full border-2 border-red-500 bg-transparent"
+        nonce={nonce}
+        sandbox="allow-scripts allow-same-origin allow-popups"
+        src="/spline-scene"
+        title="3D Scene"
+      />
 
       {/* Hero Title and Subtitle */}
       <div
-        className="absolute bottom-0 w-full flex flex-col items-center justify-center pb-5 border-2"
+        className="absolute bottom-0 w-full flex flex-col items-center justify-center pb-5 z-10"
         nonce={nonce}
       >
         <div

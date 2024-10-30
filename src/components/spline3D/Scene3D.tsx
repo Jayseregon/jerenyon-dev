@@ -4,12 +4,12 @@ import Loading from "./loading";
 
 const SplineScene = dynamic(() => import("./SplineScene"), {
   ssr: false, // Disable server-side rendering
-  loading: () => <Loading />, // Show loading indicator
+  loading: () => <Loading />,
 });
 
 export default function Scene3D() {
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-full w-full bg-background">
       <SplineScene />
     </div>
   );

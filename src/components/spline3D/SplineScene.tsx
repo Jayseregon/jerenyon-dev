@@ -9,9 +9,12 @@ export default function SplineScene() {
   const nonce = useContext(NonceContext);
 
   return (
-    <Spline
-      nonce={nonce}
-      scene="https://jerenyon-dev-remote-pull.b-cdn.net/spline-scene/landing-codeblock-scene.splinecode"
-    />
+    <div className="w-full h-full bg-background">
+      <Spline
+        className="bg-transparent"
+        nonce={nonce}
+        scene="https://jerenyon-dev-remote-pull.b-cdn.net/spline-scene/landing-codeblock-scene.splinecode"
+      />
+    </div>
   );
 }
