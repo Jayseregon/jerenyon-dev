@@ -106,7 +106,12 @@ export default async function RootLayout({ children }: Props) {
   // ];
 
   return (
-    <html suppressHydrationWarning lang={locale} {...(nonce ? { nonce } : {})}>
+    <html
+      suppressHydrationWarning
+      className="bg-background"
+      lang={locale}
+      {...(nonce ? { nonce } : {})}
+    >
       <Head>
         <meta
           content="width=device-width, initial-scale=1"

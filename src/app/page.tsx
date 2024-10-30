@@ -1,6 +1,8 @@
 import { useTranslations } from "next-intl";
 import { headers } from "next/headers";
 
+import IframeWithLoader from "@/components/spline3D/IframeWithLoader"; // New client component
+
 import { siteConfig } from "../config/site";
 
 export const metadata = {
@@ -13,17 +15,10 @@ export default function RootPage() {
 
   return (
     <div
-      className="relative h-screen w-screen overflow-hidden bg-background"
+      className="relative h-screen w-screen overflow-hidden bg-background flex items-center justify-center"
       nonce={nonce}
     >
-      {/* Spline Scene iframe */}
-      <iframe
-        className="relative w-full h-full sm:w-full sm:h-full md:w-full md:h-full lg:w-full lg:h-full border-2 border-red-500 bg-transparent"
-        nonce={nonce}
-        sandbox="allow-scripts allow-same-origin allow-popups"
-        src="/spline-scene"
-        title="3D Scene"
-      />
+      <IframeWithLoader nonce={nonce} src="/spline-scene" title="3D Scene" />
 
       {/* Hero Title and Subtitle */}
       <div
