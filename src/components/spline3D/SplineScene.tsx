@@ -13,7 +13,8 @@ export default function SplineScene() {
       <Spline
         className="bg-transparent"
         nonce={nonce}
-        scene="https://jerenyon-dev-remote-pull.b-cdn.net/spline-scene/landing-codeblock-scene.splinecode"
+        // scene="https://jerenyon-dev-remote-pull.b-cdn.net/spline-scene/landing-codeblock-scene.splinecode"
+        scene="/spline/scene.splinecode"
       />
     </div>
   );

@@ -23,7 +23,7 @@ export default function IframeWithLoader({
       <iframe
         className={`relative w-full h-full bg-transparent ${iframeLoaded ? "" : "hidden"}`}
         nonce={nonce}
-        sandbox="allow-scripts allow-same-origin allow-popups"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"
         src={src}
         title={title}
         onLoad={() => setIframeLoaded(true)}
