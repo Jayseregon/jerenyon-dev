@@ -20,39 +20,35 @@ export default function SplineScene() {
     production: "https://www.jerenyon.dev",
     staging: "https://staging.jerenyon.dev",
     development: "http://localhost:3000",
-    vercel: "https://vercel.live", // Added Vercel domain
+    vercel: "https://vercel.live",
   };
   const baseDomain = baseDomainMap[environment];
 
-  console.log(`Current Environment: ${environment}`);
-  console.log(`Base Domain: ${baseDomain}`);
-
   // Event handler action mapping
   const onSplineMouseDown = (e: SplineMouseEvent) => {
-    console.log(`Button Clicked: ${e.target.name}`);
     const actionMap: Record<string, () => void> = {
       "button-estimate": () => {
         window.parent.postMessage(
           { action: "navigate", path: "/estimate" },
-          baseDomain,
+          baseDomain
         );
       },
       "button-journey": () => {
         window.parent.postMessage(
           { action: "navigate", path: "/about" },
-          baseDomain,
+          baseDomain
         );
       },
       "button-hub": () => {
         window.parent.postMessage(
           { action: "navigate", path: "/knowledge-hub" },
-          baseDomain,
+          baseDomain
         );
       },
       "button-contact": () => {
         window.parent.postMessage(
           { action: "navigate", path: "/contact" },
-          baseDomain,
+          baseDomain
         );
       },
     };
@@ -61,8 +57,6 @@ export default function SplineScene() {
 
     if (action) {
       action();
-    } else {
-      console.warn(`No action mapped for button: ${e.target.name}`);
     }
   };
 
