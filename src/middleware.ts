@@ -9,7 +9,7 @@ function cspMiddleware(req: NextRequest): NextResponse {
   style-src 'self' 'nonce-${nonce}' https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
   img-src 'self' blob: data: https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net https://vercel.live https://vercel.com;
   font-src 'self' https://www.jerenyon.dev https://vercel.live https://assets.vercel.com;
-  connect-src 'self' https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live https://jerenyon-dev-remote-pull.b-cdn.net wss://ws-us3.pusher.com;
+  connect-src 'self' https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live https://jerenyon-dev-remote-pull.b-cdn.net https://unpkg.com wss://ws-us3.pusher.com;
   object-src 'none';
   base-uri 'self' https://www.jerenyon.dev;
   form-action 'self' https://www.jerenyon.dev;
@@ -44,7 +44,7 @@ function splineCspMiddleware(req: NextRequest): NextResponse {
   style-src 'self' 'nonce-${nonce}' 'unsafe-inline' https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
   img-src 'self' blob: data: https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net https://vercel.live https://vercel.com;
   font-src 'self' https://www.jerenyon.dev https://vercel.live https://assets.vercel.com;
-  connect-src 'self' https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live https://jerenyon-dev-remote-pull.b-cdn.net wss://ws-us3.pusher.com;
+  connect-src 'self' https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live https://jerenyon-dev-remote-pull.b-cdn.net https://unpkg.com wss://ws-us3.pusher.com;
   object-src 'none';
   base-uri 'self' https://www.jerenyon.dev;
   form-action 'self' https://www.jerenyon.dev;
@@ -65,8 +65,6 @@ function splineCspMiddleware(req: NextRequest): NextResponse {
     },
   });
 
-  response.headers.set("Content-Security-Policy", cspHeader);
-
   // Validate Referer Header
   const referer = req.headers.get("referer") || "";
   const allowedOrigins = [
@@ -78,6 +76,8 @@ function splineCspMiddleware(req: NextRequest): NextResponse {
   if (!allowedOrigins.some((origin) => referer.startsWith(origin))) {
     return new NextResponse("Forbidden", { status: 403 });
   }
+
+  response.headers.set("Content-Security-Policy", cspHeader);
 
   return response;
 }
