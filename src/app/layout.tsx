@@ -27,7 +27,7 @@ type Props = {
 };
 
 export const metadata: Metadata = {
-  title: siteConfig.name,
+  title: `${siteConfig.heroTitle} with ${siteConfig.name}`,
   description: siteConfig.heroDescription,
   keywords: siteConfig.keywords,
   authors: [{ name: siteConfig.name, url: siteConfig.siteUrl }],

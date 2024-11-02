@@ -1,17 +1,30 @@
+"use client";
+
 import { useTranslations } from "next-intl";
-import { headers } from "next/headers";
+import React, { useEffect, useContext } from "react";
+import { useRouter } from "next/navigation";
 
+import { NonceContext } from "@/src/app/providers";
 import IframeWithLoader from "@/components/spline3D/IframeWithLoader";
-
-import { siteConfig } from "../config/site";
-
-export const metadata = {
-  title: `${siteConfig.heroTitle} with ${siteConfig.name}`,
-};
 
 export default function RootPage() {
   const t = useTranslations("homepage");
-  const nonce = headers().get("x-nonce") ?? "";
+  const nonce = useContext(NonceContext);
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data.action === "navigate" && event.data.path) {
+        router.push(event.data.path);
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+
+    return () => {
+      window.removeEventListener("message", handleMessage);
+    };
+  }, [router]);
 
   return (
     <div

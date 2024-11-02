@@ -7,7 +7,7 @@ import Loading from "./loading";
 interface IframeWithLoaderProps {
   src: string;
   title: string;
-  nonce: string;
+  nonce?: string;
 }
 
 export default function IframeWithLoader({
