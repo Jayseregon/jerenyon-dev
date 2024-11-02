@@ -93,25 +93,12 @@ export default async function RootLayout({ children }: Props) {
   const locale = await getLocale();
   const messages = await getMessages();
 
-  // const parallaxImages = [
-  //   "shadows-neons-dark.webp",
-  //   "shadows-neons-light.webp",
-  //   "layer-neons.webp",
-  //   "shadows-base-dark.webp",
-  //   "shadows-base-light.webp",
-  //   "layer-base-dark.webp",
-  //   "layer-base-light.webp",
-  //   "layer-texts-dark.webp",
-  //   "layer-texts-light.webp",
-  // ];
-
   return (
     <html
       suppressHydrationWarning
       className="bg-background"
       lang={locale}
-      {...(nonce ? { nonce } : {})}
-    >
+      {...(nonce ? { nonce } : {})}>
       <Head>
         <meta
           content="width=device-width, initial-scale=1"
@@ -133,20 +120,10 @@ export default async function RootLayout({ children }: Props) {
         <link
           as="fetch"
           crossOrigin="anonymous"
-          href="https://jerenyon-dev-remote-pull.b-cdn.net/spline-scene/landing-codeblock-scene.splinecode"
+          href="https://jerenyon-dev-remote-pull.b-cdn.net/spline-scene/hero-3d-scene.splinecode"
           nonce={nonce}
           rel="preload"
         />
-        {/* Preload all parallax images */}
-        {/* {parallaxImages.map((image) => (
-          <link
-            key={image}
-            as="image"
-            href={`/landingPage/${image}`}
-            nonce={nonce}
-            rel="preload"
-          />
-        ))} */}
         {/* Preconnect and preload for Usercentrics */}
         {/* <link
           href="//privacy-proxy.usercentrics.eu"
@@ -167,14 +144,12 @@ export default async function RootLayout({ children }: Props) {
           fontMono.variable,
           fontSerif.variable,
           fontDisplay.variable,
-          fontSansAlt.variable,
+          fontSansAlt.variable
         )}
-        nonce={nonce}
-      >
+        nonce={nonce}>
         <Providers
           nonce={nonce}
-          themeProps={{ attribute: "class", defaultTheme: "dark", children }}
-        >
+          themeProps={{ attribute: "class", defaultTheme: "dark", children }}>
           <NextIntlClientProvider messages={messages}>
             <RootLayoutStyling nonce={nonce}>
               {children}
