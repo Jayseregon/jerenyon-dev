@@ -1,9 +1,13 @@
 "use client";
 
 import React, { useContext } from "react";
-import Spline from "@splinetool/react-spline";
+import dynamic from "next/dynamic";
 
 import { NonceContext } from "@/src/app/providers";
+
+const Spline = dynamic(() => import("@splinetool/react-spline"), {
+  ssr: false,
+});
 
 export default function SplineScene() {
   const nonce = useContext(NonceContext);

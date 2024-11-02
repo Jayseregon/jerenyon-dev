@@ -125,6 +125,25 @@ export default async function RootLayout({ children }: Props) {
           nonce={nonce}
           rel="preload"
         />
+        {/* Preconnect to Spline asset domains */}
+        <link
+          crossOrigin="anonymous"
+          href="https://prod.spline.design"
+          nonce={nonce}
+          rel="preconnect"
+        />
+        <link href="https://prod.spline.design" rel="dns-prefetch" />
+        {/* Preconnect to BunnyCDN for your Spline scene */}
+        <link
+          crossOrigin="anonymous"
+          href="https://jerenyon-dev-remote-pull.b-cdn.net"
+          nonce={nonce}
+          rel="preconnect"
+        />
+        <link
+          href="https://jerenyon-dev-remote-pull.b-cdn.net"
+          rel="dns-prefetch"
+        />
         {/* Preconnect and preload for Usercentrics */}
         {/* <link
           href="//privacy-proxy.usercentrics.eu"
