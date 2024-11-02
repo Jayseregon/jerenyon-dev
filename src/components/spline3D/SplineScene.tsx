@@ -27,28 +27,24 @@ export default function SplineScene() {
   const onSplineMouseDown = (e: SplineMouseEvent) => {
     const actionMap: Record<string, () => void> = {
       "button-estimate": () => {
-        console.log("Clicked Quoting Tool button.");
         window.parent.postMessage(
           { action: "navigate", path: "/estimate" },
           baseDomain,
         );
       },
       "button-journey": () => {
-        console.log("Clicked Resume button.");
         window.parent.postMessage(
           { action: "navigate", path: "/about" },
           baseDomain,
         );
       },
       "button-hub": () => {
-        console.log("Clicked Knowledge-Hub button.");
         window.parent.postMessage(
           { action: "navigate", path: "/knowledge-hub" },
           baseDomain,
         );
       },
       "button-contact": () => {
-        console.log("Clicked Contact button.");
         window.parent.postMessage(
           { action: "navigate", path: "/contact" },
           baseDomain,

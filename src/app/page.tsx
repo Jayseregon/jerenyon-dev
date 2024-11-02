@@ -13,8 +13,19 @@ export default function RootPage() {
   const router = useRouter();
 
   useEffect(() => {
+    const allowedOrigins = [
+      "https://www.jerenyon.dev",
+      "https://staging.jerenyon.dev",
+      "http://localhost:3000",
+      "https://vercel.live",
+    ];
+
     const handleMessage = (event: MessageEvent) => {
-      if (event.data.action === "navigate" && event.data.path) {
+      if (
+        allowedOrigins.includes(event.origin) &&
+        event.data.action === "navigate" &&
+        event.data.path
+      ) {
         router.push(event.data.path);
       }
     };
