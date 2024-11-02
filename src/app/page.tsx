@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 
 import { NonceContext } from "@/src/app/providers";
 import IframeWithLoader from "@/components/spline3D/IframeWithLoader";
-import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 
 export default function RootPage() {
   const t = useTranslations("homepage");
@@ -40,7 +39,6 @@ export default function RootPage() {
 
   return (
     <>
-      <ServiceWorkerRegistration />
       <div
         className="relative h-screen w-screen overflow-hidden bg-background flex items-center justify-center"
         nonce={nonce}

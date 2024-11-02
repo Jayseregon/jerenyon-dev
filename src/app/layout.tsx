@@ -19,7 +19,6 @@ import {
   fontDisplay,
   fontSansAlt,
 } from "@/config/fonts";
-import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 
 import { Providers } from "./providers";
 
@@ -169,8 +168,6 @@ export default async function RootLayout({ children }: Props) {
         )}
         nonce={nonce}
       >
-        {/* Register the Service Worker */}
-        <ServiceWorkerRegistration />
         <Providers
           nonce={nonce}
           themeProps={{ attribute: "class", defaultTheme: "dark", children }}
