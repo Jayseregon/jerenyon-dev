@@ -15,6 +15,7 @@ type Props = {
 export default function RootLayoutStyling({ children, nonce }: Props) {
   const pathname = usePathname();
   const isMainPage = pathname === "/";
+  const isSplineScene = pathname === "/spline-scene";
 
   return (
     <div
@@ -24,11 +25,15 @@ export default function RootLayoutStyling({ children, nonce }: Props) {
       })}
       nonce={nonce}
     >
-      <Navbar nonce={nonce} />
+      {/* Conditionally render Navbar */}
+      {!isSplineScene && <Navbar nonce={nonce} />}
+
       <main className="flex-grow" nonce={nonce}>
         {children}
       </main>
-      <Footer nonce={nonce} />
+
+      {/* Conditionally render Footer */}
+      {!isSplineScene && <Footer nonce={nonce} />}
     </div>
   );
 }

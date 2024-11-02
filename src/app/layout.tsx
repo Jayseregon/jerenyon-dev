@@ -27,7 +27,7 @@ type Props = {
 };
 
 export const metadata: Metadata = {
-  title: siteConfig.name,
+  title: `${siteConfig.heroTitle} with ${siteConfig.name}`,
   description: siteConfig.heroDescription,
   keywords: siteConfig.keywords,
   authors: [{ name: siteConfig.name, url: siteConfig.siteUrl }],
@@ -93,34 +93,52 @@ export default async function RootLayout({ children }: Props) {
   const locale = await getLocale();
   const messages = await getMessages();
 
-  const parallaxImages = [
-    "shadows-neons-dark.webp",
-    "shadows-neons-light.webp",
-    "layer-neons.webp",
-    "shadows-base-dark.webp",
-    "shadows-base-light.webp",
-    "layer-base-dark.webp",
-    "layer-base-light.webp",
-    "layer-texts-dark.webp",
-    "layer-texts-light.webp",
-  ];
+  // const parallaxImages = [
+  //   "shadows-neons-dark.webp",
+  //   "shadows-neons-light.webp",
+  //   "layer-neons.webp",
+  //   "shadows-base-dark.webp",
+  //   "shadows-base-light.webp",
+  //   "layer-base-dark.webp",
+  //   "layer-base-light.webp",
+  //   "layer-texts-dark.webp",
+  //   "layer-texts-light.webp",
+  // ];
 
   return (
-    <html suppressHydrationWarning lang={locale} {...(nonce ? { nonce } : {})}>
+    <html
+      suppressHydrationWarning
+      className="bg-background"
+      lang={locale}
+      {...(nonce ? { nonce } : {})}
+    >
       <Head>
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta
+          content="width=device-width, initial-scale=1"
+          name="viewport"
+          nonce={nonce}
+        />
         <meta
           content="white"
           media="(prefers-color-scheme: light)"
           name="theme-color"
+          nonce={nonce}
         />
         <meta
           content="black"
           media="(prefers-color-scheme: dark)"
           name="theme-color"
+          nonce={nonce}
+        />
+        <link
+          as="fetch"
+          crossOrigin="anonymous"
+          href="https://jerenyon-dev-remote-pull.b-cdn.net/spline-scene/landing-codeblock-scene.splinecode"
+          nonce={nonce}
+          rel="preload"
         />
         {/* Preload all parallax images */}
-        {parallaxImages.map((image) => (
+        {/* {parallaxImages.map((image) => (
           <link
             key={image}
             as="image"
@@ -128,9 +146,9 @@ export default async function RootLayout({ children }: Props) {
             nonce={nonce}
             rel="preload"
           />
-        ))}
+        ))} */}
         {/* Preconnect and preload for Usercentrics */}
-        <link
+        {/* <link
           href="//privacy-proxy.usercentrics.eu"
           nonce={nonce}
           rel="preconnect"
@@ -140,7 +158,7 @@ export default async function RootLayout({ children }: Props) {
           href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           nonce={nonce}
           rel="preload"
-        />
+        /> */}
       </Head>
       <body
         className={clsx(
@@ -153,16 +171,18 @@ export default async function RootLayout({ children }: Props) {
         )}
         nonce={nonce}
       >
-        <SpeedInsights />
         <Providers
           nonce={nonce}
           themeProps={{ attribute: "class", defaultTheme: "dark", children }}
         >
           <NextIntlClientProvider messages={messages}>
-            <RootLayoutStyling nonce={nonce}>{children}</RootLayoutStyling>
+            <RootLayoutStyling nonce={nonce}>
+              {children}
+              <SpeedInsights />
+            </RootLayoutStyling>
           </NextIntlClientProvider>
         </Providers>
-        <Script
+        {/* <Script
           nonce={nonce}
           src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           strategy="afterInteractive"
@@ -174,7 +194,7 @@ export default async function RootLayout({ children }: Props) {
           nonce={nonce}
           src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
           strategy="afterInteractive"
-        />
+        /> */}
         <Script
           nonce={nonce}
           src={`https://www.google.com/recaptcha/api.js?render=${process.env.RECAPTCHA_SECRET_KEY}`}

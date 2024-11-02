@@ -1,66 +1,56 @@
+"use client";
+
 import { useTranslations } from "next-intl";
-import { headers } from "next/headers";
+import React, { useEffect, useContext } from "react";
+import { useRouter } from "next/navigation";
 
-import ParallaxImage from "@/components/ui/ParallaxImage";
-
-import { siteConfig } from "../config/site";
-
-export const metadata = {
-  title: `${siteConfig.heroTitle} with ${siteConfig.name}`,
-};
+import { NonceContext } from "@/src/app/providers";
+import IframeWithLoader from "@/components/spline3D/IframeWithLoader";
 
 export default function RootPage() {
   const t = useTranslations("homepage");
-  const nonce = headers().get("x-nonce") ?? "";
+  const nonce = useContext(NonceContext);
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data.action === "navigate" && event.data.path) {
+        router.push(event.data.path);
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+
+    return () => {
+      window.removeEventListener("message", handleMessage);
+    };
+  }, [router]);
 
   return (
     <div
-      className="relative h-screen w-screen overflow-hidden grid grid-rows-[minmax(0,70%)_minmax(0,30%)] sm:grid-rows-[minmax(0,80%)_minmax(0,25%)]"
+      className="relative h-screen w-screen overflow-hidden bg-background flex items-center justify-center"
       nonce={nonce}
     >
-      {/* Parallax Image */}
-      <div className="relative row-span-1 max-h-[70vh] mt-16" nonce={nonce}>
-        <ParallaxImage height="100%" nonce={nonce ?? undefined} width="100%" />
-      </div>
+      <IframeWithLoader nonce={nonce} src="/spline-scene" title="3D Scene" />
 
       {/* Hero Title and Subtitle */}
       <div
-        className="flex flex-col items-center justify-start pb-5 overflow-hidden"
+        className="absolute bottom-0 w-full flex flex-col items-center justify-center pb-5 z-10"
         nonce={nonce}
       >
-        <div
-          className="text-center w-full max-w-full overflow-hidden"
+        <h2
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center text-foreground"
+          id="hero-title"
           nonce={nonce}
         >
-          <div className="grid grid-cols-1 gap-1" nonce={nonce}>
-            <h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mx-auto"
-              id="hero-title1"
-              nonce={nonce}
-            >
-              {t("hero.title1")}
-            </h2>
-            <h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mx-auto"
-              id="hero-title2"
-              nonce={nonce}
-            >
-              {t("hero.title2")}
-            </h2>
-          </div>
-        </div>
-
-        <div
-          className="text-center w-full max-w-full my-2 overflow-hidden"
+          {t("hero.title")}
+        </h2>
+        <p
+          className="mt-4 text-lg sm:text-xl md:text-2xl lg:text-3xl text-secondary text-center"
           nonce={nonce}
         >
-          <h3
-            className="text-purple-800 dark:text-purple-300 text-xs sm:text-sm md:text-base"
-            nonce={nonce}
-          >
-            {t("hero.subtitle")}
-          </h3>
-        </div>
+          {t("hero.subtitle")}
+        </p>
       </div>
     </div>
   );
