@@ -73,13 +73,8 @@ export default function Navbar({ nonce }: { nonce: string }) {
           <div className="flex items-center justify-between h-16">
             {/* Logo on the left */}
             <div className="flex items-center">
-              <NextLink
-                className="flex items-center gap-4"
-                href="/">
-                <Logo
-                  nonce={nonce}
-                  size={34}
-                />
+              <NextLink className="flex items-center gap-4" href="/">
+                <Logo nonce={nonce} size={34} />
                 <span className="font-bold text-foreground text-xl text-nowrap ">
                   {siteConfig.name}
                 </span>
@@ -110,13 +105,8 @@ export default function Navbar({ nonce }: { nonce: string }) {
           <div className="flex items-center justify-between h-16">
             {/* Logo on the left */}
             <div className="flex items-center">
-              <NextLink
-                className="flex items-center gap-4"
-                href="/">
-                <Logo
-                  nonce={nonce}
-                  size={34}
-                />
+              <NextLink className="flex items-center gap-4" href="/">
+                <Logo nonce={nonce} size={34} />
                 <span className="font-bold text-foreground text-xl text-nowrap">
                   {siteConfig.name}
                 </span>
@@ -129,7 +119,8 @@ export default function Navbar({ nonce }: { nonce: string }) {
                 className="relative flex items-center space-x-4 border border-purple-800 dark:border-purple-300 rounded-full py-1 px-1"
                 initial={{ opacity: 0 }}
                 nonce={nonce} // Add nonce to motion.div
-                transition={{ duration: 0.5 }}>
+                transition={{ duration: 0.5 }}
+              >
                 {siteConfig.navItems.map((item) => (
                   <NextLink
                     key={item.href}
@@ -137,9 +128,10 @@ export default function Navbar({ nonce }: { nonce: string }) {
                       "relative transition-colors",
                       pathname === item.href
                         ? "text-background dark:text-foreground"
-                        : "text-foreground hover:text-primary"
+                        : "text-foreground hover:text-primary",
                     )}
-                    href={item.href}>
+                    href={item.href}
+                  >
                     {pathname === item.href && (
                       <motion.div
                         animate={{ scale: 1 }}
@@ -206,11 +198,12 @@ export const HamburgerMenuButton = ({
   return (
     <div
       className={`flex items-center justify-end w-full ${styling} relative`}
-      nonce={nonce}>
+      nonce={nonce}
+    >
       <button
+        aria-label="Toggle menu button"
         className={`${isMenuOpen ? "text-purple-800 dark:text-purple-300" : "text-foreground"} focus:outline-none pr-2`}
         nonce={nonce}
-        aria-label="Toggle menu button"
         onPointerDown={toggleMenu}
         onPointerUp={(e) => e.stopPropagation()} // Prevent the pointerup event from propagating to the document
       >
@@ -222,7 +215,8 @@ export const HamburgerMenuButton = ({
           transition={{ duration: 0.3 }}
           variants={menuButtonVariants}
           viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <motion.path
             animate={isMenuOpen ? "open" : "closed"}
             initial={false}
@@ -275,9 +269,7 @@ export const CollapsedMenu = ({
   }, [isMenuOpen, setIsMenuOpen]);
 
   return (
-    <div
-      className="absolute"
-      nonce={nonce}>
+    <div className="absolute" nonce={nonce}>
       <motion.div
         ref={menuRef}
         animate={{ scale: isMenuOpen ? 1 : 0 }}
@@ -288,9 +280,7 @@ export const CollapsedMenu = ({
         onPointerDown={(e) => e.stopPropagation()} // Prevent pointerdown event from propagating to the document
       >
         {/* Search input field */}
-        <div
-          className="p-4 max-w-full mx-auto"
-          nonce={nonce}>
+        <div className="p-4 max-w-full mx-auto" nonce={nonce}>
           <SearchInput
             alwaysExpanded={isMenuOpen}
             isInsideNavbar={true}
@@ -300,12 +290,11 @@ export const CollapsedMenu = ({
         {/* Menu section title */}
         <motion.p
           className="px-4 text-purple-800 dark:text-purple-300"
-          nonce={nonce}>
+          nonce={nonce}
+        >
           {t("collapsedMenu.menuSection")}
         </motion.p>
-        <motion.div
-          className="px-4"
-          nonce={nonce}>
+        <motion.div className="px-4" nonce={nonce}>
           <motion.ul
             animate={isMenuOpen ? "visible" : "hidden"}
             className="flex flex-col gap-1 bg-background rounded-xl border border-purple-800 dark:border-purple-300 overflow-hidden"
@@ -314,7 +303,8 @@ export const CollapsedMenu = ({
             variants={{
               visible: { transition: { staggerChildren: 0.2 } },
               hidden: { transition: { staggerChildren: 0.1 } },
-            }}>
+            }}
+          >
             {/* Site navigation links */}
             {siteConfig.navItems.map((item) => (
               <NextLink
@@ -322,12 +312,14 @@ export const CollapsedMenu = ({
                 className="block bg-background hover:bg-purple-200 dark:hover:bg-purple-700 hover:border-purple-400 dark:hover:border-purple-400 focus:bg-purple-100 dark:focus:bg-purple-900 focus:border-purple-500 dark:focus:border-purple-500 text-sm text-foreground placeholder-foreground w-full h-full transition-colors"
                 href={item.href}
                 nonce={nonce}
-                onClick={() => setIsMenuOpen(false)}>
+                onClick={() => setIsMenuOpen(false)}
+              >
                 <motion.div
                   className="bg-none text-sm text-foreground px-4 py-1"
                   nonce={nonce}
                   whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}>
+                  whileTap={{ scale: 0.95 }}
+                >
                   {t(`collapsedMenu.${item.label}`)}
                 </motion.div>
               </NextLink>
@@ -335,9 +327,7 @@ export const CollapsedMenu = ({
           </motion.ul>
         </motion.div>
 
-        <motion.div
-          className="pt-3"
-          nonce={nonce}>
+        <motion.div className="pt-3" nonce={nonce}>
           <motion.div
             animate={isMenuOpen ? "visible" : "hidden"}
             className="flex flex-col gap-1 bg-background rounded-xl overflow-hidden p-1"
@@ -346,15 +336,18 @@ export const CollapsedMenu = ({
             variants={{
               visible: { transition: { staggerChildren: 0.2 } },
               hidden: { transition: { staggerChildren: 0.1 } },
-            }}>
+            }}
+          >
             {/* Dark mode switch */}
             <motion.div
               className="ps-4 inline-flex items-center space-x-2"
-              nonce={nonce}>
+              nonce={nonce}
+            >
               <ThemeSwitch nonce={nonce} />
               <motion.span
                 className="ps-2 text-purple-800 dark:text-purple-300"
-                nonce={nonce}>
+                nonce={nonce}
+              >
                 {t("collapsedMenu.darkModeSwitch")}
               </motion.span>
             </motion.div>
@@ -362,11 +355,13 @@ export const CollapsedMenu = ({
             {/* Language switch */}
             <motion.div
               className="ps-4 inline-flex items-center space-x-2"
-              nonce={nonce}>
+              nonce={nonce}
+            >
               <LocaleSwitcher nonce={nonce} />
               <motion.span
                 className="ps-2 text-purple-800 dark:text-purple-300"
-                nonce={nonce}>
+                nonce={nonce}
+              >
                 {t("collapsedMenu.languageSwitch")}
               </motion.span>
             </motion.div>
@@ -375,23 +370,23 @@ export const CollapsedMenu = ({
 
         <motion.div
           className="absolute bottom-0 left-0 right-0 mb-2 flex flex-col items-center justify-center space-y-2 text-purple-950 dark:text-purple-200 text-xs text-center antialiased"
-          nonce={nonce}>
+          nonce={nonce}
+        >
           <NextLink
             className="underline"
             href="/policies/privacy"
-            nonce={nonce}>
+            nonce={nonce}
+          >
             {t("footer.privacy")}
           </NextLink>
-          <NextLink
-            className="underline"
-            href="/policies/terms"
-            nonce={nonce}>
+          <NextLink className="underline" href="/policies/terms" nonce={nonce}>
             {t("footer.terms")}
           </NextLink>
           <NextLink
             className="underline"
             href="/policies/cookies"
-            nonce={nonce}>
+            nonce={nonce}
+          >
             {t("footer.cookies")}
           </NextLink>
         </motion.div>

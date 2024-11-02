@@ -30,25 +30,25 @@ export default function SplineScene() {
       "button-estimate": () => {
         window.parent.postMessage(
           { action: "navigate", path: "/estimate" },
-          baseDomain
+          baseDomain,
         );
       },
       "button-journey": () => {
         window.parent.postMessage(
           { action: "navigate", path: "/about" },
-          baseDomain
+          baseDomain,
         );
       },
       "button-hub": () => {
         window.parent.postMessage(
           { action: "navigate", path: "/knowledge-hub" },
-          baseDomain
+          baseDomain,
         );
       },
       "button-contact": () => {
         window.parent.postMessage(
           { action: "navigate", path: "/contact" },
-          baseDomain
+          baseDomain,
         );
       },
     };

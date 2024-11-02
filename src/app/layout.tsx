@@ -98,7 +98,8 @@ export default async function RootLayout({ children }: Props) {
       suppressHydrationWarning
       className="bg-background"
       lang={locale}
-      {...(nonce ? { nonce } : {})}>
+      {...(nonce ? { nonce } : {})}
+    >
       <Head>
         <meta
           content="width=device-width, initial-scale=1"
@@ -144,12 +145,14 @@ export default async function RootLayout({ children }: Props) {
           fontMono.variable,
           fontSerif.variable,
           fontDisplay.variable,
-          fontSansAlt.variable
+          fontSansAlt.variable,
         )}
-        nonce={nonce}>
+        nonce={nonce}
+      >
         <Providers
           nonce={nonce}
-          themeProps={{ attribute: "class", defaultTheme: "dark", children }}>
+          themeProps={{ attribute: "class", defaultTheme: "dark", children }}
+        >
           <NextIntlClientProvider messages={messages}>
             <RootLayoutStyling nonce={nonce}>
               {children}
