@@ -18,15 +18,19 @@ export default function RootPage() {
       "https://staging.jerenyon.dev",
       "http://localhost:3000",
       "https://vercel.live",
+      // Add other Vercel domains if necessary
     ];
 
     const handleMessage = (event: MessageEvent) => {
+      console.log(`Received message from origin: ${event.origin}`);
       if (
         allowedOrigins.includes(event.origin) &&
         event.data.action === "navigate" &&
         event.data.path
       ) {
         router.push(event.data.path);
+      } else {
+        console.warn(`Origin not allowed: ${event.origin}`);
       }
     };
 
