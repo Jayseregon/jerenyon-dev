@@ -41,11 +41,11 @@ export default function RootPage() {
     <div
       className="relative h-screen w-screen overflow-hidden bg-background flex items-center justify-center"
       nonce={nonce}>
-      {/* <IframeWithLoader
+      <IframeWithLoader
         nonce={nonce}
         src="/spline-scene"
         title="3D Scene"
-      /> */}
+      />
 
       {/* Hero Title and Subtitle */}
       <div
