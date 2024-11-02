@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import clsx from "clsx";
 import { ReactNode } from "react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+// import { SpeedInsights } from "@vercel/speed-insights/next";
 import { headers } from "next/headers";
 import { getLocale, getMessages } from "next-intl/server";
 import Head from "next/head";
@@ -153,7 +153,7 @@ export default async function RootLayout({ children }: Props) {
           <NextIntlClientProvider messages={messages}>
             <RootLayoutStyling nonce={nonce}>
               {children}
-              <SpeedInsights />
+              {/* <SpeedInsights /> */}
             </RootLayoutStyling>
           </NextIntlClientProvider>
         </Providers>
