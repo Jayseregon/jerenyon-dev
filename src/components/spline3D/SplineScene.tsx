@@ -17,7 +17,7 @@ export default function SplineScene() {
 
   // Map environments to base domains
   const baseDomainMap: Record<string, string> = {
-    production: "https://jerenyon.dev",
+    production: "https://www.jerenyon.dev",
     staging: "https://staging.jerenyon.dev",
     development: "http://localhost:3000",
   };
