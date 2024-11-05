@@ -1,11 +1,13 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, Suspense } from "react";
 import { useRouter } from "next/navigation";
 
 import { NonceContext } from "@/src/app/providers";
 import IframeWithLoader from "@/components/spline3D/IframeWithLoader";
+
+import RootPageLoading from "./RootPageLoading";
 
 export default function RootPage() {
   const t = useTranslations("homepage");
@@ -43,7 +45,13 @@ export default function RootPage() {
         className="relative h-screen w-screen overflow-hidden bg-background flex items-center justify-center"
         nonce={nonce}
       >
-        <IframeWithLoader nonce={nonce} src="/spline-scene" title="3D Scene" />
+        <Suspense fallback={<RootPageLoading />}>
+          <IframeWithLoader
+            nonce={nonce}
+            src="/spline-scene"
+            title="3D Scene"
+          />
+        </Suspense>
 
         {/* Hero Title and Subtitle */}
         <div
