@@ -1,16 +1,16 @@
-import dynamic from "next/dynamic";
+import React, { Suspense } from "react";
 
 import Loading from "./loading";
 
-const SplineScene = dynamic(() => import("./SplineScene"), {
-  ssr: false, // Disable server-side rendering
-  loading: () => <Loading />,
-});
+// Remove direct dynamic import if using React.lazy
+const LazySplineScene = React.lazy(() => import("./SplineScene"));
 
 export default function Scene3D() {
   return (
     <div className="relative h-full w-full bg-background">
-      <SplineScene />
+      <Suspense fallback={<Loading />}>
+        <LazySplineScene />
+      </Suspense>
     </div>
   );
 }
