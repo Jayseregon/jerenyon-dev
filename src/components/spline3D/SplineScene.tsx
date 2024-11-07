@@ -53,7 +53,10 @@ export default function SplineScene() {
 
   return (
     <div className="w-full h-full bg-background">
-      <canvas ref={canvasRef} className="w-full h-full" />
+      <canvas
+        ref={canvasRef}
+        className="w-full h-full"
+      />
     </div>
   );
 }
