@@ -4,11 +4,11 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import clsx from "clsx";
 import { ReactNode } from "react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+// import { SpeedInsights } from "@vercel/speed-insights/next";
 import { headers } from "next/headers";
 import { getLocale, getMessages } from "next-intl/server";
 import Head from "next/head";
-import Script from "next/script";
+// import Script from "next/script";
 
 import { siteConfig } from "@/config/site";
 import RootLayoutStyling from "@/components/ui/RootLayoutStyling";
@@ -98,7 +98,8 @@ export default async function RootLayout({ children }: Props) {
       suppressHydrationWarning
       className="bg-background"
       lang={locale}
-      {...(nonce ? { nonce } : {})}>
+      {...(nonce ? { nonce } : {})}
+    >
       <Head>
         <meta
           content="width=device-width, initial-scale=1"
@@ -163,12 +164,14 @@ export default async function RootLayout({ children }: Props) {
           fontMono.variable,
           fontSerif.variable,
           fontDisplay.variable,
-          fontSansAlt.variable
+          fontSansAlt.variable,
         )}
-        nonce={nonce}>
+        nonce={nonce}
+      >
         <Providers
           nonce={nonce}
-          themeProps={{ attribute: "class", defaultTheme: "dark", children }}>
+          themeProps={{ attribute: "class", defaultTheme: "dark", children }}
+        >
           <NextIntlClientProvider messages={messages}>
             <RootLayoutStyling nonce={nonce}>
               {children}

@@ -4,19 +4,19 @@ function cspMiddleware(req: NextRequest): NextResponse {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
 
   const cspHeader = `
-  default-src 'self' https://www.jerenyon.dev https://api.usercentrics.eu https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://www.google.com https://www.gstatic.com https://vercel.live;
-  script-src 'self' 'nonce-${nonce}' https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live;
-  style-src 'self' 'nonce-${nonce}' 'unsafe-inline' https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
-  img-src 'self' blob: data: https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net https://vercel.live https://vercel.com;
-  font-src 'self' https://www.jerenyon.dev https://vercel.live https://assets.vercel.com;
-  connect-src 'self' https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live https://jerenyon-dev-remote-pull.b-cdn.net;
+  default-src 'self' https://jerenyon.dev https://www.jerenyon.dev ;
+  script-src 'self' 'nonce-${nonce}' 'strict-dynamic' blob: https://jerenyon.dev https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback;
+  style-src 'self' 'nonce-${nonce}' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
+  img-src 'self' blob: data: https://jerenyon.dev https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net https://app.usercentrics.eu;
+  font-src 'self' https://jerenyon.dev https://www.jerenyon.dev ;
+  connect-src 'self' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live;
   object-src 'none';
-  base-uri 'self' https://www.jerenyon.dev;
-  form-action 'self' https://www.jerenyon.dev;
-  frame-src 'self' https://www.google.com https://vercel.live;
-  frame-ancestors 'self' https://vercel.live;  
+  base-uri 'self' https://jerenyon.dev https://www.jerenyon.dev ;
+  form-action 'self' https://jerenyon.dev https://www.jerenyon.dev ;
+  frame-src 'self' https://www.google.com;
+  frame-ancestors 'none';
   upgrade-insecure-requests;
-  `
+`
     .replace(/\s{2,}/g, " ")
     .trim();
 
@@ -48,7 +48,6 @@ export function middleware(req: NextRequest) {
 export const config = {
   matcher: [
     "/", // Root
-    "/spline-scene", // Spline Embed
     "/((?!_next|_vercel|.*\\..*).*)", // Exclude certain paths
     "/((?!api|_next/static|_next/image|static|favicon.ico|favicon.png|favicon-light.png|favicon-dark.png).*)",
   ],
