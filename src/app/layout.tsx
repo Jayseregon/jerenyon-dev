@@ -98,8 +98,7 @@ export default async function RootLayout({ children }: Props) {
       suppressHydrationWarning
       className="bg-background"
       lang={locale}
-      {...(nonce ? { nonce } : {})}
-    >
+      {...(nonce ? { nonce } : {})}>
       <Head>
         <meta
           content="width=device-width, initial-scale=1"
@@ -118,23 +117,23 @@ export default async function RootLayout({ children }: Props) {
           name="theme-color"
           nonce={nonce}
         />
-        <link
+        {/* <link
           as="fetch"
           crossOrigin="anonymous"
           href="https://jerenyon-dev-remote-pull.b-cdn.net/spline-scene/hero-3d-scene.splinecode"
           nonce={nonce}
           rel="preload"
-        />
+        /> */}
         {/* Preconnect to Spline asset domains */}
-        <link
+        {/* <link
           crossOrigin="anonymous"
           href="https://prod.spline.design"
           nonce={nonce}
           rel="preconnect"
         />
-        <link href="https://prod.spline.design" rel="dns-prefetch" />
+        <link href="https://prod.spline.design" rel="dns-prefetch" /> */}
         {/* Preconnect to BunnyCDN for your Spline scene */}
-        <link
+        {/* <link
           crossOrigin="anonymous"
           href="https://jerenyon-dev-remote-pull.b-cdn.net"
           nonce={nonce}
@@ -143,7 +142,7 @@ export default async function RootLayout({ children }: Props) {
         <link
           href="https://jerenyon-dev-remote-pull.b-cdn.net"
           rel="dns-prefetch"
-        />
+        /> */}
         {/* Preconnect and preload for Usercentrics */}
         {/* <link
           href="//privacy-proxy.usercentrics.eu"
@@ -164,18 +163,16 @@ export default async function RootLayout({ children }: Props) {
           fontMono.variable,
           fontSerif.variable,
           fontDisplay.variable,
-          fontSansAlt.variable,
+          fontSansAlt.variable
         )}
-        nonce={nonce}
-      >
+        nonce={nonce}>
         <Providers
           nonce={nonce}
-          themeProps={{ attribute: "class", defaultTheme: "dark", children }}
-        >
+          themeProps={{ attribute: "class", defaultTheme: "dark", children }}>
           <NextIntlClientProvider messages={messages}>
             <RootLayoutStyling nonce={nonce}>
               {children}
-              <SpeedInsights />
+              {/* <SpeedInsights /> */}
             </RootLayoutStyling>
           </NextIntlClientProvider>
         </Providers>
@@ -192,11 +189,11 @@ export default async function RootLayout({ children }: Props) {
           src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
           strategy="afterInteractive"
         /> */}
-        <Script
+        {/* <Script
           nonce={nonce}
           src={`https://www.google.com/recaptcha/api.js?render=${process.env.RECAPTCHA_SECRET_KEY}`}
           strategy="afterInteractive"
-        />
+        /> */}
       </body>
     </html>
   );

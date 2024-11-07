@@ -8,10 +8,10 @@ import { NonceContext } from "@/src/app/providers";
 
 import Loading from "./loading";
 
-// Dynamically import CustomSplineScene with SSR disabled
-const SplineScene = dynamic(() => import("@/components/spline3D/SplineScene"), {
-  ssr: false,
-});
+// // Dynamically import CustomSplineScene with SSR disabled
+// const SplineScene = dynamic(() => import("@/components/spline3D/SplineScene"), {
+//   ssr: false,
+// });
 
 export default function RootPage() {
   const t = useTranslations("homepage");
