@@ -9,7 +9,7 @@ function cspMiddleware(req: NextRequest): NextResponse {
   style-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
   img-src 'self' blob: data: https://jerenyon.dev https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net https://app.usercentrics.eu;
   font-src 'self' https://jerenyon.dev https://www.jerenyon.dev ;
-  connect-src 'self' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live;
+  connect-src 'self' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live https://unpkg.com https://fonts.gstatic.com wss://ws-us3.pusher.com;
   object-src 'none';
   base-uri 'self' https://jerenyon.dev https://www.jerenyon.dev ;
   form-action 'self' https://jerenyon.dev https://www.jerenyon.dev ;
