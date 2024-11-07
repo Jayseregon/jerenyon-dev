@@ -1,43 +1,21 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import React, { useEffect, useContext, Suspense } from "react";
-import { useRouter } from "next/navigation";
+import React, { useContext, Suspense } from "react";
+import dynamic from "next/dynamic";
 
 import { NonceContext } from "@/src/app/providers";
-import IframeWithLoader from "@/components/spline3D/IframeWithLoader";
 
-import RootPageLoading from "./RootPageLoading";
+import Loading from "./loading";
+
+// Dynamically import CustomSplineScene with SSR disabled
+const SplineScene = dynamic(() => import("@/components/spline3D/SplineScene"), {
+  ssr: false,
+});
 
 export default function RootPage() {
   const t = useTranslations("homepage");
   const nonce = useContext(NonceContext);
-  const router = useRouter();
-
-  useEffect(() => {
-    const allowedOrigins = [
-      "https://www.jerenyon.dev",
-      "https://staging.jerenyon.dev",
-      "http://localhost:3000",
-      "https://vercel.live",
-    ];
-
-    const handleMessage = (event: MessageEvent) => {
-      if (
-        allowedOrigins.includes(event.origin) &&
-        event.data.action === "navigate" &&
-        event.data.path
-      ) {
-        router.push(event.data.path);
-      }
-    };
-
-    window.addEventListener("message", handleMessage);
-
-    return () => {
-      window.removeEventListener("message", handleMessage);
-    };
-  }, [router]);
 
   return (
     <>
@@ -45,12 +23,8 @@ export default function RootPage() {
         className="relative h-screen w-screen overflow-hidden bg-background flex items-center justify-center"
         nonce={nonce}
       >
-        <Suspense fallback={<RootPageLoading />}>
-          <IframeWithLoader
-            nonce={nonce}
-            src="/spline-scene"
-            title="3D Scene"
-          />
+        <Suspense fallback={<Loading />}>
+          <SplineScene />
         </Suspense>
 
         {/* Hero Title and Subtitle */}
