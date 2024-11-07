@@ -1,73 +1,59 @@
 "use client";
 
-import React, { useContext } from "react";
-import Spline from "@splinetool/react-spline";
+import React, { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
-import { NonceContext } from "@/src/app/providers";
+import { Application } from "@/lib/spline/runtime";
 
 export default function SplineScene() {
-  const nonce = useContext(NonceContext);
-  const environment = process.env.NEXT_PUBLIC_ENVIRONMENT || "development";
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const router = useRouter();
 
-  interface SplineMouseEvent {
-    target: {
-      name: string;
-    };
-  }
+  useEffect(() => {
+    let app: any;
 
-  // Map environments to base domains
-  const baseDomainMap: Record<string, string> = {
-    production: "https://www.jerenyon.dev",
-    staging: "https://staging.jerenyon.dev",
-    development: "http://localhost:3000",
-    vercel: "https://vercel.live",
-  };
-  const baseDomain = baseDomainMap[environment];
+    const loadSplineScene = async () => {
+      if (typeof window === "undefined" || !canvasRef.current) return;
 
-  // Event handler action mapping
-  const onSplineMouseDown = (e: SplineMouseEvent) => {
-    const actionMap: Record<string, () => void> = {
-      "button-estimate": () => {
-        window.parent.postMessage(
-          { action: "navigate", path: "/estimate" },
-          baseDomain,
-        );
-      },
-      "button-journey": () => {
-        window.parent.postMessage(
-          { action: "navigate", path: "/about" },
-          baseDomain,
-        );
-      },
-      "button-hub": () => {
-        window.parent.postMessage(
-          { action: "navigate", path: "/knowledge-hub" },
-          baseDomain,
-        );
-      },
-      "button-contact": () => {
-        window.parent.postMessage(
-          { action: "navigate", path: "/contact" },
-          baseDomain,
-        );
-      },
+      try {
+        if (Application) {
+          app = new Application(canvasRef.current);
+          await app.load("/spline/hero-3d-scene.splinecode").then(() => {
+            app.addEventListener("mouseDown", (e: any) => {
+              const routeMap: Record<string, string> = {
+                "button-hub": "/knowledge-hub",
+                "button-estimate": "/estimate",
+                "button-journey": "/about",
+                "button-contact": "/contact",
+              };
+
+              const route = routeMap[e.target.name];
+
+              if (route) {
+                router.push(route);
+              }
+            });
+          });
+        } else {
+          console.error("Spline Application not found.");
+        }
+      } catch (error) {
+        console.error("Failed to load Spline scene:", error);
+      }
     };
 
-    const action = actionMap[e.target.name];
+    loadSplineScene();
 
-    if (action) {
-      action();
-    }
-  };
+    return () => {
+      if (app) {
+        app.dispose();
+      }
+    };
+  }, []);
 
   return (
     <div className="w-full h-full bg-background">
-      <Spline
-        className="bg-transparent"
-        nonce={nonce}
-        scene="https://jerenyon-dev-remote-pull.b-cdn.net/spline-scene/hero-3d-scene.splinecode"
-        onSplineMouseDown={onSplineMouseDown}
-      />
+      <canvas ref={canvasRef} className="w-full h-full" />
     </div>
   );
 }
