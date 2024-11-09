@@ -1,15 +1,18 @@
-import { ReactNode } from "react";
+"use client";
+import { useContext } from "react";
 
-interface QuoteProps {
-  children?: ReactNode;
-}
+import { NonceContext } from "@/src/app/providers";
+import { MdxCompsDefaultProps } from "@/interfaces/mdx";
 
-export default function Quote({ children }: QuoteProps) {
+export default function Quote({ children }: MdxCompsDefaultProps): JSX.Element {
+  const nonce = useContext(NonceContext);
+
   return (
-    <>
-      <span className="inline-block text-gray-600 dark:text-gray-50 italic font-mono text-sm">
-        {children}
-      </span>
-    </>
+    <span
+      className="inline-block text-gray-600 dark:text-gray-50 italic font-mono text-sm"
+      nonce={nonce}
+    >
+      {children}
+    </span>
   );
 }

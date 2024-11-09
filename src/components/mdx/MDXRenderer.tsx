@@ -1,33 +1,39 @@
-import * as runtime from "react/jsx-runtime";
+import type {
+  MDXComponents,
+  EvaluateOptions,
+} from "next-mdx-remote-client/rsc";
+
+import { evaluate } from "next-mdx-remote-client/rsc";
+
+import { MdxRendererProps } from "@/src/interfaces/mdx";
 
 import Callout from "./Callout";
 import Snippet from "./Snippet";
-import LoadDynamicImage from "./LoadDynamicImage";
 import Quote from "./Quote";
+import LoadDynamicImage from "./LoadDynamicImage";
 
-const useMDXComponent = (code: string) => {
-  const fn = new Function(code);
-
-  return fn({ ...runtime }).default;
-};
-
-const sharedComponents = {
+const sharedComponents: MDXComponents = {
   Callout,
   Snippet,
-  LoadDynamicImage,
   Quote,
+  LoadDynamicImage,
 };
 
-interface MdxProps {
-  code: string;
-  components?: Record<string, React.ComponentType>;
-  [key: string]: any;
-}
+export async function MDXRenderer({ source }: MdxRendererProps) {
+  const options: EvaluateOptions = {
+    parseFrontmatter: true,
+  };
 
-export default function MDXContent({ code, components, ...props }: MdxProps) {
-  const Component = useMDXComponent(code);
+  // Evaluate the MDX content
+  const { content, frontmatter, error } = await evaluate({
+    source,
+    options,
+    components: sharedComponents,
+  });
 
-  return (
-    <Component components={{ ...sharedComponents, ...components }} {...props} />
-  );
+  if (error) {
+    throw new Error(`Error loading content: ${error.message}`);
+  }
+
+  return { content, frontmatter };
 }

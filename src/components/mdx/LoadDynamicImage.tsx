@@ -1,29 +1,26 @@
 "use client";
-
 import Image from "next/image";
-import React from "react";
+import { useContext } from "react";
 
-type LoadImageProps = {
-  imageName: string;
-  width?: number;
-  height?: number;
-};
+import { LoadDynamicImageProps } from "@/interfaces/mdx";
+import { NonceContext } from "@/src/app/providers";
 
 export default function LoadDynamicImage({
   imageName,
-  width = 200,
-  height = 200,
-}: LoadImageProps) {
+}: LoadDynamicImageProps): JSX.Element {
   const imgSrc = `/docs/${imageName}.jpg`;
+  const nonce = useContext(NonceContext);
 
   return (
-    <span className="flex flex-col items-center">
+    <span className="flex flex-col items-center" nonce={nonce}>
       <Image
         alt={imageName}
         className="shadow-xl shadow-slate-600/80 dark:shadow-teal-900/80"
-        height={height}
+        height={200}
+        nonce={nonce}
         src={imgSrc}
-        width={width}
+        style={{ width: "50%", height: "auto" }}
+        width={200}
       />
     </span>
   );
