@@ -3,8 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import cuid from "cuid";
 import { useRouter } from "next/navigation";
 // import { useTranslations } from "next-intl";
-import { Button } from "@nextui-org/react";
-import { Card, CardBody } from "@nextui-org/card";
+import { Button, Card, CardBody } from "@nextui-org/react";
 
 import { NonceContext } from "@/src/app/providers";
 import { QuoteForm } from "@/src/interfaces/Quote";
@@ -363,7 +362,7 @@ export default function QuotingTool() {
       name: "AIIntegration",
       price: 2000,
       label: "AI Integration",
-      subLabel: "(e.g., OpenAI, TensorFlow)",
+      subLabel: "(e.g., OpenAI, Google, Anthropic)",
     },
     {
       name: "RetrievalSystems",

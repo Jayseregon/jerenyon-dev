@@ -1,3 +1,5 @@
+// export const dynamic = "force-dynamic";
+
 import DynamicDocTemplate, {
   generateMetadataTemplate,
   generateStaticParamsTemplate,
@@ -12,5 +14,6 @@ export default async function MdPage({ params }: { params: { slug: string } }) {
 export const generateMetadata = (props: { params: { slug: string } }) =>
   generateMetadataTemplate({ ...props, postType: postType });
 
+// comment out to fix websocket error
 export const generateStaticParams = () =>
   generateStaticParamsTemplate(postType);
