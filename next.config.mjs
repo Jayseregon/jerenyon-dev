@@ -1,8 +1,4 @@
 import createNextIntlPlugin from 'next-intl/plugin';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { build } from 'velite';
-
 const withNextIntl = createNextIntlPlugin();
 const isLocalDev = process.env.NODE_ENV === 'development';
 
@@ -34,8 +30,6 @@ const permissionsPolicy = `
   xr-spatial-tracking=()
 `.replace(/[\n\s]+/g, '');
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
 /**
  * @type {import('next').NextConfig}
  */
@@ -58,20 +52,5 @@ const nextConfig = {
     ];
   },
 };
-
-
-class VeliteWebpackPlugin {
-  static started = false
-  apply(/** @type {import('webpack').Compiler} */ compiler) {
-    // executed three times in nextjs
-    // twice for the server (nodejs / edge runtime) and once for the client
-    compiler.hooks.beforeCompile.tapPromise('VeliteWebpackPlugin', async () => {
-      if (VeliteWebpackPlugin.started) return
-      VeliteWebpackPlugin.started = true
-      const dev = compiler.options.mode === 'development'
-      await build({ watch: dev, clean: !dev })
-    })
-  }
-}
 
 export default withNextIntl(nextConfig);
