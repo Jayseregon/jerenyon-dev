@@ -11,6 +11,7 @@ function createCspHeader(nonce: string, isLandingPage: boolean): string {
     frame-src 'self' https://www.google.com;
     frame-ancestors 'none';
     upgrade-insecure-requests;
+    wasm-src 'self' https://unpkg.com blob:;
   `;
 
   const commonScriptSources = `https://jerenyon.dev https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback`;
@@ -19,13 +20,21 @@ function createCspHeader(nonce: string, isLandingPage: boolean): string {
 
   const commonConnectSources = `https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live`;
 
+  const splineSpecificSources = `
+    https://unpkg.com 
+    https://fonts.gstatic.com 
+    wss://ws-us3.pusher.com 
+    https://unpkg.com/@splinetool/modelling-wasm@*
+    blob:
+  `
+    .replace(/\s+/g, " ")
+    .trim();
+
   // Always include 'unsafe-eval' for script-src to handle client-side transitions
   const scriptSrc = `'self' 'nonce-${nonce}' 'unsafe-eval' 'strict-dynamic' blob: ${commonScriptSources}`;
   const styleSrc = `'self' 'nonce-${nonce}' ${isLandingPage ? "'unsafe-eval'" : ""} ${commonStyleSources}`;
   const connectSrc = `'self' ${commonConnectSources} ${
-    isLandingPage
-      ? "https://unpkg.com https://fonts.gstatic.com wss://ws-us3.pusher.com"
-      : ""
+    isLandingPage ? splineSpecificSources : ""
   }`;
 
   const cspExtras = `
@@ -35,6 +44,7 @@ function createCspHeader(nonce: string, isLandingPage: boolean): string {
   `;
 
   const cspHeader = `${baseCSP}${cspExtras}`;
+
   return cspHeader.replace(/\s{2,}/g, " ").trim();
 }
 
