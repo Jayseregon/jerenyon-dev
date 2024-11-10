@@ -11,30 +11,28 @@ function createCspHeader(nonce: string, isLandingPage: boolean): string {
     frame-src 'self' https://www.google.com;
     frame-ancestors 'none';
     upgrade-insecure-requests;
-    wasm-src 'self' https://unpkg.com blob:;
   `;
 
-  const commonScriptSources = `https://jerenyon.dev https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback`;
+  const commonScriptSources = `https://jerenyon.dev https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback https://unpkg.com`;
 
   const commonStyleSources = `https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://vercel.live`;
 
   const commonConnectSources = `https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live`;
 
-  const splineSpecificSources = `
-    https://unpkg.com 
-    https://fonts.gstatic.com 
-    wss://ws-us3.pusher.com 
+  const splineConnectSources = `
     https://unpkg.com/@splinetool/modelling-wasm@*
-    blob:
+    https://unpkg.com/@splinetool/*
+    https://fonts.gstatic.com 
+    wss://ws-us3.pusher.com
   `
     .replace(/\s+/g, " ")
     .trim();
 
   // Always include 'unsafe-eval' for script-src to handle client-side transitions
-  const scriptSrc = `'self' 'nonce-${nonce}' 'unsafe-eval' 'strict-dynamic' blob: ${commonScriptSources}`;
+  const scriptSrc = `'self' 'nonce-${nonce}' 'unsafe-eval' 'wasm-unsafe-eval' blob: ${commonScriptSources}`;
   const styleSrc = `'self' 'nonce-${nonce}' ${isLandingPage ? "'unsafe-eval'" : ""} ${commonStyleSources}`;
   const connectSrc = `'self' ${commonConnectSources} ${
-    isLandingPage ? splineSpecificSources : ""
+    isLandingPage ? splineConnectSources : ""
   }`;
 
   const cspExtras = `
