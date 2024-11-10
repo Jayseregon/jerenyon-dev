@@ -89,7 +89,7 @@ export function generateStaticParams() {
 }
 
 export default async function RootLayout({ children }: Props) {
-  const nonce = headers().get("x-nonce") || "";
+  const nonce = (await headers()).get("x-nonce") || "";
   const locale = await getLocale();
   const messages = await getMessages();
 
@@ -120,8 +120,9 @@ export default async function RootLayout({ children }: Props) {
         />
         {/* <link
           as="fetch"
-          crossOrigin="anonymous"
-          href="https://jerenyon-dev-remote-pull.b-cdn.net/spline-scene/hero-3d-scene.splinecode"
+          // crossOrigin="anonymous"
+          // href="https://jerenyon-dev-remote-pull.b-cdn.net/spline-scene/hero-scene.splinecode"
+          href="https://prod.spline.design/tXTp95D6LUG-arHB/scene.splinecode"
           nonce={nonce}
           rel="preload"
         /> */}

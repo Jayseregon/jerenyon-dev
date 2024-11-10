@@ -7,12 +7,12 @@ export interface MdPageContentProps {
 }
 
 export interface DynamicDocTemplateProps {
-  params: { slug: string };
+  slug: string;
   postType: string;
 }
 
 export interface MetadataTemplateProps {
-  params: { slug: string };
+  slug: string;
   postType: "blogs-articles" | "projects";
 }
 

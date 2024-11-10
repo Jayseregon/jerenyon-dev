@@ -5,12 +5,21 @@ import DynamicDocTemplate, {
 
 const postType = "blogs-articles";
 
-export default async function MdPage({ params }: { params: { slug: string } }) {
-  return <DynamicDocTemplate params={params} postType={postType} />;
+export default async function MdPage(props: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await props.params;
+
+  return <DynamicDocTemplate postType={postType} slug={slug} />;
 }
 
-export const generateMetadata = (props: { params: { slug: string } }) =>
-  generateMetadataTemplate({ ...props, postType: postType });
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await props.params;
+
+  return generateMetadataTemplate({ slug: slug, postType: postType });
+}
 
 export const generateStaticParams = () =>
   generateStaticParamsTemplate(postType);

@@ -22,10 +22,10 @@ async function getDocContent(postType: string, slug: string) {
 }
 
 export default async function DynamicDocTemplate({
-  params,
+  slug,
   postType,
 }: DynamicDocTemplateProps) {
-  const source = await getDocContent(postType, params.slug);
+  const source = await getDocContent(postType, slug);
   const { content, frontmatter } = await MDXRenderer({ source });
 
   return (
@@ -41,10 +41,10 @@ export default async function DynamicDocTemplate({
 
 // Update metadata dynamically based on frontmatter
 export async function generateMetadataTemplate({
-  params,
+  slug,
   postType,
 }: MetadataTemplateProps): Promise<Metadata> {
-  const source = await getDocContent(postType, params.slug);
+  const source = await getDocContent(postType, slug);
   const { frontmatter } = await MDXRenderer({ source });
 
   return { title: frontmatter.title as string };
