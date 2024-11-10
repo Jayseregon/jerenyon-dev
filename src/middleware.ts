@@ -1,24 +1,38 @@
 import { NextRequest, NextResponse } from "next/server";
 
+function createCspHeader(nonce: string, isLandingPage: boolean): string {
+  const baseCSP = `
+    default-src 'self' https://jerenyon.dev https://www.jerenyon.dev;
+    style-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
+    img-src 'self' blob: data: https://jerenyon.dev https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net https://app.usercentrics.eu;
+    font-src 'self' https://jerenyon.dev https://www.jerenyon.dev;
+    object-src 'none';
+    base-uri 'self' https://jerenyon.dev https://www.jerenyon.dev;
+    form-action 'self' https://jerenyon.dev https://www.jerenyon.dev;
+    frame-src 'self' https://www.google.com;
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+  `;
+
+  const landingPageExtras = `
+    script-src 'self' 'nonce-${nonce}' 'unsafe-eval' 'strict-dynamic' blob: https://jerenyon.dev https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback;
+    connect-src 'self' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live https://unpkg.com https://fonts.gstatic.com wss://ws-us3.pusher.com;
+  `;
+
+  const otherPagesScript = `
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' blob: https://jerenyon.dev https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback;
+    connect-src 'self' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live;
+  `;
+
+  const cspHeader = `${baseCSP}${isLandingPage ? landingPageExtras : otherPagesScript}`;
+
+  return cspHeader.replace(/\s{2,}/g, " ").trim();
+}
+
 function cspMiddleware(req: NextRequest): NextResponse {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
-
-  const cspHeader = `
-  default-src 'self' https://jerenyon.dev https://www.jerenyon.dev ;
-  script-src 'self' 'nonce-${nonce}' 'unsafe-eval' 'strict-dynamic' blob: https://jerenyon.dev https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback;
-  style-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
-  img-src 'self' blob: data: https://jerenyon.dev https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net https://app.usercentrics.eu;
-  font-src 'self' https://jerenyon.dev https://www.jerenyon.dev ;
-  connect-src 'self' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live https://unpkg.com https://fonts.gstatic.com wss://ws-us3.pusher.com;
-  object-src 'none';
-  base-uri 'self' https://jerenyon.dev https://www.jerenyon.dev ;
-  form-action 'self' https://jerenyon.dev https://www.jerenyon.dev ;
-  frame-src 'self' https://www.google.com;
-  frame-ancestors 'none';
-  upgrade-insecure-requests;
-`
-    .replace(/\s{2,}/g, " ")
-    .trim();
+  const isLandingPage = req.nextUrl.pathname === "/";
+  const cspHeader = createCspHeader(nonce, isLandingPage);
 
   const requestHeaders = new Headers(req.headers);
 
