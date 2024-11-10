@@ -14,7 +14,7 @@ function createCspHeader(nonce: string, isLandingPage: boolean): string {
   `;
 
   const landingPageExtras = `
-    script-src 'self' 'nonce-${nonce}' 'unsafe-eval' 'strict-dynamic' blob: https://jerenyon.dev https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback;
+    script-src 'self' 'nonce-${nonce}' 'unsafe-eval' blob: https://jerenyon.dev https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback;
     style-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
     connect-src 'self' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live https://unpkg.com https://fonts.gstatic.com wss://ws-us3.pusher.com;
   `;
