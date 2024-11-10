@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 function createCspHeader(nonce: string, isLandingPage: boolean): string {
   const baseCSP = `
     default-src 'self' https://jerenyon.dev https://www.jerenyon.dev;
-    style-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
     img-src 'self' blob: data: https://jerenyon.dev https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net https://app.usercentrics.eu;
     font-src 'self' https://jerenyon.dev https://www.jerenyon.dev;
     object-src 'none';
@@ -16,15 +15,17 @@ function createCspHeader(nonce: string, isLandingPage: boolean): string {
 
   const landingPageExtras = `
     script-src 'self' 'nonce-${nonce}' 'unsafe-eval' 'strict-dynamic' blob: https://jerenyon.dev https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback;
+    style-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
     connect-src 'self' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live https://unpkg.com https://fonts.gstatic.com wss://ws-us3.pusher.com;
   `;
 
-  const otherPagesScript = `
+  const otherPagesExtras = `
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic' blob: https://jerenyon.dev https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback;
+    style-src 'self' 'nonce-${nonce}' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
     connect-src 'self' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live;
   `;
 
-  const cspHeader = `${baseCSP}${isLandingPage ? landingPageExtras : otherPagesScript}`;
+  const cspHeader = `${baseCSP}${isLandingPage ? landingPageExtras : otherPagesExtras}`;
 
   return cspHeader.replace(/\s{2,}/g, " ").trim();
 }
