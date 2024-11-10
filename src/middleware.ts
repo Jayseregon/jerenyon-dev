@@ -13,21 +13,26 @@ function createCspHeader(nonce: string, isLandingPage: boolean): string {
     upgrade-insecure-requests;
   `;
 
-  const landingPageExtras = `
-    script-src 'self' 'nonce-${nonce}' 'unsafe-eval' blob: https://jerenyon.dev https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback;
-    style-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
-    connect-src 'self' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live https://unpkg.com https://fonts.gstatic.com wss://ws-us3.pusher.com;
-  `;
+  const commonScriptSources = `https://jerenyon.dev https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback`;
 
-  const otherPagesExtras = `
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' blob: https://jerenyon.dev https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback;
-    style-src 'self' 'nonce-${nonce}' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
-    connect-src 'self' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live;
-  `;
+  const commonStyleSources = `https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://vercel.live`;
 
-  const cspHeader = `${baseCSP}${isLandingPage ? landingPageExtras : otherPagesExtras}`;
+  const commonConnectSources = `https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live`;
 
-  return cspHeader.replace(/\s{2,}/g, " ").trim();
+  // Landing page needs 'unsafe-eval' for both script and style due to the 3D scene and client components
+  const cspExtras = isLandingPage
+    ? `
+      script-src 'self' 'nonce-${nonce}' 'unsafe-eval' blob: ${commonScriptSources};
+      style-src 'self' 'nonce-${nonce}' 'unsafe-eval' ${commonStyleSources};
+      connect-src 'self' ${commonConnectSources} https://unpkg.com https://fonts.gstatic.com wss://ws-us3.pusher.com;
+    `
+    : `
+      script-src 'self' 'nonce-${nonce}' ${commonScriptSources};
+      style-src 'self' 'nonce-${nonce}' ${commonStyleSources};
+      connect-src 'self' ${commonConnectSources};
+    `;
+
+  return `${baseCSP}${cspExtras}`.replace(/\s{2,}/g, " ").trim();
 }
 
 function cspMiddleware(req: NextRequest): NextResponse {
@@ -46,6 +51,8 @@ function cspMiddleware(req: NextRequest): NextResponse {
     },
   });
 
+  // Cache-Control to ensure fresh CSP on navigation
+  response.headers.set("Cache-Control", "no-store, max-age=0");
   response.headers.set("Content-Security-Policy", cspHeader);
 
   return response;
