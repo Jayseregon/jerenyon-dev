@@ -19,20 +19,23 @@ function createCspHeader(nonce: string, isLandingPage: boolean): string {
 
   const commonConnectSources = `https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live`;
 
-  // Landing page needs 'unsafe-eval' for both script and style due to the 3D scene and client components
-  const cspExtras = isLandingPage
-    ? `
-      script-src 'self' 'nonce-${nonce}' 'unsafe-eval' blob: ${commonScriptSources};
-      style-src 'self' 'nonce-${nonce}' 'unsafe-eval' ${commonStyleSources};
-      connect-src 'self' ${commonConnectSources} https://unpkg.com https://fonts.gstatic.com wss://ws-us3.pusher.com;
-    `
-    : `
-      script-src 'self' 'nonce-${nonce}' ${commonScriptSources};
-      style-src 'self' 'nonce-${nonce}' ${commonStyleSources};
-      connect-src 'self' ${commonConnectSources};
-    `;
+  // Always include 'unsafe-eval' for script-src to handle client-side transitions
+  const scriptSrc = `'self' 'nonce-${nonce}' 'unsafe-eval' 'strict-dynamic' blob: ${commonScriptSources}`;
+  const styleSrc = `'self' 'nonce-${nonce}' ${isLandingPage ? "'unsafe-eval'" : ""} ${commonStyleSources}`;
+  const connectSrc = `'self' ${commonConnectSources} ${
+    isLandingPage
+      ? "https://unpkg.com https://fonts.gstatic.com wss://ws-us3.pusher.com"
+      : ""
+  }`;
 
-  return `${baseCSP}${cspExtras}`.replace(/\s{2,}/g, " ").trim();
+  const cspExtras = `
+    script-src ${scriptSrc};
+    style-src ${styleSrc};
+    connect-src ${connectSrc};
+  `;
+
+  const cspHeader = `${baseCSP}${cspExtras}`;
+  return cspHeader.replace(/\s{2,}/g, " ").trim();
 }
 
 function cspMiddleware(req: NextRequest): NextResponse {
@@ -51,8 +54,10 @@ function cspMiddleware(req: NextRequest): NextResponse {
     },
   });
 
-  // Cache-Control to ensure fresh CSP on navigation
-  response.headers.set("Cache-Control", "no-store, max-age=0");
+  // Ensure no caching to prevent stale CSP headers
+  response.headers.set("Cache-Control", "no-store, must-revalidate, max-age=0");
+  response.headers.set("Pragma", "no-cache");
+  response.headers.set("Expires", "0");
   response.headers.set("Content-Security-Policy", cspHeader);
 
   return response;
