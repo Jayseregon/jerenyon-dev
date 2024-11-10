@@ -32,7 +32,8 @@ function createCspHeader(nonce: string, isLandingPage: boolean): string {
 
 function cspMiddleware(req: NextRequest): NextResponse {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
-  const isLandingPage = req.nextUrl.pathname === "/";
+  const isLandingPage =
+    req.nextUrl.pathname === "/" || req.nextUrl.pathname === "";
   const cspHeader = createCspHeader(nonce, isLandingPage);
 
   const requestHeaders = new Headers(req.headers);
