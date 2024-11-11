@@ -8,6 +8,8 @@ export default function SplineEventHandler() {
   const router = useRouter();
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const canvas = document.querySelector("canvas");
 
     if (!canvas) return;

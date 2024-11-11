@@ -9,11 +9,10 @@ export default function RootPage() {
   const t = useTranslations("homepage");
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-background flex items-center justify-center">
+    <div className="relative h-screen w-screen overflow-hidden bg-background">
       <Suspense fallback={<Loading />}>
         <SplineScene />
       </Suspense>
-
       {/* Hero Title and Subtitle */}
       <div className="absolute bottom-0 w-full flex flex-col items-center justify-center pb-5 z-10">
         <h2
