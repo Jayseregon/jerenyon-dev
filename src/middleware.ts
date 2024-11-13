@@ -16,7 +16,7 @@ function cspMiddleware(req: NextRequest): NextResponse {
   frame-src 'self' https://www.google.com;
   frame-ancestors 'none';
   upgrade-insecure-requests;
-`
+  `
     .replace(/\s{2,}/g, " ")
     .trim();
 

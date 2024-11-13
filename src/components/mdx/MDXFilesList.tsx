@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "@nextui-org/link";
+import { Link } from "@nextui-org/react";
 import { useContext } from "react";
 
 import { NonceContext } from "@/src/app/providers";
