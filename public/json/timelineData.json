@@ -12,10 +12,24 @@
       "Swift",
       "SwiftUI",
       "Vercel",
-      "Resend"
+      "Resend",
+      "Automation",
+      "Postgres",
+      "Prisma",
+      "GitHub",
+      "Copilot",
+      "AI",
+      "Web",
+      "Full-stack"
     ],
-    "summary": "",
-    "description": [],
+    "summary": "Founder and visionary behind Jerenyon Dev, delivering custom web development, automation, and AI-driven solutions.",
+    "description": [
+      "Established Jerenyon Dev as a comprehensive web development and automation platform, showcasing technical expertise and innovative projects.",
+      "Developed and maintained full-stack web applications using Python, React, Next.js, and TypeScript.",
+      "Integrated AI capabilities and LLMs (OpenAI, Langchain) to enhance web and automation tools.",
+      "Designed a scalable backend infrastructure with seamless cloud deployments on Vercel and integration of modern services such as Resend for communication.",
+      "Managed all aspects of product development, including architecture, coding, testing, and client interaction."
+    ],
     "timelineIcon": "work",
     "href": ""
   },
@@ -93,21 +107,35 @@
     "keywords": [
       "Python",
       "Django",
-      "API",
-      "OpenAI",
       "React",
       "Next.js",
+      "TypeScript",
       "Tailwind",
+      "API",
+      "OpenAI",
+      "AI",
+      "Langchain",
       "Postgres",
+      "Prisma",
       "Docker",
       "Azure",
-      "GIS"
+      "GitHub",
+      "Copilot",
+      "CI/CD",
+      "Cloud",
+      "GIS",
+      "Leadership",
+      "Automation"
     ],
-    "summary": "Driving digital transformation through Python automation, GIS technology, and modern web development, while integrating LLM for enhanced capabilities.",
+    "summary": "Driving innovation and operational efficiency through Python automation, AI adoption, advanced GIS integration, and scalable web development solutions.",
     "description": [
-      "Converted the Django platform into a REST API using DRF, with Next.js for the client.",
-      "Led GIS adoption, enhancing team capabilities from design to civil engineering.",
-      "Mentored teams in best practices, driving technical excellence."
+      "Initially developed a Django-based platform, later transforming it into a robust, RESTful API using Django Rest Framework, facilitating seamless integration with a Next.js frontend.",
+      "Led the creation of a modern UI using Next.js, ensuring a responsive, user-centric experience, and deployed both Python backends and Next.js frontends independently using Docker for scalability and high performance on Azure.",
+      "Strategically implemented GIS technologies to enhance network design and civil engineering workflows, providing training and mentorship to empower the team.",
+      "Spearheaded R&D initiatives to integrate AI-driven solutions, developing custom automations with advanced models and frameworks like LangChain and OpenAI, enhancing tool capabilities and operational processes.",
+      "Developed and managed advanced Python automation scripts and tools, such as audit report generation from field surveys, aerial network pole and midspan calculations, and comprehensive geospatial data processing pipelines, improving data handling and analysis across departments.",
+      "Architected cloud-based infrastructure solutions on Azure, administering all resources including databases, web apps, container registries, GitHub repositories, and networking components, with automated CI/CD pipelines to streamline deployment.",
+      "Continually building new applications, employing Next.js for client-facing tools like a custom PDF report generator and data extraction utilities, while leveraging Python for backend-heavy data and geospatial processing."
     ],
     "timelineIcon": "work",
     "href": ""
@@ -121,17 +149,23 @@
       "Python",
       "React",
       "Next.js",
+      "GitHub",
       "Swift",
       "SwiftUI",
       "Vercel",
       "Resend",
-      "E-commerce"
+      "Stripe",
+      "E-commerce",
+      "Full-stack Development",
+      "Business Strategy",
+      "Web Architecture"
     ],
-    "summary": "Overseeing all technical, engineering, and development aspects of our creative venture.",
+    "summary": "Co-founder leading technical strategy and full-stack development for our creative e-commerce platform.",
     "description": [
-      "Defined the strategic roadmap for product development.",
-      "Led the transition from WordPress to a custom Django platform.",
-      "Managed all technical operations, including full-stack development, architecture, and system integration."
+      "Spearheaded the strategic development and technical implementation of our custom e-commerce platform, transitioning from WordPress to a bespoke Django solution.",
+      "Oversaw full-stack development, implementing scalable web architectures with React and Next.js.",
+      "Managed and integrated advanced backend operations, ensuring seamless functionality and user experience.",
+      "Led cross-functional collaboration to align business goals with technical development, promoting innovation and growth."
     ],
     "timelineIcon": "work",
     "href": ""
@@ -145,23 +179,31 @@
       "Python",
       "Django",
       "Bootstrap",
+      "Automation",
       "Docker",
       "Azure",
+      "GitHub",
       "GIS",
       "PostGIS",
-      "AutoCAD"
+      "Postgres",
+      "AutoCAD",
+      "Network Design",
+      "Process Optimization",
+      "Data Analysis"
     ],
-    "summary": "Started as a Fiber Network Designer, quickly transitioning into GIS technology integration and Python automation, leading the Django platform project.",
+    "summary": "Enhanced fiber network design workflows through Python automation and GIS technology, leading to the development of a powerful Django-based platform.",
     "description": [
-      "Introduced GIS technologies and Python automations to streamline network design processes.",
-      "Developed a Django platform to enhance efficiency and data management.",
-      "Collaborated with cross-functional teams to ensure the successful implementation of new technologies."
+      "Played a pivotal role in transforming manual CAD-based network design processes by integrating GIS tools and custom Python automation scripts, significantly reducing manual labor and human error.",
+      "Engineered a Django platform to streamline project management, data handling, and reporting workflows, boosting efficiency and accelerating project timelines.",
+      "Designed and implemented scalable database solutions using PostgreSQL and PostGIS to manage spatial data, automate complex geospatial processes, and support advanced analytics for network planning.",
+      "Developed Python-powered on-premises applications using PySide6 for GUI interfaces and PyInstaller for deployment, enhancing accessibility and usability for non-technical team members.",
+      "Introduced innovative AutoLISP tools to optimize AutoCAD and AutoCAD Map 3D functionalities, driving productivity improvements across engineering teams.",
+      "Collaborated effectively with multidisciplinary teams, facilitating knowledge transfer, mentoring, and fostering a culture of technological adoption and continuous improvement.",
+      "Pioneered GIS pilot projects that laid the foundation for future advancements in network design, enabling data-driven applications and automated solutions that supported the company's strategic goals."
     ],
-
     "timelineIcon": "work",
     "href": ""
   },
-
   {
     "date": "2014 - 2016",
     "label": "Master of Science Geography",
