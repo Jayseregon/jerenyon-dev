@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import clsx from "clsx";
 import { ReactNode } from "react";
-// import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { headers } from "next/headers";
 import { getLocale, getMessages } from "next-intl/server";
 import Head from "next/head";
@@ -16,7 +16,7 @@ import {
   fontSans,
   fontMono,
   fontSerif,
-  fontDisplay,
+  // fontDisplay,
   fontSansAlt,
 } from "@/config/fonts";
 
@@ -164,7 +164,7 @@ export default async function RootLayout({ children }: Props) {
           fontSans.variable,
           fontMono.variable,
           fontSerif.variable,
-          fontDisplay.variable,
+          // fontDisplay.variable,
           fontSansAlt.variable,
         )}
         nonce={nonce}
@@ -176,7 +176,7 @@ export default async function RootLayout({ children }: Props) {
           <NextIntlClientProvider messages={messages}>
             <RootLayoutStyling nonce={nonce}>
               {children}
-              {/* <SpeedInsights /> */}
+              <SpeedInsights />
             </RootLayoutStyling>
           </NextIntlClientProvider>
         </Providers>
