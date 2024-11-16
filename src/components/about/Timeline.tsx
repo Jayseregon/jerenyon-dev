@@ -9,9 +9,7 @@ import {
 } from "@/src/components/icons";
 import { TimelineItem } from "@/interfaces/About";
 
-import { WorkExperienceCardItem } from "./WorkExperienceCardItem";
-import { CertificateCardItem } from "./CertificateCardItem";
-import { EducationCardItem } from "./EducationCardItem";
+import { TimelineCardItem } from "./TimelineCardItem";
 
 export const Timeline = () => {
   const [timelineData, setTimelineData] = useState<TimelineItem[]>([]);
@@ -35,13 +33,7 @@ export const Timeline = () => {
           <div
             className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:ps-10" : "md:pe-10"} z-40`}
           >
-            {item.timelineIcon == "work" ? (
-              <WorkExperienceCardItem index={index} item={item} />
-            ) : item.timelineIcon == "award" ? (
-              <CertificateCardItem index={index} item={item} />
-            ) : (
-              <EducationCardItem index={index} item={item} />
-            )}
+            <TimelineCardItem index={index} item={item} />
           </div>
 
           <div

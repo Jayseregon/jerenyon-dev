@@ -16,27 +16,38 @@ import {
 } from "@/src/components/icons";
 import { WorkExperienceCardItemProps } from "@/interfaces/About";
 
-export const WorkExperienceCardItem = ({
+export const TimelineCardItem = ({
   item,
   index,
 }: WorkExperienceCardItemProps) => {
+  const iconMap = {
+    work: <LaptopIcon className="mx-auto z-30 text-background" size={24} />,
+    award: (
+      <AwardCertificatIcon className="mx-auto z-30 text-background" size={24} />
+    ),
+    school: (
+      <SchoolBackpackIcon className="mx-auto z-30 text-background" size={24} />
+    ),
+  };
+
+  const colorMap = {
+    work: "purple",
+    award: "cyan",
+    school: "amber",
+  };
+
+  const color = colorMap[item.timelineIcon as keyof typeof colorMap] || "gray";
+  const icon = iconMap[item.timelineIcon as keyof typeof iconMap];
+
   return (
-    <Card className="bg-background rounded-lg shadow-md border-3 border-purple-800 dark:border-purple-300">
+    <Card
+      className={`bg-background rounded-lg shadow-md border-3 border-${color}-800 dark:border-${color}-300`}
+    >
       <CardHeader className="md:hidden p-0 m-0 flex justify-center">
-        <div className="flex inline-block gap-2 text-background bg-purple-800 dark:bg-purple-300 rounded-b-2xl px-6 py-1">
-          {item.timelineIcon == "work" ? (
-            <LaptopIcon className="mx-auto z-30 text-background" size={24} />
-          ) : item.timelineIcon == "award" ? (
-            <AwardCertificatIcon
-              className="mx-auto z-30 text-background"
-              size={24}
-            />
-          ) : (
-            <SchoolBackpackIcon
-              className="mx-auto z-30 text-background"
-              size={24}
-            />
-          )}
+        <div
+          className={`flex inline-block gap-2 text-background bg-${color}-800 dark:bg-${color}-300 rounded-b-2xl px-6 py-1`}
+        >
+          {icon}
           {item.date}
         </div>
       </CardHeader>
@@ -47,7 +58,9 @@ export const WorkExperienceCardItem = ({
         } relative`}
       >
         <div>
-          <h3 className="text-xl font-semibold text-purple-800 dark:text-purple-300">
+          <h3
+            className={`text-xl font-semibold text-${color}-800 dark:text-${color}-300`}
+          >
             {item.label}
           </h3>
           <p className="grid grid-cols dark:text-neutral-400 text-neutral-500">
@@ -58,7 +71,9 @@ export const WorkExperienceCardItem = ({
       </CardHeader>
 
       <CardBody
-        className={`grid grid-cols gap-2 text-left ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}
+        className={`grid grid-cols gap-2 text-left ${
+          index % 2 === 0 ? "md:text-left" : "md:text-right"
+        }`}
       >
         <p>{item.summary}</p>
         <div>
@@ -66,8 +81,8 @@ export const WorkExperienceCardItem = ({
             <Chip
               key={idx}
               classNames={{
-                base: "bg-transparent border-small border-purple-500 mx-0.5",
-                content: "text-purple-500",
+                base: `bg-transparent border-small border-${color}-500 mx-0.5`,
+                content: `text-${color}-500`,
               }}
               radius="full"
               size="sm"
@@ -87,10 +102,10 @@ export const WorkExperienceCardItem = ({
         <Link
           isExternal
           showAnchorIcon
-          className="text-light text-purple-800/50 dark:text-purple-300/50"
-          href="#"
+          className={`text-light text-${color}-800/50 dark:text-${color}-300/50`}
+          href={item.href || "#"}
         >
-          More details
+          {item.timelineIcon === "award" ? "Show Credentials" : "More details"}
         </Link>
       </CardFooter>
     </Card>
