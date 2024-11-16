@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 
-import { nextui } from "@nextui-org/theme";
+import { nextui } from "@nextui-org/react";
 
 /** @type {import("tailwindcss").Config} */
 const config: import("tailwindcss").Config = {
@@ -16,7 +16,7 @@ const config: import("tailwindcss").Config = {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
         serif: ["var(--font-serif)", "serif"],
-        display: ["var(--font-display)", "serif"],
+        // display: ["var(--font-display)", "serif"],
         sansAlt: ["var(--font-sans-alt)", "sans-serif"],
       },
       fontWeight: {
@@ -110,7 +110,7 @@ const config: import("tailwindcss").Config = {
     {
       variants: ["hover", "focus", "active"],
       pattern:
-        /(bg|border|text)-(amber|purple|blue|green|red|yellow|indigo|pink|gray|teal|primary|secondary|success|warning|danger)-(100|200|300|400|500|600|700|800|900)/,
+        /(bg|border|text)-(slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose|primary|secondary|success|warning|danger)-(100|200|300|400|500|600|700|800|900|950)/,
     },
   ],
   plugins: [

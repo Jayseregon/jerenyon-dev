@@ -1,15 +1,20 @@
-import { ReactNode } from "react";
+"use client";
+import { useContext } from "react";
 
-interface SnippetProps {
-  children?: ReactNode;
-}
+import { NonceContext } from "@/src/app/providers";
+import { MdxCompsDefaultProps } from "@/interfaces/mdx";
 
-export default function Snippet({ children }: SnippetProps) {
+export default function Snippet({
+  children,
+}: MdxCompsDefaultProps): JSX.Element {
+  const nonce = useContext(NonceContext);
+
   return (
-    <>
-      <span className="inline-block bg-gray-300 dark:bg-gray-600 text-gray-600 dark:text-gray-50 p-1 mx-1 font-mono text-sm border-1 border-gray-600 dark:border-gray-50 rounded-md">
-        {children}
-      </span>
-    </>
+    <span
+      className="inline-block bg-gray-300 dark:bg-gray-600 text-gray-600 dark:text-gray-50 p-1 mx-1 font-mono text-sm border-1 border-gray-600 dark:border-gray-50 rounded-md"
+      nonce={nonce}
+    >
+      {children}
+    </span>
   );
 }
