@@ -44,10 +44,10 @@ export const siteConfig = {
       label: "contact",
       href: "/contact",
     },
-    {
-      label: "mdx",
-      href: "/mdx-demo",
-    },
+    // {
+    //   label: "mdx",
+    //   href: "/mdx-demo",
+    // },
   ],
   hubCategories: [
     {

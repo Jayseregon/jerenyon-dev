@@ -1,6 +1,6 @@
 import {
   Fira_Code,
-  Italiana,
+  // Italiana,
   Lora,
   Inter,
   Inconsolata,
@@ -26,11 +26,11 @@ export const fontSerif = Lora({
   style: ["normal", "italic"],
 });
 
-export const fontDisplay = Italiana({
-  subsets: ["latin"],
-  variable: "--font-display",
-  weight: "400",
-});
+// export const fontDisplay = Italiana({
+//   subsets: ["latin"],
+//   variable: "--font-display",
+//   weight: "400",
+// });
 
 export const fontSansAlt = Inter({
   subsets: ["latin"],
