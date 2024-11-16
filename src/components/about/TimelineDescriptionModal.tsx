@@ -24,9 +24,10 @@ export const TimelineDescriptionModal = ({
     <Modal
       backdrop="blur"
       isOpen={isOpen}
+      scrollBehavior="inside"
       size="5xl"
       onOpenChange={onClose}
-      scrollBehavior="inside">
+    >
       <ModalContent>
         <ModalHeader>{item.label}</ModalHeader>
         <ModalBody>
@@ -41,9 +42,7 @@ export const TimelineDescriptionModal = ({
           )}
         </ModalBody>
         <ModalFooter>
-          <Button
-            color="primary"
-            onPress={onClose}>
+          <Button color="primary" onPress={onClose}>
             Close
           </Button>
         </ModalFooter>
