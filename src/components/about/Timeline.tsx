@@ -1,24 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 import {
   AwardCertificatIcon,
   SchoolBackpackIcon,
   LaptopIcon,
 } from "@/src/components/icons";
-import { TimelineItem } from "@/interfaces/About";
 
 import { TimelineCardItem } from "./TimelineCardItem";
+import { getTimelineData } from "./getTimelineData";
 
 export const Timeline = () => {
-  const [timelineData, setTimelineData] = useState<TimelineItem[]>([]);
-
-  useEffect(() => {
-    fetch("/json/timelineData.json")
-      .then((response) => response.json())
-      .then((data) => setTimelineData(data));
-  }, []);
+  const t = useTranslations("timeline");
+  const timelineData = getTimelineData(t);
 
   return (
     <div className="relative w-10/12 mx-auto">

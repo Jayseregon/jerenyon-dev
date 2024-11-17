@@ -151,5 +151,106 @@
       "title": "Conditions d'utilisation",
       "heroTitle": "Notre engagement envers vous."
     }
+  },
+  "timeline": {
+    "item1": {
+      "date": "Sept 2024 - Présent",
+      "label": "Fondateur",
+      "city": "Montréal, QC",
+      "company": "Jerenyon Dev",
+      "summary": "Fondateur et visionnaire derrière Jerenyon Dev, offrant des solutions personnalisées de développement web, d'automatisation et basées sur l'IA.",
+      "description": {
+        "p1": "Fondé Jerenyon Dev en tant que plateforme complète de développement web et d'automatisation, mettant en valeur l'expertise technique et des projets innovants.",
+        "p2": "Développé et maintenu des applications web full-stack utilisant Python, React, Next.js et TypeScript.",
+        "p3": "Intégré des capacités d'IA et des LLM (OpenAI, Langchain) pour améliorer les outils web et d'automatisation.",
+        "p4": "Conçu une infrastructure backend évolutive avec des déploiements cloud fluides sur Vercel et l'intégration de services modernes tels que Resend, pour la communication.",
+        "p5": "Géré tous les aspects du développement produit, y compris l'architecture, le codage, les tests et l'interaction avec les clients."
+      }
+    },
+    "item2": {
+      "date": "Jan 2023",
+      "label": "Spécialisation Développeur TensorFlow",
+      "company": "DeepLearning.AI, Coursera",
+      "city": "",
+      "summary": "Certificat professionnel de développeur TensorFlow achevé, maîtrisant la formation de réseaux de neurones, la reconnaissance d'images avec des convolutions et le NLP. Acquis des compétences pratiques pour construire des solutions d'IA en utilisant TensorFlow.",
+      "description": {}
+    },
+    "item3": {
+      "date": "Déc 2022",
+      "label": "Spécialisation en Deep Learning",
+      "company": "DeepLearning.AI, Coursera",
+      "city": "",
+      "summary": "Spécialisation en Deep Learning achevée, maîtrisant les réseaux de neurones, y compris les CNN, RNN, LSTM et Transformers. Acquis une expertise dans l'application de ces modèles à des tâches réelles comme le NLP, la reconnaissance vocale, et plus en utilisant Python et TensorFlow.",
+      "description": {}
+    },
+    "item4": {
+      "date": "Nov 2022",
+      "label": "Spécialisation en Machine Learning",
+      "company": "Université de Stanford, Coursera",
+      "city": "",
+      "summary": "Spécialisation en Machine Learning achevée, maîtrisant les techniques clés comme l'apprentissage supervisé et non supervisé, les systèmes de recommandation et l'apprentissage par renforcement. Acquis des compétences pratiques pour appliquer ces méthodes à des défis du monde réel.",
+      "description": {}
+    },
+    "item5": {
+      "date": "Juin 2022 - Présent",
+      "label": "Conseiller en Amélioration Continue | Lead Developer",
+      "company": "Telecon",
+      "city": "Montréal, QC",
+      "summary": "Stimuler l'innovation et l'efficacité opérationnelle grâce à l'automatisation Python, l'adoption de l'IA, l'intégration avancée des SIG et des solutions de développement web évolutives.",
+      "description": {
+        "p1": "Initialement développé une plateforme basée sur Django, transformée par la suite en une API RESTful robuste utilisant Django Rest Framework, facilitant l'intégration fluide avec un frontend Next.js.",
+        "p2": "Dirigé la création d'une interface utilisateur moderne avec Next.js, garantissant une expérience utilisateur réactive et centrée sur l'utilisateur, et déployé de manière indépendante les backends Python et les frontends Next.js avec Docker pour une évolutivité et des performances élevées sur Azure.",
+        "p3": "Implémenté stratégiquement des technologies SIG pour améliorer la conception de réseaux et les flux de travail en génie civil, tout en assurant des formations et du mentorat pour renforcer les compétences de l'équipe.",
+        "p4": "Conduit des initiatives de R&D pour intégrer des solutions basées sur l'IA, développant des automatisations sur mesure avec des modèles et frameworks avancés tels que LangChain et OpenAI, améliorant ainsi les capacités des outils et les processus opérationnels.",
+        "p5": "Développé et géré des scripts et outils d'automatisation avancés en Python, tels que la génération de rapports d'audit à partir de relevés de terrain, les calculs de poteaux de réseau aérien et de mi-portée, ainsi que des pipelines complets de traitement de données géospatiales, améliorant la gestion et l'analyse des données au sein des départements.",
+        "p6": "Conçu des solutions d'infrastructure cloud sur Azure, administrant toutes les ressources, y compris les bases de données, les applications web, les registres de conteneurs, les dépôts GitHub et les composants réseau, avec des pipelines CI/CD automatisés pour optimiser le déploiement.",
+        "p7": "Développe continuellement de nouvelles applications, utilisant Next.js pour des outils orientés client comme un générateur de rapports PDF personnalisé et des utilitaires d'extraction de données, tout en exploitant Python pour le traitement intensif des données et des opérations géospatiales côté backend."
+      }
+    },
+    "item6": {
+      "date": "Sept 2021 - Présent",
+      "label": "Co-Fondateur",
+      "company": "NJAE Plume",
+      "city": "Montréal, QC",
+      "summary": "Co-fondateur dirigeant la stratégie technique et le développement full-stack pour notre plateforme créative de commerce électronique.",
+      "description": {
+        "p1": "Piloté le développement stratégique et la mise en œuvre technique de notre plateforme e-commerce personnalisée, passant de WordPress à une solution Django sur mesure.",
+        "p2": "Supervisé le développement full-stack, mettant en œuvre des architectures web évolutives avec React et Next.js.",
+        "p3": "Géré et intégré des opérations backend avancées, assurant une fonctionnalité et une expérience utilisateur transparentes.",
+        "p4": "Dirigé la collaboration interfonctionnelle pour aligner les objectifs commerciaux avec le développement technique, favorisant l'innovation et la croissance."
+      }
+    },
+    "item7": {
+      "date": "Juil 2018 - Juin 2022",
+      "label": "Concepteur de Réseau Fibre | Ingénieur en Automatisation",
+      "company": "Telecon",
+      "city": "Montréal, QC",
+      "summary": "Amélioration des flux de travail de conception de réseau fibre grâce à l'automatisation Python et à la technologie GIS, conduisant au développement d'une puissante plateforme basée sur Django.",
+      "description": {
+        "p1": "Joué un rôle pivot dans la transformation des processus manuels de conception de réseau basés sur CAD en intégrant des outils GIS et des scripts d'automatisation Python personnalisés, réduisant significativement le travail manuel et les erreurs humaines.",
+        "p2": "Conçu une plateforme Django pour rationaliser la gestion de projet, la gestion des données et les flux de travail de reporting, augmentant l'efficacité et accélérant les délais de projet.",
+        "p3": "Conçu et mis en œuvre des solutions de bases de données évolutives en utilisant PostgreSQL et PostGIS pour gérer les données spatiales, automatiser des processus géospatiaux complexes et soutenir des analyses avancées pour la planification du réseau.",
+        "p4": "Développé des applications Python sur site utilisant PySide6 pour les interfaces GUI et PyInstaller pour le déploiement, améliorant l'accessibilité et l'utilisabilité pour les membres de l'équipe non techniques.",
+        "p5": "Introduit des outils AutoLISP innovants pour optimiser les fonctionnalités d'AutoCAD et d'AutoCAD Map 3D, stimulant les améliorations de productivité à travers les équipes d'ingénierie.",
+        "p6": "Collaboré efficacement avec des équipes multidisciplinaires, facilitant le transfert de connaissances, le mentorat, et favorisant une culture d'adoption technologique et d'amélioration continue.",
+        "p7": "Pionnier de projets pilotes GIS qui ont jeté les bases pour de futurs progrès dans la conception de réseau, permettant des applications axées sur les données et des solutions automatisées qui ont soutenu les objectifs stratégiques de l'entreprise."
+      }
+    },
+    "item8": {
+      "date": "2014 - 2016",
+      "label": "Master en Géographie",
+      "company": "Université de Caen Normandie",
+      "city": "Caen, France",
+      "summary": "Analyse spatiale, études environnementales et gestion des risques côtiers. Hydro-géomorphologie et climatologie. Cartographie et modélisation SIG.",
+      "description": {}
+    },
+    "item9": {
+      "date": "2011 - 2014",
+      "label": "Licence en Géographie",
+      "company": "Université de Caen Normandie",
+      "city": "Caen, France",
+      "summary": "Fondamentaux de la géographie, cartographie et SIG. Géomorphologie, hydrologie et climatologie. Gestion des risques environnementaux.",
+      "description": {}
+    }
   }
 }
