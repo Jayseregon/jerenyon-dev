@@ -34,12 +34,12 @@
   "about": {
     "title": "À Propos",
     "hero": {
-      "title": "Derrière Jerenyon Dev.",
+      "title": "La Création de Jerenyon Dev.",
       "subtitle": "Expertise géospatiale rencontre développement Full-Stack : comment j'ai construit Jerenyon Dev."
     },
     "sections": {
       "jerenyon-dev": {
-        "title": "Explorer Jerenyon Dev",
+        "title": "L'Histoire de Jerenyon Dev",
         "subtitle": "Jerenyon Dev est bien plus qu'un service de développement web et d'automatisation.",
         "paragraphs": {
           "p1": "Bienvenue chez Jerenyon Dev, un hub pour des stratégies innovantes qui allient expertise géospatiale et technologie de pointe. Créé avec la vision de simplifier et d'améliorer les flux de travail complexes, Jerenyon Dev propose des approches personnalisées qui améliorent l'efficacité, augmentent la productivité et offrent des résultats percutants.",
@@ -49,7 +49,7 @@
         }
       },
       "jeremie": {
-        "title": "Rencontrez le Développeur Derrière Jerenyon Dev",
+        "title": "Le Cerveau derrière Jerenyon Dev",
         "subtitle": "Présentation de Jérémie, le Fondateur de Jerenyon Dev",
         "paragraphs": {
           "p1": "Je suis un ingénieur Full-Stack, expert en SIG et spécialiste de l'automatisation Python avec une passion pour la résolution de problèmes, l'optimisation des tâches manuelles et répétitives, et la gestion des défis de front. Mon parcours a commencé avec un bagage en géographie, évoluant vers une maîtrise des langages de programmation, des outils de développement et des stratégies d'automatisation qui relient le traitement de données complexes à des expériences utilisateur intuitives.",

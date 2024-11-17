@@ -34,12 +34,12 @@
   "about": {
     "title": "About",
     "hero": {
-      "title": "Behind Jerenyon Dev.",
+      "title": "Creating Jerenyon Dev.",
       "subtitle": "Geospatial expertise meets Full-Stack development: how I built Jerenyon Dev."
     },
     "sections": {
       "jerenyon-dev": {
-        "title": "Exploring Jerenyon Dev",
+        "title": "The Story of Jerenyon Dev",
         "subtitle": "Jerenyon Dev is more than just a web development and automation service.",
         "paragraphs": {
           "p1": "Welcome to Jerenyon Dev, a hub for innovative strategies that blend geospatial expertise with cutting-edge technology. Established with a vision to simplify and enhance complex workflows, Jerenyon Dev provides customized approaches that improve efficiency, boost productivity, and deliver impactful outcomes.",
@@ -49,7 +49,7 @@
         }
       },
       "jeremie": {
-        "title": "Meet the Developer Behind Jerenyon Dev",
+        "title": "The Mind Behind Jerenyon Dev",
         "subtitle": "Introducing Jeremie, the Founder of Jerenyon Dev",
         "paragraphs": {
           "p1": "I am a Full-Stack Engineer, GIS expert, and Python automation specialist with a passion for problem-solving, optimizing manual, repetitive tasks, and tackling challenges head-on. My journey began with a background in geography, evolving into a mastery of programming languages, development tools, and automation strategies that bridge complex data processing with intuitive user experiences.",
