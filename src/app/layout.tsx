@@ -159,6 +159,7 @@ export default async function RootLayout({ children }: Props) {
           type="application/javascript"
         />
         <Script
+          async
           data-settings-id="4vZk6dB-s7Fi9_"
           id="usercentrics-cmp"
           nonce={nonce}
