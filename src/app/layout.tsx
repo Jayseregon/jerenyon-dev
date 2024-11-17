@@ -166,11 +166,11 @@ export default async function RootLayout({ children }: Props) {
           src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
           strategy="afterInteractive"
         />
-        <Script
+        {/* <Script
           nonce={nonce}
           src={`https://www.google.com/recaptcha/api.js?render=${process.env.RECAPTCHA_SECRET_KEY}`}
           strategy="afterInteractive"
-        />
+        /> */}
       </body>
     </html>
   );

@@ -42,8 +42,7 @@ export default function AboutPage() {
         pageTitle={t("title")}
       />
       <div className="space-y-20 mt-10">
-        <div className="flex flex-col max-w-xl md:max-w-3xl mx-auto space-y-20">
-          {/* {sectionData.map((section, index) => ( */}
+        <div className="flex flex-col max-w-lg md:max-w-3xl mx-auto space-y-20">
           {sectionData.map((section, index) => (
             <AboutCard key={index} {...section} />
           ))}

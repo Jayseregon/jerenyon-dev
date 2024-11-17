@@ -1,42 +1,42 @@
-"use client";
+// "use client";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { Application } from "@splinetool/runtime";
+// import { useEffect } from "react";
+// import { useRouter } from "next/navigation";
+// import { Application } from "@splinetool/runtime";
 
-export default function SplineEventHandler() {
-  const router = useRouter();
+// export default function SplineEventHandler() {
+//   const router = useRouter();
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
+//   useEffect(() => {
+//     if (typeof window === "undefined") return;
 
-    const canvas = document.querySelector("canvas");
+//     const canvas = document.querySelector("canvas");
 
-    if (!canvas) return;
+//     if (!canvas) return;
 
-    const splineApp = new Application(canvas);
+//     const splineApp = new Application(canvas);
 
-    const routeMap: Record<string, string> = {
-      "button-hub": "/knowledge-hub",
-      "button-estimate": "/estimate",
-      "button-journey": "/about",
-      "button-contact": "/contact",
-    };
+//     const routeMap: Record<string, string> = {
+//       "button-hub": "/knowledge-hub",
+//       "button-estimate": "/estimate",
+//       "button-journey": "/about",
+//       "button-contact": "/contact",
+//     };
 
-    const handleMouseDown = (e: any) => {
-      const route = routeMap[e.target.name];
+//     const handleMouseDown = (e: any) => {
+//       const route = routeMap[e.target.name];
 
-      if (route) {
-        router.push(route);
-      }
-    };
+//       if (route) {
+//         router.push(route);
+//       }
+//     };
 
-    splineApp.addEventListener("mouseDown", handleMouseDown);
+//     splineApp.addEventListener("mouseDown", handleMouseDown);
 
-    return () => {
-      splineApp.removeEventListener("mouseDown", handleMouseDown);
-    };
-  }, [router]);
+//     return () => {
+//       splineApp.removeEventListener("mouseDown", handleMouseDown);
+//     };
+//   }, [router]);
 
-  return null;
-}
+//   return null;
+// }

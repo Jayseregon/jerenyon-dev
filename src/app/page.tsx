@@ -5,6 +5,8 @@ import SplineScene from "@/src/components/spline3D/SplineScene";
 
 import Loading from "./loading";
 
+// import Loading from "./loading";
+
 export default function RootPage() {
   const t = useTranslations("homepage");
 
