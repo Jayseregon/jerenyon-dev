@@ -1,15 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { useRouter } from "next/navigation";
-import dynamic from "next/dynamic";
 
 import Loading from "./loading";
 
-const Spline = dynamic(() => import("@splinetool/react-spline"), {
-  ssr: false,
-  loading: () => <Loading />,
-});
+const Spline = React.lazy(() => import("@splinetool/react-spline"));
 
 const SplineScene = () => {
   const router = useRouter();
@@ -29,11 +25,15 @@ const SplineScene = () => {
   };
 
   return (
-    <Spline
-      className="w-full h-full"
-      scene="/spline/hero-3d-scene.splinecode"
-      onSplineMouseDown={handleMouseDown}
-    />
+    <>
+      <Suspense fallback={<Loading />}>
+        <Spline
+          className="w-full h-full"
+          scene="/spline/hero-3d-scene.splinecode"
+          onSplineMouseDown={handleMouseDown}
+        />
+      </Suspense>
+    </>
   );
 };
 
