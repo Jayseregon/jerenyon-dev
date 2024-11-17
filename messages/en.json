@@ -35,7 +35,28 @@
     "title": "About",
     "hero": {
       "title": "Behind Jerenyon Dev.",
-      "subtitle": "From geospatial expertise to full-stack development and automation, here's how I built Jerenyon Dev."
+      "subtitle": "Geospatial expertise meets Full-Stack development: how I built Jerenyon Dev."
+    },
+    "sections": {
+      "jerenyon-dev": {
+        "title": "Exploring Jerenyon Dev",
+        "subtitle": "Jerenyon Dev is more than just a web development and automation service.",
+        "paragraphs": {
+          "p1": "Welcome to Jerenyon Dev, a hub for innovative strategies that blend geospatial expertise with cutting-edge technology. Established with a vision to simplify and enhance complex workflows, Jerenyon Dev provides customized approaches that improve efficiency, boost productivity, and deliver impactful outcomes.",
+          "p2": "Specializing in problem-solving and the automation of tedious, repetitive tasks, Jerenyon Dev stands out in providing clear and efficient approaches to intricate challenges. This dedication goes beyond supporting large corporations to include medium and small businesses looking to embrace digital transformation and reap the benefits of automation.",
+          "p3": "Whether through streamlining data processes, building responsive web applications, or integrating AI-driven insights, Jerenyon Dev customizes its solutions to match the unique requirements of each client. With a strong foundation in technical expertise and an unwavering commitment to growth, Jerenyon Dev pushes the boundaries of development, process automation, and geospatial intelligence.",
+          "p4": "Jerenyon Dev is also a platform to share knowledge and foster a community of learning. Through articles, tutorials, and project showcases, it offers practical insights based on real-world experience, from Python scripting and React/Next.js development to geospatial analysis and QGIS best practices. By merging practical coding skills with in-depth geospatial knowledge, Jerenyon Dev is your partner for digital innovation."
+        }
+      },
+      "jeremie": {
+        "title": "Meet the Developer Behind Jerenyon Dev",
+        "subtitle": "Introducing Jeremie, the Founder of Jerenyon Dev",
+        "paragraphs": {
+          "p1": "I am a Full-Stack Engineer, GIS expert, and Python automation specialist with a passion for problem-solving, optimizing manual, repetitive tasks, and tackling challenges head-on. My journey began with a background in geography, evolving into a mastery of programming languages, development tools, and automation strategies that bridge complex data processing with intuitive user experiences.",
+          "p2": "With deep experience in building scalable, data-driven applications and leading digital transformation initiatives, I remain committed to exploring new technologies and integrating AI capabilities into automation. While not specializing in developing LLM models from scratch, I maintain a keen interest in harnessing emerging tools and frameworks to enhance automated processes, continuously advancing my expertise through certifications and self-driven R&D.",
+          "p3": "Jerenyon Dev is my answer to combining my technical proficiency and commitment to supporting businesses of all sizes with digital solutions. It is also my outlet to give back to the developer community by sharing insights gained from hands-on work—whether in advanced Python automation, React/Next.js projects, or geospatial analysis. My goal is to simplify complex problems and provide clear, practical solutions, empowering teams, businesses, and fellow developers to achieve more and push the limits of what is possible."
+        }
+      }
     }
   },
   "knowledge-hub": {
