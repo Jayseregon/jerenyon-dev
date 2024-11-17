@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useContext } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import { NonceContext } from "@/src/app/providers";
 

@@ -1,7 +1,7 @@
 "use client";
 import React, { useMemo, useContext } from "react";
 import { Circle, CircleCheck, CircleCheckBig } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import { NonceContext } from "@/src/app/providers";
 import { MaintenanceSectionProps } from "@/interfaces/Quote";

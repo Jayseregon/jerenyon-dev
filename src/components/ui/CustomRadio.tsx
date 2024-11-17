@@ -1,7 +1,7 @@
 "use client";
 
 import * as RadixRadioGroup from "@radix-ui/react-radio-group";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import React, { useContext } from "react";
 
 import { NonceContext } from "@/src/app/providers";
