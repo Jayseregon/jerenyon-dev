@@ -35,7 +35,28 @@
     "title": "About",
     "hero": {
       "title": "Behind Jerenyon Dev.",
-      "subtitle": "From geospatial expertise to full-stack development and automation, here's how I built Jerenyon Dev."
+      "subtitle": "Geospatial expertise meets Full-Stack development: how I built Jerenyon Dev."
+    },
+    "sections": {
+      "jerenyon-dev": {
+        "title": "Exploring Jerenyon Dev",
+        "subtitle": "Jerenyon Dev is more than just a web development and automation service.",
+        "paragraphs": {
+          "p1": "Welcome to Jerenyon Dev, a hub for innovative strategies that blend geospatial expertise with cutting-edge technology. Established with a vision to simplify and enhance complex workflows, Jerenyon Dev provides customized approaches that improve efficiency, boost productivity, and deliver impactful outcomes.",
+          "p2": "Specializing in problem-solving and the automation of tedious, repetitive tasks, Jerenyon Dev stands out in providing clear and efficient approaches to intricate challenges. This dedication goes beyond supporting large corporations to include medium and small businesses looking to embrace digital transformation and reap the benefits of automation.",
+          "p3": "Whether through streamlining data processes, building responsive web applications, or integrating AI-driven insights, Jerenyon Dev customizes its solutions to match the unique requirements of each client. With a strong foundation in technical expertise and an unwavering commitment to growth, Jerenyon Dev pushes the boundaries of development, process automation, and geospatial intelligence.",
+          "p4": "Jerenyon Dev is also a platform to share knowledge and foster a community of learning. Through articles, tutorials, and project showcases, it offers practical insights based on real-world experience, from Python scripting and React/Next.js development to geospatial analysis and QGIS best practices. By merging practical coding skills with in-depth geospatial knowledge, Jerenyon Dev is your partner for digital innovation."
+        }
+      },
+      "jeremie": {
+        "title": "Meet the Developer Behind Jerenyon Dev",
+        "subtitle": "Introducing Jeremie, the Founder of Jerenyon Dev",
+        "paragraphs": {
+          "p1": "I am a Full-Stack Engineer, GIS expert, and Python automation specialist with a passion for problem-solving, optimizing manual, repetitive tasks, and tackling challenges head-on. My journey began with a background in geography, evolving into a mastery of programming languages, development tools, and automation strategies that bridge complex data processing with intuitive user experiences.",
+          "p2": "With deep experience in building scalable, data-driven applications and leading digital transformation initiatives, I remain committed to exploring new technologies and integrating AI capabilities into automation. While not specializing in developing LLM models from scratch, I maintain a keen interest in harnessing emerging tools and frameworks to enhance automated processes, continuously advancing my expertise through certifications and self-driven R&D.",
+          "p3": "Jerenyon Dev is my answer to combining my technical proficiency and commitment to supporting businesses of all sizes with digital solutions. It is also my outlet to give back to the developer community by sharing insights gained from hands-on work—whether in advanced Python automation, React/Next.js projects, or geospatial analysis. My goal is to simplify complex problems and provide clear, practical solutions, empowering teams, businesses, and fellow developers to achieve more and push the limits of what is possible."
+        }
+      }
     }
   },
   "knowledge-hub": {
@@ -129,6 +150,111 @@
     "terms_of_service": {
       "title": "Terms of Service",
       "heroTitle": "Our Commitment to You."
+    }
+  },
+  "timeline": {
+    "modal": {
+      "close": "Close",
+      "empty": "No additional details available, yet."
+    },
+    "item1": {
+      "date": "Sept 2024 - Present",
+      "label": "Founder",
+      "city": "Montréal, QC",
+      "company": "Jerenyon Dev",
+      "summary": "Founder and visionary behind Jerenyon Dev, delivering custom web development, automation, and AI-driven solutions.",
+      "description": {
+        "p1": "Established Jerenyon Dev as a comprehensive web development and automation platform, showcasing technical expertise and innovative projects.",
+        "p2": "Developed and maintained full-stack web applications using Python, React, Next.js, and TypeScript.",
+        "p3": "Integrated AI capabilities and LLMs (OpenAI, Langchain) to enhance web and automation tools.",
+        "p4": "Designed a scalable backend infrastructure with seamless cloud deployments on Vercel and integration of modern services such as Resend, for communication.",
+        "p5": "Managed all aspects of product development, including architecture, coding, testing, and client interaction."
+      }
+    },
+    "item2": {
+      "date": "Jan 2023",
+      "label": "TensorFlow Developer Specialization",
+      "company": "DeepLearning.AI, Coursera",
+      "city": "",
+      "summary": "Completed TensorFlow Developer Professional Certificate, mastering neural network training, image recognition with convolutions, and NLP. Gained practical skills in building AI solutions using TensorFlow.",
+      "description": {}
+    },
+    "item3": {
+      "date": "Dec 2022",
+      "label": "Deep Learning Specialization",
+      "company": "DeepLearning.AI, Coursera",
+      "city": "",
+      "summary": "Completed Deep Learning Specialization, mastering neural networks, including CNNs, RNNs, LSTMs, and Transformers. Gained expertise in applying these models to real-world tasks like NLP, speech recognition, and more using Python and TensorFlow.",
+      "description": {}
+    },
+    "item4": {
+      "date": "Nov 2022",
+      "label": "Machine Learning Specialization",
+      "company": "Stanford University, Coursera",
+      "city": "",
+      "summary": "Completed Machine Learning Specialization, mastering key techniques like supervised and unsupervised learning, recommender systems, and reinforcement learning. Gained practical skills to apply these methods to real-world challenges.",
+      "description": {}
+    },
+    "item5": {
+      "date": "June 2022 - Present",
+      "label": "Continuous Improvement Advisor | Lead Developer",
+      "company": "Telecon",
+      "city": "Montréal, QC",
+      "summary": "Driving innovation and operational efficiency through Python automation, AI adoption, advanced GIS integration, and scalable web development solutions.",
+      "description": {
+        "p1": "Initially developed a Django-based platform, later transforming it into a robust, RESTful API using Django Rest Framework, facilitating seamless integration with a Next.js frontend.",
+        "p2": "Led the creation of a modern UI using Next.js, ensuring a responsive, user-centric experience, and deployed both Python backends and Next.js frontends independently using Docker for scalability and high performance on Azure.",
+        "p3": "Strategically implemented GIS technologies to enhance network design and civil engineering workflows, providing training and mentorship to empower the team.",
+        "p4": "Spearheaded R&D initiatives to integrate AI-driven solutions, developing custom automations with advanced models and frameworks like LangChain and OpenAI, enhancing tool capabilities and operational processes.",
+        "p5": "Developed and managed advanced Python automation scripts and tools, such as audit report generation from field surveys, aerial network pole and midspan calculations, and comprehensive geospatial data processing pipelines, improving data handling and analysis across departments.",
+        "p6": "Architected cloud-based infrastructure solutions on Azure, administering all resources including databases, web apps, container registries, GitHub repositories, and networking components, with automated CI/CD pipelines to streamline deployment.",
+        "p7": "Continually building new applications, employing Next.js for client-facing tools like a custom PDF report generator and data extraction utilities, while leveraging Python for backend-heavy data and geospatial processing."
+      }
+    },
+    "item6": {
+      "date": "Sept 2021 - Present",
+      "label": "Co-Founder",
+      "company": "NJAE Plume",
+      "city": "Montréal, QC",
+      "summary": "Co-founder leading technical strategy and full-stack development for our creative e-commerce platform.",
+      "description": {
+        "p1": "Spearheaded the strategic development and technical implementation of our custom e-commerce platform, transitioning from WordPress to a bespoke Django solution.",
+        "p2": "Oversaw full-stack development, implementing scalable web architectures with React and Next.js.",
+        "p3": "Managed and integrated advanced backend operations, ensuring seamless functionality and user experience.",
+        "p4": "Led cross-functional collaboration to align business goals with technical development, promoting innovation and growth."
+      }
+    },
+    "item7": {
+      "date": "July 2018 - June 2022",
+      "label": "Fiber Network Designer | Automation Engineer",
+      "company": "Telecon",
+      "city": "Montréal, QC",
+      "summary": "Enhanced fiber network design workflows through Python automation and GIS technology, leading to the development of a powerful Django-based platform.",
+      "description": {
+        "p1": "Played a pivotal role in transforming manual CAD-based network design processes by integrating GIS tools and custom Python automation scripts, significantly reducing manual labor and human error.",
+        "p2": "Engineered a Django platform to streamline project management, data handling, and reporting workflows, boosting efficiency and accelerating project timelines.",
+        "p3": "Designed and implemented scalable database solutions using PostgreSQL and PostGIS to manage spatial data, automate complex geospatial processes, and support advanced analytics for network planning.",
+        "p4": "Developed Python-powered on-premises applications using PySide6 for GUI interfaces and PyInstaller for deployment, enhancing accessibility and usability for non-technical team members.",
+        "p5": "Introduced innovative AutoLISP tools to optimize AutoCAD and AutoCAD Map 3D functionalities, driving productivity improvements across engineering teams.",
+        "p6": "Collaborated effectively with multidisciplinary teams, facilitating knowledge transfer, mentoring, and fostering a culture of technological adoption and continuous improvement.",
+        "p7": "Pioneered GIS pilot projects that laid the foundation for future advancements in network design, enabling data-driven applications and automated solutions that supported the company's strategic goals."
+      }
+    },
+    "item8": {
+      "date": "2014 - 2016",
+      "label": "Master of Science Geography",
+      "company": "University of Caen Normandy",
+      "city": "Caen, France",
+      "summary": "Spatial analysis, environmental studies, and coastal risks management. Hydrogeomorphology and climatology. Cartography and GIS modeling.",
+      "description": {}
+    },
+    "item9": {
+      "date": "2011 - 2014",
+      "label": "Bachelor's Degree Geography",
+      "company": "University of Caen Normandy",
+      "city": "Caen, France",
+      "summary": "Fundamentals of geography, cartography, and GIS. Geomorphology, hydrology, and climatology. Environmental hazards and risk management.",
+      "description": {}
     }
   }
 }

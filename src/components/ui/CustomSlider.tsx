@@ -1,7 +1,7 @@
 "use client";
 
 import * as RadixSlider from "@radix-ui/react-slider";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import React, { useRef, useContext } from "react";
 
 import { NonceContext } from "@/src/app/providers";
