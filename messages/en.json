@@ -153,6 +153,10 @@
     }
   },
   "timeline": {
+    "modal": {
+      "close": "Close",
+      "empty": "No additional details available, yet."
+    },
     "item1": {
       "date": "Sept 2024 - Present",
       "label": "Founder",

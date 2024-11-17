@@ -153,6 +153,10 @@
     }
   },
   "timeline": {
+    "modal": {
+      "close": "Fermer",
+      "empty": "Aucune description, pour le moment."
+    },
     "item1": {
       "date": "Sept 2024 - Présent",
       "label": "Fondateur",
