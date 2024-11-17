@@ -8,7 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { headers } from "next/headers";
 import { getLocale, getMessages } from "next-intl/server";
 import Head from "next/head";
-// import Script from "next/script";
+import Script from "next/script";
 
 import { siteConfig } from "@/config/site";
 import RootLayoutStyling from "@/components/ui/RootLayoutStyling";
@@ -118,35 +118,7 @@ export default async function RootLayout({ children }: Props) {
           name="theme-color"
           nonce={nonce}
         />
-        {/* <link
-          as="fetch"
-          // crossOrigin="anonymous"
-          // href="https://jerenyon-dev-remote-pull.b-cdn.net/spline-scene/hero-scene.splinecode"
-          href="https://prod.spline.design/tXTp95D6LUG-arHB/scene.splinecode"
-          nonce={nonce}
-          rel="preload"
-        /> */}
-        {/* Preconnect to Spline asset domains */}
-        {/* <link
-          crossOrigin="anonymous"
-          href="https://prod.spline.design"
-          nonce={nonce}
-          rel="preconnect"
-        />
-        <link href="https://prod.spline.design" rel="dns-prefetch" /> */}
-        {/* Preconnect to BunnyCDN for your Spline scene */}
-        {/* <link
-          crossOrigin="anonymous"
-          href="https://jerenyon-dev-remote-pull.b-cdn.net"
-          nonce={nonce}
-          rel="preconnect"
-        />
         <link
-          href="https://jerenyon-dev-remote-pull.b-cdn.net"
-          rel="dns-prefetch"
-        /> */}
-        {/* Preconnect and preload for Usercentrics */}
-        {/* <link
           href="//privacy-proxy.usercentrics.eu"
           nonce={nonce}
           rel="preconnect"
@@ -156,7 +128,7 @@ export default async function RootLayout({ children }: Props) {
           href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           nonce={nonce}
           rel="preload"
-        /> */}
+        />
       </Head>
       <body
         className={clsx(
@@ -180,19 +152,20 @@ export default async function RootLayout({ children }: Props) {
             </RootLayoutStyling>
           </NextIntlClientProvider>
         </Providers>
-        {/* <Script
+        <Script
           nonce={nonce}
           src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           strategy="afterInteractive"
           type="application/javascript"
         />
         <Script
+          async
           data-settings-id="4vZk6dB-s7Fi9_"
           id="usercentrics-cmp"
           nonce={nonce}
           src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
           strategy="afterInteractive"
-        /> */}
+        />
         {/* <Script
           nonce={nonce}
           src={`https://www.google.com/recaptcha/api.js?render=${process.env.RECAPTCHA_SECRET_KEY}`}

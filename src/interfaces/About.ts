@@ -14,3 +14,10 @@ export interface WorkExperienceCardItemProps {
   item: TimelineItem;
   index: number;
 }
+
+export interface AboutCardProps {
+  title: string;
+  subtitle: string;
+  paragraphs: string[];
+  imgName: string;
+}

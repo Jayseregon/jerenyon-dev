@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import { cn } from "@/lib/utils";
 import { setUserLocale } from "@/lib/locale";
