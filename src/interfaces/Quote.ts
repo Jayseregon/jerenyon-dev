@@ -5,7 +5,6 @@ export interface QuoteForm {
   clientEmail: string;
   comment: string;
   totalPrice: number;
-  services: Service[];
   staticPages: StaticPage;
   dynamicPages: DynamicPage;
   authentication: AuthenticationMethod[];
@@ -15,7 +14,7 @@ export interface QuoteForm {
   customFeatures: CustomFeature[];
   automations: Automation[];
   thirdPartyAPIs: ThirdPartyAPI[];
-  addons: Addon[]; // Add this line
+  addons: Addon[];
 }
 
 export interface Addon {
@@ -112,6 +111,12 @@ export interface CardSectionProps {
 export interface QuoteSectionProps {
   quote: QuoteForm;
   handleInputChange: (field: keyof QuoteForm, value: any) => void;
+}
+
+export interface ClientSubmitProps {
+  quote: QuoteForm;
+  handleInputChange: (field: keyof QuoteForm, value: any) => void;
+  handleSubmit: () => void;
 }
 
 export interface QuoteOptionSliderProps {

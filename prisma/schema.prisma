@@ -26,7 +26,6 @@ model Quote {
   comment            String?
   totalPrice         Float                  @default(0)
   // Relationships
-  services           Service[]
   staticPages        StaticPage?
   dynamicPages       DynamicPage?
   authentication     AuthenticationMethod[]
@@ -48,18 +47,6 @@ enum QuoteStatus {
   DRAFT
   SENT
   FINALIZED
-
-  @@schema("estimate")
-}
-
-model Service {
-  id          String  @id @default(cuid())
-  name        String
-  description String?
-  price       Float   @default(0)
-  // Relations
-  quote       Quote   @relation(fields: [quoteId], references: [id])
-  quoteId     String
 
   @@schema("estimate")
 }

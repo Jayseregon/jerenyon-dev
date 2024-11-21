@@ -1,11 +1,10 @@
 import { useTranslations } from "next-intl";
 import React, { Suspense } from "react";
 
-import SplineScene from "@/src/components/spline3D/SplineScene";
+import SplineScene from "@/components/spline3D/SplineScene";
+// import SplineScene_ssr from "@/components/spline3D/SplineScene_ssr";
 
 import Loading from "./loading";
-
-// import Loading from "./loading";
 
 export default function RootPage() {
   const t = useTranslations("homepage");

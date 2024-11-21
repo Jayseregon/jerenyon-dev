@@ -2,18 +2,29 @@
 import { useState, useEffect, useContext } from "react";
 import cuid from "cuid";
 import { useRouter } from "next/navigation";
+
 // import { useTranslations } from "next-intl";
-import { Button, Card, CardBody } from "@nextui-org/react";
 
 import { NonceContext } from "@/src/app/providers";
 import { QuoteForm } from "@/src/interfaces/Quote";
 
-import { ClientInfoSection } from "./Quote-ClientInfoSection";
 import { BaseStructureSection } from "./Quote-BaseStructureSection";
 import { AuthPermsSection } from "./Quote-AuthPermsSection";
 import { IntegrationNoOptionSection } from "./Quote-IntegrationNoOptionSection";
 import { IntegrationWithOptionSection } from "./Quote-IntegrationWithOptionSection";
 import { MaintenanceSection } from "./Quote-MaintenanceSection";
+import { QuoteSummarySection } from "./Quote-SummarySection";
+import { ClientSubmit } from "./Quote-ClientSubmit";
+import {
+  authenticationMethods,
+  apiIntegrations,
+  addons,
+  automationsList,
+  legalPagesList,
+  hourlyRate,
+  bufferPercentage,
+  developmentTimeEstimates,
+} from "./getQuoteData";
 
 export default function QuotingTool() {
   const router = useRouter();
@@ -24,7 +35,6 @@ export default function QuotingTool() {
     clientEmail: "",
     comment: "",
     totalPrice: 0,
-    services: [],
     staticPages: { selectedPages: 3, totalPrice: 0 },
     dynamicPages: { selectedPages: 0, totalPrice: 0 },
     authentication: [],
@@ -82,34 +92,61 @@ export default function QuotingTool() {
     }));
   };
 
+  useEffect(() => {
+    console.log(quote);
+  }, [quote]);
+
   // Calculate the total price based on selected services, pages, and options
   useEffect(() => {
-    const servicePrices = quote.services.reduce(
-      (acc, service) => acc + service.price,
-      0,
-    );
-    const staticPagePrice = quote.staticPages.selectedPages * 100;
-    const dynamicPagePrice = quote.dynamicPages.selectedPages * 150;
-    const authPrice = quote.authentication.reduce(
-      (acc, auth) => acc + auth.price,
-      0,
-    );
-    const apiPrice = quote.thirdPartyAPIs.reduce(
-      (acc, api) => acc + api.price,
-      0,
-    );
-    const addonPrice = quote.addons.reduce(
-      (acc, addon) => acc + addon.price,
-      0,
-    );
-    const automationPrice = quote.automations.reduce(
-      (acc, automation) => acc + automation.price,
-      0,
-    );
-    const legalPagesPrice = quote.legalPages.reduce(
-      (acc, page) => acc + page.price,
-      0,
-    );
+    const staticPagePrice =
+      quote.staticPages.selectedPages *
+      developmentTimeEstimates.staticPage *
+      hourlyRate;
+
+    const dynamicPagePrice =
+      quote.dynamicPages.selectedPages *
+      developmentTimeEstimates.dynamicPage *
+      hourlyRate;
+
+    const authPrice = quote.authentication.reduce((acc, auth) => {
+      const authTime =
+        developmentTimeEstimates.authMethod[
+          auth.method as keyof typeof developmentTimeEstimates.authMethod
+        ] || 0;
+
+      return acc + authTime * hourlyRate;
+    }, 0);
+
+    const apiPrice = quote.thirdPartyAPIs.reduce((acc, api) => {
+      const apiTime =
+        developmentTimeEstimates.apiIntegration[
+          api.apiName as keyof typeof developmentTimeEstimates.apiIntegration
+        ] || 0;
+
+      return acc + apiTime * hourlyRate;
+    }, 0);
+
+    const addonPrice = quote.addons.reduce((acc, addon) => {
+      const addonTime =
+        developmentTimeEstimates.addon[
+          addon.addonName as keyof typeof developmentTimeEstimates.addon
+        ] || 0;
+
+      return acc + addonTime * hourlyRate;
+    }, 0);
+
+    const automationPrice = quote.automations.reduce((acc, automation) => {
+      const automationTime =
+        developmentTimeEstimates.automation[
+          automation.automationType as keyof typeof developmentTimeEstimates.automation
+        ] || 0;
+
+      return acc + automationTime * hourlyRate;
+    }, 0);
+
+    const legalPagesPrice =
+      quote.legalPages.length * developmentTimeEstimates.legalPage * hourlyRate;
+
     const maintenancePrice =
       {
         Monthly:
@@ -120,21 +157,23 @@ export default function QuotingTool() {
           quote.maintenancePlan.duration,
       }[quote.maintenancePlan.type] || 0;
 
+    const totalDevelopmentTime =
+      staticPagePrice +
+      dynamicPagePrice +
+      authPrice +
+      apiPrice +
+      addonPrice +
+      automationPrice +
+      legalPagesPrice;
+
+    const subTotalPrice = totalDevelopmentTime * (1 + bufferPercentage);
+    const totalPrice = subTotalPrice + maintenancePrice;
+
     setQuote((prevQuote) => ({
       ...prevQuote,
-      totalPrice:
-        servicePrices +
-        staticPagePrice +
-        dynamicPagePrice +
-        authPrice +
-        apiPrice +
-        maintenancePrice +
-        addonPrice +
-        automationPrice +
-        legalPagesPrice,
+      totalPrice: totalPrice,
     }));
   }, [
-    quote.services,
     quote.staticPages,
     quote.dynamicPages,
     quote.authentication,
@@ -164,37 +203,6 @@ export default function QuotingTool() {
   };
 
   // Authentication methods
-  const authenticationMethods = [
-    {
-      method: "Credentials",
-      price: 100,
-      label: "Classic Email-based Credentials",
-    },
-    {
-      method: "SocialOAuth",
-      price: 100,
-      label: "Social & OAuth",
-      subLabel: "(e.g., Google, GitHub, Facebook)",
-    },
-    {
-      method: "Magic",
-      price: 100,
-      label: "Magic Links",
-      subLabel: "(Email-based login links)",
-    },
-    {
-      method: "SSO",
-      price: 100,
-      label: "Single Sign-On Integration",
-      subLabel: "(e.g., SAML, OpenID Connect)",
-    },
-    {
-      method: "JWT",
-      price: 100,
-      label: "JWT Token-based Authentication",
-    },
-  ];
-
   const handleAuthenticationChange = (
     method: string,
     price: number,
@@ -209,20 +217,6 @@ export default function QuotingTool() {
   };
 
   // API integrations
-  const apiIntegrations = [
-    { name: "Stripe", price: 250, label: "Stripe Payment Gateway Integration" },
-    { name: "Paypal", price: 200, label: "PayPal Payment Processing" },
-    { name: "Clover", price: 200, label: "Clover Point-of-Sale Integration" },
-    { name: "Resend", price: 150, label: "Resend Email Automation API" },
-    { name: "SendGrid", price: 150, label: "SendGrid Email API" },
-    { name: "Twilio", price: 200, label: "Twilio Messaging & Voice" },
-    { name: "AWS", price: 300, label: "Amazon Web Services Integration" },
-    { name: "Azure", price: 300, label: "Microsoft Azure Cloud Services" },
-    { name: "Bunny", price: 150, label: "Bunny.net CDN and Storage" },
-    { name: "ArcGIS", price: 300, label: "ArcGIS API for Python" },
-    { name: "GoogleMaps", price: 150, label: "Google Maps API" },
-  ];
-
   const handleApiIntegrationChange = (
     apiName: string,
     price: number,
@@ -236,6 +230,7 @@ export default function QuotingTool() {
     }));
   };
 
+  // User input custom API
   const handleCustomApiIntegrationChange = () => {
     if (customApiName.trim() === "") return;
 
@@ -249,6 +244,7 @@ export default function QuotingTool() {
     setCustomApiName("");
   };
 
+  // Remove custom API
   const handleRemoveCustomApi = (apiName: string) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
@@ -259,73 +255,6 @@ export default function QuotingTool() {
   };
 
   // Addons
-  const addons = [
-    { name: "SEO", price: 350, label: "SEO Optimization & Strategy" },
-    {
-      name: "MultiLanguage",
-      price: 500,
-      label: "Multi-Language Support",
-      subLabel: "(i.e., FR/EN only)",
-    },
-    {
-      name: "Analytics",
-      price: 250,
-      label: "Analytics & Reporting Integration",
-      subLabel: "(e.g., Google, Vercel)",
-    },
-    {
-      name: "CMS",
-      price: 450,
-      label: "Content Management System Setup",
-      subLabel: "(e.g., Sanity, Strapi)",
-    },
-    {
-      name: "Security",
-      price: 300,
-      label: "Enhanced Security Features",
-      subLabel: "(e.g., SSL, CSP, reCAPTCHA)",
-    },
-    // {
-    //   name: "Accessibility",
-    //   price: 200,
-    //   label: "Accessibility Compliance (WCAG Standards)",
-    // },
-    { name: "Backup", price: 150, label: "Automated Backup Solutions" },
-    {
-      name: "Performance",
-      price: 250,
-      label: "Performance Optimization",
-      subLabel: "(e.g., Micro-Frontend, Lazy Loading)",
-    },
-    {
-      name: "CDN",
-      price: 150,
-      label: "CDN Integration",
-      subLabel: "(e.g., Bunny.net, Cloudflare)",
-    },
-    {
-      name: "CustomUI",
-      price: 300,
-      label: "Customizable UI Components",
-    },
-    {
-      name: "DomainSetup",
-      price: 100,
-      label: "Custom Domain Setup & Configuration",
-    },
-    {
-      name: "Training",
-      price: 350,
-      label: "User Training & Documentation",
-    },
-    {
-      name: "SocialMedia",
-      price: 120,
-      label: "Social Media Integration",
-      subLabel: "(e.g., Facebook, Twitter, Pinterest)",
-    },
-  ];
-
   const handleAddonIntegrationChange = (
     addonName: string,
     price: number,
@@ -339,6 +268,7 @@ export default function QuotingTool() {
     }));
   };
 
+  // User input custom addon
   const handleCustomAddonIntegrationChange = () => {
     if (customAddonName.trim() === "") return;
 
@@ -349,6 +279,7 @@ export default function QuotingTool() {
     setCustomAddonName("");
   };
 
+  // Remove custom addon
   const handleRemoveCustomAddon = (addonName: string) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
@@ -357,57 +288,6 @@ export default function QuotingTool() {
   };
 
   // Automations
-  const automationsList = [
-    {
-      name: "AIIntegration",
-      price: 2000,
-      label: "AI Integration",
-      subLabel: "(e.g., OpenAI, Google, Anthropic)",
-    },
-    {
-      name: "RetrievalSystems",
-      price: 2500,
-      label: "Intelligent Retrieval Systems",
-      subLabel: "(e.g., RAG chatbots)",
-    },
-    {
-      name: "MultiAgentSystems",
-      price: 3000,
-      label: "Multi AI Agent Systems",
-      subLabel: "(e.g., CrewAI, Langchain processes)",
-    },
-    {
-      name: "InteractiveMaps",
-      price: 1500,
-      label: "Interactive Mapping Tools",
-      subLabel: "(e.g., Leaflet-based web apps)",
-    },
-    {
-      name: "GeoDataWrangling",
-      price: 1500,
-      label: "Geospatial Data Wrangling & Analysis",
-      subLabel: "(e.g., GeoPandas, Shapely, NetworkX)",
-    },
-    {
-      name: "CustomGISolutions",
-      price: 1500,
-      label: "Tailored GIS Solutions",
-      subLabel: "(e.g., QGIS, ArcGIS Pro, Python scripts)",
-    },
-    {
-      name: "GeoWorkflows",
-      price: 1500,
-      label: "Automated Geospatial Workflows",
-      subLabel: "(e.g., Data pipelines)",
-    },
-    {
-      name: "WorkflowAutomation",
-      price: 1500,
-      label: "Custom Workflow Automation",
-      subLabel: "(e.g., Data sync, reports, task automation)",
-    },
-  ];
-
   const handleAutomationsChange = (
     automationType: string,
     price: number,
@@ -423,6 +303,7 @@ export default function QuotingTool() {
     }));
   };
 
+  // User input custom automation
   const handleCustomAutomationsChange = () => {
     if (customAutomation.trim() === "") return;
 
@@ -436,6 +317,7 @@ export default function QuotingTool() {
     setCustomAutomation("");
   };
 
+  // Remove custom automation
   const handleRemoveCustomAutomation = (automationType: string) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
@@ -446,34 +328,6 @@ export default function QuotingTool() {
   };
 
   // Legal pages
-  const legalPagesList = [
-    {
-      name: "terms",
-      price: 50,
-      label: "Terms and Conditions",
-      sup: "*",
-    },
-    {
-      name: "privacy",
-      price: 50,
-      label: "Privacy Policy",
-      sup: "*",
-    },
-    {
-      name: "cookie",
-      price: 50,
-      label: "Cookie Policy",
-      subLabel: "GDPR Compliant",
-      sup: "*",
-    },
-    {
-      name: "cookieConsent",
-      price: 50,
-      label: "Cookie Consent Banner",
-      sup: "*",
-    },
-  ];
-
   const handleLegalPageChange = (
     name: string,
     price: number,
@@ -519,6 +373,7 @@ export default function QuotingTool() {
     }
   };
 
+  // Maintenance plan duration
   const handleDurationChange = (value: number | number[]) => {
     if (Array.isArray(value)) return;
     setQuote((prevQuote) => ({
@@ -530,6 +385,7 @@ export default function QuotingTool() {
     }));
   };
 
+  // Maintenance plan options
   const handlePlanOptionChange = (plan: string) => {
     const isAdvanced = plan === "advanced";
 
@@ -549,12 +405,6 @@ export default function QuotingTool() {
   return (
     <div className="p-4" nonce={nonce}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5" nonce={nonce}>
-        {/* Client information for submit */}
-        <ClientInfoSection
-          handleInputChange={handleInputChange}
-          quote={quote}
-        />
-
         {/* Base Settings */}
         <BaseStructureSection
           handleInputChange={handleInputChange}
@@ -629,26 +479,18 @@ export default function QuotingTool() {
           quote={quote}
         />
 
-        <Card
-          className="bg-background rounded-lg shadow-xl border border-purple-800 dark:border-purple-300 mb-8 mt-5 w-full col-span-1 md:col-span-2"
+        <div
+          className="mb-8 mt-5 w-full col-span-1 md:col-span-2 space-y-5"
           nonce={nonce}
         >
-          <CardBody nonce={nonce}>
-            <Button
-              fullWidth
-              aria-label="Submit Quote"
-              color="primary"
-              nonce={nonce}
-              variant="flat"
-              onClick={handleSubmit}
-            >
-              Submit Quote
-            </Button>
-            <h2 className="text-xl font-semibold mt-4" nonce={nonce}>
-              Estimated Price: ${quote.totalPrice.toFixed(2)}
-            </h2>
-          </CardBody>
-        </Card>
+          <QuoteSummarySection quote={quote} />
+
+          <ClientSubmit
+            handleInputChange={handleInputChange}
+            handleSubmit={handleSubmit}
+            quote={quote}
+          />
+        </div>
       </div>
     </div>
   );
