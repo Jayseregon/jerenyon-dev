@@ -14,6 +14,7 @@ import { AuthPermsSection } from "./Quote-AuthPermsSection";
 import { IntegrationNoOptionSection } from "./Quote-IntegrationNoOptionSection";
 import { IntegrationWithOptionSection } from "./Quote-IntegrationWithOptionSection";
 import { MaintenanceSection } from "./Quote-MaintenanceSection";
+import { QuoteSummarySection } from "./Quote-SummarySection";
 import {
   authenticationMethods,
   apiIntegrations,
@@ -160,10 +161,10 @@ export default function QuotingTool() {
       apiPrice +
       addonPrice +
       automationPrice +
-      legalPagesPrice +
-      maintenancePrice;
+      legalPagesPrice;
 
-    const totalPrice = totalDevelopmentTime * (1 + bufferPercentage);
+    const subTotalPrice = totalDevelopmentTime * (1 + bufferPercentage);
+    const totalPrice = subTotalPrice + maintenancePrice;
 
     setQuote((prevQuote) => ({
       ...prevQuote,
@@ -484,6 +485,10 @@ export default function QuotingTool() {
           handleTypeChange={handleTypeChange}
           quote={quote}
         />
+
+        <div className="mb-8 mt-5 w-full col-span-1 md:col-span-2">
+          <QuoteSummarySection quote={quote} />
+        </div>
 
         <Card
           className="bg-background rounded-lg shadow-xl border border-purple-800 dark:border-purple-300 mb-8 mt-5 w-full col-span-1 md:col-span-2"
