@@ -1,8 +1,11 @@
 "use client";
 import React, { memo, useContext, useMemo } from "react";
-import { CardSection } from "./Quote-CardSection";
+import { CircleCheck } from "lucide-react";
+
 import { QuoteForm } from "@/interfaces/Quote";
 import { NonceContext } from "@/src/app/providers";
+
+import { CardSection } from "./Quote-CardSection";
 import {
   developmentTimeEstimates,
   hourlyRate,
@@ -15,7 +18,6 @@ import {
 } from "./getQuoteData";
 
 // Replace react-icons with lucide-react icons
-import { CircleCheck, Circle } from "lucide-react";
 
 export const QuoteSummarySection = memo(function QuoteSummarySection({
   quote,
@@ -36,6 +38,7 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
         developmentTimeEstimates.authMethod[
           auth.method as keyof typeof developmentTimeEstimates.authMethod
         ] || 0;
+
       return acc + time;
     }, 0);
 
@@ -44,6 +47,7 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
         developmentTimeEstimates.apiIntegration[
           api.apiName as keyof typeof developmentTimeEstimates.apiIntegration
         ] || 0;
+
       return acc + time;
     }, 0);
 
@@ -52,6 +56,7 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
         developmentTimeEstimates.addon[
           addon.addonName as keyof typeof developmentTimeEstimates.addon
         ] || 0;
+
       return acc + time;
     }, 0);
 
@@ -60,6 +65,7 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
         developmentTimeEstimates.automation[
           automation.automationType as keyof typeof developmentTimeEstimates.automation
         ] || 0;
+
       return acc + time;
     }, 0);
 
@@ -125,8 +131,9 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
           name: "Authentication",
           items: quote.authentication.map((auth) => {
             const authMethod = authenticationMethods.find(
-              (method) => method.method === auth.method
+              (method) => method.method === auth.method,
             );
+
             return authMethod ? authMethod.label : auth.method;
           }),
           price: authPrice * (1 + bufferPercentage),
@@ -135,8 +142,9 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
           name: "API Integrations",
           items: quote.thirdPartyAPIs.map((api) => {
             const apiIntegration = apiIntegrations.find(
-              (integration) => integration.name === api.apiName
+              (integration) => integration.name === api.apiName,
             );
+
             return apiIntegration ? apiIntegration.label : api.apiName;
           }),
           price: apiPrice * (1 + bufferPercentage),
@@ -145,8 +153,9 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
           name: "Addons",
           items: quote.addons.map((addon) => {
             const addonItem = addons.find(
-              (item) => item.name === addon.addonName
+              (item) => item.name === addon.addonName,
             );
+
             return addonItem ? addonItem.label : addon.addonName;
           }),
           price: addonPrice * (1 + bufferPercentage),
@@ -155,8 +164,9 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
           name: "Automations",
           items: quote.automations.map((automation) => {
             const automationItem = automationsList.find(
-              (item) => item.name === automation.automationType
+              (item) => item.name === automation.automationType,
             );
+
             return automationItem
               ? automationItem.label
               : automation.automationType;
@@ -167,8 +177,9 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
           name: "Legal Pages",
           items: quote.legalPages.map((page) => {
             const legalPage = legalPagesList.find(
-              (item) => item.name === page.name
+              (item) => item.name === page.name,
             );
+
             return legalPage ? legalPage.label : page.name;
           }),
           price: legalPagesPrice * (1 + bufferPercentage),
@@ -193,11 +204,8 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
 
   return (
     <CardSection
-      header="Summary"
       body={
-        <div
-          nonce={nonce}
-          className="space-y-4">
+        <div className="space-y-4" nonce={nonce}>
           <div className="flex justify-between items-center">
             <h3 className="text-xl font-semibold">
               Total Estimated Development Time
@@ -209,20 +217,20 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {summaryData.categories.map((category) => {
               if (category.items.length === 0) return null;
+
               return (
                 <div
                   key={category.name}
+                  className="bg-purple-200 dark:bg-purple-950 rounded-lg shadow-md p-4 flex flex-col justify-between"
                   nonce={nonce}
-                  className="bg-purple-200 dark:bg-purple-950 rounded-lg shadow-md p-4 flex flex-col justify-between">
+                >
                   <div>
                     <h4 className="text-lg font-semibold mb-2 text-foreground">
                       {category.name}
                     </h4>
                     <ul className="list-disc list-inside space-y-1">
                       {category.items.map((item, index) => (
-                        <li
-                          key={index}
-                          className="text-sm flex items-center">
+                        <li key={index} className="text-sm flex items-center">
                           <CircleCheck className="text-green-500 mr-2" />
                           {item}
                         </li>
@@ -251,6 +259,7 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
           </div>
         </div>
       }
+      header="Summary"
     />
   );
 });

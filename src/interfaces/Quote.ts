@@ -113,6 +113,12 @@ export interface QuoteSectionProps {
   handleInputChange: (field: keyof QuoteForm, value: any) => void;
 }
 
+export interface ClientSubmitProps {
+  quote: QuoteForm;
+  handleInputChange: (field: keyof QuoteForm, value: any) => void;
+  handleSubmit: () => void;
+}
+
 export interface QuoteOptionSliderProps {
   label: string;
   id: string;
@@ -131,7 +137,7 @@ export interface AuthPermsSectionProps {
   handleAuthenticationChange: (
     method: string,
     price: number,
-    checked: boolean
+    checked: boolean,
   ) => void;
 }
 
@@ -150,7 +156,7 @@ export interface IntegrationWithOptionSectionProps {
   handleIntegrationChange: (
     name: string,
     price: number,
-    checked: boolean
+    checked: boolean,
   ) => void;
   handleCustomIntegrationChange: () => void;
   handleRemoveCustomIntegration: (name: string) => void;
@@ -170,7 +176,7 @@ export interface IntegrationNoOptionSectionProps {
   handleIntegrationChange: (
     name: string,
     price: number,
-    checked: boolean
+    checked: boolean,
   ) => void;
 }
 

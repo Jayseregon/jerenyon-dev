@@ -2,19 +2,19 @@
 import { useState, useEffect, useContext } from "react";
 import cuid from "cuid";
 import { useRouter } from "next/navigation";
+
 // import { useTranslations } from "next-intl";
-import { Button, Card, CardBody } from "@nextui-org/react";
 
 import { NonceContext } from "@/src/app/providers";
 import { QuoteForm } from "@/src/interfaces/Quote";
 
-import { ClientInfoSection } from "./Quote-ClientInfoSection";
 import { BaseStructureSection } from "./Quote-BaseStructureSection";
 import { AuthPermsSection } from "./Quote-AuthPermsSection";
 import { IntegrationNoOptionSection } from "./Quote-IntegrationNoOptionSection";
 import { IntegrationWithOptionSection } from "./Quote-IntegrationWithOptionSection";
 import { MaintenanceSection } from "./Quote-MaintenanceSection";
 import { QuoteSummarySection } from "./Quote-SummarySection";
+import { ClientSubmit } from "./Quote-ClientSubmit";
 import {
   authenticationMethods,
   apiIntegrations,
@@ -23,7 +23,6 @@ import {
   legalPagesList,
   hourlyRate,
   bufferPercentage,
-  complexityMultipliers,
   developmentTimeEstimates,
 } from "./getQuoteData";
 
@@ -114,6 +113,7 @@ export default function QuotingTool() {
         developmentTimeEstimates.authMethod[
           auth.method as keyof typeof developmentTimeEstimates.authMethod
         ] || 0;
+
       return acc + authTime * hourlyRate;
     }, 0);
 
@@ -122,6 +122,7 @@ export default function QuotingTool() {
         developmentTimeEstimates.apiIntegration[
           api.apiName as keyof typeof developmentTimeEstimates.apiIntegration
         ] || 0;
+
       return acc + apiTime * hourlyRate;
     }, 0);
 
@@ -130,6 +131,7 @@ export default function QuotingTool() {
         developmentTimeEstimates.addon[
           addon.addonName as keyof typeof developmentTimeEstimates.addon
         ] || 0;
+
       return acc + addonTime * hourlyRate;
     }, 0);
 
@@ -138,6 +140,7 @@ export default function QuotingTool() {
         developmentTimeEstimates.automation[
           automation.automationType as keyof typeof developmentTimeEstimates.automation
         ] || 0;
+
       return acc + automationTime * hourlyRate;
     }, 0);
 
@@ -203,7 +206,7 @@ export default function QuotingTool() {
   const handleAuthenticationChange = (
     method: string,
     price: number,
-    checked: boolean
+    checked: boolean,
   ) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
@@ -217,7 +220,7 @@ export default function QuotingTool() {
   const handleApiIntegrationChange = (
     apiName: string,
     price: number,
-    checked: boolean
+    checked: boolean,
   ) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
@@ -246,7 +249,7 @@ export default function QuotingTool() {
     setQuote((prevQuote) => ({
       ...prevQuote,
       thirdPartyAPIs: prevQuote.thirdPartyAPIs.filter(
-        (api) => api.apiName !== apiName
+        (api) => api.apiName !== apiName,
       ),
     }));
   };
@@ -255,7 +258,7 @@ export default function QuotingTool() {
   const handleAddonIntegrationChange = (
     addonName: string,
     price: number,
-    checked: boolean
+    checked: boolean,
   ) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
@@ -288,14 +291,14 @@ export default function QuotingTool() {
   const handleAutomationsChange = (
     automationType: string,
     price: number,
-    checked: boolean
+    checked: boolean,
   ) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
       automations: checked
         ? [...prevQuote.automations, { automationType, price }]
         : prevQuote.automations.filter(
-            (automation) => automation.automationType !== automationType
+            (automation) => automation.automationType !== automationType,
           ),
     }));
   };
@@ -319,7 +322,7 @@ export default function QuotingTool() {
     setQuote((prevQuote) => ({
       ...prevQuote,
       automations: prevQuote.automations.filter(
-        (automation) => automation.automationType !== automationType
+        (automation) => automation.automationType !== automationType,
       ),
     }));
   };
@@ -328,7 +331,7 @@ export default function QuotingTool() {
   const handleLegalPageChange = (
     name: string,
     price: number,
-    checked: boolean
+    checked: boolean,
   ) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
@@ -400,18 +403,8 @@ export default function QuotingTool() {
   };
 
   return (
-    <div
-      className="p-4"
-      nonce={nonce}>
-      <div
-        className="grid grid-cols-1 md:grid-cols-2 gap-5"
-        nonce={nonce}>
-        {/* Client information for submit */}
-        <ClientInfoSection
-          handleInputChange={handleInputChange}
-          quote={quote}
-        />
-
+    <div className="p-4" nonce={nonce}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5" nonce={nonce}>
         {/* Base Settings */}
         <BaseStructureSection
           handleInputChange={handleInputChange}
@@ -486,30 +479,18 @@ export default function QuotingTool() {
           quote={quote}
         />
 
-        <div className="mb-8 mt-5 w-full col-span-1 md:col-span-2">
+        <div
+          className="mb-8 mt-5 w-full col-span-1 md:col-span-2 space-y-5"
+          nonce={nonce}
+        >
           <QuoteSummarySection quote={quote} />
-        </div>
 
-        <Card
-          className="bg-background rounded-lg shadow-xl border border-purple-800 dark:border-purple-300 mb-8 mt-5 w-full col-span-1 md:col-span-2"
-          nonce={nonce}>
-          <CardBody nonce={nonce}>
-            <Button
-              fullWidth
-              aria-label="Submit Quote"
-              color="primary"
-              nonce={nonce}
-              variant="flat"
-              onClick={handleSubmit}>
-              Submit Quote
-            </Button>
-            <h2
-              className="text-xl font-semibold mt-4"
-              nonce={nonce}>
-              Estimated Price: ${quote.totalPrice.toFixed(2)}
-            </h2>
-          </CardBody>
-        </Card>
+          <ClientSubmit
+            handleInputChange={handleInputChange}
+            handleSubmit={handleSubmit}
+            quote={quote}
+          />
+        </div>
       </div>
     </div>
   );
