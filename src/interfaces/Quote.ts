@@ -5,7 +5,6 @@ export interface QuoteForm {
   clientEmail: string;
   comment: string;
   totalPrice: number;
-  services: Service[];
   staticPages: StaticPage;
   dynamicPages: DynamicPage;
   authentication: AuthenticationMethod[];
@@ -15,7 +14,7 @@ export interface QuoteForm {
   customFeatures: CustomFeature[];
   automations: Automation[];
   thirdPartyAPIs: ThirdPartyAPI[];
-  addons: Addon[]; // Add this line
+  addons: Addon[];
 }
 
 export interface Addon {
@@ -132,7 +131,7 @@ export interface AuthPermsSectionProps {
   handleAuthenticationChange: (
     method: string,
     price: number,
-    checked: boolean,
+    checked: boolean
   ) => void;
 }
 
@@ -151,7 +150,7 @@ export interface IntegrationWithOptionSectionProps {
   handleIntegrationChange: (
     name: string,
     price: number,
-    checked: boolean,
+    checked: boolean
   ) => void;
   handleCustomIntegrationChange: () => void;
   handleRemoveCustomIntegration: (name: string) => void;
@@ -171,7 +170,7 @@ export interface IntegrationNoOptionSectionProps {
   handleIntegrationChange: (
     name: string,
     price: number,
-    checked: boolean,
+    checked: boolean
   ) => void;
 }
 
