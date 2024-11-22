@@ -5,7 +5,7 @@ import React, { memo, useMemo } from "react";
 import { QuoteSectionProps } from "@/interfaces/Quote";
 
 import { CardSection } from "./Quote-CardSection";
-import { QuoteOptionSlider } from "./Quote-Inputs";
+import { OptionSlider } from "./Quote-OptionSlider";
 
 // BaseStructureSection Component
 export const BaseStructureSection = memo(function BaseStructureSection({
@@ -36,7 +36,7 @@ export const BaseStructureSection = memo(function BaseStructureSection({
     <CardSection
       body={
         <div className="flex flex-col space-y-5">
-          <QuoteOptionSlider
+          <OptionSlider
             id="static-pages-slider"
             label={staticPagesLabel}
             settings={staticPagesSettings}
@@ -48,7 +48,7 @@ export const BaseStructureSection = memo(function BaseStructureSection({
               })
             }
           />
-          <QuoteOptionSlider
+          <OptionSlider
             id="dynamic-pages-slider"
             label={dynamicPagesLabel}
             settings={dynamicPagesSettings}

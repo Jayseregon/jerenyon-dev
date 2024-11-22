@@ -122,7 +122,7 @@ export default function ContactPage() {
 
         <div className="py-3" />
 
-        <section className="max-w-fit mx-auto p-4">
+        <section className="max-w-2xl mx-auto p-4">
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <FieldInput

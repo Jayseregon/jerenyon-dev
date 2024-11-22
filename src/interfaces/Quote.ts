@@ -1,5 +1,3 @@
-import { useTranslations } from "next-intl";
-
 export interface QuoteForm {
   clientName: string;
   clientEmail: string;
@@ -83,25 +81,6 @@ export interface ThirdPartyAPI {
   price: number;
 }
 
-export interface FieldInputProps {
-  fieldTarget: string;
-  t: ReturnType<typeof useTranslations>;
-  value?: string;
-  type: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  width?: string;
-  height?: string;
-}
-
-export interface TextInputProps {
-  fieldTarget: string;
-  t: ReturnType<typeof useTranslations>;
-  value: string;
-  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  width?: string;
-  height?: string;
-}
-
 export interface CardSectionProps {
   header: string;
   body: React.ReactNode;
@@ -119,7 +98,7 @@ export interface ClientSubmitProps {
   handleSubmit: () => void;
 }
 
-export interface QuoteOptionSliderProps {
+export interface OptionSliderProps {
   label: string;
   id: string;
   settings: {

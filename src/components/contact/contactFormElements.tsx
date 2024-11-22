@@ -1,93 +1,79 @@
-import React from "react";
-import { useTranslations } from "next-intl";
+"use client";
 
+import React, { memo, useContext } from "react";
+import { Input, Textarea } from "@nextui-org/react";
+
+import { NonceContext } from "@/src/app/providers";
 import { EmailErrorIcon, EmailSuccessIcon } from "@/components/icons";
+import {
+  ErrorDisplayProps,
+  FieldInputProps,
+  HoneypotProps,
+  SuccessDisplayProps,
+  TextInputProps,
+} from "@/interfaces/Contact";
 
-interface FieldInputProps {
-  fieldTarget: string;
-  t: ReturnType<typeof useTranslations>;
-  value?: string;
-  type: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-interface HoneypotProps {
-  t: ReturnType<typeof useTranslations>;
-  value?: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-interface TextInputProps {
-  fieldTarget: string;
-  t: ReturnType<typeof useTranslations>;
-  value: string;
-  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-}
-
-interface ErrorDisplayProps {
-  error?: string | null;
-  t: ReturnType<typeof useTranslations>;
-}
-
-interface SuccessDisplayProps {
-  t: ReturnType<typeof useTranslations>;
-}
-
-export const FieldInput = ({
+// FieldInput Component
+export const FieldInput = memo(function FieldInput({
   fieldTarget,
   t,
   type,
   value,
   onChange,
-}: FieldInputProps) => {
-  return (
-    <div>
-      <label
-        className="block text-sm font-medium text-start"
-        htmlFor={fieldTarget}
-      >
-        {t(fieldTarget)}
-      </label>
-      <input
-        required
-        className="mt-1 block w-full bg-white text-black border border-purple-800 dark:border-purple-300 rounded-md py-2 px-3 focus:outline-none focus:ring-primary-400 focus:border-primary-400"
-        id={fieldTarget}
-        name={fieldTarget}
-        type={type}
-        value={value}
-        onChange={onChange}
-      />
-    </div>
-  );
-};
+}: FieldInputProps) {
+  const nonce = useContext(NonceContext);
 
-export const TextInput = ({
+  return (
+    <Input
+      isRequired
+      classNames={{
+        inputWrapper:
+          "border-purple-800/50 dark:border-purple-300/50 hover:!border-purple-800 hover:dark:!border-purple-300",
+      }}
+      id={fieldTarget}
+      name={fieldTarget}
+      nonce={nonce}
+      placeholder={t(fieldTarget)}
+      type={type}
+      value={value}
+      variant="underlined"
+      onChange={onChange}
+    />
+  );
+});
+
+// TextInput Component
+export const TextInput = memo(function TextInput({
   fieldTarget,
   t,
   value,
   onChange,
-}: TextInputProps) => {
+}: TextInputProps) {
+  const nonce = useContext(NonceContext);
+
   return (
-    <div>
-      <label
-        className="block text-sm font-medium text-start"
-        htmlFor={fieldTarget}
-      >
-        {t(fieldTarget)}
-      </label>
-      <textarea
-        required
-        className="mt-1 block w-full bg-white text-black border border-purple-800 dark:border-purple-300 rounded-md py-2 px-3 focus:outline-none focus:ring-primary-400 focus:border-primary-400"
-        id={fieldTarget}
-        name={fieldTarget}
-        value={value}
-        onChange={onChange}
-      />
-    </div>
+    <Textarea
+      isRequired
+      classNames={{
+        inputWrapper:
+          "border-purple-800/50 dark:border-purple-300/50 hover:!border-purple-800 hover:dark:!border-purple-300",
+      }}
+      id={fieldTarget}
+      maxRows={4}
+      minRows={2}
+      name={fieldTarget}
+      nonce={nonce}
+      placeholder={t(fieldTarget)}
+      value={value}
+      variant="underlined"
+      onChange={onChange}
+    />
   );
-};
+});
 
 export const HoneypotField = ({ t, value, onChange }: HoneypotProps) => {
+  const nonce = useContext(NonceContext);
+
   return (
     <div className="hidden">
       <label
@@ -100,6 +86,7 @@ export const HoneypotField = ({ t, value, onChange }: HoneypotProps) => {
         className="mt-1 block w-full bg-white text-black border border-purple-800 dark:border-purple-300 rounded-md py-2 px-3 focus:outline-none focus:ring-primary-400 focus:border-primary-400"
         id="honeypot"
         name="honeypot"
+        nonce={nonce}
         type="text"
         value={value}
         onChange={onChange}
@@ -109,15 +96,20 @@ export const HoneypotField = ({ t, value, onChange }: HoneypotProps) => {
 };
 
 export const ErrorDisplay: React.FC<ErrorDisplayProps> = ({ t }) => {
+  const nonce = useContext(NonceContext);
+
   return (
-    <div className="max-w-fit mx-auto p-4">
+    <div className="max-w-fit mx-auto p-4" nonce={nonce}>
       <EmailErrorIcon size={65} />
       <div
         className="p-4 mb-4 grid grid-cols-1 gap-4 text-danger-700 bg-danger-100 rounded-lg dark:bg-danger-200 dark:text-danger-800"
+        nonce={nonce}
         role="alert"
       >
-        <p className="font-medium grid grid-cols-1 gap-1">
-          <span className="text-2xl">{t("error1")}</span>
+        <p className="font-medium grid grid-cols-1 gap-1" nonce={nonce}>
+          <span className="text-2xl" nonce={nonce}>
+            {t("error1")}
+          </span>
           <span>{t("error2")}</span>
           <span>{t("error3")}</span>
         </p>
@@ -127,14 +119,19 @@ export const ErrorDisplay: React.FC<ErrorDisplayProps> = ({ t }) => {
 };
 
 export const SuccessDisplay: React.FC<SuccessDisplayProps> = ({ t }) => {
+  const nonce = useContext(NonceContext);
+
   return (
-    <div className="max-w-fit mx-auto p-4">
+    <div className="max-w-fit mx-auto p-4" nonce={nonce}>
       <EmailSuccessIcon size={65} />
       <div
         className="p-4 mb-4 grid grid-cols-1 gap-4 text-success-700 bg-success-100 rounded-lg dark:bg-success-200 dark:text-success-800"
+        nonce={nonce}
         role="alert"
       >
-        <p className="font-medium">{t("success")}</p>
+        <p className="font-medium" nonce={nonce}>
+          {t("success")}
+        </p>
       </div>
     </div>
   );
