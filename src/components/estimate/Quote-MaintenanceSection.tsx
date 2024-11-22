@@ -8,7 +8,7 @@ import { MaintenanceSectionProps } from "@/interfaces/Quote";
 import { CustomRadioGroup, CustomRadio } from "@/components/ui/CustomRadio";
 
 import { CardSection } from "./Quote-CardSection";
-import { QuoteOptionSlider } from "./Quote-Inputs";
+import { OptionSlider } from "./Quote-OptionSlider";
 
 export const MaintenanceSection = ({
   quote,
@@ -75,7 +75,7 @@ export const MaintenanceSection = ({
           {type !== "none" && (
             <>
               {/* Duration Slider */}
-              <QuoteOptionSlider
+              <OptionSlider
                 id="maintenance-duration-slider"
                 label={planDurationLabel}
                 settings={{
