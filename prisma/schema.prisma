@@ -115,7 +115,6 @@ model MaintenancePlan {
 model WebsiteType {
   id      String  @id @default(cuid())
   type    String // e.g. Ecommerce, Classic Website, Automation Platform
-  price   Float
   // Relations
   quote   Quote?  @relation(fields: [quoteId], references: [id])
   quoteId String? @unique

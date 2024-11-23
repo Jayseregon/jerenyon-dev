@@ -24,37 +24,16 @@ import {
   hourlyRate,
   bufferPercentage,
   developmentTimeEstimates,
+  preconfigWebApps,
 } from "./getQuoteData";
 
 export default function QuotingTool() {
   const router = useRouter();
   // const t = useTranslations("estimate");
   const nonce = useContext(NonceContext);
-  const [quote, setQuote] = useState<QuoteForm>({
-    clientName: "",
-    clientEmail: "",
-    comment: "",
-    totalPrice: 0,
-    staticPages: { selectedPages: 3, totalPrice: 0 },
-    dynamicPages: { selectedPages: 0, totalPrice: 0 },
-    authentication: [],
-    legalPages: [],
-    maintenancePlan: {
-      type: "Monthly",
-      duration: 3,
-      regularUpdates: true,
-      securityUpdates: true,
-      minorBugFixes: true,
-      featureEnhancement: false,
-      prioritySupport: false,
-    },
-    websiteType: { type: "", price: 0 },
-    customFeatures: [],
-    automations: [],
-    thirdPartyAPIs: [],
-    addons: [],
-  });
-
+  const [quote, setQuote] = useState<QuoteForm>(
+    preconfigWebApps.EnterpriseWebsite.schema,
+  );
   const [_sessionId, setSessionId] = useState<string | null>(null);
   const [customApiName, setCustomApiName] = useState<string>("");
   const [customAddonName, setCustomAddonName] = useState<string>("");
@@ -111,7 +90,7 @@ export default function QuotingTool() {
     const authPrice = quote.authentication.reduce((acc, auth) => {
       const authTime =
         developmentTimeEstimates.authMethod[
-          auth.method as keyof typeof developmentTimeEstimates.authMethod
+          auth.name as keyof typeof developmentTimeEstimates.authMethod
         ] || 0;
 
       return acc + authTime * hourlyRate;
@@ -204,15 +183,15 @@ export default function QuotingTool() {
 
   // Authentication methods
   const handleAuthenticationChange = (
-    method: string,
+    name: string,
     price: number,
     checked: boolean,
   ) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
       authentication: checked
-        ? [...prevQuote.authentication, { method, price }]
-        : prevQuote.authentication.filter((auth) => auth.method !== method),
+        ? [...prevQuote.authentication, { name, price }]
+        : prevQuote.authentication.filter((auth) => auth.name !== name),
     }));
   };
 

@@ -36,7 +36,7 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
     const authHours = quote.authentication.reduce((acc, auth) => {
       const time =
         developmentTimeEstimates.authMethod[
-          auth.method as keyof typeof developmentTimeEstimates.authMethod
+          auth.name as keyof typeof developmentTimeEstimates.authMethod
         ] || 0;
 
       return acc + time;
@@ -131,10 +131,10 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
           name: "Authentication",
           items: quote.authentication.map((auth) => {
             const authMethod = authenticationMethods.find(
-              (method) => method.method === auth.method,
+              (method) => method.name === auth.name,
             );
 
-            return authMethod ? authMethod.label : auth.method;
+            return authMethod ? authMethod.label : auth.name;
           }),
           price: authPrice * (1 + bufferPercentage),
         },
@@ -208,10 +208,10 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
         <div className="space-y-4" nonce={nonce}>
           <div className="flex justify-between items-center">
             <h3 className="text-xl font-semibold">
-              Total Estimated Development Time
+              Estimated Development Time
             </h3>
             <span className="text-lg">
-              {summaryData.totalHours.toFixed(2)} hours
+              {summaryData.totalHours.toFixed(0)} hours
             </span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
