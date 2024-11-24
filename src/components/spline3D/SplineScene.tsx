@@ -25,15 +25,15 @@ const SplineScene = () => {
   };
 
   return (
-    <>
+    <div className="border border-4 border-teal-500">
       <Suspense fallback={<Loading />}>
         <Spline
-          className="w-full h-full"
+          className="w-full h-full border border-4 border-amber-500"
           scene="/spline/hero-3d-scene.splinecode"
           onSplineMouseDown={handleMouseDown}
         />
       </Suspense>
-    </>
+    </div>
   );
 };
 

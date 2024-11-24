@@ -8,17 +8,12 @@ import Loading from "./loading";
 
 export default function RootPage() {
   return (
-    <div className="grid grid-rows-[auto_auto] h-screen w-screen overflow-hidden bg-background">
-      {/* SplineScene */}
-      <div>
-        <Suspense fallback={<Loading />}>
-          <SplineScene />
-        </Suspense>
-      </div>
-      {/* Hero Section */}
-      <div>
-        <Hero />
-      </div>
+    <div className="relative h-screen w-screen overflow-hidden bg-background">
+      <Suspense fallback={<Loading />}>
+        <SplineScene />
+      </Suspense>
+      {/* Hero Title and Subtitle */}
+      <Hero />
     </div>
   );
 }
