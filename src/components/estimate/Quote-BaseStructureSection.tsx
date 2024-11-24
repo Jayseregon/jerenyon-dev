@@ -35,7 +35,7 @@ export const BaseStructureSection = memo(function BaseStructureSection({
   return (
     <CardSection
       body={
-        <div className="flex flex-col space-y-5">
+        <div className="grid grid-cols-2 gap-5">
           <OptionSlider
             id="static-pages-slider"
             label={staticPagesLabel}

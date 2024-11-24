@@ -27,14 +27,13 @@ type Props = {
 };
 
 export const metadata: Metadata = {
-  title: `${siteConfig.heroTitle} with ${siteConfig.name}`,
-  description: siteConfig.heroDescription,
+  title: `${siteConfig.heroTitle} with ${siteConfig.name}`, // Concise and SEO-friendly
+  description: siteConfig.heroDescription, // More detail for search engines
   keywords: siteConfig.keywords,
   authors: [{ name: siteConfig.name, url: siteConfig.siteUrl }],
   openGraph: {
-    title: siteConfig.heroTitle,
-    description:
-      "Web Development, Automation & Geospatial Expertise. Providing Python automation and cloud-based geospatial solutions.",
+    title: siteConfig.heroTitle, // Strong, attention-grabbing
+    description: siteConfig.heroDescription, // Provides more context
     url: siteConfig.siteUrl,
     siteName: siteConfig.name,
     images: [
@@ -42,7 +41,7 @@ export const metadata: Metadata = {
         url: siteConfig.icon,
         width: 1200,
         height: 630,
-        alt: "Web development, automation and geospatial expertise",
+        alt: siteConfig.heroSubtitle, // Concise for alt text
       },
     ],
     locale: "en_US",
@@ -50,14 +49,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.heroTitle,
-    description: siteConfig.heroSubtitle,
+    title: siteConfig.heroTitle, // Consistent branding
+    description: siteConfig.heroSubtitle, // Twitter prefers brief text
     images: [
       {
         url: siteConfig.icon,
         width: 1200,
         height: 630,
-        alt: "Web development, automation and geospatial expertise",
+        alt: siteConfig.heroSubtitle,
       },
     ],
   },
@@ -76,12 +75,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteConfig.siteUrl,
     languages: {
-      "en-US": undefined,
-      "fr-CA": undefined,
+      "en-US": siteConfig.siteUrl,
+      "fr-CA": siteConfig.siteUrl,
     },
   },
   metadataBase: new URL(siteConfig.siteUrl),
 };
+
 const locales = ["en", "fr"];
 
 export function generateStaticParams() {

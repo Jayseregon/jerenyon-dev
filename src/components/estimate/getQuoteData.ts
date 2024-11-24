@@ -274,8 +274,8 @@ const apiIntegrationsMap = createItemMap(apiIntegrations);
 const authenticationMethodsMap = createItemMap(authenticationMethods);
 
 export const preconfigWebApps: Record<string, PreconfigWebApp> = {
-  BasicStaticWebsite: {
-    label: "Basic Website",
+  BasicWebsite: {
+    label: "basicWebsite",
     schema: {
       clientName: "",
       clientEmail: "",
@@ -303,7 +303,7 @@ export const preconfigWebApps: Record<string, PreconfigWebApp> = {
         featureEnhancement: false,
         prioritySupport: false,
       },
-      websiteType: { type: "BasicStaticWebsite" },
+      websiteType: { type: "BasicWebsite" },
       customFeatures: [],
       automations: [],
       thirdPartyAPIs: [],
@@ -313,71 +313,82 @@ export const preconfigWebApps: Record<string, PreconfigWebApp> = {
           price: addonsMap["SEO"].price,
         },
         {
-          addonName: "Performance",
-          price: addonsMap["Performance"].price,
-        },
-        {
           addonName: "DomainSetup",
           price: addonsMap["DomainSetup"].price,
         },
       ],
     },
   },
-  Portfolio: {
-    label: "Portfolio Website",
+  AutomationPlatform: {
+    label: "automationPlatform",
     schema: {
       clientName: "",
       clientEmail: "",
       comment: "",
       totalPrice: 0,
-      staticPages: { selectedPages: 5, totalPrice: 0 },
-      dynamicPages: { selectedPages: 0, totalPrice: 0 },
-      authentication: [],
-      legalPages: [
-        {
-          name: "terms",
-          price: legalPagesMap["terms"].price,
-        },
-        {
-          name: "privacy",
-          price: legalPagesMap["privacy"].price,
-        },
-      ],
-      maintenancePlan: {
-        type: "Monthly",
-        duration: 3,
-        regularUpdates: true,
-        securityUpdates: true,
-        minorBugFixes: true,
-        featureEnhancement: false,
-        prioritySupport: false,
-      },
-      websiteType: { type: "basic" },
-      customFeatures: [],
-      automations: [],
-      thirdPartyAPIs: [],
-      addons: [
-        { addonName: "SEO", price: addonsMap["SEO"].price },
-        { addonName: "Performance", price: addonsMap["Performance"].price },
-        { addonName: "CustomUI", price: addonsMap["CustomUI"].price },
-        { addonName: "SocialMedia", price: addonsMap["SocialMedia"].price },
-        { addonName: "DomainSetup", price: addonsMap["DomainSetup"].price },
-      ],
-    },
-  },
-  EcommercePlatform: {
-    label: "E-commerce Platform",
-    schema: {
-      clientName: "",
-      clientEmail: "",
-      comment: "",
-      totalPrice: 0,
-      staticPages: { selectedPages: 5, totalPrice: 0 },
-      dynamicPages: { selectedPages: 5, totalPrice: 0 },
+      staticPages: { selectedPages: 1, totalPrice: 0 },
+      dynamicPages: { selectedPages: 4, totalPrice: 0 },
       authentication: [
+        {
+          name: "JWT",
+          price: authenticationMethodsMap["JWT"].price,
+        },
         {
           name: "Credentials",
           price: authenticationMethodsMap["Credentials"].price,
+        },
+      ],
+      legalPages: [
+        { name: "terms", price: legalPagesMap["terms"].price },
+        { name: "privacy", price: legalPagesMap["privacy"].price },
+      ],
+      maintenancePlan: {
+        type: "Monthly",
+        duration: 6,
+        regularUpdates: true,
+        securityUpdates: true,
+        minorBugFixes: true,
+        featureEnhancement: true,
+        prioritySupport: true,
+      },
+      websiteType: { type: "AutomationPlatform" },
+      customFeatures: [],
+      automations: [
+        {
+          automationType: "WorkflowAutomation",
+          price: automationsMap["WorkflowAutomation"].price,
+        },
+      ],
+      thirdPartyAPIs: [
+        {
+          apiName: "Resend",
+          price: apiIntegrationsMap["Resend"].price,
+        },
+        {
+          apiName: "Twilio",
+          price: apiIntegrationsMap["Twilio"].price,
+        },
+      ],
+      addons: [
+        { addonName: "CMS", price: addonsMap["CMS"].price },
+        { addonName: "Analytics", price: addonsMap["Analytics"].price },
+        { addonName: "Training", price: addonsMap["Training"].price },
+      ],
+    },
+  },
+  GeospatialIntelligence: {
+    label: "geospatialIntelligence",
+    schema: {
+      clientName: "",
+      clientEmail: "",
+      comment: "",
+      totalPrice: 0,
+      staticPages: { selectedPages: 1, totalPrice: 0 },
+      dynamicPages: { selectedPages: 3, totalPrice: 0 },
+      authentication: [
+        {
+          name: "SSO",
+          price: authenticationMethodsMap["SSO"].price,
         },
         {
           name: "SocialOAuth",
@@ -391,169 +402,6 @@ export const preconfigWebApps: Record<string, PreconfigWebApp> = {
         { name: "cookieConsent", price: legalPagesMap["cookieConsent"].price },
       ],
       maintenancePlan: {
-        type: "Monthly",
-        duration: 6,
-        regularUpdates: true,
-        securityUpdates: true,
-        minorBugFixes: true,
-        featureEnhancement: false,
-        prioritySupport: false,
-      },
-      websiteType: { type: "EcommercePlatform" },
-      customFeatures: [],
-      automations: [
-        {
-          automationType: "WorkflowAutomation",
-          price: automationsMap["WorkflowAutomation"].price,
-        },
-      ],
-      thirdPartyAPIs: [
-        {
-          apiName: "Stripe",
-          price: apiIntegrationsMap["Stripe"].price,
-        },
-        {
-          apiName: "Paypal",
-          price: apiIntegrationsMap["Paypal"].price,
-        },
-        {
-          apiName: "Twilio",
-          price: apiIntegrationsMap["Twilio"].price,
-        },
-      ],
-      addons: [
-        { addonName: "SEO", price: addonsMap["SEO"].price },
-        { addonName: "Performance", price: addonsMap["Performance"].price },
-        { addonName: "Analytics", price: addonsMap["Analytics"].price },
-        { addonName: "Security", price: addonsMap["Security"].price },
-        { addonName: "CustomUI", price: addonsMap["CustomUI"].price },
-        { addonName: "DomainSetup", price: addonsMap["DomainSetup"].price },
-      ],
-    },
-  },
-  CMSBasedWebsite: {
-    label: "CMS-based Website",
-    schema: {
-      clientName: "",
-      clientEmail: "",
-      comment: "",
-      totalPrice: 0,
-      staticPages: { selectedPages: 4, totalPrice: 0 },
-      dynamicPages: { selectedPages: 4, totalPrice: 0 },
-      authentication: [
-        {
-          name: "Credentials",
-          price: authenticationMethodsMap["Credentials"].price,
-        },
-      ],
-      legalPages: [
-        { name: "terms", price: legalPagesMap["terms"].price },
-        { name: "privacy", price: legalPagesMap["privacy"].price },
-      ],
-      maintenancePlan: {
-        type: "Monthly",
-        duration: 6,
-        regularUpdates: true,
-        securityUpdates: true,
-        minorBugFixes: true,
-        featureEnhancement: false,
-        prioritySupport: false,
-      },
-      websiteType: { type: "CMSBasedWebsite" },
-      customFeatures: [],
-      automations: [],
-      thirdPartyAPIs: [
-        {
-          apiName: "Resend",
-          price: apiIntegrationsMap["Resend"].price,
-        },
-      ],
-      addons: [
-        { addonName: "CMS", price: addonsMap["CMS"].price },
-        { addonName: "SEO", price: addonsMap["SEO"].price },
-        { addonName: "Performance", price: addonsMap["Performance"].price },
-        { addonName: "DomainSetup", price: addonsMap["DomainSetup"].price },
-      ],
-    },
-  },
-  DashboardAnalytics: {
-    label: "Dashboard & Analytics Tool",
-    schema: {
-      clientName: "",
-      clientEmail: "",
-      comment: "",
-      totalPrice: 0,
-      staticPages: { selectedPages: 3, totalPrice: 0 },
-      dynamicPages: { selectedPages: 3, totalPrice: 0 },
-      authentication: [
-        {
-          name: "Credentials",
-          price: authenticationMethodsMap["Credentials"].price,
-        },
-        {
-          name: "JWT",
-          price: authenticationMethodsMap["JWT"].price,
-        },
-      ],
-      legalPages: [
-        { name: "terms", price: legalPagesMap["terms"].price },
-        { name: "privacy", price: legalPagesMap["privacy"].price },
-      ],
-      maintenancePlan: {
-        type: "Monthly",
-        duration: 6,
-        regularUpdates: true,
-        securityUpdates: true,
-        minorBugFixes: true,
-        featureEnhancement: false,
-        prioritySupport: false,
-      },
-      websiteType: { type: "DashboardAnalytics" },
-      customFeatures: [],
-      automations: [
-        {
-          automationType: "WorkflowAutomation",
-          price: automationsMap["WorkflowAutomation"].price,
-        },
-      ],
-      thirdPartyAPIs: [
-        {
-          apiName: "Resend",
-          price: apiIntegrationsMap["Resend"].price,
-        },
-        {
-          apiName: "Twilio",
-          price: apiIntegrationsMap["Twilio"].price,
-        },
-      ],
-      addons: [
-        { addonName: "Analytics", price: addonsMap["Analytics"].price },
-        { addonName: "Performance", price: addonsMap["Performance"].price },
-        { addonName: "CustomUI", price: addonsMap["CustomUI"].price },
-      ],
-    },
-  },
-  GeospatialPlatform: {
-    label: "Geospatial & Web GIS Platform",
-    schema: {
-      clientName: "",
-      clientEmail: "",
-      comment: "",
-      totalPrice: 0,
-      staticPages: { selectedPages: 4, totalPrice: 0 },
-      dynamicPages: { selectedPages: 5, totalPrice: 0 },
-      authentication: [
-        {
-          name: "JWT",
-          price: authenticationMethodsMap["JWT"].price,
-        },
-      ],
-      legalPages: [
-        { name: "terms", price: legalPagesMap["terms"].price },
-        { name: "privacy", price: legalPagesMap["privacy"].price },
-        { name: "cookie", price: legalPagesMap["cookie"].price },
-      ],
-      maintenancePlan: {
         type: "Yearly",
         duration: 1,
         regularUpdates: true,
@@ -562,7 +410,7 @@ export const preconfigWebApps: Record<string, PreconfigWebApp> = {
         featureEnhancement: false,
         prioritySupport: false,
       },
-      websiteType: { type: "GeospatialPlatform" },
+      websiteType: { type: "GeospatialIntelligence" },
       customFeatures: [],
       automations: [
         {
@@ -584,8 +432,12 @@ export const preconfigWebApps: Record<string, PreconfigWebApp> = {
       ],
       thirdPartyAPIs: [
         {
-          apiName: "GoogleMaps",
-          price: apiIntegrationsMap["GoogleMaps"].price,
+          apiName: "Resend",
+          price: apiIntegrationsMap["Resend"].price,
+        },
+        {
+          apiName: "Azure",
+          price: apiIntegrationsMap["Azure"].price,
         },
         {
           apiName: "ArcGIS",
@@ -593,21 +445,21 @@ export const preconfigWebApps: Record<string, PreconfigWebApp> = {
         },
       ],
       addons: [
-        { addonName: "Performance", price: addonsMap["Performance"].price },
         { addonName: "CustomUI", price: addonsMap["CustomUI"].price },
-        { addonName: "Security", price: addonsMap["Security"].price },
+        { addonName: "Performance", price: addonsMap["Performance"].price },
+        { addonName: "Training", price: addonsMap["Training"].price },
       ],
     },
   },
-  SaaSPlatform: {
-    label: "SaaS Platform",
+  AISolutions: {
+    label: "aiSolutions",
     schema: {
       clientName: "",
       clientEmail: "",
       comment: "",
       totalPrice: 0,
-      staticPages: { selectedPages: 4, totalPrice: 0 },
-      dynamicPages: { selectedPages: 6, totalPrice: 0 },
+      staticPages: { selectedPages: 3, totalPrice: 0 },
+      dynamicPages: { selectedPages: 5, totalPrice: 0 },
       authentication: [
         {
           name: "SSO",
@@ -630,116 +482,10 @@ export const preconfigWebApps: Record<string, PreconfigWebApp> = {
         regularUpdates: true,
         securityUpdates: true,
         minorBugFixes: true,
-        featureEnhancement: false,
-        prioritySupport: false,
-      },
-      websiteType: { type: "SaaSPlatform" },
-      customFeatures: [],
-      automations: [
-        {
-          automationType: "AIIntegration",
-          price: automationsMap["AIIntegration"].price,
-        },
-        {
-          automationType: "WorkflowAutomation",
-          price: automationsMap["WorkflowAutomation"].price,
-        },
-      ],
-      thirdPartyAPIs: [
-        {
-          apiName: "Stripe",
-          price: apiIntegrationsMap["Stripe"].price,
-        },
-        {
-          apiName: "AWS",
-          price: apiIntegrationsMap["AWS"].price,
-        },
-        {
-          apiName: "Twilio",
-          price: apiIntegrationsMap["Twilio"].price,
-        },
-      ],
-      addons: [
-        { addonName: "Performance", price: addonsMap["Performance"].price },
-        { addonName: "Security", price: addonsMap["Security"].price },
-        { addonName: "Analytics", price: addonsMap["Analytics"].price },
-        { addonName: "CustomUI", price: addonsMap["CustomUI"].price },
-        { addonName: "DomainSetup", price: addonsMap["DomainSetup"].price },
-      ],
-    },
-  },
-  AutomationPlatform: {
-    label: "Automation Platform",
-    schema: {
-      clientName: "",
-      clientEmail: "",
-      comment: "",
-      totalPrice: 0,
-      staticPages: { selectedPages: 4, totalPrice: 0 },
-      dynamicPages: { selectedPages: 4, totalPrice: 0 },
-      authentication: [],
-      legalPages: [
-        { name: "terms", price: legalPagesMap["terms"].price },
-        { name: "privacy", price: legalPagesMap["privacy"].price },
-      ],
-      maintenancePlan: {
-        type: "Yearly",
-        duration: 1,
-        regularUpdates: true,
-        securityUpdates: true,
-        minorBugFixes: true,
-        featureEnhancement: false,
-        prioritySupport: false,
-      },
-      websiteType: { type: "AutomationPlatform" },
-      customFeatures: [],
-      automations: [
-        {
-          automationType: "WorkflowAutomation",
-          price: automationsMap["WorkflowAutomation"].price,
-        },
-      ],
-      thirdPartyAPIs: [],
-      addons: [
-        { addonName: "Performance", price: addonsMap["Performance"].price },
-        { addonName: "CustomUI", price: addonsMap["CustomUI"].price },
-      ],
-    },
-  },
-  AIEnhancedPlatform: {
-    label: "AI-Enhanced Platform",
-    schema: {
-      clientName: "",
-      clientEmail: "",
-      comment: "",
-      totalPrice: 0,
-      staticPages: { selectedPages: 4, totalPrice: 0 },
-      dynamicPages: { selectedPages: 5, totalPrice: 0 },
-      authentication: [
-        {
-          name: "SSO",
-          price: authenticationMethodsMap["SSO"].price,
-        },
-        {
-          name: "JWT",
-          price: authenticationMethodsMap["JWT"].price,
-        },
-      ],
-      legalPages: [
-        { name: "terms", price: legalPagesMap["terms"].price },
-        { name: "privacy", price: legalPagesMap["privacy"].price },
-        { name: "cookie", price: legalPagesMap["cookie"].price },
-      ],
-      maintenancePlan: {
-        type: "Yearly",
-        duration: 1,
-        regularUpdates: true,
-        securityUpdates: true,
-        minorBugFixes: true,
         featureEnhancement: true,
         prioritySupport: true,
       },
-      websiteType: { type: "AIEnhancedPlatform" },
+      websiteType: { type: "AISolutions" },
       customFeatures: [],
       automations: [
         {
@@ -757,8 +503,8 @@ export const preconfigWebApps: Record<string, PreconfigWebApp> = {
       ],
       thirdPartyAPIs: [
         {
-          apiName: "AWS",
-          price: apiIntegrationsMap["AWS"].price,
+          apiName: "Azure",
+          price: apiIntegrationsMap["Azure"].price,
         },
         {
           apiName: "Resend",
@@ -766,80 +512,9 @@ export const preconfigWebApps: Record<string, PreconfigWebApp> = {
         },
       ],
       addons: [
-        { addonName: "Security", price: addonsMap["Security"].price },
-        { addonName: "CustomUI", price: addonsMap["CustomUI"].price },
-        { addonName: "Training", price: addonsMap["Training"].price },
-      ],
-    },
-  },
-  EnterpriseWebsite: {
-    label: "Tailored Enterprise Website",
-    schema: {
-      clientName: "",
-      clientEmail: "",
-      comment: "",
-      totalPrice: 0,
-      staticPages: { selectedPages: 6, totalPrice: 0 },
-      dynamicPages: { selectedPages: 6, totalPrice: 0 },
-      authentication: [
-        {
-          name: "SSO",
-          price: authenticationMethodsMap["SSO"].price,
-        },
-        {
-          name: "SocialOAuth",
-          price: authenticationMethodsMap["SocialOAuth"].price,
-        },
-      ],
-      legalPages: [
-        { name: "terms", price: legalPagesMap["terms"].price },
-        { name: "privacy", price: legalPagesMap["privacy"].price },
-        { name: "cookie", price: legalPagesMap["cookie"].price },
-        { name: "cookieConsent", price: legalPagesMap["cookieConsent"].price },
-      ],
-      maintenancePlan: {
-        type: "Yearly",
-        duration: 1,
-        regularUpdates: true,
-        securityUpdates: true,
-        minorBugFixes: true,
-        featureEnhancement: true,
-        prioritySupport: true,
-      },
-      websiteType: { type: "EnterpriseWebsite" },
-      customFeatures: [],
-      automations: [
-        {
-          automationType: "WorkflowAutomation",
-          price: automationsMap["WorkflowAutomation"].price,
-        },
-      ],
-      thirdPartyAPIs: [
-        {
-          apiName: "Stripe",
-          price: apiIntegrationsMap["Stripe"].price,
-        },
-        {
-          apiName: "Resend",
-          price: apiIntegrationsMap["Resend"].price,
-        },
-        {
-          apiName: "Twilio",
-          price: apiIntegrationsMap["Twilio"].price,
-        },
-        { apiName: "Azure", price: apiIntegrationsMap["Azure"].price },
-      ],
-      addons: [
-        { addonName: "SEO", price: addonsMap["SEO"].price },
-        {
-          addonName: "MultiLanguage",
-          price: addonsMap["MultiLanguage"].price,
-        },
         { addonName: "Analytics", price: addonsMap["Analytics"].price },
-        { addonName: "CMS", price: addonsMap["CMS"].price },
         { addonName: "Security", price: addonsMap["Security"].price },
-        { addonName: "CustomUI", price: addonsMap["CustomUI"].price },
-        { addonName: "DomainSetup", price: addonsMap["DomainSetup"].price },
+        { addonName: "Training", price: addonsMap["Training"].price },
       ],
     },
   },

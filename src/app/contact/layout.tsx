@@ -62,8 +62,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.siteUrl}/contact`,
     languages: {
-      "en-US": undefined,
-      "fr-CA": undefined,
+      "en-US": `${siteConfig.siteUrl}/contact`,
+      "fr-CA": `${siteConfig.siteUrl}/contact`,
     },
   },
 };

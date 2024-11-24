@@ -84,6 +84,7 @@ export interface CardSectionProps {
   header: string;
   body: React.ReactNode;
   bodyClassName?: string;
+  titleOutside?: boolean;
 }
 
 export interface QuoteSectionProps {
@@ -168,4 +169,9 @@ export interface MaintenanceSectionProps {
 export interface PreconfigWebApp {
   label: string;
   schema: QuoteForm;
+}
+
+export interface PreconfigSectionProps {
+  selectedPreconfig: string;
+  onPreconfigChange: (value: string) => void;
 }
