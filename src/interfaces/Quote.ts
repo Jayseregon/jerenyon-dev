@@ -38,7 +38,7 @@ export interface DynamicPage {
 }
 
 export interface AuthenticationMethod {
-  method: string;
+  name: string;
   price: number;
 }
 
@@ -60,7 +60,6 @@ export interface MaintenancePlan {
 
 export interface WebsiteType {
   type: string;
-  price: number;
 }
 
 export interface CustomFeature {
@@ -85,6 +84,7 @@ export interface CardSectionProps {
   header: string;
   body: React.ReactNode;
   bodyClassName?: string;
+  titleOutside?: boolean;
 }
 
 export interface QuoteSectionProps {
@@ -164,4 +164,14 @@ export interface MaintenanceSectionProps {
   handleTypeChange: (value: string) => void;
   handleDurationChange: (value: number | number[]) => void;
   handlePlanOptionChange: (plan: string) => void;
+}
+
+export interface PreconfigWebApp {
+  label: string;
+  schema: QuoteForm;
+}
+
+export interface PreconfigSectionProps {
+  selectedPreconfig: string;
+  onPreconfigChange: (value: string) => void;
 }

@@ -11,21 +11,31 @@ export const CardSection = memo(function CardSection({
   header,
   body,
   bodyClassName,
+  titleOutside,
 }: CardSectionProps) {
   const nonce = useContext(NonceContext);
 
   return (
-    <Card
-      className="bg-background rounded-lg shadow-xl border border-purple-800 dark:border-purple-300"
-      nonce={nonce}
-    >
-      <CardHeader nonce={nonce}>
-        <h2 className="text-2xl font-semibold" nonce={nonce}>
+    <>
+      {titleOutside && (
+        <h2 className="text-2xl font-semibold text-left" nonce={nonce}>
           {header}
         </h2>
-      </CardHeader>
-      <CardBody className={cn("text-lg", bodyClassName)}>{body}</CardBody>
-    </Card>
+      )}
+      <Card
+        className="bg-background rounded-lg shadow-xl border border-purple-800 dark:border-purple-300"
+        nonce={nonce}
+      >
+        {!titleOutside && (
+          <CardHeader nonce={nonce}>
+            <h2 className="text-2xl font-semibold" nonce={nonce}>
+              {header}
+            </h2>
+          </CardHeader>
+        )}
+        <CardBody className={cn("text-lg", bodyClassName)}>{body}</CardBody>
+      </Card>
+    </>
   );
 });
 

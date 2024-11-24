@@ -2,11 +2,11 @@
 import { useState, useEffect, useContext } from "react";
 import cuid from "cuid";
 import { useRouter } from "next/navigation";
+import { Accordion, AccordionItem } from "@nextui-org/react";
+import { useTranslations } from "next-intl";
 
-// import { useTranslations } from "next-intl";
-
-import { NonceContext } from "@/src/app/providers";
 import { QuoteForm } from "@/src/interfaces/Quote";
+import { NonceContext } from "@/src/app/providers";
 
 import { BaseStructureSection } from "./Quote-BaseStructureSection";
 import { AuthPermsSection } from "./Quote-AuthPermsSection";
@@ -15,6 +15,7 @@ import { IntegrationWithOptionSection } from "./Quote-IntegrationWithOptionSecti
 import { MaintenanceSection } from "./Quote-MaintenanceSection";
 import { QuoteSummarySection } from "./Quote-SummarySection";
 import { ClientSubmit } from "./Quote-ClientSubmit";
+import { PreconfigSection } from "./Quote-PreconfigSection";
 import {
   authenticationMethods,
   apiIntegrations,
@@ -24,41 +25,22 @@ import {
   hourlyRate,
   bufferPercentage,
   developmentTimeEstimates,
+  preconfigWebApps,
 } from "./getQuoteData";
 
 export default function QuotingTool() {
   const router = useRouter();
-  // const t = useTranslations("estimate");
+  const t = useTranslations("estimate");
   const nonce = useContext(NonceContext);
-  const [quote, setQuote] = useState<QuoteForm>({
-    clientName: "",
-    clientEmail: "",
-    comment: "",
-    totalPrice: 0,
-    staticPages: { selectedPages: 3, totalPrice: 0 },
-    dynamicPages: { selectedPages: 0, totalPrice: 0 },
-    authentication: [],
-    legalPages: [],
-    maintenancePlan: {
-      type: "Monthly",
-      duration: 3,
-      regularUpdates: true,
-      securityUpdates: true,
-      minorBugFixes: true,
-      featureEnhancement: false,
-      prioritySupport: false,
-    },
-    websiteType: { type: "", price: 0 },
-    customFeatures: [],
-    automations: [],
-    thirdPartyAPIs: [],
-    addons: [],
-  });
-
+  const [quote, setQuote] = useState<QuoteForm>(
+    preconfigWebApps.BasicWebsite.schema,
+  );
   const [_sessionId, setSessionId] = useState<string | null>(null);
   const [customApiName, setCustomApiName] = useState<string>("");
   const [customAddonName, setCustomAddonName] = useState<string>("");
   const [customAutomation, setCustomAutomation] = useState<string>("");
+  const [selectedPreconfig, setSelectedPreconfig] =
+    useState<string>("BasicWebsite");
 
   // Save draft in sessionStorage and automatically remove if user leaves the page
   useEffect(() => {
@@ -111,7 +93,7 @@ export default function QuotingTool() {
     const authPrice = quote.authentication.reduce((acc, auth) => {
       const authTime =
         developmentTimeEstimates.authMethod[
-          auth.method as keyof typeof developmentTimeEstimates.authMethod
+          auth.name as keyof typeof developmentTimeEstimates.authMethod
         ] || 0;
 
       return acc + authTime * hourlyRate;
@@ -204,15 +186,15 @@ export default function QuotingTool() {
 
   // Authentication methods
   const handleAuthenticationChange = (
-    method: string,
+    name: string,
     price: number,
     checked: boolean,
   ) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
       authentication: checked
-        ? [...prevQuote.authentication, { method, price }]
-        : prevQuote.authentication.filter((auth) => auth.method !== method),
+        ? [...prevQuote.authentication, { name, price }]
+        : prevQuote.authentication.filter((auth) => auth.name !== name),
     }));
   };
 
@@ -402,95 +384,147 @@ export default function QuotingTool() {
     }));
   };
 
+  // Handler to update the quote based on selected preconfig
+  const handlePreconfigChange = (preconfigKey: string) => {
+    setSelectedPreconfig(preconfigKey);
+    setQuote(preconfigWebApps[preconfigKey].schema);
+  };
+
   return (
     <div className="p-4" nonce={nonce}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5" nonce={nonce}>
-        {/* Base Settings */}
-        <BaseStructureSection
-          handleInputChange={handleInputChange}
-          quote={quote}
+      <div
+        className="mt-5 w-full col-span-1 md:col-span-2 space-y-5"
+        nonce={nonce}
+      >
+        {/* Preconfiguration Selection */}
+        <PreconfigSection
+          selectedPreconfig={selectedPreconfig}
+          onPreconfigChange={handlePreconfigChange}
         />
+      </div>
 
-        {/* Authentication methods */}
-        <AuthPermsSection
-          authenticationMethods={authenticationMethods}
-          handleAuthenticationChange={handleAuthenticationChange}
-          quote={quote}
-        />
+      <h3 className="text-xl my-10 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto p-5">
+        <p>{t("accordion.description1")}</p>
+        <p>{t("accordion.description2")}</p>
+      </h3>
 
-        {/* Legal pages */}
-        <IntegrationNoOptionSection
-          customItems={quote.legalPages.map((page) => ({ name: page.name }))}
-          handleIntegrationChange={handleLegalPageChange}
-          header="Legal Pages"
-          items={legalPagesList}
-        />
-
-        {/* API */}
-        <IntegrationWithOptionSection
-          customField="quotingTool.customAPI"
-          customItems={quote.thirdPartyAPIs.map((api) => ({
-            name: api.apiName,
-          }))}
-          customValue={customApiName}
-          handleCustomIntegrationChange={handleCustomApiIntegrationChange}
-          handleCustomValueChange={setCustomApiName}
-          handleIntegrationChange={handleApiIntegrationChange}
-          handleRemoveCustomIntegration={handleRemoveCustomApi}
-          header="API Integrations"
-          items={apiIntegrations}
-        />
-
-        {/* Addons */}
-        <IntegrationWithOptionSection
-          customField="quotingTool.customAddon"
-          customItems={quote.addons.map((addon) => ({
-            name: addon.addonName,
-          }))}
-          customValue={customAddonName}
-          handleCustomIntegrationChange={handleCustomAddonIntegrationChange}
-          handleCustomValueChange={setCustomAddonName}
-          handleIntegrationChange={handleAddonIntegrationChange}
-          handleRemoveCustomIntegration={handleRemoveCustomAddon}
-          header="Addons"
-          items={addons}
-        />
-
-        {/* Automations */}
-        <IntegrationWithOptionSection
-          customField="quotingTool.customAutomation"
-          customItems={quote.automations.map((automation) => ({
-            name: automation.automationType,
-          }))}
-          customValue={customAutomation}
-          handleCustomIntegrationChange={handleCustomAutomationsChange}
-          handleCustomValueChange={setCustomAutomation}
-          handleIntegrationChange={handleAutomationsChange}
-          handleRemoveCustomIntegration={handleRemoveCustomAutomation}
-          header="Automations"
-          items={automationsList}
-        />
-
-        {/* Maintenance Plan */}
-        <MaintenanceSection
-          handleDurationChange={handleDurationChange}
-          handlePlanOptionChange={handlePlanOptionChange}
-          handleTypeChange={handleTypeChange}
-          quote={quote}
-        />
-
-        <div
-          className="mb-8 mt-5 w-full col-span-1 md:col-span-2 space-y-5"
-          nonce={nonce}
+      <Accordion
+        className="rounded-lg shadow-xl border border-purple-800 dark:border-purple-300"
+        variant="light"
+      >
+        <AccordionItem
+          key="1"
+          aria-label={t("accordion.title")}
+          classNames={{
+            title: "text-2xl font-semibold",
+          }}
+          title={t("accordion.title")}
         >
-          <QuoteSummarySection quote={quote} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5" nonce={nonce}>
+            <div
+              className="mt-5 w-full col-span-1 md:col-span-2 space-y-5"
+              nonce={nonce}
+            >
+              {/* Base Settings */}
+              <BaseStructureSection
+                handleInputChange={handleInputChange}
+                quote={quote}
+              />
+            </div>
+            {/* Authentication methods */}
+            <AuthPermsSection
+              authenticationMethods={authenticationMethods}
+              handleAuthenticationChange={handleAuthenticationChange}
+              quote={quote}
+            />
 
-          <ClientSubmit
-            handleInputChange={handleInputChange}
-            handleSubmit={handleSubmit}
-            quote={quote}
-          />
-        </div>
+            {/* Legal pages */}
+            <IntegrationNoOptionSection
+              customItems={quote.legalPages.map((page) => ({
+                name: page.name,
+              }))}
+              handleIntegrationChange={handleLegalPageChange}
+              header="Legal Pages"
+              items={legalPagesList}
+            />
+
+            {/* API */}
+            <IntegrationWithOptionSection
+              customField="quotingTool.customAPI"
+              customItems={quote.thirdPartyAPIs.map((api) => ({
+                name: api.apiName,
+              }))}
+              customValue={customApiName}
+              handleCustomIntegrationChange={handleCustomApiIntegrationChange}
+              handleCustomValueChange={setCustomApiName}
+              handleIntegrationChange={handleApiIntegrationChange}
+              handleRemoveCustomIntegration={handleRemoveCustomApi}
+              header="API Integrations"
+              items={apiIntegrations}
+            />
+
+            {/* Addons */}
+            <IntegrationWithOptionSection
+              customField="quotingTool.customAddon"
+              customItems={quote.addons.map((addon) => ({
+                name: addon.addonName,
+              }))}
+              customValue={customAddonName}
+              handleCustomIntegrationChange={handleCustomAddonIntegrationChange}
+              handleCustomValueChange={setCustomAddonName}
+              handleIntegrationChange={handleAddonIntegrationChange}
+              handleRemoveCustomIntegration={handleRemoveCustomAddon}
+              header="Addons"
+              items={addons}
+            />
+
+            {/* Automations */}
+            <IntegrationWithOptionSection
+              customField="quotingTool.customAutomation"
+              customItems={quote.automations.map((automation) => ({
+                name: automation.automationType,
+              }))}
+              customValue={customAutomation}
+              handleCustomIntegrationChange={handleCustomAutomationsChange}
+              handleCustomValueChange={setCustomAutomation}
+              handleIntegrationChange={handleAutomationsChange}
+              handleRemoveCustomIntegration={handleRemoveCustomAutomation}
+              header="Automations"
+              items={automationsList}
+            />
+
+            {/* Maintenance Plan */}
+            <MaintenanceSection
+              handleDurationChange={handleDurationChange}
+              handlePlanOptionChange={handlePlanOptionChange}
+              handleTypeChange={handleTypeChange}
+              quote={quote}
+            />
+          </div>
+        </AccordionItem>
+      </Accordion>
+
+      <h3 className="text-xl my-10 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto p-5">
+        <p>{t("summary.description1")}</p>
+        <p>{t("summary.description2")}</p>
+      </h3>
+
+      <div
+        className="mb-8 mt-5 w-full col-span-1 md:col-span-2 space-y-5"
+        nonce={nonce}
+      >
+        <QuoteSummarySection quote={quote} />
+
+        <h3 className="text-xl my-10 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto p-5">
+          <p>{t("quotingTool.description1")}</p>
+          <p>{t("quotingTool.description2")}</p>
+        </h3>
+
+        <ClientSubmit
+          handleInputChange={handleInputChange}
+          handleSubmit={handleSubmit}
+          quote={quote}
+        />
       </div>
     </div>
   );

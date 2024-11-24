@@ -1,6 +1,7 @@
 "use client";
 import React, { memo, useContext, useMemo } from "react";
 import { CircleCheck } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { QuoteForm } from "@/interfaces/Quote";
 import { NonceContext } from "@/src/app/providers";
@@ -25,6 +26,7 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
   quote: QuoteForm;
 }) {
   const nonce = useContext(NonceContext);
+  const t = useTranslations("estimate.summary");
 
   const summaryData = useMemo(() => {
     // Calculate total development time (in hours)
@@ -36,7 +38,7 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
     const authHours = quote.authentication.reduce((acc, auth) => {
       const time =
         developmentTimeEstimates.authMethod[
-          auth.method as keyof typeof developmentTimeEstimates.authMethod
+          auth.name as keyof typeof developmentTimeEstimates.authMethod
         ] || 0;
 
       return acc + time;
@@ -131,10 +133,10 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
           name: "Authentication",
           items: quote.authentication.map((auth) => {
             const authMethod = authenticationMethods.find(
-              (method) => method.method === auth.method,
+              (method) => method.name === auth.name,
             );
 
-            return authMethod ? authMethod.label : auth.method;
+            return authMethod ? authMethod.label : auth.name;
           }),
           price: authPrice * (1 + bufferPercentage),
         },
@@ -204,14 +206,13 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
 
   return (
     <CardSection
+      titleOutside
       body={
         <div className="space-y-4" nonce={nonce}>
           <div className="flex justify-between items-center">
-            <h3 className="text-xl font-semibold">
-              Total Estimated Development Time
-            </h3>
-            <span className="text-lg">
-              {summaryData.totalHours.toFixed(2)} hours
+            <h3 className="text-xl font-semibold">{t("timeEstimated")}</h3>
+            <span className="text-lg text-nowrap">
+              {summaryData.totalHours.toFixed(0)} {t("hours")}
             </span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -239,8 +240,8 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
                   </div>
                   <div className="mt-4">
                     <span className="font-semibold text-foreground">
-                      Category Price:
-                    </span>{" "}
+                      {t("subTotal")}
+                    </span>
                     <span className="text-green-600">
                       ${category.price.toFixed(2)}
                     </span>
@@ -251,15 +252,15 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
           </div>
           <div className="flex justify-end items-center mt-4">
             <span className="font-bold text-xl text-foreground">
-              Total Estimated Price:
-            </span>{" "}
+              {t("total")}
+            </span>
             <span className="text-2xl text-green-600 ml-2">
               ${summaryData.totalPrice.toFixed(2)}
             </span>
           </div>
         </div>
       }
-      header="Summary"
+      header={t("title")}
     />
   );
 });

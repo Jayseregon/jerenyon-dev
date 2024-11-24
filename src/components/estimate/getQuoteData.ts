@@ -1,7 +1,11 @@
-// In North America or Western Europe, hourly rates for freelance web developers generally range between $50–$150/hour,
-// depending on experience and specialization.
-// For your skills (Full-stack, Python, GIS, AI/ML, Next.js), a rate between $75–$125/hour
-// would be more aligned with the market.
+import { PreconfigWebApp } from "@/src/interfaces/Quote";
+
+/**
+ * In North America or Western Europe, hourly rates for freelance web developers generally range between $50–$150/hour,
+ * depending on experience and specialization.
+ * For your skills (Full-stack, Python, GIS, AI/ML, Next.js), a rate between $75–$125/hour
+ * would be more aligned with the market.
+ */
 export const hourlyRate = 70;
 
 // 20% buffer for overhead
@@ -66,30 +70,30 @@ export const developmentTimeEstimates = {
 
 export const authenticationMethods = [
   {
-    method: "Credentials",
+    name: "Credentials",
     price: 100,
     label: "Classic Email-based Credentials",
   },
   {
-    method: "SocialOAuth",
+    name: "SocialOAuth",
     price: 100,
     label: "Social & OAuth",
     subLabel: "(e.g., Google, GitHub, Facebook)",
   },
   {
-    method: "Magic",
+    name: "Magic",
     price: 100,
     label: "Magic Links",
     subLabel: "(Email-based login links)",
   },
   {
-    method: "SSO",
+    name: "SSO",
     price: 100,
     label: "Single Sign-On Integration",
     subLabel: "(e.g., SAML, OpenID Connect)",
   },
   {
-    method: "JWT",
+    name: "JWT",
     price: 100,
     label: "JWT Token-based Authentication",
   },
@@ -104,7 +108,7 @@ export const apiIntegrations = [
   { name: "Twilio", price: 200, label: "Twilio Messaging & Voice" },
   { name: "GoogleMaps", price: 150, label: "Google Maps API" },
   { name: "AWS", price: 300, label: "Amazon Web Services Integration" },
-  { name: "Azure", price: 300, label: "Microsoft Azure Cloud Services" },
+  { name: "Azure", price: 300, label: "Azure Cloud Services" },
   { name: "Bunny", price: 150, label: "Bunny.net CDN and Storage" },
   { name: "ArcGIS", price: 300, label: "ArcGIS API for Python" },
 ];
@@ -248,3 +252,270 @@ export const legalPagesList = [
     sup: "*",
   },
 ];
+
+function createItemMap<T extends { name: string }>(
+  list: T[],
+): Record<string, T> {
+  return list.reduce(
+    (map, item) => {
+      map[item.name] = item;
+
+      return map;
+    },
+    {} as Record<string, T>,
+  );
+}
+
+// Create maps for each category
+const legalPagesMap = createItemMap(legalPagesList);
+const addonsMap = createItemMap(addons);
+const automationsMap = createItemMap(automationsList);
+const apiIntegrationsMap = createItemMap(apiIntegrations);
+const authenticationMethodsMap = createItemMap(authenticationMethods);
+
+export const preconfigWebApps: Record<string, PreconfigWebApp> = {
+  BasicWebsite: {
+    label: "basicWebsite",
+    schema: {
+      clientName: "",
+      clientEmail: "",
+      comment: "",
+      totalPrice: 0,
+      staticPages: { selectedPages: 3, totalPrice: 0 },
+      dynamicPages: { selectedPages: 0, totalPrice: 0 },
+      authentication: [],
+      legalPages: [
+        {
+          name: "terms",
+          price: legalPagesMap["terms"].price,
+        },
+        {
+          name: "privacy",
+          price: legalPagesMap["privacy"].price,
+        },
+      ],
+      maintenancePlan: {
+        type: "Monthly",
+        duration: 3,
+        regularUpdates: true,
+        securityUpdates: true,
+        minorBugFixes: true,
+        featureEnhancement: false,
+        prioritySupport: false,
+      },
+      websiteType: { type: "BasicWebsite" },
+      customFeatures: [],
+      automations: [],
+      thirdPartyAPIs: [],
+      addons: [
+        {
+          addonName: "SEO",
+          price: addonsMap["SEO"].price,
+        },
+        {
+          addonName: "DomainSetup",
+          price: addonsMap["DomainSetup"].price,
+        },
+      ],
+    },
+  },
+  AutomationPlatform: {
+    label: "automationPlatform",
+    schema: {
+      clientName: "",
+      clientEmail: "",
+      comment: "",
+      totalPrice: 0,
+      staticPages: { selectedPages: 1, totalPrice: 0 },
+      dynamicPages: { selectedPages: 4, totalPrice: 0 },
+      authentication: [
+        {
+          name: "JWT",
+          price: authenticationMethodsMap["JWT"].price,
+        },
+        {
+          name: "Credentials",
+          price: authenticationMethodsMap["Credentials"].price,
+        },
+      ],
+      legalPages: [
+        { name: "terms", price: legalPagesMap["terms"].price },
+        { name: "privacy", price: legalPagesMap["privacy"].price },
+      ],
+      maintenancePlan: {
+        type: "Monthly",
+        duration: 6,
+        regularUpdates: true,
+        securityUpdates: true,
+        minorBugFixes: true,
+        featureEnhancement: true,
+        prioritySupport: true,
+      },
+      websiteType: { type: "AutomationPlatform" },
+      customFeatures: [],
+      automations: [
+        {
+          automationType: "WorkflowAutomation",
+          price: automationsMap["WorkflowAutomation"].price,
+        },
+      ],
+      thirdPartyAPIs: [
+        {
+          apiName: "Resend",
+          price: apiIntegrationsMap["Resend"].price,
+        },
+        {
+          apiName: "Twilio",
+          price: apiIntegrationsMap["Twilio"].price,
+        },
+      ],
+      addons: [
+        { addonName: "CMS", price: addonsMap["CMS"].price },
+        { addonName: "Analytics", price: addonsMap["Analytics"].price },
+        { addonName: "Training", price: addonsMap["Training"].price },
+      ],
+    },
+  },
+  GeospatialIntelligence: {
+    label: "geospatialIntelligence",
+    schema: {
+      clientName: "",
+      clientEmail: "",
+      comment: "",
+      totalPrice: 0,
+      staticPages: { selectedPages: 1, totalPrice: 0 },
+      dynamicPages: { selectedPages: 3, totalPrice: 0 },
+      authentication: [
+        {
+          name: "SSO",
+          price: authenticationMethodsMap["SSO"].price,
+        },
+        {
+          name: "SocialOAuth",
+          price: authenticationMethodsMap["SocialOAuth"].price,
+        },
+      ],
+      legalPages: [
+        { name: "terms", price: legalPagesMap["terms"].price },
+        { name: "privacy", price: legalPagesMap["privacy"].price },
+        { name: "cookie", price: legalPagesMap["cookie"].price },
+        { name: "cookieConsent", price: legalPagesMap["cookieConsent"].price },
+      ],
+      maintenancePlan: {
+        type: "Yearly",
+        duration: 1,
+        regularUpdates: true,
+        securityUpdates: true,
+        minorBugFixes: true,
+        featureEnhancement: false,
+        prioritySupport: false,
+      },
+      websiteType: { type: "GeospatialIntelligence" },
+      customFeatures: [],
+      automations: [
+        {
+          automationType: "InteractiveMaps",
+          price: automationsMap["InteractiveMaps"].price,
+        },
+        {
+          automationType: "GeoDataWrangling",
+          price: automationsMap["GeoDataWrangling"].price,
+        },
+        {
+          automationType: "CustomGISolutions",
+          price: automationsMap["CustomGISolutions"].price,
+        },
+        {
+          automationType: "GeoWorkflows",
+          price: automationsMap["GeoWorkflows"].price,
+        },
+      ],
+      thirdPartyAPIs: [
+        {
+          apiName: "Resend",
+          price: apiIntegrationsMap["Resend"].price,
+        },
+        {
+          apiName: "Azure",
+          price: apiIntegrationsMap["Azure"].price,
+        },
+        {
+          apiName: "ArcGIS",
+          price: apiIntegrationsMap["ArcGIS"].price,
+        },
+      ],
+      addons: [
+        { addonName: "CustomUI", price: addonsMap["CustomUI"].price },
+        { addonName: "Performance", price: addonsMap["Performance"].price },
+        { addonName: "Training", price: addonsMap["Training"].price },
+      ],
+    },
+  },
+  AISolutions: {
+    label: "aiSolutions",
+    schema: {
+      clientName: "",
+      clientEmail: "",
+      comment: "",
+      totalPrice: 0,
+      staticPages: { selectedPages: 3, totalPrice: 0 },
+      dynamicPages: { selectedPages: 5, totalPrice: 0 },
+      authentication: [
+        {
+          name: "SSO",
+          price: authenticationMethodsMap["SSO"].price,
+        },
+        {
+          name: "JWT",
+          price: authenticationMethodsMap["JWT"].price,
+        },
+      ],
+      legalPages: [
+        { name: "terms", price: legalPagesMap["terms"].price },
+        { name: "privacy", price: legalPagesMap["privacy"].price },
+        { name: "cookie", price: legalPagesMap["cookie"].price },
+        { name: "cookieConsent", price: legalPagesMap["cookieConsent"].price },
+      ],
+      maintenancePlan: {
+        type: "Yearly",
+        duration: 1,
+        regularUpdates: true,
+        securityUpdates: true,
+        minorBugFixes: true,
+        featureEnhancement: true,
+        prioritySupport: true,
+      },
+      websiteType: { type: "AISolutions" },
+      customFeatures: [],
+      automations: [
+        {
+          automationType: "AIIntegration",
+          price: automationsMap["AIIntegration"].price,
+        },
+        {
+          automationType: "RetrievalSystems",
+          price: automationsMap["RetrievalSystems"].price,
+        },
+        {
+          automationType: "MultiAgentSystems",
+          price: automationsMap["MultiAgentSystems"].price,
+        },
+      ],
+      thirdPartyAPIs: [
+        {
+          apiName: "Azure",
+          price: apiIntegrationsMap["Azure"].price,
+        },
+        {
+          apiName: "Resend",
+          price: apiIntegrationsMap["Resend"].price,
+        },
+      ],
+      addons: [
+        { addonName: "Analytics", price: addonsMap["Analytics"].price },
+        { addonName: "Security", price: addonsMap["Security"].price },
+        { addonName: "Training", price: addonsMap["Training"].price },
+      ],
+    },
+  },
+};

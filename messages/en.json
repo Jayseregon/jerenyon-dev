@@ -1,8 +1,8 @@
 {
   "homepage": {
     "hero": {
-      "title": "Transforming Ideas Into Intelligent Solutions",
-      "subtitle": "Web Development, Automation & Geospatial Expertise"
+      "title": "Building the Future",
+      "subtitle": "Accelerating Innovation through Automation, Geospatial Intelligence, and AI solutions"
     }
   },
   "collapsedMenu": {
@@ -111,8 +111,13 @@
   "estimate": {
     "title": "Estimate",
     "hero": {
-      "title": "Unlock Your Online Potential.",
-      "subtitle": "From custom websites to advanced e-commerce and automation, delivering exactly what you need - today and tomorrow."
+      "title": "Tailor Your Vision, Effortlessly.",
+      "subtitle": "From dynamic websites to AI-driven automation, customize your quote to meet your needs today and scale for tomorrow."
+    },
+    "accordion": {
+      "description1": "Your vision deserves more than a one-size-fits-all approach.",
+      "description2": "Expand the menu below to customize your project step-by-step and explore options tailored to your needs.",
+      "title": "Personalize Your Project Details"
     },
     "addons": "Enhance your package with additional features and services.",
     "disclaimer": {
@@ -126,16 +131,49 @@
       "line2": "Very soon it will be back online with new features and a fresh look.",
       "line3": "Thank you for your patience!"
     },
+    "summary": {
+      "title": "Summary",
+      "description1": "Watch your project take shape.",
+      "description2": "This summary offers a clear breakdown of your customized quote, providing transparency and confidence for the next steps.",
+      "timeEstimated": "Estimated Development Time",
+      "hours": "hours",
+      "subTotal": "Subtotal: ",
+      "total": "Total Estimated Price: "
+    },
     "quotingTool": {
       "clientName": "Name or Company",
       "clientEmail": "Email",
       "clientComments": "Comments or requests",
+      "description1": "Once you are satisfied with your selections, share your details and any additional comments to finalize your personalization.",
+      "description2": "We are ready to turn your vision into reality!",
       "customLegal": "Custom Legal Page",
       "customAuth": "Custom Authentication Method",
       "customFeature": "Custom Feature",
       "customAPI": "Custom API",
       "customAddon": "Custom Addon",
-      "customAutomation": "Custom Automation"
+      "customAutomation": "Custom Automation",
+      "preconfigs": {
+        "basicWebsite": {
+          "label": "Basic Website",
+          "description": "A static, cost-effective website for showcasing content, services, or ideas with minimal upkeep.",
+          "whoFor": "[\"Entrepreneurs\", \"Freelancers\", \"Small Businesses\", \"Personal Projects\", \"Cost-Effective Solutions\"]"
+        },
+        "automationPlatform": {
+          "label": "Automation Platform",
+          "description": "A platform to streamline workflows, automate tasks, and improve efficiency with actionable insights.",
+          "whoFor": "[\"Businesses\", \"Efficiency\", \"Workflow Automation\", \"Time-Saving\", \"Error Reduction\"]"
+        },
+        "geospatialIntelligence": {
+          "label": "Geospatial Intelligence",
+          "description": "Solutions for processing spatial data, interactive mapping, and advanced geospatial analysis.",
+          "whoFor": "[\"Logistics\", \"Urban Planning\", \"Environmental Research\", \"Spatial Data\", \"GIS\"]"
+        },
+        "aiSolutions": {
+          "label": "AI-Augmented Solutions",
+          "description": "AI-powered platforms with features like chatbots, predictive analytics, and intelligent search tools.",
+          "whoFor": "[\"AI\", \"Decision-Making\", \"Efficiency\", \"Predictive Analytics\", \"Automation\"]"
+        }
+      }
     }
   },
   "policies": {

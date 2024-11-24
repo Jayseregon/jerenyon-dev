@@ -15,14 +15,14 @@ export const AuthPermsSection = memo(function AuthPermsSection({
 }: {
   quote: QuoteForm;
   authenticationMethods: {
-    method: string;
+    name: string;
     price: number;
     label: string;
     subLabel?: string;
     sup?: string;
   }[];
   handleAuthenticationChange: (
-    method: string,
+    name: string,
     price: number,
     checked: boolean,
   ) => void;
@@ -30,7 +30,7 @@ export const AuthPermsSection = memo(function AuthPermsSection({
   // const t = useTranslations("estimate");
 
   const selectedMethods = useMemo(
-    () => new Set(quote.authentication.map((auth) => auth.method)),
+    () => new Set(quote.authentication.map((auth) => auth.name)),
     [quote.authentication],
   );
 
@@ -39,11 +39,11 @@ export const AuthPermsSection = memo(function AuthPermsSection({
       body={
         <>
           {authenticationMethods.map(
-            ({ method, price, label, subLabel, sup }) => (
+            ({ name, price, label, subLabel, sup }) => (
               <QuoteSwitch
-                key={method}
-                ariaLabel={`${method} Authentication`}
-                isOn={selectedMethods.has(method)}
+                key={name}
+                ariaLabel={`${name} Authentication`}
+                isOn={selectedMethods.has(name)}
                 label={
                   <span>
                     {label}
@@ -58,9 +58,9 @@ export const AuthPermsSection = memo(function AuthPermsSection({
                 }
                 onToggle={() =>
                   handleAuthenticationChange(
-                    method,
+                    name,
                     price,
-                    !selectedMethods.has(method),
+                    !selectedMethods.has(name),
                   )
                 }
               />
