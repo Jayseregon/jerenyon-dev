@@ -8,11 +8,11 @@ import Loading from "./loading";
 
 export default function RootPage() {
   return (
-    <div className="grid grid-rows-[1fr_auto] h-screen w-screen overflow-hidden bg-background">
+    <div className="grid grid-rows-[auto_auto] h-screen w-screen overflow-hidden bg-background">
       {/* SplineScene */}
       <div>
         <Suspense fallback={<Loading />}>
-          <SplineScene className="w-full h-full" />
+          <SplineScene />
         </Suspense>
       </div>
       {/* Hero Section */}

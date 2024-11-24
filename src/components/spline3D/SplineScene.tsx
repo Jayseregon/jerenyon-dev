@@ -7,11 +7,7 @@ import Loading from "./loading";
 
 const Spline = React.lazy(() => import("@splinetool/react-spline"));
 
-type SplineSceneProps = {
-  className?: string;
-};
-
-const SplineScene = ({ className }: SplineSceneProps) => {
+const SplineScene = () => {
   const router = useRouter();
   const routeMap: Record<string, string> = {
     "button-hub": "/knowledge-hub",
@@ -32,7 +28,7 @@ const SplineScene = ({ className }: SplineSceneProps) => {
     <>
       <Suspense fallback={<Loading />}>
         <Spline
-          className={`w-full h-full ${className}`}
+          className="w-full h-full"
           scene="/spline/hero-3d-scene.splinecode"
           onSplineMouseDown={handleMouseDown}
         />
