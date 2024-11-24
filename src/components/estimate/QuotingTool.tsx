@@ -4,8 +4,9 @@ import cuid from "cuid";
 import { useRouter } from "next/navigation";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
+import { z } from "zod";
 
-import { QuoteForm } from "@/src/interfaces/Quote";
+import { QuoteForm, QuoteFormSchema } from "@/src/interfaces/Quote";
 import { NonceContext } from "@/src/app/providers";
 
 import { BaseStructureSection } from "./Quote-BaseStructureSection";
@@ -74,6 +75,7 @@ export default function QuotingTool() {
     }));
   };
 
+  // TO BE DELETE AFTER DEVELOPMENT
   useEffect(() => {
     console.log(quote);
   }, [quote]);
@@ -169,18 +171,30 @@ export default function QuotingTool() {
   // Handle form submission
   const handleSubmit = async () => {
     try {
-      const response = await fetch("/api/submit-quote", {
-        method: "POST",
-        body: JSON.stringify(quote),
-        headers: { "Content-Type": "application/json" },
-      });
+      // Validate the quote data using Zod
+      QuoteFormSchema.parse(quote);
 
-      if (response.ok) {
-        // Redirect to a confirmation page or show success message
-        router.push("/quote-success");
+      if (process.env.NODE_ENV === "development") {
+        console.log("Quote data is valid:", quote);
       }
-    } catch (error) {
-      console.error("Failed to submit quote:", error);
+
+      // const response = await fetch("/api/submit-quote", {
+      //   method: "POST",
+      //   body: JSON.stringify(quote),
+      //   headers: { "Content-Type": "application/json" },
+      // });
+
+      // if (response.ok) {
+      //   // Redirect to a confirmation page or show success message
+      //   router.push("/quote-success");
+      // }
+    } catch (error: unknown) {
+      if (error instanceof z.ZodError) {
+        // Handle validation errors
+        console.error("Validation errors:", error.errors);
+      } else {
+        console.error("An unexpected error occurred");
+      }
     }
   };
 
