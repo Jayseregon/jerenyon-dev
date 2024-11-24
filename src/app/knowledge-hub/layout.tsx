@@ -67,8 +67,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.siteUrl}/knowledge-hub`,
     languages: {
-      "en-US": undefined,
-      "fr-CA": undefined,
+      "en-US": `${siteConfig.siteUrl}/knowledge-hub`,
+      "fr-CA": `${siteConfig.siteUrl}/knowledge-hub`,
     },
   },
 };

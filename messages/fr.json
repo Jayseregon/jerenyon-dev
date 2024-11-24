@@ -1,8 +1,8 @@
 {
   "homepage": {
     "hero": {
-      "title": "Transformer les Idées en Solutions Intelligentes",
-      "subtitle": "Développement web, automatisation et expertise géospatiale"
+      "title": "Construire le Futur",
+      "subtitle": "Accélérer l'Innovation grâce à l'Automatisation, l'Intelligence Géospatiale et les Solutions d'IA"
     }
   },
   "collapsedMenu": {
@@ -73,7 +73,7 @@
     },
     "hubCategories": {
       "articles-and-tutorials": {
-        "title": "Articles & Turoriels",
+        "title": "Articles & Tutoriels",
         "description": "Explorez les derniers articles et guides étape par étape de Jerenyon Dev.",
         "imgAlt": "Carte d'arrière-plan de la catégorie Articles et Tutoriels.",
         "btnLabel": "Voir Plus"
@@ -111,8 +111,13 @@
   "estimate": {
     "title": "Estimation",
     "hero": {
-      "title": "Libérez votre potentiel en ligne.",
-      "subtitle": "Des sites web personnalisés aux solutions avancées de commerce électronique et d'automatisation, offrant exactement ce dont vous avez besoin - aujourd'hui et demain."
+      "title": "Personnalisez Votre Vision, Sans Effort.",
+      "subtitle": "De sites web dynamiques à l'automatisation infusés par l'IA, personnalisez votre devis pour répondre à vos besoins aujourd'hui et évoluer pour demain."
+    },
+    "accordion": {
+      "description1": "Votre vision mérite plus qu'une solution passe-partout.",
+      "description2": "Déroulez le menu ci-dessous pour personnaliser votre projet étape par étape et explorer des options adaptées à vos besoins.",
+      "title": "Personnalisez les Détails de Votre Projet"
     },
     "addons": "Améliorez votre forfait avec des fonctionnalités et services supplémentaires.",
     "disclaimer": {
@@ -126,16 +131,49 @@
       "line2": "Il sera très bientôt de retour en ligne avec de nouvelles fonctionnalités et un nouveau look.",
       "line3": "Merci pour votre patience !"
     },
+    "summary": {
+      "title": "Sommaire",
+      "description1": "Regardez votre projet prendre forme.",
+      "description2": "Ce sommaire offre une vision claire de votre devis personnalisé, fournissant transparence et confiance pour les prochaines étapes.",
+      "timeEstimated": "Temps de Développement Estimé",
+      "hours": "heures",
+      "subTotal": "Sous-Total : ",
+      "total": "Prix Total Estimé : "
+    },
     "quotingTool": {
       "clientName": "Nom ou Entreprise",
       "clientEmail": "E-mail",
       "clientComments": "Commentaires ou requêtes",
+      "description1": "Une fois que vous êtes satisfait de vos sélections, partagez vos coordonnées et tout commentaire supplémentaire pour finaliser votre personnalisation.",
+      "description2": "Nous sommes prêts à transformer votre vision en réalité !",
       "customLegal": "Page Légale Personnalisée",
       "customAuth": "Authentification Personnalisée",
       "customFeature": "Fonctionnalité Personnalisée",
       "customAPI": "API Personnalisée",
       "customAddon": "Addon Personnalisé",
-      "customAutomation": "Automatisation Personnalisée"
+      "customAutomation": "Automatisation Personnalisée",
+      "preconfigs": {
+        "basicWebsite": {
+          "label": "Site Web Basique",
+          "description": "Un site web statique et économique pour présenter du contenu, des services ou des idées avec un minimum d'entretien.",
+          "whoFor": "[\"Entrepreneurs\", \"Freelances\", \"Petites Entreprises\", \"Projets Personnels\", \"Solutions Économiques\"]"
+        },
+        "automationPlatform": {
+          "label": "Plateforme d'Automatisation",
+          "description": "Une plateforme pour rationaliser les flux de travail, automatiser les tâches et améliorer l'efficacité avec des informations exploitables.",
+          "whoFor": "[\"Entreprises\", \"Efficacité\", \"Automatisation des Flux de Travail\", \"Gain de Temps\", \"Réduction des Erreurs\"]"
+        },
+        "geospatialIntelligence": {
+          "label": "Intelligence Géospatiale",
+          "description": "Des solutions pour le traitement des données spatiales, la cartographie interactive et l'analyse géospatiale avancée.",
+          "whoFor": "[\"Logistique\", \"Urbanisme\", \"Recherche Environnementale\", \"Données Spatiales\", \"SIG\"]"
+        },
+        "aiSolutions": {
+          "label": "Solutions Augmentées par l'IA",
+          "description": "Des plateformes alimentées par l'IA avec des fonctionnalités comme des chatbots, des analyses prédictives et des outils de recherche intelligents.",
+          "whoFor": "[\"IA\", \"Prise de Décision\", \"Efficacité\", \"Analyses Prédictives\", \"Automatisation\"]"
+        }
+      }
     }
   },
   "policies": {
@@ -229,15 +267,15 @@
       "label": "Concepteur de Réseau Fibre | Ingénieur en Automatisation",
       "company": "Telecon",
       "city": "Montréal, QC",
-      "summary": "Amélioration des flux de travail de conception de réseau fibre grâce à l'automatisation Python et à la technologie GIS, conduisant au développement d'une puissante plateforme basée sur Django.",
+      "summary": "Amélioration des flux de travail de conception de réseau fibre grâce à l'automatisation Python et à la technologie SIG, conduisant au développement d'une puissante plateforme basée sur Django.",
       "description": {
-        "p1": "Joué un rôle pivot dans la transformation des processus manuels de conception de réseau basés sur CAD en intégrant des outils GIS et des scripts d'automatisation Python personnalisés, réduisant significativement le travail manuel et les erreurs humaines.",
+        "p1": "Joué un rôle pivot dans la transformation des processus manuels de conception de réseau basés sur CAD en intégrant des outils SIG et des scripts d'automatisation Python personnalisés, réduisant significativement le travail manuel et les erreurs humaines.",
         "p2": "Conçu une plateforme Django pour rationaliser la gestion de projet, la gestion des données et les flux de travail de reporting, augmentant l'efficacité et accélérant les délais de projet.",
         "p3": "Conçu et mis en œuvre des solutions de bases de données évolutives en utilisant PostgreSQL et PostGIS pour gérer les données spatiales, automatiser des processus géospatiaux complexes et soutenir des analyses avancées pour la planification du réseau.",
         "p4": "Développé des applications Python sur site utilisant PySide6 pour les interfaces GUI et PyInstaller pour le déploiement, améliorant l'accessibilité et l'utilisabilité pour les membres de l'équipe non techniques.",
         "p5": "Introduit des outils AutoLISP innovants pour optimiser les fonctionnalités d'AutoCAD et d'AutoCAD Map 3D, stimulant les améliorations de productivité à travers les équipes d'ingénierie.",
         "p6": "Collaboré efficacement avec des équipes multidisciplinaires, facilitant le transfert de connaissances, le mentorat, et favorisant une culture d'adoption technologique et d'amélioration continue.",
-        "p7": "Pionnier de projets pilotes GIS qui ont jeté les bases pour de futurs progrès dans la conception de réseau, permettant des applications axées sur les données et des solutions automatisées qui ont soutenu les objectifs stratégiques de l'entreprise."
+        "p7": "Pionnier de projets pilotes SIG qui ont jeté les bases pour de futurs progrès dans la conception de réseau, permettant des applications axées sur les données et des solutions automatisées qui ont soutenu les objectifs stratégiques de l'entreprise."
       }
     },
     "item8": {
