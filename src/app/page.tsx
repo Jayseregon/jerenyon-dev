@@ -8,19 +8,15 @@ import Loading from "./loading";
 
 export default function RootPage() {
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-background">
-      {/* Hero Section for small screens */}
-      <div className="sm:hidden">
-        <Hero />
-      </div>
+    <div className="grid grid-rows-[1fr_auto] h-screen w-screen overflow-hidden bg-background">
       {/* SplineScene */}
-      <div className="h-full">
+      <div>
         <Suspense fallback={<Loading />}>
-          <SplineScene />
+          <SplineScene className="w-full h-full" />
         </Suspense>
       </div>
-      {/* Hero Section overlay for larger screens */}
-      <div className="hidden sm:block absolute inset-0">
+      {/* Hero Section */}
+      <div>
         <Hero />
       </div>
     </div>
