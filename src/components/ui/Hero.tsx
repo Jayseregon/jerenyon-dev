@@ -5,7 +5,7 @@ export const Hero = () => {
   const t = useTranslations("homepage");
 
   return (
-    <div className="w-full flex flex-col items-center justify-center p-5 z-10">
+    <div className="w-full flex flex-col items-center justify-center p-5 z-10 sm:absolute sm:bottom-0">
       <h2
         className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center text-foreground"
         id="hero-title"
