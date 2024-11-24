@@ -4,7 +4,6 @@ import React, { Suspense } from "react";
 import { useRouter } from "next/navigation";
 
 import Loading from "./loading";
-
 const Spline = React.lazy(() => import("@splinetool/react-spline"));
 
 const SplineScene = () => {
@@ -25,15 +24,13 @@ const SplineScene = () => {
   };
 
   return (
-    <div className="border border-4 border-teal-500">
-      <Suspense fallback={<Loading />}>
-        <Spline
-          className="w-full h-full border border-4 border-amber-500"
-          scene="/spline/hero-3d-scene.splinecode"
-          onSplineMouseDown={handleMouseDown}
-        />
-      </Suspense>
-    </div>
+    <Suspense fallback={<Loading />}>
+      <Spline
+        className="w-full h-full"
+        scene="/spline/hero-3d-scene.splinecode"
+        onSplineMouseDown={handleMouseDown}
+      />
+    </Suspense>
   );
 };
 
