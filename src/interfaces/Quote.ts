@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 export interface QuoteForm {
   clientName: string;
   clientEmail: string;
@@ -175,3 +177,80 @@ export interface PreconfigSectionProps {
   selectedPreconfig: string;
   onPreconfigChange: (value: string) => void;
 }
+
+// Zod schemas for validation
+export const AddonSchema = z.object({
+  addonName: z.string(),
+  description: z.string().optional(),
+  price: z.number(),
+});
+
+export const StaticPageSchema = z.object({
+  selectedPages: z.number(),
+  totalPrice: z.number(),
+});
+
+export const DynamicPageSchema = z.object({
+  selectedPages: z.number(),
+  totalPrice: z.number(),
+});
+
+export const AuthenticationMethodSchema = z.object({
+  name: z.string(),
+  price: z.number(),
+});
+
+export const LegalPageSchema = z.object({
+  name: z.string(),
+  description: z.string().optional(),
+  price: z.number(),
+});
+
+export const MaintenancePlanSchema = z.object({
+  type: z.string(),
+  duration: z.number(),
+  regularUpdates: z.boolean(),
+  securityUpdates: z.boolean(),
+  minorBugFixes: z.boolean(),
+  featureEnhancement: z.boolean(),
+  prioritySupport: z.boolean(),
+});
+
+export const WebsiteTypeSchema = z.object({
+  type: z.string(),
+});
+
+export const CustomFeatureSchema = z.object({
+  featureName: z.string(),
+  price: z.number(),
+  description: z.string().optional(),
+});
+
+export const AutomationSchema = z.object({
+  automationType: z.string(),
+  description: z.string().optional(),
+  price: z.number(),
+});
+
+export const ThirdPartyAPISchema = z.object({
+  apiName: z.string(),
+  description: z.string().optional(),
+  price: z.number(),
+});
+
+export const QuoteFormSchema = z.object({
+  clientName: z.string().min(1),
+  clientEmail: z.string().email(),
+  comment: z.string(),
+  totalPrice: z.number(),
+  staticPages: StaticPageSchema,
+  dynamicPages: DynamicPageSchema,
+  authentication: z.array(AuthenticationMethodSchema),
+  legalPages: z.array(LegalPageSchema),
+  maintenancePlan: MaintenancePlanSchema,
+  websiteType: WebsiteTypeSchema,
+  customFeatures: z.array(CustomFeatureSchema),
+  automations: z.array(AutomationSchema),
+  thirdPartyAPIs: z.array(ThirdPartyAPISchema),
+  addons: z.array(AddonSchema),
+});
