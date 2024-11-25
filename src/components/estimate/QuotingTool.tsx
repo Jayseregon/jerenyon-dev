@@ -4,8 +4,9 @@ import cuid from "cuid";
 import { useRouter } from "next/navigation";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
+import { z } from "zod";
 
-import { QuoteForm } from "@/src/interfaces/Quote";
+import { QuoteForm, QuoteFormSchema } from "@/src/interfaces/Quote";
 import { NonceContext } from "@/src/app/providers";
 
 import { BaseStructureSection } from "./Quote-BaseStructureSection";
@@ -22,18 +23,16 @@ import {
   addons,
   automationsList,
   legalPagesList,
-  hourlyRate,
-  bufferPercentage,
-  developmentTimeEstimates,
   preconfigWebApps,
-} from "./getQuoteData";
+} from "@/lib/getQuoteData";
+import { calculateQuoteSummary } from "@/lib/calculateQuote";
 
 export default function QuotingTool() {
   const router = useRouter();
   const t = useTranslations("estimate");
   const nonce = useContext(NonceContext);
   const [quote, setQuote] = useState<QuoteForm>(
-    preconfigWebApps.BasicWebsite.schema,
+    preconfigWebApps.BasicWebsite.schema
   );
   const [_sessionId, setSessionId] = useState<string | null>(null);
   const [customApiName, setCustomApiName] = useState<string>("");
@@ -74,86 +73,18 @@ export default function QuotingTool() {
     }));
   };
 
+  // TO BE DELETE AFTER DEVELOPMENT
   useEffect(() => {
     console.log(quote);
   }, [quote]);
 
   // Calculate the total price based on selected services, pages, and options
   useEffect(() => {
-    const staticPagePrice =
-      quote.staticPages.selectedPages *
-      developmentTimeEstimates.staticPage *
-      hourlyRate;
-
-    const dynamicPagePrice =
-      quote.dynamicPages.selectedPages *
-      developmentTimeEstimates.dynamicPage *
-      hourlyRate;
-
-    const authPrice = quote.authentication.reduce((acc, auth) => {
-      const authTime =
-        developmentTimeEstimates.authMethod[
-          auth.name as keyof typeof developmentTimeEstimates.authMethod
-        ] || 0;
-
-      return acc + authTime * hourlyRate;
-    }, 0);
-
-    const apiPrice = quote.thirdPartyAPIs.reduce((acc, api) => {
-      const apiTime =
-        developmentTimeEstimates.apiIntegration[
-          api.apiName as keyof typeof developmentTimeEstimates.apiIntegration
-        ] || 0;
-
-      return acc + apiTime * hourlyRate;
-    }, 0);
-
-    const addonPrice = quote.addons.reduce((acc, addon) => {
-      const addonTime =
-        developmentTimeEstimates.addon[
-          addon.addonName as keyof typeof developmentTimeEstimates.addon
-        ] || 0;
-
-      return acc + addonTime * hourlyRate;
-    }, 0);
-
-    const automationPrice = quote.automations.reduce((acc, automation) => {
-      const automationTime =
-        developmentTimeEstimates.automation[
-          automation.automationType as keyof typeof developmentTimeEstimates.automation
-        ] || 0;
-
-      return acc + automationTime * hourlyRate;
-    }, 0);
-
-    const legalPagesPrice =
-      quote.legalPages.length * developmentTimeEstimates.legalPage * hourlyRate;
-
-    const maintenancePrice =
-      {
-        Monthly:
-          (quote.maintenancePlan.prioritySupport ? 150 : 100) *
-          quote.maintenancePlan.duration,
-        Yearly:
-          (quote.maintenancePlan.prioritySupport ? 1500 : 1000) *
-          quote.maintenancePlan.duration,
-      }[quote.maintenancePlan.type] || 0;
-
-    const totalDevelopmentTime =
-      staticPagePrice +
-      dynamicPagePrice +
-      authPrice +
-      apiPrice +
-      addonPrice +
-      automationPrice +
-      legalPagesPrice;
-
-    const subTotalPrice = totalDevelopmentTime * (1 + bufferPercentage);
-    const totalPrice = subTotalPrice + maintenancePrice;
+    const summary = calculateQuoteSummary(quote);
 
     setQuote((prevQuote) => ({
       ...prevQuote,
-      totalPrice: totalPrice,
+      totalPrice: summary.totalPrice,
     }));
   }, [
     quote.staticPages,
@@ -169,18 +100,30 @@ export default function QuotingTool() {
   // Handle form submission
   const handleSubmit = async () => {
     try {
-      const response = await fetch("/api/submit-quote", {
-        method: "POST",
-        body: JSON.stringify(quote),
-        headers: { "Content-Type": "application/json" },
-      });
+      // Validate the quote data using Zod
+      QuoteFormSchema.parse(quote);
 
-      if (response.ok) {
-        // Redirect to a confirmation page or show success message
-        router.push("/quote-success");
+      if (process.env.NODE_ENV === "development") {
+        console.log("Quote data is valid:", quote);
       }
-    } catch (error) {
-      console.error("Failed to submit quote:", error);
+
+      // const response = await fetch("/api/submit-quote", {
+      //   method: "POST",
+      //   body: JSON.stringify(quote),
+      //   headers: { "Content-Type": "application/json" },
+      // });
+
+      // if (response.ok) {
+      //   // Redirect to a confirmation page or show success message
+      //   router.push("/quote-success");
+      // }
+    } catch (error: unknown) {
+      if (error instanceof z.ZodError) {
+        // Handle validation errors
+        console.error("Validation errors:", error.errors);
+      } else {
+        console.error("An unexpected error occurred");
+      }
     }
   };
 
@@ -188,7 +131,7 @@ export default function QuotingTool() {
   const handleAuthenticationChange = (
     name: string,
     price: number,
-    checked: boolean,
+    checked: boolean
   ) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
@@ -202,7 +145,7 @@ export default function QuotingTool() {
   const handleApiIntegrationChange = (
     apiName: string,
     price: number,
-    checked: boolean,
+    checked: boolean
   ) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
@@ -231,7 +174,7 @@ export default function QuotingTool() {
     setQuote((prevQuote) => ({
       ...prevQuote,
       thirdPartyAPIs: prevQuote.thirdPartyAPIs.filter(
-        (api) => api.apiName !== apiName,
+        (api) => api.apiName !== apiName
       ),
     }));
   };
@@ -240,7 +183,7 @@ export default function QuotingTool() {
   const handleAddonIntegrationChange = (
     addonName: string,
     price: number,
-    checked: boolean,
+    checked: boolean
   ) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
@@ -273,14 +216,14 @@ export default function QuotingTool() {
   const handleAutomationsChange = (
     automationType: string,
     price: number,
-    checked: boolean,
+    checked: boolean
   ) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
       automations: checked
         ? [...prevQuote.automations, { automationType, price }]
         : prevQuote.automations.filter(
-            (automation) => automation.automationType !== automationType,
+            (automation) => automation.automationType !== automationType
           ),
     }));
   };
@@ -304,7 +247,7 @@ export default function QuotingTool() {
     setQuote((prevQuote) => ({
       ...prevQuote,
       automations: prevQuote.automations.filter(
-        (automation) => automation.automationType !== automationType,
+        (automation) => automation.automationType !== automationType
       ),
     }));
   };
@@ -313,7 +256,7 @@ export default function QuotingTool() {
   const handleLegalPageChange = (
     name: string,
     price: number,
-    checked: boolean,
+    checked: boolean
   ) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
@@ -391,11 +334,12 @@ export default function QuotingTool() {
   };
 
   return (
-    <div className="p-4" nonce={nonce}>
+    <div
+      className="p-4"
+      nonce={nonce}>
       <div
         className="mt-5 w-full col-span-1 md:col-span-2 space-y-5"
-        nonce={nonce}
-      >
+        nonce={nonce}>
         {/* Preconfiguration Selection */}
         <PreconfigSection
           selectedPreconfig={selectedPreconfig}
@@ -410,21 +354,20 @@ export default function QuotingTool() {
 
       <Accordion
         className="rounded-lg shadow-xl border border-purple-800 dark:border-purple-300"
-        variant="light"
-      >
+        variant="light">
         <AccordionItem
           key="1"
           aria-label={t("accordion.title")}
           classNames={{
             title: "text-2xl font-semibold",
           }}
-          title={t("accordion.title")}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5" nonce={nonce}>
+          title={t("accordion.title")}>
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 gap-5"
+            nonce={nonce}>
             <div
               className="mt-5 w-full col-span-1 md:col-span-2 space-y-5"
-              nonce={nonce}
-            >
+              nonce={nonce}>
               {/* Base Settings */}
               <BaseStructureSection
                 handleInputChange={handleInputChange}
@@ -511,8 +454,7 @@ export default function QuotingTool() {
 
       <div
         className="mb-8 mt-5 w-full col-span-1 md:col-span-2 space-y-5"
-        nonce={nonce}
-      >
+        nonce={nonce}>
         <QuoteSummarySection quote={quote} />
 
         <h3 className="text-xl my-10 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto p-5">
