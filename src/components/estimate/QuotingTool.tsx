@@ -23,11 +23,9 @@ import {
   addons,
   automationsList,
   legalPagesList,
-  hourlyRate,
-  bufferPercentage,
-  developmentTimeEstimates,
   preconfigWebApps,
 } from "./getQuoteData";
+import { calculateQuoteSummary } from "./calculateQuote";
 
 export default function QuotingTool() {
   const router = useRouter();
@@ -82,80 +80,11 @@ export default function QuotingTool() {
 
   // Calculate the total price based on selected services, pages, and options
   useEffect(() => {
-    const staticPagePrice =
-      quote.staticPages.selectedPages *
-      developmentTimeEstimates.staticPage *
-      hourlyRate;
-
-    const dynamicPagePrice =
-      quote.dynamicPages.selectedPages *
-      developmentTimeEstimates.dynamicPage *
-      hourlyRate;
-
-    const authPrice = quote.authentication.reduce((acc, auth) => {
-      const authTime =
-        developmentTimeEstimates.authMethod[
-          auth.name as keyof typeof developmentTimeEstimates.authMethod
-        ] || 0;
-
-      return acc + authTime * hourlyRate;
-    }, 0);
-
-    const apiPrice = quote.thirdPartyAPIs.reduce((acc, api) => {
-      const apiTime =
-        developmentTimeEstimates.apiIntegration[
-          api.apiName as keyof typeof developmentTimeEstimates.apiIntegration
-        ] || 0;
-
-      return acc + apiTime * hourlyRate;
-    }, 0);
-
-    const addonPrice = quote.addons.reduce((acc, addon) => {
-      const addonTime =
-        developmentTimeEstimates.addon[
-          addon.addonName as keyof typeof developmentTimeEstimates.addon
-        ] || 0;
-
-      return acc + addonTime * hourlyRate;
-    }, 0);
-
-    const automationPrice = quote.automations.reduce((acc, automation) => {
-      const automationTime =
-        developmentTimeEstimates.automation[
-          automation.automationType as keyof typeof developmentTimeEstimates.automation
-        ] || 0;
-
-      return acc + automationTime * hourlyRate;
-    }, 0);
-
-    const legalPagesPrice =
-      quote.legalPages.length * developmentTimeEstimates.legalPage * hourlyRate;
-
-    const maintenancePrice =
-      {
-        Monthly:
-          (quote.maintenancePlan.prioritySupport ? 150 : 100) *
-          quote.maintenancePlan.duration,
-        Yearly:
-          (quote.maintenancePlan.prioritySupport ? 1500 : 1000) *
-          quote.maintenancePlan.duration,
-      }[quote.maintenancePlan.type] || 0;
-
-    const totalDevelopmentTime =
-      staticPagePrice +
-      dynamicPagePrice +
-      authPrice +
-      apiPrice +
-      addonPrice +
-      automationPrice +
-      legalPagesPrice;
-
-    const subTotalPrice = totalDevelopmentTime * (1 + bufferPercentage);
-    const totalPrice = subTotalPrice + maintenancePrice;
+    const summary = calculateQuoteSummary(quote);
 
     setQuote((prevQuote) => ({
       ...prevQuote,
-      totalPrice: totalPrice,
+      totalPrice: summary.totalPrice,
     }));
   }, [
     quote.staticPages,
