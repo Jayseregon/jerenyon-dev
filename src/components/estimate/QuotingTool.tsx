@@ -24,15 +24,15 @@ import {
   automationsList,
   legalPagesList,
   preconfigWebApps,
-} from "./getQuoteData";
-import { calculateQuoteSummary } from "./calculateQuote";
+} from "@/lib/getQuoteData";
+import { calculateQuoteSummary } from "@/lib/calculateQuote";
 
 export default function QuotingTool() {
   const router = useRouter();
   const t = useTranslations("estimate");
   const nonce = useContext(NonceContext);
   const [quote, setQuote] = useState<QuoteForm>(
-    preconfigWebApps.BasicWebsite.schema,
+    preconfigWebApps.BasicWebsite.schema
   );
   const [_sessionId, setSessionId] = useState<string | null>(null);
   const [customApiName, setCustomApiName] = useState<string>("");
@@ -131,7 +131,7 @@ export default function QuotingTool() {
   const handleAuthenticationChange = (
     name: string,
     price: number,
-    checked: boolean,
+    checked: boolean
   ) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
@@ -145,7 +145,7 @@ export default function QuotingTool() {
   const handleApiIntegrationChange = (
     apiName: string,
     price: number,
-    checked: boolean,
+    checked: boolean
   ) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
@@ -174,7 +174,7 @@ export default function QuotingTool() {
     setQuote((prevQuote) => ({
       ...prevQuote,
       thirdPartyAPIs: prevQuote.thirdPartyAPIs.filter(
-        (api) => api.apiName !== apiName,
+        (api) => api.apiName !== apiName
       ),
     }));
   };
@@ -183,7 +183,7 @@ export default function QuotingTool() {
   const handleAddonIntegrationChange = (
     addonName: string,
     price: number,
-    checked: boolean,
+    checked: boolean
   ) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
@@ -216,14 +216,14 @@ export default function QuotingTool() {
   const handleAutomationsChange = (
     automationType: string,
     price: number,
-    checked: boolean,
+    checked: boolean
   ) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
       automations: checked
         ? [...prevQuote.automations, { automationType, price }]
         : prevQuote.automations.filter(
-            (automation) => automation.automationType !== automationType,
+            (automation) => automation.automationType !== automationType
           ),
     }));
   };
@@ -247,7 +247,7 @@ export default function QuotingTool() {
     setQuote((prevQuote) => ({
       ...prevQuote,
       automations: prevQuote.automations.filter(
-        (automation) => automation.automationType !== automationType,
+        (automation) => automation.automationType !== automationType
       ),
     }));
   };
@@ -256,7 +256,7 @@ export default function QuotingTool() {
   const handleLegalPageChange = (
     name: string,
     price: number,
-    checked: boolean,
+    checked: boolean
   ) => {
     setQuote((prevQuote) => ({
       ...prevQuote,
@@ -334,11 +334,12 @@ export default function QuotingTool() {
   };
 
   return (
-    <div className="p-4" nonce={nonce}>
+    <div
+      className="p-4"
+      nonce={nonce}>
       <div
         className="mt-5 w-full col-span-1 md:col-span-2 space-y-5"
-        nonce={nonce}
-      >
+        nonce={nonce}>
         {/* Preconfiguration Selection */}
         <PreconfigSection
           selectedPreconfig={selectedPreconfig}
@@ -353,21 +354,20 @@ export default function QuotingTool() {
 
       <Accordion
         className="rounded-lg shadow-xl border border-purple-800 dark:border-purple-300"
-        variant="light"
-      >
+        variant="light">
         <AccordionItem
           key="1"
           aria-label={t("accordion.title")}
           classNames={{
             title: "text-2xl font-semibold",
           }}
-          title={t("accordion.title")}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5" nonce={nonce}>
+          title={t("accordion.title")}>
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 gap-5"
+            nonce={nonce}>
             <div
               className="mt-5 w-full col-span-1 md:col-span-2 space-y-5"
-              nonce={nonce}
-            >
+              nonce={nonce}>
               {/* Base Settings */}
               <BaseStructureSection
                 handleInputChange={handleInputChange}
@@ -454,8 +454,7 @@ export default function QuotingTool() {
 
       <div
         className="mb-8 mt-5 w-full col-span-1 md:col-span-2 space-y-5"
-        nonce={nonce}
-      >
+        nonce={nonce}>
         <QuoteSummarySection quote={quote} />
 
         <h3 className="text-xl my-10 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto p-5">

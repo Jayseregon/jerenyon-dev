@@ -7,7 +7,7 @@ import { QuoteForm } from "@/interfaces/Quote";
 import { NonceContext } from "@/src/app/providers";
 
 import { CardSection } from "./Quote-CardSection";
-import { calculateQuoteSummary } from "./calculateQuote";
+import { calculateQuoteSummary } from "@/lib/calculateQuote";
 
 // Replace react-icons with lucide-react icons
 
@@ -25,7 +25,9 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
     <CardSection
       titleOutside
       body={
-        <div className="space-y-4" nonce={nonce}>
+        <div
+          className="space-y-4"
+          nonce={nonce}>
           <div className="flex justify-between items-center">
             <h3 className="text-xl font-semibold">{t("timeEstimated")}</h3>
             <span className="text-lg text-nowrap">
@@ -40,15 +42,16 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
                 <div
                   key={category.name}
                   className="bg-purple-200 dark:bg-purple-950 rounded-lg shadow-md p-4 flex flex-col justify-between"
-                  nonce={nonce}
-                >
+                  nonce={nonce}>
                   <div>
                     <h4 className="text-lg font-semibold mb-2 text-foreground">
                       {category.name}
                     </h4>
                     <ul className="list-disc list-inside space-y-1">
                       {category.items.map((item, index) => (
-                        <li key={index} className="text-sm flex items-center">
+                        <li
+                          key={index}
+                          className="text-sm flex items-center">
                           <CircleCheck className="text-green-500 mr-2" />
                           {item}
                         </li>

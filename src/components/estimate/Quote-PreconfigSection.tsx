@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 import { Chip } from "@nextui-org/react";
 
 import { NonceContext } from "@/src/app/providers";
-import { preconfigWebApps } from "@/components/estimate/getQuoteData";
+import { preconfigWebApps } from "@/lib/getQuoteData";
 import { PreconfigSectionProps } from "@/interfaces/Quote";
 
 import { CardSection } from "./Quote-CardSection";
@@ -35,7 +35,9 @@ export const PreconfigSection = ({
     <CardSection
       titleOutside
       body={
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4" nonce={nonce}>
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          nonce={nonce}>
           {Object.entries(preconfigWebApps).map(([key, preconfig]) => {
             const isSelected = selectedPreconfig === key;
 
@@ -50,17 +52,20 @@ export const PreconfigSection = ({
                 }`}
                 nonce={nonce}
                 variants={optionVariants}
-                onClick={() => onPreconfigChange(key)}
-              >
-                <div className="flex items-center mb-2" nonce={nonce}>
+                onClick={() => onPreconfigChange(key)}>
+                <div
+                  className="flex items-center mb-2"
+                  nonce={nonce}>
                   <span
                     className="text-lg font-semibold text-foreground"
-                    nonce={nonce}
-                  >
+                    nonce={nonce}>
                     {t(`${preconfig.label}.label`)}
                   </span>
                   {isSelected && (
-                    <CircleCheckBig className="ml-2" color="#22c55e" />
+                    <CircleCheckBig
+                      className="ml-2"
+                      color="#22c55e"
+                    />
                   )}
                 </div>
                 <div className="mt-2 space-y-2">
@@ -78,11 +83,10 @@ export const PreconfigSection = ({
                           }}
                           radius="full"
                           size="sm"
-                          variant="bordered"
-                        >
+                          variant="bordered">
                           {keyword}
                         </Chip>
-                      ),
+                      )
                     )}
                   </div>
                 </div>
