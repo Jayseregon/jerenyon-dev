@@ -2,31 +2,17 @@
 import React, { memo, useMemo } from "react";
 // import { useTranslations } from "next-intl";
 
-import { QuoteForm } from "@/interfaces/Quote";
+import { AuthPermsSectionProps } from "@/interfaces/Quote";
 
 import { CardSection } from "./Quote-CardSection";
-import { QuoteSwitch } from "./Quote-Switch"; // Import QuoteSwitch
+import { QuoteSwitch } from "./Quote-Switch";
 
 // AuthPermsSection Component
 export const AuthPermsSection = memo(function AuthPermsSection({
   quote,
   authenticationMethods,
   handleAuthenticationChange,
-}: {
-  quote: QuoteForm;
-  authenticationMethods: {
-    name: string;
-    price: number;
-    label: string;
-    subLabel?: string;
-    sup?: string;
-  }[];
-  handleAuthenticationChange: (
-    name: string,
-    price: number,
-    checked: boolean,
-  ) => void;
-}) {
+}: AuthPermsSectionProps) {
   // const t = useTranslations("estimate");
 
   const selectedMethods = useMemo(
