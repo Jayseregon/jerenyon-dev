@@ -30,6 +30,7 @@ export const FieldInput = memo(function FieldInput({
         inputWrapper:
           "border-purple-800/50 dark:border-purple-300/50 hover:!border-purple-800 hover:dark:!border-purple-300",
       }}
+      color={undefined}
       id={fieldTarget}
       name={fieldTarget}
       nonce={nonce}
@@ -102,7 +103,7 @@ export const ErrorDisplay: React.FC<ErrorDisplayProps> = ({ t }) => {
     <div className="max-w-fit mx-auto p-4" nonce={nonce}>
       <EmailErrorIcon size={65} />
       <div
-        className="p-4 mb-4 grid grid-cols-1 gap-4 text-danger-700 bg-danger-100 rounded-lg dark:bg-danger-200 dark:text-danger-800"
+        className="p-4 mb-4 grid grid-cols-1 gap-4 rounded-lg bg-rose-200 dark:bg-rose-800 text-rose-950 dark:text-rose-200"
         nonce={nonce}
         role="alert"
       >
@@ -125,7 +126,7 @@ export const SuccessDisplay: React.FC<SuccessDisplayProps> = ({ t }) => {
     <div className="max-w-fit mx-auto p-4" nonce={nonce}>
       <EmailSuccessIcon size={65} />
       <div
-        className="p-4 mb-4 grid grid-cols-1 gap-4 text-success-700 bg-success-100 rounded-lg dark:bg-success-200 dark:text-success-800"
+        className="p-4 mb-4 grid grid-cols-1 gap-4 rounded-lg bg-emerald-200 dark:bg-emerald-800 text-emerald-950 dark:text-emerald-200"
         nonce={nonce}
         role="alert"
       >

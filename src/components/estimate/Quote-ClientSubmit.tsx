@@ -1,5 +1,5 @@
 "use client";
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@nextui-org/react";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -15,9 +15,10 @@ export const ClientSubmit = memo(function ClientSubmit({
   quote,
   handleInputChange,
   handleSubmit,
+  recaptchaToken,
+  setRecaptchaToken,
 }: ClientSubmitProps) {
   const t = useTranslations("estimate");
-  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
   return (
     <section className="max-w-3xl mx-auto p-4 space-y-5">

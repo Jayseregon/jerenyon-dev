@@ -75,7 +75,7 @@ model DynamicPage {
 
 model AuthenticationMethod {
   id      String @id @default(cuid())
-  method  String // e.g. Email, Facebook, Google, etc.
+  name    String // e.g. Email, Facebook, Google, etc.
   price   Float
   // Relations
   quote   Quote  @relation(fields: [quoteId], references: [id])
@@ -90,8 +90,8 @@ model LegalPage {
   description String?
   price       Float
   // Relations
-  quote       Quote?  @relation(fields: [quoteId], references: [id])
-  quoteId     String? @unique
+  quote       Quote   @relation(fields: [quoteId], references: [id])
+  quoteId     String
 
   @@schema("estimate")
 }
@@ -128,8 +128,8 @@ model CustomFeature {
   price       Float
   description String?
   // Relations
-  quote       Quote?  @relation(fields: [quoteId], references: [id])
-  quoteId     String? @unique
+  quote       Quote   @relation(fields: [quoteId], references: [id])
+  quoteId     String
 
   @@schema("estimate")
 }
@@ -140,8 +140,8 @@ model Automation {
   description    String?
   price          Float
   // Relations
-  quote          Quote?  @relation(fields: [quoteId], references: [id])
-  quoteId        String? @unique
+  quote          Quote   @relation(fields: [quoteId], references: [id])
+  quoteId        String
 
   @@schema("estimate")
 }
@@ -152,8 +152,8 @@ model ThirdPartyAPI {
   description String?
   price       Float
   // Relations
-  quote       Quote?  @relation(fields: [quoteId], references: [id])
-  quoteId     String? @unique
+  quote       Quote   @relation(fields: [quoteId], references: [id])
+  quoteId     String
 
   @@schema("estimate")
 }
@@ -164,8 +164,8 @@ model Addons {
   description String?
   price       Float
   // Relations
-  quote       Quote?  @relation(fields: [quoteId], references: [id])
-  quoteId     String? @unique
+  quote       Quote   @relation(fields: [quoteId], references: [id])
+  quoteId     String
 
   @@schema("estimate")
 }
