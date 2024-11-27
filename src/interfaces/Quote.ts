@@ -98,6 +98,8 @@ export interface ClientSubmitProps {
   quote: QuoteForm;
   handleInputChange: (field: keyof QuoteForm, value: any) => void;
   handleSubmit: () => void;
+  recaptchaToken: string | null;
+  setRecaptchaToken: (value: string | null) => void;
 }
 
 export interface OptionSliderProps {
@@ -114,9 +116,15 @@ export interface OptionSliderProps {
 
 export interface AuthPermsSectionProps {
   quote: QuoteForm;
-  authenticationMethods: { method: string; price: number; label: string }[];
+  authenticationMethods: {
+    name: string;
+    price: number;
+    label: string;
+    subLabel?: string;
+    sup?: string;
+  }[];
   handleAuthenticationChange: (
-    method: string,
+    name: string,
     price: number,
     checked: boolean,
   ) => void;

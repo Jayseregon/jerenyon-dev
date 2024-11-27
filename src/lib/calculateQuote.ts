@@ -77,24 +77,47 @@ export function calculateQuoteSummary(quote: QuoteForm) {
     developmentTimeEstimates.dynamicPage *
     hourlyRate;
 
+  // Calculate category prices by summing individual item costs
   const authPrice = quote.authentication.reduce((acc, auth) => {
-    return acc + auth.price + authHours * hourlyRate;
+    const time =
+      developmentTimeEstimates.authMethod[
+        auth.name as keyof typeof developmentTimeEstimates.authMethod
+      ] || 3;
+
+    return acc + auth.price + time * hourlyRate;
   }, 0);
 
   const apiPrice = quote.thirdPartyAPIs.reduce((acc, api) => {
-    return acc + api.price + apiHours * hourlyRate;
+    const time =
+      developmentTimeEstimates.apiIntegration[
+        api.apiName as keyof typeof developmentTimeEstimates.apiIntegration
+      ] || 3;
+
+    return acc + api.price + time * hourlyRate;
   }, 0);
 
   const addonPrice = quote.addons.reduce((acc, addon) => {
-    return acc + addon.price + addonHours * hourlyRate;
+    const time =
+      developmentTimeEstimates.addon[
+        addon.addonName as keyof typeof developmentTimeEstimates.addon
+      ] || 3;
+
+    return acc + addon.price + time * hourlyRate;
   }, 0);
 
   const automationPrice = quote.automations.reduce((acc, automation) => {
-    return acc + automation.price + automationHours * hourlyRate;
+    const time =
+      developmentTimeEstimates.automation[
+        automation.automationType as keyof typeof developmentTimeEstimates.automation
+      ] || 3;
+
+    return acc + automation.price + time * hourlyRate;
   }, 0);
 
   const legalPagesPrice = quote.legalPages.reduce((acc, page) => {
-    return acc + page.price + legalPagesHours * hourlyRate;
+    const time = developmentTimeEstimates.legalPage;
+
+    return acc + page.price + time * hourlyRate;
   }, 0);
 
   // Maintenance price is calculated differently
@@ -108,16 +131,17 @@ export function calculateQuoteSummary(quote: QuoteForm) {
         quote.maintenancePlan.duration,
     }[quote.maintenancePlan.type] || 0;
 
-  const totalDevelopmentTime =
-    staticPagePrice +
-    dynamicPagePrice +
+  // Recalculate total development cost
+  const totalDevelopmentCost =
+    staticPageHours * hourlyRate +
+    dynamicPageHours * hourlyRate +
     authPrice +
     apiPrice +
     addonPrice +
     automationPrice +
     legalPagesPrice;
 
-  const subTotalPrice = totalDevelopmentTime * (1 + bufferPercentage);
+  const subTotalPrice = totalDevelopmentCost * (1 + bufferPercentage);
   const totalPrice = subTotalPrice + maintenancePrice;
 
   return {
