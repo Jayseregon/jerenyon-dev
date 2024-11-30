@@ -1,5 +1,32 @@
 import { z } from "zod";
 
+export interface Quote {
+  id: string;
+  status: Status;
+  createdAt: Date;
+  updatedAt: Date;
+  clientName: string;
+  clientEmail: string;
+  comment: string;
+  totalPrice: number;
+  staticPages: StaticPage;
+  dynamicPages: DynamicPage;
+  authentication: AuthenticationMethod[];
+  legalPages: LegalPage[];
+  maintenancePlan: MaintenancePlan;
+  websiteType: WebsiteType;
+  customFeatures: CustomFeature[];
+  automations: Automation[];
+  thirdPartyAPIs: ThirdPartyAPI[];
+  addons: Addon[];
+}
+
+export enum Status {
+  DRAFT = "DRAFT",
+  SENT = "SENT",
+  FINALIZED = "FINALIZED",
+}
+
 export interface QuoteForm {
   clientName: string;
   clientEmail: string;

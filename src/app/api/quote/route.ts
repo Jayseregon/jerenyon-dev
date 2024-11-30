@@ -1,10 +1,35 @@
 import { NextResponse } from "next/server";
-// import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
-// const prisma = new PrismaClient();
+import { handlePrismaError } from "@/lib/prismaErrorHandler";
+
+const prisma = new PrismaClient();
 
 export async function GET() {
-  return new NextResponse("Method Not Allowed", { status: 405 });
+  try {
+    const quotes = await prisma.quote.findMany({
+      include: {
+        staticPages: true,
+        dynamicPages: true,
+        authentication: true,
+        legalPages: true,
+        maintenancePlan: true,
+        websiteType: true,
+        customFeature: true,
+        automations: true,
+        thirdPartyAPIs: true,
+        addons: true,
+      },
+    });
+
+    console.log("Find all quotes:", quotes);
+
+    return NextResponse.json(quotes);
+  } catch (error: any) {
+    return handlePrismaError(error);
+  } finally {
+    await prisma.$disconnect();
+  }
 }
 
 export async function POST() {

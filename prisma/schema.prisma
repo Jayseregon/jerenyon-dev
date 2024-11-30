@@ -17,28 +17,25 @@ datasource db {
 
 // Quote models
 model Quote {
-  id                 String                 @id @default(cuid())
-  status             QuoteStatus            @default(DRAFT)
-  createdAt          DateTime               @default(now())
-  updatedAt          DateTime               @updatedAt
-  clientName         String
-  clientEmail        String
-  comment            String?
-  totalPrice         Float                  @default(0)
+  id              String                 @id @default(cuid())
+  status          QuoteStatus            @default(DRAFT)
+  createdAt       DateTime               @default(now())
+  updatedAt       DateTime               @updatedAt
+  clientName      String
+  clientEmail     String
+  comment         String?
+  totalPrice      Float                  @default(0)
   // Relationships
-  staticPages        StaticPage?
-  dynamicPages       DynamicPage?
-  authentication     AuthenticationMethod[]
-  legalPages         LegalPage[]
-  maintenancePlan    MaintenancePlan?
-  websiteType        WebsiteType?
-  customFeature      CustomFeature[]
-  automations        Automation[]
-  thirdPartyAPIs     ThirdPartyAPI[]
-  addons             Addons[]
-  // Default value when quote is initialized
-  websiteInitialized Boolean                @default(false)
-  sendDate           DateTime // When the quote is sent
+  staticPages     StaticPage?
+  dynamicPages    DynamicPage?
+  authentication  AuthenticationMethod[]
+  legalPages      LegalPage[]
+  maintenancePlan MaintenancePlan?
+  websiteType     WebsiteType?
+  customFeature   CustomFeature[]
+  automations     Automation[]
+  thirdPartyAPIs  ThirdPartyAPI[]
+  addons          Addons[]
 
   @@schema("estimate")
 }

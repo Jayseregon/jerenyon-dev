@@ -49,8 +49,6 @@ export async function POST(request: NextRequest) {
         clientEmail: validatedData.clientEmail,
         comment: validatedData.comment,
         totalPrice: validatedData.totalPrice,
-        sendDate: new Date(),
-        websiteInitialized: true,
         staticPages: validatedData.staticPages
           ? {
               create: {
