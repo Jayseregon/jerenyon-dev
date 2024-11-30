@@ -9,6 +9,7 @@ export interface Quote {
   clientEmail: string;
   comment: string;
   totalPrice: number;
+  projectRef: string;
   staticPages: StaticPage;
   dynamicPages: DynamicPage;
   authentication: AuthenticationMethod[];

@@ -28,8 +28,6 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-
-    console.log("Request body:", body);
     const { recaptchaToken, ...quoteData } = body;
 
     // Verify recaptcha
@@ -95,8 +93,6 @@ export async function POST(request: NextRequest) {
         },
       },
     });
-
-    console.log("Quote created:", quote);
 
     return NextResponse.json({ success: true, data: quote });
   } catch (error: any) {

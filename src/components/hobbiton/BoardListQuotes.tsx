@@ -47,6 +47,9 @@ export const BoardListQuotes = () => {
             <TableColumn key="id" allowsSorting className="text-center">
               ID
             </TableColumn>
+            <TableColumn key="projectRef" allowsSorting className="text-center">
+              Project
+            </TableColumn>
             <TableColumn key="status" allowsSorting className="text-center">
               Status
             </TableColumn>
@@ -75,6 +78,7 @@ export const BoardListQuotes = () => {
             {(item) => (
               <TableRow key={item.id}>
                 <TableCell>{item.id}</TableCell>
+                <TableCell>{item.projectRef}</TableCell>
                 <TableCell>{item.status}</TableCell>
                 <TableCell>
                   {item.createdAt?.toLocaleDateString("en-CA", {

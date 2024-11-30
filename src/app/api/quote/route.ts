@@ -22,7 +22,7 @@ export async function GET() {
       },
     });
 
-    console.log("Find all quotes:", quotes);
+    // console.log("Find all quotes:", quotes);
 
     return NextResponse.json(quotes);
   } catch (error: any) {

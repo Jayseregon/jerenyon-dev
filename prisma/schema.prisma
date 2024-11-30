@@ -25,6 +25,7 @@ model Quote {
   clientEmail     String
   comment         String?
   totalPrice      Float                  @default(0)
+  projectRef      String                 @unique @default(dbgenerated("concat('PRJ', to_char(current_date, 'YY'), lpad(nextval('project_ref_seq')::text, 3, '0'))"))
   // Relationships
   staticPages     StaticPage?
   dynamicPages    DynamicPage?
