@@ -12,6 +12,7 @@ import {
 import { SortDescriptor } from "@react-types/shared";
 
 import { useSortQuoteList } from "@/src/hooks/useSortQuoteList";
+import SpinLoader from "@/components/ui/SpinLoader";
 
 export const BoardListQuotes = () => {
   const quotesList = useSortQuoteList("/api/quote");
@@ -37,47 +38,61 @@ export const BoardListQuotes = () => {
           aria-label="quotes-board"
           classNames={{
             base: "text-center",
-            th: "uppercase",
+            th: "uppercase bg-purple-800 dark:bg-purple-300 text-background",
           }}
           color="primary"
           sortDescriptor={quotesList.sortDescriptor}
-          onSortChange={handleSortChange}
-        >
+          onSortChange={handleSortChange}>
           <TableHeader>
-            <TableColumn key="id" allowsSorting className="text-center">
-              ID
-            </TableColumn>
-            <TableColumn key="projectRef" allowsSorting className="text-center">
+            <TableColumn
+              key="projectRef"
+              allowsSorting
+              className="text-center">
               Project
             </TableColumn>
-            <TableColumn key="status" allowsSorting className="text-center">
+            <TableColumn
+              key="status"
+              allowsSorting
+              className="text-center">
               Status
             </TableColumn>
-            <TableColumn key="createdAt" allowsSorting className="text-center">
+            <TableColumn
+              key="createdAt"
+              className="text-center">
               Created
             </TableColumn>
-            <TableColumn key="updatedAt" allowsSorting className="text-center">
+            <TableColumn
+              key="updatedAt"
+              className="text-center">
               Updated
             </TableColumn>
-            <TableColumn key="clientName" allowsSorting className="text-center">
+            <TableColumn
+              key="clientName"
+              allowsSorting
+              className="text-center">
               Name
             </TableColumn>
             <TableColumn
               key="clientEmail"
               allowsSorting
-              className="text-center"
-            >
+              className="text-center">
               Email
             </TableColumn>
             <TableColumn key="comment">Comment</TableColumn>
-            <TableColumn key="totalPrice" allowsSorting className="text-center">
+            <TableColumn
+              key="totalPrice"
+              allowsSorting
+              className="text-center">
               Price
             </TableColumn>
           </TableHeader>
-          <TableBody emptyContent="No entries found" items={quotesList.items}>
+          <TableBody
+            isLoading={quotesList.isLoading}
+            loadingContent={<SpinLoader />}
+            emptyContent="No entries found"
+            items={quotesList.items}>
             {(item) => (
               <TableRow key={item.id}>
-                <TableCell>{item.id}</TableCell>
                 <TableCell>{item.projectRef}</TableCell>
                 <TableCell>{item.status}</TableCell>
                 <TableCell>

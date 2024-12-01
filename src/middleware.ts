@@ -65,6 +65,6 @@ export const config = {
     "/hobbiton/:path*", // Protect admin routes
     "/", // Root for CSP
     "/((?!_next/static|_vercel|.*\\..*).*)", // Exclude Next.js static routes and other specified patterns
-    "/((?!api|_next/static|_next/image|static|favicon.ico|favicon.png|favicon.webp).*)", // Exclude API routes, static assets, etc.
+    "/((?!api|_next/static|_next/image|_next/data|static|favicon.ico|favicon.png|favicon.webp).*)", // Exclude API routes, static assets, etc.
   ],
 };

@@ -4,7 +4,7 @@ import { Quote } from "@/interfaces/Quote";
 import { convertQuoteDates } from "@/lib/utils";
 
 export const useSortQuoteList = (
-  apiEndpoint: string,
+  apiEndpoint: string
 ): ReturnType<typeof useAsyncList<Quote>> =>
   useAsyncList<Quote>({
     initialSortDescriptor: {
@@ -19,12 +19,11 @@ export const useSortQuoteList = (
       const data = await res.json();
 
       const quotesWithDates = data.map((quote: Quote) =>
-        convertQuoteDates(quote),
+        convertQuoteDates(quote)
       );
 
-      const sortedQuotes = quotesWithDates.sort(
-        (a: Quote, b: Quote) =>
-          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
+      const sortedQuotes = quotesWithDates.sort((a: Quote, b: Quote) =>
+        a.projectRef.localeCompare(b.projectRef)
       );
 
       return { items: sortedQuotes };
