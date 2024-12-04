@@ -3,3 +3,8 @@ export interface AuthPageTitleProps {
   heroTitle: string;
   image: any;
 }
+
+export interface QuoteDetailProps {
+  quoteId: string;
+  onDelete: () => void;
+}

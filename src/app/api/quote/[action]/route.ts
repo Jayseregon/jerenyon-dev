@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { z } from "zod";
 
@@ -25,7 +25,54 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
   return data.success;
 }
 
-export async function POST(request: NextRequest) {
+export async function GET(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get("id");
+
+    if (!id) {
+      return NextResponse.json(
+        { error: "Quote ID is required" },
+        { status: 400 },
+      );
+    }
+
+    const quote = await prisma.quote.findUnique({
+      where: { id },
+      include: {
+        staticPages: true,
+        dynamicPages: true,
+        authentication: true,
+        legalPages: true,
+        maintenancePlan: true,
+        websiteType: true,
+        customFeature: true,
+        automations: true,
+        thirdPartyAPIs: true,
+        addons: true,
+      },
+    });
+
+    if (!quote) {
+      return NextResponse.json({ error: "Quote not found" }, { status: 404 });
+    }
+
+    // Serialize Date objects to ISO strings
+    const serializedQuote = {
+      ...quote,
+      createdAt: quote.createdAt.toISOString(),
+      updatedAt: quote.updatedAt.toISOString(),
+    };
+
+    return NextResponse.json(serializedQuote);
+  } catch (error: any) {
+    return handlePrismaError(error);
+  } finally {
+    await prisma.$disconnect();
+  }
+}
+
+export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { recaptchaToken, ...quoteData } = body;
@@ -109,7 +156,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function PUT(request: NextRequest) {
+export async function PUT(request: Request) {
   try {
     const body = await request.json();
     const { id, recaptchaToken, ...updateData } = body;
@@ -196,11 +243,10 @@ export async function PUT(request: NextRequest) {
   }
 }
 
-export async function DELETE(request: NextRequest) {
+export async function DELETE(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
-    const recaptchaToken = searchParams.get("recaptchaToken");
 
     if (!id) {
       return NextResponse.json(
@@ -209,28 +255,40 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
-    // Verify recaptcha
-    const recaptchaValid = await verifyRecaptcha(recaptchaToken || "");
-
-    if (!recaptchaValid) {
-      return NextResponse.json({ error: "Invalid captcha" }, { status: 400 });
-    }
-
-    // Delete quote and all related records
-    await prisma.quote.delete({
+    const deletedQuote = await prisma.quote.delete({
       where: { id },
+      include: {
+        staticPages: true,
+        dynamicPages: true,
+        authentication: true,
+        legalPages: true,
+        maintenancePlan: true,
+        websiteType: true,
+        customFeature: true,
+        automations: true,
+        thirdPartyAPIs: true,
+        addons: true,
+      },
     });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({
+      success: true,
+      message: "Quote deleted successfully",
+      data: deletedQuote,
+    });
   } catch (error: any) {
-    return handlePrismaError(error);
+    console.error("Delete error:", error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        error: error?.message || "Failed to delete quote",
+      },
+      { status: 500 },
+    );
   } finally {
     await prisma.$disconnect();
   }
-}
-
-export async function GET() {
-  return new NextResponse("Method Not Allowed", { status: 405 });
 }
 
 export async function OPTIONS() {

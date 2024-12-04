@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 
 import SplineScene from "@/components/spline3D/SplineScene";
 // import SplineScene_ssr from "@/components/spline3D/SplineScene_ssr";
+// import SplineSceneView from "@/components/spline3D/SplineScene_Viewer";
 import { Hero } from "@/components/ui/Hero";
 
 import Loading from "./loading";

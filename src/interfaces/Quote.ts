@@ -10,13 +10,13 @@ export interface Quote {
   comment: string;
   totalPrice: number;
   projectRef: string;
-  staticPages: StaticPage;
-  dynamicPages: DynamicPage;
+  staticPages?: StaticPage;
+  dynamicPages?: DynamicPage;
   authentication: AuthenticationMethod[];
   legalPages: LegalPage[];
-  maintenancePlan: MaintenancePlan;
-  websiteType: WebsiteType;
-  customFeatures: CustomFeature[];
+  maintenancePlan?: MaintenancePlan;
+  websiteType?: WebsiteType;
+  customFeature: CustomFeature[];
   automations: Automation[];
   thirdPartyAPIs: ThirdPartyAPI[];
   addons: Addon[];
@@ -111,7 +111,7 @@ export interface ThirdPartyAPI {
 }
 
 export interface CardSectionProps {
-  header: string;
+  header: string | React.ReactNode;
   body: React.ReactNode;
   bodyClassName?: string;
   titleOutside?: boolean;
