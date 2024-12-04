@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { auth } from "@/auth";
+
 function cspMiddleware(req: NextRequest): NextResponse {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
 
@@ -35,7 +37,20 @@ function cspMiddleware(req: NextRequest): NextResponse {
   return response;
 }
 
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+
+  // Check if the request is for the /hobbiton route or its subroutes
+  if (pathname.startsWith("/hobbiton")) {
+    const session = await auth();
+
+    // If the user is not authenticated, redirect to the sign-in page
+    if (!session) {
+      return NextResponse.redirect(new URL("/signin", req.url));
+    }
+  }
+
+  // Apply your existing CSP middleware in production
   const isDev = process.env.NODE_ENV === "development";
 
   if (!isDev) {
@@ -47,8 +62,9 @@ export function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    "/", // Root
-    "/((?!_next|_vercel|.*\\..*).*)", // Exclude certain paths
-    "/((?!api|_next/static|_next/image|static|favicon.ico|favicon.png|favicon-light.png|favicon-dark.png).*)",
+    "/hobbiton/:path*", // Protect admin routes
+    "/", // Root for CSP
+    "/((?!_next/static|_vercel|.*\\..*).*)", // Exclude Next.js static routes and other specified patterns
+    "/((?!api|_next/static|_next/image|_next/data|static|favicon.ico|favicon.png|favicon.webp).*)", // Exclude API routes, static assets, etc.
   ],
 };
