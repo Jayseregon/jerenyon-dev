@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import { CircleCheck, Hourglass, Trash2 } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { Button } from "@nextui-org/react";
 
 import { calculateQuoteSummary } from "@/lib/calculateQuote";
@@ -14,7 +13,6 @@ export const QuoteDetail: React.FC<QuoteDetailProps> = ({
   quoteId,
   onDelete,
 }) => {
-  const router = useRouter();
   const [quote, setQuote] = useState<Quote | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
