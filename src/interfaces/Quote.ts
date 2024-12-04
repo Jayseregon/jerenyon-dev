@@ -1,5 +1,33 @@
 import { z } from "zod";
 
+export interface Quote {
+  id: string;
+  status: Status;
+  createdAt: Date;
+  updatedAt: Date;
+  clientName: string;
+  clientEmail: string;
+  comment: string;
+  totalPrice: number;
+  projectRef: string;
+  staticPages?: StaticPage;
+  dynamicPages?: DynamicPage;
+  authentication: AuthenticationMethod[];
+  legalPages: LegalPage[];
+  maintenancePlan?: MaintenancePlan;
+  websiteType?: WebsiteType;
+  customFeature: CustomFeature[];
+  automations: Automation[];
+  thirdPartyAPIs: ThirdPartyAPI[];
+  addons: Addon[];
+}
+
+export enum Status {
+  DRAFT = "DRAFT",
+  SENT = "SENT",
+  FINALIZED = "FINALIZED",
+}
+
 export interface QuoteForm {
   clientName: string;
   clientEmail: string;
@@ -83,7 +111,7 @@ export interface ThirdPartyAPI {
 }
 
 export interface CardSectionProps {
-  header: string;
+  header: string | React.ReactNode;
   body: React.ReactNode;
   bodyClassName?: string;
   titleOutside?: boolean;

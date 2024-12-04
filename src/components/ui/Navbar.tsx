@@ -5,10 +5,13 @@ import NextLink from "next/link";
 import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { useSession } from "next-auth/react";
 
 import { cn } from "@/src/lib/utils";
 import { siteConfig } from "@/config/site";
 import { Logo } from "@/components/icons";
+
+import { SignOut } from "../auth/SignOut-Button";
 
 import ThemeSwitch from "./ThemeSwitch";
 import LocaleSwitcher from "./LocaleSwitcher";
@@ -45,6 +48,7 @@ export default function Navbar({ nonce }: { nonce: string }) {
   const pathname = usePathname();
   const isMainPage = pathname === "/";
   const t = useTranslations("collapsedMenu");
+  const { data: session } = useSession();
 
   /**
    * Toggles the state of the mobile menu.
@@ -80,20 +84,24 @@ export default function Navbar({ nonce }: { nonce: string }) {
                 </span>
               </NextLink>
             </div>
+
             {/* Mobile menu button */}
             <HamburgerMenuButton
               isMenuOpen={isMenuOpen}
               menuButtonVariants={menuButtonVariants}
-              nonce={nonce} // Pass nonce to HamburgerMenuButton
+              nonce={nonce}
               toggleMenu={toggleMenu}
               topBarVariants={topBarVariants}
             />
+
+            {/* Conditionally render SignOut button */}
+            {session && <SignOut />}
           </div>
         </div>
         {/* Collapsed menu for mobile */}
         <CollapsedMenu
           isMenuOpen={isMenuOpen}
-          nonce={nonce} // Pass nonce to CollapsedMenu
+          nonce={nonce}
           setIsMenuOpen={setIsMenuOpen}
         />
       </nav>
@@ -118,7 +126,7 @@ export default function Navbar({ nonce }: { nonce: string }) {
                 animate={{ opacity: 1 }}
                 className="relative flex items-center space-x-4 border border-purple-800 dark:border-purple-300 rounded-full py-1 px-1"
                 initial={{ opacity: 0 }}
-                nonce={nonce} // Add nonce to motion.div
+                nonce={nonce}
                 transition={{ duration: 0.5 }}
               >
                 {siteConfig.navItems.map((item) => (
@@ -138,7 +146,7 @@ export default function Navbar({ nonce }: { nonce: string }) {
                         className="absolute inset-0 bg-purple-700 rounded-full"
                         initial={{ scale: 0.8 }}
                         layoutId="highlight"
-                        nonce={nonce} // Add nonce to motion.div
+                        nonce={nonce}
                         transition={{ type: "spring", stiffness: 300 }}
                       />
                     )}
@@ -149,16 +157,18 @@ export default function Navbar({ nonce }: { nonce: string }) {
             </div>
             {/* Search and switches on the right */}
             <div className="hidden md:flex items-center space-x-4">
-              <SearchInput nonce={nonce} /> {/* Pass nonce to SearchInput */}
-              <ThemeSwitch nonce={nonce} /> {/* Pass nonce to ThemeSwitch */}
-              <LocaleSwitcher nonce={nonce} />{" "}
-              {/* Pass nonce to LocaleSwitcher */}
+              <SearchInput nonce={nonce} />
+              <ThemeSwitch nonce={nonce} />
+              <LocaleSwitcher nonce={nonce} />
+
+              {session && <SignOut />}
             </div>
+
             {/* Mobile menu button */}
             <HamburgerMenuButton
               isMenuOpen={isMenuOpen}
               menuButtonVariants={menuButtonVariants}
-              nonce={nonce} // Pass nonce to HamburgerMenuButton
+              nonce={nonce}
               styling="md:hidden"
               toggleMenu={toggleMenu}
               topBarVariants={topBarVariants}
@@ -168,7 +178,7 @@ export default function Navbar({ nonce }: { nonce: string }) {
         {/* Collapsed menu for mobile */}
         <CollapsedMenu
           isMenuOpen={isMenuOpen}
-          nonce={nonce} // Pass nonce to CollapsedMenu
+          nonce={nonce}
           setIsMenuOpen={setIsMenuOpen}
         />
       </nav>

@@ -17,28 +17,26 @@ datasource db {
 
 // Quote models
 model Quote {
-  id                 String                 @id @default(cuid())
-  status             QuoteStatus            @default(DRAFT)
-  createdAt          DateTime               @default(now())
-  updatedAt          DateTime               @updatedAt
-  clientName         String
-  clientEmail        String
-  comment            String?
-  totalPrice         Float                  @default(0)
+  id              String                 @id @default(cuid())
+  status          QuoteStatus            @default(DRAFT)
+  createdAt       DateTime               @default(now())
+  updatedAt       DateTime               @updatedAt
+  clientName      String
+  clientEmail     String
+  comment         String?
+  totalPrice      Float                  @default(0)
+  projectRef      String                 @unique @default(dbgenerated("concat('PRJ', to_char(current_date, 'YY'), lpad(nextval('project_ref_seq')::text, 3, '0'))"))
   // Relationships
-  staticPages        StaticPage?
-  dynamicPages       DynamicPage?
-  authentication     AuthenticationMethod[]
-  legalPages         LegalPage[]
-  maintenancePlan    MaintenancePlan?
-  websiteType        WebsiteType?
-  customFeature      CustomFeature[]
-  automations        Automation[]
-  thirdPartyAPIs     ThirdPartyAPI[]
-  addons             Addons[]
-  // Default value when quote is initialized
-  websiteInitialized Boolean                @default(false)
-  sendDate           DateTime // When the quote is sent
+  staticPages     StaticPage?
+  dynamicPages    DynamicPage?
+  authentication  AuthenticationMethod[]
+  legalPages      LegalPage[]
+  maintenancePlan MaintenancePlan?
+  websiteType     WebsiteType?
+  customFeature   CustomFeature[]
+  automations     Automation[]
+  thirdPartyAPIs  ThirdPartyAPI[]
+  addons          Addons[]
 
   @@schema("estimate")
 }
@@ -56,7 +54,7 @@ model StaticPage {
   selectedPages Int    @default(0)
   totalPrice    Float
   // Relations
-  quote         Quote  @relation(fields: [quoteId], references: [id])
+  quote         Quote  @relation(fields: [quoteId], references: [id], onDelete: Cascade)
   quoteId       String @unique
 
   @@schema("estimate")
@@ -67,7 +65,7 @@ model DynamicPage {
   selectedPages Int    @default(0)
   totalPrice    Float
   // Relations
-  quote         Quote  @relation(fields: [quoteId], references: [id])
+  quote         Quote  @relation(fields: [quoteId], references: [id], onDelete: Cascade)
   quoteId       String @unique
 
   @@schema("estimate")
@@ -78,7 +76,7 @@ model AuthenticationMethod {
   name    String // e.g. Email, Facebook, Google, etc.
   price   Float
   // Relations
-  quote   Quote  @relation(fields: [quoteId], references: [id])
+  quote   Quote  @relation(fields: [quoteId], references: [id], onDelete: Cascade)
   quoteId String
 
   @@schema("estimate")
@@ -90,7 +88,7 @@ model LegalPage {
   description String?
   price       Float
   // Relations
-  quote       Quote   @relation(fields: [quoteId], references: [id])
+  quote       Quote   @relation(fields: [quoteId], references: [id], onDelete: Cascade)
   quoteId     String
 
   @@schema("estimate")
@@ -106,7 +104,7 @@ model MaintenancePlan {
   featureEnhancement Boolean
   prioritySupport    Boolean
   // Relations
-  quote              Quote   @relation(fields: [quoteId], references: [id])
+  quote              Quote   @relation(fields: [quoteId], references: [id], onDelete: Cascade)
   quoteId            String  @unique
 
   @@schema("estimate")
@@ -116,7 +114,7 @@ model WebsiteType {
   id      String  @id @default(cuid())
   type    String // e.g. Ecommerce, Classic Website, Automation Platform
   // Relations
-  quote   Quote?  @relation(fields: [quoteId], references: [id])
+  quote   Quote?  @relation(fields: [quoteId], references: [id], onDelete: Cascade)
   quoteId String? @unique
 
   @@schema("estimate")
@@ -128,7 +126,7 @@ model CustomFeature {
   price       Float
   description String?
   // Relations
-  quote       Quote   @relation(fields: [quoteId], references: [id])
+  quote       Quote   @relation(fields: [quoteId], references: [id], onDelete: Cascade)
   quoteId     String
 
   @@schema("estimate")
@@ -140,7 +138,7 @@ model Automation {
   description    String?
   price          Float
   // Relations
-  quote          Quote   @relation(fields: [quoteId], references: [id])
+  quote          Quote   @relation(fields: [quoteId], references: [id], onDelete: Cascade)
   quoteId        String
 
   @@schema("estimate")
@@ -152,7 +150,7 @@ model ThirdPartyAPI {
   description String?
   price       Float
   // Relations
-  quote       Quote   @relation(fields: [quoteId], references: [id])
+  quote       Quote   @relation(fields: [quoteId], references: [id], onDelete: Cascade)
   quoteId     String
 
   @@schema("estimate")
@@ -164,7 +162,7 @@ model Addons {
   description String?
   price       Float
   // Relations
-  quote       Quote   @relation(fields: [quoteId], references: [id])
+  quote       Quote   @relation(fields: [quoteId], references: [id], onDelete: Cascade)
   quoteId     String
 
   @@schema("estimate")
