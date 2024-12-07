@@ -12,9 +12,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@mdx-js/loader": "^3.1.0",
-    "@mdx-js/react": "^3.1.0",
-    "@next/mdx": "15.0.3",
     "@nextui-org/react": "^2.4.8",
     "@nextui-org/theme": "^2.2.11",
     "@prisma/client": "^6.0.1",
@@ -25,7 +22,6 @@
     "@react-stately/data": "^3.12.0",
     "@splinetool/react-spline": "^4.0.0",
     "@splinetool/runtime": "^1.9.48",
-    "@types/mdx": "^2.0.13",
     "@vercel/speed-insights": "^1.1.0",
     "axios": "^1.7.8",
     "clsx": "2.1.1",
@@ -39,7 +35,6 @@
     "next": "15.0.3",
     "next-auth": "^5.0.0-beta.25",
     "next-intl": "^3.25.3",
-    "next-mdx-remote-client": "^1.0.3",
     "next-themes": "^0.4.3",
     "npm-check-updates": "^17.1.11",
     "react": "18.3.1",
@@ -50,7 +45,9 @@
     "styled-components": "^6.1.13",
     "tailwind-merge": "^2.5.5",
     "three": "^0.171.0",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "@tiptap/react": "^2.0.0",
+    "@tiptap/starter-kit": "^2.0.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
