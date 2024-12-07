@@ -1,5 +1,5 @@
 "use client";
-import { useContext } from "react";
+import { useContext, type JSX } from "react";
 
 import { cn } from "@/lib/utils";
 import { NonceContext } from "@/src/app/providers";
