@@ -1,3 +1,5 @@
+import type { JSX } from "react";
+
 import { redirect } from "next/navigation";
 import { LayoutDashboard } from "lucide-react";
 

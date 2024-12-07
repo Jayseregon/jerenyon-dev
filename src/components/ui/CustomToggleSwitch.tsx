@@ -64,58 +64,80 @@ export default function CustomToggleSwitch({
   const handleSize = height - 8; // Adjust handle size to fit within the switch
 
   return (
-    <motion.div
+    <div
+      aria-checked={isOn}
       className={cn(
         "relative flex items-center p-1 rounded-full border border-purple-800 dark:border-purple-300 cursor-pointer",
         className,
       )}
       nonce={nonce}
+      role="switch"
       style={{ width: switchWidth, height: switchHeight }}
-      whileTap={{ scale: 0.95 }}
+      tabIndex={0}
       onClick={onToggle}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          onToggle();
+        }
+      }}
     >
-      {/* ON section */}
-      {onIcon && (
-        <motion.div
-          className={cn("absolute left-1 flex items-center justify-center", {
-            hidden: !isOn,
-            [iconColor]: isOn,
-          })}
-          nonce={nonce}
-          style={{ width: handleSize, height: handleSize }}
-        >
-          {onIcon}
-        </motion.div>
-      )}
-
-      {/* OFF section */}
-
-      {offIcon && (
-        <motion.div
-          className={cn("absolute right-1 flex items-center justify-center", {
-            hidden: isOn,
-            [iconColor]: !isOn,
-          })}
-          nonce={nonce}
-          style={{ width: handleSize, height: handleSize }}
-        >
-          {offIcon}
-        </motion.div>
-      )}
-
-      {/* TOGGLE section */}
-      <motion.div
-        layout
-        animate={{ x: isOn ? switchWidth - handleSize - 8 : 0 }}
-        className={cn(
-          "rounded-full border-2 shadow-xl flex items-center justify-center",
-          handleBgColor,
+      <motion.div whileTap={{ scale: 0.95 }}>
+        {/* ON section */}
+        {onIcon && (
+          <motion.div>
+            <div
+              className={cn(
+                "absolute left-1 flex items-center justify-center",
+                {
+                  hidden: !isOn,
+                  [iconColor]: isOn,
+                },
+              )}
+              nonce={nonce}
+              style={{ width: handleSize, height: handleSize }}
+            >
+              {onIcon}
+            </div>
+          </motion.div>
         )}
-        initial={false}
-        nonce={nonce}
-        style={{ width: handleSize, height: handleSize }}
-        transition={{ type: "spring", stiffness: 300 }}
-      />
-    </motion.div>
+
+        {/* OFF section */}
+
+        {offIcon && (
+          <motion.div>
+            <div
+              className={cn(
+                "absolute right-1 flex items-center justify-center",
+                {
+                  hidden: isOn,
+                  [iconColor]: !isOn,
+                },
+              )}
+              nonce={nonce}
+              style={{ width: handleSize, height: handleSize }}
+            >
+              {offIcon}
+            </div>
+          </motion.div>
+        )}
+
+        {/* TOGGLE section */}
+        <motion.div
+          layout
+          animate={{ x: isOn ? switchWidth - handleSize - 8 : 0 }}
+          initial={false}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
+          <div
+            className={cn(
+              "rounded-full border-2 shadow-xl flex items-center justify-center",
+              handleBgColor,
+            )}
+            nonce={nonce}
+            style={{ width: handleSize, height: handleSize }}
+          />
+        </motion.div>
+      </motion.div>
+    </div>
   );
 }
