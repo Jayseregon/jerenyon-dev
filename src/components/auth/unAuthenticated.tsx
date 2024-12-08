@@ -1,5 +1,3 @@
-import type { JSX } from "react";
-
 import { Snippet } from "@nextui-org/snippet";
 
 import { siteConfig } from "@/config/site";

@@ -44,31 +44,30 @@ export function CustomRadio({ value, label, className }: CustomRadioProps) {
 
   return (
     <RadixRadioGroup.Item
-      className={`flex-1 relative cursor-pointer ${className}`}
+      className={`flex-1 flex items-center justify-center cursor-pointer ${className}`}
       nonce={nonce}
       value={value}
     >
-      <div className="w-full h-full">
-        <motion.div
-          transition={{ type: "spring", stiffness: 300 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <RadixRadioGroup.Indicator className="absolute inset-0" nonce={nonce}>
-            <div
-              className="absolute inset-0 bg-purple-200 dark:bg-purple-950 shadow shadow-purple-300 dark:shadow-[#2a0548] rounded-full"
-              nonce={nonce}
-            />
-          </RadixRadioGroup.Indicator>
-          <div
-            className="relative flex items-center justify-center w-full h-full py-0.5"
+      <motion.div
+        className="relative flex items-center justify-center w-full h-full"
+        nonce={nonce}
+        transition={{ type: "spring", stiffness: 300 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <RadixRadioGroup.Indicator asChild nonce={nonce}>
+          <motion.div
+            layout
+            className="absolute inset-0 flex items-center justify-center bg-purple-200 dark:bg-purple-950 shadow shadow-purple-300 dark:shadow-[#2a0548] rounded-full"
             nonce={nonce}
+            transition={{ type: "spring", stiffness: 300 }}
           >
-            <span className="text-center" nonce={nonce}>
-              {label}
-            </span>
-          </div>
-        </motion.div>
-      </div>
+            {label}
+          </motion.div>
+        </RadixRadioGroup.Indicator>
+        <span className="text-center" nonce={nonce}>
+          {label}
+        </span>
+      </motion.div>
     </RadixRadioGroup.Item>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useContext, type JSX } from "react";
+import { useContext } from "react";
 
 import { LoadDynamicImageProps } from "@/interfaces/mdx";
 import { NonceContext } from "@/src/app/providers";

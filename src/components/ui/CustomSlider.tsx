@@ -58,20 +58,18 @@ export default function CustomSlider({
                 width: `${((value - minValue) / (maxValue - minValue)) * 100}%`,
               }}
               initial={{ width: 0 }}
+              nonce={nonce}
               transition={{ type: "spring", stiffness: 300 }}
             />
           </RadixSlider.Range>
         </RadixSlider.Track>
         <RadixSlider.Thumb asChild nonce={nonce}>
-          <div
+          <motion.div
+            layout
             className="block size-5  bg-purple-700 border-2 border-background rounded-full"
             nonce={nonce}
-          >
-            <motion.div
-              layout
-              transition={{ type: "spring", stiffness: 300 }}
-            />
-          </div>
+            transition={{ type: "spring", stiffness: 300 }}
+          />
         </RadixSlider.Thumb>
       </RadixSlider.Root>
     </div>

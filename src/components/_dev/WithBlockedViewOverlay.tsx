@@ -1,4 +1,4 @@
-import { ReactNode, type JSX } from "react";
+import { ReactNode } from "react";
 
 const WithBlockedViewOverlay = ({
   children,
