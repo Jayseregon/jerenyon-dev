@@ -7,21 +7,7 @@ import {
   CardBody,
 } from "@nextui-org/react";
 
-interface Article {
-  thumbnail: string;
-  title: string;
-  description: string;
-}
-
-interface MainCategoryCardProps {
-  title: string;
-  subtitle: string;
-  imageSrc: string;
-  imageAlt: string;
-  buttonText: string;
-  footerText: string;
-  articles: Article[];
-}
+import { MainCategoryCardProps } from "@/interfaces/Hub";
 
 const MainCategoryCard = ({
   title,

@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 
+import { handlePrismaError } from "@/src/lib/prismaErrorHandler";
+
 const prisma = new PrismaClient();
 
 export async function POST(request: NextRequest) {
@@ -9,7 +11,7 @@ export async function POST(request: NextRequest) {
   if (!title || !content) {
     return NextResponse.json(
       { error: "Title and content are required" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -25,6 +27,6 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(newPost);
   } catch (error) {
-    return NextResponse.json({ error: "Failed to create blog post" }, { status: 500 });
+    handlePrismaError(error);
   }
 }

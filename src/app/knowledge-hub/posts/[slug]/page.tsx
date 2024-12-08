@@ -1,22 +1,29 @@
 import { PrismaClient } from "@prisma/client";
 
+import { BlogPost } from "@/src/interfaces/Hub";
+
 const prisma = new PrismaClient();
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
-  const post = await prisma.blogPost.findUnique({
+export default async function PostPage(props: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await props.params;
+  const postDb = await prisma.blogPost.findUnique({
     where: {
-      slug: params.slug,
+      slug: slug,
     },
   });
 
-  if (!post) {
+  if (!postDb) {
     return <div>Post not found</div>;
   }
 
+  const postObject: BlogPost = postDb;
+
   return (
     <div>
-      <h1>{post.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      <h1>{postObject.title}</h1>
+      <div dangerouslySetInnerHTML={{ __html: postObject.content }} />
     </div>
   );
 }

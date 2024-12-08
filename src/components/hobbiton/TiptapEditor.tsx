@@ -1,14 +1,22 @@
+"use client";
+
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { useEffect } from "react";
 
-const TiptapEditor = ({ content, setContent }) => {
+interface EditorProps {
+  content: string;
+  setContent: (content: string) => void;
+}
+
+export const TiptapEditor = ({ content, setContent }: EditorProps) => {
   const editor = useEditor({
     extensions: [StarterKit],
     content: content,
     onUpdate: ({ editor }) => {
       setContent(editor.getHTML());
     },
+    immediatelyRender: false, // fix SSR hydration issues
   });
 
   useEffect(() => {
@@ -21,5 +29,3 @@ const TiptapEditor = ({ content, setContent }) => {
 
   return <EditorContent editor={editor} />;
 };
-
-export default TiptapEditor;
