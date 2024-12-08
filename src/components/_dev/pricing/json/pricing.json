@@ -1,0 +1,182 @@
+{
+  "tiers": [
+    {
+      "name": "Standard",
+      "subtitle": "For small businesses & startups.",
+      "starting_price": 3000,
+      "sections": [
+        {
+          "name": "Base Development",
+          "optional": false,
+          "starting_price": 3000,
+          "whats_included": [
+            "Custom design & prototype",
+            "Up to 5 pages/features with responsive design",
+            "Basic API integrations and deployment",
+            "Basic authentication (e.g. email, Facebook, Google)",
+            "Basic Legal Pages generation (e.g. Privacy Policy, Terms of Service)",
+            "1 month of maintenance support"
+          ]
+        },
+        {
+          "name": "Process Automation",
+          "optional": true,
+          "starting_price": 1500,
+          "whats_included": [
+            "Basic automation of routine tasks",
+            "Integration with third-party services or APIs",
+            "Geospatial data handling and processing",
+            "Simple data transformation and ingestion pipelines",
+            "Basic error handling and notifications"
+          ]
+        },
+        {
+          "name": "E-commerce Development",
+          "optional": true,
+          "starting_price": 1500,
+          "whats_included": [
+            "Basic e-commerce setup (e.g. shopping cart, checkout)",
+            "Simple order management tools",
+            "Integration with payment gateways",
+            "Basic inventory management and reporting"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Advanced",
+      "subtitle": "For growing businesses & teams.",
+      "starting_price": 5000,
+      "sections": [
+        {
+          "name": "Base Development",
+          "optional": false,
+          "starting_price": 5000,
+          "whats_included": [
+            "Advanced backend logic and API development",
+            "Up to 8 pages/features with advanced functionality",
+            "Full QA process and testing",
+            "Advanced authentication and role-based permissions",
+            "Advanced Legal Pages generation (e.g. GDPR, CCPR compliance)",
+            "3 months of maintenance support"
+          ]
+        },
+        {
+          "name": "Process Automation",
+          "optional": true,
+          "starting_price": 2500,
+          "whats_included": [
+            "Complex automation workflows and custom triggers",
+            "Full integration with multiple services or APIs",
+            "Advanced geospatial data transformation, ingestion, and analysis",
+            "Custom data augmentation pipelines",
+            "Advanced error handling and automated recovery"
+          ]
+        },
+        {
+          "name": "E-commerce Development",
+          "optional": true,
+          "starting_price": 2500,
+          "whats_included": [
+            "Advanced e-commerce features and customization",
+            "Custom order management and analytics integration",
+            "Advanced inventory management and reporting",
+            "Enhanced security and fraud prevention measures"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Custom",
+      "subtitle": "Tailored with long-term goals.",
+      "starting_price": 0,
+      "sections": [
+        {
+          "name": "Phase 1: Discovery, Requirements & Prototyping",
+          "optional": false,
+          "starting_price": 0,
+          "whats_included": [
+            "Client interviews to determine goals, timelines, and features",
+            "Research feasibility, APIs, and necessary integrations",
+            "Develop basic website skeleton for feedback",
+            "Create project roadmap with milestones and deliverables"
+          ]
+        },
+        {
+          "name": "Phase 2: Core Feature Development",
+          "optional": false,
+          "starting_price": 0,
+          "whats_included": [
+            "Build main website based on feedback",
+            "Deliver core features and legal pages",
+            "Ensure website is production-ready"
+          ]
+        },
+        {
+          "name": "Phase 3: Advanced Features & Iterations",
+          "optional": false,
+          "starting_price": 0,
+          "whats_included": [
+            "Ongoing feature development and enhancements",
+            "Add new features according to the roadmap",
+            "Continuously iterate based on feedback"
+          ]
+        }
+      ]
+    }
+  ],
+  "addons": [
+    {
+      "name": "SEO Optimization",
+      "starting_price": 500
+    },
+    {
+      "name": "Multi-language Support",
+      "starting_price": 750
+    },
+    {
+      "name": "Analytics & Reporting",
+      "starting_price": 1000
+    },
+    {
+      "name": "Advanced Security",
+      "starting_price": 1200
+    },
+    {
+      "name": "CMS Integration",
+      "starting_price": 1500
+    },
+    {
+      "name": "Geospatial Data Analysis Tools",
+      "starting_price": 1500
+    },
+    {
+      "name": "Custom Feature Development",
+      "starting_price": 2000
+    },
+    {
+      "name": "LLM Integration (Large Language Models)",
+      "starting_price": 2500
+    },
+    {
+      "name": "RAG (Retrieval-Augmented Generation) Implementation",
+      "starting_price": 2500
+    }
+  ],
+  "maintenance": {
+    "basic": {
+      "monthly": "100/month",
+      "yearly": "1,000/year",
+      "description": ["Regular updates", "Minor bug fixes", "Security patches"]
+    },
+    "advanced": {
+      "monthly": "200/month",
+      "yearly": "2,000/year",
+      "description": [
+        "Includes basic services",
+        "Feature enhancements",
+        "Priority support"
+      ]
+    }
+  }
+}

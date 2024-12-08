@@ -124,43 +124,35 @@ export default function Navbar({ nonce }: { nonce: string }) {
             <div className="hidden md:flex items-center space-x-4 flex-grow justify-center">
               <motion.div
                 animate={{ opacity: 1 }}
+                className="relative flex items-center space-x-4 border border-purple-800 dark:border-purple-300 rounded-full py-1 px-1"
                 initial={{ opacity: 0 }}
+                nonce={nonce}
                 transition={{ duration: 0.5 }}
               >
-                <div
-                  className="relative flex items-center space-x-4 border border-purple-800 dark:border-purple-300 rounded-full py-1 px-1"
-                  nonce={nonce}
-                >
-                  {siteConfig.navItems.map((item) => (
-                    <NextLink
-                      key={item.href}
-                      className={cn(
-                        "relative transition-colors",
-                        pathname === item.href
-                          ? "text-background dark:text-foreground"
-                          : "text-foreground hover:text-primary",
-                      )}
-                      href={item.href}
-                    >
-                      {pathname === item.href && (
-                        <div
-                          className="absolute inset-0 bg-purple-700 rounded-full"
-                          nonce={nonce}
-                        >
-                          <motion.div
-                            animate={{ scale: 1 }}
-                            initial={{ scale: 0.8 }}
-                            layoutId="highlight"
-                            transition={{ type: "spring", stiffness: 300 }}
-                          />
-                        </div>
-                      )}
-                      <span className="relative px-2 z-10">
-                        {t(item.label)}
-                      </span>
-                    </NextLink>
-                  ))}
-                </div>
+                {siteConfig.navItems.map((item) => (
+                  <NextLink
+                    key={item.href}
+                    className={cn(
+                      "relative transition-colors",
+                      pathname === item.href
+                        ? "text-background dark:text-foreground"
+                        : "text-foreground hover:text-primary",
+                    )}
+                    href={item.href}
+                  >
+                    {pathname === item.href && (
+                      <motion.div
+                        animate={{ scale: 1 }}
+                        className="absolute inset-0 bg-purple-700 rounded-full"
+                        initial={{ scale: 0.8 }}
+                        layoutId="highlight"
+                        nonce={nonce}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      />
+                    )}
+                    <span className="relative px-2 z-10">{t(item.label)}</span>
+                  </NextLink>
+                ))}
               </motion.div>
             </div>
             {/* Search and switches on the right */}
@@ -291,155 +283,123 @@ export const CollapsedMenu = ({
       <motion.div
         ref={menuRef}
         animate={{ scale: isMenuOpen ? 1 : 0 }}
+        className={`${isMenuOpen ? "block" : "hidden"} fixed top-16 right-4 bg-background text-foreground w-[90%] h-[90%] max-w-xs max-h-[400px] rounded-2xl border border-purple-800 dark:border-purple-300 overflow-hidden shadow-2xl z-50`}
         initial={{ scale: 0 }}
+        nonce={nonce}
         transition={{ duration: 0.2, ease: "easeInOut" }}
+        onPointerDown={(e) => e.stopPropagation()} // Prevent pointerdown event from propagating to the document
       >
-        <div
-          className={`${isMenuOpen ? "block" : "hidden"} fixed top-16 right-4 bg-background text-foreground w-[90%] h-[90%] max-w-xs max-h-[400px] rounded-2xl border border-purple-800 dark:border-purple-300 overflow-hidden shadow-2xl z-50`}
-          nonce={nonce}
-          onPointerDown={(e) => e.stopPropagation()} // Prevent pointerdown event from propagating to the document
-        >
-          {/* Search input field */}
-          <div className="p-4 max-w-full mx-auto" nonce={nonce}>
-            <SearchInput
-              alwaysExpanded={isMenuOpen}
-              isInsideNavbar={true}
-              nonce={nonce}
-            />
-          </div>
-          {/* Menu section title */}
-          <motion.div>
-            <p
-              className="px-4 text-purple-800 dark:text-purple-300"
-              nonce={nonce}
-            >
-              {t("collapsedMenu.menuSection")}
-            </p>
-          </motion.div>
-          <motion.div>
-            <div className="px-4" nonce={nonce}>
-              <div
-                className="flex flex-col gap-1 bg-background rounded-xl border border-purple-800 dark:border-purple-300 overflow-hidden"
-                nonce={nonce}
-              >
-                <motion.ul
-                  animate={isMenuOpen ? "visible" : "hidden"}
-                  initial="hidden"
-                  variants={{
-                    visible: { transition: { staggerChildren: 0.2 } },
-                    hidden: { transition: { staggerChildren: 0.1 } },
-                  }}
-                >
-                  {/* Site navigation links */}
-                  {siteConfig.navItems.map((item) => (
-                    <NextLink
-                      key={item.href}
-                      className="block bg-background hover:bg-purple-200 dark:hover:bg-purple-700 hover:border-purple-400 dark:hover:border-purple-400 focus:bg-purple-100 dark:focus:bg-purple-900 focus:border-purple-500 dark:focus:border-purple-500 text-sm text-foreground placeholder-foreground w-full h-full transition-colors"
-                      href={item.href}
-                      nonce={nonce}
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <div
-                        className="bg-none text-sm text-foreground px-4 py-1"
-                        nonce={nonce}
-                      >
-                        <motion.div
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          {t(`collapsedMenu.${item.label}`)}
-                        </motion.div>
-                      </div>
-                    </NextLink>
-                  ))}
-                </motion.ul>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div>
-            <div className="pt-3" nonce={nonce}>
-              <motion.div
-                animate={isMenuOpen ? "visible" : "hidden"}
-                initial="hidden"
-                variants={{
-                  visible: { transition: { staggerChildren: 0.2 } },
-                  hidden: { transition: { staggerChildren: 0.1 } },
-                }}
-              >
-                <div
-                  className="flex flex-col gap-1 bg-background rounded-xl overflow-hidden p-1"
-                  nonce={nonce}
-                >
-                  {/* Dark mode switch */}
-                  <motion.div>
-                    <div
-                      className="ps-4 inline-flex items-center space-x-2"
-                      nonce={nonce}
-                    >
-                      <ThemeSwitch nonce={nonce} />
-                      <motion.span>
-                        <span
-                          className="ps-2 text-purple-800 dark:text-purple-300"
-                          nonce={nonce}
-                        >
-                          {t("collapsedMenu.darkModeSwitch")}
-                        </span>
-                      </motion.span>
-                    </div>
-                  </motion.div>
-
-                  {/* Language switch */}
-                  <motion.div>
-                    <div
-                      className="ps-4 inline-flex items-center space-x-2"
-                      nonce={nonce}
-                    >
-                      <LocaleSwitcher nonce={nonce} />
-                      <motion.span>
-                        <span
-                          className="ps-2 text-purple-800 dark:text-purple-300"
-                          nonce={nonce}
-                        >
-                          {t("collapsedMenu.languageSwitch")}
-                        </span>
-                      </motion.span>
-                    </div>
-                  </motion.div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          <motion.div>
-            <div
-              className="absolute bottom-0 left-0 right-0 mb-2 flex flex-col items-center justify-center space-y-2 text-purple-950 dark:text-purple-200 text-xs text-center antialiased"
-              nonce={nonce}
-            >
-              <NextLink
-                className="underline"
-                href="/policies/privacy"
-                nonce={nonce}
-              >
-                {t("footer.privacy")}
-              </NextLink>
-              <NextLink
-                className="underline"
-                href="/policies/terms"
-                nonce={nonce}
-              >
-                {t("footer.terms")}
-              </NextLink>
-              <NextLink
-                className="underline"
-                href="/policies/cookies"
-                nonce={nonce}
-              >
-                {t("footer.cookies")}
-              </NextLink>
-            </div>
-          </motion.div>
+        {/* Search input field */}
+        <div className="p-4 max-w-full mx-auto" nonce={nonce}>
+          <SearchInput
+            alwaysExpanded={isMenuOpen}
+            isInsideNavbar={true}
+            nonce={nonce}
+          />
         </div>
+        {/* Menu section title */}
+        <motion.p
+          className="px-4 text-purple-800 dark:text-purple-300"
+          nonce={nonce}
+        >
+          {t("collapsedMenu.menuSection")}
+        </motion.p>
+        <motion.div className="px-4" nonce={nonce}>
+          <motion.ul
+            animate={isMenuOpen ? "visible" : "hidden"}
+            className="flex flex-col gap-1 bg-background rounded-xl border border-purple-800 dark:border-purple-300 overflow-hidden"
+            initial="hidden"
+            nonce={nonce}
+            variants={{
+              visible: { transition: { staggerChildren: 0.2 } },
+              hidden: { transition: { staggerChildren: 0.1 } },
+            }}
+          >
+            {/* Site navigation links */}
+            {siteConfig.navItems.map((item) => (
+              <NextLink
+                key={item.href}
+                className="block bg-background hover:bg-purple-200 dark:hover:bg-purple-700 hover:border-purple-400 dark:hover:border-purple-400 focus:bg-purple-100 dark:focus:bg-purple-900 focus:border-purple-500 dark:focus:border-purple-500 text-sm text-foreground placeholder-foreground w-full h-full transition-colors"
+                href={item.href}
+                nonce={nonce}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <motion.div
+                  className="bg-none text-sm text-foreground px-4 py-1"
+                  nonce={nonce}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {t(`collapsedMenu.${item.label}`)}
+                </motion.div>
+              </NextLink>
+            ))}
+          </motion.ul>
+        </motion.div>
+
+        <motion.div className="pt-3" nonce={nonce}>
+          <motion.div
+            animate={isMenuOpen ? "visible" : "hidden"}
+            className="flex flex-col gap-1 bg-background rounded-xl overflow-hidden p-1"
+            initial="hidden"
+            nonce={nonce}
+            variants={{
+              visible: { transition: { staggerChildren: 0.2 } },
+              hidden: { transition: { staggerChildren: 0.1 } },
+            }}
+          >
+            {/* Dark mode switch */}
+            <motion.div
+              className="ps-4 inline-flex items-center space-x-2"
+              nonce={nonce}
+            >
+              <ThemeSwitch nonce={nonce} />
+              <motion.span
+                className="ps-2 text-purple-800 dark:text-purple-300"
+                nonce={nonce}
+              >
+                {t("collapsedMenu.darkModeSwitch")}
+              </motion.span>
+            </motion.div>
+
+            {/* Language switch */}
+            <motion.div
+              className="ps-4 inline-flex items-center space-x-2"
+              nonce={nonce}
+            >
+              <LocaleSwitcher nonce={nonce} />
+              <motion.span
+                className="ps-2 text-purple-800 dark:text-purple-300"
+                nonce={nonce}
+              >
+                {t("collapsedMenu.languageSwitch")}
+              </motion.span>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 mb-2 flex flex-col items-center justify-center space-y-2 text-purple-950 dark:text-purple-200 text-xs text-center antialiased"
+          nonce={nonce}
+        >
+          <NextLink
+            className="underline"
+            href="/policies/privacy"
+            nonce={nonce}
+          >
+            {t("footer.privacy")}
+          </NextLink>
+          <NextLink className="underline" href="/policies/terms" nonce={nonce}>
+            {t("footer.terms")}
+          </NextLink>
+          <NextLink
+            className="underline"
+            href="/policies/cookies"
+            nonce={nonce}
+          >
+            {t("footer.cookies")}
+          </NextLink>
+        </motion.div>
       </motion.div>
     </div>
   );

@@ -1,5 +1,5 @@
 "use client";
-import { useContext, type JSX } from "react";
+import { useContext } from "react";
 
 import { NonceContext } from "@/src/app/providers";
 import { MdxCompsDefaultProps } from "@/interfaces/mdx";

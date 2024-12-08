@@ -97,54 +97,44 @@ export const MaintenanceSection = ({
                   animate={
                     planOptionValue === "regular" ? "selected" : "unselected"
                   }
+                  className={`flex-1 p-4 cursor-pointer rounded-lg max-w-xs ${
+                    planOptionValue === "regular"
+                      ? "bg-purple-200 dark:bg-purple-950 shadow-md shadow-purple-300 dark:shadow-[#2a0548]"
+                      : "bg-background"
+                  }`}
+                  nonce={nonce}
                   variants={planVariants}
+                  onClick={() => handlePlanClick("regular")}
                 >
-                  <div
-                    className={`flex-1 p-4 cursor-pointer rounded-lg max-w-xs ${
-                      planOptionValue === "regular"
-                        ? "bg-purple-200 dark:bg-purple-950 shadow-md shadow-purple-300 dark:shadow-[#2a0548]"
-                        : "bg-background"
-                    }`}
-                    nonce={nonce}
-                    role="button"
-                    tabIndex={0}
-                    onClick={() => handlePlanClick("regular")}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        handlePlanClick("regular");
-                      }
-                    }}
-                  >
-                    <div className="flex items-center mb-4" nonce={nonce}>
-                      <span
-                        className="text-lg font-semibold text-foreground"
+                  <div className="flex items-center mb-4" nonce={nonce}>
+                    <span
+                      className="text-lg font-semibold text-foreground"
+                      nonce={nonce}
+                    >
+                      Regular Plan
+                    </span>
+                    {planOptionValue === "regular" && (
+                      <CircleCheckBig className="ml-2" color="#22c55e" />
+                    )}
+                  </div>
+                  <ul className="space-y-2" nonce={nonce}>
+                    {regularPlanOptions.map((label) => (
+                      <li
+                        key={label}
+                        className="flex items-center"
                         nonce={nonce}
                       >
-                        Regular Plan
-                      </span>
-                      {planOptionValue === "regular" && (
-                        <CircleCheckBig className="ml-2" color="#22c55e" />
-                      )}
-                    </div>
-                    <ul className="space-y-2" nonce={nonce}>
-                      {regularPlanOptions.map((label) => (
-                        <li
-                          key={label}
-                          className="flex items-center"
-                          nonce={nonce}
-                        >
-                          {planOptionValue === "regular" ? (
-                            <CircleCheck className="mr-2" color="#22c55e" />
-                          ) : (
-                            <Circle className="mr-2" color="#9ca3af" />
-                          )}
-                          <span className="text-foreground" nonce={nonce}>
-                            {label}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                        {planOptionValue === "regular" ? (
+                          <CircleCheck className="mr-2" color="#22c55e" />
+                        ) : (
+                          <Circle className="mr-2" color="#9ca3af" />
+                        )}
+                        <span className="text-foreground" nonce={nonce}>
+                          {label}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </motion.div>
 
                 {/* Advanced Plan */}
@@ -152,61 +142,48 @@ export const MaintenanceSection = ({
                   animate={
                     planOptionValue === "advanced" ? "selected" : "unselected"
                   }
+                  className={`flex-1 p-4 cursor-pointer rounded-lg max-w-xs ${
+                    planOptionValue === "advanced"
+                      ? "bg-purple-200 dark:bg-purple-950 shadow-md shadow-purple-300 dark:shadow-[#2a0548]"
+                      : "bg-background"
+                  }`}
+                  nonce={nonce}
                   variants={planVariants}
+                  onClick={() => handlePlanClick("advanced")}
                 >
-                  <div
-                    className={`flex-1 p-4 cursor-pointer rounded-lg max-w-xs ${
-                      planOptionValue === "advanced"
-                        ? "bg-purple-200 dark:bg-purple-950 shadow-md shadow-purple-300 dark:shadow-[#2a0548]"
-                        : "bg-background"
-                    }`}
-                    nonce={nonce}
-                    role="button"
-                    tabIndex={0}
-                    onClick={() => handlePlanClick("advanced")}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        handlePlanClick("advanced");
-                      }
-                    }}
-                  >
-                    <div className="flex items-center mb-4" nonce={nonce}>
-                      <span
-                        className="text-lg font-semibold text-foreground"
-                        nonce={nonce}
-                      >
-                        Advanced Plan
-                      </span>
-                      {planOptionValue === "advanced" && (
-                        <CircleCheckBig className="ml-2" color="#22c55e" />
-                      )}
-                    </div>
-                    <p
-                      className="mb-2 text-foreground break-words"
+                  <div className="flex items-center mb-4" nonce={nonce}>
+                    <span
+                      className="text-lg font-semibold text-foreground"
                       nonce={nonce}
                     >
-                      Includes all features from Regular Plan, plus:
-                    </p>
-
-                    <ul className="space-y-2" nonce={nonce}>
-                      {advancedPlanOptions.map((label) => (
-                        <li
-                          key={label}
-                          className="flex items-center"
-                          nonce={nonce}
-                        >
-                          {planOptionValue === "advanced" ? (
-                            <CircleCheck className="mr-2" color="#22c55e" />
-                          ) : (
-                            <Circle className="mr-2" color="#9ca3af" />
-                          )}
-                          <span className="text-foreground" nonce={nonce}>
-                            {label}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                      Advanced Plan
+                    </span>
+                    {planOptionValue === "advanced" && (
+                      <CircleCheckBig className="ml-2" color="#22c55e" />
+                    )}
                   </div>
+                  <p className="mb-2 text-foreground break-words" nonce={nonce}>
+                    Includes all features from Regular Plan, plus:
+                  </p>
+
+                  <ul className="space-y-2" nonce={nonce}>
+                    {advancedPlanOptions.map((label) => (
+                      <li
+                        key={label}
+                        className="flex items-center"
+                        nonce={nonce}
+                      >
+                        {planOptionValue === "advanced" ? (
+                          <CircleCheck className="mr-2" color="#22c55e" />
+                        ) : (
+                          <Circle className="mr-2" color="#9ca3af" />
+                        )}
+                        <span className="text-foreground" nonce={nonce}>
+                          {label}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </motion.div>
               </div>
             </>

@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/private/", "/hobbiton/", "/login/"],
+        disallow: ["/private/", "/admin/", "/login/"],
       },
     ],
     sitemap: "https://www.jerenyon.dev/sitemap.xml",
