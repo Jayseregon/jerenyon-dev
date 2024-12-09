@@ -3,7 +3,7 @@ import React from "react";
 import { auth } from "@/auth";
 import { AuthPageTitle } from "@/components/hobbiton/AuthPageTitle";
 import { UnAuthenticated } from "@/components/auth/unAuthenticated";
-import { BoardListQuotes } from "@/components/hobbiton/BoardListQuotes";
+import { NavigationBoards } from "@/components/hobbiton/NavigationBoards";
 
 export default async function HobbitonPage() {
   const session = await auth();
@@ -21,9 +21,10 @@ function HobbitonPageContent({ session }: { session: any }) {
         image={session.user.image}
         pageTitle="Hobbiton"
       />
-      <BoardListQuotes />
 
       <div className="py-5" />
+
+      <NavigationBoards />
     </div>
   );
 }

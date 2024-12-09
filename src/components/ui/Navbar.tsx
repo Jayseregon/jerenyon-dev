@@ -10,8 +10,7 @@ import { useSession } from "next-auth/react";
 import { cn } from "@/src/lib/utils";
 import { siteConfig } from "@/config/site";
 import { Logo } from "@/components/icons";
-
-import { SignOut } from "../auth/SignOut-Button";
+import { SignOut } from "@/components/auth/SignOut-Button";
 
 import ThemeSwitch from "./ThemeSwitch";
 import LocaleSwitcher from "./LocaleSwitcher";

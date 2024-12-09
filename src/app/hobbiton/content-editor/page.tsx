@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 import { TiptapEditor } from "@/components/hobbiton/TiptapEditor";
 
-export default function EditorPage() {
+export default function ContentEditorPage() {
   const router = useRouter();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -45,7 +45,7 @@ export default function EditorPage() {
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
-      <div className="mb-4 border rounded-lg shadow-xl border border-purple-800 dark:border-purple-300">
+      <div className="mb-4 rounded-lg shadow-xl border border-purple-800 dark:border-purple-300">
         <TiptapEditor content={content} setContent={setContent} />
       </div>
       <div className="flex items-center justify-between">

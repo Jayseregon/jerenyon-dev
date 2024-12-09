@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { LayoutDashboard } from "lucide-react";
+import { SquareMenu } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
 
 import { providerMap } from "@/auth";
@@ -34,7 +34,7 @@ export default function SignInPage(): JSX.Element {
             className="bg-gradient-to-tr from-amber-300 to-fuchsia-500 text-white rounded-lg shadow-lg p-3"
             onClick={() => signIn(provider.id)}
           >
-            <LayoutDashboard size={28} strokeWidth={3} />
+            <SquareMenu size={28} strokeWidth={3} />
           </button>
         ))}
       </div>
