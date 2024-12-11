@@ -17,6 +17,19 @@ export async function POST(request: NextRequest) {
 
   try {
     const slug = title.toLowerCase().replace(/ /g, "-");
+
+    // Check if slug exists
+    const existingPost = await prisma.blogPost.findUnique({
+      where: { slug },
+    });
+
+    if (existingPost) {
+      return NextResponse.json(
+        { error: "Slug already exists" },
+        { status: 400 },
+      );
+    }
+
     const newPost = await prisma.blogPost.create({
       data: {
         title,
@@ -28,5 +41,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(newPost);
   } catch (error) {
     handlePrismaError(error);
+
+    return NextResponse.json(
+      { error: "Failed to create post" },
+      { status: 500 },
+    );
   }
 }

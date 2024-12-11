@@ -1,61 +1,104 @@
 "use client";
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React, { useState, useContext } from "react";
+import { Button, Input, Spinner } from "@nextui-org/react";
+import { Save } from "lucide-react";
 
+import { NonceContext } from "@/src/app/providers";
 import { TiptapEditor } from "@/components/hobbiton/TiptapEditor";
 
 export default function ContentEditorPage() {
-  const router = useRouter();
+  const nonce = useContext(NonceContext);
+  // const router = useRouter();
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [titleError, setTitleError] = useState("");
+
+  const loadingSpinner = (
+    <Spinner
+      classNames={{
+        label: "text-purple-800 dark:text-purple-300",
+      }}
+      nonce={nonce}
+      size="sm"
+    />
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    try {
+      e.preventDefault();
+      setLoading(true);
+      setTitleError("");
 
-    const response = await fetch("/api/blog", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ title, content }),
-    });
+      const response = await fetch("/api/blog", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ title, content }),
+      });
 
-    if (response.ok) {
-      router.push("/knowledge-hub/posts");
-    } else {
-      console.error("Failed to save the blog post");
+      const data = await response.json();
+
+      if (!response.ok) {
+        if (data.error === "Slug already exists") {
+          setTitleError("A post with a similar title already exists");
+        } else {
+          setTitleError(data.error || "Failed to save the post");
+        }
+
+        return;
+      }
+
+      // Success handling...
+    } catch (error) {
+      console.error("Failed to save the blog post: ", error);
+      setTitleError("An unexpected error occurred");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <form className="w-full max-w-2xl mt-8" onSubmit={handleSubmit}>
-      <div className="mb-4">
-        <label
-          className="block text-gray-700 text-sm font-bold mb-2"
-          htmlFor="post-title"
-        >
-          Title
-        </label>
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="post-title"
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </div>
-      <div className="mb-4 rounded-lg shadow-xl border border-purple-800 dark:border-purple-300">
+    <div className="flex flex-col items-center">
+      <form className="w-full max-w-2xl mt-8" onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <Input
+            isRequired
+            classNames={{
+              inputWrapper:
+                "border-purple-800/50 dark:border-purple-300/50 hover:!border-purple-800 hover:dark:!border-purple-300",
+            }}
+            color={undefined}
+            errorMessage={titleError}
+            id="post-title"
+            isInvalid={!!titleError}
+            name="post-title"
+            nonce={nonce}
+            placeholder="Title..."
+            type="text"
+            value={title}
+            variant="underlined"
+            onChange={(e) => {
+              setTitle(e.target.value);
+              setTitleError("");
+            }}
+          />
+        </div>
         <TiptapEditor content={content} setContent={setContent} />
-      </div>
-      <div className="flex items-center justify-between">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="submit"
-        >
-          Save
-        </button>
-      </div>
-    </form>
+        <div className="flex items-center justify-center w-full">
+          <Button
+            className="w-1/2 bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:bg-purple-800 hover:text-background hover:dark:text-purple-300 focus:outline-none"
+            disabled={loading}
+            radius="full"
+            type="submit"
+          >
+            {loading ? loadingSpinner : <Save />}
+          </Button>
+        </div>
+      </form>
+    </div>
   );
 }
