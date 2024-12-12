@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-
-import { BlogPost } from "@/src/interfaces/Hub";
+import { PrismaClient, BlogPost } from "@prisma/client";
 
 const prisma = new PrismaClient();
 

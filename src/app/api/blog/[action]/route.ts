@@ -6,11 +6,11 @@ import { handlePrismaError } from "@/src/lib/prismaErrorHandler";
 const prisma = new PrismaClient();
 
 export async function POST(request: NextRequest) {
-  const { title, content } = await request.json();
+  const { title, content, category } = await request.json();
 
-  if (!title || !content) {
+  if (!title || !content || !category) {
     return NextResponse.json(
-      { error: "Title and content are required" },
+      { error: "Title, content, and category are required" },
       { status: 400 },
     );
   }
@@ -35,6 +35,7 @@ export async function POST(request: NextRequest) {
         title,
         content,
         slug,
+        category,
       },
     });
 

@@ -1,20 +1,23 @@
 "use client";
 
 import React, { useState, useContext } from "react";
-import { Button, Input, Spinner } from "@nextui-org/react";
+import { Button, Input, Spinner, Select, SelectItem } from "@nextui-org/react";
 import { Save } from "lucide-react";
+import { BlogPostCategory } from "@prisma/client";
 
 import { NonceContext } from "@/src/app/providers";
 import { TiptapEditor } from "@/components/hobbiton/TiptapEditor";
 
 export default function ContentEditorPage() {
   const nonce = useContext(NonceContext);
-  // const router = useRouter();
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
   const [titleError, setTitleError] = useState("");
+  const [category, setCategory] = useState<BlogPostCategory>(
+    BlogPostCategory.ARTICLE,
+  );
 
   const loadingSpinner = (
     <Spinner
@@ -32,12 +35,12 @@ export default function ContentEditorPage() {
       setLoading(true);
       setTitleError("");
 
-      const response = await fetch("/api/blog", {
+      const response = await fetch("/api/blog/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title, content }),
+        body: JSON.stringify({ title, content, category }),
       });
 
       const data = await response.json();
@@ -51,8 +54,6 @@ export default function ContentEditorPage() {
 
         return;
       }
-
-      // Success handling...
     } catch (error) {
       console.error("Failed to save the blog post: ", error);
       setTitleError("An unexpected error occurred");
@@ -64,9 +65,11 @@ export default function ContentEditorPage() {
   return (
     <div className="flex flex-col items-center">
       <form className="w-full max-w-2xl mt-8" onSubmit={handleSubmit}>
-        <div className="mb-4">
+        <div className="flex flex-row gap-4 mb-4">
           <Input
             isRequired
+            aria-label="post-title"
+            className="w-2/3"
             classNames={{
               inputWrapper:
                 "border-purple-800/50 dark:border-purple-300/50 hover:!border-purple-800 hover:dark:!border-purple-300",
@@ -86,6 +89,26 @@ export default function ContentEditorPage() {
               setTitleError("");
             }}
           />
+          <Select
+            isRequired
+            aria-label="post-category"
+            className="w-1/2"
+            classNames={{
+              popoverContent: "bg-background",
+              trigger:
+                "border-purple-800/50 dark:border-purple-300/50 hover:!border-purple-800 hover:dark:!border-purple-300",
+            }}
+            nonce={nonce}
+            selectedKeys={new Set([category])}
+            variant="underlined"
+            onChange={(e) => setCategory(e.target.value as BlogPostCategory)}
+          >
+            {Object.values(BlogPostCategory).map((cat) => (
+              <SelectItem key={cat} textValue={cat}>
+                {cat}
+              </SelectItem>
+            ))}
+          </Select>
         </div>
         <TiptapEditor content={content} setContent={setContent} />
         <div className="flex items-center justify-center w-full">

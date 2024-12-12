@@ -162,15 +162,28 @@ model Addons {
   @@schema("estimate")
 }
 
-// BlogPost model
 model BlogPost {
-  id        String   @id @default(cuid())
+  id        String           @id @default(cuid())
   title     String
   content   String
-  slug      String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  published Boolean  @default(false)
+  category  BlogPostCategory
+  // tags       String[]
+  slug      String           @unique
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+  published Boolean          @default(false)
+  // author      String
+  // summary    String?
+  // coverImage String?
+  // views       Int      @default(0)
+  // likes       Int      @default(0)
+
+  @@schema("blog")
+}
+
+enum BlogPostCategory {
+  ARTICLE
+  PROJECT
 
   @@schema("blog")
 }

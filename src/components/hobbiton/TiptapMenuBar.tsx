@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Bold,
   Italic,
@@ -16,10 +16,15 @@ import {
   Superscript as SuperscriptIcon,
   Table as TableIcon,
   Image as ImageIcon,
+  Pilcrow,
+  ListOrdered,
+  List,
 } from "lucide-react";
 import { Editor } from "@tiptap/react";
 
 export const TiptapMenuBar = ({ editor }: { editor: Editor }) => {
+  const [imageUrl, setImageUrl] = useState("");
+
   if (!editor) {
     return null;
   }
@@ -27,22 +32,35 @@ export const TiptapMenuBar = ({ editor }: { editor: Editor }) => {
   const buttonClass =
     "border border-purple-800 dark:border-purple-300 p-1 rounded text-sm";
 
+  const getButtonClass = (isActive: boolean) =>
+    `border border-purple-800 dark:border-purple-300 p-1 rounded text-sm ${
+      isActive ? "bg-purple-800 dark:bg-purple-300 text-background" : ""
+    }`;
+
   const insertTable = () => {
     editor.chain().focus().insertTable({ rows: 3, cols: 3 }).run();
   };
 
   const addImage = () => {
-    const url = window.prompt("Enter image URL:");
-
-    if (url) {
-      editor.chain().focus().setImage({ src: url }).run();
+    if (imageUrl) {
+      editor.chain().focus().setImage({ src: imageUrl }).run();
+      setImageUrl("");
     }
   };
 
   return (
-    <div className="flex flex-row flex-wrap space-x-1">
+    <div className="flex flex-row flex-wrap space-x-1 space-y-1">
       <button
-        className={`${editor.isActive("bold") ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+        className={getButtonClass(editor.isActive("paragraph"))}
+        onClick={(e) => {
+          e.preventDefault();
+          editor.chain().focus().setParagraph().run();
+        }}
+      >
+        <Pilcrow className="w-4 h-4" />
+      </button>
+      <button
+        className={getButtonClass(editor.isActive("bold"))}
         disabled={!editor.can().chain().focus().toggleBold().run()}
         onClick={(e) => {
           e.preventDefault();
@@ -52,7 +70,7 @@ export const TiptapMenuBar = ({ editor }: { editor: Editor }) => {
         <Bold className="w-4 h-4" />
       </button>
       <button
-        className={`${editor.isActive("italic") ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+        className={getButtonClass(editor.isActive("italic"))}
         disabled={!editor.can().chain().focus().toggleItalic().run()}
         onClick={(e) => {
           e.preventDefault();
@@ -62,7 +80,7 @@ export const TiptapMenuBar = ({ editor }: { editor: Editor }) => {
         <Italic className="w-4 h-4" />
       </button>
       <button
-        className={`${editor.isActive("strike") ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+        className={getButtonClass(editor.isActive("strike"))}
         disabled={!editor.can().chain().focus().toggleStrike().run()}
         onClick={(e) => {
           e.preventDefault();
@@ -72,7 +90,7 @@ export const TiptapMenuBar = ({ editor }: { editor: Editor }) => {
         <Strikethrough className="w-4 h-4" />
       </button>
       <button
-        className={`${editor.isActive("code") ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+        className={getButtonClass(editor.isActive("code"))}
         disabled={!editor.can().chain().focus().toggleCode().run()}
         onClick={(e) => {
           e.preventDefault();
@@ -100,34 +118,25 @@ export const TiptapMenuBar = ({ editor }: { editor: Editor }) => {
         Clear nodes
       </button>
       <button
-        className={`${editor.isActive("paragraph") ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
-        onClick={(e) => {
-          e.preventDefault();
-          editor.chain().focus().setParagraph().run();
-        }}
-      >
-        Paragraph
-      </button>
-      <button
-        className={`${editor.isActive({ textAlign: "left" }) ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+        className={getButtonClass(editor.isActive({ textAlign: "left" }))}
         onClick={() => editor.chain().focus().setTextAlign("left").run()}
       >
         <AlignLeft className="w-4 h-4" />
       </button>
       <button
-        className={`${editor.isActive({ textAlign: "center" }) ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+        className={getButtonClass(editor.isActive({ textAlign: "center" }))}
         onClick={() => editor.chain().focus().setTextAlign("center").run()}
       >
         <AlignCenter className="w-4 h-4" />
       </button>
       <button
-        className={`${editor.isActive({ textAlign: "right" }) ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+        className={getButtonClass(editor.isActive({ textAlign: "right" }))}
         onClick={() => editor.chain().focus().setTextAlign("right").run()}
       >
         <AlignRight className="w-4 h-4" />
       </button>
       <button
-        className={`${editor.isActive({ textAlign: "justify" }) ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+        className={getButtonClass(editor.isActive({ textAlign: "justify" }))}
         onClick={() => editor.chain().focus().setTextAlign("justify").run()}
       >
         <AlignJustify className="w-4 h-4" />
@@ -135,7 +144,7 @@ export const TiptapMenuBar = ({ editor }: { editor: Editor }) => {
       {[1, 2, 3, 4, 5, 6].map((level) => (
         <button
           key={level}
-          className={`${editor.isActive("heading", { level }) ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+          className={getButtonClass(editor.isActive("heading", { level }))}
           onClick={(e) => {
             e.preventDefault();
             editor
@@ -149,25 +158,25 @@ export const TiptapMenuBar = ({ editor }: { editor: Editor }) => {
         </button>
       ))}
       <button
-        className={`${editor.isActive("bulletList") ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+        className={getButtonClass(editor.isActive("bulletList"))}
         onClick={(e) => {
           e.preventDefault();
           editor.chain().focus().toggleBulletList().run();
         }}
       >
-        Bullet list
+        <List className="w-4 h-4" />
       </button>
       <button
-        className={`${editor.isActive("orderedList") ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+        className={getButtonClass(editor.isActive("orderedList"))}
         onClick={(e) => {
           e.preventDefault();
           editor.chain().focus().toggleOrderedList().run();
         }}
       >
-        Ordered list
+        <ListOrdered className="w-4 h-4" />
       </button>
       <button
-        className={`${editor.isActive("codeBlock") ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+        className={getButtonClass(editor.isActive("codeBlock"))}
         onClick={(e) => {
           e.preventDefault();
           editor.chain().focus().toggleCodeBlock().run();
@@ -176,7 +185,7 @@ export const TiptapMenuBar = ({ editor }: { editor: Editor }) => {
         Code block
       </button>
       <button
-        className={`${editor.isActive("blockquote") ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+        className={getButtonClass(editor.isActive("blockquote"))}
         onClick={(e) => {
           e.preventDefault();
           editor.chain().focus().toggleBlockquote().run();
@@ -223,7 +232,7 @@ export const TiptapMenuBar = ({ editor }: { editor: Editor }) => {
         <Redo className="w-4 h-4" />
       </button>
       <button
-        className={`${editor.isActive("link") ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+        className={getButtonClass(editor.isActive("link"))}
         onClick={() => {
           const url = window.prompt("Enter URL:");
 
@@ -235,25 +244,25 @@ export const TiptapMenuBar = ({ editor }: { editor: Editor }) => {
         <Link2 className="w-4 h-4" />
       </button>
       <button
-        className={`${editor.isActive("highlight") ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+        className={getButtonClass(editor.isActive("highlight"))}
         onClick={() => editor.chain().focus().toggleHighlight().run()}
       >
         <Highlighter className="w-4 h-4" />
       </button>
       <button
-        className={`${editor.isActive("subscript") ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+        className={getButtonClass(editor.isActive("subscript"))}
         onClick={() => editor.chain().focus().toggleSubscript().run()}
       >
         <SubscriptIcon className="w-4 h-4" />
       </button>
       <button
-        className={`${editor.isActive("superscript") ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+        className={getButtonClass(editor.isActive("superscript"))}
         onClick={() => editor.chain().focus().toggleSuperscript().run()}
       >
         <SuperscriptIcon className="w-4 h-4" />
       </button>
       <button
-        className={`${editor.isActive("table") ? "bg-purple-800 dark:bg-purple-300" : ""} ${buttonClass}`}
+        className={getButtonClass(editor.isActive("table"))}
         onClick={insertTable}
       >
         <TableIcon className="w-4 h-4" />
@@ -261,6 +270,13 @@ export const TiptapMenuBar = ({ editor }: { editor: Editor }) => {
       <button className={buttonClass} onClick={addImage}>
         <ImageIcon className="w-4 h-4" />
       </button>
+      <input
+        className="border border-purple-800 dark:border-purple-300 p-1 rounded text-sm"
+        placeholder="Enter image URL"
+        type="text"
+        value={imageUrl}
+        onChange={(e) => setImageUrl(e.target.value)}
+      />
     </div>
   );
 };

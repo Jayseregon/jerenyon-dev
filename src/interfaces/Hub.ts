@@ -2,6 +2,7 @@ export interface BlogPost {
   id: string;
   title: string;
   content: string;
+  category: BlogPostCategory;
   slug: string;
   createdAt: Date;
   updatedAt: Date;
@@ -22,4 +23,9 @@ export interface MainCategoryCardProps {
   buttonText: string;
   footerText: string;
   articles: Article[];
+}
+
+export enum BlogPostCategory {
+  ARTICLE = "ARTICLE",
+  PROJECT = "PROJECT",
 }
