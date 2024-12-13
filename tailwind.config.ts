@@ -75,10 +75,6 @@ const config: import("tailwindcss").Config = {
               paddingLeft: "1rem", // Adjusted padding for list items
               lineHeight: "1", // Adjusted line height for better spacing
             },
-            "p, h1, h2, h3, h4, h5, h6": {
-              textAlign: "inherit",
-              whiteSpace: "inherit",
-            },
             blockquote: {
               marginTop: "1rem",
               marginBottom: "1rem",
@@ -108,10 +104,6 @@ const config: import("tailwindcss").Config = {
             ".text-center": { textAlign: "center" },
             ".text-right": { textAlign: "right" },
             ".text-justify": { textAlign: "justify" },
-            "*": {
-              textAlign: "inherit",
-              whiteSpace: "inherit",
-            },
           },
         },
         darkTheme: {
@@ -165,10 +157,6 @@ const config: import("tailwindcss").Config = {
               paddingLeft: "1rem", // Adjusted padding for list items
               lineHeight: "1", // Adjusted line height for better spacing
             },
-            "p, h1, h2, h3, h4, h5, h6": {
-              textAlign: "inherit",
-              whiteSpace: "inherit",
-            },
             blockquote: {
               marginTop: "1rem",
               marginBottom: "1rem",
@@ -198,10 +186,6 @@ const config: import("tailwindcss").Config = {
             ".text-center": { textAlign: "center" },
             ".text-right": { textAlign: "right" },
             ".text-justify": { textAlign: "justify" },
-            "*": {
-              textAlign: "inherit",
-              whiteSpace: "inherit",
-            },
           },
         },
       }),

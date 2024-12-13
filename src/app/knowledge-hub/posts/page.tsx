@@ -11,7 +11,7 @@ export default async function PostsPage() {
 
   return (
     <div>
-      <h1>Blog Posts</h1>
+      <h1 className="text-3xl text-foreground">Blog Posts</h1>
       <ul>
         {posts.map((post: BlogPost) => (
           <li key={post.id}>

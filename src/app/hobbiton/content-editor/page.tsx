@@ -11,6 +11,7 @@ import {
 } from "@nextui-org/react";
 import { Save } from "lucide-react";
 import { BlogPostCategory } from "@prisma/client";
+import { JSONContent } from "@tiptap/core";
 
 import { NonceContext } from "@/src/app/providers";
 import { TiptapEditor } from "@/components/hobbiton/TiptapEditor";
@@ -19,11 +20,11 @@ export default function ContentEditorPage() {
   const nonce = useContext(NonceContext);
 
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState<JSONContent>();
   const [loading, setLoading] = useState(false);
   const [titleError, setTitleError] = useState("");
   const [category, setCategory] = useState<BlogPostCategory>(
-    BlogPostCategory.ARTICLE,
+    BlogPostCategory.ARTICLE
   );
 
   const loadingSpinner = (
@@ -53,7 +54,7 @@ export default function ContentEditorPage() {
         },
         body: JSON.stringify({
           title: formData.title,
-          content,
+          content: JSON.stringify(content),
           category: formData.category,
         }),
       });
@@ -83,8 +84,7 @@ export default function ContentEditorPage() {
       onSubmit={(e) => {
         e.preventDefault();
         handleSubmit(new FormData(e.currentTarget));
-      }}
-    >
+      }}>
       <div className="flex flex-row gap-4 w-full">
         <Input
           isRequired
@@ -124,10 +124,11 @@ export default function ContentEditorPage() {
           variant="bordered"
           onSelectionChange={(keys) =>
             setCategory(Array.from(keys)[0] as BlogPostCategory)
-          }
-        >
+          }>
           {Object.values(BlogPostCategory).map((cat) => (
-            <SelectItem key={cat} value={cat}>
+            <SelectItem
+              key={cat}
+              value={cat}>
               {cat}
             </SelectItem>
           ))}
@@ -135,7 +136,10 @@ export default function ContentEditorPage() {
       </div>
 
       <div className="w-full">
-        <TiptapEditor content={content} setContent={setContent} />
+        <TiptapEditor
+          content={content}
+          setContent={setContent}
+        />
       </div>
 
       <div className="flex items-center justify-center w-full">
@@ -143,8 +147,7 @@ export default function ContentEditorPage() {
           className="bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:bg-purple-800 hover:text-background hover:dark:text-purple-300 focus:outline-none"
           disabled={loading}
           radius="full"
-          type="submit"
-        >
+          type="submit">
           {loading ? loadingSpinner : <Save />}
         </Button>
       </div>

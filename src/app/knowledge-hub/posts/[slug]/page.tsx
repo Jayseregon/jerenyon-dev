@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
-import parse from "html-react-parser";
-
+import { notFound } from "next/navigation";
 import { BlogPost, BlogPostCategory } from "@/src/interfaces/Hub";
+import { TiptapEditor } from "@/src/components/hobbiton/TiptapEditor";
 
 const prisma = new PrismaClient();
 
@@ -16,7 +16,7 @@ export default async function PostPage(props: {
   });
 
   if (!postDb) {
-    return <div>Post not found</div>;
+    notFound();
   }
 
   const postObject: BlogPost = {
@@ -24,14 +24,16 @@ export default async function PostPage(props: {
     category: postDb.category as BlogPostCategory,
   };
 
-  const content = parse(postObject.content, {
-    // No need to replace or modify nodes; inline styles will be preserved
-  });
+  const content = JSON.parse(postObject.content);
 
   return (
     <div className="prose light:prose-lightTheme dark:prose-darkTheme max-w-none">
       <h1>{postObject.title}</h1>
-      {content}
+      {/* <TiptapViewer content={content} /> */}
+      <TiptapEditor
+        content={content}
+        editable={false}
+      />
     </div>
   );
 }

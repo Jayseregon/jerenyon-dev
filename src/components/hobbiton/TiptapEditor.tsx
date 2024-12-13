@@ -18,19 +18,22 @@ import TableRow from "@tiptap/extension-table-row";
 import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import Image from "@tiptap/extension-image";
+import { JSONContent } from "@tiptap/core";
 
 import { TiptapMenuBar } from "./TiptapMenuBar";
 
 interface EditorProps {
-  content: string;
-  setContent: (content: string) => void;
-  initialContent?: string;
+  content: JSONContent | undefined;
+  setContent?: (content: JSONContent | undefined) => void;
+  initialContent?: JSONContent;
+  editable?: boolean;
 }
 
 export const TiptapEditor = ({
   content,
   setContent,
   initialContent,
+  editable = true,
 }: EditorProps) => {
   const editor = useEditor({
     extensions: [
@@ -70,8 +73,9 @@ export const TiptapEditor = ({
     ],
     content: initialContent || content,
     onUpdate: ({ editor }) => {
-      setContent(editor.getHTML());
+      setContent?.(editor.getJSON());
     },
+    editable: editable,
     editorProps: {
       attributes: {
         class:
@@ -93,8 +97,13 @@ export const TiptapEditor = ({
 
   return (
     <div>
-      {editor && <TiptapMenuBar editor={editor} />}
-      <div className="mb-4 rounded-lg border border-purple-800 dark:border-purple-300">
+      {editable && editor && <TiptapMenuBar editor={editor} />}
+      <div
+        className={
+          editable
+            ? "mb-4 rounded-lg border border-purple-800 dark:border-purple-300"
+            : ""
+        }>
         <EditorContent editor={editor} />
       </div>
     </div>
