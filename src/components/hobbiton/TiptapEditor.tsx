@@ -3,6 +3,7 @@
 import { useEditor, EditorContent } from "@tiptap/react";
 import { useEffect } from "react";
 import StarterKit from "@tiptap/starter-kit";
+import Underline from "@tiptap/extension-underline";
 import { Color } from "@tiptap/extension-color";
 import TextStyle from "@tiptap/extension-text-style";
 import TextAlign from "@tiptap/extension-text-align";
@@ -23,12 +24,18 @@ import { TiptapMenuBar } from "./TiptapMenuBar";
 interface EditorProps {
   content: string;
   setContent: (content: string) => void;
+  initialContent?: string;
 }
 
-export const TiptapEditor = ({ content, setContent }: EditorProps) => {
+export const TiptapEditor = ({
+  content,
+  setContent,
+  initialContent,
+}: EditorProps) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
+      Underline,
       Color,
       TextStyle,
       Typography,
@@ -61,20 +68,17 @@ export const TiptapEditor = ({ content, setContent }: EditorProps) => {
         },
       }),
     ],
-    content: content,
+    content: initialContent || content,
     onUpdate: ({ editor }) => {
       setContent(editor.getHTML());
     },
     editorProps: {
       attributes: {
         class:
-          "prose dark:prose-darkTheme prose-sm sm:prose-base max-w-none min-h-[300px] focus:outline-none px-4 py-2",
+          // "min-h-[150px] cursor-text rounded-md border p-5",
+          "prose light:prose-lightTheme dark:prose-darkTheme max-w-none min-h-[300px] focus:outline-none px-4 py-2",
         style: "text-align: left;",
       },
-    },
-    editable: true,
-    parseOptions: {
-      preserveWhitespace: "full",
     },
     immediatelyRender: false, // fix SSR hydration issues
   });

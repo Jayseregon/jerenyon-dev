@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 import { siteConfig } from "@/src/config/site";
 import PageTitles from "@/src/components/ui/PageTitles";
@@ -69,6 +70,7 @@ export default function KnowledgeHubPage() {
             />
           ))}
         </div>
+        <Link href="/knowledge-hub/posts">Posts</Link>
       </WithBlockedViewOverlay>
     </div>
   );

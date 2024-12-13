@@ -23,7 +23,7 @@ const config: import("tailwindcss").Config = {
         normal: "400",
         bold: "700",
       },
-      typography: () => ({
+      typography: (theme: (arg0: string) => any) => ({
         lightTheme: {
           css: {
             "--tw-prose-body": "#1D1B3C",
@@ -58,6 +58,60 @@ const config: import("tailwindcss").Config = {
             "--tw-prose-invert-pre-bg": "rgb(0 0 0 / 50%)",
             "--tw-prose-invert-th-borders": "#6D4AAA",
             "--tw-prose-invert-td-borders": "#432C6A",
+            p: {
+              marginTop: "0rem",
+              marginBottom: "0rem",
+              lineHeight: "1",
+              whiteSpace: "pre-wrap", // Preserve whitespace
+            },
+            "h1, h2, h3, h4, h5, h6": {
+              marginTop: "1.5rem", // Reduced top margin for headings
+              marginBottom: "0.75rem", // Reduced bottom margin for headings
+              lineHeight: "1", // Adjusted line height for headings
+            },
+            "ul, ol": {
+              marginTop: "0rem", // Reduced top margin for lists
+              marginBottom: "0rem", // Reduced bottom margin for lists
+              paddingLeft: "1rem", // Adjusted padding for list items
+              lineHeight: "1", // Adjusted line height for better spacing
+            },
+            "p, h1, h2, h3, h4, h5, h6": {
+              textAlign: "inherit",
+              whiteSpace: "inherit",
+            },
+            blockquote: {
+              marginTop: "1rem",
+              marginBottom: "1rem",
+              paddingLeft: "1rem",
+              borderLeftWidth: "4px",
+              borderLeftColor: theme("colors.purple.500"),
+            },
+            code: {
+              backgroundColor: theme("colors.gray.100"),
+              padding: "0.2rem 0.4rem",
+              borderRadius: "0.25rem",
+            },
+            pre: {
+              backgroundColor: theme("colors.gray.800"),
+              color: theme("colors.gray.100"),
+              padding: "1rem",
+              borderRadius: "0.5rem",
+              overflowX: "auto",
+            },
+            hr: {
+              borderColor: theme("colors.purple.300"),
+              marginTop: "2rem",
+              marginBottom: "2rem",
+            },
+            // Add text alignment utilities
+            ".text-left": { textAlign: "left" },
+            ".text-center": { textAlign: "center" },
+            ".text-right": { textAlign: "right" },
+            ".text-justify": { textAlign: "justify" },
+            "*": {
+              textAlign: "inherit",
+              whiteSpace: "inherit",
+            },
           },
         },
         darkTheme: {
@@ -94,6 +148,60 @@ const config: import("tailwindcss").Config = {
             "--tw-prose-invert-pre-bg": "rgb(0 0 0 / 50%)",
             "--tw-prose-invert-th-borders": "#D4B3FF",
             "--tw-prose-invert-td-borders": "#EEE5FF",
+            p: {
+              marginTop: "0rem",
+              marginBottom: "0rem",
+              lineHeight: "1",
+              whiteSpace: "pre-wrap", // Preserve whitespace
+            },
+            "h1, h2, h3, h4, h5, h6": {
+              marginTop: "1.5rem", // Reduced top margin for headings
+              marginBottom: "0.75rem", // Reduced bottom margin for headings
+              lineHeight: "1", // Adjusted line height for headings
+            },
+            "ul, ol": {
+              marginTop: "0rem", // Reduced top margin for lists
+              marginBottom: "0rem", // Reduced bottom margin for lists
+              paddingLeft: "1rem", // Adjusted padding for list items
+              lineHeight: "1", // Adjusted line height for better spacing
+            },
+            "p, h1, h2, h3, h4, h5, h6": {
+              textAlign: "inherit",
+              whiteSpace: "inherit",
+            },
+            blockquote: {
+              marginTop: "1rem",
+              marginBottom: "1rem",
+              paddingLeft: "1rem",
+              borderLeftWidth: "4px",
+              borderLeftColor: theme("colors.purple.500"),
+            },
+            code: {
+              backgroundColor: theme("colors.gray.700"),
+              padding: "0.2rem 0.4rem",
+              borderRadius: "0.25rem",
+            },
+            pre: {
+              backgroundColor: theme("colors.gray.900"),
+              color: theme("colors.gray.100"),
+              padding: "1rem",
+              borderRadius: "0.5rem",
+              overflowX: "auto",
+            },
+            hr: {
+              borderColor: theme("colors.purple.700"),
+              marginTop: "2rem",
+              marginBottom: "2rem",
+            },
+            // Add text alignment utilities
+            ".text-left": { textAlign: "left" },
+            ".text-center": { textAlign: "center" },
+            ".text-right": { textAlign: "right" },
+            ".text-justify": { textAlign: "justify" },
+            "*": {
+              textAlign: "inherit",
+              whiteSpace: "inherit",
+            },
           },
         },
       }),
@@ -112,6 +220,10 @@ const config: import("tailwindcss").Config = {
       pattern:
         /(bg|border|text)-(slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose|primary|secondary|success|warning|danger)-(100|200|300|400|500|600|700|800|900|950)/,
     },
+    "text-left",
+    "text-center",
+    "text-right",
+    "text-justify",
   ],
   plugins: [
     require("@tailwindcss/typography"),

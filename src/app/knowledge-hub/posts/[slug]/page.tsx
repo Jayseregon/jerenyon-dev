@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import parse from "html-react-parser";
 
 import { BlogPost, BlogPostCategory } from "@/src/interfaces/Hub";
 
@@ -23,13 +24,14 @@ export default async function PostPage(props: {
     category: postDb.category as BlogPostCategory,
   };
 
+  const content = parse(postObject.content, {
+    // No need to replace or modify nodes; inline styles will be preserved
+  });
+
   return (
-    <div>
+    <div className="prose light:prose-lightTheme dark:prose-darkTheme max-w-none">
       <h1>{postObject.title}</h1>
-      <div
-        dangerouslySetInnerHTML={{ __html: postObject.content }}
-        className="prose dark:prose-darkTheme prose-sm sm:prose-base max-w-none"
-      />
+      {content}
     </div>
   );
 }
