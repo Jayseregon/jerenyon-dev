@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
   if (!title || !content || !category) {
     return NextResponse.json(
       { error: "Title, content, and category are required" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -26,14 +26,14 @@ export async function POST(request: NextRequest) {
     if (existingPost) {
       return NextResponse.json(
         { error: "Slug already exists" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     const newPost = await prisma.blogPost.create({
       data: {
         title,
-        content: JSON.stringify(content),
+        content, // Store the content as is, since it's already a JSON string
         slug,
         category,
       },
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(
       { error: "Failed to create post" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

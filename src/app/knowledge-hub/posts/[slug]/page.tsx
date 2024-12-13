@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { notFound } from "next/navigation";
+
 import { BlogPost, BlogPostCategory } from "@/src/interfaces/Hub";
 import { TiptapEditor } from "@/src/components/hobbiton/TiptapEditor";
 
@@ -24,16 +25,12 @@ export default async function PostPage(props: {
     category: postDb.category as BlogPostCategory,
   };
 
-  const content = JSON.parse(postObject.content);
+  const content = postObject.content;
 
   return (
-    <div className="prose light:prose-lightTheme dark:prose-darkTheme max-w-none">
+    <div className="prose light:prose-lightTheme dark:prose-darkTheme max-w-none border border-red-500">
       <h1>{postObject.title}</h1>
-      {/* <TiptapViewer content={content} /> */}
-      <TiptapEditor
-        content={content}
-        editable={false}
-      />
+      <TiptapEditor content={JSON.parse(content)} editable={false} />
     </div>
   );
 }

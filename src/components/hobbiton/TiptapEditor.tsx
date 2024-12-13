@@ -103,7 +103,8 @@ export const TiptapEditor = ({
           editable
             ? "mb-4 rounded-lg border border-purple-800 dark:border-purple-300"
             : ""
-        }>
+        }
+      >
         <EditorContent editor={editor} />
       </div>
     </div>

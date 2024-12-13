@@ -12,9 +12,11 @@ export async function getBlogPost(slug: string) {
         slug: slug,
       },
     });
+
     return post;
   } catch (error: any) {
     console.log("Error getting post:", error);
+
     return null;
   } finally {
     await prisma.$disconnect();
