@@ -2,8 +2,9 @@ import { notFound } from "next/navigation";
 import { BlogPostCategory } from "@prisma/client";
 
 import { BlogPost } from "@/src/interfaces/Hub";
-import { TiptapEditor } from "@/src/components/hobbiton/TiptapEditor";
 import { getSinglePost } from "@/src/action/prisma/action";
+import BlogPostPageTitle from "@/components/knowledge-hub/BlogPostPageTitle";
+import { BlogPostReader } from "@/components/knowledge-hub/BlogPostReader";
 
 export default async function PostPage(props: {
   params: Promise<{ slug: string }>;
@@ -23,9 +24,12 @@ export default async function PostPage(props: {
   const content = postObject.content;
 
   return (
-    <div className="prose light:prose-lightTheme dark:prose-darkTheme w-full border border-red-500">
-      <h1>{postObject.title}</h1>
-      <TiptapEditor content={JSON.parse(content)} editable={false} />
+    <div>
+      <BlogPostPageTitle
+        category="articles-and-tutorials"
+        title={postObject.title}
+      />
+      <BlogPostReader content={content} />
     </div>
   );
 }

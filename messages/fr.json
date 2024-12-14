@@ -78,8 +78,8 @@
         "imgAlt": "Carte d'arrière-plan de la catégorie Articles et Tutoriels.",
         "btnLabel": "Voir Plus"
       },
-      "projects-showcases": {
-        "title": "Projets",
+      "projects-showcase": {
+        "title": "Présentations de Projets",
         "description": "Exposition de solutions innovantes et d'outils développés par Jerenyon Dev.",
         "imgAlt": "Arrière-plan de la carte de catégorie Projets.",
         "btnLabel": "Voir Plus"

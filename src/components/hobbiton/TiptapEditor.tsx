@@ -79,7 +79,7 @@ export const TiptapEditor = ({
     editorProps: {
       attributes: {
         class:
-          "prose light:prose-lightTheme dark:prose-darkTheme max-w-none min-h-[300px] focus:outline-none px-4 py-2",
+          "prose light:prose-lightTheme dark:prose-darkTheme w-full min-h-[300px] focus:outline-none px-4 py-2",
         style: "text-align: left;",
       },
     },

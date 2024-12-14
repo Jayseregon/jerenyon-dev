@@ -34,4 +34,13 @@ export interface PostPushCardProps {
   title: string;
 }
 
-export type PostTypes = "articles-and-tutorials" | "projects-showcases";
+export type PostTypes = "articles-and-tutorials" | "projects-showcase";
+
+export interface BlogPostPageTitleProps {
+  title: string;
+  category: PostTypes;
+}
+
+export interface BLogPostReaderProps {
+  content: string;
+}

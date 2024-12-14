@@ -61,7 +61,7 @@ export const siteConfig = {
       imgBg: "/assets/blogs-articles.webp",
     },
     {
-      label: "projects-showcases",
+      label: "projects-showcase",
       href: "/knowledge-hub",
       imgBg: "/assets/projects.webp",
     },
