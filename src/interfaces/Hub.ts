@@ -1,3 +1,5 @@
+import { BlogPostCategory } from "@prisma/client";
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -13,6 +15,7 @@ export interface Article {
   thumbnail: string;
   title: string;
   description: string;
+  href: string;
 }
 
 export interface MainCategoryCardProps {
@@ -22,10 +25,13 @@ export interface MainCategoryCardProps {
   imageAlt: string;
   buttonText: string;
   footerText: string;
-  articles: Article[];
+  articleCategory: PostTypes;
 }
 
-export enum BlogPostCategory {
-  ARTICLE = "ARTICLE",
-  PROJECT = "PROJECT",
+export interface PostPushCardProps {
+  id: string;
+  slug: string;
+  title: string;
 }
+
+export type PostTypes = "articles-and-tutorials" | "projects-showcases";

@@ -1,34 +1,16 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 
 import { siteConfig } from "@/src/config/site";
 import PageTitles from "@/src/components/ui/PageTitles";
 import { StarsdIcon } from "@/src/components/icons";
 import MainCategoryCard from "@/src/components/knowledge-hub/MainCategoryCard";
 import WithBlockedViewOverlay from "@/src/components/_dev/WithBlockedViewOverlay";
+import { PostTypes } from "@/src/interfaces/Hub";
 
 export default function KnowledgeHubPage() {
   const t = useTranslations("knowledge-hub");
-
-  const articles = [
-    {
-      thumbnail: "/assets/thumbnail-placeholder.webp",
-      title: "Article 1",
-      description: "This is a short description of Article 1.",
-    },
-    {
-      thumbnail: "/assets/thumbnail-placeholder.webp",
-      title: "Article 2",
-      description: "This is a short description of Article 2.",
-    },
-    {
-      thumbnail: "/assets/thumbnail-placeholder.webp",
-      title: "Article 3",
-      description: "This is a short description of Article 3.",
-    },
-  ];
 
   const DevNotice = (
     <div
@@ -60,7 +42,7 @@ export default function KnowledgeHubPage() {
           {siteConfig.hubCategories.map((category, index) => (
             <MainCategoryCard
               key={index}
-              articles={articles}
+              articleCategory={category.label as PostTypes}
               buttonText={t(`hubCategories.${category.label}.btnLabel`)}
               footerText={t(`hubCategories.${category.label}.description`)}
               imageAlt={t(`hubCategories.${category.label}.imgAlt`)}
@@ -70,7 +52,6 @@ export default function KnowledgeHubPage() {
             />
           ))}
         </div>
-        <Link href="/knowledge-hub/posts">Posts</Link>
       </WithBlockedViewOverlay>
     </div>
   );

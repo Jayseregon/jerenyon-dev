@@ -53,10 +53,6 @@ export const siteConfig = {
       label: "contact",
       href: "/contact",
     },
-    // {
-    //   label: "mdx",
-    //   href: "/mdx-demo",
-    // },
   ],
   hubCategories: [
     {
@@ -65,7 +61,7 @@ export const siteConfig = {
       imgBg: "/assets/blogs-articles.webp",
     },
     {
-      label: "projects",
+      label: "projects-showcases",
       href: "/knowledge-hub",
       imgBg: "/assets/projects.webp",
     },

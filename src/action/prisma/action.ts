@@ -1,11 +1,13 @@
 "use server";
 
-import { PrismaClient } from "@prisma/client";
+import { BlogPostCategory, PrismaClient } from "@prisma/client";
+
+import { BlogPost, PostTypes } from "@/src/interfaces/Hub";
 // import { z } from "zod";
 
 const prisma = new PrismaClient();
 
-export async function getBlogPost(slug: string) {
+export async function getSinglePost(slug: string) {
   try {
     const post = await prisma.blogPost.findUnique({
       where: {
@@ -23,44 +25,60 @@ export async function getBlogPost(slug: string) {
   }
 }
 
-// export async function getRoadmapCardCategories() {
-//   try {
-//     const categories = await prisma.roadmapCardCategory.findMany();
+export async function getAllBlogPosts() {
+  try {
+    const posts = await prisma.blogPost.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
 
-//     return categories;
-//   } catch (error: any) {
-//     console.log("Error getting categories:", error);
-//   } finally {
-//     await prisma.$disconnect();
-//   }
-// }
+    return posts;
+  } catch (error: any) {
+    console.log("Error getting posts:", error);
 
-// export async function getRoadmapCards() {
-//   try {
-//     const cards = await prisma.roadmapCard.findMany({
-//       include: { projects: true, category: true },
-//       orderBy: { position: "asc" },
-//     });
+    return null;
+  } finally {
+    await prisma.$disconnect();
+  }
+}
 
-//     return cards;
-//   } catch (error: any) {
-//     console.log("Error getting cards:", error);
-//   } finally {
-//     await prisma.$disconnect();
-//   }
-// }
+export async function getLatestArticlesAndProjects(postType: PostTypes) {
+  const postTypeMap: Record<PostTypes, BlogPostCategory> = {
+    "articles-and-tutorials": "ARTICLE" as BlogPostCategory,
+    "projects-showcases": "PROJECT" as BlogPostCategory,
+  };
+  const category = postTypeMap[postType];
 
-// export async function getRoadmapProjects() {
-//   try {
-//     const projects = await prisma.roadmapProject.findMany({
-//       include: { cards: true },
-//       orderBy: { position: "asc" },
-//     });
+  try {
+    const data: BlogPost[] = await prisma.blogPost.findMany({
+      where: {
+        category: category,
+      },
+      take: 3,
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
 
-//     return projects;
-//   } catch (error: any) {
-//     console.log("Error getting projects:", error);
-//   } finally {
-//     await prisma.$disconnect();
-//   }
-// }
+    const res = {
+      posts:
+        data.length > 0
+          ? data.map((p) => ({
+              title: p.title,
+              thumbnail: "/assets/thumbnail-placeholder.webp",
+              description: `Upcoming ${p.category.toLocaleLowerCase()} description.`,
+              href: `/knowledge-hub/${postType}/${p.slug}`,
+            }))
+          : [],
+    };
+
+    return res;
+  } catch (error: any) {
+    console.log("Error getting articles and projects:", error);
+
+    return null;
+  } finally {
+    await prisma.$disconnect();
+  }
+}

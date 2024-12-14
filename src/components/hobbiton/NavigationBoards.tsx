@@ -25,16 +25,12 @@ export const NavigationBoards = () => {
     },
   ];
 
-  const handlePress = ({ href }: { href: string }) => {
-    router.push(href);
-  };
-
   const NavigationCard = ({ title, href, icon }: NavigationCardProps) => {
     return (
       <Card
         isPressable
         className="w-full h-full cursor-pointer hover:scale-105 transition-transform bg-background border border-purple-800 dark:border-purple-300"
-        onPress={() => handlePress({ href })}
+        onPress={() => router.push(href)}
       >
         <CardBody className="flex items-center justify-between">
           <div className="text-2xl font-semibold text-purple-800 dark:text-purple-300">

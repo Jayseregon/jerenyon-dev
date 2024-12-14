@@ -1,20 +1,15 @@
-import { PrismaClient } from "@prisma/client";
 import { notFound } from "next/navigation";
+import { BlogPostCategory } from "@prisma/client";
 
-import { BlogPost, BlogPostCategory } from "@/src/interfaces/Hub";
+import { BlogPost } from "@/src/interfaces/Hub";
 import { TiptapEditor } from "@/src/components/hobbiton/TiptapEditor";
-
-const prisma = new PrismaClient();
+import { getSinglePost } from "@/src/action/prisma/action";
 
 export default async function PostPage(props: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await props.params;
-  const postDb = await prisma.blogPost.findUnique({
-    where: {
-      slug: slug,
-    },
-  });
+  const postDb = await getSinglePost(slug);
 
   if (!postDb) {
     notFound();
@@ -28,7 +23,7 @@ export default async function PostPage(props: {
   const content = postObject.content;
 
   return (
-    <div className="prose light:prose-lightTheme dark:prose-darkTheme max-w-none border border-red-500">
+    <div className="prose light:prose-lightTheme dark:prose-darkTheme w-full border border-red-500">
       <h1>{postObject.title}</h1>
       <TiptapEditor content={JSON.parse(content)} editable={false} />
     </div>

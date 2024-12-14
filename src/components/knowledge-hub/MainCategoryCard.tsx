@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardHeader,
@@ -6,8 +8,11 @@ import {
   Image,
   CardBody,
 } from "@nextui-org/react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
-import { MainCategoryCardProps } from "@/interfaces/Hub";
+import { Article, MainCategoryCardProps } from "@/interfaces/Hub";
+import { getLatestArticlesAndProjects } from "@/src/action/prisma/action";
 
 const MainCategoryCard = ({
   title,
@@ -16,8 +21,22 @@ const MainCategoryCard = ({
   imageAlt,
   buttonText,
   footerText,
-  articles,
+  articleCategory,
 }: MainCategoryCardProps) => {
+  const [articles, setArticles] = useState<Article[]>([]);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      const data = await getLatestArticlesAndProjects(articleCategory);
+
+      if (data && data.posts.length > 0) {
+        setArticles(data.posts);
+      }
+    };
+
+    fetchArticles();
+  }, []);
+
   return (
     <div className="flex flex-col space-y-2">
       <h2 className="text-white font-medium text-2xl">{title}</h2>
@@ -40,25 +59,27 @@ const MainCategoryCard = ({
             </CardHeader>
             <CardBody className="px-4">
               {articles.map((article, index) => (
-                <div
-                  key={index}
-                  className="flex items-start mb-4 bg-white p-2 rounded-lg shadow-md"
-                >
-                  <Image
-                    removeWrapper
-                    alt={article.title}
-                    className="w-12 h-12 mr-4 rounded-lg"
-                    src={article.thumbnail}
-                  />
-                  <div>
-                    <h5 className="text-lg font-semibold text-foreground dark:text-background">
-                      {article.title}
-                    </h5>
-                    <p className="text-sm text-gray-600">
-                      {article.description}
-                    </p>
+                <Link key={index} href={article.href}>
+                  <div
+                    key={index}
+                    className="flex cursor-pointer hover:scale-105 transition-transform items-start mb-4 bg-white p-2 rounded-lg shadow-md"
+                  >
+                    <Image
+                      removeWrapper
+                      alt={article.title}
+                      className="w-12 h-12 mr-4 rounded-lg"
+                      src={article.thumbnail}
+                    />
+                    <div>
+                      <h5 className="text-lg font-semibold text-foreground dark:text-background">
+                        {article.title}
+                      </h5>
+                      <p className="text-sm text-gray-600">
+                        {article.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </CardBody>
             <CardFooter className="bg-purple-800/50 dark:bg-purple-300/70 border-t-1 border-zinc-100/50 justify-between p-4">
