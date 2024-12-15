@@ -4,6 +4,7 @@ import cuid from "cuid";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 import { z } from "zod";
+import { CircleChevronLeft, CircleChevronRight } from "lucide-react";
 
 import { QuoteForm, QuoteFormSchema } from "@/src/interfaces/Quote";
 import { NonceContext } from "@/src/app/providers";
@@ -367,15 +368,25 @@ export default function QuotingTool() {
         </h3>
 
         <Accordion
-          className="rounded-lg shadow-xl border border-purple-800 dark:border-purple-300"
+          className="rounded-lg shadow-xl p-2 border border-purple-800 dark:border-purple-300"
+          itemClasses={{
+            title: "text-2xl font-semibold text-foreground",
+            indicator: "text-2xl text-foreground",
+            trigger:
+              "px-2 py-0 data-[hover=true]:bg-purple-200 data-[hover=true]:dark:bg-purple-950 rounded-lg h-12 flex items-center",
+          }}
           variant="light"
         >
           <AccordionItem
             key="1"
             aria-label={t("accordion.title")}
-            classNames={{
-              title: "text-2xl font-semibold",
-            }}
+            indicator={({ isOpen }) =>
+              isOpen ? (
+                <CircleChevronRight strokeWidth={2.5} />
+              ) : (
+                <CircleChevronLeft strokeWidth={2.5} />
+              )
+            }
             title={t("accordion.title")}
           >
             <div

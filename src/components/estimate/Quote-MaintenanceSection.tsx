@@ -100,7 +100,7 @@ export const MaintenanceSection = ({
                   className={`flex-1 p-4 cursor-pointer rounded-lg max-w-xs ${
                     planOptionValue === "regular"
                       ? "bg-purple-200 dark:bg-purple-950 shadow-md shadow-purple-300 dark:shadow-[#2a0548]"
-                      : "bg-background"
+                      : "bg-background border border-gray-300 dark:border-gray-700"
                   }`}
                   nonce={nonce}
                   variants={planVariants}
@@ -145,7 +145,7 @@ export const MaintenanceSection = ({
                   className={`flex-1 p-4 cursor-pointer rounded-lg max-w-xs ${
                     planOptionValue === "advanced"
                       ? "bg-purple-200 dark:bg-purple-950 shadow-md shadow-purple-300 dark:shadow-[#2a0548]"
-                      : "bg-background"
+                      : "bg-background border border-gray-300 dark:border-gray-700"
                   }`}
                   nonce={nonce}
                   variants={planVariants}

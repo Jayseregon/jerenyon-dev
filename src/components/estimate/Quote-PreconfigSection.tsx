@@ -46,7 +46,7 @@ export const PreconfigSection = ({
                 className={`p-4 cursor-pointer rounded-lg ${
                   isSelected
                     ? "bg-purple-200 dark:bg-purple-950 shadow-md shadow-purple-300 dark:shadow-[#2a0548]"
-                    : "bg-background"
+                    : "bg-background border border-gray-300 dark:border-gray-700"
                 }`}
                 nonce={nonce}
                 variants={optionVariants}
