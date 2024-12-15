@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { Card, CardBody } from "@nextui-org/react";
-import { Calculator, PenTool } from "lucide-react";
+import { Calculator, FilePenLine, FilePlus } from "lucide-react";
 
 interface NavigationCardProps {
   title: string;
@@ -16,12 +16,17 @@ export const NavigationBoards = () => {
     {
       title: "Estimates",
       href: "/hobbiton/quotes-board",
-      icon: <Calculator size={40} strokeWidth={2} />,
+      icon: <Calculator size={40} />,
+    },
+    {
+      title: "Writer",
+      href: "/hobbiton/content-writer",
+      icon: <FilePlus size={40} />,
     },
     {
       title: "Editor",
       href: "/hobbiton/content-editor",
-      icon: <PenTool size={40} strokeWidth={2} />,
+      icon: <FilePenLine size={40} />,
     },
   ];
 
@@ -32,10 +37,8 @@ export const NavigationBoards = () => {
         className="w-full h-full cursor-pointer hover:scale-105 transition-transform bg-background border border-purple-800 dark:border-purple-300"
         onPress={() => router.push(href)}
       >
-        <CardBody className="flex items-center justify-between">
-          <div className="text-2xl font-semibold text-purple-800 dark:text-purple-300">
-            {title}
-          </div>
+        <CardBody className="flex items-center justify-between text-purple-800 dark:text-purple-300">
+          <div className="text-2xl font-semibold">{title}</div>
           {icon}
         </CardBody>
       </Card>
@@ -43,7 +46,7 @@ export const NavigationBoards = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div className="flex flex-col gap-10">
       {navigationCardsItems.map((item, index) => (
         <NavigationCard key={index} {...item} />
       ))}
