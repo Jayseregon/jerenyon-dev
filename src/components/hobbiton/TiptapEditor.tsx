@@ -78,8 +78,7 @@ export const TiptapEditor = ({
     editable: editable,
     editorProps: {
       attributes: {
-        class:
-          "prose light:prose-lightTheme dark:prose-darkTheme w-full min-h-[300px] focus:outline-none px-4 py-2",
+        class: `prose light:prose-lightTheme dark:prose-darkTheme max-w-none min-h-[300px] focus:outline-none px-4 py-2`,
         style: "text-align: left;",
       },
     },
@@ -97,13 +96,7 @@ export const TiptapEditor = ({
   return (
     <div>
       {editable && editor && <TiptapMenuBar editor={editor} />}
-      <div
-        className={
-          editable
-            ? "mb-4 rounded-lg border border-purple-800 dark:border-purple-300"
-            : ""
-        }
-      >
+      <div className="rounded-lg border border-purple-800 dark:border-purple-300 shadow-lg">
         <EditorContent editor={editor} />
       </div>
     </div>

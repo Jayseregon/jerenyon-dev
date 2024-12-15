@@ -1,42 +1,21 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "motion/react";
 
 import { BlogPostPageTitleProps } from "@/src/interfaces/Hub";
+import BlogPostPageTitleMotion from "@/components/knowledge-hub/BlogPostPageTitleMotion";
 
 const BlogPostPageTitle = ({ title, category }: BlogPostPageTitleProps) => {
   const t = useTranslations("knowledge-hub");
+  const pageTitle = t("title");
+  const categoryTitle = t(`hubCategories.${category}.title`);
 
   return (
-    <>
-      <motion.div className="flex flex-col-reverse">
-        <motion.h1
-          animate={{ opacity: 1, y: 0 }}
-          className="text-5xl font-bold"
-          initial={{ opacity: 0, y: -50 }}
-          transition={{ duration: 0.5 }}
-        >
-          {title}
-        </motion.h1>
-        <motion.h2
-          animate={{ opacity: 1, y: 0 }}
-          className="text-purple-800 dark:text-purple-300 mb-3"
-          initial={{ opacity: 0, y: -50 }}
-          transition={{ duration: 0.5 }}
-        >
-          {t("title")}
-        </motion.h2>
-      </motion.div>
-      <motion.h3
-        animate={{ opacity: 1, y: 0 }}
-        className="text-xl mt-2 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto p-5"
-        initial={{ opacity: 0, y: 50 }}
-        transition={{ duration: 0.5 }}
-      >
-        {t(`hubCategories.${category}.title`)}
-      </motion.h3>
-    </>
+    <BlogPostPageTitleMotion
+      categoryTitle={categoryTitle}
+      pageTitle={pageTitle}
+      postTitle={title}
+    />
   );
 };
 

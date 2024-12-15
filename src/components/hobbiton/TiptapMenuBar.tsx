@@ -133,7 +133,7 @@ export const TiptapMenuBar = ({ editor }: { editor: Editor }) => {
   }));
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col my-2">
       <div className="flex space-x-2">
         {textEditButtonsList.map(
           ({ icon, onClick, isActive, disabled }, index) => (

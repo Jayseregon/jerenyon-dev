@@ -79,8 +79,8 @@ export default function KnowledgeHubLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center gap-4 w-full">
-      <div className="inline-block w-full text-center justify-center px-16 sm:px-20 md:px-32 py-10 md:py-20">
+    <div className="flex flex-col items-center justify-center w-full">
+      <div className="inline-block text-center justify-center w-full px-8 sm:px-10 md:px-16 py-10 md:py-20">
         {children}
       </div>
     </div>

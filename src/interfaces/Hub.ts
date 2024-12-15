@@ -44,3 +44,9 @@ export interface BlogPostPageTitleProps {
 export interface BLogPostReaderProps {
   content: string;
 }
+
+export interface BlogPostPageTitleMotionProps {
+  pageTitle: string;
+  categoryTitle: string;
+  postTitle: string;
+}
