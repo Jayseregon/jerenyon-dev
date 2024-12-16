@@ -1,4 +1,4 @@
-import { BlogPostCategory } from "@prisma/client";
+import { $Enums, BlogPostCategory } from "@prisma/client";
 
 export interface BlogPost {
   id: string;
@@ -49,4 +49,10 @@ export interface BlogPostPageTitleMotionProps {
   pageTitle: string;
   categoryTitle: string;
   postTitle: string;
+}
+
+export interface PostDataProps {
+  title: string;
+  content: string;
+  category: $Enums.BlogPostCategory;
 }

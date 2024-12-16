@@ -12,16 +12,18 @@ import {
 import { Save } from "lucide-react";
 import { BlogPostCategory } from "@prisma/client";
 import { JSONContent } from "@tiptap/core";
-import { useRouter } from "next/navigation";
 
 import { NonceContext } from "@/src/app/providers";
 import { TiptapEditor } from "@/components/hobbiton/TiptapEditor";
-import { BlogPost } from "@/src/interfaces/Hub";
-import { getAllPosts } from "@/src/action/prisma/action";
+import { BlogPost, PostDataProps } from "@/src/interfaces/Hub";
+import {
+  createPost,
+  getAllPosts,
+  updatePost,
+} from "@/src/action/prisma/action";
 
 export default function ContentEditorPage() {
   const nonce = useContext(NonceContext);
-  const router = useRouter();
 
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
@@ -44,18 +46,19 @@ export default function ContentEditorPage() {
     />
   );
 
+  // Extract fetchPosts outside of useEffect for reuse
+  const fetchPosts = async () => {
+    const postsData = await getAllPosts();
+
+    // Sort posts by updatedAt date in descending order
+    postsData.sort(
+      (a, b) =>
+        new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
+    );
+    setPosts(postsData);
+  };
+
   useEffect(() => {
-    async function fetchPosts() {
-      const postsData = await getAllPosts();
-
-      // Sort posts by updatedAt date in descending order
-      postsData.sort(
-        (a, b) =>
-          new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
-      );
-      setPosts(postsData);
-    }
-
     fetchPosts();
   }, []);
 
@@ -86,7 +89,7 @@ export default function ContentEditorPage() {
         category: BlogPostCategory;
       };
 
-      const postData = {
+      const postData: PostDataProps = {
         title: formData.title,
         content: JSON.stringify(content),
         category: formData.category,
@@ -95,36 +98,23 @@ export default function ContentEditorPage() {
       let response;
 
       if (selectedPost) {
-        response = await fetch(`/api/blog/update/${selectedPost.slug}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(postData),
-        });
+        response = await updatePost(selectedPost.slug, postData);
       } else {
-        response = await fetch("/api/blog/create", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(postData),
-        });
+        response = await createPost(postData);
       }
-
-      const data = await response.json();
 
       if (!response.ok) {
-        if (data.error === "Slug already exists") {
-          setTitleError("A post with a similar title already exists");
-        } else {
-          setTitleError(data.error || "Failed to save the post");
-        }
+        setTitleError(response.message);
+      } else {
+        // Reset form fields
+        setTitle("");
+        setContent({ type: "doc", content: [] }); // Changed from undefined to empty JSONContent
+        setCategory(BlogPostCategory.ARTICLE);
+        setSelectedPost(null);
 
-        return;
+        // Refresh posts and editor
+        await fetchPosts();
       }
-
-      router.refresh();
     } catch (error) {
       console.error("Failed to save the blog post: ", error);
       setTitleError("An unexpected error occurred");

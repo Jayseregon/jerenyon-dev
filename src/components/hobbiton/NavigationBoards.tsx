@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { Card, CardBody } from "@nextui-org/react";
-import { Calculator, FilePenLine, FilePlus } from "lucide-react";
+import { Calculator, FilePenLine } from "lucide-react";
 
 interface NavigationCardProps {
   title: string;
@@ -30,7 +30,8 @@ export const NavigationBoards = () => {
       <Card
         isPressable
         className="w-full h-full cursor-pointer hover:scale-105 transition-transform bg-background border border-purple-800 dark:border-purple-300"
-        onPress={() => router.push(href)}>
+        onPress={() => router.push(href)}
+      >
         <CardBody className="flex items-center justify-between text-purple-800 dark:text-purple-300">
           <div className="text-2xl font-semibold">{title}</div>
           {icon}
@@ -42,10 +43,7 @@ export const NavigationBoards = () => {
   return (
     <div className="flex flex-col gap-10">
       {navigationCardsItems.map((item, index) => (
-        <NavigationCard
-          key={index}
-          {...item}
-        />
+        <NavigationCard key={index} {...item} />
       ))}
     </div>
   );

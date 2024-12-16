@@ -1,11 +1,21 @@
 "use server";
 
 import { BlogPostCategory, PrismaClient } from "@prisma/client";
+import { z } from "zod";
 
-import { BlogPost, PostTypes } from "@/src/interfaces/Hub";
-// import { z } from "zod";
+import { BlogPost, PostDataProps, PostTypes } from "@/src/interfaces/Hub";
+// import { revalidatePath } from "next/cache";
 
 const prisma = new PrismaClient();
+
+// Define Zod schemas
+const postDataSchema = z.object({
+  title: z.string().min(1, "Title is required"),
+  content: z.string().trim().min(1, "Content cannot be empty"),
+  category: z.nativeEnum(BlogPostCategory),
+});
+
+const updatePostDataSchema = postDataSchema.partial();
 
 export async function getSinglePost(slug: string) {
   try {
@@ -34,7 +44,7 @@ export async function getAllPosts() {
     });
 
     return posts;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error getting all posts:", error);
 
     return [];
@@ -43,18 +53,86 @@ export async function getAllPosts() {
   }
 }
 
-export async function updatePost(slug: string, data: Partial<BlogPost>) {
+export async function createPost(formData: PostDataProps) {
   try {
-    const updatedPost = await prisma.blogPost.update({
+    // Validate the formData
+    const data = postDataSchema.parse(formData);
+    const { title, content, category } = data;
+
+    const slug = title.toLowerCase().replace(/ /g, "-");
+
+    // Check if slug exists
+    const existingPost = await prisma.blogPost.findUnique({
       where: { slug },
-      data,
     });
 
-    return updatedPost;
+    if (existingPost) {
+      return {
+        message: "A post with a similar title already exists",
+        ok: false,
+      };
+    }
+
+    await prisma.blogPost.create({
+      data: {
+        title,
+        content,
+        slug,
+        category,
+      },
+    });
+
+    // revalidatePath("/hobbiton/content-editor");
+    return {
+      message: "Post created successfully",
+      ok: true,
+    };
   } catch (error: any) {
+    if (error instanceof z.ZodError) {
+      return {
+        message: error.errors.map((e) => e.message).join(", "),
+        ok: false,
+      };
+    }
+    console.error("Error creating post:", error);
+
+    return {
+      message: "Failed to create post",
+      ok: false,
+    };
+  } finally {
+    await prisma.$disconnect();
+  }
+}
+
+export async function updatePost(slug: string, data: Partial<BlogPost>) {
+  try {
+    // Validate the data
+    const validData = updatePostDataSchema.parse(data);
+
+    await prisma.blogPost.update({
+      where: { slug },
+      data: validData,
+    });
+
+    // revalidatePath("/hobbiton/content-editor");
+    return {
+      message: "Post updated successfully",
+      ok: true,
+    };
+  } catch (error: any) {
+    if (error instanceof z.ZodError) {
+      return {
+        message: error.errors.map((e) => e.message).join(", "),
+        ok: false,
+      };
+    }
     console.error("Error updating post:", error);
 
-    return null;
+    return {
+      message: "Failed to update post",
+      ok: false,
+    };
   } finally {
     await prisma.$disconnect();
   }
