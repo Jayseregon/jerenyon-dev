@@ -86,6 +86,12 @@ export const TiptapEditor = ({
   });
 
   useEffect(() => {
+    if (editor && content) {
+      editor.commands.setContent(content);
+    }
+  }, [editor, content]);
+
+  useEffect(() => {
     return () => {
       if (editor) {
         editor.destroy();

@@ -25,23 +25,40 @@ export async function getSinglePost(slug: string) {
   }
 }
 
-// export async function getAllBlogPosts() {
-//   try {
-//     const posts = await prisma.blogPost.findMany({
-//       orderBy: {
-//         createdAt: "desc",
-//       },
-//     });
+export async function getAllPosts() {
+  try {
+    const posts = await prisma.blogPost.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
 
-//     return posts;
-//   } catch (error: any) {
-//     console.log("Error getting posts:", error);
+    return posts;
+  } catch (error) {
+    console.error("Error getting all posts:", error);
 
-//     return null;
-//   } finally {
-//     await prisma.$disconnect();
-//   }
-// }
+    return [];
+  } finally {
+    await prisma.$disconnect();
+  }
+}
+
+export async function updatePost(slug: string, data: Partial<BlogPost>) {
+  try {
+    const updatedPost = await prisma.blogPost.update({
+      where: { slug },
+      data,
+    });
+
+    return updatedPost;
+  } catch (error: any) {
+    console.error("Error updating post:", error);
+
+    return null;
+  } finally {
+    await prisma.$disconnect();
+  }
+}
 
 export async function getLatestArticlesAndProjects(postType: PostTypes) {
   const postTypeMap: Record<PostTypes, BlogPostCategory> = {

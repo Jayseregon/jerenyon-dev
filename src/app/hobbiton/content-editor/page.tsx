@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   Button,
   Input,
@@ -12,12 +12,19 @@ import {
 import { Save } from "lucide-react";
 import { BlogPostCategory } from "@prisma/client";
 import { JSONContent } from "@tiptap/core";
+import { useRouter } from "next/navigation";
 
 import { NonceContext } from "@/src/app/providers";
 import { TiptapEditor } from "@/components/hobbiton/TiptapEditor";
+import { BlogPost } from "@/src/interfaces/Hub";
+import { getAllPosts } from "@/src/action/prisma/action";
 
 export default function ContentEditorPage() {
   const nonce = useContext(NonceContext);
+  const router = useRouter();
+
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState<JSONContent>();
@@ -37,6 +44,38 @@ export default function ContentEditorPage() {
     />
   );
 
+  useEffect(() => {
+    async function fetchPosts() {
+      const postsData = await getAllPosts();
+
+      // Sort posts by updatedAt date in descending order
+      postsData.sort(
+        (a, b) =>
+          new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
+      );
+      setPosts(postsData);
+    }
+
+    fetchPosts();
+  }, []);
+
+  // Group posts by category
+  const postsByCategory = posts.reduce(
+    (acc, post) => {
+      (acc[post.category] = acc[post.category] || []).push(post);
+
+      return acc;
+    },
+    {} as Record<BlogPostCategory, BlogPost[]>,
+  );
+
+  const handlePostSelect = async (post: BlogPost) => {
+    setSelectedPost(post);
+    setTitle(post.title);
+    setCategory(post.category);
+    setContent(JSON.parse(post.content));
+  };
+
   const handleSubmit = async (formDataEvent: FormData) => {
     try {
       setLoading(true);
@@ -47,17 +86,31 @@ export default function ContentEditorPage() {
         category: BlogPostCategory;
       };
 
-      const response = await fetch("/api/blog/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: formData.title,
-          content: JSON.stringify(content),
-          category: formData.category,
-        }),
-      });
+      const postData = {
+        title: formData.title,
+        content: JSON.stringify(content),
+        category: formData.category,
+      };
+
+      let response;
+
+      if (selectedPost) {
+        response = await fetch(`/api/blog/update/${selectedPost.slug}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(postData),
+        });
+      } else {
+        response = await fetch("/api/blog/create", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(postData),
+        });
+      }
 
       const data = await response.json();
 
@@ -70,6 +123,8 @@ export default function ContentEditorPage() {
 
         return;
       }
+
+      router.refresh();
     } catch (error) {
       console.error("Failed to save the blog post: ", error);
       setTitleError("An unexpected error occurred");
@@ -79,76 +134,119 @@ export default function ContentEditorPage() {
   };
 
   return (
-    <Form
-      className="flex flex-col max-w-5xl mx-auto"
-      onSubmit={(e) => {
-        e.preventDefault();
-        handleSubmit(new FormData(e.currentTarget));
-      }}
-    >
-      <div className="flex flex-row gap-4 w-full">
-        <Input
-          isRequired
-          aria-label="post-title"
-          className="w-3/4"
-          classNames={{
-            inputWrapper:
-              "border-purple-800/50 dark:border-purple-300/50 hover:!border-purple-800 hover:dark:!border-purple-300",
+    <div className="flex h-screen">
+      {/* Sidebar */}
+      <div className="w-1/4 border-r border-purple-800/50 dark:border-purple-300/50 overflow-y-auto">
+        {Object.values(BlogPostCategory).map((category) => (
+          <div key={category}>
+            <h3 className="text-2xl font-bold text-foreground px-4 mt-4 mb-2">
+              {category}
+            </h3>
+            <ul className="text-start px-2">
+              {postsByCategory[category]?.map((post) => (
+                <li key={post.id}>
+                  <button
+                    className={`w-full text-left px-2 py-3 cursor-pointer rounded-lg ${
+                      selectedPost?.id === post.id
+                        ? "bg-purple-200 dark:bg-purple-800"
+                        : "hover:bg-purple-800/50"
+                    }`}
+                    onClick={() => handlePostSelect(post)}
+                  >
+                    <div className="flex justify-between items-center">
+                      <span className="text-foreground">{post.title}</span>
+                      <span
+                        className={`text-xs font-semibold px-2 py-1 rounded ${
+                          post.published ? "bg-green-500" : "bg-blue-500"
+                        } text-white`}
+                      >
+                        {post.published ? "Published" : "Draft"}
+                      </span>
+                    </div>
+                    <div className="text-xs text-purple-300 italic">
+                      {new Date(post.updatedAt).toLocaleDateString()}
+                    </div>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      {/* Editor */}
+      <div className="w-3/4 p-4 overflow-y-auto">
+        <Form
+          className="flex flex-col max-w-5xl mx-auto"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit(new FormData(e.currentTarget));
           }}
-          color={undefined}
-          errorMessage={titleError}
-          id="post-title"
-          isInvalid={!!titleError}
-          name="title"
-          nonce={nonce}
-          placeholder="Title..."
-          type="text"
-          value={title}
-          variant="bordered"
-          onChange={(e) => {
-            setTitle(e.target.value);
-            setTitleError("");
-          }}
-        />
-        <Select
-          isRequired
-          aria-label="post-category"
-          className="w-1/4"
-          classNames={{
-            popoverContent: "bg-background",
-            trigger:
-              "border-purple-800/50 dark:border-purple-300/50 hover:!border-purple-800 hover:dark:!border-purple-300",
-          }}
-          name="category"
-          nonce={nonce}
-          selectedKeys={[category]}
-          variant="bordered"
-          onSelectionChange={(keys) =>
-            setCategory(Array.from(keys)[0] as BlogPostCategory)
-          }
         >
-          {Object.values(BlogPostCategory).map((cat) => (
-            <SelectItem key={cat} value={cat}>
-              {cat}
-            </SelectItem>
-          ))}
-        </Select>
-      </div>
+          <div className="flex flex-row gap-4 w-full">
+            <Input
+              isRequired
+              aria-label="post-title"
+              className="w-3/4"
+              classNames={{
+                inputWrapper:
+                  "border-purple-800/50 dark:border-purple-300/50 hover:!border-purple-800 hover:dark:!border-purple-300",
+              }}
+              color={undefined}
+              errorMessage={titleError}
+              id="post-title"
+              isInvalid={!!titleError}
+              name="title"
+              nonce={nonce}
+              placeholder="Title..."
+              type="text"
+              value={title}
+              variant="bordered"
+              onChange={(e) => {
+                setTitle(e.target.value);
+                setTitleError("");
+              }}
+            />
+            <Select
+              isRequired
+              aria-label="post-category"
+              className="w-1/4"
+              classNames={{
+                popoverContent: "bg-background",
+                trigger:
+                  "border-purple-800/50 dark:border-purple-300/50 hover:!border-purple-800 hover:dark:!border-purple-300",
+              }}
+              name="category"
+              nonce={nonce}
+              selectedKeys={[category]}
+              variant="bordered"
+              onSelectionChange={(keys) =>
+                setCategory(Array.from(keys)[0] as BlogPostCategory)
+              }
+            >
+              {Object.values(BlogPostCategory).map((cat) => (
+                <SelectItem key={cat} value={cat}>
+                  {cat}
+                </SelectItem>
+              ))}
+            </Select>
+          </div>
 
-      <div className="w-full">
-        <TiptapEditor content={content} setContent={setContent} />
-      </div>
+          <div className="w-full">
+            <TiptapEditor content={content} setContent={setContent} />
+          </div>
 
-      <div className="flex items-center justify-center w-full">
-        <Button
-          className="bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:bg-purple-800 hover:text-background hover:dark:text-purple-300 focus:outline-none"
-          disabled={loading}
-          radius="full"
-          type="submit"
-        >
-          {loading ? loadingSpinner : <Save />}
-        </Button>
+          <div className="flex items-center justify-center w-full">
+            <Button
+              className="bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:bg-purple-800 hover:text-background hover:dark:text-purple-300 focus:outline-none"
+              disabled={loading}
+              radius="full"
+              type="submit"
+            >
+              {loading ? loadingSpinner : <Save />}
+            </Button>
+          </div>
+        </Form>
       </div>
-    </Form>
+    </div>
   );
 }
