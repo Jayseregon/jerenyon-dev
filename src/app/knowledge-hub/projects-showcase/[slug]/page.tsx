@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { BlogPostCategory } from "@prisma/client";
 
 import { BlogPost } from "@/src/interfaces/Hub";
-import { getSinglePost } from "@/src/action/prisma/action";
+import { getSinglePost } from "@/actions/prisma/blogPosts/action";
 import BlogPostPageTitle from "@/components/knowledge-hub/BlogPostPageTitle";
 import { BlogPostReader } from "@/components/knowledge-hub/BlogPostReader";
 

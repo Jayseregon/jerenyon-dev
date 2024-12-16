@@ -20,7 +20,7 @@ import {
   createPost,
   getAllPosts,
   updatePost,
-} from "@/src/action/prisma/action";
+} from "@/actions/prisma/blogPosts/action";
 
 export default function ContentEditorPage() {
   const nonce = useContext(NonceContext);

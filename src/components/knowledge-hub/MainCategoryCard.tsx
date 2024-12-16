@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import { Article, MainCategoryCardProps } from "@/interfaces/Hub";
-import { getLatestArticlesAndProjects } from "@/src/action/prisma/action";
+import { getLatestArticlesAndProjects } from "@/actions/prisma/blogPosts/action";
 
 const MainCategoryCard = ({
   title,
