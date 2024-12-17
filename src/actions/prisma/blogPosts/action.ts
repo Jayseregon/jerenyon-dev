@@ -138,6 +138,31 @@ export async function updatePost(slug: string, data: Partial<BlogPost>) {
   }
 }
 
+export async function deletePost(slug: string) {
+  try {
+    await prisma.blogPost.delete({
+      where: { slug },
+    });
+
+    // Optionally revalidate paths
+    // revalidatePath("/hobbiton/content-editor");
+
+    return {
+      message: "Post deleted successfully",
+      ok: true,
+    };
+  } catch (error: any) {
+    console.error("Error deleting post:", error);
+
+    return {
+      message: "Failed to delete post",
+      ok: false,
+    };
+  } finally {
+    await prisma.$disconnect();
+  }
+}
+
 export async function getLatestArticlesAndProjects(postType: PostTypes) {
   const postTypeMap: Record<PostTypes, BlogPostCategory> = {
     "articles-and-tutorials": "ARTICLE" as BlogPostCategory,

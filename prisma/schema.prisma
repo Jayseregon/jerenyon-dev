@@ -173,7 +173,7 @@ model BlogPost {
   updatedAt DateTime         @updatedAt
   published Boolean          @default(false)
   author    String           @default("Jeremie Bitsch")
-  // summary    String?
+  summary   String
   // coverImage String?
   // views       Int      @default(0)
   // likes       Int      @default(0)

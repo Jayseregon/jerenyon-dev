@@ -9,7 +9,7 @@ import {
   SelectItem,
   Form,
 } from "@nextui-org/react";
-import { Save } from "lucide-react";
+import { Save, Trash, RefreshCcw } from "lucide-react";
 import { BlogPostCategory } from "@prisma/client";
 import { JSONContent } from "@tiptap/core";
 
@@ -20,6 +20,7 @@ import {
   createPost,
   getAllPosts,
   updatePost,
+  deletePost,
 } from "@/actions/prisma/blogPosts/action";
 
 export default function ContentEditorPage() {
@@ -33,7 +34,7 @@ export default function ContentEditorPage() {
   const [loading, setLoading] = useState(false);
   const [titleError, setTitleError] = useState("");
   const [category, setCategory] = useState<BlogPostCategory>(
-    BlogPostCategory.ARTICLE,
+    BlogPostCategory.ARTICLE
   );
 
   const loadingSpinner = (
@@ -53,7 +54,7 @@ export default function ContentEditorPage() {
     // Sort posts by updatedAt date in descending order
     postsData.sort(
       (a, b) =>
-        new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
+        new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
     );
     setPosts(postsData);
   };
@@ -69,7 +70,7 @@ export default function ContentEditorPage() {
 
       return acc;
     },
-    {} as Record<BlogPostCategory, BlogPost[]>,
+    {} as Record<BlogPostCategory, BlogPost[]>
   );
 
   const handlePostSelect = async (post: BlogPost) => {
@@ -123,6 +124,35 @@ export default function ContentEditorPage() {
     }
   };
 
+  const handleDelete = async () => {
+    if (selectedPost) {
+      setLoading(true);
+      const response = await deletePost(selectedPost.slug);
+
+      if (response.ok) {
+        // Reset form fields
+        setTitle("");
+        setContent({ type: "doc", content: [] });
+        setCategory(BlogPostCategory.ARTICLE);
+        setSelectedPost(null);
+
+        // Refresh posts
+        await fetchPosts();
+      } else {
+        console.error(response.message);
+      }
+      setLoading(false);
+    }
+  };
+
+  const handleReset = () => {
+    setTitle("");
+    setContent({ type: "doc", content: [] });
+    setCategory(BlogPostCategory.ARTICLE);
+    setSelectedPost(null);
+    setTitleError("");
+  };
+
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
@@ -141,15 +171,13 @@ export default function ContentEditorPage() {
                         ? "bg-purple-200 dark:bg-purple-800"
                         : "hover:bg-purple-800/50"
                     }`}
-                    onClick={() => handlePostSelect(post)}
-                  >
+                    onClick={() => handlePostSelect(post)}>
                     <div className="flex justify-between items-center">
                       <span className="text-foreground">{post.title}</span>
                       <span
                         className={`text-xs font-semibold px-2 py-1 rounded ${
                           post.published ? "bg-green-500" : "bg-blue-500"
-                        } text-white`}
-                      >
+                        } text-white`}>
                         {post.published ? "Published" : "Draft"}
                       </span>
                     </div>
@@ -170,8 +198,7 @@ export default function ContentEditorPage() {
           onSubmit={(e) => {
             e.preventDefault();
             handleSubmit(new FormData(e.currentTarget));
-          }}
-        >
+          }}>
           <div className="flex flex-row gap-4 w-full">
             <Input
               isRequired
@@ -211,10 +238,11 @@ export default function ContentEditorPage() {
               variant="bordered"
               onSelectionChange={(keys) =>
                 setCategory(Array.from(keys)[0] as BlogPostCategory)
-              }
-            >
+              }>
               {Object.values(BlogPostCategory).map((cat) => (
-                <SelectItem key={cat} value={cat}>
+                <SelectItem
+                  key={cat}
+                  value={cat}>
                   {cat}
                 </SelectItem>
               ))}
@@ -222,18 +250,41 @@ export default function ContentEditorPage() {
           </div>
 
           <div className="w-full">
-            <TiptapEditor content={content} setContent={setContent} />
+            <TiptapEditor
+              content={content}
+              setContent={setContent}
+            />
           </div>
 
-          <div className="flex items-center justify-center w-full">
+          <div className="flex items-center justify-center w-full gap-4">
             <Button
-              className="bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:bg-purple-800 hover:text-background hover:dark:text-purple-300 focus:outline-none"
+              className="bg-background text-foreground py-2 px-4 border border-gray-800 dark:border-gray-300 hover:bg-gray-800 hover:dark:bg-gray-950 hover:text-background hover:dark:text-foreground focus:outline-none"
               disabled={loading}
               radius="full"
-              type="submit"
-            >
+              type="button"
+              variant="bordered"
+              onClick={handleReset}>
+              <RefreshCcw />
+            </Button>
+            <Button
+              className="bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:dark:border-purple-950 hover:bg-purple-800 hover:dark:bg-purple-950 hover:text-background hover:dark:text-foreground focus:outline-none"
+              disabled={loading}
+              radius="full"
+              type="submit">
               {loading ? loadingSpinner : <Save />}
             </Button>
+            {selectedPost && (
+              <Button
+                className="bg-background text-red-600 dark:text-red-600 py-2 px-4 border border-red-600 dark:border-red-600 hover:border-red-600 hover:bg-red-600 hover:text-red-950 hover:dark:text-red-950 focus:outline-none"
+                disabled={loading}
+                radius="full"
+                type="button"
+                color="danger"
+                variant="bordered"
+                onClick={handleDelete}>
+                {loading ? loadingSpinner : <Trash />}
+              </Button>
+            )}
           </div>
         </Form>
       </div>

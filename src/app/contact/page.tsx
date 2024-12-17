@@ -54,7 +54,7 @@ export default function ContactPage() {
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData({
       ...formData,
@@ -123,7 +123,9 @@ export default function ContactPage() {
         <div className="py-3" />
 
         <section className="max-w-2xl mx-auto p-4">
-          <form className="space-y-4" onSubmit={handleSubmit}>
+          <form
+            className="space-y-4"
+            onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <FieldInput
                 fieldTarget="firstName"
@@ -178,11 +180,10 @@ export default function ContactPage() {
             </div>
 
             <Button
-              className="w-full bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:dark:border-purple-950 hover:bg-purple-800 hover:dar:bg-purple-950 hover:text-background hover:dark:text-foreground focus:outline-none"
+              className="w-full bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:dark:border-purple-950 hover:bg-purple-800 hover:dark:bg-purple-950 hover:text-background hover:dark:text-foreground focus:outline-none"
               disabled={loading || !recaptchaToken}
               radius="full"
-              type="submit"
-            >
+              type="submit">
               {loading ? t("btn_pending") : t("btn")}
             </Button>
           </form>

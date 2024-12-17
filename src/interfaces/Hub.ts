@@ -9,6 +9,8 @@ export interface BlogPost {
   createdAt: Date;
   updatedAt: Date;
   published: boolean;
+  author: string;
+  summary: string;
 }
 
 export interface Article {
