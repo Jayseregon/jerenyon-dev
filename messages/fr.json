@@ -29,7 +29,8 @@
     "gtxt2": " s'appliquent.",
     "privacy": "Politique de confidentialité",
     "cookies": "Politique de cookies",
-    "terms": "Conditions d'utilisation"
+    "terms": "Conditions d'utilisation",
+    "disclaimer": "Clauses de non-responsabilité"
   },
   "about": {
     "title": "À Propos",
@@ -121,9 +122,9 @@
     },
     "addons": "Améliorez votre forfait avec des fonctionnalités et services supplémentaires.",
     "disclaimer": {
-      "line1": "Les prix indiqués sont des estimations et peuvent varier en fonction des exigences spécifiques de votre projet.",
-      "line2": "Les coûts finaux seront déterminés après une discussion détaillée de vos besoins.",
-      "line3": "Des fonctionnalités ou services supplémentaires peuvent entraîner des frais supplémentaires."
+      "title": "Clauses de non-responsabilité",
+      "line1": "Veuillez consulter nos ",
+      "line2": " pour des informations importantes concernant les prix, la portée et les conditions."
     },
     "devNotice": {
       "title": "Bientôt de Retour !",
@@ -138,7 +139,7 @@
       "timeEstimated": "Temps de Développement Estimé",
       "hours": "heures",
       "subTotal": "Sous-Total : ",
-      "total": "Prix Total Estimé : "
+      "total": "Prix Total Estimé"
     },
     "quotingTool": {
       "clientName": "Nom ou Entreprise",
@@ -200,6 +201,10 @@
     "terms_of_service": {
       "title": "Conditions d'utilisation",
       "heroTitle": "Notre engagement envers vous."
+    },
+    "quote_disclaimer": {
+      "title": "Clauses de non-responsabilité",
+      "heroTitle": "Tarification transparente, attentes claires."
     }
   },
   "timeline": {

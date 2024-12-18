@@ -40,6 +40,9 @@ export default function Footer({ nonce }: FooterProps) {
           <Link className="underline" href="/policies/cookies">
             {t("cookies")}
           </Link>
+          <Link className="underline" href="/policies/disclaimers">
+            {t("disclaimer")}
+          </Link>
         </div>
         <div className="text-xs max-w-4md md:max-w-4xl mx-auto text-purple-950/50 dark:text-purple-200/50">
           <p>

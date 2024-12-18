@@ -29,7 +29,8 @@
     "gtxt2": " apply.",
     "privacy": "Privacy Policy",
     "cookies": "Cookie Policy",
-    "terms": "Terms of Service"
+    "terms": "Terms of Service",
+    "disclaimer": "Disclaimers"
   },
   "about": {
     "title": "About",
@@ -121,9 +122,9 @@
     },
     "addons": "Enhance your package with additional features and services.",
     "disclaimer": {
-      "line1": "The prices listed are estimates and may vary based on the specific requirements of your project.",
-      "line2": "Final costs will be determined after a detailed discussion of your needs.",
-      "line3": "Additional features or services may incur extra charges."
+      "title": "Disclaimers",
+      "line1": "Please review our ",
+      "line2": " for important information regarding pricing, scope, and terms."
     },
     "devNotice": {
       "title": "Coming Back Soon!",
@@ -138,7 +139,7 @@
       "timeEstimated": "Estimated Development Time",
       "hours": "hours",
       "subTotal": "Subtotal: ",
-      "total": "Total Estimated Price: "
+      "total": "Total Estimated Price"
     },
     "quotingTool": {
       "clientName": "Name or Company",
@@ -200,6 +201,10 @@
     "terms_of_service": {
       "title": "Terms of Service",
       "heroTitle": "Our Commitment to You."
+    },
+    "quote_disclaimer": {
+      "title": "Disclaimers",
+      "heroTitle": "Transparent Pricing, Clear Expectations."
     }
   },
   "timeline": {

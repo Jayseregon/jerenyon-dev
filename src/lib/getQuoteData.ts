@@ -100,17 +100,72 @@ export const authenticationMethods = [
 ];
 
 export const apiIntegrations = [
-  { name: "Stripe", price: 100, label: "Stripe Payment Gateway Integration" },
-  { name: "Paypal", price: 100, label: "PayPal Payment Processing" },
-  { name: "Clover", price: 100, label: "Clover Point-of-Sale Integration" },
-  { name: "Resend", price: 100, label: "Resend Email Automation API" },
-  { name: "SendGrid", price: 100, label: "SendGrid Email API" },
-  { name: "Twilio", price: 100, label: "Twilio Messaging & Voice" },
-  { name: "GoogleMaps", price: 50, label: "Google Maps API" },
-  { name: "AWS", price: 150, label: "Amazon Web Services Integration" },
-  { name: "Azure", price: 150, label: "Azure Cloud Services" },
-  { name: "Bunny", price: 100, label: "Bunny.net CDN and Storage" },
-  { name: "ArcGIS", price: 150, label: "ArcGIS API for Python" },
+  {
+    name: "Stripe",
+    price: 100,
+    label: "Stripe Payment Gateway Integration",
+    subLabel: "(e.g., Apple Pay, Google Pay)",
+  },
+  {
+    name: "Paypal",
+    price: 100,
+    label: "PayPal Payment Processing",
+    subLabel: "(e.g., PayPal Checkout, PayPal Credit)",
+  },
+  {
+    name: "Clover",
+    price: 100,
+    label: "Clover Point-of-Sale Integration",
+    subLabel: "(e.g., Retail POS Systems)",
+  },
+  {
+    name: "Resend",
+    price: 100,
+    label: "Resend Email Automation API",
+    subLabel: "(e.g., Transactional Emails)",
+  },
+  {
+    name: "SendGrid",
+    price: 100,
+    label: "SendGrid Email API",
+    subLabel: "(e.g., Email Marketing)",
+  },
+  {
+    name: "Twilio",
+    price: 100,
+    label: "Twilio Messaging & Voice",
+    subLabel: "(e.g., SMS & Voice Calls)",
+  },
+  {
+    name: "GoogleMaps",
+    price: 50,
+    label: "Google Maps API",
+    subLabel: "(e.g., Location Services)",
+  },
+  {
+    name: "AWS",
+    price: 150,
+    label: "Amazon Web Services Integration",
+    subLabel: "(e.g., Cloud Computing)",
+  },
+  {
+    name: "Azure",
+    price: 150,
+    label: "Azure Cloud Services",
+    subLabel: "(e.g., Cloud Storage)",
+  },
+  {
+    name: "Bunny",
+    price: 100,
+    label: "Bunny.net CDN and Storage",
+    subLabel: "(e.g., Content Delivery Network)",
+  },
+  {
+    name: "ArcGIS",
+    price: 150,
+    label: "ArcGIS API for Python",
+    subLabel: "(e.g., Geospatial Analysis)",
+  },
 ];
 
 export const addons = [
@@ -230,25 +285,28 @@ export const legalPagesList = [
     name: "terms",
     price: 25,
     label: "Terms and Conditions",
+    subLabel: "(e.g., User Agreement)",
     sup: "*",
   },
   {
     name: "privacy",
     price: 25,
     label: "Privacy Policy",
+    subLabel: "(e.g., Data Collection Practices)",
     sup: "*",
   },
   {
     name: "cookie",
     price: 25,
     label: "Cookie Policy",
-    subLabel: "GDPR Compliant",
+    subLabel: "(e.g., Cookie Usage, GDPR, CCPR)",
     sup: "*",
   },
   {
     name: "cookieConsent",
     price: 25,
     label: "Cookie Consent Banner",
+    subLabel: "(e.g., GDPR Compliant Consent Banner)",
     sup: "*",
   },
 ];
