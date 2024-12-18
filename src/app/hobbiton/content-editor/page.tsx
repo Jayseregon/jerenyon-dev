@@ -8,6 +8,7 @@ import {
   Select,
   SelectItem,
   Form,
+  Textarea,
 } from "@nextui-org/react";
 import { Save, Trash, RefreshCcw } from "lucide-react";
 import { BlogPostCategory } from "@prisma/client";
@@ -31,10 +32,12 @@ export default function ContentEditorPage() {
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState<JSONContent>();
+  const [summary, setSummary] = useState("");
+  const [published, setPublished] = useState(false);
   const [loading, setLoading] = useState(false);
   const [titleError, setTitleError] = useState("");
   const [category, setCategory] = useState<BlogPostCategory>(
-    BlogPostCategory.ARTICLE
+    BlogPostCategory.ARTICLE,
   );
 
   const loadingSpinner = (
@@ -54,7 +57,7 @@ export default function ContentEditorPage() {
     // Sort posts by updatedAt date in descending order
     postsData.sort(
       (a, b) =>
-        new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+        new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
     );
     setPosts(postsData);
   };
@@ -70,14 +73,26 @@ export default function ContentEditorPage() {
 
       return acc;
     },
-    {} as Record<BlogPostCategory, BlogPost[]>
+    {} as Record<BlogPostCategory, BlogPost[]>,
   );
+
+  const handleReset = () => {
+    setTitle("");
+    setContent({ type: "doc", content: [] });
+    setCategory(BlogPostCategory.ARTICLE);
+    setSelectedPost(null);
+    setTitleError("");
+    setSummary("");
+    setPublished(false);
+  };
 
   const handlePostSelect = async (post: BlogPost) => {
     setSelectedPost(post);
     setTitle(post.title);
     setCategory(post.category);
     setContent(JSON.parse(post.content));
+    setSummary(post.summary);
+    setPublished(post.published);
   };
 
   const handleSubmit = async (formDataEvent: FormData) => {
@@ -88,12 +103,16 @@ export default function ContentEditorPage() {
       const formData = Object.fromEntries(formDataEvent.entries()) as {
         title: string;
         category: BlogPostCategory;
+        summary: string;
+        published: string;
       };
 
       const postData: PostDataProps = {
         title: formData.title,
         content: JSON.stringify(content),
         category: formData.category,
+        summary: formData.summary,
+        published: formData.published === "true",
       };
 
       let response;
@@ -108,11 +127,7 @@ export default function ContentEditorPage() {
         setTitleError(response.message);
       } else {
         // Reset form fields
-        setTitle("");
-        setContent({ type: "doc", content: [] }); // Changed from undefined to empty JSONContent
-        setCategory(BlogPostCategory.ARTICLE);
-        setSelectedPost(null);
-
+        handleReset();
         // Refresh posts and editor
         await fetchPosts();
       }
@@ -131,11 +146,7 @@ export default function ContentEditorPage() {
 
       if (response.ok) {
         // Reset form fields
-        setTitle("");
-        setContent({ type: "doc", content: [] });
-        setCategory(BlogPostCategory.ARTICLE);
-        setSelectedPost(null);
-
+        handleReset();
         // Refresh posts
         await fetchPosts();
       } else {
@@ -143,14 +154,6 @@ export default function ContentEditorPage() {
       }
       setLoading(false);
     }
-  };
-
-  const handleReset = () => {
-    setTitle("");
-    setContent({ type: "doc", content: [] });
-    setCategory(BlogPostCategory.ARTICLE);
-    setSelectedPost(null);
-    setTitleError("");
   };
 
   return (
@@ -171,13 +174,15 @@ export default function ContentEditorPage() {
                         ? "bg-purple-200 dark:bg-purple-800"
                         : "hover:bg-purple-800/50"
                     }`}
-                    onClick={() => handlePostSelect(post)}>
+                    onClick={() => handlePostSelect(post)}
+                  >
                     <div className="flex justify-between items-center">
                       <span className="text-foreground">{post.title}</span>
                       <span
                         className={`text-xs font-semibold px-2 py-1 rounded ${
                           post.published ? "bg-green-500" : "bg-blue-500"
-                        } text-white`}>
+                        } text-white`}
+                      >
                         {post.published ? "Published" : "Draft"}
                       </span>
                     </div>
@@ -198,7 +203,8 @@ export default function ContentEditorPage() {
           onSubmit={(e) => {
             e.preventDefault();
             handleSubmit(new FormData(e.currentTarget));
-          }}>
+          }}
+        >
           <div className="flex flex-row gap-4 w-full">
             <Input
               isRequired
@@ -238,22 +244,64 @@ export default function ContentEditorPage() {
               variant="bordered"
               onSelectionChange={(keys) =>
                 setCategory(Array.from(keys)[0] as BlogPostCategory)
-              }>
+              }
+            >
               {Object.values(BlogPostCategory).map((cat) => (
-                <SelectItem
-                  key={cat}
-                  value={cat}>
+                <SelectItem key={cat} value={cat}>
                   {cat}
                 </SelectItem>
               ))}
             </Select>
           </div>
 
-          <div className="w-full">
-            <TiptapEditor
-              content={content}
-              setContent={setContent}
+          <div className="w-full my-4">
+            <Textarea
+              isRequired
+              aria-label="post-summary"
+              className="w-full"
+              classNames={{
+                inputWrapper:
+                  "border-purple-800/50 dark:border-purple-300/50 hover:!border-purple-800 hover:dark:!border-purple-300",
+              }}
+              id="post-summary"
+              name="summary"
+              nonce={nonce}
+              placeholder="Summary..."
+              value={summary}
+              variant="bordered"
+              onChange={(e) => setSummary(e.target.value)}
             />
+          </div>
+
+          <div className="flex flex-row gap-4 w-full">
+            <Select
+              isRequired
+              aria-label="post-published"
+              className="w-1/4"
+              classNames={{
+                popoverContent: "bg-background",
+                trigger:
+                  "border-purple-800/50 dark:border-purple-300/50 hover:!border-purple-800 hover:dark:!border-purple-300",
+              }}
+              name="published"
+              nonce={nonce}
+              selectedKeys={[published.toString()]}
+              variant="bordered"
+              onSelectionChange={(keys) =>
+                setPublished(Array.from(keys)[0] === "true")
+              }
+            >
+              <SelectItem key="true" value="true">
+                Published
+              </SelectItem>
+              <SelectItem key="false" value="false">
+                Draft
+              </SelectItem>
+            </Select>
+          </div>
+
+          <div className="w-full">
+            <TiptapEditor content={content} setContent={setContent} />
           </div>
 
           <div className="flex items-center justify-center w-full gap-4">
@@ -263,25 +311,28 @@ export default function ContentEditorPage() {
               radius="full"
               type="button"
               variant="bordered"
-              onClick={handleReset}>
+              onClick={handleReset}
+            >
               <RefreshCcw />
             </Button>
             <Button
               className="bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:dark:border-purple-950 hover:bg-purple-800 hover:dark:bg-purple-950 hover:text-background hover:dark:text-foreground focus:outline-none"
               disabled={loading}
               radius="full"
-              type="submit">
+              type="submit"
+            >
               {loading ? loadingSpinner : <Save />}
             </Button>
             {selectedPost && (
               <Button
                 className="bg-background text-red-600 dark:text-red-600 py-2 px-4 border border-red-600 dark:border-red-600 hover:border-red-600 hover:bg-red-600 hover:text-red-950 hover:dark:text-red-950 focus:outline-none"
+                color="danger"
                 disabled={loading}
                 radius="full"
                 type="button"
-                color="danger"
                 variant="bordered"
-                onClick={handleDelete}>
+                onClick={handleDelete}
+              >
                 {loading ? loadingSpinner : <Trash />}
               </Button>
             )}

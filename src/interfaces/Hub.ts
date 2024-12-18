@@ -57,4 +57,6 @@ export interface PostDataProps {
   title: string;
   content: string;
   category: $Enums.BlogPostCategory;
+  published: boolean;
+  summary: string;
 }

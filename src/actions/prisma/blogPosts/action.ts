@@ -13,6 +13,8 @@ const postDataSchema = z.object({
   title: z.string().min(1, "Title is required"),
   content: z.string().trim().min(1, "Content cannot be empty"),
   category: z.nativeEnum(BlogPostCategory),
+  summary: z.string().trim().min(1, "Summary is required"),
+  published: z.boolean().default(false),
 });
 
 const updatePostDataSchema = postDataSchema.partial();
@@ -57,7 +59,7 @@ export async function createPost(formData: PostDataProps) {
   try {
     // Validate the formData
     const data = postDataSchema.parse(formData);
-    const { title, content, category } = data;
+    const { title, content, category, summary, published } = data;
 
     const slug = title.toLowerCase().replace(/ /g, "-");
 
@@ -79,6 +81,8 @@ export async function createPost(formData: PostDataProps) {
         content,
         slug,
         category,
+        summary,
+        published: published,
       },
     });
 
@@ -144,8 +148,7 @@ export async function deletePost(slug: string) {
       where: { slug },
     });
 
-    // Optionally revalidate paths
-    // revalidatePath("/hobbiton/content-editor");
+    // revalidatePath("/knowledge-hub");
 
     return {
       message: "Post deleted successfully",
@@ -174,6 +177,7 @@ export async function getLatestArticlesAndProjects(postType: PostTypes) {
     const data: BlogPost[] = await prisma.blogPost.findMany({
       where: {
         category: category,
+        published: true,
       },
       take: 3,
       orderBy: {
