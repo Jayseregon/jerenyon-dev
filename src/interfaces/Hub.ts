@@ -13,7 +13,7 @@ export interface BlogPost {
   summary: string;
 }
 
-export interface Article {
+export interface BlogPostRefactor {
   thumbnail: string;
   title: string;
   description: string;
@@ -28,6 +28,7 @@ export interface MainCategoryCardProps {
   buttonText: string;
   footerText: string;
   articleCategory: PostTypes;
+  href: string;
 }
 
 export interface PostPushCardProps {
@@ -38,18 +39,13 @@ export interface PostPushCardProps {
 
 export type PostTypes = "articles-and-tutorials" | "projects-showcase";
 
-export interface BlogPostPageTitleProps {
-  title: string;
-  category: PostTypes;
-}
-
 export interface BLogPostReaderProps {
   content: string;
+  title: string;
 }
 
 export interface BlogPostPageTitleMotionProps {
   pageTitle: string;
-  categoryTitle: string;
   postTitle: string;
 }
 

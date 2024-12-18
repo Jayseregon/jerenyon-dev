@@ -3,10 +3,9 @@ import { BlogPostCategory } from "@prisma/client";
 
 import { BlogPost } from "@/src/interfaces/Hub";
 import { getSinglePost } from "@/actions/prisma/blogPosts/action";
-import BlogPostPageTitle from "@/components/knowledge-hub/BlogPostPageTitle";
 import { BlogPostReader } from "@/components/knowledge-hub/BlogPostReader";
 
-export default async function PostPage(props: {
+export default async function ArticlesAndTutorialsReaderPage(props: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await props.params;
@@ -21,15 +20,7 @@ export default async function PostPage(props: {
     category: postDb.category as BlogPostCategory,
   };
 
-  const content = postObject.content;
-
   return (
-    <div>
-      <BlogPostPageTitle
-        category="articles-and-tutorials"
-        title={postObject.title}
-      />
-      <BlogPostReader content={content} />
-    </div>
+    <BlogPostReader content={postObject.content} title={postObject.title} />
   );
 }

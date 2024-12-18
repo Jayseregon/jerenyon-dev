@@ -57,12 +57,12 @@ export const siteConfig = {
   hubCategories: [
     {
       label: "articles-and-tutorials",
-      href: "/knowledge-hub",
+      rootRef: "/knowledge-hub",
       imgBg: "/assets/blogs-articles.webp",
     },
     {
       label: "projects-showcase",
-      href: "/knowledge-hub",
+      rootRef: "/knowledge-hub",
       imgBg: "/assets/projects.webp",
     },
   ],

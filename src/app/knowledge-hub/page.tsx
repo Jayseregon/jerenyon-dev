@@ -45,6 +45,7 @@ export default function KnowledgeHubPage() {
               articleCategory={category.label as PostTypes}
               buttonText={t(`hubCategories.${category.label}.btnLabel`)}
               footerText={t(`hubCategories.${category.label}.description`)}
+              href={`${category.rootRef}/${category.label}`}
               imageAlt={t(`hubCategories.${category.label}.imgAlt`)}
               imageSrc={category.imgBg}
               subtitle="New"

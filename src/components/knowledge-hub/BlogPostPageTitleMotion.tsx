@@ -4,7 +4,6 @@ import { BlogPostPageTitleMotionProps } from "@/src/interfaces/Hub";
 
 const BlogPostPageTitleMotion = ({
   pageTitle,
-  categoryTitle,
   postTitle,
 }: BlogPostPageTitleMotionProps) => {
   return (
@@ -27,14 +26,6 @@ const BlogPostPageTitleMotion = ({
           {pageTitle}
         </motion.h2>
       </motion.div>
-      <motion.h3
-        animate={{ opacity: 1, y: 0 }}
-        className="text-xl mt-2 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto p-5"
-        initial={{ opacity: 0, y: 50 }}
-        transition={{ duration: 0.5 }}
-      >
-        {categoryTitle}
-      </motion.h3>
     </>
   );
 };

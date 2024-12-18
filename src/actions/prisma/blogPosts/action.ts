@@ -4,6 +4,7 @@ import { BlogPostCategory, PrismaClient } from "@prisma/client";
 import { z } from "zod";
 
 import { BlogPost, PostDataProps, PostTypes } from "@/src/interfaces/Hub";
+import { refactorBlogPostsResponse } from "@/src/lib/actionHelpers";
 // import { revalidatePath } from "next/cache";
 
 const prisma = new PrismaClient();
@@ -185,17 +186,7 @@ export async function getLatestArticlesAndProjects(postType: PostTypes) {
       },
     });
 
-    const res = {
-      posts:
-        data.length > 0
-          ? data.map((p) => ({
-              title: p.title,
-              thumbnail: "/assets/thumbnail-placeholder.webp",
-              description: `Upcoming ${p.category.toLocaleLowerCase()} description.`,
-              href: `/knowledge-hub/${postType}/${p.slug}`,
-            }))
-          : [],
-    };
+    const res = refactorBlogPostsResponse(data, postType);
 
     return res;
   } catch (error: any) {
@@ -204,5 +195,49 @@ export async function getLatestArticlesAndProjects(postType: PostTypes) {
     return null;
   } finally {
     await prisma.$disconnect();
+  }
+}
+
+export async function getPublishedArticles() {
+  try {
+    const data: BlogPost[] = await prisma.blogPost.findMany({
+      where: {
+        category: "ARTICLE",
+        published: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    const res = refactorBlogPostsResponse(data, "articles-and-tutorials");
+
+    return res;
+  } catch (error: any) {
+    console.log("Error getting published articles:", error);
+
+    return [];
+  }
+}
+
+export async function getPublishedProjects() {
+  try {
+    const data: BlogPost[] = await prisma.blogPost.findMany({
+      where: {
+        category: "PROJECT",
+        published: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    const res = refactorBlogPostsResponse(data, "projects-showcase");
+
+    return res;
+  } catch (error: any) {
+    console.log("Error getting published projects:", error);
+
+    return [];
   }
 }

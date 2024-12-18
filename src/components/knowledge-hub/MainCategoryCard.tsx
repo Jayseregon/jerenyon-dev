@@ -9,9 +9,10 @@ import {
   CardBody,
 } from "@nextui-org/react";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-import { Article, MainCategoryCardProps } from "@/interfaces/Hub";
+import { BlogPostRefactor, MainCategoryCardProps } from "@/interfaces/Hub";
 import { getLatestArticlesAndProjects } from "@/actions/prisma/blogPosts/action";
 
 const MainCategoryCard = ({
@@ -22,15 +23,17 @@ const MainCategoryCard = ({
   buttonText,
   footerText,
   articleCategory,
+  href,
 }: MainCategoryCardProps) => {
-  const [articles, setArticles] = useState<Article[]>([]);
+  const [articles, setArticles] = useState<BlogPostRefactor[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchArticles = async () => {
       const data = await getLatestArticlesAndProjects(articleCategory);
 
-      if (data && data.posts.length > 0) {
-        setArticles(data.posts);
+      if (data && data.length > 0) {
+        setArticles(data);
       }
     };
 
@@ -91,6 +94,7 @@ const MainCategoryCard = ({
                 color="primary"
                 radius="full"
                 size="sm"
+                onPress={() => router.push(href)}
               >
                 {buttonText}
               </Button>
