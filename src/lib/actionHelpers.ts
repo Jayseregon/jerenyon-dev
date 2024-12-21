@@ -10,6 +10,9 @@ export const refactorBlogPostsResponse = (
         thumbnail: "/assets/thumbnail-placeholder.webp",
         description: p.summary,
         href: `/knowledge-hub/${postType}/${p.slug}`,
+        publishedDate: p.publishedAt
+          ? new Date(p.publishedAt).toLocaleDateString("en-CA") // formats as YYYY-MM-DD in local timezone
+          : undefined,
       }))
     : [];
 };

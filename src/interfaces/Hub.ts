@@ -11,6 +11,7 @@ export interface BlogPost {
   published: boolean;
   author: string;
   summary: string;
+  publishedAt?: Date | null;
 }
 
 export interface BlogPostRefactor {
@@ -18,6 +19,7 @@ export interface BlogPostRefactor {
   title: string;
   description: string;
   href: string;
+  publishedDate?: string;
 }
 
 export interface MainCategoryCardProps {

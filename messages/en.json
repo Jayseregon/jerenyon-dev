@@ -85,6 +85,22 @@
         "imgAlt": "Projects category card background.",
         "btnLabel": "See More"
       }
+    },
+    "subDashboards": {
+      "articles_and_tutorials": {
+        "title": "Articles & Turorials",
+        "hero": {
+          "title": "Shared Insights and Expertise.",
+          "subtitle": "In-depth articles and hands-on tutorials to empower your projects."
+        }
+      },
+      "projects_showcase": {
+        "title": "Projects Showcase",
+        "hero": {
+          "title": "Innovative Solutions, Built with Passion.",
+          "subtitle": "Explore the tools and solutions that drive innovation at Jerenyon Dev."
+        }
+      }
     }
   },
   "contact": {

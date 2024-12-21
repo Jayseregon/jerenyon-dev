@@ -299,6 +299,13 @@ export default function ContentEditorPage() {
               </SelectItem>
             </Select>
           </div>
+          <div className="flex w-full p-2 text-center text-purple-800 dark:text-purple-300">
+            {selectedPost?.publishedAt && (
+              <p className="text-sm mb-2">
+                Published: {new Date(selectedPost.publishedAt).toLocaleString()}
+              </p>
+            )}
+          </div>
 
           <div className="w-full">
             <TiptapEditor content={content} setContent={setContent} />

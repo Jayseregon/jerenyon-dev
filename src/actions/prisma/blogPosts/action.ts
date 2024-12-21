@@ -14,11 +14,19 @@ const postDataSchema = z.object({
   title: z.string().min(1, "Title is required"),
   content: z.string().trim().min(1, "Content cannot be empty"),
   category: z.nativeEnum(BlogPostCategory),
-  summary: z.string().trim().min(1, "Summary is required"),
+  summary: z
+    .string()
+    .trim()
+    .min(1, "Summary is required")
+    .max(200, "Summary is too long"),
   published: z.boolean().default(false),
 });
 
-const updatePostDataSchema = postDataSchema.partial();
+const updatePostDataSchema = postDataSchema
+  .extend({
+    publishedAt: z.date().nullish(),
+  })
+  .partial();
 
 export async function getSinglePost(slug: string) {
   try {
@@ -76,16 +84,33 @@ export async function createPost(formData: PostDataProps) {
       };
     }
 
-    await prisma.blogPost.create({
-      data: {
-        title,
-        content,
-        slug,
-        category,
-        summary,
-        published: published,
-      },
-    });
+    if (published) {
+      await prisma.blogPost.create({
+        data: {
+          title,
+          content,
+          slug,
+          category,
+          summary,
+          published: published,
+          publishedAt: new Date(
+            new Date().toLocaleString("en-US", { timeZone: "Europe/Paris" }),
+          ),
+        },
+      });
+    } else {
+      await prisma.blogPost.create({
+        data: {
+          title,
+          content,
+          slug,
+          category,
+          summary,
+          published: published,
+          publishedAt: null,
+        },
+      });
+    }
 
     // revalidatePath("/hobbiton/content-editor");
     return {
@@ -114,6 +139,16 @@ export async function updatePost(slug: string, data: Partial<BlogPost>) {
   try {
     // Validate the data
     const validData = updatePostDataSchema.parse(data);
+
+    const existingPost = await prisma.blogPost.findUnique({ where: { slug } });
+
+    if (validData.published && !existingPost?.publishedAt) {
+      validData.publishedAt = new Date(
+        new Date().toLocaleString("en-US", { timeZone: "Europe/Paris" }),
+      );
+    } else {
+      delete validData.publishedAt;
+    }
 
     await prisma.blogPost.update({
       where: { slug },
@@ -182,7 +217,7 @@ export async function getLatestArticlesAndProjects(postType: PostTypes) {
       },
       take: 3,
       orderBy: {
-        createdAt: "desc",
+        publishedAt: "desc",
       },
     });
 
@@ -206,7 +241,7 @@ export async function getPublishedArticles() {
         published: true,
       },
       orderBy: {
-        createdAt: "desc",
+        publishedAt: "desc",
       },
     });
 
@@ -228,7 +263,7 @@ export async function getPublishedProjects() {
         published: true,
       },
       orderBy: {
-        createdAt: "desc",
+        publishedAt: "desc",
       },
     });
 

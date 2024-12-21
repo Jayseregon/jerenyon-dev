@@ -11,6 +11,7 @@ import {
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { motion } from "motion/react";
 
 import { BlogPostRefactor, MainCategoryCardProps } from "@/interfaces/Hub";
 import { getLatestArticlesAndProjects } from "@/actions/prisma/blogPosts/action";
@@ -63,9 +64,12 @@ const MainCategoryCard = ({
             <CardBody className="px-4">
               {articles.map((article, index) => (
                 <Link key={index} href={article.href}>
-                  <div
+                  <motion.div
                     key={index}
-                    className="flex cursor-pointer hover:scale-105 transition-transform items-start mb-4 bg-white p-2 rounded-lg shadow-md"
+                    className="flex cursor-pointer items-start mb-4 bg-white p-2 rounded-lg shadow-md"
+                    transition={{ type: "spring", stiffness: 300 }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     <Image
                       removeWrapper
@@ -81,7 +85,7 @@ const MainCategoryCard = ({
                         {article.description}
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 </Link>
               ))}
             </CardBody>

@@ -85,6 +85,22 @@
         "imgAlt": "Arrière-plan de la carte de catégorie Projets.",
         "btnLabel": "Voir Plus"
       }
+    },
+    "subDashboards": {
+      "articles_and_tutorials": {
+        "title": "Articles & Tutoriels",
+        "hero": {
+          "title": "Partager des idées et des expertises.",
+          "subtitle": "Des articles approfondis et des tutoriels pratiques pour donner vie à vos projets."
+        }
+      },
+      "projects_showcase": {
+        "title": "Présentations de Projets",
+        "hero": {
+          "title": "Solutions innovantes, conçues avec passion.",
+          "subtitle": "Découvrez les outils et solutions qui stimulent l'innovation chez Jerenyon Dev."
+        }
+      }
     }
   },
   "contact": {
