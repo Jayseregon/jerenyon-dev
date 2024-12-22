@@ -66,7 +66,7 @@ const MainCategoryCard = ({
                 <Link key={index} href={article.href}>
                   <motion.div
                     key={index}
-                    className="flex cursor-pointer items-start mb-4 bg-white p-2 rounded-lg shadow-md"
+                    className="flex cursor-pointer items-start mb-4 bg-background p-4 rounded-lg shadow-md border border-purple-800 dark:border-purple-300"
                     transition={{ type: "spring", stiffness: 300 }}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -74,14 +74,14 @@ const MainCategoryCard = ({
                     <Image
                       removeWrapper
                       alt={article.title}
-                      className="w-12 h-12 mr-4 rounded-lg"
+                      className="w-16 h-16 mr-4 rounded-lg"
                       src={article.thumbnail}
                     />
                     <div>
-                      <h5 className="text-lg font-semibold text-foreground dark:text-background">
+                      <h5 className="text-xl font-bold text-purple-800 dark:text-purple-300 text-left">
                         {article.title}
                       </h5>
-                      <p className="text-sm text-gray-600">
+                      <p className="text text-justify text-pretty text-foreground">
                         {article.description}
                       </p>
                     </div>

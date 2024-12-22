@@ -28,10 +28,10 @@ export const BlogPostBoardTile = ({
             className="float-left w-20 h-20 mr-4 mb-2 rounded-lg"
             src={article.thumbnail}
           />
-          <h5 className="text-xl mb-2 font-bold text-purple-800 dark:text-purple-300 text-left">
+          <h5 className="text-2xl mb-2 font-bold text-purple-800 dark:text-purple-300 text-left">
             {article.title}
           </h5>
-          <p className="text-sm text-justify text-pretty text-foreground">
+          <p className="text text-justify text-pretty text-foreground">
             {article.description.slice(0, 200)}
           </p>
           <div className="flex items-center justify-end gap-2 mt-2 text-sm text-purple-800/70 dark:text-purple-300/70">

@@ -9,7 +9,7 @@ export const BlogPostsBoard = ({ data }: { data: BlogPostRefactor[] }) => {
   const thirdColumn = data.filter((_, index) => index % 3 === 2);
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="mx-auto">
       <Breadcrumbs />
       <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
         <div className="flex flex-col gap-8">

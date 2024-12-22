@@ -58,12 +58,12 @@ export const siteConfig = {
     {
       label: "articles-and-tutorials",
       rootRef: "/knowledge-hub",
-      imgBg: "/assets/blogs-articles.webp",
+      imgBg: "/assets/blogs-articles-2.webp",
     },
     {
       label: "projects-showcase",
       rootRef: "/knowledge-hub",
-      imgBg: "/assets/projects.webp",
+      imgBg: "/assets/projects-2.webp",
     },
   ],
   links: {},
