@@ -101,6 +101,12 @@
           "subtitle": "Explore the tools and solutions that drive innovation at Jerenyon Dev."
         }
       }
+    },
+    "blogPostDrawer": {
+      "summary": "Summary",
+      "published": "First time published: ",
+      "updated": "Last updated: ",
+      "author": "Author: "
     }
   },
   "contact": {

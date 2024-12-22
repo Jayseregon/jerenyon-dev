@@ -70,7 +70,13 @@ export async function createPost(formData: PostDataProps) {
     const data = postDataSchema.parse(formData);
     const { title, content, category, summary, published } = data;
 
-    const slug = title.toLowerCase().replace(/ /g, "-");
+    const slug = title
+      .toLowerCase()
+      .replace(/[^a-zA-Z0-9\s-]/g, "") // Remove special characters
+      .replace(/\s+/g, "-") // Replace spaces with hyphens
+      .replace(/-+/g, "-") // Replace multiple hyphens with single hyphen
+      .trim() // Remove leading/trailing spaces
+      .replace(/^-+|-+$/g, ""); // Remove leading/trailing hyphens
 
     // Check if slug exists
     const existingPost = await prisma.blogPost.findUnique({

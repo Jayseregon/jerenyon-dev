@@ -20,7 +20,5 @@ export default async function ArticlesAndTutorialsReaderPage(props: {
     category: postDb.category as BlogPostCategory,
   };
 
-  return (
-    <BlogPostReader content={postObject.content} title={postObject.title} />
-  );
+  return <BlogPostReader post={postObject} />;
 }

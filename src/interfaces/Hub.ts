@@ -42,8 +42,7 @@ export interface PostPushCardProps {
 export type PostTypes = "articles-and-tutorials" | "projects-showcase";
 
 export interface BLogPostReaderProps {
-  content: string;
-  title: string;
+  post: BlogPost;
 }
 
 export interface BlogPostPageTitleMotionProps {

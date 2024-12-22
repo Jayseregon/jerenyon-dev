@@ -19,6 +19,8 @@ import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import Image from "@tiptap/extension-image";
 import { JSONContent } from "@tiptap/core";
+import { all, createLowlight } from "lowlight";
+import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 
 import { TiptapMenuBar } from "./TiptapMenuBar";
 
@@ -28,6 +30,8 @@ interface EditorProps {
   initialContent?: JSONContent;
   editable?: boolean;
 }
+
+const lowlight = createLowlight(all);
 
 export const TiptapEditor = ({
   content,
@@ -70,6 +74,10 @@ export const TiptapEditor = ({
           class: "max-w-full rounded-lg",
         },
       }),
+      CodeBlockLowlight.configure({
+        lowlight,
+        defaultLanguage: "python",
+      }),
     ],
     content: initialContent || content,
     onUpdate: ({ editor }) => {
@@ -78,7 +86,7 @@ export const TiptapEditor = ({
     editable: editable,
     editorProps: {
       attributes: {
-        class: `prose light:prose-lightTheme dark:prose-darkTheme max-w-none min-h-[300px] focus:outline-none px-4 py-2`,
+        class: `prose prose-lightTheme dark:prose-darkTheme max-w-none min-h-[300px] focus:outline-none p-10`,
         style: "text-align: left;",
       },
     },
@@ -87,7 +95,11 @@ export const TiptapEditor = ({
 
   useEffect(() => {
     if (editor && content) {
-      editor.commands.setContent(content);
+      const current = editor.getJSON();
+
+      if (JSON.stringify(current) !== JSON.stringify(content)) {
+        editor.commands.setContent(content);
+      }
     }
   }, [editor, content]);
 

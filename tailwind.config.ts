@@ -23,169 +23,31 @@ const config: import("tailwindcss").Config = {
         normal: "400",
         bold: "700",
       },
-      typography: (theme: (arg0: string) => any) => ({
+      typography: (theme: (key: string) => any) => ({
         lightTheme: {
           css: {
-            "--tw-prose-body": "#1D1B3C",
-            "--tw-prose-headings": "#1D1B3C",
-            "--tw-prose-lead": "#934DFF",
-            "--tw-prose-links": "#934DFF",
-            "--tw-prose-bold": "#1D1B3C",
-            "--tw-prose-counters": "#A766FF",
-            "--tw-prose-bullets": "#C799FF",
-            "--tw-prose-hr": "#D4B3FF",
-            "--tw-prose-quotes": "#1D1B3C",
-            "--tw-prose-quote-borders": "#D4B3FF",
-            "--tw-prose-captions": "#934DFF",
-            "--tw-prose-code": "#1D1B3C",
-            "--tw-prose-pre-code": "#F7F3FF",
-            "--tw-prose-pre-bg": "#934DFF",
-            "--tw-prose-th-borders": "#D4B3FF",
-            "--tw-prose-td-borders": "#EEE5FF",
-            "--tw-prose-invert-body": "#EDE9F6",
-            "--tw-prose-invert-headings": "#EDE9F6",
-            "--tw-prose-invert-lead": "#AB79F8",
-            "--tw-prose-invert-links": "#AB79F8",
-            "--tw-prose-invert-bold": "#EDE9F6",
-            "--tw-prose-invert-counters": "#D19CFF",
-            "--tw-prose-invert-bullets": "#E4AEFF",
-            "--tw-prose-invert-hr": "#6D4AAA",
-            "--tw-prose-invert-quotes": "#EDE9F6",
-            "--tw-prose-invert-quote-borders": "#6D4AAA",
-            "--tw-prose-invert-captions": "#AB79F8",
-            "--tw-prose-invert-code": "#EDE9F6",
-            "--tw-prose-invert-pre-code": "#2E1D4A",
-            "--tw-prose-invert-pre-bg": "rgb(0 0 0 / 50%)",
-            "--tw-prose-invert-th-borders": "#6D4AAA",
-            "--tw-prose-invert-td-borders": "#432C6A",
-            p: {
-              marginTop: "0rem",
-              marginBottom: "0rem",
-              lineHeight: "1",
-              whiteSpace: "pre-wrap", // Preserve whitespace
-            },
-            "h1, h2, h3, h4, h5, h6": {
-              marginTop: "1.5rem", // Reduced top margin for headings
-              marginBottom: "0.75rem", // Reduced bottom margin for headings
-              lineHeight: "1", // Adjusted line height for headings
-            },
-            "ul, ol": {
-              marginTop: "0rem", // Reduced top margin for lists
-              marginBottom: "0rem", // Reduced bottom margin for lists
-              paddingLeft: "1rem", // Adjusted padding for list items
-              lineHeight: "1", // Adjusted line height for better spacing
-            },
+            "--tw-prose-body": theme("colors.gray.900"),
+            "--tw-prose-headings": theme("colors.gray.900"),
+            "--tw-prose-links": theme("colors.purple.600"),
+            "--tw-prose-bold": theme("colors.gray.900"),
+            "--tw-prose-quotes": theme("colors.gray.900"),
+            "--tw-prose-quote-borders": theme("colors.purple.300"),
             blockquote: {
-              marginTop: "1rem",
-              marginBottom: "1rem",
-              paddingLeft: "1rem",
-              borderLeftWidth: "4px",
-              borderLeftColor: theme("colors.purple.500"),
+              borderLeftColor: theme("colors.purple.300"),
             },
-            code: {
-              backgroundColor: theme("colors.gray.100"),
-              padding: "0.2rem 0.4rem",
-              borderRadius: "0.25rem",
-            },
-            pre: {
-              backgroundColor: theme("colors.gray.800"),
-              color: theme("colors.gray.100"),
-              padding: "1rem",
-              borderRadius: "0.5rem",
-              overflowX: "auto",
-            },
-            hr: {
-              borderColor: theme("colors.purple.300"),
-              marginTop: "2rem",
-              marginBottom: "2rem",
-            },
-            // Add text alignment utilities
-            ".text-left": { textAlign: "left" },
-            ".text-center": { textAlign: "center" },
-            ".text-right": { textAlign: "right" },
-            ".text-justify": { textAlign: "justify" },
           },
         },
         darkTheme: {
           css: {
-            "--tw-prose-body": "#EDE9F6",
-            "--tw-prose-headings": "#EDE9F6",
-            "--tw-prose-lead": "#AB79F8",
-            "--tw-prose-links": "#AB79F8",
-            "--tw-prose-bold": "#EDE9F6",
-            "--tw-prose-counters": "#D19CFF",
-            "--tw-prose-bullets": "#E4AEFF",
-            "--tw-prose-hr": "#6D4AAA",
-            "--tw-prose-quotes": "#EDE9F6",
-            "--tw-prose-quote-borders": "#6D4AAA",
-            "--tw-prose-captions": "#AB79F8",
-            "--tw-prose-code": "#EDE9F6",
-            "--tw-prose-pre-code": "#2E1D4A",
-            "--tw-prose-pre-bg": "#AB79F8",
-            "--tw-prose-th-borders": "#6D4AAA",
-            "--tw-prose-td-borders": "#432C6A",
-            "--tw-prose-invert-body": "#1D1B3C",
-            "--tw-prose-invert-headings": "#1D1B3C",
-            "--tw-prose-invert-lead": "#934DFF",
-            "--tw-prose-invert-links": "#934DFF",
-            "--tw-prose-invert-bold": "#1D1B3C",
-            "--tw-prose-invert-counters": "#A766FF",
-            "--tw-prose-invert-bullets": "#C799FF",
-            "--tw-prose-invert-hr": "#D4B3FF",
-            "--tw-prose-invert-quotes": "#1D1B3C",
-            "--tw-prose-invert-quote-borders": "#D4B3FF",
-            "--tw-prose-invert-captions": "#934DFF",
-            "--tw-prose-invert-code": "#1D1B3C",
-            "--tw-prose-invert-pre-code": "#F7F3FF",
-            "--tw-prose-invert-pre-bg": "rgb(0 0 0 / 50%)",
-            "--tw-prose-invert-th-borders": "#D4B3FF",
-            "--tw-prose-invert-td-borders": "#EEE5FF",
-            p: {
-              marginTop: "0rem",
-              marginBottom: "0rem",
-              lineHeight: "1",
-              whiteSpace: "pre-wrap", // Preserve whitespace
-            },
-            "h1, h2, h3, h4, h5, h6": {
-              marginTop: "1.5rem", // Reduced top margin for headings
-              marginBottom: "0.75rem", // Reduced bottom margin for headings
-              lineHeight: "1", // Adjusted line height for headings
-            },
-            "ul, ol": {
-              marginTop: "0rem", // Reduced top margin for lists
-              marginBottom: "0rem", // Reduced bottom margin for lists
-              paddingLeft: "1rem", // Adjusted padding for list items
-              lineHeight: "1", // Adjusted line height for better spacing
-            },
+            "--tw-prose-body": theme("colors.gray.100"),
+            "--tw-prose-headings": theme("colors.gray.100"),
+            "--tw-prose-links": theme("colors.purple.400"),
+            "--tw-prose-bold": theme("colors.gray.100"),
+            "--tw-prose-quotes": theme("colors.gray.100"),
+            "--tw-prose-quote-borders": theme("colors.purple.700"),
             blockquote: {
-              marginTop: "1rem",
-              marginBottom: "1rem",
-              paddingLeft: "1rem",
-              borderLeftWidth: "4px",
-              borderLeftColor: theme("colors.purple.500"),
+              borderLeftColor: theme("colors.purple.700"),
             },
-            code: {
-              backgroundColor: theme("colors.gray.700"),
-              padding: "0.2rem 0.4rem",
-              borderRadius: "0.25rem",
-            },
-            pre: {
-              backgroundColor: theme("colors.gray.900"),
-              color: theme("colors.gray.100"),
-              padding: "1rem",
-              borderRadius: "0.5rem",
-              overflowX: "auto",
-            },
-            hr: {
-              borderColor: theme("colors.purple.700"),
-              marginTop: "2rem",
-              marginBottom: "2rem",
-            },
-            // Add text alignment utilities
-            ".text-left": { textAlign: "left" },
-            ".text-center": { textAlign: "center" },
-            ".text-right": { textAlign: "right" },
-            ".text-justify": { textAlign: "justify" },
           },
         },
       }),

@@ -101,6 +101,12 @@
           "subtitle": "Découvrez les outils et solutions qui stimulent l'innovation chez Jerenyon Dev."
         }
       }
+    },
+    "blogPostDrawer": {
+      "summary": "Résumé",
+      "published": "Première publication : ",
+      "updated": "Dernière mise à jour : ",
+      "author": "Auteur : "
     }
   },
   "contact": {

@@ -147,6 +147,12 @@ export const TiptapMenuBar = ({ editor }: { editor: Editor }) => {
             </MenuButton>
           ),
         )}
+        <MenuButton
+          isActive={editor.isActive("codeBlock")}
+          onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+        >
+          Code
+        </MenuButton>
       </div>
       <div className="flex space-x-2">
         {headerButtons.map(({ icon, onClick, isActive }, index) => (
