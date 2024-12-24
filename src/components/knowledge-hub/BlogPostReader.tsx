@@ -1,7 +1,9 @@
 "use client";
 
+import type { Editor, JSONContent } from "@tiptap/core";
+
 import { Card, useDisclosure, Button } from "@nextui-org/react";
-import { useContext } from "react";
+import { useContext, useState, useMemo } from "react";
 import { Paperclip } from "lucide-react";
 
 import { NonceContext } from "@/src/app/providers";
@@ -14,6 +16,24 @@ import { BlogPostDrawer } from "@/components/knowledge-hub/BlogPostDrawer";
 export const BlogPostReader = ({ post }: BLogPostReaderProps) => {
   const nonce = useContext(NonceContext);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [editor, setEditor] = useState<Editor | undefined>();
+  const [tocItems, setTocItems] = useState<any[]>([]);
+
+  // Memoize parsed JSON so TiptapEditor always
+  // sees the same reference and doesn't re-init infinitely.
+  const parsedContent = useMemo(
+    () => JSON.parse(post.content) as JSONContent,
+    [post.content],
+  );
+
+  const handleEditorReady = (instance: Editor) => {
+    // Only set editor if not previously set, preventing infinite re-renders
+    setEditor((prev) => (prev ? prev : instance));
+  };
+
+  const handleTocItemsUpdate = (items: any[]) => {
+    setTocItems(items);
+  };
 
   return (
     <>
@@ -26,7 +46,12 @@ export const BlogPostReader = ({ post }: BLogPostReaderProps) => {
         nonce={nonce}
       >
         <div className="w-full mx-auto">
-          <TiptapEditor content={JSON.parse(post.content)} editable={false} />
+          <TiptapEditor
+            content={parsedContent}
+            editable={false}
+            onEditorReady={handleEditorReady}
+            onTocItemsUpdate={handleTocItemsUpdate}
+          />
         </div>
       </Card>
       <Button
@@ -37,7 +62,13 @@ export const BlogPostReader = ({ post }: BLogPostReaderProps) => {
       >
         <Paperclip />
       </Button>
-      <BlogPostDrawer isOpen={isOpen} post={post} onOpenChange={onOpenChange} />
+      <BlogPostDrawer
+        editor={editor}
+        isOpen={isOpen}
+        post={post}
+        tocItems={tocItems}
+        onOpenChange={onOpenChange}
+      />
     </>
   );
 };

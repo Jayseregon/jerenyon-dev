@@ -11,8 +11,10 @@ import { PanelRightClose } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { ErrorBoundary } from "react-error-boundary";
 import { useState } from "react";
+import { Editor } from "@tiptap/react";
 
 import { BlogPost } from "@/src/interfaces/Hub";
+import { TiptapToC } from "@/src/components/hobbiton/TiptapToC";
 
 import { BlogPostTags } from "./BlogPostTags";
 
@@ -52,12 +54,16 @@ interface BlogPostDrawerProps {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
   post: BlogPost;
+  editor?: Editor;
+  tocItems?: any[]; // or your typed items
 }
 
 export function BlogPostDrawer({
   isOpen,
   onOpenChange,
   post,
+  editor,
+  tocItems,
 }: BlogPostDrawerProps) {
   const t = useTranslations("knowledge-hub");
   const [isLoading, setIsLoading] = useState(true);
@@ -108,6 +114,7 @@ export function BlogPostDrawer({
                 {t("blogPostDrawer.summary")}
               </h2>
               <p className="text-sm mb-4">{post.summary}</p>
+              <TiptapToC editor={editor} items={tocItems} />
               <BlogPostTags className="my-3" tags={post.tags.slice(0, 5)} />
               <BlogPostMetadata post={post} t={t} />
             </DrawerBody>

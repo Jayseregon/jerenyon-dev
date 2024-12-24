@@ -18,9 +18,13 @@ import TableRow from "@tiptap/extension-table-row";
 import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import Image from "@tiptap/extension-image";
-import { JSONContent } from "@tiptap/core";
+import { Editor, JSONContent } from "@tiptap/core";
 import { all, createLowlight } from "lowlight";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
+import {
+  getHierarchicalIndexes,
+  TableOfContents,
+} from "@tiptap-pro/extension-table-of-contents";
 
 import { TiptapMenuBar } from "./TiptapMenuBar";
 
@@ -29,6 +33,8 @@ interface EditorProps {
   setContent?: (content: JSONContent | undefined) => void;
   initialContent?: JSONContent;
   editable?: boolean;
+  onEditorReady?: (editor: Editor) => void;
+  onTocItemsUpdate?: (items: any[]) => void;
 }
 
 const lowlight = createLowlight(all);
@@ -38,7 +44,11 @@ export const TiptapEditor = ({
   setContent,
   initialContent,
   editable = true,
+  onEditorReady,
+  onTocItemsUpdate,
 }: EditorProps) => {
+  // const [tocItems, setTocItems] = useState<any[]>([]); // store TOC items
+
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -78,6 +88,13 @@ export const TiptapEditor = ({
         lowlight,
         defaultLanguage: "python",
       }),
+      TableOfContents.configure({
+        getIndex: getHierarchicalIndexes,
+        onUpdate(newItems) {
+          // setTocItems(newItems);
+          onTocItemsUpdate?.(newItems);
+        },
+      }),
     ],
     content: initialContent || content,
     onUpdate: ({ editor }) => {
@@ -92,6 +109,12 @@ export const TiptapEditor = ({
     },
     immediatelyRender: false, // fix SSR hydration issues
   });
+
+  useEffect(() => {
+    if (editor) {
+      onEditorReady?.(editor);
+    }
+  }, [editor, onEditorReady]);
 
   useEffect(() => {
     if (editor && content) {
@@ -112,11 +135,11 @@ export const TiptapEditor = ({
   }, [editor]);
 
   return (
-    <div>
+    <>
       {editable && editor && <TiptapMenuBar editor={editor} />}
       <div className="rounded-lg border border-purple-800 dark:border-purple-300 shadow-lg">
-        <EditorContent editor={editor} />
+        {editor && <EditorContent editor={editor} />}
       </div>
-    </div>
+    </>
   );
 };

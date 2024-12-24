@@ -15,6 +15,12 @@ import {
   AlignJustify,
   AlignRight,
   Quote,
+  Heading1,
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading5,
+  Heading6,
 } from "lucide-react";
 
 const MenuButton = ({
@@ -120,17 +126,28 @@ export const TiptapMenuBar = ({ editor }: { editor: Editor }) => {
     },
   ];
 
-  const headerButtons = [1, 2, 3, 4, 5, 6].map((level) => ({
-    icon: `H${level}`,
-    onClick: () => {
-      editor
-        .chain()
-        .focus()
-        .toggleHeading({ level: level as 1 | 2 | 3 | 4 | 5 | 6 })
-        .run();
-    },
-    isActive: editor.isActive("heading", { level }),
-  }));
+  const headerButtons = [1, 2, 3, 4, 5, 6].map((level) => {
+    const HeadingIcon = {
+      1: <Heading1 className="w-4 h-4" />,
+      2: <Heading2 className="w-4 h-4" />,
+      3: <Heading3 className="w-4 h-4" />,
+      4: <Heading4 className="w-4 h-4" />,
+      5: <Heading5 className="w-4 h-4" />,
+      6: <Heading6 className="w-4 h-4" />,
+    }[level];
+
+    return {
+      icon: HeadingIcon,
+      onClick: () => {
+        editor
+          .chain()
+          .focus()
+          .toggleHeading({ level: level as 1 | 2 | 3 | 4 | 5 | 6 })
+          .run();
+      },
+      isActive: editor.isActive("heading", { level }),
+    };
+  });
 
   return (
     <div className="flex flex-col my-2">
