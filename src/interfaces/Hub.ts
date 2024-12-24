@@ -1,4 +1,4 @@
-import { $Enums, BlogPostCategory } from "@prisma/client";
+import { BlogPostCategory } from "@prisma/client";
 
 export interface BlogPost {
   id: string;
@@ -12,6 +12,12 @@ export interface BlogPost {
   author: string;
   summary: string;
   publishedAt?: Date | null;
+  tags: Tag[];
+}
+
+export interface Tag {
+  id: string;
+  name: string;
 }
 
 export interface BlogPostRefactor {
@@ -20,6 +26,7 @@ export interface BlogPostRefactor {
   description: string;
   href: string;
   publishedDate?: string;
+  tags: Tag[];
 }
 
 export interface MainCategoryCardProps {
@@ -53,7 +60,16 @@ export interface BlogPostPageTitleMotionProps {
 export interface PostDataProps {
   title: string;
   content: string;
-  category: $Enums.BlogPostCategory;
+  category: BlogPostCategory;
   published: boolean;
   summary: string;
+  tags: string[];
+  publishedAt?: Date | null;
+}
+
+export interface TagInputProps {
+  existingTags: Tag[];
+  selectedTags: string[];
+  onChange: (tags: string[]) => void;
+  nonce?: string;
 }

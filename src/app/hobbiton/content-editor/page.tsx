@@ -16,13 +16,15 @@ import { JSONContent } from "@tiptap/core";
 
 import { NonceContext } from "@/src/app/providers";
 import { TiptapEditor } from "@/components/hobbiton/TiptapEditor";
-import { BlogPost, PostDataProps } from "@/src/interfaces/Hub";
+import { BlogPost, PostDataProps, Tag } from "@/src/interfaces/Hub";
 import {
   createPost,
   getAllPosts,
   updatePost,
   deletePost,
+  getAllTags,
 } from "@/actions/prisma/blogPosts/action";
+import { TagInput } from "@/components/hobbiton/TagInput";
 
 export default function ContentEditorPage() {
   const nonce = useContext(NonceContext);
@@ -39,6 +41,8 @@ export default function ContentEditorPage() {
   const [category, setCategory] = useState<BlogPostCategory>(
     BlogPostCategory.ARTICLE,
   );
+  const [tags, setTags] = useState<string[]>([]);
+  const [existingTags, setExistingTags] = useState<Tag[]>([]);
 
   const loadingSpinner = (
     <Spinner
@@ -50,20 +54,25 @@ export default function ContentEditorPage() {
     />
   );
 
-  // Extract fetchPosts outside of useEffect for reuse
-  const fetchPosts = async () => {
-    const postsData = await getAllPosts();
+  // Extract loadData outside of useEffect for reuse
+  const loadData = async () => {
+    const [postsData, tagsData] = await Promise.all([
+      getAllPosts(),
+      getAllTags(),
+    ]);
 
     // Sort posts by updatedAt date in descending order
     postsData.sort(
       (a, b) =>
         new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
     );
+
     setPosts(postsData);
+    setExistingTags(tagsData);
   };
 
   useEffect(() => {
-    fetchPosts();
+    loadData();
   }, []);
 
   // Group posts by category
@@ -84,6 +93,7 @@ export default function ContentEditorPage() {
     setTitleError("");
     setSummary("");
     setPublished(false);
+    setTags([]);
   };
 
   const handlePostSelect = async (post: BlogPost) => {
@@ -93,6 +103,7 @@ export default function ContentEditorPage() {
     setContent(JSON.parse(post.content));
     setSummary(post.summary);
     setPublished(post.published);
+    setTags(post.tags.map((tag) => tag.name));
   };
 
   const handleSubmit = async (formDataEvent: FormData) => {
@@ -113,6 +124,7 @@ export default function ContentEditorPage() {
         category: formData.category,
         summary: formData.summary,
         published: formData.published === "true",
+        tags: tags,
       };
 
       let response;
@@ -129,7 +141,7 @@ export default function ContentEditorPage() {
         // Reset form fields
         handleReset();
         // Refresh posts and editor
-        await fetchPosts();
+        await loadData();
       }
     } catch (error) {
       console.error("Failed to save the blog post: ", error);
@@ -148,7 +160,7 @@ export default function ContentEditorPage() {
         // Reset form fields
         handleReset();
         // Refresh posts
-        await fetchPosts();
+        await loadData();
       } else {
         console.error(response.message);
       }
@@ -298,6 +310,14 @@ export default function ContentEditorPage() {
                 Draft
               </SelectItem>
             </Select>
+          </div>
+          <div className="w-full my-4">
+            <TagInput
+              existingTags={existingTags}
+              nonce={nonce}
+              selectedTags={tags}
+              onChange={setTags}
+            />
           </div>
           <div className="flex w-full p-2 text-center text-purple-800 dark:text-purple-300">
             {selectedPost?.publishedAt && (

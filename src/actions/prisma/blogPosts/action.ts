@@ -20,6 +20,7 @@ const postDataSchema = z.object({
     .min(1, "Summary is required")
     .max(200, "Summary is too long"),
   published: z.boolean().default(false),
+  tags: z.array(z.string()),
 });
 
 const updatePostDataSchema = postDataSchema
@@ -33,6 +34,9 @@ export async function getSinglePost(slug: string) {
     const post = await prisma.blogPost.findUnique({
       where: {
         slug: slug,
+      },
+      include: {
+        tags: true,
       },
     });
 
@@ -51,6 +55,9 @@ export async function getAllPosts() {
     const posts = await prisma.blogPost.findMany({
       orderBy: {
         createdAt: "desc",
+      },
+      include: {
+        tags: true,
       },
     });
 
@@ -102,6 +109,12 @@ export async function createPost(formData: PostDataProps) {
           publishedAt: new Date(
             new Date().toLocaleString("en-US", { timeZone: "Europe/Paris" }),
           ),
+          tags: {
+            connectOrCreate: formData.tags.map((tagName: string) => ({
+              where: { name: tagName },
+              create: { name: tagName },
+            })),
+          },
         },
       });
     } else {
@@ -114,6 +127,12 @@ export async function createPost(formData: PostDataProps) {
           summary,
           published: published,
           publishedAt: null,
+          tags: {
+            connectOrCreate: formData.tags.map((tagName) => ({
+              where: { name: tagName },
+              create: { name: tagName },
+            })),
+          },
         },
       });
     }
@@ -141,7 +160,7 @@ export async function createPost(formData: PostDataProps) {
   }
 }
 
-export async function updatePost(slug: string, data: Partial<BlogPost>) {
+export async function updatePost(slug: string, data: PostDataProps) {
   try {
     // Validate the data
     const validData = updatePostDataSchema.parse(data);
@@ -158,7 +177,16 @@ export async function updatePost(slug: string, data: Partial<BlogPost>) {
 
     await prisma.blogPost.update({
       where: { slug },
-      data: validData,
+      data: {
+        ...validData,
+        tags: {
+          set: [], // First disconnect all tags
+          connectOrCreate: data.tags.map((tagName: string) => ({
+            where: { name: tagName },
+            create: { name: tagName },
+          })),
+        },
+      },
     });
 
     // revalidatePath("/hobbiton/content-editor");
@@ -221,6 +249,9 @@ export async function getLatestArticlesAndProjects(postType: PostTypes) {
         category: category,
         published: true,
       },
+      include: {
+        tags: true,
+      },
       take: 3,
       orderBy: {
         publishedAt: "desc",
@@ -246,6 +277,9 @@ export async function getPublishedArticles() {
         category: "ARTICLE",
         published: true,
       },
+      include: {
+        tags: true,
+      },
       orderBy: {
         publishedAt: "desc",
       },
@@ -268,6 +302,9 @@ export async function getPublishedProjects() {
         category: "PROJECT",
         published: true,
       },
+      include: {
+        tags: true,
+      },
       orderBy: {
         publishedAt: "desc",
       },
@@ -278,6 +315,23 @@ export async function getPublishedProjects() {
     return res;
   } catch (error: any) {
     console.log("Error getting published projects:", error);
+
+    return [];
+  }
+}
+
+// Add new function to get all tags
+export async function getAllTags() {
+  try {
+    const tags = await prisma.tag.findMany({
+      orderBy: {
+        name: "asc",
+      },
+    });
+
+    return tags;
+  } catch (error) {
+    console.error("Error getting tags:", error);
 
     return [];
   }

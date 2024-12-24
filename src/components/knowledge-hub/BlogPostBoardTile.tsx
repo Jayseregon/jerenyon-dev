@@ -5,6 +5,8 @@ import { CalendarDays } from "lucide-react";
 
 import { BlogPostRefactor } from "@/src/interfaces/Hub";
 
+import { BlogPostTags } from "./BlogPostTags";
+
 export const BlogPostBoardTile = ({
   article,
   index,
@@ -34,6 +36,7 @@ export const BlogPostBoardTile = ({
           <p className="text text-justify text-pretty text-foreground">
             {article.description.slice(0, 200)}
           </p>
+          <BlogPostTags className="mt-5" tags={article.tags.slice(0, 5)} />
           <div className="flex items-center justify-end gap-2 mt-2 text-sm text-purple-800/70 dark:text-purple-300/70">
             <CalendarDays size={16} />
             <span>{article.publishedDate}</span>

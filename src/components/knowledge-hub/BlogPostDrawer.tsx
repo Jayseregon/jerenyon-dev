@@ -14,6 +14,8 @@ import { useState } from "react";
 
 import { BlogPost } from "@/src/interfaces/Hub";
 
+import { BlogPostTags } from "./BlogPostTags";
+
 interface BlogPostMetadataProps {
   post: BlogPost;
   t: (key: string) => string;
@@ -106,6 +108,7 @@ export function BlogPostDrawer({
                 {t("blogPostDrawer.summary")}
               </h2>
               <p className="text-sm mb-4">{post.summary}</p>
+              <BlogPostTags className="my-3" tags={post.tags.slice(0, 5)} />
               <BlogPostMetadata post={post} t={t} />
             </DrawerBody>
           </ErrorBoundary>

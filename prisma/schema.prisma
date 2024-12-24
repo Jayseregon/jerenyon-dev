@@ -167,7 +167,6 @@ model BlogPost {
   title       String
   content     String
   category    BlogPostCategory
-  // tags       String[]
   slug        String           @unique
   createdAt   DateTime         @default(now())
   updatedAt   DateTime         @updatedAt
@@ -175,9 +174,19 @@ model BlogPost {
   author      String           @default("Jeremie Bitsch")
   summary     String
   publishedAt DateTime?
+  tags        Tag[]
   // coverImage String?
   // views       Int      @default(0)
   // likes       Int      @default(0)
+
+  @@schema("blog")
+}
+
+model Tag {
+  id        String     @id @default(cuid())
+  name      String     @unique
+  posts     BlogPost[]
+  createdAt DateTime   @default(now())
 
   @@schema("blog")
 }

@@ -16,6 +16,8 @@ import { motion } from "motion/react";
 import { BlogPostRefactor, MainCategoryCardProps } from "@/interfaces/Hub";
 import { getLatestArticlesAndProjects } from "@/actions/prisma/blogPosts/action";
 
+import { BlogPostTags } from "./BlogPostTags";
+
 const MainCategoryCard = ({
   title,
   subtitle,
@@ -61,29 +63,32 @@ const MainCategoryCard = ({
                 {subtitle}
               </p>
             </CardHeader>
-            <CardBody className="px-4">
+            <CardBody className="px-4 space-y-4">
               {articles.map((article, index) => (
                 <Link key={index} href={article.href}>
                   <motion.div
-                    key={index}
-                    className="flex cursor-pointer items-start mb-4 bg-background p-4 rounded-lg shadow-md border border-purple-800 dark:border-purple-300"
+                    className="bg-background p-4 rounded-lg shadow-md border border-purple-800 dark:border-purple-300"
                     transition={{ type: "spring", stiffness: 300 }}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <Image
-                      removeWrapper
-                      alt={article.title}
-                      className="w-16 h-16 mr-4 rounded-lg"
-                      src={article.thumbnail}
-                    />
-                    <div>
-                      <h5 className="text-xl font-bold text-purple-800 dark:text-purple-300 text-left">
+                    <div className="clearfix after:clear-both after:block">
+                      <Image
+                        removeWrapper
+                        alt={article.title}
+                        className="float-left w-16 h-16 mr-4 rounded-lg"
+                        src={article.thumbnail}
+                      />
+                      <h5 className="text-2xl mb-2 font-bold text-purple-800 dark:text-purple-300 text-left">
                         {article.title}
                       </h5>
                       <p className="text text-justify text-pretty text-foreground">
                         {article.description}
                       </p>
+                      <BlogPostTags
+                        className="mt-5 justify-end"
+                        tags={article.tags.slice(0, 5)}
+                      />
                     </div>
                   </motion.div>
                 </Link>
