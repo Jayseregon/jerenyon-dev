@@ -44,7 +44,12 @@ const MenuButton = ({
   </button>
 );
 
-export const TiptapMenuBar = ({ editor }: { editor: Editor }) => {
+type TiptapMenuBarProps = {
+  editor: Editor;
+  isBubbleMenu?: boolean;
+};
+
+export const TiptapMenuBar = ({ editor, isBubbleMenu }: TiptapMenuBarProps) => {
   if (!editor) return null;
 
   const textEditButtonsList = [
@@ -150,7 +155,13 @@ export const TiptapMenuBar = ({ editor }: { editor: Editor }) => {
   });
 
   return (
-    <div className="flex flex-col my-2">
+    <div
+      className={`inline-flex flex-wrap items-center gap-2 my-2 ${
+        isBubbleMenu
+          ? "bg-background p-2 rounded border border-purple-800 dark:border-purple-300"
+          : ""
+      }`}
+    >
       <div className="flex space-x-2">
         {textEditButtonsList.map(
           ({ icon, onClick, isActive, disabled }, index) => (

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEditor, EditorContent } from "@tiptap/react";
+import { useEditor, EditorContent, BubbleMenu } from "@tiptap/react";
 import { useEffect } from "react";
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
@@ -137,6 +137,11 @@ export const TiptapEditor = ({
   return (
     <>
       {editable && editor && <TiptapMenuBar editor={editor} />}
+      {editable && editor && (
+        <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
+          <TiptapMenuBar isBubbleMenu editor={editor} />
+        </BubbleMenu>
+      )}
       <div className="rounded-lg border border-purple-800 dark:border-purple-300 shadow-lg">
         {editor && <EditorContent editor={editor} />}
       </div>
