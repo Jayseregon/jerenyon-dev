@@ -175,7 +175,7 @@ model BlogPost {
   summary     String
   publishedAt DateTime?
   tags        Tag[]
-  // coverImage String?
+  coverImage  String?
   // views       Int      @default(0)
   // likes       Int      @default(0)
 

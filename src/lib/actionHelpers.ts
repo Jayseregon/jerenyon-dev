@@ -7,7 +7,7 @@ export const refactorBlogPostsResponse = (
   return data.length > 0
     ? data.map((p) => ({
         title: p.title,
-        thumbnail: "/assets/thumbnail-placeholder.webp",
+        thumbnail: p.coverImage || "/assets/thumbnail-placeholder.webp",
         description: p.summary,
         href: `/knowledge-hub/${postType}/${p.slug}`,
         publishedDate: p.publishedAt

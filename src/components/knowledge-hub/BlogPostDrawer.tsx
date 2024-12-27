@@ -106,7 +106,7 @@ export function BlogPostDrawer({
                 <Image
                   alt={`Cover image for ${post.title}`}
                   className="mb-4 object-cover w-full h-60"
-                  src="/assets/thumbnail-placeholder.webp"
+                  src={post.coverImage || "/assets/thumbnail-placeholder.webp"}
                   onLoad={handleImageLoad}
                 />
               </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import {
   Button,
   Input,
@@ -25,9 +25,14 @@ import {
   getAllTags,
 } from "@/actions/prisma/blogPosts/action";
 import { TagInput } from "@/components/hobbiton/TagInput";
+import {
+  uploadCoverImageToBunny,
+  deleteCoverImageFromBunny,
+} from "@/actions/bunny/action";
 
 export default function ContentEditorPage() {
   const nonce = useContext(NonceContext);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
@@ -43,6 +48,7 @@ export default function ContentEditorPage() {
   );
   const [tags, setTags] = useState<string[]>([]);
   const [existingTags, setExistingTags] = useState<Tag[]>([]);
+  const [coverImage, setCoverImage] = useState<string>("");
 
   const loadingSpinner = (
     <Spinner
@@ -94,6 +100,10 @@ export default function ContentEditorPage() {
     setSummary("");
     setPublished(false);
     setTags([]);
+    setCoverImage("");
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
   };
 
   const handlePostSelect = async (post: BlogPost) => {
@@ -104,6 +114,46 @@ export default function ContentEditorPage() {
     setSummary(post.summary);
     setPublished(post.published);
     setTags(post.tags.map((tag) => tag.name));
+    setCoverImage(post.coverImage || "");
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
+  const handleCoverImageChange = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    if (!e.target.files?.[0]) return;
+    const file = e.target.files[0];
+
+    try {
+      const buffer = await file.arrayBuffer();
+      const url = await uploadCoverImageToBunny(buffer, file.name);
+
+      setCoverImage(url);
+      // Reset file input after successful upload
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    } catch (error) {
+      console.error("Failed to upload cover image:", error);
+    }
+  };
+
+  const handleRemoveCoverImage = async () => {
+    if (coverImage) {
+      try {
+        // Extract filename from URL
+        const fileName = coverImage.split("/").pop();
+
+        if (fileName) {
+          await deleteCoverImageFromBunny(fileName);
+        }
+      } catch (error) {
+        console.error("Failed to delete cover image:", error);
+      }
+    }
+    setCoverImage("");
   };
 
   const handleSubmit = async (formDataEvent: FormData) => {
@@ -125,6 +175,7 @@ export default function ContentEditorPage() {
         summary: formData.summary,
         published: formData.published === "true",
         tags: tags,
+        coverImage: coverImage,
       };
 
       let response;
@@ -310,6 +361,22 @@ export default function ContentEditorPage() {
                 Draft
               </SelectItem>
             </Select>
+            <Input
+              ref={fileInputRef}
+              accept="image/*"
+              aria-label="cover-image"
+              className="w-3/4"
+              classNames={{
+                inputWrapper:
+                  "border-purple-800/50 dark:border-purple-300/50 hover:!border-purple-800 hover:dark:!border-purple-300",
+              }}
+              color={undefined}
+              name="cover-image"
+              nonce={nonce}
+              type="file"
+              variant="bordered"
+              onChange={handleCoverImageChange}
+            />
           </div>
           <div className="w-full my-4">
             <TagInput
@@ -318,6 +385,20 @@ export default function ContentEditorPage() {
               selectedTags={tags}
               onChange={setTags}
             />
+          </div>
+          <div className="flex flex-col w-full my-4">
+            {coverImage && (
+              <div className="my-2">
+                <img
+                  alt="Cover Preview"
+                  className="max-h-40 mb-2"
+                  src={coverImage}
+                />
+                <Button color="danger" onClick={handleRemoveCoverImage}>
+                  Remove Image
+                </Button>
+              </div>
+            )}
           </div>
           <div className="flex w-full p-2 text-center text-purple-800 dark:text-purple-300">
             {selectedPost?.publishedAt && (

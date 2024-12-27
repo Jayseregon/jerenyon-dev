@@ -14,6 +14,7 @@ export interface BlogPost {
   summary: string;
   publishedAt?: Date | null;
   tags: Tag[];
+  coverImage?: string | null;
 }
 
 export interface Tag {
@@ -66,6 +67,7 @@ export interface PostDataProps {
   summary: string;
   tags: string[];
   publishedAt?: Date | null;
+  coverImage?: string | null;
 }
 
 export interface TagInputProps {

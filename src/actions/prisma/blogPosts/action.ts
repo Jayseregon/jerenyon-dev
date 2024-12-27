@@ -26,6 +26,7 @@ const postDataSchema = z.object({
 const updatePostDataSchema = postDataSchema
   .extend({
     publishedAt: z.date().nullish(),
+    coverImage: z.string().nullish(),
   })
   .partial();
 
@@ -109,6 +110,7 @@ export async function createPost(formData: PostDataProps) {
           publishedAt: new Date(
             new Date().toLocaleString("en-US", { timeZone: "Europe/Paris" }),
           ),
+          coverImage: formData.coverImage || null,
           tags: {
             connectOrCreate: formData.tags.map((tagName: string) => ({
               where: { name: tagName },
@@ -127,6 +129,7 @@ export async function createPost(formData: PostDataProps) {
           summary,
           published: published,
           publishedAt: null,
+          coverImage: formData.coverImage || null,
           tags: {
             connectOrCreate: formData.tags.map((tagName) => ({
               where: { name: tagName },
@@ -179,6 +182,7 @@ export async function updatePost(slug: string, data: PostDataProps) {
       where: { slug },
       data: {
         ...validData,
+        coverImage: data.coverImage || null,
         tags: {
           set: [], // First disconnect all tags
           connectOrCreate: data.tags.map((tagName: string) => ({
