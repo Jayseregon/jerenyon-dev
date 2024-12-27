@@ -48,7 +48,10 @@ export const TiptapEditor = ({
 }: EditorProps) => {
   const editor = useEditor({
     extensions: [
-      StarterKit,
+      StarterKit.configure({
+        codeBlock: false,
+        dropcursor: false,
+      }),
       Underline,
       Color,
       TextStyle,

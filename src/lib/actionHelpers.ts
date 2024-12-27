@@ -17,3 +17,10 @@ export const refactorBlogPostsResponse = (
       }))
     : [];
 };
+
+export function sanitizeFileName(fileName: string): string {
+  return fileName
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}

@@ -1,5 +1,9 @@
 "use server";
 
+import sharp from "sharp";
+
+import { sanitizeFileName } from "@/src/lib/actionHelpers";
+
 // const BUNNY_REGION = "";
 const BUNNY_HOSTNAME = "storage.bunnycdn.com";
 const BUNNY_STORAGE_ZONE_NAME = process.env.BUNNY_STORAGE_ZONE_NAME!;
@@ -10,7 +14,14 @@ export async function uploadImageToBunny(
   fileBuffer: ArrayBuffer,
   fileName: string,
 ): Promise<string> {
-  const url = `https://${BUNNY_HOSTNAME}/${BUNNY_STORAGE_ZONE_NAME}/blog-posts/${fileName}`;
+  const sanitizedBase = sanitizeFileName(fileName);
+  const finalName = `${sanitizedBase}.webp`;
+
+  const webpBuffer = await sharp(Buffer.from(fileBuffer))
+    .webp({ quality: 80 })
+    .toBuffer();
+
+  const url = `https://${BUNNY_HOSTNAME}/${BUNNY_STORAGE_ZONE_NAME}/blog-posts/${finalName}`;
 
   const res = await fetch(url, {
     method: "PUT",
@@ -18,7 +29,7 @@ export async function uploadImageToBunny(
       AccessKey: BUNNY_API_ACCESS_KEY,
       "Content-Type": "application/octet-stream",
     },
-    body: Buffer.from(fileBuffer),
+    body: webpBuffer,
   });
 
   console.log("Bunny response:", res);
@@ -28,7 +39,7 @@ export async function uploadImageToBunny(
   }
 
   // Return public URL from your Bunny Pull Zone
-  return `${BUNNY_PULL_ZONE_URL}blog-posts/${fileName}`;
+  return `${BUNNY_PULL_ZONE_URL}blog-posts/${finalName}`;
 }
 
 export async function deleteImageFromBunny(fileName: string): Promise<boolean> {
