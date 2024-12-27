@@ -1,4 +1,5 @@
 import { BlogPostCategory } from "@prisma/client";
+import { Editor, JSONContent } from "@tiptap/react";
 
 export interface BlogPost {
   id: string;
@@ -72,4 +73,13 @@ export interface TagInputProps {
   selectedTags: string[];
   onChange: (tags: string[]) => void;
   nonce?: string;
+}
+
+export interface EditorProps {
+  content: JSONContent | undefined;
+  setContent?: (content: JSONContent | undefined) => void;
+  initialContent?: JSONContent;
+  editable?: boolean;
+  onEditorReady?: (editor: Editor) => void;
+  onTocItemsUpdate?: (items: any[]) => void;
 }

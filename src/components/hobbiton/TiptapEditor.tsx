@@ -18,24 +18,23 @@ import TableRow from "@tiptap/extension-table-row";
 import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import Image from "@tiptap/extension-image";
-import { Editor, JSONContent } from "@tiptap/core";
 import { all, createLowlight } from "lowlight";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import {
   getHierarchicalIndexes,
   TableOfContents,
 } from "@tiptap-pro/extension-table-of-contents";
+import FileHandler from "@tiptap-pro/extension-file-handler";
+import Dropcursor from "@tiptap/extension-dropcursor";
+
+import {
+  uploadImageToBunny,
+  deleteImageFromBunny,
+} from "@/actions/bunny/action";
+import { EditorProps } from "@/src/interfaces/Hub";
+import { extractImages } from "@/src/lib/editorHelpers";
 
 import { TiptapMenuBar } from "./TiptapMenuBar";
-
-interface EditorProps {
-  content: JSONContent | undefined;
-  setContent?: (content: JSONContent | undefined) => void;
-  initialContent?: JSONContent;
-  editable?: boolean;
-  onEditorReady?: (editor: Editor) => void;
-  onTocItemsUpdate?: (items: any[]) => void;
-}
 
 const lowlight = createLowlight(all);
 
@@ -47,8 +46,6 @@ export const TiptapEditor = ({
   onEditorReady,
   onTocItemsUpdate,
 }: EditorProps) => {
-  // const [tocItems, setTocItems] = useState<any[]>([]); // store TOC items
-
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -81,7 +78,7 @@ export const TiptapEditor = ({
       TableHeader,
       Image.configure({
         HTMLAttributes: {
-          class: "max-w-full rounded-lg",
+          class: `max-w-full p-4 rounded-lg ${editable ? "border border-red-500" : ""}`,
         },
       }),
       CodeBlockLowlight.configure({
@@ -95,6 +92,25 @@ export const TiptapEditor = ({
           onTocItemsUpdate?.(newItems);
         },
       }),
+      FileHandler.configure({
+        allowedMimeTypes: ["image/png", "image/jpeg", "image/webp"],
+        onDrop: async (currentEditor, files, pos) => {
+          for (const file of files) {
+            const fileBuffer = await file.arrayBuffer();
+            const bunnyUrl = await uploadImageToBunny(fileBuffer, file.name);
+
+            currentEditor
+              .chain()
+              .focus()
+              .insertContentAt(pos, {
+                type: "image",
+                attrs: { src: bunnyUrl },
+              })
+              .run();
+          }
+        },
+      }),
+      Dropcursor.configure({}),
     ],
     content: initialContent || content,
     onUpdate: ({ editor }) => {
@@ -111,10 +127,34 @@ export const TiptapEditor = ({
   });
 
   useEffect(() => {
-    if (editor) {
-      onEditorReady?.(editor);
-    }
-  }, [editor, onEditorReady]);
+    if (!editor) return;
+    // Keep initial reference of images
+    let oldImages = extractImages(initialContent || content);
+
+    // Attach a single update listener
+    editor.on("update", () => {
+      const newImages = extractImages(editor.getJSON());
+      const removed = oldImages.filter((src) => !newImages.includes(src));
+
+      removed.forEach(async (imgUrl) => {
+        // Adjust for “blog-post/” folder if needed
+        const fileName = imgUrl.split("/").pop() || "";
+
+        await deleteImageFromBunny(fileName);
+      });
+
+      oldImages = newImages;
+    });
+
+    // Call onEditorReady once
+    onEditorReady?.(editor);
+
+    // Cleanup event listener & destroy editor
+    return () => {
+      editor.off("update");
+      editor.destroy();
+    };
+  }, [editor]);
 
   useEffect(() => {
     if (editor && content) {
@@ -125,14 +165,6 @@ export const TiptapEditor = ({
       }
     }
   }, [editor, content]);
-
-  useEffect(() => {
-    return () => {
-      if (editor) {
-        editor.destroy();
-      }
-    };
-  }, [editor]);
 
   return (
     <>
