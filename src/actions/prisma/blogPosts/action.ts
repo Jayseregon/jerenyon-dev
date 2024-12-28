@@ -117,6 +117,8 @@ export async function createPost(formData: PostDataProps) {
               create: { name: tagName },
             })),
           },
+          views: 0,
+          likes: 0,
         },
       });
     } else {
@@ -136,6 +138,8 @@ export async function createPost(formData: PostDataProps) {
               create: { name: tagName },
             })),
           },
+          views: 0,
+          likes: 0,
         },
       });
     }
@@ -170,6 +174,13 @@ export async function updatePost(slug: string, data: PostDataProps) {
 
     const existingPost = await prisma.blogPost.findUnique({ where: { slug } });
 
+    if (!existingPost) {
+      return {
+        message: "Post not found",
+        ok: false,
+      };
+    }
+
     if (validData.published && !existingPost?.publishedAt) {
       validData.publishedAt = new Date(
         new Date().toLocaleString("en-US", { timeZone: "Europe/Paris" }),
@@ -190,6 +201,8 @@ export async function updatePost(slug: string, data: PostDataProps) {
             create: { name: tagName },
           })),
         },
+        views: data.views ?? existingPost.views ?? 0,
+        likes: data.likes ?? existingPost.likes ?? 0,
       },
     });
 
@@ -339,4 +352,22 @@ export async function getAllTags() {
 
     return [];
   }
+}
+
+export async function incrementViews(slug: string) {
+  const updated = await prisma.blogPost.update({
+    where: { slug },
+    data: { views: { increment: 1 } },
+  });
+
+  return updated;
+}
+
+export async function incrementLikes(slug: string) {
+  const updated = await prisma.blogPost.update({
+    where: { slug },
+    data: { likes: { increment: 1 } },
+  });
+
+  return updated;
 }

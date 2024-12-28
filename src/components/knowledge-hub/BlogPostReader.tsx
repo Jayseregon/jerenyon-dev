@@ -3,7 +3,7 @@
 import type { Editor, JSONContent } from "@tiptap/core";
 
 import { Card, useDisclosure, Button } from "@nextui-org/react";
-import { useContext, useState, useMemo } from "react";
+import { useContext, useState, useMemo, useEffect } from "react";
 import { Paperclip } from "lucide-react";
 
 import { NonceContext } from "@/src/app/providers";
@@ -12,6 +12,7 @@ import { BLogPostReaderProps } from "@/src/interfaces/Hub";
 import BlogPostPageTitle from "@/components/knowledge-hub/BlogPostPageTitle";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import { BlogPostDrawer } from "@/components/knowledge-hub/BlogPostDrawer";
+import { incrementViews } from "@/actions/prisma/blogPosts/action";
 
 export const BlogPostReader = ({ post }: BLogPostReaderProps) => {
   const nonce = useContext(NonceContext);
@@ -34,6 +35,18 @@ export const BlogPostReader = ({ post }: BLogPostReaderProps) => {
   const handleTocItemsUpdate = (items: any[]) => {
     setTocItems(items);
   };
+
+  useEffect(() => {
+    const viewKey = `view_${post.slug}`;
+    const lastView = localStorage.getItem(viewKey);
+    const now = new Date().getTime();
+
+    // Only count view if last view was more than 1 hour ago or never
+    if (!lastView || now - parseInt(lastView) > 3600000) {
+      incrementViews(post.slug);
+      localStorage.setItem(viewKey, now.toString());
+    }
+  }, [post.slug]);
 
   return (
     <>

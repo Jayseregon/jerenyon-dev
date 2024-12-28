@@ -176,6 +176,8 @@ export default function ContentEditorPage() {
         published: formData.published === "true",
         tags: tags,
         coverImage: coverImage,
+        views: selectedPost?.views ?? 0,
+        likes: selectedPost?.likes ?? 0,
       };
 
       let response;
