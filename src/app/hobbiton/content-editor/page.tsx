@@ -10,7 +10,7 @@ import {
   Form,
   Textarea,
 } from "@nextui-org/react";
-import { Save, Trash, RefreshCcw } from "lucide-react";
+import { Save, Trash, RefreshCcw, ImageOff } from "lucide-react";
 import { BlogPostCategory } from "@prisma/client";
 import { JSONContent } from "@tiptap/core";
 
@@ -377,6 +377,18 @@ export default function ContentEditorPage() {
               variant="bordered"
               onChange={handleCoverImageChange}
             />
+            {coverImage && (
+              <Button
+                isIconOnly
+                className="bg-background text-red-600 dark:text-red-600 border border-red-600 dark:border-red-600 hover:border-red-600 hover:bg-red-600 hover:text-red-950 hover:dark:text-red-950 focus:outline-none"
+                color="danger"
+                radius="md"
+                variant="bordered"
+                onClick={handleRemoveCoverImage}
+              >
+                <ImageOff />
+              </Button>
+            )}
           </div>
           <div className="w-full my-4">
             <TagInput
@@ -386,26 +398,29 @@ export default function ContentEditorPage() {
               onChange={setTags}
             />
           </div>
-          <div className="flex flex-col w-full my-4">
+          <div className="flex flex-row w-full p-2 text-purple-800 dark:text-purple-300 gap-4">
             {coverImage && (
-              <div className="my-2">
+              <div className="shrink-0">
                 <img
                   alt="Cover Preview"
-                  className="max-h-40 mb-2"
+                  className="max-h-40 object-contain"
                   src={coverImage}
                 />
-                <Button color="danger" onClick={handleRemoveCoverImage}>
-                  Remove Image
-                </Button>
               </div>
             )}
-          </div>
-          <div className="flex w-full p-2 text-center text-purple-800 dark:text-purple-300">
-            {selectedPost?.publishedAt && (
-              <p className="text-sm mb-2">
-                Published: {new Date(selectedPost.publishedAt).toLocaleString()}
-              </p>
-            )}
+            <div className="flex flex-col justify-end items-start text-sm">
+              {selectedPost?.publishedAt && (
+                <p className="mb-1">
+                  Published:{" "}
+                  {new Date(selectedPost.publishedAt).toLocaleString()}
+                </p>
+              )}
+              {selectedPost?.updatedAt && (
+                <p>
+                  Updated: {new Date(selectedPost.updatedAt).toLocaleString()}
+                </p>
+              )}
+            </div>
           </div>
 
           <div className="w-full">
