@@ -27,7 +27,10 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
       body={
         <div className="space-y-4" nonce={nonce}>
           <div className="flex justify-between items-center">
-            <h3 className="text-xl font-semibold">{t("timeEstimated")}</h3>
+            <h3 className="text-xl font-semibold">
+              {t("timeEstimated")}
+              <sup>*</sup>
+            </h3>
             <span className="text-lg text-nowrap">
               {summaryData.totalHours.toFixed(0)} {t("hours")}
             </span>
@@ -70,6 +73,7 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
           <div className="flex justify-end items-center mt-4">
             <span className="font-bold text-xl text-foreground">
               {t("total")}
+              <sup>*</sup>:{" "}
             </span>
             <span className="text-2xl text-green-600 ml-2">
               ${summaryData.totalPrice.toFixed(2)}

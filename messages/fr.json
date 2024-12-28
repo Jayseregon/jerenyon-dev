@@ -29,7 +29,8 @@
     "gtxt2": " s'appliquent.",
     "privacy": "Politique de confidentialité",
     "cookies": "Politique de cookies",
-    "terms": "Conditions d'utilisation"
+    "terms": "Conditions d'utilisation",
+    "disclaimer": "Clauses de non-responsabilité"
   },
   "about": {
     "title": "À Propos",
@@ -74,16 +75,38 @@
     "hubCategories": {
       "articles-and-tutorials": {
         "title": "Articles & Tutoriels",
-        "description": "Explorez les derniers articles et guides étape par étape de Jerenyon Dev.",
+        "description": "Découvrez des articles détaillés et des guides pratiques par Jerenyon Dev.",
         "imgAlt": "Carte d'arrière-plan de la catégorie Articles et Tutoriels.",
         "btnLabel": "Voir Plus"
       },
-      "projects": {
-        "title": "Projets",
+      "projects-showcase": {
+        "title": "Présentations de Projets",
         "description": "Exposition de solutions innovantes et d'outils développés par Jerenyon Dev.",
         "imgAlt": "Arrière-plan de la carte de catégorie Projets.",
         "btnLabel": "Voir Plus"
       }
+    },
+    "subDashboards": {
+      "articles_and_tutorials": {
+        "title": "Articles & Tutoriels",
+        "hero": {
+          "title": "Partager des idées et des expertises.",
+          "subtitle": "Des articles approfondis et des tutoriels pratiques pour donner vie à vos projets."
+        }
+      },
+      "projects_showcase": {
+        "title": "Présentations de Projets",
+        "hero": {
+          "title": "Solutions innovantes, conçues avec passion.",
+          "subtitle": "Découvrez les outils et solutions qui stimulent l'innovation chez Jerenyon Dev."
+        }
+      }
+    },
+    "blogPostDrawer": {
+      "summary": "Résumé",
+      "published": "Première publication : ",
+      "updated": "Dernière mise à jour : ",
+      "author": "Auteur : "
     }
   },
   "contact": {
@@ -121,9 +144,9 @@
     },
     "addons": "Améliorez votre forfait avec des fonctionnalités et services supplémentaires.",
     "disclaimer": {
-      "line1": "Les prix indiqués sont des estimations et peuvent varier en fonction des exigences spécifiques de votre projet.",
-      "line2": "Les coûts finaux seront déterminés après une discussion détaillée de vos besoins.",
-      "line3": "Des fonctionnalités ou services supplémentaires peuvent entraîner des frais supplémentaires."
+      "title": "Clauses de non-responsabilité",
+      "line1": "Veuillez consulter nos ",
+      "line2": " pour des informations importantes concernant les prix, la portée et les conditions."
     },
     "devNotice": {
       "title": "Bientôt de Retour !",
@@ -138,7 +161,7 @@
       "timeEstimated": "Temps de Développement Estimé",
       "hours": "heures",
       "subTotal": "Sous-Total : ",
-      "total": "Prix Total Estimé : "
+      "total": "Prix Total Estimé"
     },
     "quotingTool": {
       "clientName": "Nom ou Entreprise",
@@ -200,6 +223,10 @@
     "terms_of_service": {
       "title": "Conditions d'utilisation",
       "heroTitle": "Notre engagement envers vous."
+    },
+    "quote_disclaimer": {
+      "title": "Clauses de non-responsabilité",
+      "heroTitle": "Tarification transparente, attentes claires."
     }
   },
   "timeline": {

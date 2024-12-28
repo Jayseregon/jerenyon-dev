@@ -53,21 +53,17 @@ export const siteConfig = {
       label: "contact",
       href: "/contact",
     },
-    // {
-    //   label: "mdx",
-    //   href: "/mdx-demo",
-    // },
   ],
   hubCategories: [
     {
       label: "articles-and-tutorials",
-      href: "/knowledge-hub",
-      imgBg: "/assets/blogs-articles.webp",
+      rootRef: "/knowledge-hub",
+      imgBg: "/assets/blogs-articles-cover.webp",
     },
     {
-      label: "projects",
-      href: "/knowledge-hub",
-      imgBg: "/assets/projects.webp",
+      label: "projects-showcase",
+      rootRef: "/knowledge-hub",
+      imgBg: "/assets/projects-showcase-cover.webp",
     },
   ],
   links: {},

@@ -1,15 +1,22 @@
-import { redirect } from "next/navigation";
-import { LayoutDashboard } from "lucide-react";
+"use client";
 
-import { signIn, auth, providerMap } from "@/auth";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { SquareMenu } from "lucide-react";
+import { signIn, useSession } from "next-auth/react";
+
+import { providerMap } from "@/auth";
 import { GitHubIcon } from "@/components/icons";
 
-export default async function SignInPage(): Promise<JSX.Element> {
-  const session = await auth();
+export default function SignInPage(): JSX.Element {
+  const { data: session } = useSession();
+  const router = useRouter();
 
-  if (session) {
-    redirect("/hobbiton");
-  }
+  useEffect(() => {
+    if (session) {
+      router.push("/hobbiton");
+    }
+  }, [session, router]);
 
   return (
     <div className="flex flex-col items-center justify-center h-fit pt-10">
@@ -22,24 +29,13 @@ export default async function SignInPage(): Promise<JSX.Element> {
         <div className="my-10" />
 
         {Object.values(providerMap).map((provider) => (
-          <form
+          <button
             key={provider.id}
-            action={async () => {
-              "use server";
-              try {
-                await signIn(provider.id);
-              } catch (error) {
-                throw error;
-              }
-            }}
+            className="bg-gradient-to-tr from-amber-300 to-fuchsia-500 text-white rounded-lg shadow-lg p-3"
+            onClick={() => signIn(provider.id)}
           >
-            <button
-              className="bg-gradient-to-tr from-amber-300 to-fuchsia-500 text-white rounded-lg shadow-lg p-3"
-              type="submit"
-            >
-              <LayoutDashboard size={28} strokeWidth={3} />
-            </button>
-          </form>
+            <SquareMenu size={28} strokeWidth={3} />
+          </button>
         ))}
       </div>
     </div>

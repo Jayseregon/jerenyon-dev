@@ -29,7 +29,8 @@
     "gtxt2": " apply.",
     "privacy": "Privacy Policy",
     "cookies": "Cookie Policy",
-    "terms": "Terms of Service"
+    "terms": "Terms of Service",
+    "disclaimer": "Disclaimers"
   },
   "about": {
     "title": "About",
@@ -74,16 +75,38 @@
     "hubCategories": {
       "articles-and-tutorials": {
         "title": "Articles & Turorials",
-        "description": "Explore the latest blog articles and step-by-step guides by Jerenyon Dev.",
+        "description": "Discover in-depth articles and practical guides by Jerenyon Dev.",
         "imgAlt": "Articles and Tutorials category card background.",
         "btnLabel": "See More"
       },
-      "projects": {
-        "title": "Projects",
+      "projects-showcase": {
+        "title": "Projects Showcase",
         "description": "Showcasing innovative solutions and tools built by Jerenyon Dev.",
         "imgAlt": "Projects category card background.",
         "btnLabel": "See More"
       }
+    },
+    "subDashboards": {
+      "articles_and_tutorials": {
+        "title": "Articles & Turorials",
+        "hero": {
+          "title": "Shared Insights and Expertise.",
+          "subtitle": "In-depth articles and hands-on tutorials to empower your projects."
+        }
+      },
+      "projects_showcase": {
+        "title": "Projects Showcase",
+        "hero": {
+          "title": "Innovative Solutions, Built with Passion.",
+          "subtitle": "Explore the tools and solutions that drive innovation at Jerenyon Dev."
+        }
+      }
+    },
+    "blogPostDrawer": {
+      "summary": "Summary",
+      "published": "First time published: ",
+      "updated": "Last updated: ",
+      "author": "Author: "
     }
   },
   "contact": {
@@ -121,9 +144,9 @@
     },
     "addons": "Enhance your package with additional features and services.",
     "disclaimer": {
-      "line1": "The prices listed are estimates and may vary based on the specific requirements of your project.",
-      "line2": "Final costs will be determined after a detailed discussion of your needs.",
-      "line3": "Additional features or services may incur extra charges."
+      "title": "Disclaimers",
+      "line1": "Please review our ",
+      "line2": " for important information regarding pricing, scope, and terms."
     },
     "devNotice": {
       "title": "Coming Back Soon!",
@@ -138,7 +161,7 @@
       "timeEstimated": "Estimated Development Time",
       "hours": "hours",
       "subTotal": "Subtotal: ",
-      "total": "Total Estimated Price: "
+      "total": "Total Estimated Price"
     },
     "quotingTool": {
       "clientName": "Name or Company",
@@ -200,6 +223,10 @@
     "terms_of_service": {
       "title": "Terms of Service",
       "heroTitle": "Our Commitment to You."
+    },
+    "quote_disclaimer": {
+      "title": "Disclaimers",
+      "heroTitle": "Transparent Pricing, Clear Expectations."
     }
   },
   "timeline": {

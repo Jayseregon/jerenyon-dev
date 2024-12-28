@@ -10,8 +10,7 @@ import { useSession } from "next-auth/react";
 import { cn } from "@/src/lib/utils";
 import { siteConfig } from "@/config/site";
 import { Logo } from "@/components/icons";
-
-import { SignOut } from "../auth/SignOut-Button";
+import { SignOut } from "@/components/auth/SignOut-Button";
 
 import ThemeSwitch from "./ThemeSwitch";
 import LocaleSwitcher from "./LocaleSwitcher";
@@ -283,7 +282,7 @@ export const CollapsedMenu = ({
       <motion.div
         ref={menuRef}
         animate={{ scale: isMenuOpen ? 1 : 0 }}
-        className={`${isMenuOpen ? "block" : "hidden"} fixed top-16 right-4 bg-background text-foreground w-[90%] h-[90%] max-w-xs max-h-[400px] rounded-2xl border border-purple-800 dark:border-purple-300 overflow-hidden shadow-2xl z-50`}
+        className={`${isMenuOpen ? "block" : "hidden"} fixed top-16 right-4 bg-background text-foreground w-[90%] h-fit max-w-xs max-h-fit rounded-2xl border border-purple-800 dark:border-purple-300 overflow-hidden shadow-2xl z-50`}
         initial={{ scale: 0 }}
         nonce={nonce}
         transition={{ duration: 0.2, ease: "easeInOut" }}
@@ -379,7 +378,7 @@ export const CollapsedMenu = ({
         </motion.div>
 
         <motion.div
-          className="absolute bottom-0 left-0 right-0 mb-2 flex flex-col items-center justify-center space-y-2 text-purple-950 dark:text-purple-200 text-xs text-center antialiased"
+          className="pt-3 mb-2 flex flex-col items-center justify-center space-y-2 text-purple-950 dark:text-purple-200 text-xs text-center antialiased"
           nonce={nonce}
         >
           <NextLink
@@ -398,6 +397,13 @@ export const CollapsedMenu = ({
             nonce={nonce}
           >
             {t("footer.cookies")}
+          </NextLink>
+          <NextLink
+            className="underline"
+            href="/policies/disclaimers"
+            nonce={nonce}
+          >
+            {t("footer.disclaimer")}
           </NextLink>
         </motion.div>
       </motion.div>

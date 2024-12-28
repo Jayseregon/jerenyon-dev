@@ -178,7 +178,7 @@ export default function ContactPage() {
             </div>
 
             <Button
-              className="w-full bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:bg-purple-800 hover:text-background hover:dark:text-purple-300 focus:outline-none"
+              className="w-full bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:dark:border-purple-950 hover:bg-purple-800 hover:dark:bg-purple-950 hover:text-background hover:dark:text-foreground focus:outline-none"
               disabled={loading || !recaptchaToken}
               radius="full"
               type="submit"
