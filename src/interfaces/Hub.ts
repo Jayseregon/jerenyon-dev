@@ -89,3 +89,9 @@ export interface EditorProps {
   onEditorReady?: (editor: Editor) => void;
   onTocItemsUpdate?: (items: any[]) => void;
 }
+
+export type TiptapMenuBarProps = {
+  editor: Editor;
+  isBubbleMenu?: boolean;
+  nonce?: string;
+};

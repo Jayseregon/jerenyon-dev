@@ -1,7 +1,7 @@
 "use client";
 
 import { useEditor, EditorContent, BubbleMenu } from "@tiptap/react";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import { Color } from "@tiptap/extension-color";
@@ -33,6 +33,7 @@ import {
 } from "@/actions/bunny/action";
 import { EditorProps } from "@/src/interfaces/Hub";
 import { extractImages } from "@/src/lib/editorHelpers";
+import { NonceContext } from "@/src/app/providers";
 
 import { TiptapMenuBar } from "./TiptapMenuBar";
 
@@ -46,6 +47,7 @@ export const TiptapEditor = ({
   onEditorReady,
   onTocItemsUpdate,
 }: EditorProps) => {
+  const nonce = useContext(NonceContext);
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -171,14 +173,14 @@ export const TiptapEditor = ({
 
   return (
     <>
-      {editable && editor && <TiptapMenuBar editor={editor} />}
+      {editable && editor && <TiptapMenuBar editor={editor} nonce={nonce} />}
       {editable && editor && (
         <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
-          <TiptapMenuBar isBubbleMenu editor={editor} />
+          <TiptapMenuBar isBubbleMenu editor={editor} nonce={nonce} />
         </BubbleMenu>
       )}
       <div className="rounded-lg border border-purple-800 dark:border-purple-300 shadow-lg">
-        {editor && <EditorContent editor={editor} />}
+        {editor && <EditorContent editor={editor} nonce={nonce} />}
       </div>
     </>
   );

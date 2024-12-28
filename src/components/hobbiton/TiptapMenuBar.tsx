@@ -1,5 +1,4 @@
 import React from "react";
-import { Editor } from "@tiptap/react";
 import {
   Bold,
   Italic,
@@ -23,20 +22,25 @@ import {
   Heading6,
 } from "lucide-react";
 
+import { TiptapMenuBarProps } from "@/src/interfaces/Hub";
+
 const MenuButton = ({
   onClick,
   isActive,
   disabled,
   children,
+  nonce,
 }: {
   onClick: () => void;
   isActive: boolean;
   disabled?: boolean;
   children: React.ReactNode;
+  nonce?: string;
 }) => (
   <button
     className={`p-2 ${isActive ? "bg-violet-500 text-white rounded-md" : ""}`}
     disabled={disabled}
+    nonce={nonce}
     type="button"
     onClick={onClick}
   >
@@ -44,12 +48,11 @@ const MenuButton = ({
   </button>
 );
 
-type TiptapMenuBarProps = {
-  editor: Editor;
-  isBubbleMenu?: boolean;
-};
-
-export const TiptapMenuBar = ({ editor, isBubbleMenu }: TiptapMenuBarProps) => {
+export const TiptapMenuBar = ({
+  editor,
+  isBubbleMenu,
+  nonce,
+}: TiptapMenuBarProps) => {
   if (!editor) return null;
 
   const textEditButtonsList = [
@@ -161,14 +164,16 @@ export const TiptapMenuBar = ({ editor, isBubbleMenu }: TiptapMenuBarProps) => {
           ? "bg-background p-2 rounded border border-purple-800 dark:border-purple-300"
           : ""
       }`}
+      nonce={nonce}
     >
-      <div className="flex space-x-2">
+      <div className="flex space-x-2" nonce={nonce}>
         {textEditButtonsList.map(
           ({ icon, onClick, isActive, disabled }, index) => (
             <MenuButton
               key={index}
               disabled={disabled}
               isActive={isActive}
+              nonce={nonce}
               onClick={onClick}
             >
               {icon}
@@ -176,11 +181,12 @@ export const TiptapMenuBar = ({ editor, isBubbleMenu }: TiptapMenuBarProps) => {
           ),
         )}
       </div>
-      <div className="flex space-x-2">
+      <div className="flex space-x-2" nonce={nonce}>
         {headerButtons.map(({ icon, onClick, isActive }, index) => (
           <MenuButton
             key={`header-${index}`}
             isActive={isActive}
+            nonce={nonce}
             onClick={onClick}
           >
             {icon}

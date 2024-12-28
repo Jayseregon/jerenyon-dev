@@ -406,6 +406,7 @@ export default function ContentEditorPage() {
                 <img
                   alt="Cover Preview"
                   className="max-h-40 object-contain"
+                  nonce={nonce}
                   src={coverImage}
                 />
               </div>
