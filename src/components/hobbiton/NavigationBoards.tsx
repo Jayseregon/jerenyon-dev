@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { Card, CardBody } from "@nextui-org/react";
 import { Calculator, FilePenLine } from "lucide-react";
-import { useContext } from "react";
+import { useContext, type JSX } from "react";
 
 import { NonceContext } from "@/src/app/providers";
 

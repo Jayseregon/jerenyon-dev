@@ -30,12 +30,23 @@ export const TimelineCardItem = ({
   };
 
   const iconMap = {
-    work: <LaptopIcon className="mx-auto z-30 text-background" size={24} />,
+    work: (
+      <LaptopIcon
+        className="mx-auto z-30 text-background"
+        size={24}
+      />
+    ),
     award: (
-      <AwardCertificatIcon className="mx-auto z-30 text-background" size={24} />
+      <AwardCertificatIcon
+        className="mx-auto z-30 text-background"
+        size={24}
+      />
     ),
     school: (
-      <SchoolBackpackIcon className="mx-auto z-30 text-background" size={24} />
+      <SchoolBackpackIcon
+        className="mx-auto z-30 text-background"
+        size={24}
+      />
     ),
   };
 
@@ -51,12 +62,10 @@ export const TimelineCardItem = ({
   return (
     <>
       <Card
-        className={`bg-background rounded-lg shadow-md border-3 border-${color}-800 dark:border-${color}-300`}
-      >
+        className={`bg-background rounded-lg shadow-md border-3 border-${color}-800 dark:border-${color}-300`}>
         <CardHeader className="md:hidden p-0 m-0 flex justify-center">
           <div
-            className={`flex inline-block gap-2 text-background bg-${color}-800 dark:bg-${color}-300 rounded-b-2xl px-6 py-1`}
-          >
+            className={`flex inline-block gap-2 text-background bg-${color}-800 dark:bg-${color}-300 rounded-b-2xl px-6 py-1`}>
             {icon}
             {item.date}
           </div>
@@ -67,12 +76,10 @@ export const TimelineCardItem = ({
             index % 2 === 0
               ? "md:text-left"
               : "md:flex-row-reverse md:text-right"
-          } relative`}
-        >
+          } relative`}>
           <div>
             <h3
-              className={`text-xl font-semibold text-${color}-800 dark:text-${color}-300`}
-            >
+              className={`text-xl font-semibold text-${color}-800 dark:text-${color}-300`}>
               {item.label}
             </h3>
             <p className="grid grid-cols dark:text-neutral-400 text-neutral-500">
@@ -85,8 +92,7 @@ export const TimelineCardItem = ({
         <CardBody
           className={`grid grid-cols gap-2 text-left ${
             index % 2 === 0 ? "md:text-left" : "md:text-right"
-          }`}
-        >
+          }`}>
           <p>{item.summary}</p>
           <div>
             {item.keywords.map((keyword, idx) => (
@@ -98,8 +104,7 @@ export const TimelineCardItem = ({
                 }}
                 radius="full"
                 size="sm"
-                variant="bordered"
-              >
+                variant="bordered">
                 {keyword}
               </Chip>
             ))}
@@ -109,22 +114,19 @@ export const TimelineCardItem = ({
         <CardFooter
           className={`flex w-full justify-end ${
             index % 2 === 0 ? "md:justify-end" : "md:justify-start"
-          }`}
-        >
+          }`}>
           {item.timelineIcon === "award" && item.href ? (
             <Link
               isExternal
               showAnchorIcon
               className={`text-light text-${color}-800/50 dark:text-${color}-300/50`}
-              href={item.href}
-            >
+              href={item.href}>
               Show Credentials
             </Link>
           ) : (
             <Link
               className={`text-light text-${color}-800/50 dark:text-${color}-300/50`}
-              onClick={() => setIsModalOpen(true)}
-            >
+              onPress={() => setIsModalOpen(true)}>
               More details
             </Link>
           )}

@@ -44,8 +44,7 @@ export function TagInput({
       aria-label="Post tags input"
       className="w-full flex flex-row gap-4 items-center"
       nonce={nonce}
-      role="region"
-    >
+      role="region">
       <Autocomplete
         aria-label="Add tags to post"
         className="w-1/4"
@@ -59,16 +58,14 @@ export function TagInput({
         placeholder="Add tags..."
         variant="bordered"
         onInputChange={(value) => setInputValue(value)}
-        onKeyDown={handleKeyDown}
-      >
+        onKeyDown={handleKeyDown}>
         {filteredTags.map((tag) => (
           <AutocompleteItem
             key={tag.id}
             aria-label={`Select tag ${tag.name}`}
             nonce={nonce}
             value={tag.name}
-            onClick={() => handleSelect(tag.name)}
-          >
+            onPress={() => handleSelect(tag.name)}>
             {tag.name}
           </AutocompleteItem>
         ))}
@@ -78,8 +75,7 @@ export function TagInput({
         aria-label="Selected tags"
         className="flex-1 flex flex-row flex-wrap gap-2 items-center"
         nonce={nonce}
-        role="list"
-      >
+        role="list">
         {selectedTags.map((tag) => (
           <Chip
             key={tag}
@@ -93,8 +89,7 @@ export function TagInput({
             radius="lg"
             size="sm"
             variant="flat"
-            onClose={() => handleDelete(tag)}
-          >
+            onClose={() => handleDelete(tag)}>
             {tag}
           </Chip>
         ))}

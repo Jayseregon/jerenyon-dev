@@ -1,4 +1,5 @@
 "use client";
+import type { JSX } from "react";
 
 import { useLocale } from "next-intl";
 import { motion } from "motion/react";

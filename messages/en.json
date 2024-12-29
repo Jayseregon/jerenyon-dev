@@ -236,8 +236,8 @@
     },
     "item1": {
       "date": "Sept 2024 - Present",
-      "label": "Founder",
-      "city": "Montréal, QC",
+      "label": "Founder & Full-Stack Engineer",
+      "city": "Remote",
       "company": "Jerenyon Dev",
       "summary": "Founder and visionary behind Jerenyon Dev, delivering custom web development, automation, and AI-driven solutions.",
       "description": {
@@ -274,7 +274,7 @@
     },
     "item5": {
       "date": "June 2022 - Present",
-      "label": "Continuous Improvement Advisor | Lead Developer",
+      "label": "Full-Stack Automation Engineer & Continuous Improvement Advisor",
       "company": "Telecon",
       "city": "Montréal, QC",
       "summary": "Driving innovation and operational efficiency through Python automation, AI adoption, advanced GIS integration, and scalable web development solutions.",
@@ -290,7 +290,7 @@
     },
     "item6": {
       "date": "Sept 2021 - Present",
-      "label": "Co-Founder",
+      "label": "Co-Founder & Full-Stack Engineer",
       "company": "NJAE Plume",
       "city": "Montréal, QC",
       "summary": "Co-founder leading technical strategy and full-stack development for our creative e-commerce platform.",
@@ -303,7 +303,7 @@
     },
     "item7": {
       "date": "July 2018 - June 2022",
-      "label": "Fiber Network Designer | Automation Engineer",
+      "label": "Fiber Network Designer | GIS Automation Engineer",
       "company": "Telecon",
       "city": "Montréal, QC",
       "summary": "Enhanced fiber network design workflows through Python automation and GIS technology, leading to the development of a powerful Django-based platform.",

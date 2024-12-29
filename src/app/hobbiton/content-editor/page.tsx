@@ -44,7 +44,7 @@ export default function ContentEditorPage() {
   const [loading, setLoading] = useState(false);
   const [titleError, setTitleError] = useState("");
   const [category, setCategory] = useState<BlogPostCategory>(
-    BlogPostCategory.ARTICLE,
+    BlogPostCategory.ARTICLE
   );
   const [tags, setTags] = useState<string[]>([]);
   const [existingTags, setExistingTags] = useState<Tag[]>([]);
@@ -70,7 +70,7 @@ export default function ContentEditorPage() {
     // Sort posts by updatedAt date in descending order
     postsData.sort(
       (a, b) =>
-        new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
+        new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
     );
 
     setPosts(postsData);
@@ -88,7 +88,7 @@ export default function ContentEditorPage() {
 
       return acc;
     },
-    {} as Record<BlogPostCategory, BlogPost[]>,
+    {} as Record<BlogPostCategory, BlogPost[]>
   );
 
   const handleReset = () => {
@@ -121,7 +121,7 @@ export default function ContentEditorPage() {
   };
 
   const handleCoverImageChange = async (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLInputElement>
   ) => {
     if (!e.target.files?.[0]) return;
     const file = e.target.files[0];
@@ -239,15 +239,13 @@ export default function ContentEditorPage() {
                         ? "bg-purple-200 dark:bg-purple-800"
                         : "hover:bg-purple-800/50"
                     }`}
-                    onClick={() => handlePostSelect(post)}
-                  >
+                    onClick={() => handlePostSelect(post)}>
                     <div className="flex justify-between items-center">
                       <span className="text-foreground">{post.title}</span>
                       <span
                         className={`text-xs font-semibold px-2 py-1 rounded ${
                           post.published ? "bg-green-500" : "bg-blue-500"
-                        } text-white`}
-                      >
+                        } text-white`}>
                         {post.published ? "Published" : "Draft"}
                       </span>
                     </div>
@@ -268,8 +266,7 @@ export default function ContentEditorPage() {
           onSubmit={(e) => {
             e.preventDefault();
             handleSubmit(new FormData(e.currentTarget));
-          }}
-        >
+          }}>
           <div className="flex flex-row gap-4 w-full">
             <Input
               isRequired
@@ -309,10 +306,11 @@ export default function ContentEditorPage() {
               variant="bordered"
               onSelectionChange={(keys) =>
                 setCategory(Array.from(keys)[0] as BlogPostCategory)
-              }
-            >
+              }>
               {Object.values(BlogPostCategory).map((cat) => (
-                <SelectItem key={cat} value={cat}>
+                <SelectItem
+                  key={cat}
+                  value={cat}>
                   {cat}
                 </SelectItem>
               ))}
@@ -354,12 +352,15 @@ export default function ContentEditorPage() {
               variant="bordered"
               onSelectionChange={(keys) =>
                 setPublished(Array.from(keys)[0] === "true")
-              }
-            >
-              <SelectItem key="true" value="true">
+              }>
+              <SelectItem
+                key="true"
+                value="true">
                 Published
               </SelectItem>
-              <SelectItem key="false" value="false">
+              <SelectItem
+                key="false"
+                value="false">
                 Draft
               </SelectItem>
             </Select>
@@ -386,8 +387,7 @@ export default function ContentEditorPage() {
                 color="danger"
                 radius="md"
                 variant="bordered"
-                onClick={handleRemoveCoverImage}
-              >
+                onPress={handleRemoveCoverImage}>
                 <ImageOff />
               </Button>
             )}
@@ -427,7 +427,10 @@ export default function ContentEditorPage() {
           </div>
 
           <div className="w-full">
-            <TiptapEditor content={content} setContent={setContent} />
+            <TiptapEditor
+              content={content}
+              setContent={setContent}
+            />
           </div>
 
           <div className="flex items-center justify-center w-full gap-4">
@@ -437,16 +440,14 @@ export default function ContentEditorPage() {
               radius="full"
               type="button"
               variant="bordered"
-              onClick={handleReset}
-            >
+              onPress={handleReset}>
               <RefreshCcw />
             </Button>
             <Button
               className="bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:dark:border-purple-950 hover:bg-purple-800 hover:dark:bg-purple-950 hover:text-background hover:dark:text-foreground focus:outline-none"
               disabled={loading}
               radius="full"
-              type="submit"
-            >
+              type="submit">
               {loading ? loadingSpinner : <Save />}
             </Button>
             {selectedPost && (
@@ -457,8 +458,7 @@ export default function ContentEditorPage() {
                 radius="full"
                 type="button"
                 variant="bordered"
-                onClick={handleDelete}
-              >
+                onPress={handleDelete}>
                 {loading ? loadingSpinner : <Trash />}
               </Button>
             )}
