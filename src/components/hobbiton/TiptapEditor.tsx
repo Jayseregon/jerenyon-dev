@@ -83,6 +83,7 @@ export const TiptapEditor = ({
       TableHeader,
       Image.configure({
         HTMLAttributes: {
+          nonce: { nonce },
           class: `max-w-full p-4 rounded-lg ${editable ? "border border-red-500" : ""}`,
         },
       }),
@@ -124,7 +125,7 @@ export const TiptapEditor = ({
     editable: editable,
     editorProps: {
       attributes: {
-        class: `prose prose-lightTheme dark:prose-darkTheme max-w-none min-h-[300px] focus:outline-none p-10 ProseMirror`,
+        class: `prose prose-lightTheme dark:prose-darkTheme max-w-none min-h-[300px] focus:outline-none ProseMirror`,
         style: "white-space: pre-wrap; text-align: left;",
       },
     },
@@ -179,7 +180,10 @@ export const TiptapEditor = ({
           <TiptapMenuBar isBubbleMenu editor={editor} nonce={nonce} />
         </BubbleMenu>
       )}
-      <div className="rounded-lg border border-purple-800 dark:border-purple-300 shadow-lg">
+      <div
+        className="rounded-lg p-5 border border-purple-800 dark:border-purple-300 shadow-lg"
+        nonce={nonce}
+      >
         {editor && <EditorContent editor={editor} nonce={nonce} />}
       </div>
     </>

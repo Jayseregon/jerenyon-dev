@@ -17,7 +17,7 @@ export const BlogPostsBoard = ({
   return (
     <div className="mx-auto" nonce={nonce}>
       <Breadcrumbs />
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-8" nonce={nonce}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8" nonce={nonce}>
         <div className="flex flex-col gap-8" nonce={nonce}>
           {firstColumn.map((article, index) => (
             <BlogPostBoardTile key={index} article={article} index={index} />

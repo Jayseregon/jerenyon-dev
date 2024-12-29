@@ -11,7 +11,7 @@ export default function KnowledgeHubPage() {
   const t = useTranslations("knowledge-hub");
 
   return (
-    <div>
+    <div className="px-8 sm:px-10 md:px-16">
       <PageTitles
         heroSubtitle={t("hero.subtitle")}
         heroTitle={t("hero.title")}
@@ -20,7 +20,7 @@ export default function KnowledgeHubPage() {
 
       <div className="py-3" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px w-full">
         {siteConfig.hubCategories.map((category, index) => (
           <MainCategoryCard
             key={index}

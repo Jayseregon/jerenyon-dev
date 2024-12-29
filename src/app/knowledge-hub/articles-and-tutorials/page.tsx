@@ -27,7 +27,7 @@ export default function ArticlesAndTutorialsBoardPage() {
   }, []);
 
   return (
-    <div>
+    <div className="px-8 sm:px-10 md:px-16">
       <PageTitles
         heroSubtitle={t("subDashboards.articles_and_tutorials.hero.subtitle")}
         heroTitle={t("subDashboards.articles_and_tutorials.hero.title")}

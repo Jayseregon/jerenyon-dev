@@ -51,11 +51,14 @@ export const BlogPostReader = ({ post }: BLogPostReaderProps) => {
   return (
     <>
       <BlogPostPageTitle title={post.title} />
-      <div className="mt-10 max-w-5xl mx-auto" nonce={nonce}>
+      <div
+        className="mt-10 w-full px-2 md:px-0 md:max-w-5xl mx-auto"
+        nonce={nonce}
+      >
         <Breadcrumbs />
       </div>
       <Card
-        className="bg-background rounded-lg max-w-5xl mx-auto"
+        className="bg-background rounded-lg w-full px-2 md:px-0 md:max-w-5xl mx-auto"
         nonce={nonce}
       >
         <div className="w-full mx-auto" nonce={nonce}>
@@ -69,7 +72,7 @@ export const BlogPostReader = ({ post }: BLogPostReaderProps) => {
       </Card>
       <Button
         isIconOnly
-        className="fixed top-24 right-8 z-50 shadow-md bg-background text-foreground border border-purple-800 dark:border-purple-300 hover:dark:border-purple-950 hover:bg-purple-800 hover:dark:bg-purple-950 hover:text-background hover:dark:text-foreground focus:outline-none"
+        className="fixed top-24 right-2 md:right-8 z-50 shadow-md bg-background text-foreground border border-purple-800 dark:border-purple-300 hover:dark:border-purple-950 hover:bg-purple-800 hover:dark:bg-purple-950 hover:text-background hover:dark:text-foreground focus:outline-none"
         nonce={nonce}
         variant="bordered"
         onPress={onOpen}

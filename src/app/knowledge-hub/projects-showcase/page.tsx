@@ -27,7 +27,7 @@ export default function ProjectsShowcaseBoardPage() {
   }, []);
 
   return (
-    <div>
+    <div className="px-8 sm:px-10 md:px-16">
       <PageTitles
         heroSubtitle={t("subDashboards.projects_showcase.hero.subtitle")}
         heroTitle={t("subDashboards.projects_showcase.hero.title")}
