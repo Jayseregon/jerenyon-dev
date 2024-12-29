@@ -371,3 +371,40 @@ export async function incrementLikes(slug: string) {
 
   return updated;
 }
+
+export async function getSitemapPosts() {
+  try {
+    const articles = await prisma.blogPost.findMany({
+      where: {
+        category: "ARTICLE",
+        published: true,
+      },
+      select: {
+        slug: true,
+        updatedAt: true,
+      },
+    });
+
+    const projects = await prisma.blogPost.findMany({
+      where: {
+        category: "PROJECT",
+        published: true,
+      },
+      select: {
+        slug: true,
+        updatedAt: true,
+      },
+    });
+
+    return {
+      articles,
+      projects,
+    };
+  } catch (error) {
+    console.error("Error getting sitemap posts:", error);
+
+    return { articles: [], projects: [] };
+  } finally {
+    await prisma.$disconnect();
+  }
+}

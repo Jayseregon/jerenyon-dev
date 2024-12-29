@@ -139,3 +139,8 @@ export interface ToCItemProps {
   index: number;
   nonce?: string;
 }
+
+export interface SitemapPost {
+  slug: string;
+  updatedAt: Date;
+}
