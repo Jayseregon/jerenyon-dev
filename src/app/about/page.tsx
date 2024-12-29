@@ -1,13 +1,16 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { useContext } from "react";
 
 import { Timeline } from "@/src/components/about/Timeline";
 import PageTitles from "@/src/components/ui/PageTitles";
 import { AboutCardProps } from "@/interfaces/About";
 import { AboutCard } from "@/components/about/AboutCard";
+import { NonceContext } from "@/src/app/providers";
 
 export default function AboutPage() {
+  const nonce = useContext(NonceContext);
   const t = useTranslations("about");
 
   const sectionData: AboutCardProps[] = [
@@ -39,10 +42,14 @@ export default function AboutPage() {
       <PageTitles
         heroSubtitle={t("hero.subtitle")}
         heroTitle={t("hero.title")}
+        nonce={nonce}
         pageTitle={t("title")}
       />
-      <div className="space-y-20 mt-10">
-        <div className="flex flex-col max-w-lg md:max-w-3xl mx-auto space-y-20 px-6">
+      <div className="space-y-20 mt-10" nonce={nonce}>
+        <div
+          className="flex flex-col max-w-lg md:max-w-3xl mx-auto space-y-20 px-6"
+          nonce={nonce}
+        >
           {sectionData.map((section, index) => (
             <AboutCard key={index} {...section} />
           ))}

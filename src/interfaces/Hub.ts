@@ -1,3 +1,5 @@
+import type { MouseEvent } from "react";
+
 import { BlogPostCategory } from "@prisma/client";
 import { Editor, JSONContent } from "@tiptap/react";
 
@@ -59,6 +61,7 @@ export interface BLogPostReaderProps {
 export interface BlogPostPageTitleMotionProps {
   pageTitle: string;
   postTitle: string;
+  nonce?: string;
 }
 
 export interface PostDataProps {
@@ -95,3 +98,44 @@ export type TiptapMenuBarProps = {
   isBubbleMenu?: boolean;
   nonce?: string;
 };
+
+export interface BlogPostMetadataProps {
+  post: BlogPost;
+  t: (key: string) => string;
+  nonce?: string;
+}
+
+export interface BlogPostDrawerProps {
+  isOpen: boolean;
+  onOpenChange: (open: boolean) => void;
+  post: BlogPost;
+  editor?: Editor;
+  tocItems?: any[]; // or your typed items
+}
+
+export interface TableOfContentsItem {
+  id: string;
+  textContent: string;
+  level: number;
+  itemIndex: number;
+  isActive?: boolean;
+  isScrolledOver?: boolean;
+}
+
+export type OnItemClick = (
+  e: MouseEvent<HTMLAnchorElement>,
+  id: string,
+) => void;
+
+export interface ToCProps {
+  items?: TableOfContentsItem[];
+  editor?: Editor;
+  nonce?: string;
+}
+
+export interface ToCItemProps {
+  item: TableOfContentsItem;
+  onItemClick: OnItemClick;
+  index: number;
+  nonce?: string;
+}

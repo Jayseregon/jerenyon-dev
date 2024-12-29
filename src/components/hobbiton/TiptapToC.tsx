@@ -1,39 +1,12 @@
-import type { Editor } from "@tiptap/react";
-import type { MouseEvent } from "react";
-
 import { TextSelection } from "@tiptap/pm/state";
 import { FileClock } from "lucide-react";
-import React, { useContext } from "react";
+import React from "react";
 
-import { NonceContext } from "@/src/app/providers";
+import { OnItemClick, ToCItemProps, ToCProps } from "@/src/interfaces/Hub";
 
 // Reuse the same items you got in TiptapEditor, no editor creation here
 
-interface TableOfContentsItem {
-  id: string;
-  textContent: string;
-  level: number;
-  itemIndex: number;
-  isActive?: boolean;
-  isScrolledOver?: boolean;
-}
-
-type OnItemClick = (e: MouseEvent<HTMLAnchorElement>, id: string) => void;
-
-interface ToCProps {
-  items?: TableOfContentsItem[];
-  editor?: Editor;
-}
-
-interface ToCItemProps {
-  item: TableOfContentsItem;
-  onItemClick: OnItemClick;
-  index: number;
-}
-
-const ToCItem = ({ item, onItemClick, index }: ToCItemProps) => {
-  const nonce = useContext(NonceContext);
-
+const ToCItem = ({ item, onItemClick, index, nonce }: ToCItemProps) => {
   // Calculate padding based on level
   const getPaddingClass = (level: number) => {
     const paddings = {
@@ -66,17 +39,17 @@ const ToCItem = ({ item, onItemClick, index }: ToCItemProps) => {
   );
 };
 
-const ToCEmptyState = () => (
-  <div className="empty-state">
+const ToCEmptyState = ({ nonce }: { nonce?: string }) => (
+  <div className="empty-state" nonce={nonce}>
     <p>
       <FileClock />
     </p>
   </div>
 );
 
-export function TiptapToC({ items = [], editor }: ToCProps) {
+export function TiptapToC({ items = [], editor, nonce }: ToCProps) {
   if (!editor || items.length === 0) {
-    return <ToCEmptyState />;
+    return <ToCEmptyState nonce={nonce} />;
   }
 
   const onItemClick: OnItemClick = (e, id) => {
@@ -112,12 +85,13 @@ export function TiptapToC({ items = [], editor }: ToCProps) {
   };
 
   return (
-    <div className="table-of-contents">
+    <div className="table-of-contents" nonce={nonce}>
       {items.map((item, i) => (
         <ToCItem
           key={item.id}
           index={i + 1}
           item={item}
+          nonce={nonce}
           onItemClick={onItemClick}
         />
       ))}

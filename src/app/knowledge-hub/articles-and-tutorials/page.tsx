@@ -1,14 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { BlogPostRefactor } from "@/src/interfaces/Hub";
 import { getPublishedArticles } from "@/actions/prisma/blogPosts/action";
 import { BlogPostsBoard } from "@/components/knowledge-hub/BlogPostsBoard";
 import PageTitles from "@/components/ui/PageTitles";
+import { NonceContext } from "@/src/app/providers";
 
 export default function ArticlesAndTutorialsBoardPage() {
+  const nonce = useContext(NonceContext);
   const t = useTranslations("knowledge-hub");
   const [articles, setArticles] = useState<BlogPostRefactor[]>([]);
 
@@ -29,12 +31,13 @@ export default function ArticlesAndTutorialsBoardPage() {
       <PageTitles
         heroSubtitle={t("subDashboards.articles_and_tutorials.hero.subtitle")}
         heroTitle={t("subDashboards.articles_and_tutorials.hero.title")}
+        nonce={nonce}
         pageTitle={t("subDashboards.articles_and_tutorials.title")}
       />
 
-      <div className="py-3" />
+      <div className="py-3" nonce={nonce} />
 
-      <BlogPostsBoard data={articles} />
+      <BlogPostsBoard data={articles} nonce={nonce} />
     </div>
   );
 }

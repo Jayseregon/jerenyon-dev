@@ -124,8 +124,8 @@ export const TiptapEditor = ({
     editable: editable,
     editorProps: {
       attributes: {
-        class: `prose prose-lightTheme dark:prose-darkTheme max-w-none min-h-[300px] focus:outline-none p-10`,
-        style: "text-align: left;",
+        class: `prose prose-lightTheme dark:prose-darkTheme max-w-none min-h-[300px] focus:outline-none p-10 ProseMirror`,
+        style: "white-space: pre-wrap; text-align: left;",
       },
     },
     immediatelyRender: false, // fix SSR hydration issues

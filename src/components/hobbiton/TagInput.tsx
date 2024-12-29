@@ -43,6 +43,7 @@ export function TagInput({
     <div
       aria-label="Post tags input"
       className="w-full flex flex-row gap-4 items-center"
+      nonce={nonce}
       role="region"
     >
       <Autocomplete
@@ -64,6 +65,7 @@ export function TagInput({
           <AutocompleteItem
             key={tag.id}
             aria-label={`Select tag ${tag.name}`}
+            nonce={nonce}
             value={tag.name}
             onClick={() => handleSelect(tag.name)}
           >
@@ -75,6 +77,7 @@ export function TagInput({
       <div
         aria-label="Selected tags"
         className="flex-1 flex flex-row flex-wrap gap-2 items-center"
+        nonce={nonce}
         role="list"
       >
         {selectedTags.map((tag) => (
@@ -86,6 +89,7 @@ export function TagInput({
               content: "text-sm text-purple-500",
               closeButton: "text-purple-500 hover:text-white",
             }}
+            nonce={nonce}
             radius="lg"
             size="sm"
             variant="flat"

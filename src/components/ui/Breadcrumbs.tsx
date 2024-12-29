@@ -2,6 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useContext } from "react";
+
+import { NonceContext } from "@/src/app/providers";
 
 const formatLabel = (segment: string) => {
   // Remove any special characters and replace dashes/underscores with spaces
@@ -18,18 +21,23 @@ const formatLabel = (segment: string) => {
 };
 
 export default function Breadcrumbs() {
+  const nonce = useContext(NonceContext);
   const pathname = usePathname();
 
   // Remove trailing slash and split into segments
   const segments = pathname.replace(/\/$/, "").split("/").filter(Boolean);
 
   return (
-    <nav aria-label="Breadcrumb" className="py-4">
-      <ol className="flex flex-wrap items-center m-0 p-0 list-none">
-        <li className="flex items-center">
+    <nav aria-label="Breadcrumb" className="py-4" nonce={nonce}>
+      <ol
+        className="flex flex-wrap items-center m-0 p-0 list-none"
+        nonce={nonce}
+      >
+        <li className="flex items-center" nonce={nonce}>
           <Link
             className="text-purple-800 dark:text-purple-300 hover:underline"
             href="/"
+            nonce={nonce}
           >
             Home
           </Link>
@@ -39,14 +47,19 @@ export default function Breadcrumbs() {
           const isLast = index === segments.length - 1;
 
           return (
-            <li key={path} className="flex items-center">
-              <span className="mx-2 text-foreground">/</span>
+            <li key={path} className="flex items-center" nonce={nonce}>
+              <span className="mx-2 text-foreground" nonce={nonce}>
+                /
+              </span>
               {isLast ? (
-                <span className="text-foreground">{formatLabel(segment)}</span>
+                <span className="text-foreground" nonce={nonce}>
+                  {formatLabel(segment)}
+                </span>
               ) : (
                 <Link
                   className="text-purple-800 dark:text-purple-300 hover:underline"
                   href={path}
+                  nonce={nonce}
                 >
                   {formatLabel(segment)}
                 </Link>
