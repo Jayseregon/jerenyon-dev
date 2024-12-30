@@ -319,19 +319,31 @@
     },
     "item8": {
       "date": "2014 - 2016",
-      "label": "Master en Géographie",
+      "label": "Maîtrise ès sciences en Géographie (MSc)",
       "company": "Université de Caen Normandie",
       "city": "Caen, France",
-      "summary": "Analyse spatiale, études environnementales et gestion des risques côtiers. Hydro-géomorphologie et climatologie. Cartographie et modélisation SIG.",
-      "description": {}
+      "summary": "Expertise avancée en géographie physique, intelligence SIG et analyse spatiale, avec un accent sur l'hydrogéomorphologie, la climatologie et la gestion des risques côtiers dans les environnements littoraux.",
+      "description": {
+        "p1": "Spécialisé dans l'étude scientifique et la gestion des ressources environnementales, mettant l'accent sur la géographie physique, l'hydrogéomorphologie et l'évaluation des risques naturels, en particulier dans les zones littorales.",
+        "p2": "Acquis une expertise avancée en SIG et en géomatique, y compris le traitement des données spatiales, la modélisation cartographique et l'analyse intégrée des systèmes environnementaux.",
+        "p3": "Approfondissement des connaissances en hydrologie, climatologie, météorologie et géomorphologie, en appliquant des approches multidisciplinaires pour étudier les processus côtiers et les risques liés aux tempêtes.",
+        "p4": "Acquis des connaissances fondamentales en géologie, améliorant la compréhension de la dynamique des terrains, tout en menant des travaux de terrain et des analyses en laboratoire pour évaluer les impacts naturels et anthropiques.",
+        "p5": "Mené un stage de recherche de 6 mois, produisant un mémoire combinant études de terrain, analyses théoriques et modélisation SIG pour répondre à des problématiques réelles, aboutissant à une soutenance orale formelle."
+      }
     },
     "item9": {
       "date": "2011 - 2014",
       "label": "Licence en Géographie",
       "company": "Université de Caen Normandie",
       "city": "Caen, France",
-      "summary": "Fondamentaux de la géographie, cartographie et SIG. Géomorphologie, hydrologie et climatologie. Gestion des risques environnementaux.",
-      "description": {}
+      "summary": "Formation complète en géographie physique, en SIG et en analyse spatiale, mettant l'accent sur les approches systémiques des phénomènes naturels et les études littorales.",
+      "description": {
+        "p1": "Développé une base solide en géographie, passant de concepts introductifs à une expertise avancée en géographie physique et en études environnementales.",
+        "p2": "Spécialisé en SIG et en analyse spatiale, acquérant une maîtrise de la cartographie, de la visualisation de données et de l'intelligence géospatiale pour comprendre des systèmes environnementaux complexes.",
+        "p3": "Étudié divers domaines de la géographie physique, notamment l'hydrologie, la géologie, l'océanologie, l'hydrogéomorphologie et la climatologie, en mettant l'accent sur les processus littoraux et les risques naturels.",
+        "p4": "Adopté une approche systémique de l'étude scientifique des phénomènes environnementaux, en considérant les dynamiques interconnectées et leurs implications sur des systèmes plus vastes.",
+        "p5": "Acquis une expérience pratique grâce à des travaux de terrain et des projets d'analyse, explorant les interactions des processus naturels et leur impact sur les systèmes humains et environnementaux."
+      }
     }
   }
 }

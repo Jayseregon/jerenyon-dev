@@ -276,7 +276,7 @@
       "date": "June 2022 - Present",
       "label": "Full-Stack Automation Engineer & Continuous Improvement Advisor",
       "company": "Telecon",
-      "city": "Montréal, QC",
+      "city": "Remote",
       "summary": "Driving innovation and operational efficiency through Python automation, AI adoption, advanced GIS integration, and scalable web development solutions.",
       "description": {
         "p1": "Redesigned and expanded a Django-based platform into a RESTful API with Django Rest Framework, integrating it seamlessly with a Next.js frontend.",
@@ -292,7 +292,7 @@
       "date": "Sept 2021 - Present",
       "label": "Co-Founder & Full-Stack Engineer",
       "company": "NJAE Plume",
-      "city": "Montréal, QC",
+      "city": "Remote",
       "summary": "Co-founder leading technical strategy and full-stack development for our creative e-commerce platform.",
       "description": {
         "p1": "Transitioned NJAE Plume from WordPress to a scalable custom e-commerce platform built with Django, ensuring a seamless and user-friendly experience.",
@@ -319,19 +319,31 @@
     },
     "item8": {
       "date": "2014 - 2016",
-      "label": "Master of Science Geography",
+      "label": "Master of Science in Geography (MSc)",
       "company": "University of Caen Normandy",
       "city": "Caen, France",
-      "summary": "Spatial analysis, environmental studies, and coastal risks management. Hydrogeomorphology and climatology. Cartography and GIS modeling.",
-      "description": {}
+      "summary": "Advanced expertise in physical geography, GIS intelligence, and spatial analysis with a focus on hydrogeomorphology, climatology, and coastal risk management in littoral environments.",
+      "description": {
+        "p1": "Specialized in the scientific study and management of environmental resources, with a focus on physical geography, hydrogeomorphology, and natural risk assessment, particularly in littoral regions.",
+        "p2": "Acquired advanced expertise in GIS and geomatics, including spatial data processing, cartographic modeling, and integrated analysis of environmental systems.",
+        "p3": "Deepened knowledge in hydrology, climatology, meteorology, and geomorphology, applying multidisciplinary approaches to study coastal processes and storm-induced risks.",
+        "p4": "Gained foundational insights into geology, enhancing the understanding of terrain dynamics, while engaging in fieldwork and laboratory analysis to assess natural and anthropogenic impacts.",
+        "p5": "Completed a 6-month research internship, producing a thesis that combined field studies, theoretical analysis, and GIS-based modeling to address real-world challenges, culminating in a formal oral defense."
+      }
     },
     "item9": {
       "date": "2011 - 2014",
-      "label": "Bachelor's Degree Geography",
+      "label": "Bachelor's Degree in Geography",
       "company": "University of Caen Normandy",
       "city": "Caen, France",
-      "summary": "Fundamentals of geography, cartography, and GIS. Geomorphology, hydrology, and climatology. Environmental hazards and risk management.",
-      "description": {}
+      "summary": "Comprehensive education in physical geography, GIS, and spatial analysis, with a focus on systemic approaches to natural phenomena and littoral studies.",
+      "description": {
+        "p1": "Developed a strong foundation in geography, transitioning from introductory concepts to advanced expertise in physical geography and environmental studies.",
+        "p2": "Specialized in GIS and spatial analysis, gaining proficiency in mapping, data visualization, and geospatial intelligence for understanding complex environmental systems.",
+        "p3": "Studied a range of physical geography fields, including hydrology, geology, oceanology, hydrogeomorphology, and climatology, with a focus on littoral processes and natural risks.",
+        "p4": "Embraced a systemic approach to the scientific study of environmental phenomena, considering interconnected dynamics and their implications on broader systems.",
+        "p5": "Gained practical experience through fieldwork and analytical projects, exploring the interactions of natural processes and their impact on human and environmental systems."
+      }
     }
   }
 }
