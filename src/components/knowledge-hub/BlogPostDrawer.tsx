@@ -12,6 +12,7 @@ import { useTranslations } from "next-intl";
 import { ErrorBoundary } from "react-error-boundary";
 import { useState, useEffect, useContext } from "react";
 import { BlogPostCategory } from "@prisma/client";
+import { LinkedinShareButton, LinkedinIcon } from "react-share";
 
 import {
   BlogPostDrawerProps,
@@ -21,7 +22,6 @@ import {
 import { TiptapToC } from "@/src/components/hobbiton/TiptapToC";
 import { incrementLikes } from "@/actions/prisma/blogPosts/action";
 import { NonceContext } from "@/src/app/providers";
-import { LinkedInIcon } from "@/components/icons";
 
 import { BlogPostTags } from "./BlogPostTags";
 
@@ -106,24 +106,15 @@ export function BlogPostDrawer({
     }
   };
 
-  const handleLinkedInShare = () => {
+  const getShareUrl = () => {
     const categoryPath = categoryToPathMap[post.category];
-    const url = `${window.location.origin}/knowledge-hub/${categoryPath}/${post.slug}`;
+    const baseUrl = window.location.origin;
 
-    // Using LinkedIn's v2 API share endpoint
-    const linkedInShareUrl = new URL("https://www.linkedin.com/shareArticle");
+    const url = `${baseUrl}/knowledge-hub/${categoryPath}/${post.slug}`;
 
-    linkedInShareUrl.searchParams.append("mini", "true");
-    linkedInShareUrl.searchParams.append("url", url);
-    linkedInShareUrl.searchParams.append("title", post.title);
-    linkedInShareUrl.searchParams.append("summary", post.summary);
-    linkedInShareUrl.searchParams.append("source", window.location.host);
+    console.log("Share URL : ", url);
 
-    window.open(
-      linkedInShareUrl.toString(),
-      "linkedin-share-dialog",
-      "width=600,height=600,toolbar=0,location=0,status=0,menubar=0,scrollbars=1,resizable=0",
-    );
+    return url;
   };
 
   return (
@@ -215,16 +206,15 @@ export function BlogPostDrawer({
                   </div>
                 </Button>
                 {/* LinkedIn share button */}
-                <Button
-                  aria-label="Share on LinkedIn"
-                  className="bg-background border text-purple-800 dark:text-purple-300 border-purple-800 dark:border-purple-300 min-w-fit px-4"
-                  nonce={nonce}
-                  radius="md"
-                  variant="bordered"
-                  onPress={handleLinkedInShare}
+                <LinkedinShareButton
+                  className="bg-background border text-purple-800 dark:text-purple-300 border-purple-800 dark:border-purple-300 min-w-fit px-4 rounded-md flex items-center justify-center h-[40px]"
+                  source={window.location.origin}
+                  summary={post.summary}
+                  title={post.title}
+                  url={getShareUrl()}
                 >
-                  <LinkedInIcon size={20} />
-                </Button>
+                  <LinkedinIcon round size={20} />
+                </LinkedinShareButton>
                 {/* Share button */}
                 <Button
                   aria-label="Share post"
