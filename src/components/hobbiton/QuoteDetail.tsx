@@ -225,7 +225,7 @@ export const QuoteDetail: React.FC<QuoteDetailProps> = ({
                 color={undefined}
                 disabled={isDeleting}
                 nonce={nonce}
-                onClick={handleDelete}
+                onPress={handleDelete}
               >
                 {isDeleting ? <Hourglass /> : <Trash2 size={24} />}
               </Button>

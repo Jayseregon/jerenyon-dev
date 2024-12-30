@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, type JSX } from "react";
 import { useRouter } from "next/navigation";
 import { SquareMenu } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";

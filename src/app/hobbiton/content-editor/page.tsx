@@ -386,7 +386,7 @@ export default function ContentEditorPage() {
                 color="danger"
                 radius="md"
                 variant="bordered"
-                onClick={handleRemoveCoverImage}
+                onPress={handleRemoveCoverImage}
               >
                 <ImageOff />
               </Button>
@@ -437,7 +437,7 @@ export default function ContentEditorPage() {
               radius="full"
               type="button"
               variant="bordered"
-              onClick={handleReset}
+              onPress={handleReset}
             >
               <RefreshCcw />
             </Button>
@@ -457,7 +457,7 @@ export default function ContentEditorPage() {
                 radius="full"
                 type="button"
                 variant="bordered"
-                onClick={handleDelete}
+                onPress={handleDelete}
               >
                 {loading ? loadingSpinner : <Trash />}
               </Button>

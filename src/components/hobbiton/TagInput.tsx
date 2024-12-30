@@ -67,7 +67,7 @@ export function TagInput({
             aria-label={`Select tag ${tag.name}`}
             nonce={nonce}
             value={tag.name}
-            onClick={() => handleSelect(tag.name)}
+            onPress={() => handleSelect(tag.name)}
           >
             {tag.name}
           </AutocompleteItem>

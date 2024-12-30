@@ -123,7 +123,7 @@ export const TimelineCardItem = ({
           ) : (
             <Link
               className={`text-light text-${color}-800/50 dark:text-${color}-300/50`}
-              onClick={() => setIsModalOpen(true)}
+              onPress={() => setIsModalOpen(true)}
             >
               More details
             </Link>
