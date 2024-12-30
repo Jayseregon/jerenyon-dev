@@ -11,10 +11,12 @@ import { PanelRightClose, Heart, Eye, Share2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { ErrorBoundary } from "react-error-boundary";
 import { useState, useEffect, useContext } from "react";
+import { BlogPostCategory } from "@prisma/client";
 
 import {
   BlogPostDrawerProps,
   BlogPostMetadataProps,
+  PostTypes,
 } from "@/src/interfaces/Hub";
 import { TiptapToC } from "@/src/components/hobbiton/TiptapToC";
 import { incrementLikes } from "@/actions/prisma/blogPosts/action";
@@ -50,6 +52,11 @@ const ErrorFallback = () => (
   <div className="p-4 text-red-500">Something went wrong loading the post.</div>
 );
 
+const categoryToPathMap: Record<BlogPostCategory, PostTypes> = {
+  ARTICLE: "articles-and-tutorials",
+  PROJECT: "projects-showcase",
+};
+
 export function BlogPostDrawer({
   isOpen,
   onOpenChange,
@@ -82,7 +89,8 @@ export function BlogPostDrawer({
   const handleImageLoad = () => setIsLoading(false);
 
   const handleShare = async () => {
-    const url = `${window.location.origin}/knowledge-hub/${post.slug}`;
+    const categoryPath = categoryToPathMap[post.category];
+    const url = `${window.location.origin}/knowledge-hub/${categoryPath}/${post.slug}`;
     const title = post.title;
     const text = post.summary;
 
