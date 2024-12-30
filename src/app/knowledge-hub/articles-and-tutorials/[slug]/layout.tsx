@@ -16,13 +16,15 @@ export async function generateMetadata(props: {
 
   if (!post) return {};
 
+  const postUrl = `${baseUrl}/knowledge-hub/articles-and-tutorials/${post.slug}`;
+
   return {
     title: `${post.title} | ${siteConfig.name}`,
     description: post.summary,
     openGraph: {
       title: post.title,
       description: post.summary,
-      url: `${baseUrl}/knowledge-hub/articles-and-tutorials/${post.slug}`,
+      url: postUrl,
       siteName: siteConfig.name,
       images: [
         {
@@ -38,6 +40,13 @@ export async function generateMetadata(props: {
       authors: [post.author],
       publishedTime: post.publishedAt?.toISOString(),
       modifiedTime: post.updatedAt.toISOString(),
+    },
+    alternates: {
+      canonical: postUrl,
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
     twitter: {
       card: "summary_large_image",

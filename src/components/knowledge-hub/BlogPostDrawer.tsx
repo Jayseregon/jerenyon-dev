@@ -106,6 +106,26 @@ export function BlogPostDrawer({
     }
   };
 
+  const handleLinkedInShare = () => {
+    const categoryPath = categoryToPathMap[post.category];
+    const url = `${window.location.origin}/knowledge-hub/${categoryPath}/${post.slug}`;
+
+    // Using LinkedIn's v2 API share endpoint
+    const linkedInShareUrl = new URL("https://www.linkedin.com/shareArticle");
+
+    linkedInShareUrl.searchParams.append("mini", "true");
+    linkedInShareUrl.searchParams.append("url", url);
+    linkedInShareUrl.searchParams.append("title", post.title);
+    linkedInShareUrl.searchParams.append("summary", post.summary);
+    linkedInShareUrl.searchParams.append("source", window.location.host);
+
+    window.open(
+      linkedInShareUrl.toString(),
+      "linkedin-share-dialog",
+      "width=600,height=600,toolbar=0,location=0,status=0,menubar=0,scrollbars=1,resizable=0",
+    );
+  };
+
   return (
     <Drawer
       hideCloseButton
@@ -197,16 +217,11 @@ export function BlogPostDrawer({
                 {/* LinkedIn share button */}
                 <Button
                   aria-label="Share on LinkedIn"
-                  as="a"
                   className="bg-background border text-purple-800 dark:text-purple-300 border-purple-800 dark:border-purple-300 min-w-fit px-4"
-                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-                    typeof window !== "undefined" ? window.location.href : "",
-                  )}`}
                   nonce={nonce}
                   radius="md"
-                  rel="noopener noreferrer"
-                  target="_blank"
                   variant="bordered"
+                  onPress={handleLinkedInShare}
                 >
                   <LinkedInIcon size={20} />
                 </Button>
