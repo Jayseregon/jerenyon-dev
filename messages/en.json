@@ -241,11 +241,11 @@
       "company": "Jerenyon Dev",
       "summary": "Founder and visionary behind Jerenyon Dev, delivering custom web development, automation, and AI-driven solutions.",
       "description": {
-        "p1": "Established Jerenyon Dev as a comprehensive web development and automation platform, showcasing technical expertise and innovative projects.",
-        "p2": "Developed and maintained full-stack web applications using Python, React, Next.js, and TypeScript.",
-        "p3": "Integrated AI capabilities and LLMs (OpenAI, Langchain) to enhance web and automation tools.",
-        "p4": "Designed a scalable backend infrastructure with seamless cloud deployments on Vercel and integration of modern services such as Resend, for communication.",
-        "p5": "Managed all aspects of product development, including architecture, coding, testing, and client interaction."
+        "p1": "Founded Jerenyon Dev to provide tailored automation tools, web development services, and innovative geospatial solutions.",
+        "p2": "Built scalable, full-stack applications using Python, Django, React, and Next.js and Typescript, with a focus on operational optimization and digital transformation.",
+        "p3": "Leveraged advanced tools and libraries such as LangChain, OpenAI, Hugging Face models, and Vercel AI SDK to integrate cutting-edge AI capabilities, including generative AI systems and intelligent automation workflows.",
+        "p4": "Designed cloud-native infrastructure with seamless deployments, leveraging Docker, Vercel, and advanced integrations such as Resend for modern communication.",
+        "p5": "Created Jerenyon Dev as a platform for showcasing technical expertise, sharing methodologies, and driving engagement through portfolio projects and blog posts."
       }
     },
     "item2": {
@@ -279,13 +279,13 @@
       "city": "Montréal, QC",
       "summary": "Driving innovation and operational efficiency through Python automation, AI adoption, advanced GIS integration, and scalable web development solutions.",
       "description": {
-        "p1": "Initially developed a Django-based platform, later transforming it into a robust, RESTful API using Django Rest Framework, facilitating seamless integration with a Next.js frontend.",
-        "p2": "Led the creation of a modern UI using Next.js, ensuring a responsive, user-centric experience, and deployed both Python backends and Next.js frontends independently using Docker for scalability and high performance on Azure.",
-        "p3": "Strategically implemented GIS technologies to enhance network design and civil engineering workflows, providing training and mentorship to empower the team.",
-        "p4": "Spearheaded R&D initiatives to integrate AI-driven solutions, developing custom automations with advanced models and frameworks like LangChain and OpenAI, enhancing tool capabilities and operational processes.",
-        "p5": "Developed and managed advanced Python automation scripts and tools, such as audit report generation from field surveys, aerial network pole and midspan calculations, and comprehensive geospatial data processing pipelines, improving data handling and analysis across departments.",
-        "p6": "Architected cloud-based infrastructure solutions on Azure, administering all resources including databases, web apps, container registries, GitHub repositories, and networking components, with automated CI/CD pipelines to streamline deployment.",
-        "p7": "Continually building new applications, employing Next.js for client-facing tools like a custom PDF report generator and data extraction utilities, while leveraging Python for backend-heavy data and geospatial processing."
+        "p1": "Redesigned and expanded a Django-based platform into a RESTful API with Django Rest Framework, integrating it seamlessly with a Next.js frontend.",
+        "p2": "Implemented responsive UI components using Next.js and deployed both backend and frontend solutions independently with Docker and Azure.",
+        "p3": "Pioneered AI R&D initiatives, prototyping solutions like custom chatbots, generative AI-enhanced tools, and RAG workflows with LangChain and OpenAI.",
+        "p4": "Strategically implemented GIS technologies to enhance network design and civil engineering workflows, providing training and mentorship to empower the team.",
+        "p5": "Automated complex processes with Python, including field survey audits, aerial network pole and midspan calculations, and geospatial data pipelines.",
+        "p6": "Developed cloud infrastructure solutions, managing Azure assets such as databases, web apps, containers orchestration, and CI/CD pipelines for scalable and maintainable applications.",
+        "p7": "Built client-facing tools, such as a PDF report generator and data extraction utilities, using Next.js, while handling backend-heavy geospatial processing with Python."
       }
     },
     "item6": {
@@ -295,10 +295,10 @@
       "city": "Montréal, QC",
       "summary": "Co-founder leading technical strategy and full-stack development for our creative e-commerce platform.",
       "description": {
-        "p1": "Spearheaded the strategic development and technical implementation of our custom e-commerce platform, transitioning from WordPress to a bespoke Django solution.",
-        "p2": "Oversaw full-stack development, implementing scalable web architectures with React and Next.js.",
-        "p3": "Managed and integrated advanced backend operations, ensuring seamless functionality and user experience.",
-        "p4": "Led cross-functional collaboration to align business goals with technical development, promoting innovation and growth."
+        "p1": "Transitioned NJAE Plume from WordPress to a scalable custom e-commerce platform built with Django, ensuring a seamless and user-friendly experience.",
+        "p2": "Implemented full-stack solutions using Python, React, and Postgres, with a focus on future-ready API integration for mobile applications.",
+        "p3": "Led backend and database design for streamlined operations, while ensuring high performance and scalability of the platform.",
+        "p4": "Managed business operations, aligning technical innovation with strategic growth objectives to drive success and foster creativity."
       }
     },
     "item7": {
@@ -308,13 +308,13 @@
       "city": "Montréal, QC",
       "summary": "Enhanced fiber network design workflows through Python automation and GIS technology, leading to the development of a powerful Django-based platform.",
       "description": {
-        "p1": "Played a pivotal role in transforming manual CAD-based network design processes by integrating GIS tools and custom Python automation scripts, significantly reducing manual labor and human error.",
-        "p2": "Engineered a Django platform to streamline project management, data handling, and reporting workflows, boosting efficiency and accelerating project timelines.",
-        "p3": "Designed and implemented scalable database solutions using PostgreSQL and PostGIS to manage spatial data, automate complex geospatial processes, and support advanced analytics for network planning.",
-        "p4": "Developed Python-powered on-premises applications using PySide6 for GUI interfaces and PyInstaller for deployment, enhancing accessibility and usability for non-technical team members.",
-        "p5": "Introduced innovative AutoLISP tools to optimize AutoCAD and AutoCAD Map 3D functionalities, driving productivity improvements across engineering teams.",
-        "p6": "Collaborated effectively with multidisciplinary teams, facilitating knowledge transfer, mentoring, and fostering a culture of technological adoption and continuous improvement.",
-        "p7": "Pioneered GIS pilot projects that laid the foundation for future advancements in network design, enabling data-driven applications and automated solutions that supported the company's strategic goals."
+        "p1": "Transformed manual CAD workflows by integrating GIS tools and Python automation, optimizing network design and reducing human error.",
+        "p2": "Developed a Django platform for project management and reporting, streamlining operations and accelerating project delivery.",
+        "p3": "Built Postgres/PostGIS databases for advanced geospatial data management, enabling automated processes and robust analytics for fiber network planning.",
+        "p4": "Created Python-based SaaS tools with user-friendly GUIs for non-technical staff, improving accessibility and operational efficiency.",
+        "p5": "Enhanced engineering workflows with custom AutoLISP tools, improving productivity in AutoCAD and AutoCAD Map 3D environments.",
+        "p6": "Pioneered GIS pilot projects, laying the foundation for data-driven decision-making and automation within the organization.",
+        "p7": "Collaborated effectively with multidisciplinary teams, facilitating knowledge transfer, mentoring, and fostering a culture of technological adoption and continuous improvement."
       }
     },
     "item8": {

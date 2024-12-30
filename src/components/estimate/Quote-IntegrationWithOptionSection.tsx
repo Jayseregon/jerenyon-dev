@@ -73,7 +73,7 @@ export const IntegrationWithOptionSection = memo(
                     handleIntegrationChange(name, price, !isChecked)
                   }
                 />
-              )
+              ),
             )}
             {/* Custom Items */}
             {customOnlyItems.map(({ name }) => (
@@ -86,9 +86,7 @@ export const IntegrationWithOptionSection = memo(
               />
             ))}
             {/* Input Custom Item */}
-            <div
-              className="flex flex-row gap-2"
-              nonce={nonce}>
+            <div className="flex flex-row gap-2" nonce={nonce}>
               <FieldInput
                 aria-label={`Custom ${header} Name`}
                 fieldTarget={customField}
@@ -97,9 +95,7 @@ export const IntegrationWithOptionSection = memo(
                 value={customValue}
                 onChange={(e) => handleCustomValueChange(e.target.value)}
               />
-              <div
-                className="h-full content-end"
-                nonce={nonce}>
+              <div className="h-full content-end" nonce={nonce}>
                 <Button
                   isIconOnly
                   aria-label={`Add Custom ${header}`}
@@ -107,7 +103,8 @@ export const IntegrationWithOptionSection = memo(
                   nonce={nonce}
                   radius="sm"
                   variant="light"
-                  onPress={handleCustomIntegrationChange}>
+                  onPress={handleCustomIntegrationChange}
+                >
                   <SquarePlus />
                 </Button>
               </div>
@@ -117,5 +114,5 @@ export const IntegrationWithOptionSection = memo(
         header={header}
       />
     );
-  }
+  },
 );

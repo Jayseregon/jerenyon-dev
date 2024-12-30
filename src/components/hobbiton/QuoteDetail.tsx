@@ -106,77 +106,57 @@ export const QuoteDetail: React.FC<QuoteDetailProps> = ({
   const summaryData = calculateQuoteSummary(quoteForm);
 
   return (
-    <div
-      className="mt-6"
-      nonce={nonce}>
+    <div className="mt-6" nonce={nonce}>
       <CardSection
         titleOutside
         body={
-          <div
-            className="space-y-4"
-            nonce={nonce}>
-            <div
-              className="rounded-lg p-4 space-y-2"
-              nonce={nonce}>
-              <div
-                className="grid grid-cols-3 gap-2"
-                nonce={nonce}>
-                <div
-                  className="flex flex-col"
-                  nonce={nonce}>
+          <div className="space-y-4" nonce={nonce}>
+            <div className="rounded-lg p-4 space-y-2" nonce={nonce}>
+              <div className="grid grid-cols-3 gap-2" nonce={nonce}>
+                <div className="flex flex-col" nonce={nonce}>
                   <span
                     className="font-semibold text-purple-800 dark:text-purple-300 mb-1"
-                    nonce={nonce}>
+                    nonce={nonce}
+                  >
                     Client Name:
                   </span>
-                  <span
-                    className="pl-2"
-                    nonce={nonce}>
+                  <span className="pl-2" nonce={nonce}>
                     {quoteForm.clientName}
                   </span>
                 </div>
-                <div
-                  className="flex flex-col"
-                  nonce={nonce}>
+                <div className="flex flex-col" nonce={nonce}>
                   <span
                     className="font-semibold text-purple-800 dark:text-purple-300 mb-1"
-                    nonce={nonce}>
+                    nonce={nonce}
+                  >
                     Email:
                   </span>
-                  <span
-                    className="pl-2"
-                    nonce={nonce}>
+                  <span className="pl-2" nonce={nonce}>
                     {quoteForm.clientEmail}
                   </span>
                 </div>
-                <div
-                  className="flex flex-col"
-                  nonce={nonce}>
+                <div className="flex flex-col" nonce={nonce}>
                   <span
                     className="font-semibold text-purple-800 dark:text-purple-300 mb-1"
-                    nonce={nonce}>
+                    nonce={nonce}
+                  >
                     Estimated Time:
                   </span>
-                  <span
-                    className="pl-2"
-                    nonce={nonce}>
+                  <span className="pl-2" nonce={nonce}>
                     {summaryData.totalHours.toFixed(0)} hours
                   </span>
                 </div>
               </div>
 
               {quoteForm.comment && (
-                <div
-                  className="flex flex-col"
-                  nonce={nonce}>
+                <div className="flex flex-col" nonce={nonce}>
                   <span
                     className="font-semibold text-purple-800 dark:text-purple-300 mb-1"
-                    nonce={nonce}>
+                    nonce={nonce}
+                  >
                     Comment:
                   </span>
-                  <p
-                    className="pl-2 whitespace-pre-wrap"
-                    nonce={nonce}>
+                  <p className="pl-2 whitespace-pre-wrap" nonce={nonce}>
                     {quoteForm.comment}
                   </p>
                 </div>
@@ -185,7 +165,8 @@ export const QuoteDetail: React.FC<QuoteDetailProps> = ({
 
             <div
               className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
-              nonce={nonce}>
+              nonce={nonce}
+            >
               {summaryData.categories.map((category) => {
                 if (category.items.length === 0) return null;
 
@@ -193,21 +174,25 @@ export const QuoteDetail: React.FC<QuoteDetailProps> = ({
                   <div
                     key={category.name}
                     className="bg-purple-200 dark:bg-purple-950 rounded-lg shadow-md p-4 flex flex-col justify-between"
-                    nonce={nonce}>
+                    nonce={nonce}
+                  >
                     <div>
                       <h4
                         className="text-lg font-semibold mb-2 text-foreground"
-                        nonce={nonce}>
+                        nonce={nonce}
+                      >
                         {category.name}
                       </h4>
                       <ul
                         className="list-disc list-inside space-y-1"
-                        nonce={nonce}>
+                        nonce={nonce}
+                      >
                         {category.items.map((item, index) => (
                           <li
                             key={index}
                             className="text-sm flex items-center"
-                            nonce={nonce}>
+                            nonce={nonce}
+                          >
                             <CircleCheck className="text-green-500 mr-2" />
                             {item}
                           </li>
@@ -216,15 +201,15 @@ export const QuoteDetail: React.FC<QuoteDetailProps> = ({
                     </div>
                     <div
                       className="mt-4 flex justify-between items-center"
-                      nonce={nonce}>
+                      nonce={nonce}
+                    >
                       <span
                         className="font-semibold text-foreground"
-                        nonce={nonce}>
+                        nonce={nonce}
+                      >
                         Subtotal:
                       </span>
-                      <span
-                        className="text-green-600"
-                        nonce={nonce}>
+                      <span className="text-green-600" nonce={nonce}>
                         ${category.price.toFixed(2)}
                       </span>
                     </div>
@@ -233,29 +218,24 @@ export const QuoteDetail: React.FC<QuoteDetailProps> = ({
               })}
             </div>
 
-            <div
-              className="flex justify-end mt-6"
-              nonce={nonce}>
+            <div className="flex justify-end mt-6" nonce={nonce}>
               <Button
                 isIconOnly
                 className="bg-red-500 hover:bg-red-600 text-white"
                 color={undefined}
                 disabled={isDeleting}
                 nonce={nonce}
-                onPress={handleDelete}>
+                onPress={handleDelete}
+              >
                 {isDeleting ? <Hourglass /> : <Trash2 size={24} />}
               </Button>
             </div>
           </div>
         }
         header={
-          <div
-            className="flex justify-between items-center"
-            nonce={nonce}>
+          <div className="flex justify-between items-center" nonce={nonce}>
             <span>Quote Details for {quote.projectRef}</span>
-            <span
-              className="text-2xl text-green-600"
-              nonce={nonce}>
+            <span className="text-2xl text-green-600" nonce={nonce}>
               ${" "}
               {summaryData.totalPrice.toLocaleString("en-US", {
                 minimumFractionDigits: 2,
