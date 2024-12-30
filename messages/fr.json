@@ -29,7 +29,8 @@
     "gtxt2": " s'appliquent.",
     "privacy": "Politique de confidentialité",
     "cookies": "Politique de cookies",
-    "terms": "Conditions d'utilisation"
+    "terms": "Conditions d'utilisation",
+    "disclaimer": "Clauses de non-responsabilité"
   },
   "about": {
     "title": "À Propos",
@@ -74,16 +75,38 @@
     "hubCategories": {
       "articles-and-tutorials": {
         "title": "Articles & Tutoriels",
-        "description": "Explorez les derniers articles et guides étape par étape de Jerenyon Dev.",
+        "description": "Découvrez des articles détaillés et des guides pratiques par Jerenyon Dev.",
         "imgAlt": "Carte d'arrière-plan de la catégorie Articles et Tutoriels.",
         "btnLabel": "Voir Plus"
       },
-      "projects": {
-        "title": "Projets",
+      "projects-showcase": {
+        "title": "Présentations de Projets",
         "description": "Exposition de solutions innovantes et d'outils développés par Jerenyon Dev.",
         "imgAlt": "Arrière-plan de la carte de catégorie Projets.",
         "btnLabel": "Voir Plus"
       }
+    },
+    "subDashboards": {
+      "articles_and_tutorials": {
+        "title": "Articles & Tutoriels",
+        "hero": {
+          "title": "Partager des idées et des expertises.",
+          "subtitle": "Des articles approfondis et des tutoriels pratiques pour donner vie à vos projets."
+        }
+      },
+      "projects_showcase": {
+        "title": "Présentations de Projets",
+        "hero": {
+          "title": "Solutions innovantes, conçues avec passion.",
+          "subtitle": "Découvrez les outils et solutions qui stimulent l'innovation chez Jerenyon Dev."
+        }
+      }
+    },
+    "blogPostDrawer": {
+      "summary": "Résumé",
+      "published": "Première publication : ",
+      "updated": "Dernière mise à jour : ",
+      "author": "Auteur : "
     }
   },
   "contact": {
@@ -121,9 +144,9 @@
     },
     "addons": "Améliorez votre forfait avec des fonctionnalités et services supplémentaires.",
     "disclaimer": {
-      "line1": "Les prix indiqués sont des estimations et peuvent varier en fonction des exigences spécifiques de votre projet.",
-      "line2": "Les coûts finaux seront déterminés après une discussion détaillée de vos besoins.",
-      "line3": "Des fonctionnalités ou services supplémentaires peuvent entraîner des frais supplémentaires."
+      "title": "Clauses de non-responsabilité",
+      "line1": "Veuillez consulter nos ",
+      "line2": " pour des informations importantes concernant les prix, la portée et les conditions."
     },
     "devNotice": {
       "title": "Bientôt de Retour !",
@@ -138,7 +161,7 @@
       "timeEstimated": "Temps de Développement Estimé",
       "hours": "heures",
       "subTotal": "Sous-Total : ",
-      "total": "Prix Total Estimé : "
+      "total": "Prix Total Estimé"
     },
     "quotingTool": {
       "clientName": "Nom ou Entreprise",
@@ -200,6 +223,10 @@
     "terms_of_service": {
       "title": "Conditions d'utilisation",
       "heroTitle": "Notre engagement envers vous."
+    },
+    "quote_disclaimer": {
+      "title": "Clauses de non-responsabilité",
+      "heroTitle": "Tarification transparente, attentes claires."
     }
   },
   "timeline": {
@@ -209,16 +236,16 @@
     },
     "item1": {
       "date": "Sept 2024 - Présent",
-      "label": "Fondateur",
+      "label": "Fondateur & Ingénieur Full-Stack",
       "city": "Montréal, QC",
       "company": "Jerenyon Dev",
       "summary": "Fondateur et visionnaire derrière Jerenyon Dev, offrant des solutions personnalisées de développement web, d'automatisation et basées sur l'IA.",
       "description": {
-        "p1": "Fondé Jerenyon Dev en tant que plateforme complète de développement web et d'automatisation, mettant en valeur l'expertise technique et des projets innovants.",
-        "p2": "Développé et maintenu des applications web full-stack utilisant Python, React, Next.js et TypeScript.",
-        "p3": "Intégré des capacités d'IA et des LLM (OpenAI, Langchain) pour améliorer les outils web et d'automatisation.",
-        "p4": "Conçu une infrastructure backend évolutive avec des déploiements cloud fluides sur Vercel et l'intégration de services modernes tels que Resend, pour la communication.",
-        "p5": "Géré tous les aspects du développement produit, y compris l'architecture, le codage, les tests et l'interaction avec les clients."
+        "p1": "Fondé Jerenyon Dev pour fournir des outils d'automatisation sur mesure, des services de développement web et des solutions géospatiales innovantes.",
+        "p2": "Créé des applications full-stack évolutives en utilisant Python, Django, React, Next.js et TypeScript, en mettant l'accent sur l'optimisation opérationnelle et la transformation numérique.",
+        "p3": "Exploité des outils et bibliothèques avancés tels que LangChain, OpenAI, les modèles Hugging Face et le SDK Vercel AI pour intégrer des fonctionnalités d'IA de pointe, y compris des systèmes d'IA générative et des flux de travail d'automatisation intelligents.",
+        "p4": "Conçu une infrastructure cloud-native avec des déploiements fluides, en tirant parti de Docker, Vercel et d'intégrations avancées telles que Resend pour une communication moderne.",
+        "p5": "Créé Jerenyon Dev comme une plateforme pour mettre en valeur une expertise technique, partager des méthodologies et stimuler l'engagement grâce à des projets de portfolio et des articles de blog."
       }
     },
     "item2": {
@@ -247,64 +274,76 @@
     },
     "item5": {
       "date": "Juin 2022 - Présent",
-      "label": "Conseiller en Amélioration Continue | Lead Developer",
+      "label": "Ingénieur Full-Stack en Automatisation & Conseiller en Amélioration Continue",
       "company": "Telecon",
       "city": "Montréal, QC",
       "summary": "Stimuler l'innovation et l'efficacité opérationnelle grâce à l'automatisation Python, l'adoption de l'IA, l'intégration avancée des SIG et des solutions de développement web évolutives.",
       "description": {
-        "p1": "Initialement développé une plateforme basée sur Django, transformée par la suite en une API RESTful robuste utilisant Django Rest Framework, facilitant l'intégration fluide avec un frontend Next.js.",
-        "p2": "Dirigé la création d'une interface utilisateur moderne avec Next.js, garantissant une expérience utilisateur réactive et centrée sur l'utilisateur, et déployé de manière indépendante les backends Python et les frontends Next.js avec Docker pour une évolutivité et des performances élevées sur Azure.",
-        "p3": "Implémenté stratégiquement des technologies SIG pour améliorer la conception de réseaux et les flux de travail en génie civil, tout en assurant des formations et du mentorat pour renforcer les compétences de l'équipe.",
-        "p4": "Conduit des initiatives de R&D pour intégrer des solutions basées sur l'IA, développant des automatisations sur mesure avec des modèles et frameworks avancés tels que LangChain et OpenAI, améliorant ainsi les capacités des outils et les processus opérationnels.",
-        "p5": "Développé et géré des scripts et outils d'automatisation avancés en Python, tels que la génération de rapports d'audit à partir de relevés de terrain, les calculs de poteaux de réseau aérien et de mi-portée, ainsi que des pipelines complets de traitement de données géospatiales, améliorant la gestion et l'analyse des données au sein des départements.",
-        "p6": "Conçu des solutions d'infrastructure cloud sur Azure, administrant toutes les ressources, y compris les bases de données, les applications web, les registres de conteneurs, les dépôts GitHub et les composants réseau, avec des pipelines CI/CD automatisés pour optimiser le déploiement.",
-        "p7": "Développe continuellement de nouvelles applications, utilisant Next.js pour des outils orientés client comme un générateur de rapports PDF personnalisé et des utilitaires d'extraction de données, tout en exploitant Python pour le traitement intensif des données et des opérations géospatiales côté backend."
+        "p1": "Réorganisé et étendu une plateforme basée sur Django en une API RESTful grâce à Django Rest Framework, l'intégrant harmonieusement à un frontend Next.js.",
+        "p2": "Implémenté des composants d'interface utilisateur réactifs avec Next.js et déployé de manière indépendante les solutions backend et frontend via Docker et Azure.",
+        "p3": "Piloté des initiatives de R&D en IA, en créant des prototypes de solutions comme des chatbots personnalisés, des outils améliorés par l'IA générative et des flux de travail RAG avec LangChain et OpenAI.",
+        "p4": "Implémenté stratégiquement des technologies SIG pour améliorer la conception de réseau et les flux de travail en ingénierie civile, assurant formations et encadrement pour renforcer l'équipe.",
+        "p5": "Automatisé des processus complexes avec Python, notamment les audits de relevés de terrain, le calcul de poteaux et de portées aériennes, ainsi que les pipelines de données géospatiales.",
+        "p6": "Développé des solutions d'infrastructure cloud, en gérant des actifs Azure tels que les bases de données, les applications web, l'orchestration de conteneurs et les pipelines CI/CD pour des applications évolutives et maintenables.",
+        "p7": "Créé des outils destinés aux clients, comme un générateur de rapports PDF et des utilitaires d'extraction de données avec Next.js, tout en gérant le traitement géospatial côté backend via Python."
       }
     },
     "item6": {
       "date": "Sept 2021 - Présent",
-      "label": "Co-Fondateur",
+      "label": "Co-Fondateur & Ingénieur Full-Stack",
       "company": "NJAE Plume",
       "city": "Montréal, QC",
       "summary": "Co-fondateur dirigeant la stratégie technique et le développement full-stack pour notre plateforme créative de commerce électronique.",
       "description": {
-        "p1": "Piloté le développement stratégique et la mise en œuvre technique de notre plateforme e-commerce personnalisée, passant de WordPress à une solution Django sur mesure.",
-        "p2": "Supervisé le développement full-stack, mettant en œuvre des architectures web évolutives avec React et Next.js.",
-        "p3": "Géré et intégré des opérations backend avancées, assurant une fonctionnalité et une expérience utilisateur transparentes.",
-        "p4": "Dirigé la collaboration interfonctionnelle pour aligner les objectifs commerciaux avec le développement technique, favorisant l'innovation et la croissance."
+        "p1": "Transitionné NJAE Plume de WordPress vers une plateforme e-commerce personnalisée et évolutive basée sur Django, assurant une expérience fluide et conviviale.",
+        "p2": "Mise en place de solutions full-stack en utilisant Python, React et Postgres, en mettant l'accent sur une intégration API prête pour le futur des applications mobiles.",
+        "p3": "Supervisé la conception du backend et des bases de données pour optimiser les opérations, tout en garantissant des performances et une évolutivité élevées de la plateforme.",
+        "p4": "Assuré la gestion des activités commerciales, alignant l'innovation technique sur les objectifs stratégiques de croissance pour favoriser la réussite et stimuler la créativité."
       }
     },
     "item7": {
       "date": "Juil 2018 - Juin 2022",
-      "label": "Concepteur de Réseau Fibre | Ingénieur en Automatisation",
+      "label": "Concepteur de Réseau Fibre | Ingénieur en Automatisation SIG",
       "company": "Telecon",
       "city": "Montréal, QC",
       "summary": "Amélioration des flux de travail de conception de réseau fibre grâce à l'automatisation Python et à la technologie SIG, conduisant au développement d'une puissante plateforme basée sur Django.",
       "description": {
-        "p1": "Joué un rôle pivot dans la transformation des processus manuels de conception de réseau basés sur CAD en intégrant des outils SIG et des scripts d'automatisation Python personnalisés, réduisant significativement le travail manuel et les erreurs humaines.",
-        "p2": "Conçu une plateforme Django pour rationaliser la gestion de projet, la gestion des données et les flux de travail de reporting, augmentant l'efficacité et accélérant les délais de projet.",
-        "p3": "Conçu et mis en œuvre des solutions de bases de données évolutives en utilisant PostgreSQL et PostGIS pour gérer les données spatiales, automatiser des processus géospatiaux complexes et soutenir des analyses avancées pour la planification du réseau.",
-        "p4": "Développé des applications Python sur site utilisant PySide6 pour les interfaces GUI et PyInstaller pour le déploiement, améliorant l'accessibilité et l'utilisabilité pour les membres de l'équipe non techniques.",
-        "p5": "Introduit des outils AutoLISP innovants pour optimiser les fonctionnalités d'AutoCAD et d'AutoCAD Map 3D, stimulant les améliorations de productivité à travers les équipes d'ingénierie.",
-        "p6": "Collaboré efficacement avec des équipes multidisciplinaires, facilitant le transfert de connaissances, le mentorat, et favorisant une culture d'adoption technologique et d'amélioration continue.",
-        "p7": "Pionnier de projets pilotes SIG qui ont jeté les bases pour de futurs progrès dans la conception de réseau, permettant des applications axées sur les données et des solutions automatisées qui ont soutenu les objectifs stratégiques de l'entreprise."
+        "p1": "Transformé les flux de travail manuels sous CAD en intégrant des outils SIG et de l'automatisation Python, optimisant la conception du réseau et réduisant les erreurs humaines.",
+        "p2": "Développé une plateforme Django pour la gestion de projet et de rapports, rationalisant les opérations et accélérant la livraison de projets.",
+        "p3": "Construit des bases de données Postgres/PostGIS pour gérer des données géospatiales avancées, permettant des processus automatisés et des analyses robustes pour la planification du réseau fibre.",
+        "p4": "Créé des outils SaaS basés sur Python avec des interfaces graphiques conviviales pour le personnel non technique, améliorant l'accessibilité et l'efficacité opérationnelle.",
+        "p5": "Amélioré les flux de travail d'ingénierie grâce à des outils AutoLISP personnalisés, augmentant la productivité dans AutoCAD et AutoCAD Map 3D.",
+        "p6": "Mené des projets pilotes SIG, posant les bases d'une prise de décision basée sur les données et de l'automatisation au sein de l'organisation.",
+        "p7": "Collaboré efficacement avec des équipes multidisciplinaires, facilitant le transfert de connaissances, le mentorat, et promouvant une culture d'adoption technologique et d'amélioration continue."
       }
     },
     "item8": {
       "date": "2014 - 2016",
-      "label": "Master en Géographie",
+      "label": "Maîtrise ès sciences en Géographie (MSc)",
       "company": "Université de Caen Normandie",
       "city": "Caen, France",
-      "summary": "Analyse spatiale, études environnementales et gestion des risques côtiers. Hydro-géomorphologie et climatologie. Cartographie et modélisation SIG.",
-      "description": {}
+      "summary": "Expertise avancée en géographie physique, intelligence SIG et analyse spatiale, avec un accent sur l'hydrogéomorphologie, la climatologie et la gestion des risques côtiers dans les environnements littoraux.",
+      "description": {
+        "p1": "Spécialisé dans l'étude scientifique et la gestion des ressources environnementales, mettant l'accent sur la géographie physique, l'hydrogéomorphologie et l'évaluation des risques naturels, en particulier dans les zones littorales.",
+        "p2": "Acquis une expertise avancée en SIG et en géomatique, y compris le traitement des données spatiales, la modélisation cartographique et l'analyse intégrée des systèmes environnementaux.",
+        "p3": "Approfondissement des connaissances en hydrologie, climatologie, météorologie et géomorphologie, en appliquant des approches multidisciplinaires pour étudier les processus côtiers et les risques liés aux tempêtes.",
+        "p4": "Acquis des connaissances fondamentales en géologie, améliorant la compréhension de la dynamique des terrains, tout en menant des travaux de terrain et des analyses en laboratoire pour évaluer les impacts naturels et anthropiques.",
+        "p5": "Mené un stage de recherche de 6 mois, produisant un mémoire combinant études de terrain, analyses théoriques et modélisation SIG pour répondre à des problématiques réelles, aboutissant à une soutenance orale formelle."
+      }
     },
     "item9": {
       "date": "2011 - 2014",
       "label": "Licence en Géographie",
       "company": "Université de Caen Normandie",
       "city": "Caen, France",
-      "summary": "Fondamentaux de la géographie, cartographie et SIG. Géomorphologie, hydrologie et climatologie. Gestion des risques environnementaux.",
-      "description": {}
+      "summary": "Formation complète en géographie physique, en SIG et en analyse spatiale, mettant l'accent sur les approches systémiques des phénomènes naturels et les études littorales.",
+      "description": {
+        "p1": "Développé une base solide en géographie, passant de concepts introductifs à une expertise avancée en géographie physique et en études environnementales.",
+        "p2": "Spécialisé en SIG et en analyse spatiale, acquérant une maîtrise de la cartographie, de la visualisation de données et de l'intelligence géospatiale pour comprendre des systèmes environnementaux complexes.",
+        "p3": "Étudié divers domaines de la géographie physique, notamment l'hydrologie, la géologie, l'océanologie, l'hydrogéomorphologie et la climatologie, en mettant l'accent sur les processus littoraux et les risques naturels.",
+        "p4": "Adopté une approche systémique de l'étude scientifique des phénomènes environnementaux, en considérant les dynamiques interconnectées et leurs implications sur des systèmes plus vastes.",
+        "p5": "Acquis une expérience pratique grâce à des travaux de terrain et des projets d'analyse, explorant les interactions des processus naturels et leur impact sur les systèmes humains et environnementaux."
+      }
     }
   }
 }

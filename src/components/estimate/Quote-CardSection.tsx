@@ -33,7 +33,9 @@ export const CardSection = memo(function CardSection({
             </h2>
           </CardHeader>
         )}
-        <CardBody className={cn("text-lg", bodyClassName)}>{body}</CardBody>
+        <CardBody className={cn("text-lg", bodyClassName)} nonce={nonce}>
+          {body}
+        </CardBody>
       </Card>
     </>
   );

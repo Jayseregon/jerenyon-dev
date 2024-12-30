@@ -4,6 +4,8 @@ import cuid from "cuid";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 import { z } from "zod";
+import { CircleChevronLeft, CircleChevronRight } from "lucide-react";
+import Link from "next/link";
 
 import { QuoteForm, QuoteFormSchema } from "@/src/interfaces/Quote";
 import { NonceContext } from "@/src/app/providers";
@@ -26,6 +28,7 @@ import { QuoteSummarySection } from "./Quote-SummarySection";
 import { ClientSubmit } from "./Quote-ClientSubmit";
 import { PreconfigSection } from "./Quote-PreconfigSection";
 import { ErrorDisplay, SuccessDisplay } from "./OnSubmitQuoteDisplay";
+// import { QuoteDisclaimerNotice } from "@/src/components/legals/Disclaimers";
 
 export default function QuotingTool() {
   const t = useTranslations("estimate");
@@ -349,149 +352,175 @@ export default function QuotingTool() {
     );
   } else {
     return (
-      <div className="p-4" nonce={nonce}>
-        <div
-          className="mt-5 w-full col-span-1 md:col-span-2 space-y-5"
-          nonce={nonce}
-        >
-          {/* Preconfiguration Selection */}
-          <PreconfigSection
-            selectedPreconfig={selectedPreconfig}
-            onPreconfigChange={handlePreconfigChange}
-          />
-        </div>
-
-        <h3 className="text-xl my-10 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto p-5">
-          <p>{t("accordion.description1")}</p>
-          <p>{t("accordion.description2")}</p>
-        </h3>
-
-        <Accordion
-          className="rounded-lg shadow-xl border border-purple-800 dark:border-purple-300"
-          variant="light"
-        >
-          <AccordionItem
-            key="1"
-            aria-label={t("accordion.title")}
-            classNames={{
-              title: "text-2xl font-semibold",
-            }}
-            title={t("accordion.title")}
+      <>
+        <div className="p-4" nonce={nonce}>
+          <div
+            className="mt-5 w-full col-span-1 md:col-span-2 space-y-5"
+            nonce={nonce}
           >
-            <div
-              className="grid grid-cols-1 md:grid-cols-2 gap-5"
-              nonce={nonce}
+            {/* Preconfiguration Selection */}
+            <PreconfigSection
+              selectedPreconfig={selectedPreconfig}
+              onPreconfigChange={handlePreconfigChange}
+            />
+          </div>
+
+          <h3 className="text-xl my-10 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto p-5">
+            <p>{t("accordion.description1")}</p>
+            <p>{t("accordion.description2")}</p>
+          </h3>
+
+          <Accordion
+            className="rounded-lg shadow-xl p-2 border border-purple-800 dark:border-purple-300"
+            itemClasses={{
+              title: "text-2xl font-semibold text-foreground",
+              indicator: "text-2xl text-foreground",
+              trigger:
+                "px-2 py-0 data-[hover=true]:bg-purple-200 data-[hover=true]:dark:bg-purple-950 rounded-lg h-12 flex items-center",
+            }}
+            variant="light"
+          >
+            <AccordionItem
+              key="1"
+              aria-label={t("accordion.title")}
+              indicator={({ isOpen }) =>
+                isOpen ? (
+                  <CircleChevronRight strokeWidth={2.5} />
+                ) : (
+                  <CircleChevronLeft strokeWidth={2.5} />
+                )
+              }
+              title={t("accordion.title")}
             >
               <div
-                className="mt-5 w-full col-span-1 md:col-span-2 space-y-5"
+                className="grid grid-cols-1 md:grid-cols-2 gap-5"
                 nonce={nonce}
               >
-                {/* Base Settings */}
-                <BaseStructureSection
-                  handleInputChange={handleInputChange}
+                <div
+                  className="mt-5 w-full col-span-1 md:col-span-2 space-y-5"
+                  nonce={nonce}
+                >
+                  {/* Base Settings */}
+                  <BaseStructureSection
+                    handleInputChange={handleInputChange}
+                    quote={quote}
+                  />
+                </div>
+                {/* Authentication methods */}
+                <AuthPermsSection
+                  authenticationMethods={authenticationMethods}
+                  handleAuthenticationChange={handleAuthenticationChange}
+                  quote={quote}
+                />
+
+                {/* Legal pages */}
+                <IntegrationNoOptionSection
+                  customItems={quote.legalPages.map((page) => ({
+                    name: page.name,
+                  }))}
+                  handleIntegrationChange={handleLegalPageChange}
+                  header="Legal Pages"
+                  items={legalPagesList}
+                />
+
+                {/* API */}
+                <IntegrationWithOptionSection
+                  customField="quotingTool.customAPI"
+                  customItems={quote.thirdPartyAPIs.map((api) => ({
+                    name: api.apiName,
+                  }))}
+                  customValue={customApiName}
+                  handleCustomIntegrationChange={
+                    handleCustomApiIntegrationChange
+                  }
+                  handleCustomValueChange={setCustomApiName}
+                  handleIntegrationChange={handleApiIntegrationChange}
+                  handleRemoveCustomIntegration={handleRemoveCustomApi}
+                  header="API Integrations"
+                  items={apiIntegrations}
+                />
+
+                {/* Addons */}
+                <IntegrationWithOptionSection
+                  customField="quotingTool.customAddon"
+                  customItems={quote.addons.map((addon) => ({
+                    name: addon.addonName,
+                  }))}
+                  customValue={customAddonName}
+                  handleCustomIntegrationChange={
+                    handleCustomAddonIntegrationChange
+                  }
+                  handleCustomValueChange={setCustomAddonName}
+                  handleIntegrationChange={handleAddonIntegrationChange}
+                  handleRemoveCustomIntegration={handleRemoveCustomAddon}
+                  header="Addons"
+                  items={addons}
+                />
+
+                {/* Automations */}
+                <IntegrationWithOptionSection
+                  customField="quotingTool.customAutomation"
+                  customItems={quote.automations.map((automation) => ({
+                    name: automation.automationType,
+                  }))}
+                  customValue={customAutomation}
+                  handleCustomIntegrationChange={handleCustomAutomationsChange}
+                  handleCustomValueChange={setCustomAutomation}
+                  handleIntegrationChange={handleAutomationsChange}
+                  handleRemoveCustomIntegration={handleRemoveCustomAutomation}
+                  header="Automations"
+                  items={automationsList}
+                />
+
+                {/* Maintenance Plan */}
+                <MaintenanceSection
+                  handleDurationChange={handleDurationChange}
+                  handlePlanOptionChange={handlePlanOptionChange}
+                  handleTypeChange={handleTypeChange}
                   quote={quote}
                 />
               </div>
-              {/* Authentication methods */}
-              <AuthPermsSection
-                authenticationMethods={authenticationMethods}
-                handleAuthenticationChange={handleAuthenticationChange}
-                quote={quote}
-              />
-
-              {/* Legal pages */}
-              <IntegrationNoOptionSection
-                customItems={quote.legalPages.map((page) => ({
-                  name: page.name,
-                }))}
-                handleIntegrationChange={handleLegalPageChange}
-                header="Legal Pages"
-                items={legalPagesList}
-              />
-
-              {/* API */}
-              <IntegrationWithOptionSection
-                customField="quotingTool.customAPI"
-                customItems={quote.thirdPartyAPIs.map((api) => ({
-                  name: api.apiName,
-                }))}
-                customValue={customApiName}
-                handleCustomIntegrationChange={handleCustomApiIntegrationChange}
-                handleCustomValueChange={setCustomApiName}
-                handleIntegrationChange={handleApiIntegrationChange}
-                handleRemoveCustomIntegration={handleRemoveCustomApi}
-                header="API Integrations"
-                items={apiIntegrations}
-              />
-
-              {/* Addons */}
-              <IntegrationWithOptionSection
-                customField="quotingTool.customAddon"
-                customItems={quote.addons.map((addon) => ({
-                  name: addon.addonName,
-                }))}
-                customValue={customAddonName}
-                handleCustomIntegrationChange={
-                  handleCustomAddonIntegrationChange
-                }
-                handleCustomValueChange={setCustomAddonName}
-                handleIntegrationChange={handleAddonIntegrationChange}
-                handleRemoveCustomIntegration={handleRemoveCustomAddon}
-                header="Addons"
-                items={addons}
-              />
-
-              {/* Automations */}
-              <IntegrationWithOptionSection
-                customField="quotingTool.customAutomation"
-                customItems={quote.automations.map((automation) => ({
-                  name: automation.automationType,
-                }))}
-                customValue={customAutomation}
-                handleCustomIntegrationChange={handleCustomAutomationsChange}
-                handleCustomValueChange={setCustomAutomation}
-                handleIntegrationChange={handleAutomationsChange}
-                handleRemoveCustomIntegration={handleRemoveCustomAutomation}
-                header="Automations"
-                items={automationsList}
-              />
-
-              {/* Maintenance Plan */}
-              <MaintenanceSection
-                handleDurationChange={handleDurationChange}
-                handlePlanOptionChange={handlePlanOptionChange}
-                handleTypeChange={handleTypeChange}
-                quote={quote}
-              />
-            </div>
-          </AccordionItem>
-        </Accordion>
-
-        <h3 className="text-xl my-10 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto p-5">
-          <p>{t("summary.description1")}</p>
-          <p>{t("summary.description2")}</p>
-        </h3>
-
-        <div
-          className="mb-8 mt-5 w-full col-span-1 md:col-span-2 space-y-5"
-          nonce={nonce}
-        >
-          <QuoteSummarySection quote={quote} />
+            </AccordionItem>
+          </Accordion>
 
           <h3 className="text-xl my-10 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto p-5">
-            <p>{t("quotingTool.description1")}</p>
-            <p>{t("quotingTool.description2")}</p>
+            <p>{t("summary.description1")}</p>
+            <p>{t("summary.description2")}</p>
           </h3>
 
-          <ClientSubmit
-            handleInputChange={handleInputChange}
-            handleSubmit={handleSubmit}
-            quote={quote}
-            recaptchaToken={recaptchaToken}
-            setRecaptchaToken={setRecaptchaToken}
-          />
+          <div
+            className="mb-8 mt-5 w-full col-span-1 md:col-span-2 space-y-5"
+            nonce={nonce}
+          >
+            <QuoteSummarySection quote={quote} />
+
+            <h3 className="text-xl my-10 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto p-5">
+              <p>{t("quotingTool.description1")}</p>
+              <p>{t("quotingTool.description2")}</p>
+            </h3>
+
+            <ClientSubmit
+              handleInputChange={handleInputChange}
+              handleSubmit={handleSubmit}
+              quote={quote}
+              recaptchaToken={recaptchaToken}
+              setRecaptchaToken={setRecaptchaToken}
+            />
+          </div>
         </div>
-      </div>
+        <div>
+          <sup>*</sup>
+          {t("disclaimer.line1")}
+          <Link
+            className="underline"
+            href="/policies/disclaimers"
+            nonce={nonce}
+          >
+            {t("disclaimer.title")}
+          </Link>{" "}
+          {t("disclaimer.line2")}
+        </div>
+      </>
     );
   }
 }

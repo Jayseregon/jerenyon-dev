@@ -93,7 +93,7 @@ export const TimelineCardItem = ({
               <Chip
                 key={idx}
                 classNames={{
-                  base: `bg-transparent border-small border-${color}-500 mx-0.5`,
+                  base: `bg-transparent border border-${color}-500 mx-0.5`,
                   content: `text-${color}-500`,
                 }}
                 radius="full"
@@ -123,7 +123,7 @@ export const TimelineCardItem = ({
           ) : (
             <Link
               className={`text-light text-${color}-800/50 dark:text-${color}-300/50`}
-              onClick={() => setIsModalOpen(true)}
+              onPress={() => setIsModalOpen(true)}
             >
               More details
             </Link>

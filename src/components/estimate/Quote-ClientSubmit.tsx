@@ -59,10 +59,10 @@ export const ClientSubmit = memo(function ClientSubmit({
       <Button
         fullWidth
         aria-label="Submit Quote"
-        className="bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:bg-purple-800 hover:text-background hover:dark:text-purple-300 focus:outline-none"
+        className="bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:dark:border-purple-950 hover:bg-purple-800 hover:dark:bg-purple-950 hover:text-background hover:dark:text-foreground focus:outline-none"
         disabled={!recaptchaToken}
         radius="full"
-        onClick={handleSubmit}
+        onPress={handleSubmit}
       >
         Submit Quote
       </Button>

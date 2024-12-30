@@ -103,7 +103,7 @@ export const IntegrationWithOptionSection = memo(
                   nonce={nonce}
                   radius="sm"
                   variant="light"
-                  onClick={handleCustomIntegrationChange}
+                  onPress={handleCustomIntegrationChange}
                 >
                   <SquarePlus />
                 </Button>

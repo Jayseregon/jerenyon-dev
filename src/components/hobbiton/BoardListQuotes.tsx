@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -13,10 +13,12 @@ import { SortDescriptor } from "@react-types/shared";
 
 import { useSortQuoteList } from "@/src/hooks/useSortQuoteList";
 import SpinLoader from "@/components/ui/SpinLoader";
+import { NonceContext } from "@/src/app/providers";
 
 import { QuoteDetail } from "./QuoteDetail"; // Import the new component
 
 export const BoardListQuotes = () => {
+  const nonce = useContext(NonceContext);
   const quotesList = useSortQuoteList("/api/quote");
 
   useEffect(() => {
@@ -43,8 +45,8 @@ export const BoardListQuotes = () => {
   };
 
   return (
-    <div className="mt-10 w-fit">
-      <div className="overflow-x-auto">
+    <div className="mt-10 w-fit" nonce={nonce}>
+      <div className="overflow-x-auto" nonce={nonce}>
         <Table
           isHeaderSticky
           removeWrapper
@@ -62,35 +64,57 @@ export const BoardListQuotes = () => {
             th: "uppercase bg-purple-800 dark:bg-purple-300 text-background",
           }}
           color="primary"
+          nonce={nonce}
           selectionMode="single"
           sortDescriptor={quotesList.sortDescriptor}
           onRowAction={handleRowAction}
           onSortChange={handleSortChange}
         >
           <TableHeader>
-            <TableColumn key="projectRef" allowsSorting className="text-center">
+            <TableColumn
+              key="projectRef"
+              allowsSorting
+              className="text-center"
+              nonce={nonce}
+            >
               Project
             </TableColumn>
-            <TableColumn key="status" allowsSorting className="text-center">
+            <TableColumn
+              key="status"
+              allowsSorting
+              className="text-center"
+              nonce={nonce}
+            >
               Status
             </TableColumn>
-            <TableColumn key="createdAt" className="text-center">
+            <TableColumn key="createdAt" className="text-center" nonce={nonce}>
               Created
             </TableColumn>
-            <TableColumn key="updatedAt" className="text-center">
+            <TableColumn key="updatedAt" className="text-center" nonce={nonce}>
               Updated
             </TableColumn>
-            <TableColumn key="clientName" allowsSorting className="text-center">
+            <TableColumn
+              key="clientName"
+              allowsSorting
+              className="text-center"
+              nonce={nonce}
+            >
               Name
             </TableColumn>
             <TableColumn
               key="clientEmail"
               allowsSorting
               className="text-center"
+              nonce={nonce}
             >
               Email
             </TableColumn>
-            <TableColumn key="totalPrice" allowsSorting className="text-center">
+            <TableColumn
+              key="totalPrice"
+              allowsSorting
+              className="text-center"
+              nonce={nonce}
+            >
               Price
             </TableColumn>
           </TableHeader>
@@ -99,30 +123,37 @@ export const BoardListQuotes = () => {
             isLoading={quotesList.isLoading}
             items={quotesList.items}
             loadingContent={<SpinLoader />}
+            nonce={nonce}
           >
             {(item) => (
               <TableRow key={item.id}>
-                <TableCell className="text-nowrap">{item.projectRef}</TableCell>
-                <TableCell className="text-nowrap">{item.status}</TableCell>
-                <TableCell className="text-nowrap">
+                <TableCell className="text-nowrap" nonce={nonce}>
+                  {item.projectRef}
+                </TableCell>
+                <TableCell className="text-nowrap" nonce={nonce}>
+                  {item.status}
+                </TableCell>
+                <TableCell className="text-nowrap" nonce={nonce}>
                   {item.createdAt?.toLocaleDateString("en-CA", {
                     day: "2-digit",
                     month: "2-digit",
                     year: "2-digit",
                   })}
                 </TableCell>
-                <TableCell className="text-nowrap">
+                <TableCell className="text-nowrap" nonce={nonce}>
                   {item.updatedAt?.toLocaleDateString("en-CA", {
                     day: "2-digit",
                     month: "2-digit",
                     year: "2-digit",
                   })}
                 </TableCell>
-                <TableCell className="text-nowrap">{item.clientName}</TableCell>
-                <TableCell className="text-nowrap">
+                <TableCell className="text-nowrap" nonce={nonce}>
+                  {item.clientName}
+                </TableCell>
+                <TableCell className="text-nowrap" nonce={nonce}>
                   {item.clientEmail}
                 </TableCell>
-                <TableCell className="text-end text-nowrap">
+                <TableCell className="text-end text-nowrap" nonce={nonce}>
                   ${" "}
                   {item.totalPrice?.toLocaleString("en-US", {
                     minimumFractionDigits: 2,

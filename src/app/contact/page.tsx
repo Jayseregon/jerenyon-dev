@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useTranslations } from "next-intl";
 import { Button } from "@nextui-org/react";
 import { z } from "zod";
 
+import { NonceContext } from "@/src/app/providers";
 import PageTitles from "@/src/components/ui/PageTitles";
 import {
   FieldInput,
@@ -44,6 +45,7 @@ const initialFormData: FormData = {
 };
 
 export default function ContactPage() {
+  const nonce = useContext(NonceContext);
   const t = useTranslations("contact");
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [loading, setLoading] = useState(false);
@@ -99,7 +101,7 @@ export default function ContactPage() {
   };
 
   const heroSubtitles = (
-    <div className="grid grid-cols-1 gap-2">
+    <div className="grid grid-cols-1 gap-2" nonce={nonce}>
       <span>{t("hero.subtitle.line1")}</span>
       <span>{t("hero.subtitle.line2")}</span>
     </div>
@@ -107,7 +109,7 @@ export default function ContactPage() {
 
   if (response) {
     return (
-      <div className="mt-4">
+      <div className="mt-4" nonce={nonce}>
         {response.error ? <ErrorDisplay t={t} /> : <SuccessDisplay t={t} />}
       </div>
     );
@@ -117,14 +119,18 @@ export default function ContactPage() {
         <PageTitles
           heroSubtitle={heroSubtitles}
           heroTitle={t("hero.title")}
+          nonce={nonce}
           pageTitle={t("title")}
         />
 
-        <div className="py-3" />
+        <div className="py-3" nonce={nonce} />
 
-        <section className="max-w-2xl mx-auto p-4">
-          <form className="space-y-4" onSubmit={handleSubmit}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <section className="max-w-2xl mx-auto p-4" nonce={nonce}>
+          <form className="space-y-4" nonce={nonce} onSubmit={handleSubmit}>
+            <div
+              className="grid grid-cols-1 sm:grid-cols-2 gap-5"
+              nonce={nonce}
+            >
               <FieldInput
                 fieldTarget="firstName"
                 t={t}
@@ -170,16 +176,18 @@ export default function ContactPage() {
               onChange={handleChange}
             />
 
-            <div className="flex justify-center py-4">
+            <div className="flex justify-center py-4" nonce={nonce}>
               <ReCAPTCHA
+                nonce={nonce}
                 sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ""}
                 onChange={setRecaptchaToken}
               />
             </div>
 
             <Button
-              className="w-full bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:bg-purple-800 hover:text-background hover:dark:text-purple-300 focus:outline-none"
+              className="w-full bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:dark:border-purple-950 hover:bg-purple-800 hover:dark:bg-purple-950 hover:text-background hover:dark:text-foreground focus:outline-none"
               disabled={loading || !recaptchaToken}
+              nonce={nonce}
               radius="full"
               type="submit"
             >

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CircleCheck, Hourglass, Trash2 } from "lucide-react";
 import { Button } from "@nextui-org/react";
 
@@ -8,11 +8,13 @@ import { calculateQuoteSummary } from "@/lib/calculateQuote";
 import { CardSection } from "@/components/estimate/Quote-CardSection";
 import { Quote, QuoteForm } from "@/interfaces/Quote";
 import { QuoteDetailProps } from "@/src/interfaces/Auth";
+import { NonceContext } from "@/src/app/providers";
 
 export const QuoteDetail: React.FC<QuoteDetailProps> = ({
   quoteId,
   onDelete,
 }) => {
+  const nonce = useContext(NonceContext);
   const [quote, setQuote] = useState<Quote | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -104,48 +106,67 @@ export const QuoteDetail: React.FC<QuoteDetailProps> = ({
   const summaryData = calculateQuoteSummary(quoteForm);
 
   return (
-    <div className="mt-6">
+    <div className="mt-6" nonce={nonce}>
       <CardSection
         titleOutside
         body={
-          <div className="space-y-4">
-            <div className="rounded-lg p-4 space-y-2">
-              <div className="grid grid-cols-3 gap-2">
-                <div className="flex flex-col">
-                  <span className="font-semibold text-purple-800 dark:text-purple-300 mb-1">
+          <div className="space-y-4" nonce={nonce}>
+            <div className="rounded-lg p-4 space-y-2" nonce={nonce}>
+              <div className="grid grid-cols-3 gap-2" nonce={nonce}>
+                <div className="flex flex-col" nonce={nonce}>
+                  <span
+                    className="font-semibold text-purple-800 dark:text-purple-300 mb-1"
+                    nonce={nonce}
+                  >
                     Client Name:
                   </span>
-                  <span className="pl-2">{quoteForm.clientName}</span>
+                  <span className="pl-2" nonce={nonce}>
+                    {quoteForm.clientName}
+                  </span>
                 </div>
-                <div className="flex flex-col">
-                  <span className="font-semibold text-purple-800 dark:text-purple-300 mb-1">
+                <div className="flex flex-col" nonce={nonce}>
+                  <span
+                    className="font-semibold text-purple-800 dark:text-purple-300 mb-1"
+                    nonce={nonce}
+                  >
                     Email:
                   </span>
-                  <span className="pl-2">{quoteForm.clientEmail}</span>
+                  <span className="pl-2" nonce={nonce}>
+                    {quoteForm.clientEmail}
+                  </span>
                 </div>
-                <div className="flex flex-col">
-                  <span className="font-semibold text-purple-800 dark:text-purple-300 mb-1">
+                <div className="flex flex-col" nonce={nonce}>
+                  <span
+                    className="font-semibold text-purple-800 dark:text-purple-300 mb-1"
+                    nonce={nonce}
+                  >
                     Estimated Time:
                   </span>
-                  <span className="pl-2">
+                  <span className="pl-2" nonce={nonce}>
                     {summaryData.totalHours.toFixed(0)} hours
                   </span>
                 </div>
               </div>
 
               {quoteForm.comment && (
-                <div className="flex flex-col">
-                  <span className="font-semibold text-purple-800 dark:text-purple-300 mb-1">
+                <div className="flex flex-col" nonce={nonce}>
+                  <span
+                    className="font-semibold text-purple-800 dark:text-purple-300 mb-1"
+                    nonce={nonce}
+                  >
                     Comment:
                   </span>
-                  <p className="pl-2 whitespace-pre-wrap">
+                  <p className="pl-2 whitespace-pre-wrap" nonce={nonce}>
                     {quoteForm.comment}
                   </p>
                 </div>
               )}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+              nonce={nonce}
+            >
               {summaryData.categories.map((category) => {
                 if (category.items.length === 0) return null;
 
@@ -153,25 +174,42 @@ export const QuoteDetail: React.FC<QuoteDetailProps> = ({
                   <div
                     key={category.name}
                     className="bg-purple-200 dark:bg-purple-950 rounded-lg shadow-md p-4 flex flex-col justify-between"
+                    nonce={nonce}
                   >
                     <div>
-                      <h4 className="text-lg font-semibold mb-2 text-foreground">
+                      <h4
+                        className="text-lg font-semibold mb-2 text-foreground"
+                        nonce={nonce}
+                      >
                         {category.name}
                       </h4>
-                      <ul className="list-disc list-inside space-y-1">
+                      <ul
+                        className="list-disc list-inside space-y-1"
+                        nonce={nonce}
+                      >
                         {category.items.map((item, index) => (
-                          <li key={index} className="text-sm flex items-center">
+                          <li
+                            key={index}
+                            className="text-sm flex items-center"
+                            nonce={nonce}
+                          >
                             <CircleCheck className="text-green-500 mr-2" />
                             {item}
                           </li>
                         ))}
                       </ul>
                     </div>
-                    <div className="mt-4 flex justify-between items-center">
-                      <span className="font-semibold text-foreground">
+                    <div
+                      className="mt-4 flex justify-between items-center"
+                      nonce={nonce}
+                    >
+                      <span
+                        className="font-semibold text-foreground"
+                        nonce={nonce}
+                      >
                         Subtotal:
                       </span>
-                      <span className="text-green-600">
+                      <span className="text-green-600" nonce={nonce}>
                         ${category.price.toFixed(2)}
                       </span>
                     </div>
@@ -180,13 +218,14 @@ export const QuoteDetail: React.FC<QuoteDetailProps> = ({
               })}
             </div>
 
-            <div className="flex justify-end mt-6">
+            <div className="flex justify-end mt-6" nonce={nonce}>
               <Button
                 isIconOnly
                 className="bg-red-500 hover:bg-red-600 text-white"
                 color={undefined}
                 disabled={isDeleting}
-                onClick={handleDelete}
+                nonce={nonce}
+                onPress={handleDelete}
               >
                 {isDeleting ? <Hourglass /> : <Trash2 size={24} />}
               </Button>
@@ -194,9 +233,9 @@ export const QuoteDetail: React.FC<QuoteDetailProps> = ({
           </div>
         }
         header={
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center" nonce={nonce}>
             <span>Quote Details for {quote.projectRef}</span>
-            <span className="text-2xl text-green-600">
+            <span className="text-2xl text-green-600" nonce={nonce}>
               ${" "}
               {summaryData.totalPrice.toLocaleString("en-US", {
                 minimumFractionDigits: 2,
