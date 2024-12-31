@@ -7,12 +7,11 @@ import {
   Image,
   Spinner,
 } from "@nextui-org/react";
-import { PanelRightClose, Heart, Eye, Share2 } from "lucide-react";
+import { PanelRightClose, Heart, Eye } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { ErrorBoundary } from "react-error-boundary";
 import { useState, useEffect, useContext } from "react";
 import { BlogPostCategory } from "@prisma/client";
-import { LinkedinShareButton, LinkedinIcon } from "react-share";
 
 import {
   BlogPostDrawerProps,
@@ -24,6 +23,7 @@ import { incrementLikes } from "@/actions/prisma/blogPosts/action";
 import { NonceContext } from "@/src/app/providers";
 
 import { BlogPostTags } from "./BlogPostTags";
+import { ShareButton } from "./ShareButton";
 
 const BlogPostMetadata = ({ post, t, nonce }: BlogPostMetadataProps) => (
   <div className="space-y-2 mb-3" nonce={nonce}>
@@ -88,33 +88,11 @@ export function BlogPostDrawer({
 
   const handleImageLoad = () => setIsLoading(false);
 
-  const handleShare = async () => {
-    const categoryPath = categoryToPathMap[post.category];
-    const url = `${window.location.origin}/knowledge-hub/${categoryPath}/${post.slug}`;
-    const title = post.title;
-    const text = post.summary;
-
-    if (navigator.share) {
-      try {
-        await navigator.share({ url, title, text });
-      } catch (error) {
-        // Ignore AbortError as it's just a user cancellation
-        if (!(error instanceof Error && error.name === "AbortError")) {
-          console.error("Error sharing post: ", error);
-        }
-      }
-    }
-  };
-
   const getShareUrl = () => {
     const categoryPath = categoryToPathMap[post.category];
     const baseUrl = window.location.origin;
 
-    const url = `${baseUrl}/knowledge-hub/${categoryPath}/${post.slug}`;
-
-    console.log("Share URL : ", url);
-
-    return url;
+    return `${baseUrl}/knowledge-hub/${categoryPath}/${post.slug}`;
   };
 
   return (
@@ -170,64 +148,50 @@ export function BlogPostDrawer({
               </div>
 
               {/* Stats buttons */}
-              <div className="flex flex-row gap-2 mb-4" nonce={nonce}>
-                {/* Views count button */}
-                <Button
-                  aria-label="View count"
-                  className="bg-background border text-purple-800 dark:text-purple-300 border-purple-800 dark:border-purple-300 min-w-fit px-4"
+              <div className="flex flex-row justify-between">
+                <div className="flex flex-row gap-2 mb-4" nonce={nonce}>
+                  {/* Views count button */}
+                  <Button
+                    aria-label="View count"
+                    className="bg-background border text-purple-800 dark:text-purple-300 border-purple-800 dark:border-purple-300 min-w-fit px-4"
+                    nonce={nonce}
+                    radius="md"
+                    variant="bordered"
+                  >
+                    <div className="flex items-center gap-2" nonce={nonce}>
+                      <Eye size={20} />
+                      <span>{post.views}</span>
+                    </div>
+                  </Button>
+                  {/* Like button */}
+                  <Button
+                    aria-label="Like post"
+                    className={`bg-background border min-w-fit px-4 ${
+                      isLiked
+                        ? "text-red-500 border-red-500"
+                        : "text-purple-800 dark:text-purple-300 border-purple-800 dark:border-purple-300"
+                    }`}
+                    nonce={nonce}
+                    radius="md"
+                    variant="bordered"
+                    onPress={handleLike}
+                  >
+                    <div className="flex items-center gap-2" nonce={nonce}>
+                      <Heart
+                        className={isLiked ? "fill-current" : ""}
+                        size={20}
+                      />
+                      <span>{likes}</span>
+                    </div>
+                  </Button>
+                </div>
+                {/* Share buttons dropdown */}
+                <ShareButton
                   nonce={nonce}
-                  radius="md"
-                  variant="bordered"
-                >
-                  <div className="flex items-center gap-2" nonce={nonce}>
-                    <Eye size={20} />
-                    <span>{post.views}</span>
-                  </div>
-                </Button>
-                {/* Like button */}
-                <Button
-                  aria-label="Like post"
-                  className={`bg-background border min-w-fit px-4 ${
-                    isLiked
-                      ? "text-red-500 border-red-500"
-                      : "text-purple-800 dark:text-purple-300 border-purple-800 dark:border-purple-300"
-                  }`}
-                  nonce={nonce}
-                  radius="md"
-                  variant="bordered"
-                  onPress={handleLike}
-                >
-                  <div className="flex items-center gap-2" nonce={nonce}>
-                    <Heart
-                      className={isLiked ? "fill-current" : ""}
-                      size={20}
-                    />
-                    <span>{likes}</span>
-                  </div>
-                </Button>
-                {/* LinkedIn share button */}
-                <LinkedinShareButton
-                  className="bg-background border text-purple-800 dark:text-purple-300 border-purple-800 dark:border-purple-300 min-w-fit px-4 rounded-md flex items-center justify-center h-[40px]"
-                  source={window.location.origin}
                   summary={post.summary}
                   title={post.title}
                   url={getShareUrl()}
-                >
-                  <LinkedinIcon round size={20} />
-                </LinkedinShareButton>
-                {/* Share button */}
-                <Button
-                  aria-label="Share post"
-                  className="bg-background border text-purple-800 dark:text-purple-300 border-purple-800 dark:border-purple-300 min-w-fit px-4"
-                  nonce={nonce}
-                  radius="md"
-                  variant="bordered"
-                  onPress={handleShare}
-                >
-                  <div className="flex items-center gap-2" nonce={nonce}>
-                    <Share2 size={20} />
-                  </div>
-                </Button>
+                />
               </div>
 
               <h2
