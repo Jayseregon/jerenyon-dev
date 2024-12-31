@@ -144,3 +144,10 @@ export interface SitemapPost {
   slug: string;
   updatedAt: Date;
 }
+
+export interface ShareButtonProps {
+  url: string;
+  title: string;
+  summary: string;
+  nonce?: string;
+}

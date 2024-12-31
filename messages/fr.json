@@ -107,6 +107,11 @@
       "published": "Première publication : ",
       "updated": "Dernière mise à jour : ",
       "author": "Auteur : "
+    },
+    "shareButton": {
+      "copyLink": "Copier le lien",
+      "shareLinkedin": "Partager sur LinkedIn",
+      "shareBluesky": "Partager sur Bluesky"
     }
   },
   "contact": {
