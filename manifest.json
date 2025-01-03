@@ -1,0 +1,21 @@
+{
+  "name": "Jerenyon Dev",
+  "short_name": "Jerenyon",
+  "description": "Delivering cutting-edge web development, intelligent automation, and geospatial intelligence solutions. Specialized in Python automation, cloud-based GIS, and AI-driven innovations tailored to your needs.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1D1B3C",
+  "theme_color": "#EDE9F6",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
