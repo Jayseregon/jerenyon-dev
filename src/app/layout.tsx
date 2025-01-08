@@ -137,6 +137,11 @@ export default async function RootLayout({ children }: Props) {
           rel="prefetch"
         />
         <Link href="/manifest.json" nonce={nonce} rel="manifest" />
+        <script
+          defer
+          data-website-id="27802530-4c86-4b3f-98c8-7df974a6e0e2"
+          src="https://analytics.jerenyon.dev/script.js"
+        />
       </Head>
       <body
         className={clsx(
