@@ -137,11 +137,6 @@ export default async function RootLayout({ children }: Props) {
           rel="prefetch"
         />
         <Link href="/manifest.json" nonce={nonce} rel="manifest" />
-        <script
-          defer
-          data-website-id="27802530-4c86-4b3f-98c8-7df974a6e0e2"
-          src="https://analytics.jerenyon.dev/script.js"
-        />
       </Head>
       <body
         className={clsx(
@@ -165,6 +160,11 @@ export default async function RootLayout({ children }: Props) {
             </RootLayoutStyling>
           </NextIntlClientProvider>
         </Providers>
+        <Script
+          async
+          data-website-id="27802530-4c86-4b3f-98c8-7df974a6e0e2"
+          src="https://analytics.jerenyon.dev/script.js"
+        />
         <Script
           nonce={nonce}
           src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
