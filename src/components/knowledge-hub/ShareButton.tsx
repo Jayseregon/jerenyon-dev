@@ -25,7 +25,7 @@ export function ShareButton({ url, title, summary, nonce }: ShareButtonProps) {
   };
 
   const handleLinkedInShare = () => {
-    const shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&summary=${encodeURIComponent(summary)}`;
+    const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
 
     window.open(shareUrl, "_blank", "noopener,noreferrer");
   };
