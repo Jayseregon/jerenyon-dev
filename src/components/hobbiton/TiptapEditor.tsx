@@ -26,6 +26,7 @@ import {
 } from "@tiptap-pro/extension-table-of-contents";
 import FileHandler from "@tiptap-pro/extension-file-handler";
 import Dropcursor from "@tiptap/extension-dropcursor";
+import CodeExtension from "@tiptap/extension-code";
 
 import {
   uploadImageToBunny,
@@ -51,6 +52,7 @@ export const TiptapEditor = ({
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
+        code: false,
         codeBlock: false,
         dropcursor: false,
       }),
@@ -117,6 +119,7 @@ export const TiptapEditor = ({
         },
       }),
       Dropcursor.configure({}),
+      CodeExtension,
     ],
     content: initialContent || content,
     onUpdate: ({ editor }) => {
@@ -125,11 +128,13 @@ export const TiptapEditor = ({
     editable: editable,
     editorProps: {
       attributes: {
+        spellcheck: "true",
         class: `prose prose-lightTheme dark:prose-darkTheme max-w-none min-h-[300px] focus:outline-none ProseMirror`,
         style: "white-space: pre-wrap; text-align: left;",
       },
     },
     immediatelyRender: false, // fix SSR hydration issues
+    shouldRerenderOnTransaction: true,
   });
 
   useEffect(() => {

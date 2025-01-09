@@ -111,6 +111,11 @@
   @apply text-gray-400 dark:text-gray-500;
 }
 
+.prose code::before,
+.prose code::after {
+  content: "";
+}
+
 .prose {
   /* Common typography styles */
   white-space: pre-wrap;
