@@ -290,3 +290,9 @@ export const QuoteFormSchema = z.object({
   thirdPartyAPIs: z.array(ThirdPartyAPISchema),
   addons: z.array(AddonSchema),
 });
+
+export interface QuoteEmailNotificationProps {
+  clientName: string;
+  clientEmail: string;
+  comment: string;
+}

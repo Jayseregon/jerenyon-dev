@@ -21,6 +21,7 @@ import {
 import { TiptapToC } from "@/src/components/hobbiton/TiptapToC";
 import { incrementLikes } from "@/actions/prisma/blogPosts/action";
 import { NonceContext } from "@/src/app/providers";
+import { sendLikeNotification } from "@/src/actions/resend/action";
 
 import { BlogPostTags } from "./BlogPostTags";
 import { ShareButton } from "./ShareButton";
@@ -78,6 +79,11 @@ export function BlogPostDrawer({
         setLikes(updated.likes);
         setIsLiked(true);
         localStorage.setItem(`liked_${post.slug}`, "true");
+        const { success } = await sendLikeNotification(post.slug);
+
+        if (!success) {
+          console.error("Failed to send like notification");
+        }
       }
     }
   };

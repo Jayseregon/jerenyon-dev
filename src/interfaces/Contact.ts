@@ -29,3 +29,22 @@ export interface ErrorDisplayProps {
 export interface SuccessDisplayProps {
   t: ReturnType<typeof useTranslations>;
 }
+
+export interface ContactFormData {
+  firstName: string;
+  lastName: string;
+  subject: string;
+  email: string;
+  message: string;
+  honeypot?: string | null;
+  recaptchaToken: string;
+}
+
+export interface FormData {
+  firstName: string;
+  lastName: string;
+  subject: string;
+  email: string;
+  message: string;
+  honeypot?: string;
+}

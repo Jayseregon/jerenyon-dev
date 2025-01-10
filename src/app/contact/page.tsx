@@ -1,10 +1,10 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useActionState, useContext, useEffect, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useTranslations } from "next-intl";
-import { Button } from "@nextui-org/react";
-import { z } from "zod";
+import { Button, Form } from "@nextui-org/react";
+import { useFormStatus } from "react-dom";
 
 import { NonceContext } from "@/src/app/providers";
 import PageTitles from "@/src/components/ui/PageTitles";
@@ -15,89 +15,41 @@ import {
   ErrorDisplay,
   SuccessDisplay,
 } from "@/src/components/contact/contactFormElements";
+import { ContactFormData } from "@/src/interfaces/Contact";
+import { sendContactEmail } from "@/src/actions/resend/action";
 
-// Define Zod schema for form validation
-const formSchema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  subject: z.string().min(1, "Subject is required"),
-  email: z.string().email("Invalid email address"),
-  message: z.string().min(1, "Message is required"),
-  honeypot: z.string().optional(),
-});
-
-interface FormData {
-  firstName: string;
-  lastName: string;
-  subject: string;
-  email: string;
-  message: string;
-  honeypot?: string;
-}
-
-const initialFormData: FormData = {
-  firstName: "",
-  lastName: "",
-  subject: "",
-  email: "",
-  message: "",
-  honeypot: "",
+const initialState = {
+  success: false,
+  error: undefined,
 };
 
 export default function ContactPage() {
   const nonce = useContext(NonceContext);
   const t = useTranslations("contact");
-  const [formData, setFormData] = useState<FormData>(initialFormData);
-  const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState<{
-    error?: string;
-    success?: boolean;
-  } | null>(null);
+  const [contactForm, setContactForm] = useState<ContactFormData>({
+    firstName: "",
+    lastName: "",
+    subject: "",
+    email: "",
+    message: "",
+    honeypot: "",
+    recaptchaToken: "",
+  });
+  const { pending } = useFormStatus();
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [state, formAction] = useActionState(sendContactEmail, initialState);
+
+  useEffect(() => {
+    console.log("Errors: ", state?.error);
+  }, [state?.error]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    setFormData({
-      ...formData,
+    setContactForm({
+      ...contactForm,
       [e.target.name]: e.target.value,
     });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-
-    // Validate form data using Zod
-    const validation = formSchema.safeParse(formData);
-
-    if (!validation.success) {
-      setResponse({
-        error: validation.error.errors.map((err) => err.message).join(", "),
-      });
-      setLoading(false);
-
-      return;
-    }
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...formData, recaptchaToken }),
-      });
-
-      const result = await res.json();
-
-      setResponse(result);
-    } catch {
-      setResponse({ error: "An error occurred while sending the email" });
-    } finally {
-      setLoading(false);
-      setFormData(initialFormData);
-    }
   };
 
   const heroSubtitles = (
@@ -107,95 +59,112 @@ export default function ContactPage() {
     </div>
   );
 
-  if (response) {
+  if (state?.success) {
     return (
       <div className="mt-4" nonce={nonce}>
-        {response.error ? <ErrorDisplay t={t} /> : <SuccessDisplay t={t} />}
+        <SuccessDisplay t={t} />
       </div>
     );
-  } else {
+  } else if (state?.error) {
     return (
-      <div>
-        <PageTitles
-          heroSubtitle={heroSubtitles}
-          heroTitle={t("hero.title")}
-          nonce={nonce}
-          pageTitle={t("title")}
-        />
-
-        <div className="py-3" nonce={nonce} />
-
-        <section className="max-w-2xl mx-auto p-4" nonce={nonce}>
-          <form className="space-y-4" nonce={nonce} onSubmit={handleSubmit}>
-            <div
-              className="grid grid-cols-1 sm:grid-cols-2 gap-5"
-              nonce={nonce}
-            >
-              <FieldInput
-                fieldTarget="firstName"
-                t={t}
-                type="text"
-                value={formData.firstName}
-                onChange={handleChange}
-              />
-              <FieldInput
-                fieldTarget="lastName"
-                t={t}
-                type="text"
-                value={formData.lastName}
-                onChange={handleChange}
-              />
-            </div>
-
-            <FieldInput
-              fieldTarget="email"
-              t={t}
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-
-            <FieldInput
-              fieldTarget="subject"
-              t={t}
-              type="text"
-              value={formData.subject}
-              onChange={handleChange}
-            />
-
-            <TextInput
-              fieldTarget="message"
-              t={t}
-              value={formData.message}
-              onChange={handleChange}
-            />
-
-            <HoneypotField
-              t={t}
-              value={formData.honeypot}
-              onChange={handleChange}
-            />
-
-            <div className="flex justify-center py-4" nonce={nonce}>
-              <ReCAPTCHA
-                nonce={nonce}
-                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ""}
-                onChange={setRecaptchaToken}
-              />
-            </div>
-
-            <Button
-              className="w-full bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:dark:border-purple-950 hover:bg-purple-800 hover:dark:bg-purple-950 hover:text-background hover:dark:text-foreground focus:outline-none"
-              disabled={loading || !recaptchaToken}
-              nonce={nonce}
-              radius="full"
-              type="submit"
-            >
-              {loading ? t("btn_pending") : t("btn")}
-            </Button>
-          </form>
-        </section>
+      <div className="mt-4" nonce={nonce}>
+        <ErrorDisplay t={t} />
       </div>
     );
   }
+
+  return (
+    <div>
+      <PageTitles
+        heroSubtitle={heroSubtitles}
+        heroTitle={t("hero.title")}
+        nonce={nonce}
+        pageTitle={t("title")}
+      />
+
+      <div className="py-3" nonce={nonce} />
+
+      <section className="max-w-2xl mx-auto p-4" nonce={nonce}>
+        <Form action={formAction} className="space-y-4">
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full"
+            nonce={nonce}
+          >
+            <FieldInput
+              fieldTarget="firstName"
+              t={t}
+              type="text"
+              value={contactForm.firstName}
+              onChange={handleChange}
+            />
+            <FieldInput
+              fieldTarget="lastName"
+              t={t}
+              type="text"
+              value={contactForm.lastName}
+              onChange={handleChange}
+            />
+          </div>
+
+          <FieldInput
+            fieldTarget="email"
+            t={t}
+            type="email"
+            value={contactForm.email}
+            onChange={handleChange}
+          />
+
+          <FieldInput
+            fieldTarget="subject"
+            t={t}
+            type="text"
+            value={contactForm.subject}
+            onChange={handleChange}
+          />
+
+          <TextInput
+            fieldTarget="message"
+            t={t}
+            value={contactForm.message}
+            onChange={handleChange}
+          />
+
+          <HoneypotField
+            t={t}
+            value={contactForm.honeypot ?? ""}
+            onChange={handleChange}
+          />
+
+          <input
+            name="recaptchaToken"
+            type="hidden"
+            value={recaptchaToken ?? ""}
+            onChange={handleChange}
+          />
+
+          <div
+            className="flex justify-center py-4 mx-auto"
+            id="recaptcha"
+            nonce={nonce}
+          >
+            <ReCAPTCHA
+              nonce={nonce}
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ""}
+              onChange={setRecaptchaToken}
+            />
+          </div>
+
+          <Button
+            className="w-full bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:dark:border-purple-950 hover:bg-purple-800 hover:dark:bg-purple-950 hover:text-background hover:dark:text-foreground focus:outline-none"
+            disabled={pending || !recaptchaToken}
+            nonce={nonce}
+            radius="full"
+            type="submit"
+          >
+            {pending ? t("btn_pending") : t("btn")}
+          </Button>
+        </Form>
+      </section>
+    </div>
+  );
 }
