@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useContext, useEffect, useState } from "react";
+import { useActionState, useContext, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useTranslations } from "next-intl";
 import { Button, Form } from "@nextui-org/react";
@@ -38,10 +38,6 @@ export default function ContactPage() {
   const { pending } = useFormStatus();
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [state, formAction] = useActionState(sendContactEmail, initialState);
-
-  useEffect(() => {
-    console.log("Errors: ", state?.error);
-  }, [state?.error]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,

@@ -104,7 +104,7 @@ export default function QuotingTool() {
     try {
       // Validate the quote data using Zod
       QuoteFormSchema.parse(quote);
-      console.log("Quote data is valid:", quote);
+      // console.log("Quote data is valid:", quote);
 
       const response = await fetch("/api/quote/create", {
         method: "POST",
@@ -125,15 +125,20 @@ export default function QuotingTool() {
 
       const res = await response.json();
 
-      console.log("Response: ", res);
+      // console.log("Response: ", res);
 
       setResponse(res);
     } catch (error: any) {
       if (error instanceof z.ZodError) {
         setResponse({ error: "Validation error" });
-        console.error("Validation errors:", error);
+        if (process.env.NODE_ENV === "development") {
+          console.error("Validation errors:", error);
+        }
       } else {
-        console.error("An unexpected error occurred:", error);
+        setResponse({ error: "Submission failed" });
+        if (process.env.NODE_ENV === "development") {
+          console.error("An unexpected error occurred:", error);
+        }
       }
     }
   };
