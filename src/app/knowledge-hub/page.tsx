@@ -18,7 +18,13 @@ export default function KnowledgeHubPage() {
         pageTitle={t("title")}
       />
 
-      <div className="py-3" />
+      <h3 className="text-xl my-10 text-justify max-w-5xl mx-auto p-5">
+        <p className="mb-3 indent-8">{t("intro.p1")}</p>
+        <p className="mb-3">{t("intro.p2")}</p>
+      </h3>
+      <h3 className="text-xl mt-6 mb-20 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto">
+        {t("intro.p3")}
+      </h3>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px w-full">
         {siteConfig.hubCategories.map((category, index) => (

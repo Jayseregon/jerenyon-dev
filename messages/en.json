@@ -66,6 +66,11 @@
       "title": "Explore, Learn, Build.",
       "subtitle": "Delve into blog posts, How-Tos, and project showcases on automation, development, and geospatial solutions."
     },
+    "intro": {
+      "p1": "This space is where ideas meet practicality! It has been thought as a collection of articles, tutorials, and insights aimed at making technical concepts accessible to everyone, regardless of skill level. My goal is to keep things light yet meaningful, blending technical depth with clarity and a touch of creativity.",
+      "p2": "I am not here to reinvent the wheel or repeat what is already out there. Instead, I strive to demystify topics, sharing solutions and approaches rooted in real-world challenges. Whether you are exploring Python, geospatial intelligence/GIS, diving into AI, or automating processes, the content here is designed to inform, inspire, and occasionally make you smile.",
+      "p3": "Because learning should be as enjoyable as it is empowering."
+    },
     "devNotice": {
       "title": "Coming Soon!",
       "line1": "We are excited to announce that our Knowledge Hub is under construction.",
