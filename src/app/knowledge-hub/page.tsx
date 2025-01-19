@@ -6,6 +6,7 @@ import { siteConfig } from "@/src/config/site";
 import PageTitles from "@/src/components/ui/PageTitles";
 import MainCategoryCard from "@/src/components/knowledge-hub/MainCategoryCard";
 import { PostTypes } from "@/src/interfaces/Hub";
+import { ReadingsSection } from "@/src/components/knowledge-hub/ReadingsSection";
 
 export default function KnowledgeHubPage() {
   const t = useTranslations("knowledge-hub");
@@ -41,6 +42,19 @@ export default function KnowledgeHubPage() {
           />
         ))}
       </div>
+
+      <div className="py-3" />
+
+      <h3 className="text-xl my-10 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto">
+        <blockquote className="italic">
+          “Learning never exhausts the mind.” — Leonardo da Vinci
+        </blockquote>
+        <blockquote className="italic mt-4">
+          “Books are a uniquely portable magic.” — Stephen King
+        </blockquote>
+      </h3>
+
+      <ReadingsSection />
     </div>
   );
 }
