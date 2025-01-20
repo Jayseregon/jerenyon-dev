@@ -11,7 +11,7 @@ export interface ReadingItem {
 export const readingListData: ReadingItem[] = [
   {
     title: "Python Crash Course, 2nd Edition",
-    coverImage: "/assets/readings/recursive-book-of-recursion.webp",
+    coverImage: "/assets/readings/python-crash-course.webp",
     author: "Eric Matthes",
     takeaway:
       "This book is actually the first book I read about Python, and it proved to be a great introduction to the language. At the time, I was already into Swift and the newly released SwiftUI, and I wanted to go back to programming with Python—having only dabbled using Python for spatial analysis within QGIS and ArcGIS, back at the University. The author does a great job explaining the basics of Python as well as some more advanced topics. However, what I really liked about it was the multiple code projects, which let us play with real-world applications. I would recommend this book to anyone who wants to learn Python from scratch.",

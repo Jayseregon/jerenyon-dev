@@ -1,12 +1,27 @@
 "use client";
 import { useTranslations } from "next-intl";
 import { Image } from "@nextui-org/react";
+import { useState, useRef, useEffect } from "react";
 
 import { readingListData } from "@/src/data/readingListData";
 import { BlogPostTags } from "@/src/components/knowledge-hub/BlogPostTags";
 
 export function ReadingsSection() {
   const t = useTranslations("knowledge-hub");
+  const [visibleItems, setVisibleItems] = useState(3);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setVisibleItems((prev) => prev + 5);
+      }
+    });
+
+    if (loadMoreRef.current) observer.observe(loadMoreRef.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section className="max-w-4xl flex flex-col space-y-6 mx-auto">
@@ -16,6 +31,7 @@ export function ReadingsSection() {
       {readingListData
         .slice()
         .reverse()
+        .slice(0, visibleItems)
         .map((book, index) => (
           <div
             key={index}
@@ -48,6 +64,7 @@ export function ReadingsSection() {
             </p>
           </div>
         ))}
+      <div ref={loadMoreRef} className="h-2" />
     </section>
   );
 }
