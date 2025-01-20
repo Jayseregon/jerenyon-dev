@@ -117,11 +117,12 @@ export const Policy = ({ policyKey }: Props) => {
           return (
             <th className="px-4 py-2 text-center">{element.textContent}</th>
           );
-        case "TD":
+        case "TD": {
           const textContent = element.textContent || "";
           const formattedContent = textContent.split(";").join("; ");
 
           return <td className="px-4 py-2 text-start">{formattedContent}</td>;
+        }
         case "UL":
           return (
             <ul className="list-disc list-inside text-start my-2">

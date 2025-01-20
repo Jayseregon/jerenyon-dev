@@ -1,12 +1,6 @@
 import * as React from "react";
 
-interface EmailTemplateProps {
-  firstName: string;
-  lastName: string;
-  subject: string;
-  email: string;
-  message: string;
-}
+import { ContactFormData } from "@/src/interfaces/Contact";
 
 export const EmailTemplate = ({
   firstName,
@@ -14,7 +8,7 @@ export const EmailTemplate = ({
   subject,
   email,
   message,
-}: EmailTemplateProps) => (
+}: ContactFormData) => (
   <div>
     <h1>Jerenyon Dev Contact Form</h1>
     <p>

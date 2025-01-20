@@ -3,7 +3,7 @@ import {
   Bold,
   Italic,
   Strikethrough,
-  Code,
+  Code as CodeBlockIcon,
   List,
   ListOrdered,
   Undo,
@@ -20,6 +20,8 @@ import {
   Heading4,
   Heading5,
   Heading6,
+  Code2 as InlineCodeIcon,
+  Link as LinkIcon,
 } from "lucide-react";
 
 import { TiptapMenuBarProps } from "@/src/interfaces/Hub";
@@ -79,7 +81,25 @@ export const TiptapMenuBar = ({
       disabled: !editor.can().chain().focus().toggleStrike().run(),
     },
     {
-      icon: <Code className="w-4 h-4" />,
+      icon: <InlineCodeIcon className="w-4 h-4" />,
+      onClick: () => editor.chain().focus().toggleCode().run(),
+      isActive: editor.isActive("code"),
+    },
+    {
+      icon: <LinkIcon className="w-4 h-4" />,
+      onClick: () => {
+        if (editor.isActive("link")) {
+          editor.chain().focus().unsetLink().run();
+        } else {
+          const url = prompt("Enter a URL");
+
+          if (url) editor.chain().focus().setLink({ href: url }).run();
+        }
+      },
+      isActive: editor.isActive("link"),
+    },
+    {
+      icon: <CodeBlockIcon className="w-4 h-4" />,
       onClick: () => editor.chain().focus().toggleCodeBlock().run(),
       isActive: editor.isActive("codeBlock"),
       disabled: !editor.can().chain().focus().toggleCodeBlock().run(),

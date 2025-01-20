@@ -9,6 +9,7 @@ import { headers } from "next/headers";
 import { getLocale, getMessages } from "next-intl/server";
 import Head from "next/head";
 import Script from "next/script";
+import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
 import RootLayoutStyling from "@/components/ui/RootLayoutStyling";
@@ -118,17 +119,24 @@ export default async function RootLayout({ children }: Props) {
           name="theme-color"
           nonce={nonce}
         />
-        <link
+        <Link
           href="//privacy-proxy.usercentrics.eu"
           nonce={nonce}
           rel="preconnect"
         />
-        <link
+        <Link
           as="script"
           href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           nonce={nonce}
           rel="preload"
         />
+        <Link
+          as="document"
+          href="/knowledge-hub"
+          nonce={nonce}
+          rel="prefetch"
+        />
+        <Link href="/manifest.json" nonce={nonce} rel="manifest" />
       </Head>
       <body
         className={clsx(
@@ -152,6 +160,11 @@ export default async function RootLayout({ children }: Props) {
             </RootLayoutStyling>
           </NextIntlClientProvider>
         </Providers>
+        <Script
+          async
+          data-website-id="27802530-4c86-4b3f-98c8-7df974a6e0e2"
+          src="https://analytics.jerenyon.dev/script.js"
+        />
         <Script
           nonce={nonce}
           src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"

@@ -4,6 +4,7 @@ import { z } from "zod";
 
 import { QuoteFormSchema } from "@/src/interfaces/Quote";
 import { handlePrismaError } from "@/lib/prismaErrorHandler";
+import { sendNewQuoteNotification } from "@/src/actions/resend/action";
 
 const prisma = new PrismaClient();
 const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET_KEY;
@@ -140,6 +141,18 @@ export async function POST(request: Request) {
         },
       },
     });
+
+    if (quote) {
+      const res = await sendNewQuoteNotification(
+        validatedData.clientName,
+        validatedData.clientEmail,
+        validatedData.comment,
+      );
+
+      if (!res.success) {
+        console.error("Failed to send email notification", res.error);
+      }
+    }
 
     return NextResponse.json({ success: true, data: quote });
   } catch (error: any) {
