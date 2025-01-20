@@ -104,7 +104,7 @@ const MainCategoryCard = ({
                       </p>
                       <BlogPostTags
                         className="mt-5 justify-end"
-                        tags={article.tags.slice(0, 5)}
+                        tags={article.tags}
                       />
                     </div>
                   </motion.div>

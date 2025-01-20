@@ -210,7 +210,7 @@ export function BlogPostDrawer({
                 {post.summary}
               </p>
               <TiptapToC editor={editor} items={tocItems} />
-              <BlogPostTags className="my-3" tags={post.tags.slice(0, 5)} />
+              <BlogPostTags className="my-3" tags={post.tags} />
               <BlogPostMetadata nonce={nonce} post={post} t={t} />
             </DrawerBody>
           </ErrorBoundary>

@@ -71,6 +71,10 @@
       "p2": "Je ne suis pas là pour réinventer la roue ou répéter ce qui existe déjà. Au lieu de cela, je m'efforce de démystifier les sujets, en partageant des solutions et des approches ancrées dans des défis concrets. Que vous exploriez Python, l'intelligence géospatiale/SIG, que vous plongiez dans l'IA ou que vous automatisiez des processus, le contenu ici est conçu pour vous informer, vous inspirer et parfois vous faire sourire.",
       "p3": "Car apprendre devrait être aussi agréable qu'enrichissant."
     },
+    "bookshelf": {
+      "title": "Sur mon Étagère",
+      "intro": "Les livres ont toujours été pour moi une source d'inspiration inépuisable, un gisement de connaissances et une porte magique vers mon imagination. Dans cette section, je partage les ouvrages qui ont façonné ma compréhension de la programmation, de la résolution de problèmes, et bien plus encore. Chaque entrée inclut mes enseignements clés, vous donnant un aperçu des idées qui me font avancer. Que vous soyez vous aussi un passionné de lecture ou simplement à la recherche de votre prochain livre, j'espère que vous trouverez ces recommandations aussi éclairantes que moi."
+    },
     "devNotice": {
       "title": "Bientôt Disponible !",
       "line1": "Nous sommes ravis d'annoncer que notre Centre de Connaissances est en cours de construction.",
