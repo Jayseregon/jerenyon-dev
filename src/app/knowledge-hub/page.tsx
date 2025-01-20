@@ -45,7 +45,11 @@ export default function KnowledgeHubPage() {
 
       <div className="py-3" />
 
-      <h3 className="text-xl my-10 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto">
+      <h3 className="text-xl my-10 text-justify max-w-5xl mx-auto p-5">
+        <p className="mb-3 indent-8">{t("bookshelf.intro")}</p>
+      </h3>
+
+      <h3 className="text-xl mt-6 mb-20 text-purple-800/70 dark:text-purple-300/70 max-w-3xl mx-auto">
         <blockquote className="italic">
           “Learning never exhausts the mind.” — Leonardo da Vinci
         </blockquote>
