@@ -221,3 +221,8 @@
 .hljs-quote {
   color: #616161;
 }
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}

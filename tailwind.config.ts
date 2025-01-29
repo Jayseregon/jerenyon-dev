@@ -23,6 +23,12 @@ const config: import("tailwindcss").Config = {
         normal: "400",
         bold: "700",
       },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      colors: {},
       typography: (theme: (key: string) => any) => ({
         lightTheme: {
           css: {
@@ -229,6 +235,7 @@ const config: import("tailwindcss").Config = {
         },
       },
     }),
+    require("tailwindcss-animate"),
   ],
 } satisfies Config;
 

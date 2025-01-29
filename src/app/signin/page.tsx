@@ -7,6 +7,7 @@ import { signIn, useSession } from "next-auth/react";
 
 import { providerMap } from "@/auth";
 import { GitHubIcon } from "@/components/icons";
+import { Button } from "@/src/components/ui/button";
 
 export default function SignInPage(): JSX.Element {
   const { data: session } = useSession();
@@ -29,13 +30,14 @@ export default function SignInPage(): JSX.Element {
         <div className="my-10" />
 
         {Object.values(providerMap).map((provider) => (
-          <button
+          <Button
             key={provider.id}
             className="bg-gradient-to-tr from-amber-300 to-fuchsia-500 text-white rounded-lg shadow-lg p-3"
+            size="icon"
             onClick={() => signIn(provider.id)}
           >
-            <SquareMenu size={28} strokeWidth={3} />
-          </button>
+            <SquareMenu size={32} strokeWidth={3} />
+          </Button>
         ))}
       </div>
     </div>

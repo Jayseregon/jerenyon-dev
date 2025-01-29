@@ -1,26 +1,17 @@
 "use client";
 
-import { Spinner } from "@nextui-org/react";
-import React, { useContext } from "react";
-
-import { NonceContext } from "@/src/app/providers";
+import { Loader2 } from "lucide-react";
+import React from "react";
 
 export default function SpinLoader() {
-  const nonce = useContext(NonceContext);
-
   return (
-    <div
-      className="absolute inset-0 flex justify-center items-center"
-      nonce={nonce}
-    >
-      <Spinner
-        classNames={{
-          label: "text-lg text-purple-800 dark:text-purple-300",
-        }}
-        label="Loading..."
-        nonce={nonce}
-        size="lg"
-      />
+    <div className="absolute inset-0 flex justify-center items-center">
+      <div className="flex flex-col items-center gap-2">
+        <Loader2 className="h-8 w-8 animate-spin text-purple-800 dark:text-purple-300" />
+        <span className="text-lg text-purple-800 dark:text-purple-300">
+          Loading...
+        </span>
+      </div>
     </div>
   );
 }
