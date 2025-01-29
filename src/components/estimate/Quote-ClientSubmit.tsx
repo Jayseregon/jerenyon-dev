@@ -5,10 +5,8 @@ import { Button } from "@nextui-org/react";
 import ReCAPTCHA from "react-google-recaptcha";
 
 import { ClientSubmitProps } from "@/interfaces/Quote";
-import {
-  FieldInput,
-  TextInput,
-} from "@/components/contact/contactFormElements";
+import { FieldInput } from "@/components/contact/FieldInput";
+import { TextInput } from "@/components/contact/TextInput";
 
 // Client info and submit quote
 export const ClientSubmit = memo(function ClientSubmit({

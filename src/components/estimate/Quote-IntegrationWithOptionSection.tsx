@@ -6,7 +6,7 @@ import { Button } from "@nextui-org/react";
 
 import { NonceContext } from "@/src/app/providers";
 import { IntegrationWithOptionSectionProps } from "@/interfaces/Quote";
-import { FieldInput } from "@/components/contact/contactFormElements";
+import { FieldInput } from "@/components/contact/FieldInput";
 
 import { CardSection } from "./Quote-CardSection";
 import { QuoteSwitch } from "./Quote-Switch"; // Import QuoteSwitch

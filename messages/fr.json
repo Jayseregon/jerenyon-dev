@@ -5,6 +5,13 @@
       "subtitle": "Accélérer l'Innovation grâce à l'Automatisation, l'Intelligence Géospatiale et les Solutions d'IA"
     }
   },
+  "Utils": {
+    "LoadingButton": "Veuillez patienter",
+    "ErrorDefaultDisplay": {
+      "title": "Quelque chose s'est mal passé!",
+      "message": "Veuillez réessayer plus tard."
+    }
+  },
   "collapsedMenu": {
     "about": "À Propos",
     "contact": "Contact",
