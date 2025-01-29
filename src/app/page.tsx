@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 // keeping these for future reference and usage
 // import SplineScene_ssr from "@/components/spline3D/SplineScene_ssr";
 // import SplineSceneView from "@/components/spline3D/SplineScene_Viewer";
-import { Hero } from "@/components/ui/Hero";
+import { Hero } from "@/src/components/root/Hero";
 
 import Loading from "./loading";
 

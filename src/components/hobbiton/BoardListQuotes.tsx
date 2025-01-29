@@ -12,7 +12,7 @@ import {
 import { SortDescriptor } from "@react-types/shared";
 
 import { useSortQuoteList } from "@/src/hooks/useSortQuoteList";
-import SpinLoader from "@/components/ui/SpinLoader";
+import SpinLoader from "@/src/components/root/SpinLoader";
 import { NonceContext } from "@/src/app/providers";
 
 import { QuoteDetail } from "./QuoteDetail"; // Import the new component

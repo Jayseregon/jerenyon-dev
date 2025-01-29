@@ -4,7 +4,7 @@ import { Check } from "lucide-react";
 import React, { useContext } from "react";
 
 import { NonceContext } from "@/src/app/providers";
-import CustomToggleSwitch from "@/components/ui/CustomToggleSwitch";
+import CustomToggleSwitch from "@/src/components/root/CustomToggleSwitch";
 import { cn } from "@/src/lib/utils";
 
 interface QuoteSwitchProps {

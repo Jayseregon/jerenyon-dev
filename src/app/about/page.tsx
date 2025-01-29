@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { useContext } from "react";
 
 import { Timeline } from "@/src/components/about/Timeline";
-import PageTitles from "@/src/components/ui/PageTitles";
+import PageTitles from "@/src/components/root/PageTitles";
 import { AboutCardProps } from "@/interfaces/About";
 import { AboutCard } from "@/components/about/AboutCard";
 import { NonceContext } from "@/src/app/providers";

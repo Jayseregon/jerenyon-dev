@@ -7,7 +7,7 @@ import { Button, Form } from "@nextui-org/react";
 import { useFormStatus } from "react-dom";
 
 import { NonceContext } from "@/src/app/providers";
-import PageTitles from "@/src/components/ui/PageTitles";
+import PageTitles from "@/src/components/root/PageTitles";
 import {
   FieldInput,
   TextInput,

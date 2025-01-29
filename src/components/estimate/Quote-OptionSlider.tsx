@@ -4,7 +4,7 @@ import React, { memo, useContext } from "react";
 
 import { NonceContext } from "@/src/app/providers";
 import { OptionSliderProps } from "@/interfaces/Quote";
-import CustomSlider from "@/components/ui/CustomSlider";
+import CustomSlider from "@/src/components/root/CustomSlider";
 
 export const OptionSlider = memo(function OptionSlider({
   label,

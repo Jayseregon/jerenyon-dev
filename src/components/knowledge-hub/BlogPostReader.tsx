@@ -10,7 +10,7 @@ import { NonceContext } from "@/src/app/providers";
 import { TiptapEditor } from "@/src/components/hobbiton/TiptapEditor";
 import { BLogPostReaderProps } from "@/src/interfaces/Hub";
 import BlogPostPageTitle from "@/components/knowledge-hub/BlogPostPageTitle";
-import Breadcrumbs from "@/components/ui/Breadcrumbs";
+import Breadcrumbs from "@/src/components/root/Breadcrumbs";
 import { BlogPostDrawer } from "@/components/knowledge-hub/BlogPostDrawer";
 import { incrementViews } from "@/actions/prisma/blogPosts/action";
 
