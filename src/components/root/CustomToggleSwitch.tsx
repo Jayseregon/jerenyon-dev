@@ -3,19 +3,7 @@ import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 
 import { cn } from "@/lib/utils";
-
-interface CustomToggleSwitchProps {
-  isOn: boolean;
-  onToggle: () => void;
-  onColor: string; // Tailwind color name (e.g., 'amber')
-  offColor: string; // Tailwind color name (e.g., 'purple')
-  onIcon?: React.ReactNode; // Icon, string, or null
-  offIcon?: React.ReactNode; // Icon, string, or null
-  width?: number; // Width in pixels
-  height?: number; // Height in pixels
-  className?: string;
-  nonce?: string;
-}
+import { CustomToggleSwitchProps } from "@/src/interfaces/Root";
 
 const allowedColors = [
   "amber",

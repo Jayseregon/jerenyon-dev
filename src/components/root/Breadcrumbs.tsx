@@ -4,6 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext } from "react";
 
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { NonceContext } from "@/src/app/providers";
 
 const formatLabel = (segment: string) => {
@@ -28,46 +36,33 @@ export default function Breadcrumbs() {
   const segments = pathname.replace(/\/$/, "").split("/").filter(Boolean);
 
   return (
-    <nav aria-label="Breadcrumb" className="py-4" nonce={nonce}>
-      <ol
-        className="flex flex-wrap items-center m-0 p-0 list-none"
-        nonce={nonce}
-      >
-        <li className="flex items-center" nonce={nonce}>
-          <Link
-            className="text-purple-800 dark:text-purple-300 hover:underline"
-            href="/"
+    <Breadcrumb className="mb-4" nonce={nonce}>
+      <BreadcrumbList nonce={nonce}>
+        <BreadcrumbItem nonce={nonce}>
+          <BreadcrumbLink asChild>
+            <Link href="/">Home</Link>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+        {segments.map((segment, index) => (
+          <BreadcrumbItem
+            key={`/${segments.slice(0, index + 1).join("/")}`}
             nonce={nonce}
           >
-            Home
-          </Link>
-        </li>
-        {segments.map((segment, index) => {
-          const path = `/${segments.slice(0, index + 1).join("/")}`;
-          const isLast = index === segments.length - 1;
-
-          return (
-            <li key={path} className="flex items-center" nonce={nonce}>
-              <span className="mx-2 text-foreground" nonce={nonce}>
-                /
-              </span>
-              {isLast ? (
-                <span className="text-foreground" nonce={nonce}>
-                  {formatLabel(segment)}
-                </span>
-              ) : (
-                <Link
-                  className="text-purple-800 dark:text-purple-300 hover:underline"
-                  href={path}
-                  nonce={nonce}
-                >
+            <BreadcrumbSeparator nonce={nonce} />
+            {index === segments.length - 1 ? (
+              <BreadcrumbPage nonce={nonce}>
+                {formatLabel(segment)}
+              </BreadcrumbPage>
+            ) : (
+              <BreadcrumbLink asChild>
+                <Link href={`/${segments.slice(0, index + 1).join("/")}`}>
                   {formatLabel(segment)}
                 </Link>
-              )}
-            </li>
-          );
-        })}
-      </ol>
-    </nav>
+              </BreadcrumbLink>
+            )}
+          </BreadcrumbItem>
+        ))}
+      </BreadcrumbList>
+    </Breadcrumb>
   );
 }

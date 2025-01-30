@@ -5,19 +5,7 @@ import { motion } from "motion/react";
 import React, { useContext } from "react";
 
 import { NonceContext } from "@/src/app/providers";
-
-interface CustomRadioGroupProps {
-  value: string;
-  onValueChange: (value: string) => void;
-  children: React.ReactNode;
-  className?: string;
-}
-
-interface CustomRadioProps {
-  value: string;
-  label: string;
-  className?: string;
-}
+import { CustomRadioGroupProps, CustomRadioProps } from "@/src/interfaces/Root";
 
 export function CustomRadioGroup({
   value,
