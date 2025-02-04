@@ -69,3 +69,8 @@ export interface CollapsedMenuProps {
   setIsMenuOpen: (open: boolean) => void;
   nonce: string;
 }
+
+export interface CodeSnippetProps {
+  code: string;
+  className?: string;
+}

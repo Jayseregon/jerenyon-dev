@@ -1,14 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Chip,
-  Link,
-} from "@nextui-org/react";
+import Link from "next/link";
 
 import {
   AwardCertificatIcon,
@@ -16,6 +9,14 @@ import {
   LaptopIcon,
 } from "@/src/components/icons";
 import { WorkExperienceCardItemProps } from "@/interfaces/About";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 import { TimelineDescriptionModal } from "./TimelineDescriptionModal";
 
@@ -39,13 +40,17 @@ export const TimelineCardItem = ({
     ),
   };
 
-  const colorMap = {
+  const colorMap: Record<
+    "work" | "award" | "school",
+    "purple" | "cyan" | "amber"
+  > = {
     work: "purple",
     award: "cyan",
     school: "amber",
   };
 
-  const color = colorMap[item.timelineIcon as keyof typeof colorMap] || "gray";
+  const color: "purple" | "cyan" | "amber" | "gray" =
+    colorMap[item.timelineIcon as keyof typeof colorMap] || "gray";
   const icon = iconMap[item.timelineIcon as keyof typeof iconMap];
 
   return (
@@ -55,7 +60,7 @@ export const TimelineCardItem = ({
       >
         <CardHeader className="md:hidden p-0 m-0 flex justify-center">
           <div
-            className={`flex inline-block gap-2 text-background bg-${color}-800 dark:bg-${color}-300 rounded-b-2xl px-6 py-1`}
+            className={`flex gap-2 text-background bg-${color}-800 dark:bg-${color}-300 rounded-b-2xl px-6 py-1`}
           >
             {icon}
             {item.date}
@@ -63,7 +68,7 @@ export const TimelineCardItem = ({
         </CardHeader>
 
         <CardHeader
-          className={`flex justify-between items-start w-full text-left ${
+          className={`flex justify-between items-start w-full text-left pt-4 ${
             index % 2 === 0
               ? "md:text-left"
               : "md:flex-row-reverse md:text-right"
@@ -82,7 +87,7 @@ export const TimelineCardItem = ({
           </div>
         </CardHeader>
 
-        <CardBody
+        <CardContent
           className={`grid grid-cols gap-2 text-left ${
             index % 2 === 0 ? "md:text-left" : "md:text-right"
           }`}
@@ -90,21 +95,12 @@ export const TimelineCardItem = ({
           <p>{item.summary}</p>
           <div>
             {item.keywords.map((keyword, idx) => (
-              <Chip
-                key={idx}
-                classNames={{
-                  base: `bg-transparent border border-${color}-500 mx-0.5`,
-                  content: `text-${color}-500`,
-                }}
-                radius="full"
-                size="sm"
-                variant="bordered"
-              >
+              <Badge key={idx} variant={color}>
                 {keyword}
-              </Chip>
+              </Badge>
             ))}
           </div>
-        </CardBody>
+        </CardContent>
 
         <CardFooter
           className={`flex w-full justify-end ${
@@ -112,21 +108,23 @@ export const TimelineCardItem = ({
           }`}
         >
           {item.timelineIcon === "award" && item.href ? (
-            <Link
-              isExternal
-              showAnchorIcon
+            <Button
+              asChild
               className={`text-light text-${color}-800/50 dark:text-${color}-300/50`}
-              href={item.href}
+              variant="link"
             >
-              Show Credentials
-            </Link>
+              <Link href={item.href} rel="noopener noreferrer" target="_blank">
+                Show Credentials
+              </Link>
+            </Button>
           ) : (
-            <Link
+            <Button
               className={`text-light text-${color}-800/50 dark:text-${color}-300/50`}
-              onPress={() => setIsModalOpen(true)}
+              variant="link"
+              onClick={() => setIsModalOpen(true)}
             >
               More details
-            </Link>
+            </Button>
           )}
         </CardFooter>
       </Card>

@@ -1,9 +1,8 @@
 import type { JSX } from "react";
 
-import { Snippet } from "@nextui-org/snippet";
-
 import { siteConfig } from "@/config/site";
 import { title } from "@/components/typography";
+import { CodeSnippet } from "@/components/root/CodeSnippet";
 
 export const UnAuthenticated = (): JSX.Element => {
   return (
@@ -14,10 +13,7 @@ export const UnAuthenticated = (): JSX.Element => {
           {siteConfig.name}
         </h1>
         <div className="mt-8">
-          {/* Display a snippet indicating that the user is not authenticated */}
-          <Snippet hideCopyButton hideSymbol variant="flat">
-            Not Authenticated
-          </Snippet>
+          <CodeSnippet code="Not Authenticated" />
         </div>
       </div>
     </section>
