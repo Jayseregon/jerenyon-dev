@@ -346,7 +346,6 @@ export const GitHubIcon = ({ size = 24 }: IconSvgProps) => (
 
 export const LinkedInIcon = ({ size = 24 }: IconSvgProps) => (
   <svg
-    className="mx-auto"
     fill="currentColor"
     height={size}
     viewBox="0 0 16 16"

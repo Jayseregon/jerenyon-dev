@@ -48,7 +48,7 @@ export function ShareButton({ url, title, summary, nonce }: ShareButtonProps) {
         className="w-48 border-purple-800 dark:border-purple-300"
       >
         <DropdownMenuItem
-          className="flex items-center gap-2 cursor-pointer"
+          className="flex items-start gap-2 cursor-pointer"
           onClick={handleCopyLink}
         >
           <Link className="h-5 w-5" />
@@ -62,7 +62,7 @@ export function ShareButton({ url, title, summary, nonce }: ShareButtonProps) {
           <span>{t("shareButton.shareLinkedin")}</span>
         </DropdownMenuItem>
         <DropdownMenuItem
-          className="flex items-center gap-2 cursor-pointer"
+          className="flex items-start gap-2 cursor-pointer"
           onClick={handleBlueskyShare}
         >
           <FaBluesky className="h-5 w-5" />
