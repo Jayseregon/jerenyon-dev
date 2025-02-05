@@ -110,7 +110,7 @@ export const TimelineCardItem = ({
           {item.timelineIcon === "award" && item.href ? (
             <Button
               asChild
-              className={`text-light text-${color}-800/50 dark:text-${color}-300/50`}
+              className={`text-light text-${color}-800/80 dark:text-${color}-300/80`}
               variant="link"
             >
               <Link href={item.href} rel="noopener noreferrer" target="_blank">
@@ -119,7 +119,7 @@ export const TimelineCardItem = ({
             </Button>
           ) : (
             <Button
-              className={`text-light text-${color}-800/50 dark:text-${color}-300/50`}
+              className={`text-light text-${color}-800/80 dark:text-${color}-300/80`}
               variant="link"
               onClick={() => setIsModalOpen(true)}
             >

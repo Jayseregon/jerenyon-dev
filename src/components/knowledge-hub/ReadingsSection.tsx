@@ -1,6 +1,6 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { Image } from "@nextui-org/react";
+import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 
 import { readingListData } from "@/src/data/readingListData";
@@ -40,11 +40,14 @@ export function ReadingsSection() {
             <div className="flex flex-col md:flex-row justify-between items-start space-y-3 md:space-y-0">
               <div className="flex flex-row space-x-4">
                 <Image
-                  removeWrapper
                   alt={book.title}
                   className="w-20 max-h-dvh object-cover rounded-md"
+                  height={0}
+                  sizes="100vw"
                   src={book.coverImage}
+                  width={0}
                 />
+
                 <div className="text-start">
                   <h3 className="text-xl font-bold">{book.title}</h3>
                   <p className="text-sm text-white/60 italic">

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Image } from "@nextui-org/react";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { CalendarDays } from "lucide-react";
 import { useContext } from "react";
@@ -32,11 +32,12 @@ export const BlogPostBoardTile = ({
       >
         <div className="clearfix after:clear-both after:block" nonce={nonce}>
           <Image
-            removeWrapper
             alt={article.title}
             className="float-left w-20 h-20 mr-4 mb-2 rounded-lg"
+            height={200}
             nonce={nonce}
             src={article.thumbnail}
+            width={200}
           />
           <h5
             className="text-2xl mb-2 font-bold text-purple-800 dark:text-purple-300 text-left"

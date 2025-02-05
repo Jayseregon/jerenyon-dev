@@ -1,8 +1,8 @@
 "use client";
 
-import { Chip } from "@nextui-org/react";
 import { useContext } from "react";
 
+import { Badge } from "@/components/ui/badge";
 import { Tag } from "@/src/interfaces/Hub";
 import { NonceContext } from "@/src/app/providers";
 
@@ -23,19 +23,13 @@ export const BlogPostTags = ({
       role="list"
     >
       {tags.map((tag) => (
-        <Chip
+        <Badge
           key={tag.id}
           aria-label={`Remove tag ${tag.name}`}
-          classNames={{
-            base: "bg-transparent border border-purple-500",
-            content: "text-sm text-purple-500",
-          }}
-          nonce={nonce}
-          size="sm"
-          variant="flat"
+          variant="purple"
         >
           {tag.name}
-        </Chip>
+        </Badge>
       ))}
     </div>
   );

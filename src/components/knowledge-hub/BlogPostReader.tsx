@@ -2,10 +2,11 @@
 
 import type { Editor, JSONContent } from "@tiptap/core";
 
-import { Card, useDisclosure, Button } from "@nextui-org/react";
 import { useContext, useState, useMemo, useEffect } from "react";
 import { Paperclip } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { NonceContext } from "@/src/app/providers";
 import { TiptapEditor } from "@/src/components/hobbiton/TiptapEditor";
 import { BLogPostReaderProps } from "@/src/interfaces/Hub";
@@ -16,7 +17,7 @@ import { incrementViews } from "@/actions/prisma/blogPosts/action";
 
 export const BlogPostReader = ({ post }: BLogPostReaderProps) => {
   const nonce = useContext(NonceContext);
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [isOpen, setIsOpen] = useState(false);
   const [editor, setEditor] = useState<Editor | undefined>();
   const [tocItems, setTocItems] = useState<any[]>([]);
 
@@ -57,34 +58,31 @@ export const BlogPostReader = ({ post }: BLogPostReaderProps) => {
       >
         <Breadcrumbs />
       </div>
-      <Card
-        className="bg-background rounded-lg w-full px-2 md:px-0 md:max-w-5xl mx-auto"
-        nonce={nonce}
-      >
-        <div className="w-full mx-auto" nonce={nonce}>
+      <Card className="bg-background w-full px-2 md:px-0 md:max-w-5xl mx-auto border-0">
+        <CardContent className="w-full mx-auto" nonce={nonce}>
           <TiptapEditor
             content={parsedContent}
             editable={false}
             onEditorReady={handleEditorReady}
             onTocItemsUpdate={handleTocItemsUpdate}
           />
-        </div>
+        </CardContent>
       </Card>
       <Button
-        isIconOnly
-        className="fixed top-24 right-2 md:right-8 z-50 shadow-md bg-background text-foreground border border-purple-800 dark:border-purple-300 hover:dark:border-purple-950 hover:bg-purple-800 hover:dark:bg-purple-950 hover:text-background hover:dark:text-foreground focus:outline-none"
+        className="fixed top-24 right-2 md:right-8 z-50 shadow-md rounded-md"
         nonce={nonce}
-        variant="bordered"
-        onPress={onOpen}
+        size="icon"
+        variant="form"
+        onClick={() => setIsOpen(true)}
       >
-        <Paperclip />
+        <Paperclip className="h-4 w-4" />
       </Button>
       <BlogPostDrawer
         editor={editor}
         isOpen={isOpen}
         post={post}
         tocItems={tocItems}
-        onOpenChange={onOpenChange}
+        onOpenChange={setIsOpen}
       />
     </>
   );
