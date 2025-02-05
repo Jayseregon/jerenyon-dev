@@ -17,7 +17,7 @@ export const TextInput = memo(function TextInput({
   return (
     <Textarea
       required
-      className="border-purple-800/50 dark:border-purple-300/50 hover:border-purple-800 hover:dark:border-purple-300 focus-visible:ring-purple-800 dark:focus-visible:ring-purple-300 min-h-[80px]"
+      className="min-h-[80px]"
       id={fieldTarget}
       name={fieldTarget}
       nonce={nonce}

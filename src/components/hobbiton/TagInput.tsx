@@ -1,18 +1,18 @@
 "use client";
 
-import { useState, KeyboardEvent, useContext } from "react";
-import { Chip, Autocomplete, AutocompleteItem } from "@nextui-org/react";
+import { useState, KeyboardEvent } from "react";
 
 import { TagInputProps } from "@/src/interfaces/Hub";
-import { NonceContext } from "@/src/app/providers";
+import { Input } from "@/components/ui/input";
+import { BlogPostTags } from "@/src/components/knowledge-hub/BlogPostTags";
 
 export function TagInput({
   existingTags,
   selectedTags,
   onChange,
 }: TagInputProps) {
-  const nonce = useContext(NonceContext);
   const [inputValue, setInputValue] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if ([" ", ";", ","].includes(event.key) && inputValue.trim()) {
@@ -21,6 +21,7 @@ export function TagInput({
         onChange([...selectedTags, inputValue.trim()]);
       }
       setInputValue("");
+      setShowSuggestions(false);
     }
   };
 
@@ -29,6 +30,7 @@ export function TagInput({
       onChange([...selectedTags, tagName]);
     }
     setInputValue("");
+    setShowSuggestions(false);
   };
 
   const handleDelete = (tagToDelete: string) => {
@@ -43,61 +45,40 @@ export function TagInput({
     <div
       aria-label="Post tags input"
       className="w-full flex flex-row gap-4 items-center"
-      nonce={nonce}
       role="region"
     >
-      <Autocomplete
-        aria-label="Add tags to post"
-        className="w-1/4"
-        classNames={{
-          base: "max-w-full",
-          listbox: "bg-background",
-          popoverContent: "bg-background",
-        }}
-        inputValue={inputValue}
-        nonce={nonce}
-        placeholder="Add tags..."
-        variant="bordered"
-        onInputChange={(value) => setInputValue(value)}
-        onKeyDown={handleKeyDown}
-      >
-        {filteredTags.map((tag) => (
-          <AutocompleteItem
-            key={tag.id}
-            aria-label={`Select tag ${tag.name}`}
-            nonce={nonce}
-            value={tag.name}
-            onPress={() => handleSelect(tag.name)}
-          >
-            {tag.name}
-          </AutocompleteItem>
-        ))}
-      </Autocomplete>
+      {/* Left side: Input and suggestions (1/3 width) */}
+      <div className="w-1/3 relative">
+        <Input
+          aria-label="Add tags to post"
+          className="w-full text-sm"
+          placeholder="Add tags..."
+          value={inputValue}
+          onChange={(e) => {
+            setInputValue(e.target.value);
+            setShowSuggestions(true);
+          }}
+          onKeyDown={handleKeyDown}
+        />
+        {showSuggestions && filteredTags.length > 0 && (
+          <div className="absolute left-0 right-0 bg-slate-950 border border-purple-800/50 dark:border-purple-300/50 text-foreground rounded mt-1 z-10 p-1">
+            <BlogPostTags
+              className="justify-start"
+              tags={filteredTags}
+              // onTagClick adds the tag when a suggestion is clicked
+              onTagClick={(tag) => handleSelect(tag.name)}
+            />
+          </div>
+        )}
+      </div>
 
-      <div
-        aria-label="Selected tags"
-        className="flex-1 flex flex-row flex-wrap gap-2 items-center"
-        nonce={nonce}
-        role="list"
-      >
-        {selectedTags.map((tag) => (
-          <Chip
-            key={tag}
-            aria-label={`Remove tag ${tag}`}
-            classNames={{
-              base: "bg-transparent border border-purple-500 transition-colors",
-              content: "text-sm text-purple-500",
-              closeButton: "text-purple-500 hover:text-white",
-            }}
-            nonce={nonce}
-            radius="lg"
-            size="sm"
-            variant="flat"
-            onClose={() => handleDelete(tag)}
-          >
-            {tag}
-          </Chip>
-        ))}
+      {/* Right side: Selected tags (2/3 width) */}
+      <div className="w-2/3">
+        <BlogPostTags
+          tags={existingTags.filter((tag) => selectedTags.includes(tag.name))}
+          // onTagClick removes the tag when clicked
+          onTagClick={(tag) => handleDelete(tag.name)}
+        />
       </div>
     </div>
   );
