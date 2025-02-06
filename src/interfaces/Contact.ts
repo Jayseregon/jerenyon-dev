@@ -12,7 +12,7 @@ export interface TextInputProps {
   fieldTarget: string;
   t: ReturnType<typeof useTranslations>;
   value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export interface HoneypotProps {

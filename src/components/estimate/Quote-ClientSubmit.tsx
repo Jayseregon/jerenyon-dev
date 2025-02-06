@@ -1,14 +1,12 @@
 "use client";
 import React, { memo } from "react";
 import { useTranslations } from "next-intl";
-import { Button } from "@nextui-org/react";
 import ReCAPTCHA from "react-google-recaptcha";
 
+import { Button } from "@/components/ui/button";
 import { ClientSubmitProps } from "@/interfaces/Quote";
-import {
-  FieldInput,
-  TextInput,
-} from "@/components/contact/contactFormElements";
+import { FieldInput } from "@/components/contact/FieldInput";
+import { TextInput } from "@/components/contact/TextInput";
 
 // Client info and submit quote
 export const ClientSubmit = memo(function ClientSubmit({
@@ -57,12 +55,10 @@ export const ClientSubmit = memo(function ClientSubmit({
       </div>
 
       <Button
-        fullWidth
         aria-label="Submit Quote"
-        className="bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:dark:border-purple-950 hover:bg-purple-800 hover:dark:bg-purple-950 hover:text-background hover:dark:text-foreground focus:outline-none"
         disabled={!recaptchaToken}
-        radius="full"
-        onPress={handleSubmit}
+        variant="form"
+        onClick={handleSubmit}
       >
         Submit Quote
       </Button>

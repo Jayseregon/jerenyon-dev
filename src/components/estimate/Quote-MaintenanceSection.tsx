@@ -5,7 +5,10 @@ import { motion } from "motion/react";
 
 import { NonceContext } from "@/src/app/providers";
 import { MaintenanceSectionProps } from "@/interfaces/Quote";
-import { CustomRadioGroup, CustomRadio } from "@/components/ui/CustomRadio";
+import {
+  CustomRadioGroup,
+  CustomRadio,
+} from "@/src/components/root/CustomRadio";
 
 import { CardSection } from "./Quote-CardSection";
 import { OptionSlider } from "./Quote-OptionSlider";

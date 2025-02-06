@@ -5,6 +5,13 @@
       "subtitle": "Accelerating Innovation through Automation, Geospatial Intelligence, and AI solutions"
     }
   },
+  "Utils": {
+    "LoadingButton": "Please wait",
+    "ErrorDefaultDisplay": {
+      "title": "Something went wrong!",
+      "message": "Please try again later."
+    }
+  },
   "collapsedMenu": {
     "about": "About",
     "contact": "Contact",

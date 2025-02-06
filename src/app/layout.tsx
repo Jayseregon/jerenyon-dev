@@ -12,7 +12,7 @@ import Script from "next/script";
 import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
-import RootLayoutStyling from "@/components/ui/RootLayoutStyling";
+import RootLayoutStyling from "@/src/components/root/RootLayoutStyling";
 import {
   fontSans,
   fontMono,

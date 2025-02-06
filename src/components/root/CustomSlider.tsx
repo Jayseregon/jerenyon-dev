@@ -5,16 +5,7 @@ import { motion } from "motion/react";
 import React, { useRef, useContext } from "react";
 
 import { NonceContext } from "@/src/app/providers";
-
-interface CustomSliderProps {
-  id: string;
-  minValue: number;
-  maxValue: number;
-  step: number;
-  value: number;
-  onChange: (value: number) => void;
-  className?: string;
-}
+import { CustomSliderProps } from "@/src/interfaces/Root";
 
 export default function CustomSlider({
   id,

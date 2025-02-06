@@ -1,21 +1,8 @@
 import React from "react";
 import { motion } from "motion/react";
-import { useTheme } from "next-themes";
 
 import { cn } from "@/lib/utils";
-
-interface CustomToggleSwitchProps {
-  isOn: boolean;
-  onToggle: () => void;
-  onColor: string; // Tailwind color name (e.g., 'amber')
-  offColor: string; // Tailwind color name (e.g., 'purple')
-  onIcon?: React.ReactNode; // Icon, string, or null
-  offIcon?: React.ReactNode; // Icon, string, or null
-  width?: number; // Width in pixels
-  height?: number; // Height in pixels
-  className?: string;
-  nonce?: string;
-}
+import { CustomToggleSwitchProps } from "@/src/interfaces/Root";
 
 const allowedColors = [
   "amber",
@@ -42,18 +29,14 @@ export default function CustomToggleSwitch({
   className,
   nonce,
 }: CustomToggleSwitchProps) {
-  const { theme } = useTheme();
-
   // Validate colors
   const validOnColor = allowedColors.includes(onColor) ? onColor : "green";
   const validOffColor = allowedColors.includes(offColor) ? offColor : "gray";
 
   // Compute class names
   const handleBgColor = isOn
-    ? theme === "light"
-      ? `bg-${validOnColor}-300 border-${validOnColor}-400`
-      : `bg-${validOnColor}-600 border-${validOnColor}-700`
-    : `bg-${validOffColor}-600 border-${validOffColor}-700`;
+    ? `bg-${validOnColor}-600 border border-${validOnColor}-700`
+    : `bg-${validOffColor}-600 border border-${validOffColor}-700`;
   const iconColor = isOn
     ? `text-${validOnColor}-600`
     : `text-${validOffColor}-600`;
@@ -108,7 +91,7 @@ export default function CustomToggleSwitch({
         layout
         animate={{ x: isOn ? switchWidth - handleSize - 8 : 0 }}
         className={cn(
-          "rounded-full border-2 shadow-xl flex items-center justify-center",
+          "rounded-full shadow-xl flex items-center justify-center",
           handleBgColor,
         )}
         initial={false}

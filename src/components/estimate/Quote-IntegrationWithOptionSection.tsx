@@ -2,11 +2,11 @@
 import React, { memo, useMemo, useContext } from "react";
 import { useTranslations } from "next-intl";
 import { SquarePlus } from "lucide-react";
-import { Button } from "@nextui-org/react";
 
+import { Button } from "@/components/ui/button";
 import { NonceContext } from "@/src/app/providers";
 import { IntegrationWithOptionSectionProps } from "@/interfaces/Quote";
-import { FieldInput } from "@/components/contact/contactFormElements";
+import { FieldInput } from "@/components/contact/FieldInput";
 
 import { CardSection } from "./Quote-CardSection";
 import { QuoteSwitch } from "./Quote-Switch"; // Import QuoteSwitch
@@ -97,13 +97,11 @@ export const IntegrationWithOptionSection = memo(
               />
               <div className="h-full content-end" nonce={nonce}>
                 <Button
-                  isIconOnly
                   aria-label={`Add Custom ${header}`}
-                  color="primary"
                   nonce={nonce}
-                  radius="sm"
-                  variant="light"
-                  onPress={handleCustomIntegrationChange}
+                  size="icon"
+                  variant="ghost"
+                  onClick={handleCustomIntegrationChange}
                 >
                   <SquarePlus />
                 </Button>
