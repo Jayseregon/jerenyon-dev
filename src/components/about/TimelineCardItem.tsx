@@ -20,6 +20,29 @@ import { Button } from "@/components/ui/button";
 
 import { TimelineDescriptionModal } from "./TimelineDescriptionModal";
 
+// Helper function to get color classes
+const getColorClasses = (type: "work" | "award" | "school") => {
+  const colorMap = {
+    work: {
+      border: "border border-purple-800 dark:border-purple-300",
+      text: "text-purple-800 dark:text-purple-300",
+      bg: "bg-purple-800 dark:bg-purple-300",
+    },
+    award: {
+      border: "border border-cyan-800 dark:border-cyan-300",
+      text: "text-cyan-800 dark:text-cyan-300",
+      bg: "bg-cyan-800 dark:bg-cyan-300",
+    },
+    school: {
+      border: "border border-amber-800 dark:border-amber-300",
+      text: "text-amber-800 dark:text-amber-300",
+      bg: "bg-amber-800 dark:bg-amber-300",
+    },
+  };
+
+  return colorMap[type];
+};
+
 export const TimelineCardItem = ({
   item,
   index,
@@ -40,6 +63,7 @@ export const TimelineCardItem = ({
     ),
   };
 
+  // Add this back for Badge variants
   const colorMap: Record<
     "work" | "award" | "school",
     "purple" | "cyan" | "amber"
@@ -49,18 +73,22 @@ export const TimelineCardItem = ({
     school: "amber",
   };
 
-  const color: "purple" | "cyan" | "amber" | "gray" =
+  const badgeVariant =
     colorMap[item.timelineIcon as keyof typeof colorMap] || "gray";
+  const colorClasses = getColorClasses(
+    item.timelineIcon as "work" | "award" | "school",
+  );
+
   const icon = iconMap[item.timelineIcon as keyof typeof iconMap];
 
   return (
     <>
       <Card
-        className={`bg-background rounded-lg shadow-md border-3 border-${color}-800 dark:border-${color}-300`}
+        className={`bg-background rounded-lg shadow-md ${colorClasses.border}`}
       >
         <CardHeader className="md:hidden p-0 m-0 flex justify-center">
           <div
-            className={`flex gap-2 text-background bg-${color}-800 dark:bg-${color}-300 rounded-b-2xl px-6 py-1`}
+            className={`flex gap-2 text-background ${colorClasses.bg} rounded-b-2xl px-6 py-1`}
           >
             {icon}
             {item.date}
@@ -75,9 +103,7 @@ export const TimelineCardItem = ({
           } relative`}
         >
           <div>
-            <h3
-              className={`text-xl font-semibold text-${color}-800 dark:text-${color}-300`}
-            >
+            <h3 className={`text-xl font-semibold ${colorClasses.text}`}>
               {item.label}
             </h3>
             <p className="grid grid-cols dark:text-neutral-400 text-neutral-500">
@@ -95,7 +121,7 @@ export const TimelineCardItem = ({
           <p>{item.summary}</p>
           <div>
             {item.keywords.map((keyword, idx) => (
-              <Badge key={idx} variant={color}>
+              <Badge key={idx} variant={badgeVariant}>
                 {keyword}
               </Badge>
             ))}
@@ -110,7 +136,7 @@ export const TimelineCardItem = ({
           {item.timelineIcon === "award" && item.href ? (
             <Button
               asChild
-              className={`text-light text-${color}-800/80 dark:text-${color}-300/80`}
+              className={`text-light ${colorClasses.text}/80`}
               variant="link"
             >
               <Link href={item.href} rel="noopener noreferrer" target="_blank">
@@ -119,7 +145,7 @@ export const TimelineCardItem = ({
             </Button>
           ) : (
             <Button
-              className={`text-light text-${color}-800/80 dark:text-${color}-300/80`}
+              className={`text-light ${colorClasses.text}/80`}
               variant="link"
               onClick={() => setIsModalOpen(true)}
             >

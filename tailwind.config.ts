@@ -1,14 +1,12 @@
 import type { Config } from "tailwindcss";
 
-import { nextui } from "@nextui-org/react";
-
 /** @type {import("tailwindcss").Config} */
 const config: import("tailwindcss").Config = {
   content: [
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,md,jsx,tsx,mdx}",
     "./src/**/*.{js,ts,md,jsx,tsx,mdx,css}",
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -16,7 +14,6 @@ const config: import("tailwindcss").Config = {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
         serif: ["var(--font-serif)", "serif"],
-        // display: ["var(--font-display)", "serif"],
         sansAlt: ["var(--font-sans-alt)", "sans-serif"],
       },
       fontWeight: {
@@ -28,35 +25,37 @@ const config: import("tailwindcss").Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      colors: {},
-      typography: (theme: (key: string) => any) => ({
-        lightTheme: {
-          css: {
-            "--tw-prose-body": theme("colors.gray.900"),
-            "--tw-prose-headings": theme("colors.gray.900"),
-            "--tw-prose-links": theme("colors.purple.600"),
-            "--tw-prose-bold": theme("colors.gray.900"),
-            "--tw-prose-quotes": theme("colors.gray.900"),
-            "--tw-prose-quote-borders": theme("colors.purple.300"),
-            blockquote: {
-              borderLeftColor: theme("colors.purple.300"),
-            },
+      colors: {
+        background: "rgb(var(--color-background))",
+        foreground: "rgb(var(--color-foreground))",
+        primary: "rgb(var(--color-primary))",
+        secondary: "rgb(var(--color-secondary))",
+        success: "rgb(var(--color-success))",
+        warning: "rgb(var(--color-warning))",
+        danger: "rgb(var(--color-danger))",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
           },
         },
-        darkTheme: {
-          css: {
-            "--tw-prose-body": theme("colors.gray.100"),
-            "--tw-prose-headings": theme("colors.gray.100"),
-            "--tw-prose-links": theme("colors.purple.400"),
-            "--tw-prose-bold": theme("colors.gray.100"),
-            "--tw-prose-quotes": theme("colors.gray.100"),
-            "--tw-prose-quote-borders": theme("colors.purple.700"),
-            blockquote: {
-              borderLeftColor: theme("colors.purple.700"),
-            },
+        "accordion-up": {
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
           },
         },
-      }),
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
     },
   },
   variants: {
@@ -66,177 +65,7 @@ const config: import("tailwindcss").Config = {
     },
   },
   darkMode: "class",
-  safelist: [
-    {
-      variants: ["hover", "focus", "active"],
-      pattern:
-        /(bg|border|text)-(slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose|primary|secondary|success|warning|danger)-(100|200|300|400|500|600|700|800|900|950)/,
-    },
-    "text-left",
-    "text-center",
-    "text-right",
-    "text-justify",
-  ],
-  plugins: [
-    require("@tailwindcss/typography"),
-    nextui({
-      themes: {
-        light: {
-          colors: {
-            background: "#F3E8FF",
-            foreground: "#1D1B3C",
-            primary: {
-              50: "#F7F3FF",
-              100: "#EEE5FF",
-              200: "#E1CCFF",
-              300: "#D4B3FF",
-              400: "#C799FF",
-              500: "#BB80FF",
-              600: "#A766FF",
-              700: "#934DFF",
-              800: "#7F33FF",
-              900: "#6B1AFF",
-              foreground: "#1D1B3C",
-              DEFAULT: "#C799FF",
-            },
-            secondary: {
-              50: "#F3F1FF",
-              100: "#E8E5FF",
-              200: "#D1CCFF",
-              300: "#BAB3FF",
-              400: "#A499FF",
-              500: "#8E80FF",
-              600: "#7866FF",
-              700: "#6252FF",
-              800: "#4B3EFF",
-              900: "#3529FF",
-              foreground: "#1D1B3C",
-              DEFAULT: "#A499FF",
-            },
-            success: {
-              50: "#F2FFF7",
-              100: "#E4FFEE",
-              200: "#C9FFD7",
-              300: "#ADFFBF",
-              400: "#92FFA7",
-              500: "#76FF8F",
-              600: "#5AFF77",
-              700: "#3EFF5F",
-              800: "#22FF47",
-              900: "#07FF2F",
-              foreground: "#1D1B3C",
-              DEFAULT: "#92FFA7",
-            },
-            warning: {
-              50: "#FFF9E8",
-              100: "#FFF2D1",
-              200: "#FFE5A3",
-              300: "#FFD976",
-              400: "#FFCC48",
-              500: "#FFBF1A",
-              600: "#FFB200",
-              700: "#FFA500",
-              800: "#FF9800",
-              900: "#FF8B00",
-              foreground: "#1D1B3C",
-              DEFAULT: "#FFCC48",
-            },
-            danger: {
-              50: "#FFE8EB",
-              100: "#FFD1D7",
-              200: "#FFA3AF",
-              300: "#FF7687",
-              400: "#FF495F",
-              500: "#FF1A37",
-              600: "#FF0020",
-              700: "#E6001C",
-              800: "#CC0018",
-              900: "#B30014",
-              foreground: "#1D1B3C",
-              DEFAULT: "#FF495F",
-            },
-          },
-        },
-        dark: {
-          colors: {
-            background: "#1D1B3C",
-            foreground: "#EDE9F6",
-            primary: {
-              50: "#2E1D4A",
-              100: "#432C6A",
-              200: "#583B8A",
-              300: "#6D4AAA",
-              400: "#825ACB",
-              500: "#9769EB",
-              600: "#AB79F8",
-              700: "#BE8BFF",
-              800: "#D19CFF",
-              900: "#E4AEFF",
-              foreground: "#EDE9F6",
-              DEFAULT: "#825ACB",
-            },
-            secondary: {
-              50: "#1C1B36",
-              100: "#2A294E",
-              200: "#383767",
-              300: "#464580",
-              400: "#55539A",
-              500: "#6362B3",
-              600: "#7271CC",
-              700: "#8180E6",
-              800: "#908FFF",
-              900: "#9E9DFF",
-              foreground: "#EDE9F6",
-              DEFAULT: "#55539A",
-            },
-            success: {
-              50: "#1D2B1F",
-              100: "#294236",
-              200: "#35594D",
-              300: "#417064",
-              400: "#4D877B",
-              500: "#599E92",
-              600: "#65B5A9",
-              700: "#71CCBF",
-              800: "#7DE3D6",
-              900: "#89FAED",
-              foreground: "#EDE9F6",
-              DEFAULT: "#4D877B",
-            },
-            warning: {
-              50: "#33281C",
-              100: "#4C3E29",
-              200: "#655536",
-              300: "#7E6C43",
-              400: "#978350",
-              500: "#B09A5D",
-              600: "#C9B16A",
-              700: "#E2C877",
-              800: "#FBEF84",
-              900: "#FFFCA1",
-              foreground: "#EDE9F6",
-              DEFAULT: "#978350",
-            },
-            danger: {
-              50: "#3C1C21",
-              100: "#592931",
-              200: "#763741",
-              300: "#934551",
-              400: "#B15361",
-              500: "#CE6171",
-              600: "#EB6F81",
-              700: "#FF7F91",
-              800: "#FF8FA1",
-              900: "#FFA1B3",
-              foreground: "#EDE9F6",
-              DEFAULT: "#B15361",
-            },
-          },
-        },
-      },
-    }),
-    require("tailwindcss-animate"),
-  ],
+  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
 } satisfies Config;
 
 export default config;

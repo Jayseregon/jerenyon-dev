@@ -4,11 +4,11 @@ import React, { useContext } from "react";
 import { motion } from "motion/react";
 import { CircleCheckBig } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { Chip } from "@nextui-org/react";
 
 import { NonceContext } from "@/src/app/providers";
 import { preconfigWebApps } from "@/lib/getQuoteData";
 import { PreconfigSectionProps } from "@/interfaces/Quote";
+import { Badge } from "@/components/ui/badge";
 
 import { CardSection } from "./Quote-CardSection";
 
@@ -70,18 +70,9 @@ export const PreconfigSection = ({
                   <div>
                     {JSON.parse(t(`${preconfig.label}.whoFor`)).map(
                       (keyword: string, idx: number) => (
-                        <Chip
-                          key={idx}
-                          classNames={{
-                            base: "bg-transparent border-small border-purple-800 dark:border-purple-300 mx-1",
-                            content: "text-purple-800 dark:text-purple-300",
-                          }}
-                          radius="full"
-                          size="sm"
-                          variant="bordered"
-                        >
+                        <Badge key={idx} variant="chip">
                           {keyword}
-                        </Chip>
+                        </Badge>
                       ),
                     )}
                   </div>
@@ -91,6 +82,7 @@ export const PreconfigSection = ({
           })}
         </div>
       }
+      bodyClassName="pt-4"
       header="Suggested Configuration"
     />
   );

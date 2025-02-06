@@ -22,6 +22,7 @@ const badgeVariants = cva(
         amber:
           "bg-transparent border-amber-500 m-0.5 text-amber-500 rounded-full px-1.5 py-0.5",
         gray: "bg-transparent border-gray-500 m-0.5 text-gray-500 rounded-full px-1.5 py-0.5",
+        chip: "bg-transparent border-small border-purple-800 dark:border-purple-300 mx-1 text-purple-800 dark:text-purple-300 rounded-full px-1.5 py-0.5",
       },
     },
     defaultVariants: {

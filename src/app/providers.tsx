@@ -1,8 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { NextUIProvider } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { ThemeProviderProps } from "next-themes";
 import { SessionProvider } from "next-auth/react";
@@ -19,21 +17,17 @@ export interface ProvidersProps {
 }
 
 export function Providers({ children, themeProps, nonce }: ProvidersProps) {
-  const router = useRouter();
-
   return (
     <SessionProvider>
       <NonceContext.Provider value={nonce}>
-        <NextUIProvider navigate={router.push}>
-          <NextThemesProvider
-            defaultTheme="dark"
-            enableSystem={false}
-            nonce={nonce}
-            {...themeProps}
-          >
-            {children}
-          </NextThemesProvider>
-        </NextUIProvider>
+        <NextThemesProvider
+          defaultTheme="dark"
+          enableSystem={false}
+          nonce={nonce}
+          {...themeProps}
+        >
+          {children}
+        </NextThemesProvider>
       </NonceContext.Provider>
     </SessionProvider>
   );
