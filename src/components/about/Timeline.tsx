@@ -109,7 +109,7 @@ export const Timeline = () => {
 
   return (
     <div className="relative w-10/12 mx-auto">
-      <div className="absolute left-1/2 transform -translate-x-1/2 h-full border border-purple-600" />
+      <div className="absolute left-1/2 transform -translate-x-1/2 h-full border border-violet-900" />
       {timelineData.map((item, index) => (
         <TimelineItem key={index} index={index} item={item} />
       ))}
