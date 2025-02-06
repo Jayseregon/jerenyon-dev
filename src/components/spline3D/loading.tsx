@@ -1,4 +1,4 @@
-import SpinLoader from "@/components/ui/SpinLoader";
+import SpinLoader from "@/src/components/root/SpinLoader";
 
 export default function Loading() {
   return <SpinLoader />;

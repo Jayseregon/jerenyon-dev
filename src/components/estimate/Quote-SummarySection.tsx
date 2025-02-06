@@ -9,8 +9,6 @@ import { calculateQuoteSummary } from "@/lib/calculateQuote";
 
 import { CardSection } from "./Quote-CardSection";
 
-// Replace react-icons with lucide-react icons
-
 export const QuoteSummarySection = memo(function QuoteSummarySection({
   quote,
 }: {
@@ -81,6 +79,7 @@ export const QuoteSummarySection = memo(function QuoteSummarySection({
           </div>
         </div>
       }
+      bodyClassName="pt-4"
       header={t("title")}
     />
   );

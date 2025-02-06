@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 
 import { siteConfig } from "@/src/config/site";
-import PageTitles from "@/src/components/ui/PageTitles";
+import PageTitles from "@/src/components/root/PageTitles";
 import MainCategoryCard from "@/src/components/knowledge-hub/MainCategoryCard";
 import { PostTypes } from "@/src/interfaces/Hub";
 import { ReadingsSection } from "@/src/components/knowledge-hub/ReadingsSection";

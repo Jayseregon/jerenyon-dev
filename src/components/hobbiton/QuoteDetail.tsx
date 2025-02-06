@@ -2,8 +2,8 @@
 
 import React, { useContext, useEffect, useState } from "react";
 import { CircleCheck, Hourglass, Trash2 } from "lucide-react";
-import { Button } from "@nextui-org/react";
 
+import { Button } from "@/components/ui/button";
 import { calculateQuoteSummary } from "@/lib/calculateQuote";
 import { CardSection } from "@/components/estimate/Quote-CardSection";
 import { Quote, QuoteForm } from "@/interfaces/Quote";
@@ -220,12 +220,12 @@ export const QuoteDetail: React.FC<QuoteDetailProps> = ({
 
             <div className="flex justify-end mt-6" nonce={nonce}>
               <Button
-                isIconOnly
-                className="bg-red-500 hover:bg-red-600 text-white"
                 color={undefined}
                 disabled={isDeleting}
                 nonce={nonce}
-                onPress={handleDelete}
+                size="icon"
+                variant="destructive"
+                onClick={handleDelete}
               >
                 {isDeleting ? <Hourglass /> : <Trash2 size={24} />}
               </Button>

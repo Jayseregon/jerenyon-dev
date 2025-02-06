@@ -1,41 +1,42 @@
 "use client";
-
-import { Chip } from "@nextui-org/react";
 import { useContext } from "react";
 
+import { Badge } from "@/components/ui/badge";
 import { Tag } from "@/src/interfaces/Hub";
 import { NonceContext } from "@/src/app/providers";
+
+// Added optional onTagClick callback.
+export interface BlogPostTagsProps {
+  tags: Tag[];
+  className?: string;
+  onTagClick?: (tag: Tag) => void;
+}
 
 export const BlogPostTags = ({
   tags,
   className,
-}: {
-  tags: Tag[];
-  className?: string;
-}) => {
+  onTagClick,
+}: BlogPostTagsProps) => {
   const nonce = useContext(NonceContext);
 
   return (
     <div
-      aria-label="Selected tags"
+      aria-label="Tags list"
       className={`flex flex-wrap gap-1 ${className}`}
       nonce={nonce}
       role="list"
     >
       {tags.map((tag) => (
-        <Chip
+        <Badge
           key={tag.id}
-          aria-label={`Remove tag ${tag.name}`}
-          classNames={{
-            base: "bg-transparent border border-purple-500",
-            content: "text-sm text-purple-500",
-          }}
-          nonce={nonce}
-          size="sm"
-          variant="flat"
+          aria-label={onTagClick ? `Select tag ${tag.name}` : `Tag ${tag.name}`}
+          className={onTagClick ? "cursor-pointer text-sm" : "text-sm"}
+          variant="purple"
+          // Call onTagClick if provided
+          onClick={onTagClick ? () => onTagClick(tag) : undefined}
         >
           {tag.name}
-        </Chip>
+        </Badge>
       ))}
     </div>
   );

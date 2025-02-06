@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
-import Navbar from "./Navbar";
+import Navbar from "./navbar/Navbar";
 import Footer from "./Footer";
 
 type Props = {
@@ -28,7 +28,7 @@ export default function RootLayoutStyling({ children, nonce }: Props) {
       {/* Conditionally render Navbar */}
       {!isSplineScene && <Navbar nonce={nonce} />}
 
-      <main className="flex-grow" nonce={nonce}>
+      <main className="grow" nonce={nonce}>
         {children}
       </main>
 

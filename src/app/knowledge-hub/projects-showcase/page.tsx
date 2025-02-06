@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { BlogPostRefactor } from "@/src/interfaces/Hub";
 import { getPublishedProjects } from "@/actions/prisma/blogPosts/action";
 import { BlogPostsBoard } from "@/components/knowledge-hub/BlogPostsBoard";
-import PageTitles from "@/components/ui/PageTitles";
+import PageTitles from "@/src/components/root/PageTitles";
 import { NonceContext } from "@/src/app/providers";
 
 export default function ProjectsShowcaseBoardPage() {

@@ -4,7 +4,7 @@ import { Check } from "lucide-react";
 import React, { useContext } from "react";
 
 import { NonceContext } from "@/src/app/providers";
-import CustomToggleSwitch from "@/components/ui/CustomToggleSwitch";
+import CustomToggleSwitch from "@/src/components/root/CustomToggleSwitch";
 import { cn } from "@/src/lib/utils";
 
 interface QuoteSwitchProps {
@@ -39,7 +39,7 @@ export function QuoteSwitch({
   return (
     <div aria-label={ariaLabel} className="flex items-start space-x-2 py-1.5">
       <CustomToggleSwitch
-        className={cn("flex-shrink-0", className)}
+        className={cn("shrink-0", className)}
         height={height}
         isOn={isOn}
         nonce={nonce}

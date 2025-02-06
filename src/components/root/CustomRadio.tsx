@@ -5,19 +5,7 @@ import { motion } from "motion/react";
 import React, { useContext } from "react";
 
 import { NonceContext } from "@/src/app/providers";
-
-interface CustomRadioGroupProps {
-  value: string;
-  onValueChange: (value: string) => void;
-  children: React.ReactNode;
-  className?: string;
-}
-
-interface CustomRadioProps {
-  value: string;
-  label: string;
-  className?: string;
-}
+import { CustomRadioGroupProps, CustomRadioProps } from "@/src/interfaces/Root";
 
 export function CustomRadioGroup({
   value,
@@ -57,7 +45,7 @@ export function CustomRadio({ value, label, className }: CustomRadioProps) {
         <RadixRadioGroup.Indicator asChild nonce={nonce}>
           <motion.div
             layout
-            className="absolute inset-0 flex items-center justify-center bg-purple-200 dark:bg-purple-950 shadow shadow-purple-300 dark:shadow-[#2a0548] rounded-full"
+            className="absolute inset-0 flex items-center justify-center bg-purple-200 dark:bg-purple-950 shadow-sm shadow-purple-300 dark:shadow-[#2a0548] rounded-full"
             nonce={nonce}
             transition={{ type: "spring", stiffness: 300 }}
           >

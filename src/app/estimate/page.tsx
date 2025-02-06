@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useContext } from "react";
 
-import PageTitles from "@/src/components/ui/PageTitles";
+import PageTitles from "@/src/components/root/PageTitles";
 import QuotingTool from "@/src/components/estimate/QuotingTool";
 import { NonceContext } from "@/src/app/providers";
 

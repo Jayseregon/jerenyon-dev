@@ -1,4 +1,4 @@
-import Breadcrumbs from "@/components/ui/Breadcrumbs";
+import Breadcrumbs from "@/src/components/root/Breadcrumbs";
 import { BlogPostRefactor } from "@/src/interfaces/Hub";
 
 import { BlogPostBoardTile } from "./BlogPostBoardTile";

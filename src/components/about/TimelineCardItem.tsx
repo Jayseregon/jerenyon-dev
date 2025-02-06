@@ -1,14 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Chip,
-  Link,
-} from "@nextui-org/react";
+import Link from "next/link";
 
 import {
   AwardCertificatIcon,
@@ -16,8 +9,39 @@ import {
   LaptopIcon,
 } from "@/src/components/icons";
 import { WorkExperienceCardItemProps } from "@/interfaces/About";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 import { TimelineDescriptionModal } from "./TimelineDescriptionModal";
+
+// Helper function to get color classes
+const getColorClasses = (type: "work" | "award" | "school") => {
+  const colorMap = {
+    work: {
+      border: "border border-purple-800 dark:border-purple-300",
+      text: "text-purple-800 dark:text-purple-300",
+      bg: "bg-purple-800 dark:bg-purple-300",
+    },
+    award: {
+      border: "border border-cyan-800 dark:border-cyan-300",
+      text: "text-cyan-800 dark:text-cyan-300",
+      bg: "bg-cyan-800 dark:bg-cyan-300",
+    },
+    school: {
+      border: "border border-amber-800 dark:border-amber-300",
+      text: "text-amber-800 dark:text-amber-300",
+      bg: "bg-amber-800 dark:bg-amber-300",
+    },
+  };
+
+  return colorMap[type];
+};
 
 export const TimelineCardItem = ({
   item,
@@ -39,23 +63,32 @@ export const TimelineCardItem = ({
     ),
   };
 
-  const colorMap = {
+  // Add this back for Badge variants
+  const colorMap: Record<
+    "work" | "award" | "school",
+    "purple" | "cyan" | "amber"
+  > = {
     work: "purple",
     award: "cyan",
     school: "amber",
   };
 
-  const color = colorMap[item.timelineIcon as keyof typeof colorMap] || "gray";
+  const badgeVariant =
+    colorMap[item.timelineIcon as keyof typeof colorMap] || "gray";
+  const colorClasses = getColorClasses(
+    item.timelineIcon as "work" | "award" | "school",
+  );
+
   const icon = iconMap[item.timelineIcon as keyof typeof iconMap];
 
   return (
     <>
       <Card
-        className={`bg-background rounded-lg shadow-md border-3 border-${color}-800 dark:border-${color}-300`}
+        className={`bg-background rounded-lg shadow-md ${colorClasses.border}`}
       >
         <CardHeader className="md:hidden p-0 m-0 flex justify-center">
           <div
-            className={`flex inline-block gap-2 text-background bg-${color}-800 dark:bg-${color}-300 rounded-b-2xl px-6 py-1`}
+            className={`flex gap-2 text-background ${colorClasses.bg} rounded-b-2xl px-6 py-1`}
           >
             {icon}
             {item.date}
@@ -63,16 +96,14 @@ export const TimelineCardItem = ({
         </CardHeader>
 
         <CardHeader
-          className={`flex justify-between items-start w-full text-left ${
+          className={`flex justify-between items-start w-full text-left pt-4 ${
             index % 2 === 0
               ? "md:text-left"
               : "md:flex-row-reverse md:text-right"
           } relative`}
         >
           <div>
-            <h3
-              className={`text-xl font-semibold text-${color}-800 dark:text-${color}-300`}
-            >
+            <h3 className={`text-xl font-semibold ${colorClasses.text}`}>
               {item.label}
             </h3>
             <p className="grid grid-cols dark:text-neutral-400 text-neutral-500">
@@ -82,7 +113,7 @@ export const TimelineCardItem = ({
           </div>
         </CardHeader>
 
-        <CardBody
+        <CardContent
           className={`grid grid-cols gap-2 text-left ${
             index % 2 === 0 ? "md:text-left" : "md:text-right"
           }`}
@@ -90,21 +121,12 @@ export const TimelineCardItem = ({
           <p>{item.summary}</p>
           <div>
             {item.keywords.map((keyword, idx) => (
-              <Chip
-                key={idx}
-                classNames={{
-                  base: `bg-transparent border border-${color}-500 mx-0.5`,
-                  content: `text-${color}-500`,
-                }}
-                radius="full"
-                size="sm"
-                variant="bordered"
-              >
+              <Badge key={idx} variant={badgeVariant}>
                 {keyword}
-              </Chip>
+              </Badge>
             ))}
           </div>
-        </CardBody>
+        </CardContent>
 
         <CardFooter
           className={`flex w-full justify-end ${
@@ -112,21 +134,23 @@ export const TimelineCardItem = ({
           }`}
         >
           {item.timelineIcon === "award" && item.href ? (
-            <Link
-              isExternal
-              showAnchorIcon
-              className={`text-light text-${color}-800/50 dark:text-${color}-300/50`}
-              href={item.href}
+            <Button
+              asChild
+              className={`text-light ${colorClasses.text}/80`}
+              variant="link"
             >
-              Show Credentials
-            </Link>
+              <Link href={item.href} rel="noopener noreferrer" target="_blank">
+                Show Credentials
+              </Link>
+            </Button>
           ) : (
-            <Link
-              className={`text-light text-${color}-800/50 dark:text-${color}-300/50`}
-              onPress={() => setIsModalOpen(true)}
+            <Button
+              className={`text-light ${colorClasses.text}/80`}
+              variant="link"
+              onClick={() => setIsModalOpen(true)}
             >
               More details
-            </Link>
+            </Button>
           )}
         </CardFooter>
       </Card>

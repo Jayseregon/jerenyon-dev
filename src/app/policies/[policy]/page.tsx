@@ -27,7 +27,6 @@ export default function PolicyPage() {
   const policyData = policyKeys[policy as keyof typeof policyKeys];
 
   return (
-    // <div>
     <div className="w-full max-w-4xl md:max-w-5xl mx-auto">
       <h1 className="text-purple-800 dark:text-purple-300 mb-3">
         {t(`${policyData.translationId}.title`)}
