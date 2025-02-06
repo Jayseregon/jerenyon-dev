@@ -32,7 +32,7 @@ export default function SignInPage(): JSX.Element {
         {Object.values(providerMap).map((provider) => (
           <Button
             key={provider.id}
-            className="bg-gradient-to-tr from-amber-300 to-fuchsia-500 text-white rounded-lg shadow-lg p-3"
+            className="bg-linear-to-tr from-amber-300 to-fuchsia-500 text-white rounded-lg shadow-lg p-3"
             size="icon"
             onClick={() => signIn(provider.id)}
           >

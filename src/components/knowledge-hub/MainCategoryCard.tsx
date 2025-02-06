@@ -93,7 +93,7 @@ const MainCategoryCard = ({
                       whileTap={{ scale: 0.98 }}
                     >
                       <div className="flex">
-                        <div className="flex-shrink-0 relative w-16 h-16 mr-4">
+                        <div className="shrink-0 relative w-16 h-16 mr-4">
                           <Image
                             fill
                             alt={article.title}

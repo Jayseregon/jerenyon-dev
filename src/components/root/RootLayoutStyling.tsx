@@ -28,7 +28,7 @@ export default function RootLayoutStyling({ children, nonce }: Props) {
       {/* Conditionally render Navbar */}
       {!isSplineScene && <Navbar nonce={nonce} />}
 
-      <main className="flex-grow" nonce={nonce}>
+      <main className="grow" nonce={nonce}>
         {children}
       </main>
 

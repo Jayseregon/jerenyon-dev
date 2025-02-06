@@ -129,7 +129,7 @@ export const TiptapEditor = ({
     editorProps: {
       attributes: {
         spellcheck: "true",
-        class: `prose dark:prose-invert max-w-none min-h-[300px] focus:outline-none ProseMirror`,
+        class: `prose dark:prose-invert max-w-none min-h-[300px] focus:outline-hidden ProseMirror`,
         style: "white-space: pre-wrap; text-align: left;",
       },
     },

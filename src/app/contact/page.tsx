@@ -152,7 +152,7 @@ export default function ContactPage() {
             </div>
 
             <Button
-              // className="w-full rounded-full bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 hover:dark:border-purple-950 hover:bg-purple-800 hover:dark:bg-purple-950 hover:text-background hover:dark:text-foreground focus:outline-none"
+              // className="w-full rounded-full bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 dark:hover:border-purple-950 hover:bg-purple-800 dark:hover:bg-purple-950 hover:text-background dark:hover:text-foreground focus:outline-hidden"
               disabled={pending || !recaptchaToken}
               nonce={nonce}
               type="submit"

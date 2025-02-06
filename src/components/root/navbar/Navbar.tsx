@@ -93,7 +93,7 @@ export default function Navbar({ nonce }: { nonce: string }) {
               </NextLink>
             </div>
             {/* Links in the middle */}
-            <div className="hidden md:flex items-center space-x-4 flex-grow justify-center">
+            <div className="hidden md:flex items-center space-x-4 grow justify-center">
               <motion.div
                 animate={{ opacity: 1 }}
                 className="relative flex items-center space-x-4 border border-purple-800 dark:border-purple-300 rounded-full py-1 px-1"

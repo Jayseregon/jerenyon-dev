@@ -45,7 +45,7 @@ export function CustomRadio({ value, label, className }: CustomRadioProps) {
         <RadixRadioGroup.Indicator asChild nonce={nonce}>
           <motion.div
             layout
-            className="absolute inset-0 flex items-center justify-center bg-purple-200 dark:bg-purple-950 shadow shadow-purple-300 dark:shadow-[#2a0548] rounded-full"
+            className="absolute inset-0 flex items-center justify-center bg-purple-200 dark:bg-purple-950 shadow-sm shadow-purple-300 dark:shadow-[#2a0548] rounded-full"
             nonce={nonce}
             transition={{ type: "spring", stiffness: 300 }}
           >

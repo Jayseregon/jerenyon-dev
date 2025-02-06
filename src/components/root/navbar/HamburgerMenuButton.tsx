@@ -18,7 +18,7 @@ export const HamburgerMenuButton = ({
     >
       <button
         aria-label="Toggle menu button"
-        className={`${isMenuOpen ? "text-purple-800 dark:text-purple-300" : "text-foreground"} focus:outline-none pr-2`}
+        className={`${isMenuOpen ? "text-purple-800 dark:text-purple-300" : "text-foreground"} focus:outline-hidden pr-2`}
         nonce={nonce}
         onPointerDown={toggleMenu}
         onPointerUp={(e) => e.stopPropagation()} // Prevent the pointerup event from propagating to the document

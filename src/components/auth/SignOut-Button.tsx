@@ -12,7 +12,7 @@ export const SignOut = () => {
   return (
     <div className="flex gap-3 px-2">
       <Button
-        className="bg-gradient-to-tr from-amber-300 to-fuchsia-500 text-white rounded-lg p-1"
+        className="bg-linear-to-tr from-amber-300 to-fuchsia-500 text-white rounded-lg p-1"
         size="icon"
         type="button"
         onClick={() => router.push("/hobbiton")}
