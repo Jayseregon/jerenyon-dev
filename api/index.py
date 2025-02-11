@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from services.keywordEmbedding import EmbeddingService
+from .services.keywordEmbedding import EmbeddingService
 
 app = FastAPI()
 
