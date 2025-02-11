@@ -1,4 +1,5 @@
-from sentence_transformers import SentenceTransformer
+from transformers import AutoTokenizer, AutoModel
+import torch
 from sklearn.decomposition import PCA
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
@@ -16,11 +17,25 @@ class Embeddings(BaseModel):
 
 
 class EmbeddingService:
-    def __init__(self, model_name: str = "all-MiniLM-L6-v2"):
-        self.model = SentenceTransformer(model_name)
+    def __init__(self, model_name: str = "sentence-transformers/all-MiniLM-L6-v2"):
+        # Updated to use Hugging Face
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        self.model = AutoModel.from_pretrained(model_name)
 
     def create_embeddings(self, keywords: list) -> np.ndarray:
-        return self.model.encode(keywords)
+        inputs = self.tokenizer(
+            keywords, padding=True, truncation=True, return_tensors="pt"
+        )
+        outputs = self.model(**inputs)
+        # Mean pooling
+        embeddings = outputs.last_hidden_state
+        attention_mask = (
+            inputs["attention_mask"].unsqueeze(-1).expand(embeddings.size()).float()
+        )
+        summed = torch.sum(embeddings * attention_mask, dim=1)
+        summed_mask = torch.clamp(attention_mask.sum(dim=1), min=1e-9)
+        pooled = summed / summed_mask
+        return pooled.detach().numpy()
 
     def reduce_dimensions(
         self, embeddings: np.ndarray, n_components: int = 2
