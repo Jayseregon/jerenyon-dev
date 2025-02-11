@@ -27,7 +27,7 @@ export default function KnowledgeHubPage() {
         {t("intro.p3")}
       </h3>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px w-full">
+      <div className="flex flex-col space-y-20 max-w-3xl mx-auto">
         {siteConfig.hubCategories.map((category, index) => (
           <MainCategoryCard
             key={index}
@@ -35,8 +35,6 @@ export default function KnowledgeHubPage() {
             buttonText={t(`hubCategories.${category.label}.btnLabel`)}
             footerText={t(`hubCategories.${category.label}.description`)}
             href={`${category.rootRef}/${category.label}`}
-            imageAlt={t(`hubCategories.${category.label}.imgAlt`)}
-            imageSrc={category.imgBg}
             subtitle="New"
             title={t(`hubCategories.${category.label}.title`)}
           />

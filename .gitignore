@@ -52,3 +52,6 @@ _OLD/
 .velite
 
 .npmrc
+
+# Ignore all __pycache__ directories recursively
+**/__pycache__/
