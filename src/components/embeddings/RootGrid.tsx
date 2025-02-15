@@ -24,7 +24,7 @@ export const RootGrid = () => {
     .range([margin, width - margin]);
   const yScale = d3
     .scaleLinear()
-    .domain([0, 1])
+    .domain([0, 1.1])
     .range([margin, height - margin]);
   const verticalTicks = d3.ticks(0, 1, 10);
   const horizontalTicks = d3.ticks(0, 1, 10);

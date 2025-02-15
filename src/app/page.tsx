@@ -10,8 +10,8 @@ export default function RootPage() {
   return (
     <div className="w-screen h-screen overflow-hidden">
       <RootGrid />
-      <Hero />
       <EmbeddingMap />
+      <Hero />
     </div>
   );
 }

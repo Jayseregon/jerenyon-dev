@@ -28,7 +28,7 @@ const EmbeddingMap = () => {
     .range([margin, width - margin]);
   const yScale = d3
     .scaleLinear()
-    .domain([0, 1])
+    .domain([0, 1.1])
     .range([margin, height - margin]);
 
   return (
@@ -51,8 +51,9 @@ const EmbeddingMap = () => {
                 className="text-xs"
                 fill="currentColor"
                 opacity={0.5}
-                x={8}
-                y={0}
+                textAnchor="middle"
+                x={0}
+                y={8}
               >
                 {d.word}
               </text>
