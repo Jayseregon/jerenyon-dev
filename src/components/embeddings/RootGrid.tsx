@@ -16,8 +16,8 @@ export const RootGrid = () => {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  const margin = 50;
   const { width, height } = dimensions;
+  const margin = 0; // no margin in any screen size
   const xScale = d3
     .scaleLinear()
     .domain([0, 1])
@@ -37,13 +37,14 @@ export const RootGrid = () => {
       width={width}
     >
       {/* Changed opacity and colors for better visibility */}
-      <g className="text-purple-800/50 dark:text-purple-300/50">
+      <g className="text-neutral-800 dark:text-neutral-300">
         {verticalTicks.map((tick) => (
           <g key={`v-${tick}`}>
             <line
+              opacity={0.5}
               stroke="currentColor"
               strokeDasharray="4,4"
-              strokeWidth={0.5}
+              strokeWidth={0.8}
               x1={xScale(tick)}
               x2={xScale(tick)}
               y1={margin}
@@ -53,7 +54,7 @@ export const RootGrid = () => {
               className="fill-current text-xs"
               textAnchor="middle"
               x={xScale(tick)}
-              y={height - margin + 20}
+              y={height - 5}
             >
               {tick.toFixed(1)}
             </text>
@@ -62,9 +63,10 @@ export const RootGrid = () => {
         {horizontalTicks.map((tick) => (
           <g key={`h-${tick}`}>
             <line
+              opacity={0.5}
               stroke="currentColor"
               strokeDasharray="4,4"
-              strokeWidth={0.5}
+              strokeWidth={0.8}
               x1={margin}
               x2={width - margin}
               y1={yScale(tick)}
@@ -74,7 +76,7 @@ export const RootGrid = () => {
               alignmentBaseline="middle"
               className="fill-current text-xs"
               textAnchor="end"
-              x={margin - 10}
+              x={20}
               y={yScale(tick)}
             >
               {tick.toFixed(1)}

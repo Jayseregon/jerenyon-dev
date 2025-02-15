@@ -44,8 +44,8 @@ export const EmbeddingMap = () => {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  const margin = 50;
   const { width, height } = dimensions;
+  const margin = 0; // width < 768 ? 0 : 50; // updated conditional margin
   const xScale = d3
     .scaleLinear()
     .domain([0, 1])
@@ -74,7 +74,7 @@ export const EmbeddingMap = () => {
                 alignmentBaseline="middle"
                 className="text-xs"
                 fill="currentColor"
-                opacity={0.5}
+                opacity={0.8}
                 textAnchor="middle"
                 x={0}
                 y={8}
