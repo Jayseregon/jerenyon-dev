@@ -1,8 +1,8 @@
 {
   "homepage": {
     "hero": {
-      "title": "Construire le Futur",
-      "subtitle": "Accélérer l'Innovation grâce à l'Automatisation, l'Intelligence Géospatiale et les Solutions d'IA"
+      "title": "Construire le Futur avec IA et Automatisation",
+      "subtitle": "Allier IA générative, automatisation et intelligence géospatiale pour des solutions intelligentes et évolutives"
     }
   },
   "Utils": {
@@ -43,26 +43,26 @@
     "title": "À Propos",
     "hero": {
       "title": "La Création de Jerenyon Dev.",
-      "subtitle": "Expertise géospatiale rencontre développement Full-Stack : comment j'ai construit Jerenyon Dev."
+      "subtitle": "Expertise géospatiale rencontre IA Générative : comment & pourquoi j'ai construit Jerenyon Dev."
     },
     "sections": {
       "jerenyon-dev": {
         "title": "L'Histoire de Jerenyon Dev",
-        "subtitle": "Jerenyon Dev est bien plus qu'un service de développement web et d'automatisation.",
+        "subtitle": "Jerenyon Dev, relier l'IA Générative et l'Intelligence Géospatiale, et plus encore.",
         "paragraphs": {
-          "p1": "Bienvenue chez Jerenyon Dev, un hub pour des stratégies innovantes qui allient expertise géospatiale et technologie de pointe. Créé avec la vision de simplifier et d'améliorer les flux de travail complexes, Jerenyon Dev propose des approches personnalisées qui améliorent l'efficacité, augmentent la productivité et offrent des résultats percutants.",
-          "p2": "Spécialisé dans la résolution de problèmes et l'automatisation de tâches fastidieuses et répétitives, Jerenyon Dev se distingue en fournissant des approches claires et efficaces aux défis complexes. Cette dédication va au-delà du soutien aux grandes entreprises pour inclure les moyennes et petites entreprises cherchant à adopter la transformation numérique et à récolter les avantages de l'automatisation.",
-          "p3": "Que ce soit en rationalisant les processus de données, en construisant des applications web réactives, ou en intégrant des données alimentés par l'IA, Jerenyon Dev personnalise ses solutions pour correspondre aux exigences uniques de chaque client. Avec une solide fondation en expertise technique et un engagement inébranlable envers la croissance, Jerenyon Dev repousse les limites du développement, de l'automatisation des processus et de l'intelligence géospatiale.",
-          "p4": "Jerenyon Dev est également une plateforme pour partager des connaissances et favoriser une communauté d'apprentissage. À travers des articles, des tutoriels et des présentations de projets, il offre des informations pratiques basées sur une expérience du monde réel, de la programmation Python au développement React/Next.js en passant par l'analyse géospatiale et les meilleures pratiques QGIS. En fusionnant des compétences de code pratiques avec une connaissance géospatiale approfondie, Jerenyon Dev est votre partenaire pour l'innovation numérique."
+          "p1": "Jerenyon Dev est bien plus qu'un simple service de développement web et d'automatisation, c'est également une plateforme dédiée à l'intégration de l'IA Générative et de l'Intelligence Géospatiale, via l'automatisation. Avec la volonté de simplifier les flux de travail complexes, Jerenyon Dev propose des solutions d'automatisation et géospatiales alimentées par l'IA, renforçant la prise de décision et l'efficacité opérationnelle.",
+          "p2": "Spécialisé dans l'IA Générative et l'automatisation géospatiale, Jerenyon Dev crée des outils alimentés par l'IA, des workflows intelligents et des applications évolutives. Qu'il s'agisse de traitement de documents pilotés par LLM, d'analyses de données basées sur l'IA ou d'automatisation géospatiale, Jerenyon Dev offre des solutions sur mesure pour rationaliser les opérations métiers.",
+          "p3": "Au-delà de la simple prestation de services, Jerenyon Dev encourage le partage de connaissances. À travers des articles, des tutoriels et des présentations de projets, il propose des analyses concrètes sur l'automatisation optimisée par l'IA, la programmation Python, le développement React/Next.js et l'intelligence géospatiale. En associant des solutions d'IA pratiques à une expertise géospatiale avancée, Jerenyon Dev est à l'avant-garde de l'innovation reliant l'IA et le géospatial.",
+          "p4": "Soucieux d'un apprentissage continu et d'une recherche de pointe, Jerenyon Dev accompagne les entreprises pour exploiter l'IA dans leurs processus d'automatisation, leur permettant de garder une longueur d'avance dans un monde propulsé par l'IA. Que vous souhaitiez intégrer l'IA Générative, automatiser vos flux de travail ou renforcer votre intelligence géospatiale, Jerenyon Dev est votre partenaire vers l'avenir d'une transformation pilotée par l'IA."
         }
       },
       "jeremie": {
-        "title": "Le Cerveau derrière Jerenyon Dev",
+        "title": "L'Esprit derrière Jerenyon Dev",
         "subtitle": "Présentation de Jérémie, le Fondateur de Jerenyon Dev",
         "paragraphs": {
-          "p1": "Je suis un ingénieur Full-Stack, expert en SIG et spécialiste de l'automatisation Python avec une passion pour la résolution de problèmes, l'optimisation des tâches manuelles et répétitives, et la gestion des défis de front. Mon parcours a commencé avec un bagage en géographie, évoluant vers une maîtrise des langages de programmation, des outils de développement et des stratégies d'automatisation qui relient le traitement de données complexes à des expériences utilisateur intuitives.",
-          "p2": "Avec une profonde expérience dans la construction d'applications évolutives et axées sur les données et la conduite d'initiatives de transformation numérique, je reste engagé à explorer de nouvelles technologies et à intégrer des capacités d'IA dans l'automatisation. Bien que ne me spécialisant pas dans le développement de modèles LLM à partir de zéro, je maintiens un vif intérêt à exploiter les nouveaux outils et systèmes pour améliorer les processus automatisés, faisant progresser continuellement mon expertise grâce à des certifications et à la R&D autodirigée.",
-          "p3": "Jerenyon Dev est ma réponse pour combiner ma maîtrise technique et mon engagement à soutenir les entreprises de toutes tailles avec des solutions numériques. C'est aussi mon moyen de redonner à la communauté des développeurs en partageant les connaissances acquis à partir de travaux pratiques—que ce soit dans l'automatisation Python avancée, les projets React/Next.js ou l'analyse géospatiale. Mon objectif est de simplifier les problèmes complexes et de fournir des solutions claires et pratiques, permettant aux équipes, aux entreprises et aux développeurs de faire plus et de repousser les limites du possible."
+          "p1": "Je suis un Ingénieur en IA Générative et Développeur Full-Stack, spécialisé dans l'automatisation pilotée par l'IA, les applications évolutives et l'intelligence géospatiale. Mon parcours a débuté avec un Master en géographie, évoluant vers une expertise en programmation, automatisation et intégration de l'IA. Mon objectif est de relier l'IA, l'automatisation et l'expertise géospatiale afin de créer des solutions efficaces et novatrices.",
+          "p2": "Avec une solide expérience dans la création d'applications intelligentes et orientées données, ainsi que dans la direction d'initiatives de R&D en IA, je reste engagé à tirer parti des LLMs, des agents IA et des workflows RAG pour améliorer l'automatisation. Mon approche met l'accent sur l'application pratique de l'IA plutôt que sur le développement de modèles fondamentaux, élargissant constamment mon expertise grâce à des certifications et à la recherche.",
+          "p3": "Jerenyon Dev est ma plateforme pour fusionner l'automatisation, l'intelligence artificielle et l'intelligence géospatiale afin de proposer des solutions percutantes pour les entreprises. Elle sert également de centre de connaissances, où je partage des idées sur les workflows optimisés par l'IA, l'automatisation Python, le développement React/Next.js et l'innovation géospatiale. Mon ambition est de simplifier la complexité et de fournir des solutions numériques renforcées par l'IA de manière claire et concrète, à la fois pour les développeurs et les entreprises."
         }
       }
     }
@@ -258,7 +258,7 @@
     "item1": {
       "date": "Sept 2024 - Présent",
       "label": "Fondateur & Ingénieur Full-Stack",
-      "city": "Montréal, QC",
+      "city": "Télétravail",
       "company": "Jerenyon Dev",
       "summary": "Fondateur et visionnaire derrière Jerenyon Dev, offrant des solutions personnalisées de développement web, d'automatisation et basées sur l'IA.",
       "description": {
@@ -271,49 +271,49 @@
     },
     "item2": {
       "date": "Jan 2023",
-      "label": "Spécialisation Développeur TensorFlow",
+      "label": "TensorFlow Developer Specialization",
       "company": "DeepLearning.AI, Coursera",
       "city": "",
-      "summary": "Certificat professionnel de développeur TensorFlow achevé, maîtrisant la formation de réseaux de neurones, la reconnaissance d'images avec des convolutions et le NLP. Acquis des compétences pratiques pour construire des solutions d'IA en utilisant TensorFlow.",
+      "summary": "Complété Certificat Professionnel de développeur TensorFlow, maîtrisant la formation de réseaux de neurones, la reconnaissance d'images avec des convolutions et le NLP. Acquis des compétences pratiques pour construire des solutions d'IA en utilisant TensorFlow.",
       "description": {}
     },
     "item3": {
       "date": "Déc 2022",
-      "label": "Spécialisation en Deep Learning",
+      "label": "Deep Learning Specialization",
       "company": "DeepLearning.AI, Coursera",
       "city": "",
-      "summary": "Spécialisation en Deep Learning achevée, maîtrisant les réseaux de neurones, y compris les CNN, RNN, LSTM et Transformers. Acquis une expertise dans l'application de ces modèles à des tâches réelles comme le NLP, la reconnaissance vocale, et plus en utilisant Python et TensorFlow.",
+      "summary": "Complété la Spécialisation en Deep Learning, maîtrisant les réseaux de neurones, y compris les CNN, RNN, LSTM et Transformers. Acquis une expertise dans l'application de ces modèles à des tâches réelles comme le NLP, la reconnaissance vocale, et plus en utilisant Python et TensorFlow.",
       "description": {}
     },
     "item4": {
       "date": "Nov 2022",
-      "label": "Spécialisation en Machine Learning",
+      "label": "Machine Learning Specialization",
       "company": "Université de Stanford, Coursera",
       "city": "",
-      "summary": "Spécialisation en Machine Learning achevée, maîtrisant les techniques clés comme l'apprentissage supervisé et non supervisé, les systèmes de recommandation et l'apprentissage par renforcement. Acquis des compétences pratiques pour appliquer ces méthodes à des défis du monde réel.",
+      "summary": "Complété la Spécialisation en Machine Learning, maîtrisant les techniques clés comme l'apprentissage supervisé et non supervisé, les systèmes de recommandation et l'apprentissage par renforcement. Acquis des compétences pratiques pour appliquer ces méthodes à des défis du monde réel.",
       "description": {}
     },
     "item5": {
       "date": "Juin 2022 - Présent",
       "label": "Ingénieur Full-Stack en Automatisation & Conseiller en Amélioration Continue",
       "company": "Telecon",
-      "city": "Montréal, QC",
-      "summary": "Stimuler l'innovation et l'efficacité opérationnelle grâce à l'automatisation Python, l'adoption de l'IA, l'intégration avancée des SIG et des solutions de développement web évolutives.",
+      "city": "Télétravail",
+      "summary": "Stimuler l'innovation et l'efficacité opérationnelle grâce à l'automatisation Python, l'intégration de LLMs, des workflows RAG, des solutions géospatiales et du développement full-stack pour des applications d'IA évolutives.",
       "description": {
-        "p1": "Réorganisé et étendu une plateforme basée sur Django en une API RESTful grâce à Django Rest Framework, l'intégrant harmonieusement à un frontend Next.js.",
-        "p2": "Implémenté des composants d'interface utilisateur réactifs avec Next.js et déployé de manière indépendante les solutions backend et frontend via Docker et Azure.",
-        "p3": "Piloté des initiatives de R&D en IA, en créant des prototypes de solutions comme des chatbots personnalisés, des outils améliorés par l'IA générative et des flux de travail RAG avec LangChain et OpenAI.",
-        "p4": "Implémenté stratégiquement des technologies SIG pour améliorer la conception de réseau et les flux de travail en ingénierie civile, assurant formations et encadrement pour renforcer l'équipe.",
-        "p5": "Automatisé des processus complexes avec Python, notamment les audits de relevés de terrain, le calcul de poteaux et de portées aériennes, ainsi que les pipelines de données géospatiales.",
-        "p6": "Développé des solutions d'infrastructure cloud, en gérant des actifs Azure tels que les bases de données, les applications web, l'orchestration de conteneurs et les pipelines CI/CD pour des applications évolutives et maintenables.",
-        "p7": "Créé des outils destinés aux clients, comme un générateur de rapports PDF et des utilitaires d'extraction de données avec Next.js, tout en gérant le traitement géospatial côté backend via Python."
+        "p1": "Développé et déployé des outils alimentés par l'IA, dont un chatbot RAG et des agents IA avec LangChain, réduisant de 50% le temps de résolution manuelle des requêtes.",
+        "p2": "Conçu et déployé une plateforme d'automatisation basée sur le cloud, intégrant des backends Django conteneurisés et des frontends Next.js, rationalisant les processus et activant des capacités d'IA.",
+        "p3": "Développé des outils SaaS Python et frameworks d'automatisation, ainsi que des pipelines de données géospatiales, réduisant les efforts manuels de plus de 60% et améliorant l'efficacité du traitement de données géospatiales.",
+        "p4": "Dirigé des initiatives de R&D en IA/ML, intégrant des LLMs, LangChain et Hugging Face dans des applications live afin d'améliorer l'automatisation et l'analyse géospatiale.",
+        "p5": "Implémenté de manière stratégique des technologies de SIG, dans le cadre de la transformation numérique, automatisant les flux de travail pour des solutions pilotées par les données, réduisant jusqu'à 80% les délais de projet et améliorant la précision de la conception de réseau.",
+        "p6": "Construit et encadré une équipe de développement agile, promouvant l'autonomie, les meilleures pratiques en IA, Python, SIG et méthodologies logicielles modernes.",
+        "p7": "Géré l'infrastructure cloud Azure, en supervisant des applications web, des bases de données, des registres de conteneurs, la mise en réseau et les pipelines CI/CD pour un déploiement fluide."
       }
     },
     "item6": {
       "date": "Sept 2021 - Présent",
       "label": "Co-Fondateur & Ingénieur Full-Stack",
       "company": "NJAE Plume",
-      "city": "Montréal, QC",
+      "city": "Télétravail",
       "summary": "Co-fondateur dirigeant la stratégie technique et le développement full-stack pour notre plateforme créative de commerce électronique.",
       "description": {
         "p1": "Transitionné NJAE Plume de WordPress vers une plateforme e-commerce personnalisée et évolutive basée sur Django, assurant une expérience fluide et conviviale.",
@@ -326,7 +326,7 @@
       "date": "Juil 2018 - Juin 2022",
       "label": "Concepteur de Réseau Fibre | Ingénieur en Automatisation SIG",
       "company": "Telecon",
-      "city": "Montréal, QC",
+      "city": "Télétravail",
       "summary": "Amélioration des flux de travail de conception de réseau fibre grâce à l'automatisation Python et à la technologie SIG, conduisant au développement d'une puissante plateforme basée sur Django.",
       "description": {
         "p1": "Transformé les flux de travail manuels sous CAD en intégrant des outils SIG et de l'automatisation Python, optimisant la conception du réseau et réduisant les erreurs humaines.",
@@ -365,6 +365,30 @@
         "p4": "Adopté une approche systémique de l'étude scientifique des phénomènes environnementaux, en considérant les dynamiques interconnectées et leurs implications sur des systèmes plus vastes.",
         "p5": "Acquis une expérience pratique grâce à des travaux de terrain et des projets d'analyse, explorant les interactions des processus naturels et leur impact sur les systèmes humains et environnementaux."
       }
+    },
+    "item10": {
+      "date": "Jan 2025",
+      "label": "Microsoft Copilot for Software Development",
+      "company": "Microsoft, Coursera",
+      "city": "",
+      "summary": "Complété la Spécialisation Microsoft Copilot pour le Développement Logiciel, maîtrisant la programmation pilotée par l'IA, la relecture de code, la documentation et la planification de projet avec GitHub Copilot.",
+      "description": {}
+    },
+    "item11": {
+      "date": "Jan 2025",
+      "label": "Vector Database Fundamentals",
+      "company": "IBM, Coursera",
+      "city": "",
+      "summary": "Complété la Spécialisation Fondamentaux des Bases de Données Vectorielles par IBM, acquérant une expérience pratique dans la recherche vectorielle, les embeddings, ChromaDB, PostgreSQL, MongoDB et les systèmes de recommandation alimentés par l'IA.",
+      "description": {}
+    },
+    "item12": {
+      "date": "Jan 2025",
+      "label": "IBM Generative AI Engineering",
+      "company": "IBM, Coursera",
+      "city": "",
+      "summary": "Complété le Certificat Professionnel en Ingénierie de l'IA Générative par IBM, acquérant une expertise pratique dans les architectures de LLM, fine-tuning, les workflows RAG, les agents d'IA et le déploiement d'applications d'IA générative.",
+      "description": {}
     }
   }
 }
