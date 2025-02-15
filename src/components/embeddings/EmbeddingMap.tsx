@@ -66,10 +66,22 @@ export const EmbeddingMap = () => {
     .domain([0, 1.1])
     .range([margin, height - margin]);
 
+  // Determine mobile condition (example: under 768px width)
+  const isMobile = width < 768;
+  // Create filtered keywords: on mobile, reduce dataset by factor of 2 but always keep highlightWords.
+  const filteredKeywords = isMobile
+    ? currentData.keywords.filter(
+        (kw, idx) => highlightWords.has(kw.word) || idx % 2 === 0
+      )
+    : currentData.keywords;
+
   return (
     <div className="relative w-full h-full">
-      <svg className="w-full h-full" height={height} width={width}>
-        {currentData.keywords.map((d: Keyword, i: number) => {
+      <svg
+        className="w-full h-full"
+        height={height}
+        width={width}>
+        {filteredKeywords.map((d: Keyword, i: number) => {
           const x = xScale(d.x);
           const y = yScale(d.y);
           const isHighlighted = highlightWords.has(d.word);
@@ -79,8 +91,7 @@ export const EmbeddingMap = () => {
               key={i}
               className="text-purple-800 dark:text-purple-300"
               style={{ translateX: x, translateY: y }}
-              whileHover={{ scale: 1.3, transition: { duration: 0.2 } }}
-            >
+              whileHover={{ scale: 1.3, transition: { duration: 0.2 } }}>
               <circle
                 cx={0}
                 cy={0}
@@ -94,8 +105,7 @@ export const EmbeddingMap = () => {
                 opacity={0.8}
                 textAnchor="middle"
                 x={0}
-                y={8}
-              >
+                y={8}>
                 {d.word}
               </text>
             </motion.g>
