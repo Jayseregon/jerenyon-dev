@@ -1,8 +1,8 @@
 {
   "homepage": {
     "hero": {
-      "title": "Building the Future",
-      "subtitle": "Accelerating Innovation through Automation, Geospatial Intelligence, and AI solutions"
+      "title": "Building the Future with AI & Automation",
+      "subtitle": "Bridging Generative AI, Automation, and Geospatial Intelligence for Smarter, Scalable Solutions"
     }
   },
   "Utils": {
@@ -43,26 +43,26 @@
     "title": "About",
     "hero": {
       "title": "Creating Jerenyon Dev.",
-      "subtitle": "Geospatial expertise meets Full-Stack development: how I built Jerenyon Dev."
+      "subtitle": "Geospatial expertise meets Generative AI: how & why I built Jerenyon Dev."
     },
     "sections": {
       "jerenyon-dev": {
         "title": "The Story of Jerenyon Dev",
-        "subtitle": "Jerenyon Dev is more than just a web development and automation service.",
+        "subtitle": "Jerenyon Dev, bridge between Generative AI and Geospatial Intelligence, and more.",
         "paragraphs": {
-          "p1": "Welcome to Jerenyon Dev, a hub for innovative strategies that blend geospatial expertise with cutting-edge technology. Established with a vision to simplify and enhance complex workflows, Jerenyon Dev provides customized approaches that improve efficiency, boost productivity, and deliver impactful outcomes.",
-          "p2": "Specializing in problem-solving and the automation of tedious, repetitive tasks, Jerenyon Dev stands out in providing clear and efficient approaches to intricate challenges. This dedication goes beyond supporting large corporations to include medium and small businesses looking to embrace digital transformation and reap the benefits of automation.",
-          "p3": "Whether through streamlining data processes, building responsive web applications, or integrating AI-driven insights, Jerenyon Dev customizes its solutions to match the unique requirements of each client. With a strong foundation in technical expertise and an unwavering commitment to growth, Jerenyon Dev pushes the boundaries of development, process automation, and geospatial intelligence.",
-          "p4": "Jerenyon Dev is also a platform to share knowledge and foster a community of learning. Through articles, tutorials, and project showcases, it offers practical insights based on real-world experience, from Python scripting and React/Next.js development to geospatial analysis and QGIS best practices. By merging practical coding skills with in-depth geospatial knowledge, Jerenyon Dev is your partner for digital innovation."
+          "p1": "Jerenyon Dev is more than just a web development and automation service, it is a platform dedicated to integrating Generative AI and Geospatial Intelligence, through automation. With a vision to simplify complex workflows, Jerenyon Dev delivers AI-driven automation and geospatial solutions that enhance decision-making and operational efficiency.",
+          "p2": "Specializing in Generative AI and geospatial automation, Jerenyon Dev builds AI-powered tools, intelligent workflows, and scalable applications. Whether through LLM-powered document processing, AI-driven data insights, or geospatial automation, Jerenyon Dev provides tailored solutions to streamline business operations.",
+          "p3": "Beyond providing services, Jerenyon Dev fosters knowledge-sharing. Through articles, tutorials, and project showcases, it offers hands-on insights into AI-enhanced automation, Python programming, React/Next.js development, and geospatial intelligence. By merging practical AI solutions with advanced geospatial expertise, Jerenyon Dev is at the forefront of bridging AI and geospatial innovation.",
+          "p4": "With a commitment to continuous learning and cutting-edge research, Jerenyon Dev helps businesses harness AI for automation, enabling them to stay ahead in an AI-powered world. Whether you are looking to integrate Generative AI, automate workflows, or enhance geospatial intelligence, Jerenyon Dev is your partner for the future of AI-driven transformation."
         }
       },
       "jeremie": {
         "title": "The Mind Behind Jerenyon Dev",
         "subtitle": "Introducing Jeremie, the Founder of Jerenyon Dev",
         "paragraphs": {
-          "p1": "I am a Full-Stack Engineer, GIS expert, and Python automation specialist with a passion for problem-solving, optimizing manual, repetitive tasks, and tackling challenges head-on. My journey began with a background in geography, evolving into a mastery of programming languages, development tools, and automation strategies that bridge complex data processing with intuitive user experiences.",
-          "p2": "With deep experience in building scalable, data-driven applications and leading digital transformation initiatives, I remain committed to exploring new technologies and integrating AI capabilities into automation. While not specializing in developing LLM models from scratch, I maintain a keen interest in harnessing emerging tools and frameworks to enhance automated processes, continuously advancing my expertise through certifications and self-driven R&D.",
-          "p3": "Jerenyon Dev is my answer to combining my technical proficiency and commitment to supporting businesses of all sizes with digital solutions. It is also my outlet to give back to the developer community by sharing insights gained from hands-on work—whether in advanced Python automation, React/Next.js projects, or geospatial analysis. My goal is to simplify complex problems and provide clear, practical solutions, empowering teams, businesses, and fellow developers to achieve more and push the limits of what is possible."
+          "p1": "I am a Generative AI Engineer and Full-Stack Developer specializing in AI-driven automation, scalable applications, and geospatial intelligence. My journey began with a Master in geography, evolving into expertise in programming, automation, and  AI integration. I focus on bridging AI, automation, and geospatial expertise to create efficient and innovative solutions.",
+          "p2": "With deep experience in building intelligent, data-driven applications and leading AI R&D initiatives, I remain committed to leveraging LLMs, AI agents, and RAG workflows to enhance automation. My approach emphasizes practical applications of AI rather than developing foundational models, continuously expanding my expertise through certifications and research.",
+          "p3": "Jerenyon Dev is my platform to merge automation, AI, and geospatial intelligence into impactful solutions for businesses. It also serves as a knowledge hub, where I share insights on AI-powered workflows, Python automation, React/Next.js development, and geospatial innovation. My goal is to simplify complexity and provide actionable, AI-enhanced digital solutions for developers and businesses alike."
         }
       }
     }
@@ -298,15 +298,15 @@
       "label": "Full-Stack Automation Engineer & Continuous Improvement Advisor",
       "company": "Telecon",
       "city": "Remote",
-      "summary": "Driving innovation and operational efficiency through Python automation, AI adoption, advanced GIS integration, and scalable web development solutions.",
+      "summary": "Driving innovation and operational efficiency through Python automation and LLMs, RAG workflows, GIS-driven solutions, and full-stack development for scalable AI applications.",
       "description": {
-        "p1": "Redesigned and expanded a Django-based platform into a RESTful API with Django Rest Framework, integrating it seamlessly with a Next.js frontend.",
-        "p2": "Implemented responsive UI components using Next.js and deployed both backend and frontend solutions independently with Docker and Azure.",
-        "p3": "Pioneered AI R&D initiatives, prototyping solutions like custom chatbots, generative AI-enhanced tools, and RAG workflows with LangChain and OpenAI.",
-        "p4": "Strategically implemented GIS technologies to enhance network design and civil engineering workflows, providing training and mentorship to empower the team.",
-        "p5": "Automated complex processes with Python, including field survey audits, aerial network pole and midspan calculations, and geospatial data pipelines.",
-        "p6": "Developed cloud infrastructure solutions, managing Azure assets such as databases, web apps, containers orchestration, and CI/CD pipelines for scalable and maintainable applications.",
-        "p7": "Built client-facing tools, such as a PDF report generator and data extraction utilities, using Next.js, while handling backend-heavy geospatial processing with Python."
+        "p1": "Developed and deployed AI-powered tools, including RAG chatbot and AI agents with LangChain, achieving a 50% reduction in manual query resolution times.",
+        "p2": "Designed and deployed a cloud-based automation platform, integrating Dockerized Django backends and Next.js frontends, streamlining processes, and enabling AI capabilities.",
+        "p3": "Developed Python-powered SaaS tools and automation frameworks, and geospatial data pipelines, cutting manual efforts by over 60% and improving geospatial data processing efficiency.",
+        "p4": "Led AI/ML R&D initiatives, integrating LLMs, LangChain, and Hugging Face into real-world applications to enhance automation and geospatial analysis.",
+        "p5": "Strategically implemented GIS technologies, for digital transformation, automating workflows into data-driven solutions, reducing project timelines by up to 80% and improving network design accuracy.",
+        "p6": "Built and mentored an agile development team, fostering autonomy, best practices in AI, Python, GIS, and modern software methodologies.",
+        "p7": "Managed Azure cloud infrastructure, overseeing web apps, databases, container registries, networking, and CI/CD pipelines for seamless deployment."
       }
     },
     "item6": {
@@ -365,6 +365,31 @@
         "p4": "Embraced a systemic approach to the scientific study of environmental phenomena, considering interconnected dynamics and their implications on broader systems.",
         "p5": "Gained practical experience through fieldwork and analytical projects, exploring the interactions of natural processes and their impact on human and environmental systems."
       }
+    },
+    "item10": {
+      "date": "Jan 2025",
+      "label": "Microsoft Copilot for Software Development",
+      "company": "Microsoft, Coursera",
+      "city": "",
+      "summary": "Completed Microsoft Copilot for Software Development Specialization, mastering AI-driven coding, code reviews, documentation, and project planning with GitHub Copilot.",
+      "description": {}
+    },
+
+    "item11": {
+      "date": "Jan 2025",
+      "label": "Vector Database Fundamentals",
+      "company": "IBM, Coursera",
+      "city": "",
+      "summary": "Completed IBM Vector Database Fundamentals Specialization, gaining hands-on experience in vector search, embeddings, ChromaDB, PostgreSQL, MongoDB, and AI-powered recommendation systems.",
+      "description": {}
+    },
+    "item12": {
+      "date": "Jan 2025",
+      "label": "IBM Generative AI Engineering",
+      "company": "IBM, Coursera",
+      "city": "",
+      "summary": "Completed IBM Generative AI Engineering Professional Certificate, gaining hands-on expertise in LLM architectures, fine-tuning, RAG workflows, AI agents, and deploying generative AI applications.",
+      "description": {}
     }
   }
 }
