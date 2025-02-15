@@ -4,9 +4,11 @@ import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import * as d3 from "d3";
 
-import embeddingsData from "@/public/assets/data/embeddings.json";
+import embeddingsDataMiniLML6V2 from "@/public/assets/data/embeddings_all-MiniLM-L6-v2.json";
+import embeddingsDataMiniLML12V2 from "@/public/assets/data/embeddings_all-MiniLM-L12-v2.json";
+import embeddingsDataMpnetBaseV2 from "@/public/assets/data/embeddings_all-mpnet-base-v2.json";
 
-const EmbeddingMap = () => {
+export const EmbeddingMap = () => {
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
 
   useEffect(() => {
@@ -33,8 +35,11 @@ const EmbeddingMap = () => {
 
   return (
     <div className="relative w-full h-full">
-      <svg className="w-full h-full" height={height} width={width}>
-        {embeddingsData.keywords.map((d, i) => {
+      <svg
+        className="w-full h-full"
+        height={height}
+        width={width}>
+        {embeddingsDataMiniLML6V2.keywords.map((d, i) => {
           const x = xScale(d.x);
           const y = yScale(d.y);
 
@@ -43,9 +48,13 @@ const EmbeddingMap = () => {
               key={i}
               className="text-purple-800 dark:text-purple-300"
               style={{ translateX: x, translateY: y }}
-              whileHover={{ scale: 1.3, transition: { duration: 0.2 } }}
-            >
-              <circle className="fill-current" cx={0} cy={0} r={3} />
+              whileHover={{ scale: 1.3, transition: { duration: 0.2 } }}>
+              <circle
+                className="fill-current"
+                cx={0}
+                cy={0}
+                r={3}
+              />
               <text
                 alignmentBaseline="middle"
                 className="text-xs"
@@ -53,8 +62,7 @@ const EmbeddingMap = () => {
                 opacity={0.5}
                 textAnchor="middle"
                 x={0}
-                y={8}
-              >
+                y={8}>
                 {d.word}
               </text>
             </motion.g>
@@ -64,5 +72,3 @@ const EmbeddingMap = () => {
     </div>
   );
 };
-
-export default EmbeddingMap;
