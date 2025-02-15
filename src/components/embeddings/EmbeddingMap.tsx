@@ -32,7 +32,7 @@ const EmbeddingMap = () => {
     .range([margin, height - margin]);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-full">
       <svg className="w-full h-full" height={height} width={width}>
         {embeddingsData.keywords.map((d, i) => {
           const x = xScale(d.x);
@@ -50,6 +50,7 @@ const EmbeddingMap = () => {
                 alignmentBaseline="middle"
                 className="text-xs"
                 fill="currentColor"
+                opacity={0.5}
                 x={8}
                 y={0}
               >

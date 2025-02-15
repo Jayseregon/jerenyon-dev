@@ -2,16 +2,16 @@
 
 import React from "react";
 
-import { Hero } from "@/src/components/root/Hero";
 import EmbeddingMap from "@/src/components/embeddings/EmbeddingMap";
+import { RootGrid } from "src/components/embeddings/RootGrid";
+import { Hero } from "@/src/components/root/Hero";
 
 export default function RootPage() {
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-background">
-      {/* EmbeddingMap over the grid */}
-      <EmbeddingMap />
-      {/* Hero Section on top */}
+    <div className="w-screen h-screen overflow-hidden">
+      <RootGrid />
       <Hero />
+      <EmbeddingMap />
     </div>
   );
 }
