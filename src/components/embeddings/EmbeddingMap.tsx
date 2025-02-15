@@ -20,6 +20,17 @@ interface EmbeddingData {
   keywords: Keyword[];
 }
 
+// Define the pre-defined words to highlight
+const highlightWords = new Set([
+  "Generative AI",
+  "FastAPI",
+  "GIS",
+  "Next.js",
+  "Automation",
+  "Vector Databases",
+  "GitHub",
+]);
+
 export const EmbeddingMap = () => {
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
   const selectedModel = useModelStore((state) => state.selectedModel);
@@ -61,6 +72,7 @@ export const EmbeddingMap = () => {
         {currentData.keywords.map((d: Keyword, i: number) => {
           const x = xScale(d.x);
           const y = yScale(d.y);
+          const isHighlighted = highlightWords.has(d.word);
 
           return (
             <motion.g
@@ -69,11 +81,16 @@ export const EmbeddingMap = () => {
               style={{ translateX: x, translateY: y }}
               whileHover={{ scale: 1.3, transition: { duration: 0.2 } }}
             >
-              <circle className="fill-current" cx={0} cy={0} r={3} />
+              <circle
+                cx={0}
+                cy={0}
+                fill={isHighlighted ? "#e11d48" : "currentColor"}
+                r={3}
+              />
               <text
                 alignmentBaseline="middle"
                 className="text-xs"
-                fill="currentColor"
+                fill={isHighlighted ? "#e11d48" : "currentColor"}
                 opacity={0.8}
                 textAnchor="middle"
                 x={0}

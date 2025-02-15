@@ -22,7 +22,7 @@ export const ModelSwitcher = () => {
         setSelectedModel(value)
       }
     >
-      <SelectTrigger className="w-[180px] bg-black">
+      <SelectTrigger className="w-[180px] bg-white dark:bg-black text-black dark:text-white">
         <SelectValue placeholder="Select model" />
       </SelectTrigger>
       <SelectContent>

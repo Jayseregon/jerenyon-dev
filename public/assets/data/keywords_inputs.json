@@ -13,8 +13,10 @@
     "DPO",
     "PPO",
     "RLHF",
+    "Retrieval Augmented Generation",
+    "Foundation Models",
     "Tokenization",
-    "AI Agents",
+    "AI-Agents",
     "Autonomous Agents",
     "RAG",
     "LangChain",
@@ -63,7 +65,7 @@
     "GitHub Actions",
     "Copilot",
     "Tools",
-    "AI Automation",
+    "AI",
     "Data Engineering",
     "Full-Stack"
   ]
