@@ -32,15 +32,11 @@ const EmbeddingMap = () => {
     .range([margin, height - margin]);
 
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "100vh",
-        overflow: "hidden",
-      }}
-    >
-      <svg height={height} style={{ background: "none" }} width={width}>
+    <div className="relative w-full h-screen overflow-hidden">
+      <svg
+        height={height}
+        className="w-full h-full"
+        width={width}>
         {embeddingsData.keywords.map((d, i) => {
           const x = xScale(d.x);
           const y = yScale(d.y);
@@ -50,15 +46,19 @@ const EmbeddingMap = () => {
               key={i}
               style={{ translateX: x, translateY: y }}
               whileHover={{ scale: 1.3, transition: { duration: 0.2 } }}
-            >
-              <circle cx={0} cy={0} fill="#3498db" r={5} />
+              className="text-purple-800 dark:text-purple-300">
+              <circle
+                cx={0}
+                cy={0}
+                r={3}
+                className="fill-current"
+              />
               <text
+                fill="currentColor"
                 alignmentBaseline="middle"
-                fill="#333"
-                fontSize="10"
                 x={8}
                 y={0}
-              >
+                className="text-xs">
                 {d.word}
               </text>
             </motion.g>
