@@ -9,6 +9,8 @@ interface ModelState {
   setSelectedModel: (model: ModelType) => void;
   hoveredDefinition: HighlightDefinition | null;
   setHoveredDefinition: (data: HighlightDefinition | null) => void;
+  hoveredCoordinates: { x: number; y: number } | null; // new
+  setHoveredCoordinates: (coords: { x: number; y: number } | null) => void; // new
 }
 
 export const useModelStore = create<ModelState>((set) => ({
@@ -16,4 +18,6 @@ export const useModelStore = create<ModelState>((set) => ({
   setSelectedModel: (model) => set({ selectedModel: model }),
   hoveredDefinition: null,
   setHoveredDefinition: (data) => set({ hoveredDefinition: data }),
+  hoveredCoordinates: null, // new
+  setHoveredCoordinates: (coords) => set({ hoveredCoordinates: coords }), // new
 }));

@@ -20,6 +20,9 @@ export const EmbeddingMap = () => {
   const setHoveredDefinition = useModelStore(
     (state) => state.setHoveredDefinition,
   );
+  const setHoveredCoordinates = useModelStore(
+    (state) => state.setHoveredCoordinates,
+  );
 
   // Mapping model names to datasets
   const models: Record<typeof selectedModel, EmbeddingData> = {
@@ -75,11 +78,18 @@ export const EmbeddingMap = () => {
               className="text-purple-800 dark:text-purple-300"
               style={{ translateX: x, translateY: y }}
               whileHover={{ scale: 1.3, transition: { duration: 0.2 } }}
-              onMouseEnter={() =>
-                isHighlighted &&
-                setHoveredDefinition(highlightDefinitions[d.word])
-              }
-              onMouseLeave={() => isHighlighted && setHoveredDefinition(null)}
+              onMouseEnter={() => {
+                if (isHighlighted) {
+                  setHoveredDefinition(highlightDefinitions[d.word]);
+                  setHoveredCoordinates({ x, y });
+                }
+              }}
+              onMouseLeave={() => {
+                if (isHighlighted) {
+                  setHoveredDefinition(null);
+                  setHoveredCoordinates(null);
+                }
+              }}
             >
               <circle
                 cx={0}
