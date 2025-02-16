@@ -17,6 +17,9 @@ import {
 export const EmbeddingMap = () => {
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
   const selectedModel = useModelStore((state) => state.selectedModel);
+  const hoveredDefinitionVal = useModelStore(
+    (state) => state.hoveredDefinition,
+  );
   const setHoveredDefinition = useModelStore(
     (state) => state.setHoveredDefinition,
   );
@@ -78,6 +81,22 @@ export const EmbeddingMap = () => {
               className="text-purple-800 dark:text-purple-300"
               style={{ translateX: x, translateY: y }}
               whileHover={{ scale: 1.3, transition: { duration: 0.2 } }}
+              whileTap={
+                isMobile
+                  ? { scale: 1.3, transition: { duration: 0.2 } }
+                  : undefined
+              }
+              onClick={() => {
+                if (isMobile && isHighlighted) {
+                  if (hoveredDefinitionVal === highlightDefinitions[d.word]) {
+                    setHoveredDefinition(null);
+                    setHoveredCoordinates(null);
+                  } else {
+                    setHoveredDefinition(highlightDefinitions[d.word]);
+                    setHoveredCoordinates({ x, y });
+                  }
+                }
+              }}
               onMouseEnter={() => {
                 if (isHighlighted) {
                   setHoveredDefinition(highlightDefinitions[d.word]);
