@@ -8,32 +8,18 @@ import { useModelStore } from "@/src/store/modelStore";
 import embeddingsDataMiniLML6V2 from "@/public/assets/data/embeddings_all-MiniLM-L6-v2.json";
 import embeddingsDataMiniLML12V2 from "@/public/assets/data/embeddings_all-MiniLM-L12-v2.json";
 import embeddingsDataMpnetBaseV2 from "@/public/assets/data/embeddings_all-mpnet-base-v2.json";
-
-// Define types for the embedding data
-interface Keyword {
-  word: string;
-  x: number;
-  y: number;
-}
-
-interface EmbeddingData {
-  keywords: Keyword[];
-}
-
-// Define the pre-defined words to highlight
-const highlightWords = new Set([
-  "Generative AI",
-  "FastAPI",
-  "GIS",
-  "Next.js",
-  "Automation",
-  "Vector Databases",
-  "GitHub",
-]);
+import { EmbeddingData, Keyword } from "@/src/interfaces/Embeddings";
+import {
+  highlightWords,
+  highlightDefinitions,
+} from "@/src/components/embeddings/getHighlightsData";
 
 export const EmbeddingMap = () => {
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
   const selectedModel = useModelStore((state) => state.selectedModel);
+  const setHoveredDefinition = useModelStore(
+    (state) => state.setHoveredDefinition,
+  );
 
   // Mapping model names to datasets
   const models: Record<typeof selectedModel, EmbeddingData> = {
@@ -71,16 +57,13 @@ export const EmbeddingMap = () => {
   // Create filtered keywords: on mobile, reduce dataset by factor of 2 but always keep highlightWords.
   const filteredKeywords = isMobile
     ? currentData.keywords.filter(
-        (kw, idx) => highlightWords.has(kw.word) || idx % 2 === 0
+        (kw, idx) => highlightWords.has(kw.word) || idx % 2 === 0,
       )
     : currentData.keywords;
 
   return (
     <div className="relative w-full h-full">
-      <svg
-        className="w-full h-full"
-        height={height}
-        width={width}>
+      <svg className="w-full h-full" height={height} width={width}>
         {filteredKeywords.map((d: Keyword, i: number) => {
           const x = xScale(d.x);
           const y = yScale(d.y);
@@ -91,7 +74,13 @@ export const EmbeddingMap = () => {
               key={i}
               className="text-purple-800 dark:text-purple-300"
               style={{ translateX: x, translateY: y }}
-              whileHover={{ scale: 1.3, transition: { duration: 0.2 } }}>
+              whileHover={{ scale: 1.3, transition: { duration: 0.2 } }}
+              onMouseEnter={() =>
+                isHighlighted &&
+                setHoveredDefinition(highlightDefinitions[d.word])
+              }
+              onMouseLeave={() => isHighlighted && setHoveredDefinition(null)}
+            >
               <circle
                 cx={0}
                 cy={0}
@@ -105,7 +94,8 @@ export const EmbeddingMap = () => {
                 opacity={0.8}
                 textAnchor="middle"
                 x={0}
-                y={8}>
+                y={8}
+              >
                 {d.word}
               </text>
             </motion.g>
