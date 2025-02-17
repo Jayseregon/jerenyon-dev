@@ -10,6 +10,5 @@ export interface EmbeddingData {
 
 export interface HighlightDefinition {
   keyword: string;
-  definition: string;
   why: string;
 }
