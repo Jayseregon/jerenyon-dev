@@ -48,7 +48,9 @@ export const EmbeddingMap = () => {
   }, []);
 
   const { width, height } = dimensions;
-  const margin = 0; // width < 768 ? 0 : 50; // updated conditional margin
+  const navbarHeight = 45; // constant navbar height
+  const adjustedHeight = height - navbarHeight;
+  const margin = 20; // width < 768 ? 0 : 50; // updated conditional margin
   const xScale = d3
     .scaleLinear()
     .domain([0, 1])
@@ -56,7 +58,7 @@ export const EmbeddingMap = () => {
   const yScale = d3
     .scaleLinear()
     .domain([0, 1.1])
-    .range([margin, height - margin]);
+    .range([margin, adjustedHeight - margin]);
 
   // Determine mobile condition (example: under 768px width)
   const isMobile = width < 768;
@@ -69,7 +71,12 @@ export const EmbeddingMap = () => {
 
   return (
     <div className="relative w-full h-full">
-      <svg className="w-full h-full" height={height} width={width}>
+      <svg
+        className="w-full h-full"
+        height={adjustedHeight}
+        viewBox={`0 0 ${width} ${adjustedHeight}`}
+        width={width}
+      >
         {filteredKeywords.map((d: Keyword, i: number) => {
           const x = xScale(d.x);
           const y = yScale(d.y);

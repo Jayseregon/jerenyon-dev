@@ -70,13 +70,7 @@ export const Hero = () => {
           >
             {hoveredDefinition.keyword}
           </h2>
-          <p className="mt-3 text-lg sm:text-xl text-secondary text-start">
-            {hoveredDefinition.definition}
-          </p>
-          <p className="mt-3 text-base sm:text-lg text-secondary text-start">
-            <span className="text-purple-800 dark:text-purple-300">
-              Why It Matters:
-            </span>{" "}
+          <p className="mt-3 text-lg md:text-xl text-purple-800 dark:text-purple-300 text-start">
             {hoveredDefinition.why}
           </p>
         </div>

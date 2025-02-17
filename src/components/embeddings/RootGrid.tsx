@@ -17,7 +17,9 @@ export const RootGrid = () => {
   }, []);
 
   const { width, height } = dimensions;
-  const margin = 0; // no margin in any screen size
+  const navbarHeight = 45; // constant navbar height
+  const adjustedHeight = height - navbarHeight;
+  const margin = 20; // no margin in any screen size
   const xScale = d3
     .scaleLinear()
     .domain([0, 1])
@@ -25,15 +27,15 @@ export const RootGrid = () => {
   const yScale = d3
     .scaleLinear()
     .domain([0, 1.1])
-    .range([margin, height - margin]);
+    .range([margin, adjustedHeight - margin]);
   const verticalTicks = d3.ticks(0, 1, 10);
   const horizontalTicks = d3.ticks(0, 1, 10);
 
   return (
     <svg
       className="w-full h-full absolute top-0 left-0 pointer-events-none"
-      height={height}
-      viewBox={`0 0 ${width} ${height}`}
+      height={adjustedHeight}
+      viewBox={`0 0 ${width} ${adjustedHeight}`}
       width={width}
     >
       {/* Changed opacity and colors for better visibility */}
@@ -43,18 +45,18 @@ export const RootGrid = () => {
             <line
               opacity={0.5}
               stroke="currentColor"
-              strokeDasharray="4,4"
+              strokeDasharray="2,5"
               strokeWidth={0.8}
               x1={xScale(tick)}
               x2={xScale(tick)}
               y1={margin}
-              y2={height - margin}
+              y2={adjustedHeight - margin}
             />
             <text
               className="fill-current text-xs"
               textAnchor="middle"
               x={xScale(tick)}
-              y={height - 5}
+              y={adjustedHeight - 5}
             >
               {tick.toFixed(1)}
             </text>
@@ -65,10 +67,11 @@ export const RootGrid = () => {
             <line
               opacity={0.5}
               stroke="currentColor"
-              strokeDasharray="4,4"
+              strokeDasharray="2,5"
               strokeWidth={0.8}
-              x1={margin}
-              x2={width - margin}
+              // Updated to extend lines into the margins:
+              x1={0}
+              x2={width}
               y1={yScale(tick)}
               y2={yScale(tick)}
             />
