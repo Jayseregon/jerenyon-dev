@@ -48,7 +48,7 @@ export const Hero = () => {
     // Vertical binding with margin:
     if (normalizedY <= 0.5) {
       // Bind top edge with offset
-      style.top = hoveredCoordinates.y + offset;
+      style.top = hoveredCoordinates.y + boxHeightEstimate;
     } else {
       // Bind bottom edge with offset
       style.top = hoveredCoordinates.y - boxHeightEstimate - offset;
