@@ -5,8 +5,14 @@ import { siteConfig } from "@/src/config/site";
 export const metadata: Metadata = {
   title: `About and Behind ${siteConfig.name}`,
   description:
-    "Learn about the developer behind Jerenyon Dev. Explore expertise in Python automation, backend development, Django, and modern web technologies like Next.js and TypeScript, along with geospatial solutions and digital transformation.",
+    "Discover the journey behind Jerenyon Dev, where Generative AI, automation, and geospatial intelligence intersect with full-stack development and digital transformation.",
   keywords: [
+    "Generative AI",
+    "AI Automation",
+    "Machine Learning",
+    "LLMs",
+    "Retrieval-Augmented Generation",
+    "LangChain",
     "Python",
     "Next.js",
     "TypeScript",
@@ -16,16 +22,20 @@ export const metadata: Metadata = {
     "Geospatial Solutions",
     "GIS",
     "QGIS",
+    "PostGIS",
+    "AI Agents",
+    "Vector Databases",
     "Full Stack Developer",
-    "Machine Learning",
-    "Python Automation",
     "Web Development",
+    "Hugging Face",
+    "Azure",
+    "Cloud Infrastructure",
   ],
   authors: [{ name: siteConfig.name, url: siteConfig.siteUrl }],
   openGraph: {
     title: "About - Jerenyon Dev",
     description:
-      "Discover the story behind Jerenyon Dev, showcasing expertise in Python automation, backend development, Django, Next.js, TypeScript, and geospatial technologies.",
+      "Explore the story of Jerenyon Dev, bridging Generative AI, automation, and geospatial intelligence with full-stack web development.",
     url: `${siteConfig.siteUrl}/about`,
     siteName: siteConfig.name,
     images: [
@@ -43,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "About - Jerenyon Dev",
     description:
-      "Professional expertise in Python automation, backend development, Django, Next.js, and geospatial solutions.",
+      "Bridging Generative AI, automation, and geospatial intelligence with full-stack web development.",
     images: [
       {
         url: siteConfig.icon,

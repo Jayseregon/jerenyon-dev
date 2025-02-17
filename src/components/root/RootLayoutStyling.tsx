@@ -4,8 +4,8 @@ import { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
-import Navbar from "./navbar/Navbar";
-import Footer from "./Footer";
+import Navbar from "@/components/root/navbar/Navbar";
+import Footer from "@/components/root/Footer";
 
 type Props = {
   children: ReactNode;
@@ -15,25 +15,28 @@ type Props = {
 export default function RootLayoutStyling({ children, nonce }: Props) {
   const pathname = usePathname();
   const isMainPage = pathname === "/";
-  const isSplineScene = pathname === "/spline-scene";
 
   return (
     <div
       className={clsx("relative flex flex-col", {
-        "h-screen": isMainPage,
+        "h-screen overflow-hidden": isMainPage, // Prevent scrolling on main page
         "min-h-screen": !isMainPage,
       })}
       nonce={nonce}
     >
-      {/* Conditionally render Navbar */}
-      {!isSplineScene && <Navbar nonce={nonce} />}
+      <Navbar nonce={nonce} />
 
-      <main className="grow" nonce={nonce}>
+      <main
+        className={clsx("grow", {
+          "w-full h-full overflow-hidden": isMainPage, // Force children to take screen space with no overflow
+        })}
+        nonce={nonce}
+      >
         {children}
       </main>
 
       {/* Conditionally render Footer */}
-      {!isSplineScene && <Footer nonce={nonce} />}
+      {!isMainPage && <Footer nonce={nonce} />}
     </div>
   );
 }
