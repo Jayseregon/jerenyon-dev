@@ -17,9 +17,6 @@ import {
 export const EmbeddingMap = () => {
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
   const selectedModel = useModelStore((state) => state.selectedModel);
-  const hoveredDefinitionVal = useModelStore(
-    (state) => state.hoveredDefinition,
-  );
   const setHoveredDefinition = useModelStore(
     (state) => state.setHoveredDefinition,
   );
@@ -95,23 +92,19 @@ export const EmbeddingMap = () => {
               }
               onClick={() => {
                 if (isMobile && isHighlighted) {
-                  if (hoveredDefinitionVal === highlightDefinitions[d.word]) {
-                    setHoveredDefinition(null);
-                    setHoveredCoordinates(null);
-                  } else {
-                    setHoveredDefinition(highlightDefinitions[d.word]);
-                    setHoveredCoordinates({ x, y });
-                  }
+                  // Remove the nested condition to prevent state flickering
+                  setHoveredDefinition(highlightDefinitions[d.word]);
+                  setHoveredCoordinates({ x, y });
                 }
               }}
               onMouseEnter={() => {
-                if (isHighlighted) {
+                if (!isMobile && isHighlighted) {
                   setHoveredDefinition(highlightDefinitions[d.word]);
                   setHoveredCoordinates({ x, y });
                 }
               }}
               onMouseLeave={() => {
-                if (isHighlighted) {
+                if (!isMobile && isHighlighted) {
                   setHoveredDefinition(null);
                   setHoveredCoordinates(null);
                 }
