@@ -22,13 +22,31 @@ export const ModelSwitcher = () => {
         setSelectedModel(value)
       }
     >
-      <SelectTrigger className="w-[180px] bg-white dark:bg-black text-black dark:text-white">
+      <SelectTrigger
+        className="w-[120px] sm:w-[140px] bg-white dark:bg-black text-black dark:text-white text-xs sm:text-sm"
+        size="sm"
+      >
         <SelectValue placeholder="Select model" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="MiniLML6V2">all-MiniLM-L6-v2</SelectItem>
-        <SelectItem value="MiniLML12V2">all-MiniLM-L12-v2</SelectItem>
-        <SelectItem value="mpnetBaseV2">all-mpnet-base-v2</SelectItem>
+        <SelectItem
+          className="text-xs sm:text-sm whitespace-normal"
+          value="MiniLML6V2"
+        >
+          all-MiniLM-L6-v2
+        </SelectItem>
+        <SelectItem
+          className="text-xs sm:text-sm whitespace-normal"
+          value="MiniLML12V2"
+        >
+          all-MiniLM-L12-v2
+        </SelectItem>
+        <SelectItem
+          className="text-xs sm:text-sm whitespace-normal"
+          value="mpnetBaseV2"
+        >
+          all-mpnet-base-v2
+        </SelectItem>
       </SelectContent>
     </Select>
   );

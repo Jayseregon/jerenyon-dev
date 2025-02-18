@@ -69,7 +69,6 @@ export const RootGrid = () => {
               stroke="currentColor"
               strokeDasharray="2,5"
               strokeWidth={0.8}
-              // Updated to extend lines into the margins:
               x1={0}
               x2={width}
               y1={yScale(tick)}
