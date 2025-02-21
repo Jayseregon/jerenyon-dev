@@ -3,6 +3,8 @@ import { useTranslations } from "next-intl";
 
 import { ModelSwitcher } from "@/src/components/embeddings/ModelSwitcher";
 import { useModelStore } from "@/src/store/modelStore";
+// Import the new shared UI store
+import { useUIStore } from "@/src/store/uiStore";
 
 export const Hero = () => {
   const t = useTranslations("homepage");
@@ -12,6 +14,9 @@ export const Hero = () => {
     width: 800,
     height: 600,
   });
+
+  // Remove local hero visibility state; using shared state instead.
+  const { setShowCollapsedMenu } = useUIStore();
 
   useEffect(() => {
     const updateDimensions = () => {
@@ -75,7 +80,23 @@ export const Hero = () => {
           </p>
         </div>
       ) : (
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex flex-col items-center justify-center px-2 z-20">
+        // Always render the hero section on desktop.
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex flex-col items-center justify-center px-2 z-20"
+          role="button"
+          tabIndex={0}
+          onClick={() => {
+            if (windowDimensions.width < 768) {
+              // On mobile, show the collapsed menu.
+              setShowCollapsedMenu(true);
+            }
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && windowDimensions.width < 768) {
+              setShowCollapsedMenu(true);
+            }
+          }}
+        >
           <div className="bg-background p-4 rounded-full border border-purple-800 dark:border-purple-300 transition-opacity duration-300 hover:opacity-0">
             <h2
               className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-foreground"

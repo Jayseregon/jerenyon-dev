@@ -1,16 +1,21 @@
 import React from "react";
 import { motion } from "motion/react";
 
+import { useUIStore } from "@/src/store/uiStore";
 import { HamburgerMenuButtonProps } from "@/src/interfaces/Root";
 
+// Updated interface in HamburgerMenuButtonProps should only require nonce, styling, menuButtonVariants, topBarVariants.
 export const HamburgerMenuButton = ({
-  toggleMenu,
   menuButtonVariants,
-  isMenuOpen,
   topBarVariants,
   styling,
   nonce,
-}: HamburgerMenuButtonProps) => {
+}: Pick<
+  HamburgerMenuButtonProps,
+  "menuButtonVariants" | "topBarVariants" | "styling" | "nonce"
+>) => {
+  const { showCollapsedMenu, setShowCollapsedMenu } = useUIStore();
+
   return (
     <div
       className={`flex items-center justify-end w-full ${styling} relative`}
@@ -18,13 +23,16 @@ export const HamburgerMenuButton = ({
     >
       <button
         aria-label="Toggle menu button"
-        className={`${isMenuOpen ? "text-purple-800 dark:text-purple-300" : "text-foreground"} focus:outline-hidden pr-2`}
+        className={`${showCollapsedMenu ? "text-purple-800 dark:text-purple-300" : "text-foreground"} focus:outline-hidden pr-2`}
         nonce={nonce}
-        onPointerDown={toggleMenu}
+        onPointerDown={(e) => {
+          e.stopPropagation();
+          setShowCollapsedMenu(!showCollapsedMenu);
+        }}
         onPointerUp={(e) => e.stopPropagation()} // Prevent the pointerup event from propagating to the document
       >
         <motion.svg
-          animate={isMenuOpen ? "open" : "closed"}
+          animate={showCollapsedMenu ? "open" : "closed"}
           className="h-6 w-6"
           fill="none"
           stroke="currentColor"
@@ -34,7 +42,7 @@ export const HamburgerMenuButton = ({
           xmlns="http://www.w3.org/2000/svg"
         >
           <motion.path
-            animate={isMenuOpen ? "open" : "closed"}
+            animate={showCollapsedMenu ? "open" : "closed"}
             initial={false}
             strokeLinecap="round"
             strokeLinejoin="round"

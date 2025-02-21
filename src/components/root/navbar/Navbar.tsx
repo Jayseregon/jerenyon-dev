@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import NextLink from "next/link";
 import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
@@ -15,19 +15,13 @@ import ThemeSwitch from "@/components/root/ThemeSwitch";
 import LocaleSwitcher from "@/components/root/LocaleSwitcher";
 import SearchInput from "@/components/root/SearchInput";
 import { HamburgerMenuButton } from "@/components/root/navbar/HamburgerMenuButton";
-import { CollapsedMenu } from "@/components/root/navbar//CollapsedMenu";
+
+import { CollapsedMenu } from "./CollapsedMenu";
 
 export default function Navbar({ nonce }: { nonce: string }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const t = useTranslations("collapsedMenu");
   const { data: session } = useSession();
-
-  // Toggles the state of the mobile menu.
-  const toggleMenu = (event: React.PointerEvent<HTMLButtonElement>) => {
-    event.stopPropagation(); // Prevent the click event from propagating to the document
-    setIsMenuOpen((prev) => !prev);
-  };
 
   // Variants for the hamburger menu button animation
   const menuButtonVariants = {
@@ -54,7 +48,6 @@ export default function Navbar({ nonce }: { nonce: string }) {
               </span>
             </NextLink>
           </div>
-          {/* Links in the middle */}
           <div className="hidden md:flex items-center space-x-4 grow justify-center">
             <motion.div
               animate={{ opacity: 1 }}
@@ -94,27 +87,19 @@ export default function Navbar({ nonce }: { nonce: string }) {
             <SearchInput nonce={nonce} />
             <ThemeSwitch nonce={nonce} />
             <LocaleSwitcher nonce={nonce} />
-
             {session && <SignOut />}
           </div>
 
           {/* Mobile menu button */}
           <HamburgerMenuButton
-            isMenuOpen={isMenuOpen}
             menuButtonVariants={menuButtonVariants}
             nonce={nonce}
             styling="md:hidden"
-            toggleMenu={toggleMenu}
             topBarVariants={topBarVariants}
           />
         </div>
       </div>
-      {/* Collapsed menu for mobile */}
-      <CollapsedMenu
-        isMenuOpen={isMenuOpen}
-        nonce={nonce}
-        setIsMenuOpen={setIsMenuOpen}
-      />
+      <CollapsedMenu nonce={nonce} />
     </nav>
   );
 }

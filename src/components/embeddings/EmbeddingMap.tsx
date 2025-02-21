@@ -73,6 +73,12 @@ export const EmbeddingMap = () => {
         height={adjustedHeight}
         viewBox={`0 0 ${width} ${adjustedHeight}`}
         width={width}
+        onClick={() => {
+          if (isMobile) {
+            setHoveredDefinition(null);
+            setHoveredCoordinates(null);
+          }
+        }}
       >
         {filteredKeywords.map((d: Keyword, i: number) => {
           const x = xScale(d.x);
@@ -90,9 +96,9 @@ export const EmbeddingMap = () => {
                   ? { scale: 1.3, transition: { duration: 0.2 } }
                   : undefined
               }
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent bubbling to the svg handler
                 if (isMobile && isHighlighted) {
-                  // Remove the nested condition to prevent state flickering
                   setHoveredDefinition(highlightDefinitions[d.word]);
                   setHoveredCoordinates({ x, y });
                 }
