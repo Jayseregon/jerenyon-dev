@@ -1,0 +1,23 @@
+import { create } from "zustand";
+
+import { HighlightDefinition } from "@/interfaces/Embeddings";
+
+export type ModelType = "MiniLML6V2" | "MiniLML12V2" | "mpnetBaseV2";
+
+interface ModelState {
+  selectedModel: ModelType;
+  setSelectedModel: (model: ModelType) => void;
+  hoveredDefinition: HighlightDefinition | null;
+  setHoveredDefinition: (data: HighlightDefinition | null) => void;
+  hoveredCoordinates: { x: number; y: number } | null; // new
+  setHoveredCoordinates: (coords: { x: number; y: number } | null) => void; // new
+}
+
+export const useModelStore = create<ModelState>((set) => ({
+  selectedModel: "MiniLML6V2",
+  setSelectedModel: (model) => set({ selectedModel: model }),
+  hoveredDefinition: null,
+  setHoveredDefinition: (data) => set({ hoveredDefinition: data }),
+  hoveredCoordinates: null, // new
+  setHoveredCoordinates: (coords) => set({ hoveredCoordinates: coords }), // new
+}));

@@ -9,27 +9,23 @@ import { siteConfig } from "@/config/site";
 import ThemeSwitch from "@/components/root/ThemeSwitch";
 import LocaleSwitcher from "@/components/root/LocaleSwitcher";
 import SearchInput from "@/components/root/SearchInput";
-import { CollapsedMenuProps } from "@/src/interfaces/Root";
+// Import the shared UI store and remove prop dependencies.
+import { useUIStore } from "@/src/store/uiStore";
 
-export const CollapsedMenu = ({
-  isMenuOpen,
-  setIsMenuOpen,
-  nonce,
-}: CollapsedMenuProps) => {
+export const CollapsedMenu = ({ nonce }: { nonce: string }) => {
   const t = useTranslations();
 
-  // Create a ref for the collapsed menu
+  const { showCollapsedMenu, setShowCollapsedMenu } = useUIStore();
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // Close the menu if clicking outside the menu area
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setIsMenuOpen(false);
+        setShowCollapsedMenu(false);
       }
     };
 
-    if (isMenuOpen) {
+    if (showCollapsedMenu) {
       document.addEventListener("pointerdown", handleClickOutside);
     } else {
       document.removeEventListener("pointerdown", handleClickOutside);
@@ -38,28 +34,26 @@ export const CollapsedMenu = ({
     return () => {
       document.removeEventListener("pointerdown", handleClickOutside);
     };
-  }, [isMenuOpen, setIsMenuOpen]);
+  }, [showCollapsedMenu, setShowCollapsedMenu]);
 
   return (
     <div className="absolute" nonce={nonce}>
       <motion.div
         ref={menuRef}
-        animate={{ scale: isMenuOpen ? 1 : 0 }}
-        className={`${isMenuOpen ? "block" : "hidden"} fixed top-16 right-4 bg-background text-foreground w-[90%] h-fit max-w-xs max-h-fit rounded-2xl border border-purple-800 dark:border-purple-300 overflow-hidden shadow-2xl z-50`}
+        animate={{ scale: showCollapsedMenu ? 1 : 0 }}
+        className={`${showCollapsedMenu ? "block" : "hidden"} fixed top-16 right-4 bg-background text-foreground w-[90%] h-fit max-w-xs max-h-fit rounded-2xl border border-purple-800 dark:border-purple-300 overflow-hidden shadow-2xl z-50`}
         initial={{ scale: 0 }}
         nonce={nonce}
         transition={{ duration: 0.2, ease: "easeInOut" }}
-        onPointerDown={(e) => e.stopPropagation()} // Prevent pointerdown event from propagating to the document
+        onPointerDown={(e) => e.stopPropagation()}
       >
-        {/* Search input field */}
         <div className="p-4 max-w-full mx-auto" nonce={nonce}>
           <SearchInput
-            alwaysExpanded={isMenuOpen}
+            alwaysExpanded={showCollapsedMenu}
             isInsideNavbar={true}
             nonce={nonce}
           />
         </div>
-        {/* Menu section title */}
         <motion.p
           className="px-4 text-purple-800 dark:text-purple-300"
           nonce={nonce}
@@ -68,7 +62,7 @@ export const CollapsedMenu = ({
         </motion.p>
         <motion.div className="px-4" nonce={nonce}>
           <motion.ul
-            animate={isMenuOpen ? "visible" : "hidden"}
+            animate={showCollapsedMenu ? "visible" : "hidden"}
             className="flex flex-col gap-1 bg-background rounded-xl border border-purple-800 dark:border-purple-300 overflow-hidden"
             initial="hidden"
             nonce={nonce}
@@ -77,14 +71,13 @@ export const CollapsedMenu = ({
               hidden: { transition: { staggerChildren: 0.1 } },
             }}
           >
-            {/* Site navigation links */}
             {siteConfig.navItems.map((item) => (
               <NextLink
                 key={item.href}
                 className="block bg-background hover:bg-purple-200 dark:hover:bg-purple-700 hover:border-purple-400 dark:hover:border-purple-400 focus:bg-purple-100 dark:focus:bg-purple-900 focus:border-purple-500 dark:focus:border-purple-500 text-sm text-foreground placeholder-foreground w-full h-full transition-colors"
                 href={item.href}
                 nonce={nonce}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => setShowCollapsedMenu(false)}
               >
                 <motion.div
                   className="bg-none text-sm text-foreground px-4 py-1"
@@ -98,10 +91,9 @@ export const CollapsedMenu = ({
             ))}
           </motion.ul>
         </motion.div>
-
         <motion.div className="pt-3" nonce={nonce}>
           <motion.div
-            animate={isMenuOpen ? "visible" : "hidden"}
+            animate={showCollapsedMenu ? "visible" : "hidden"}
             className="flex flex-col gap-1 bg-background rounded-xl overflow-hidden p-1"
             initial="hidden"
             nonce={nonce}
@@ -110,7 +102,6 @@ export const CollapsedMenu = ({
               hidden: { transition: { staggerChildren: 0.1 } },
             }}
           >
-            {/* Dark mode switch */}
             <motion.div
               className="ps-4 inline-flex items-center space-x-2"
               nonce={nonce}
@@ -123,8 +114,6 @@ export const CollapsedMenu = ({
                 {t("collapsedMenu.darkModeSwitch")}
               </motion.span>
             </motion.div>
-
-            {/* Language switch */}
             <motion.div
               className="ps-4 inline-flex items-center space-x-2"
               nonce={nonce}
@@ -139,7 +128,6 @@ export const CollapsedMenu = ({
             </motion.div>
           </motion.div>
         </motion.div>
-
         <motion.div
           className="pt-3 mb-2 flex flex-col items-center justify-center space-y-2 text-purple-950 dark:text-purple-200 text-xs text-center antialiased"
           nonce={nonce}
