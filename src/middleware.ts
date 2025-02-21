@@ -7,8 +7,8 @@ function cspMiddleware(req: NextRequest): NextResponse {
 
   const cspHeader = `
   default-src 'self' https://jerenyon.dev https://www.jerenyon.dev ;
-  script-src 'self' 'nonce-${nonce}' 'strict-dynamic' blob: https://jerenyon.dev https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback https://*.linkedin.com https://*.licdn.com https://analytics.jerenyon.dev;
-  style-src 'self' 'nonce-${nonce}' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
+  script-src 'self' 'nonce-${nonce}' 'unsafe-eval' 'strict-dynamic' blob: https://jerenyon.dev https://www.jerenyon.dev https://www.google.com https://www.gstatic.com https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://vercel.live https://vercel.live/_next-live/feedback https://*.linkedin.com https://*.licdn.com https://analytics.jerenyon.dev;
+  style-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
   img-src 'self' blob: data: https://jerenyon.dev https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net https://jerenyon-dev-remote-pull.b-cdn.net https://app.usercentrics.eu https://uct.service.usercentrics.eu https://avatars.githubusercontent.com https://*.linkedin.com;
   font-src 'self' https://jerenyon.dev https://www.jerenyon.dev ;
   connect-src 'self' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live https://fonts.gstatic.com https://consent-api.service.consent.usercentrics.eu https://graphql.usercentrics.eu https://*.linkedin.com https://analytics.jerenyon.dev https://aggregator.service.usercentrics.eu;
