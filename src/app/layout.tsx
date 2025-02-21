@@ -125,6 +125,11 @@ export default async function RootLayout({ children }: Props) {
           rel="preconnect"
         />
         <Link
+          href="//app.usercentrics.eu"
+          nonce={nonce}
+          rel="preconnect"
+        />
+        <Link
           as="script"
           href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
           nonce={nonce}
