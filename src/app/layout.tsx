@@ -13,6 +13,7 @@ import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
 import RootLayoutStyling from "@/src/components/root/RootLayoutStyling";
+import UsercentricsCookieConsent from "@/src/components/UsercentricsCookieConsent";
 import {
   fontSans,
   fontMono,
@@ -166,20 +167,14 @@ export default async function RootLayout({ children }: Props) {
           data-website-id="27802530-4c86-4b3f-98c8-7df974a6e0e2"
           src="https://analytics.jerenyon.dev/script.js"
         />
-        <Script
+
+        {/* Replace the old Usercentrics implementation with our optimized component */}
+        <UsercentricsCookieConsent
           nonce={nonce}
-          src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
-          strategy="afterInteractive"
-          type="application/javascript"
+          settingsId="4vZk6dB-s7Fi9_"
+          translationsUrl="https://termageddon.ams3.cdn.digitaloceanspaces.com/translations/"
         />
-        <Script
-          async
-          data-settings-id="4vZk6dB-s7Fi9_"
-          id="usercentrics-cmp"
-          nonce={nonce}
-          src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
-          strategy="afterInteractive"
-        />
+
         {/* <Script
           nonce={nonce}
           src={`https://www.google.com/recaptcha/api.js?render=${process.env.RECAPTCHA_SECRET_KEY}`}
