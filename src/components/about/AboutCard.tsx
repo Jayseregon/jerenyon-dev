@@ -27,7 +27,7 @@ export const AboutCard = ({
           {subtitle}
         </p>
       </CardHeader>
-      <CardContent>
+      <CardContent className="space-y-2">
         {paragraphs.map((paragraph, index) => (
           <p key={index} className="text-justify">
             {paragraph}

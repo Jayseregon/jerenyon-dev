@@ -2,12 +2,15 @@
 
 import { useTranslations } from "next-intl";
 import { useContext } from "react";
+import { FileDown } from "lucide-react";
 
 import { Timeline } from "@/src/components/about/Timeline";
 import PageTitles from "@/src/components/root/PageTitles";
 import { AboutCardProps } from "@/interfaces/About";
 import { AboutCard } from "@/components/about/AboutCard";
 import { NonceContext } from "@/src/app/providers";
+import { Button } from "@/src/components/ui/button";
+import { LinkedInIcon } from "@/components/icons";
 
 export default function AboutPage() {
   const nonce = useContext(NonceContext);
@@ -54,6 +57,40 @@ export default function AboutPage() {
             <AboutCard key={index} {...section} />
           ))}
         </div>
+
+        {/* Resume and LinkedIn buttons */}
+        <div
+          className="flex flex-col items-center justify-center py-6"
+          nonce={nonce}
+        >
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button
+              asChild
+              className="flex items-center gap-2"
+              size="lg"
+              variant="form"
+            >
+              <a download href="/assets/resume/cv-jeremie-bitsch-2025.pdf">
+                <FileDown className="h-4 w-4 mr-2" /> {t("button.download")}
+              </a>
+            </Button>
+            <Button
+              asChild
+              className="flex items-center gap-2"
+              size="lg"
+              variant="form"
+            >
+              <a
+                href="https://www.linkedin.com/in/jeremie-bitsch"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <LinkedInIcon className="h-4 w-4 mr-2" /> {t("button.linkedin")}
+              </a>
+            </Button>
+          </div>
+        </div>
+
         <Timeline />
       </div>
     </div>

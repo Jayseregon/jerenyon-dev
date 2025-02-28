@@ -41,6 +41,10 @@
   },
   "about": {
     "title": "À Propos",
+    "button" : {
+      "download": "Télécharger mon CV",
+      "linkedin": "Se connecter sur LinkedIn"
+    },
     "hero": {
       "title": "La Création de Jerenyon Dev.",
       "subtitle": "Expertise géospatiale rencontre IA Générative : comment & pourquoi j'ai construit Jerenyon Dev."
@@ -48,21 +52,21 @@
     "sections": {
       "jerenyon-dev": {
         "title": "L'Histoire de Jerenyon Dev",
-        "subtitle": "Jerenyon Dev, relier l'IA Générative et l'Intelligence Géospatiale, et plus encore.",
+        "subtitle": "Jerenyon Dev : Relier l'IA Générative, l'Automatisation et l'Intelligence Géospatiale",
         "paragraphs": {
-          "p1": "Jerenyon Dev est bien plus qu'un simple service de développement web et d'automatisation, c'est également une plateforme dédiée à l'intégration de l'IA Générative et de l'Intelligence Géospatiale, via l'automatisation. Avec la volonté de simplifier les flux de travail complexes, Jerenyon Dev propose des solutions d'automatisation et géospatiales alimentées par l'IA, renforçant la prise de décision et l'efficacité opérationnelle.",
-          "p2": "Spécialisé dans l'IA Générative et l'automatisation géospatiale, Jerenyon Dev crée des outils alimentés par l'IA, des workflows intelligents et des applications évolutives. Qu'il s'agisse de traitement de documents pilotés par LLM, d'analyses de données basées sur l'IA ou d'automatisation géospatiale, Jerenyon Dev offre des solutions sur mesure pour rationaliser les opérations métiers.",
-          "p3": "Au-delà de la simple prestation de services, Jerenyon Dev encourage le partage de connaissances. À travers des articles, des tutoriels et des présentations de projets, il propose des analyses concrètes sur l'automatisation optimisée par l'IA, la programmation Python, le développement React/Next.js et l'intelligence géospatiale. En associant des solutions d'IA pratiques à une expertise géospatiale avancée, Jerenyon Dev est à l'avant-garde de l'innovation reliant l'IA et le géospatial.",
-          "p4": "Soucieux d'un apprentissage continu et d'une recherche de pointe, Jerenyon Dev accompagne les entreprises pour exploiter l'IA dans leurs processus d'automatisation, leur permettant de garder une longueur d'avance dans un monde propulsé par l'IA. Que vous souhaitiez intégrer l'IA Générative, automatiser vos flux de travail ou renforcer votre intelligence géospatiale, Jerenyon Dev est votre partenaire vers l'avenir d'une transformation pilotée par l'IA."
+          "p1": "Jerenyon Dev est bien plus qu'un simple service de développement web et d'automatisation — c'est une plateforme dédiée à l'intégration de l'IA Générative, l'Automatisation et l'Intelligence Géospatiale. Avec une vision visant à simplifier les flux de travail complexes, Jerenyon Dev fournit des systèmes d'automatisation alimentés par l'IA et des solutions géospatiales qui transforment les données en informations exploitables et améliorent la prise de décision.",
+          "p2": "Spécialisé dans l'automatisation augmentée par l'IA et le traitement des données spatiales, Jerenyon Dev construit des outils intelligents, des flux de travail adaptables et des applications évolutives. Du traitement de documents alimenté par les LLMs à l'analyse de données pilotée par l'IA et l'automatisation géospatiale, Jerenyon Dev propose des solutions sur mesure conçues pour rationaliser les opérations et stimuler l'innovation.",
+          "p3": "Au-delà de la fourniture de solutions techniques, Jerenyon Dev favorise le partage des connaissances et la communauté. À travers des articles, des tutoriels et des présentations de projets, il offre des aperçus pratiques sur l'automatisation améliorée par l'IA, le développement backend Python, les frontends Next.js et l'intelligence géospatiale — aidant les autres à explorer le potentiel de ces technologies.",
+          "p4": "Avec un engagement envers l'apprentissage continu et la recherche de pointe, Jerenyon Dev permet aux entreprises d'exploiter l'IA et l'automatisation, restant ainsi à l'avant-garde dans un monde guidé par l'IA. Que vous cherchiez à intégrer l'IA Générative, à automatiser des flux de travail complexes ou à améliorer vos capacités géospatiales, Jerenyon Dev est votre partenaire pour des solutions numériques transformatives."
         }
       },
       "jeremie": {
         "title": "L'Esprit derrière Jerenyon Dev",
         "subtitle": "Présentation de Jérémie, le Fondateur de Jerenyon Dev",
         "paragraphs": {
-          "p1": "Je suis un Ingénieur en IA Générative et Développeur Full-Stack, spécialisé dans l'automatisation pilotée par l'IA, les applications évolutives et l'intelligence géospatiale. Mon parcours a débuté avec un Master en géographie, évoluant vers une expertise en programmation, automatisation et intégration de l'IA. Mon objectif est de relier l'IA, l'automatisation et l'expertise géospatiale afin de créer des solutions efficaces et novatrices.",
-          "p2": "Avec une solide expérience dans la création d'applications intelligentes et orientées données, ainsi que dans la direction d'initiatives de R&D en IA, je reste engagé à tirer parti des LLMs, des agents IA et des workflows RAG pour améliorer l'automatisation. Mon approche met l'accent sur l'application pratique de l'IA plutôt que sur le développement de modèles fondamentaux, élargissant constamment mon expertise grâce à des certifications et à la recherche.",
-          "p3": "Jerenyon Dev est ma plateforme pour fusionner l'automatisation, l'intelligence artificielle et l'intelligence géospatiale afin de proposer des solutions percutantes pour les entreprises. Elle sert également de centre de connaissances, où je partage des idées sur les workflows optimisés par l'IA, l'automatisation Python, le développement React/Next.js et l'innovation géospatiale. Mon ambition est de simplifier la complexité et de fournir des solutions numériques renforcées par l'IA de manière claire et concrète, à la fois pour les développeurs et les entreprises."
+          "p1": "Je suis un Ingénieur en Systèmes d'Automatisation, spécialisé en IA Générative et Intelligence Géospatiale, avec une passion pour la construction de systèmes d'automatisation pilotés par l'IA et de solutions géospatiales. Mon parcours a débuté avec un Master en Géographie, évoluant vers une expertise en développement backend, automatisation et intégration de l'IA. Je me concentre sur la transformation de données complexes en informations accessibles et prêtes à la décision grâce à des systèmes intelligents et adaptables.",
+          "p2": "Avec une vaste expérience dans la conception d'applications évolutives et la direction d'initiatives de R&D en IA, je me spécialise dans les LLMs, les architectures RAG et les flux de travail des agents IA. Mon approche met l'accent sur les applications pratiques de l'IA — construire des outils qui améliorent l'automatisation et rationalisent les processus commerciaux, plutôt que de se concentrer sur le développement de modèles fondamentaux.",
+          "p3": "Jerenyon Dev est ma plateforme pour fusionner l'IA Générative, l'Automatisation et l'Intelligence Géospatiale en solutions concrètes et impactantes. Elle sert également de centre de connaissances, où je partage des idées pratiques sur les flux de travail alimentés par l'IA, le développement Python, les applications Next.js et le traitement des données spatiales. Grâce à cette entreprise, mon objectif est de simplifier la complexité et de fournir des solutions numériques innovantes et améliorées par l'IA pour les développeurs et les entreprises."
         }
       }
     }
@@ -388,6 +392,14 @@
       "company": "IBM, Coursera",
       "city": "",
       "summary": "Complété le Certificat Professionnel en Ingénierie de l'IA Générative par IBM, acquérant une expertise pratique dans les architectures de LLM, fine-tuning, les workflows RAG, les agents d'IA et le déploiement d'applications d'IA générative.",
+      "description": {}
+    },
+    "item13": {
+      "date": "Feb 2025",
+      "label": "Data Structures and Algorithms",
+      "company": "UC San Diego, Coursera",
+      "city": "",
+      "summary": "Complété la Spécialisation en Structures de Données et Algorithmes, acquérant des connaissances sur les techniques algorithmiques comme les algorithmes gloutons, la recherche binaire et la programmation dynamique, ainsi que l'implémentation des piles, files, arbres et graphes.",
       "description": {}
     }
   }
