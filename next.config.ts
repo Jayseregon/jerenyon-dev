@@ -35,6 +35,14 @@ const permissionsPolicy = `
 const nextConfig: NextConfig = {
   output: "standalone",
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  
+  // Experimental features for better performance
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['motion/react'],
+  },
+  
+  // Configure image domains
   images: {
     remotePatterns: [
       {
@@ -44,9 +52,17 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+    domains: [
+      'jerenyon-dev-cdn.b-cdn.net',
+      'app.usercentrics.eu',
+      'avatars.githubusercontent.com',
+    ],
   },
+  
+  // Add headers configuration
   async headers() {
-    return isLocalDev
+    // Base security headers for production
+    const baseHeaders = isLocalDev
       ? []
       : [
           {
@@ -67,6 +83,42 @@ const nextConfig: NextConfig = {
             ],
           },
         ];
+
+    // Cache optimization headers - only add in production
+    const cacheHeaders = isLocalDev
+      ? []
+      : [
+          {
+            source: '/_next/static/(.*)',
+            headers: [
+              {
+                key: 'Cache-Control',
+                value: 'public, max-age=31536000, immutable',
+              },
+            ],
+          },
+          {
+            source: '/static/(.*)',
+            headers: [
+              {
+                key: 'Cache-Control',
+                value: 'public, max-age=31536000, immutable',
+              },
+            ],
+          },
+          {
+            source: '/(.*)\.(jpg|png|webp|svg|ico|woff2)',
+            headers: [
+              {
+                key: 'Cache-Control',
+                value: 'public, max-age=31536000, immutable',
+              },
+            ],
+          },
+        ];
+
+    // Combine all headers
+    return [...baseHeaders, ...cacheHeaders];
   },
 };
 

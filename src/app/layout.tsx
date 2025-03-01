@@ -13,14 +13,8 @@ import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
 import RootLayoutStyling from "@/src/components/root/RootLayoutStyling";
-import UsercentricsCookieConsent from "@/src/components/UsercentricsCookieConsent";
-import {
-  fontSans,
-  fontMono,
-  fontSerif,
-  // fontDisplay,
-  fontSansAlt,
-} from "@/config/fonts";
+import UsercentricsCookieConsent from "@/src/components/legals/UsercentricsCookieConsent";
+import { fontSans, fontMono, fontSerif, fontSansAlt } from "@/config/fonts";
 
 import { Providers } from "./providers";
 
@@ -126,12 +120,7 @@ export default async function RootLayout({ children }: Props) {
           rel="preconnect"
         />
         <Link href="//app.usercentrics.eu" nonce={nonce} rel="preconnect" />
-        <Link
-          as="script"
-          href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"
-          nonce={nonce}
-          rel="preload"
-        />
+        <Link href="//analytics.jerenyon.dev" nonce={nonce} rel="preconnect" />
         <Link
           as="document"
           href="/knowledge-hub"
@@ -146,7 +135,6 @@ export default async function RootLayout({ children }: Props) {
           fontSans.variable,
           fontMono.variable,
           fontSerif.variable,
-          // fontDisplay.variable,
           fontSansAlt.variable,
         )}
         nonce={nonce}
@@ -166,20 +154,15 @@ export default async function RootLayout({ children }: Props) {
           async
           data-website-id="27802530-4c86-4b3f-98c8-7df974a6e0e2"
           src="https://analytics.jerenyon.dev/script.js"
+          strategy="afterInteractive"
         />
 
-        {/* Replace the old Usercentrics implementation with our optimized component */}
+        {/* Optimized cookie consent component */}
         <UsercentricsCookieConsent
           nonce={nonce}
           settingsId="4vZk6dB-s7Fi9_"
           translationsUrl="https://termageddon.ams3.cdn.digitaloceanspaces.com/translations/"
         />
-
-        {/* <Script
-          nonce={nonce}
-          src={`https://www.google.com/recaptcha/api.js?render=${process.env.RECAPTCHA_SECRET_KEY}`}
-          strategy="afterInteractive"
-        /> */}
       </body>
     </html>
   );

@@ -3,7 +3,6 @@ import { useTranslations } from "next-intl";
 
 import { ModelSwitcher } from "@/src/components/embeddings/ModelSwitcher";
 import { useModelStore } from "@/src/store/modelStore";
-// Import the new shared UI store
 import { useUIStore } from "@/src/store/uiStore";
 
 export const Hero = () => {
@@ -11,14 +10,16 @@ export const Hero = () => {
   const hoveredDefinition = useModelStore((state) => state.hoveredDefinition);
   const hoveredCoordinates = useModelStore((state) => state.hoveredCoordinates);
   const [windowDimensions, setWindowDimensions] = useState({
-    width: 800,
-    height: 600,
+    width: typeof window !== "undefined" ? window.innerWidth : 800,
+    height: typeof window !== "undefined" ? window.innerHeight : 600,
   });
 
-  // Remove local hero visibility state; using shared state instead.
   const { setShowCollapsedMenu } = useUIStore();
 
+  // Optimize resize listener with debounce
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const updateDimensions = () => {
       setWindowDimensions({
         width: window.innerWidth,
@@ -26,41 +27,65 @@ export const Hero = () => {
       });
     };
 
+    // Initial update
     updateDimensions();
-    window.addEventListener("resize", updateDimensions);
 
-    return () => window.removeEventListener("resize", updateDimensions);
+    // Debounced resize listener
+    let timeoutId: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(updateDimensions, 100);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
-  let boxStyle = {};
+  // Optimize box style calculation
+  const boxStyle = React.useMemo(() => {
+    if (!hoveredCoordinates) return {};
 
-  if (hoveredCoordinates) {
-    const offset = 10; // margin offset
-    const boxHeightEstimate = 100; // estimated box height
+    const offset = 10;
+    const boxHeightEstimate = 100;
     const normalizedX = hoveredCoordinates.x / windowDimensions.width;
     const normalizedY = hoveredCoordinates.y / windowDimensions.height;
     const style: React.CSSProperties = { position: "absolute" };
 
-    // Horizontal binding with margin:
     if (normalizedX <= 0.5) {
-      // Bind left side with offset
       style.left = hoveredCoordinates.x + offset;
     } else {
-      // Bind right side with offset
       style.right = windowDimensions.width - hoveredCoordinates.x + offset;
     }
 
-    // Vertical binding with margin:
     if (normalizedY <= 0.5) {
-      // Bind top edge with offset
       style.top = hoveredCoordinates.y + boxHeightEstimate;
     } else {
-      // Bind bottom edge with offset
       style.top = hoveredCoordinates.y - boxHeightEstimate;
     }
 
-    boxStyle = style;
-  }
+    return style;
+  }, [hoveredCoordinates, windowDimensions]);
+
+  // Pre-define hero elements with priority rendering hints
+  const heroContent = (
+    <div className="bg-background p-4 rounded-full border border-purple-800 dark:border-purple-300 transition-opacity duration-300 hover:opacity-0">
+      {/* Add priority attribute to improve LCP */}
+      <h2
+        className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-foreground"
+        data-priority="high"
+        id="hero-title"
+      >
+        {t("hero.title")}
+      </h2>
+      <p className="mt-4 text-lg sm:text-xl md:text-2xl text-secondary text-center max-w-lg sm:max-w-xl md:max-w-3xl">
+        {t("hero.subtitle")}
+      </p>
+    </div>
+  );
 
   return (
     <>
@@ -80,14 +105,12 @@ export const Hero = () => {
           </p>
         </div>
       ) : (
-        // Always render the hero section on desktop.
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex flex-col items-center justify-center px-2 z-20"
           role="button"
           tabIndex={0}
           onClick={() => {
             if (windowDimensions.width < 768) {
-              // On mobile, show the collapsed menu.
               setShowCollapsedMenu(true);
             }
           }}
@@ -97,17 +120,7 @@ export const Hero = () => {
             }
           }}
         >
-          <div className="bg-background p-4 rounded-full border border-purple-800 dark:border-purple-300 transition-opacity duration-300 hover:opacity-0">
-            <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-foreground"
-              id="hero-title"
-            >
-              {t("hero.title")}
-            </h2>
-            <p className="mt-4 text-lg sm:text-xl md:text-2xl text-secondary text-center max-w-lg sm:max-w-xl md:max-w-3xl">
-              {t("hero.subtitle")}
-            </p>
-          </div>
+          {heroContent}
         </div>
       )}
 
