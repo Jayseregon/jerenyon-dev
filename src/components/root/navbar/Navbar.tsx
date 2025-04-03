@@ -13,7 +13,7 @@ import { Logo } from "@/components/icons";
 import { SignOut } from "@/components/auth/SignOut-Button";
 import ThemeSwitch from "@/components/root/ThemeSwitch";
 import LocaleSwitcher from "@/components/root/LocaleSwitcher";
-import SearchInput from "@/components/root/SearchInput";
+// import SearchInput from "@/components/root/SearchInput";
 import { HamburgerMenuButton } from "@/components/root/navbar/HamburgerMenuButton";
 
 import { CollapsedMenu } from "./CollapsedMenu";
@@ -84,7 +84,7 @@ export default function Navbar({ nonce }: { nonce: string }) {
           </div>
           {/* Search and switches on the right */}
           <div className="hidden md:flex items-center space-x-4">
-            <SearchInput nonce={nonce} />
+            {/* <SearchInput nonce={nonce} /> */}
             <ThemeSwitch nonce={nonce} />
             <LocaleSwitcher nonce={nonce} />
             {session && <SignOut />}

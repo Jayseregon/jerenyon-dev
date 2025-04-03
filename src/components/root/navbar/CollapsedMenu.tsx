@@ -8,7 +8,7 @@ import { useTranslations } from "next-intl";
 import { siteConfig } from "@/config/site";
 import ThemeSwitch from "@/components/root/ThemeSwitch";
 import LocaleSwitcher from "@/components/root/LocaleSwitcher";
-import SearchInput from "@/components/root/SearchInput";
+// import SearchInput from "@/components/root/SearchInput";
 // Import the shared UI store and remove prop dependencies.
 import { useUIStore } from "@/src/store/uiStore";
 
@@ -47,13 +47,13 @@ export const CollapsedMenu = ({ nonce }: { nonce: string }) => {
         transition={{ duration: 0.2, ease: "easeInOut" }}
         onPointerDown={(e) => e.stopPropagation()}
       >
-        <div className="p-4 max-w-full mx-auto" nonce={nonce}>
+        {/* <div className="p-4 max-w-full mx-auto" nonce={nonce}>
           <SearchInput
             alwaysExpanded={showCollapsedMenu}
             isInsideNavbar={true}
             nonce={nonce}
           />
-        </div>
+        </div> */}
         <motion.p
           className="px-4 text-purple-800 dark:text-purple-300"
           nonce={nonce}
