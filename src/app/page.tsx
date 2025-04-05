@@ -26,8 +26,7 @@ export default function RootPage() {
               className="text-5xl md:text-7xl font-bold text-white"
               initial="initial"
               transition={{ duration: 0.8, delay: 0.2 }}
-              variants={fadeIn}
-            >
+              variants={fadeIn}>
               {t("hero.title")}
             </motion.h1>
 
@@ -36,8 +35,7 @@ export default function RootPage() {
               className="text-xl md:text-2xl text-blue-200 max-w-2xl"
               initial="initial"
               transition={{ duration: 0.8, delay: 0.4 }}
-              variants={fadeIn}
-            >
+              variants={fadeIn}>
               {t("hero.subtitle")}
             </motion.p>
 
@@ -46,18 +44,15 @@ export default function RootPage() {
               className="flex flex-wrap gap-4 pt-4"
               initial="initial"
               transition={{ duration: 0.8, delay: 0.6 }}
-              variants={fadeIn}
-            >
+              variants={fadeIn}>
               <a
                 className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
-                href="/knowledge-hub"
-              >
+                href="/knowledge-hub">
                 Explore Knowledge Hub
               </a>
               <a
                 className="px-6 py-3 border border-white text-white rounded-md hover:bg-white hover:text-blue-900 transition"
-                href="/contact"
-              >
+                href="/contact">
                 Start a Project
               </a>
             </motion.div>
@@ -66,26 +61,24 @@ export default function RootPage() {
           {/* Visual Element */}
           <motion.div
             animate="animate"
-            className="md:w-1/2 mt-12 md:mt-0"
+            className="w-full md:w-1/2 mt-8 md:mt-0" // Full width on mobile, half on md+
             initial="initial"
             transition={{ duration: 0.8, delay: 0.8 }}
-            variants={fadeIn}
-          >
-            <div className="relative h-[500px] w-full">
-              {/* Blueprint-style visualization */}
+            variants={fadeIn}>
+            <div className="relative h-[400px] sm:h-[450px] md:h-[500px] w-full">
+              {/* Blueprint-style visualization with adjusted viewBox for mobile */}
               <svg
                 className="absolute inset-0 w-full h-full"
-                viewBox="-25 -25 850 650"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+                viewBox="100 -30 600 670" // Adjusted viewBox to focus on the central area
+                preserveAspectRatio="xMidYMid meet" // Ensure proper scaling
+                xmlns="http://www.w3.org/2000/svg">
                 {/* Blueprint grid - fine lines, with limited area */}
                 <defs>
                   <pattern
                     height="40"
                     id="smallGrid"
                     patternUnits="userSpaceOnUse"
-                    width="40"
-                  >
+                    width="40">
                     <path
                       d="M 40 0 L 0 0 0 40"
                       fill="none"
@@ -97,9 +90,12 @@ export default function RootPage() {
                     height="200"
                     id="grid"
                     patternUnits="userSpaceOnUse"
-                    width="200"
-                  >
-                    <rect fill="url(#smallGrid)" height="200" width="200" />
+                    width="200">
+                    <rect
+                      fill="url(#smallGrid)"
+                      height="200"
+                      width="200"
+                    />
                     <path
                       d="M 200 0 L 0 0 0 200"
                       fill="none"
@@ -223,15 +219,13 @@ export default function RootPage() {
                   className="coordinate-markings"
                   initial={{ opacity: 0 }}
                   opacity="0.8"
-                  transition={{ duration: 0.5, delay: 2.3 }}
-                >
+                  transition={{ duration: 0.5, delay: 2.3 }}>
                   <text
                     fill="rgba(100,181,246,0.8)"
                     fontSize="12"
                     textAnchor="middle"
                     x="400"
-                    y="-20"
-                  >
+                    y="-20">
                     N
                   </text>
                   <text
@@ -239,8 +233,7 @@ export default function RootPage() {
                     fontSize="12"
                     textAnchor="middle"
                     x="400"
-                    y="630"
-                  >
+                    y="630">
                     S
                   </text>
                   <text
@@ -248,8 +241,7 @@ export default function RootPage() {
                     fontSize="12"
                     textAnchor="middle"
                     x="725"
-                    y="300"
-                  >
+                    y="300">
                     E
                   </text>
                   <text
@@ -257,51 +249,45 @@ export default function RootPage() {
                     fontSize="12"
                     textAnchor="middle"
                     x="75"
-                    y="300"
-                  >
+                    y="300">
                     W
                   </text>
                 </motion.g>
 
                 {/* Measurement annotations */}
-                <motion.g
+                {/* <motion.g
                   animate={{ opacity: 1 }}
                   initial={{ opacity: 0 }}
-                  transition={{ duration: 0.5, delay: 2.4 }}
-                >
+                  transition={{ duration: 0.5, delay: 2.4 }}>
                   <text
                     fill="rgba(100,181,246,0.6)"
                     fontSize="10"
                     x="410"
-                    y="120"
-                  >
+                    y="120">
                     300px
                   </text>
                   <text
                     fill="rgba(100,181,246,0.6)"
                     fontSize="10"
                     x="410"
-                    y="180"
-                  >
+                    y="180">
                     240px
                   </text>
                   <text
                     fill="rgba(100,181,246,0.6)"
                     fontSize="10"
                     x="410"
-                    y="240"
-                  >
+                    y="240">
                     210px
                   </text>
                   <text
                     fill="rgba(100,181,246,0.6)"
                     fontSize="10"
                     x="410"
-                    y="280"
-                  >
+                    y="280">
                     120px
                   </text>
-                </motion.g>
+                </motion.g> */}
 
                 {/* W ←→ E label */}
                 <motion.text
@@ -312,27 +298,33 @@ export default function RootPage() {
                   textAnchor="middle"
                   transition={{ duration: 0.5, delay: 2.4 }}
                   x="400"
-                  y="320"
-                >
+                  y="320">
                   W ←→ E
                 </motion.text>
               </svg>
 
-              {/* Center image */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 flex items-center justify-center">
-                <Image
-                  priority
-                  alt="AI, Automation and Geospatial Intelligence intersection"
-                  className="object-contain z-10"
-                  height={300}
-                  src="/assets/earth-globe-night.webp"
-                  width={300}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-
-                    target.style.display = "none";
-                  }}
-                />
+              {/* Center image with better responsive sizing */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+                <div className="w-full max-w-[220px] xs:max-w-[240px] sm:max-w-[260px] md:max-w-[300px]">
+                  <Image
+                    priority
+                    alt="AI, Automation and Geospatial Intelligence intersection"
+                    className="object-contain z-10"
+                    src="/assets/earth-globe-night.webp"
+                    width={300}
+                    height={300}
+                    sizes="(max-width: 479px) 220px, (max-width: 639px) 240px, (max-width: 767px) 260px, 300px"
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      maxWidth: "100%",
+                    }}
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = "none";
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </motion.div>
