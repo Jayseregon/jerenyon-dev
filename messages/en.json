@@ -2,7 +2,11 @@
   "homepage": {
     "hero": {
       "title": "Building the Future",
-      "subtitle": "Bridging Generative AI, Automation, and Geospatial Intelligence for Smarter Solutions"
+      "subtitle": "Bridging Generative AI, Automation, and Geospatial Intelligence for Smarter Solutions",
+      "buttons": {
+        "knowledgeHub": "Explore Knowledge Hub",
+        "startProject": "Start a Project"
+      }
     }
   },
   "Utils": {

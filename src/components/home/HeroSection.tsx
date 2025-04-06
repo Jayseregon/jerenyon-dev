@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useContext } from "react";
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Link from "next/link";
 
 import { NonceContext } from "@/src/app/providers";
@@ -78,7 +78,7 @@ export const HeroSection = ({ VisualComponent }: HeroSectionProps) => {
               size="lg"
               variant="cta"
             >
-              <Link href="/knowledge-hub">Explore Knowledge Hub</Link>
+              <Link href="/knowledge-hub">{t("hero.buttons.knowledgeHub")}</Link>
             </Button>
             <Button
               asChild
@@ -86,7 +86,7 @@ export const HeroSection = ({ VisualComponent }: HeroSectionProps) => {
               size="lg"
               variant="form"
             >
-              <Link href="/contact">Start a Project</Link>
+              <Link href="/estimate">{t("hero.buttons.startProject")}</Link>
             </Button>
           </motion.div>
         </div>

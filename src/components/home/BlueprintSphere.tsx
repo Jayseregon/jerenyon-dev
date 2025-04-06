@@ -151,11 +151,11 @@ export const BlueprintSphere = () => {
                 fill="rgba(100,181,246,0.5)"
               />
               <path
-                d="M 65 300 L 75 305 L 75 295 Z" /* Adjusted from 85,95 to 65,75 */
+                d="M 65 300 L 75 305 L 75 295 Z" 
                 fill="rgba(100,181,246,0.5)"
               />
               <path
-                d="M 735 300 L 725 305 L 725 295 Z" /* Adjusted from 715,705 to 735,725 */
+                d="M 735 300 L 725 305 L 725 295 Z" 
                 fill="rgba(100,181,246,0.5)"
               />
 
@@ -163,7 +163,7 @@ export const BlueprintSphere = () => {
               <g className="coordinate-markings" opacity="0.8">
                 <text
                   fill="rgba(100,181,246,0.8)"
-                  fontSize="12"
+                  fontSize="13"
                   textAnchor="middle"
                   x="400"
                   y="-20"
@@ -172,7 +172,7 @@ export const BlueprintSphere = () => {
                 </text>
                 <text
                   fill="rgba(100,181,246,0.8)"
-                  fontSize="12"
+                  fontSize="13"
                   textAnchor="middle"
                   x="400"
                   y="630"
@@ -181,54 +181,86 @@ export const BlueprintSphere = () => {
                 </text>
                 <text
                   fill="rgba(100,181,246,0.8)"
-                  fontSize="12"
+                  fontSize="13"
                   textAnchor="middle"
-                  x="755" /* Adjusted from 725 to 755 */
-                  y="300"
+                  x="755"
+                  y="302"
                 >
                   E
                 </text>
                 <text
                   fill="rgba(100,181,246,0.8)"
+                  fontSize="13"
                   textAnchor="middle"
-                  x="45" /* Adjusted from 75 to 45 */
-                  y="300"
+                  x="45" 
+                  y="302"
                 >
                   W
                 </text>
               </g>
 
-              {/* Measurement annotations */}
-              {/* <g>
-                <text
-                  fill="rgba(100,181,246,0.6)"
-                  fontSize="10"
-                  x="410"
-                  y="120">
-                  300px
+              {/* Blueprint annotations */}
+              <g>
+              <text
+                  fill="rgba(100,181,246,0.7)"
+                  fontSize="11"
+                  x="100"
+                  y="40">
+                  Automation
                 </text>
                 <text
-                  fill="rgba(100,181,246,0.6)"
-                  fontSize="10"
-                  x="410"
-                  y="180">
-                  240px
+                  fill="rgba(100,181,246,0.7)"
+                  fontSize="11"
+                  x="400"
+                  y="50"
+                  textAnchor="middle">
+                  Generative AI
                 </text>
                 <text
-                  fill="rgba(100,181,246,0.6)"
-                  fontSize="10"
-                  x="410"
-                  y="240">
-                  210px
+                  fill="rgba(100,181,246,0.7)"
+                  fontSize="11"
+                  x="600"
+                  y="130">
+                  <tspan x="600" dy="0">Retrieval</tspan>
+                  <tspan x="600" dy="14">Augmented</tspan>
+                  <tspan x="600" dy="14">Generation</tspan>
                 </text>
                 <text
-                  fill="rgba(100,181,246,0.6)"
-                  fontSize="10"
-                  x="410"
-                  y="280">
-                  120px
+                  fill="rgba(100,181,246,0.7)"
+                  fontSize="11"
+                  x="180"
+                  y="200"
+                  textAnchor="end">
+                  AI-Agents
                 </text>
-              </g> */}
+                <text
+                  fill="rgba(100,181,246,0.7)"
+                  fontSize="11"
+                  x="400"
+                  y="550"
+                  textAnchor="middle">
+                  <tspan x="400" dy="0">Geospatial</tspan>
+                  <tspan x="400" dy="14">Intelligence</tspan>
+                </text>
+                <text
+                  fill="rgba(100,181,246,0.7)"
+                  fontSize="11"
+                  x="200"
+                  y="450"
+                  textAnchor="end">
+                  <tspan x="200" dy="0">Spatial</tspan>
+                  <tspan x="200" dy="14">Analysis</tspan>
+                </text>
+                <text
+                  fill="rgba(100,181,246,0.7)"
+                  fontSize="11"
+                  x="620"
+                  y="410">
+                  <tspan x="620" dy="0">Model</tspan>
+                  <tspan x="620" dy="14">Context</tspan>
+                  <tspan x="620" dy="14">Protocol</tspan>
+                </text>
+              </g>
             </motion.g>
           </>
         )}
