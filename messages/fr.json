@@ -31,7 +31,7 @@
     "settingsSection": "Paramètres"
   },
   "footer": {
-    "copyright1": "Jerenyon Dev",
+    "copyright1": "Jerenyon",
     "copyright2": "Tous droits réservés",
     "google1": "Ce site est protégé par reCAPTCHA et Google ",
     "gpp": "Politique de confidentialité",
@@ -50,27 +50,27 @@
       "linkedin": "Se connecter sur LinkedIn"
     },
     "hero": {
-      "title": "La Création de Jerenyon Dev.",
-      "subtitle": "Expertise géospatiale rencontre IA Générative : comment & pourquoi j'ai construit Jerenyon Dev."
+      "title": "La Création de Jerenyon.",
+      "subtitle": "Expertise géospatiale rencontre IA Générative : comment & pourquoi j'ai construit Jerenyon."
     },
     "sections": {
       "jerenyon-dev": {
-        "title": "L'Histoire de Jerenyon Dev",
-        "subtitle": "Jerenyon Dev : Relier l'IA Générative, l'Automatisation et l'Intelligence Géospatiale",
+        "title": "L'Histoire de Jerenyon",
+        "subtitle": "Jerenyon : Relier l'IA Générative, l'Automatisation et l'Intelligence Géospatiale",
         "paragraphs": {
-          "p1": "Jerenyon Dev est bien plus qu'un simple service de développement web et d'automatisation — c'est une plateforme dédiée à l'intégration de l'IA Générative, l'Automatisation et l'Intelligence Géospatiale. Avec une vision visant à simplifier les flux de travail complexes, Jerenyon Dev fournit des systèmes d'automatisation alimentés par l'IA et des solutions géospatiales qui transforment les données en informations exploitables et améliorent la prise de décision.",
-          "p2": "Spécialisé dans l'automatisation augmentée par l'IA et le traitement des données spatiales, Jerenyon Dev construit des outils intelligents, des flux de travail adaptables et des applications évolutives. Du traitement de documents alimenté par les LLMs à l'analyse de données pilotée par l'IA et l'automatisation géospatiale, Jerenyon Dev propose des solutions sur mesure conçues pour rationaliser les opérations et stimuler l'innovation.",
-          "p3": "Au-delà de la fourniture de solutions techniques, Jerenyon Dev favorise le partage des connaissances et la communauté. À travers des articles, des tutoriels et des présentations de projets, il offre des aperçus pratiques sur l'automatisation améliorée par l'IA, le développement backend Python, les frontends Next.js et l'intelligence géospatiale — aidant les autres à explorer le potentiel de ces technologies.",
-          "p4": "Avec un engagement envers l'apprentissage continu et la recherche de pointe, Jerenyon Dev permet aux entreprises d'exploiter l'IA et l'automatisation, restant ainsi à l'avant-garde dans un monde guidé par l'IA. Que vous cherchiez à intégrer l'IA Générative, à automatiser des flux de travail complexes ou à améliorer vos capacités géospatiales, Jerenyon Dev est votre partenaire pour des solutions numériques transformatives."
+          "p1": "Jerenyon est bien plus qu'un simple service de développement web et d'automatisation — c'est une plateforme dédiée à l'intégration de l'IA Générative, l'Automatisation et l'Intelligence Géospatiale. Avec une vision visant à simplifier les flux de travail complexes, Jerenyon fournit des systèmes d'automatisation alimentés par l'IA et des solutions géospatiales qui transforment les données en informations exploitables et améliorent la prise de décision.",
+          "p2": "Spécialisé dans l'automatisation augmentée par l'IA et le traitement des données spatiales, Jerenyon construit des outils intelligents, des flux de travail adaptables et des applications évolutives. Du traitement de documents alimenté par les LLMs à l'analyse de données pilotée par l'IA et l'automatisation géospatiale, Jerenyon propose des solutions sur mesure conçues pour rationaliser les opérations et stimuler l'innovation.",
+          "p3": "Au-delà de la fourniture de solutions techniques, Jerenyon favorise le partage des connaissances et la communauté. À travers des articles, des tutoriels et des présentations de projets, il offre des aperçus pratiques sur l'automatisation améliorée par l'IA, le développement backend Python, les frontends Next.js et l'intelligence géospatiale — aidant les autres à explorer le potentiel de ces technologies.",
+          "p4": "Avec un engagement envers l'apprentissage continu et la recherche de pointe, Jerenyon permet aux entreprises d'exploiter l'IA et l'automatisation, restant ainsi à l'avant-garde dans un monde guidé par l'IA. Que vous cherchiez à intégrer l'IA Générative, à automatiser des flux de travail complexes ou à améliorer vos capacités géospatiales, Jerenyon est votre partenaire pour des solutions numériques transformatives."
         }
       },
       "jeremie": {
-        "title": "L'Esprit derrière Jerenyon Dev",
-        "subtitle": "Présentation de Jérémie, le Fondateur de Jerenyon Dev",
+        "title": "L'Esprit derrière Jerenyon",
+        "subtitle": "Présentation de Jérémie, le Fondateur de Jerenyon",
         "paragraphs": {
           "p1": "Je suis un Ingénieur en Systèmes d'Automatisation, spécialisé en IA Générative et Intelligence Géospatiale, avec une passion pour la construction de systèmes d'automatisation pilotés par l'IA et de solutions géospatiales. Mon parcours a débuté avec un Master en Géographie, évoluant vers une expertise en développement backend, automatisation et intégration de l'IA. Je me concentre sur la transformation de données complexes en informations accessibles et prêtes à la décision grâce à des systèmes intelligents et adaptables.",
           "p2": "Avec une vaste expérience dans la conception d'applications évolutives et la direction d'initiatives de R&D en IA, je me spécialise dans les LLMs, les architectures RAG et les flux de travail des agents IA. Mon approche met l'accent sur les applications pratiques de l'IA — construire des outils qui améliorent l'automatisation et rationalisent les processus commerciaux, plutôt que de se concentrer sur le développement de modèles fondamentaux.",
-          "p3": "Jerenyon Dev est ma plateforme pour fusionner l'IA Générative, l'Automatisation et l'Intelligence Géospatiale en solutions concrètes et impactantes. Elle sert également de centre de connaissances, où je partage des idées pratiques sur les flux de travail alimentés par l'IA, le développement Python, les applications Next.js et le traitement des données spatiales. Grâce à cette entreprise, mon objectif est de simplifier la complexité et de fournir des solutions numériques innovantes et améliorées par l'IA pour les développeurs et les entreprises."
+          "p3": "Jerenyon est ma plateforme pour fusionner l'IA Générative, l'Automatisation et l'Intelligence Géospatiale en solutions concrètes et impactantes. Elle sert également de centre de connaissances, où je partage des idées pratiques sur les flux de travail alimentés par l'IA, le développement Python, les applications Next.js et le traitement des données spatiales. Grâce à cette entreprise, mon objectif est de simplifier la complexité et de fournir des solutions numériques innovantes et améliorées par l'IA pour les développeurs et les entreprises."
         }
       }
     }
@@ -99,13 +99,13 @@
     "hubCategories": {
       "articles-and-tutorials": {
         "title": "Articles & Tutoriels",
-        "description": "Découvrez des articles détaillés et des guides pratiques par Jerenyon Dev.",
+        "description": "Découvrez des articles détaillés et des guides pratiques par Jerenyon.",
         "imgAlt": "Carte d'arrière-plan de la catégorie Articles et Tutoriels.",
         "btnLabel": "Voir Plus"
       },
       "projects-showcase": {
         "title": "Présentations de Projets",
-        "description": "Exposition de solutions innovantes et d'outils développés par Jerenyon Dev.",
+        "description": "Exposition de solutions innovantes et d'outils développés par Jerenyon.",
         "imgAlt": "Arrière-plan de la carte de catégorie Projets.",
         "btnLabel": "Voir Plus"
       }
@@ -122,7 +122,7 @@
         "title": "Présentations de Projets",
         "hero": {
           "title": "Solutions innovantes, conçues avec passion.",
-          "subtitle": "Découvrez les outils et solutions qui stimulent l'innovation chez Jerenyon Dev."
+          "subtitle": "Découvrez les outils et solutions qui stimulent l'innovation chez Jerenyon."
         }
       }
     },
@@ -144,7 +144,7 @@
       "title": "Prenez contact.",
       "subtitle": {
         "line1": "Vous avez une question, un projet en tête ou besoin de support?",
-        "line2": "Jerenyon Dev est là pour vous aider à avancer."
+        "line2": "Jerenyon est là pour vous aider à avancer."
       }
     },
     "firstName": "Prénom",
@@ -235,7 +235,7 @@
       },
       "success": {
         "title": "Estimation Soumise!",
-        "line1": "Merci de votre intérêt pour Jerenyon Dev.",
+        "line1": "Merci de votre intérêt pour Jerenyon.",
         "line2": "Nous examinerons votre demande et vous répondrons sous peu."
       }
     }
@@ -267,14 +267,14 @@
       "date": "Sept 2024 - Présent",
       "label": "Fondateur & Ingénieur Full-Stack",
       "city": "Télétravail",
-      "company": "Jerenyon Dev",
-      "summary": "Fondateur et visionnaire derrière Jerenyon Dev, offrant des solutions personnalisées de développement web, d'automatisation et basées sur l'IA.",
+      "company": "Jerenyon",
+      "summary": "Fondateur et visionnaire derrière Jerenyon, offrant des solutions personnalisées de développement web, d'automatisation et basées sur l'IA.",
       "description": {
-        "p1": "Fondé Jerenyon Dev pour fournir des outils d'automatisation sur mesure, des services de développement web et des solutions géospatiales innovantes.",
+        "p1": "Fondé Jerenyon pour fournir des outils d'automatisation sur mesure, des services de développement web et des solutions géospatiales innovantes.",
         "p2": "Créé des applications full-stack évolutives en utilisant Python, Django, React, Next.js et TypeScript, en mettant l'accent sur l'optimisation opérationnelle et la transformation numérique.",
         "p3": "Exploité des outils et bibliothèques avancés tels que LangChain, OpenAI, les modèles Hugging Face et le SDK Vercel AI pour intégrer des fonctionnalités d'IA de pointe, y compris des systèmes d'IA générative et des flux de travail d'automatisation intelligents.",
         "p4": "Conçu une infrastructure cloud-native avec des déploiements fluides, en tirant parti de Docker, Vercel et d'intégrations avancées telles que Resend pour une communication moderne.",
-        "p5": "Créé Jerenyon Dev comme une plateforme pour mettre en valeur une expertise technique, partager des méthodologies et stimuler l'engagement grâce à des projets de portfolio et des articles de blog."
+        "p5": "Créé Jerenyon comme une plateforme pour mettre en valeur une expertise technique, partager des méthodologies et stimuler l'engagement grâce à des projets de portfolio et des articles de blog."
       }
     },
     "item2": {
