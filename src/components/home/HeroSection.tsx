@@ -1,8 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
+import Link from "next/link";
+
+import { NonceContext } from "@/src/app/providers";
+
+import { Button } from "../ui/button";
 
 interface HeroSectionProps {
   VisualComponent: React.ComponentType;
@@ -10,70 +15,81 @@ interface HeroSectionProps {
 
 export const HeroSection = ({ VisualComponent }: HeroSectionProps) => {
   const t = useTranslations("homepage");
+  const nonce = useContext(NonceContext);
+  const [isVisible, setIsVisible] = useState(false);
 
-  // Animation variants
-  const fadeIn = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-  };
+  // Immediately start animations to match visual components
+  useEffect(() => {
+    // Set visible immediately - no delays for critical content
+    setIsVisible(true);
+  }, []);
+
+  // Pre-compute content to avoid render delays
+  const heroTitle = t("hero.title");
+  const heroSubtitle = t("hero.subtitle");
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden flex items-center">
+    <section className="relative w-full h-full flex items-center justify-center py-8 md:py-0">
       <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center">
-        {/* Text Content */}
-        <div className="md:w-1/2 space-y-6 md:pr-8">
-          <motion.h1
-            animate="animate"
-            className="text-5xl md:text-7xl font-bold text-white"
-            initial="initial"
-            transition={{ duration: 0.8, delay: 0.2 }}
-            variants={fadeIn}
-          >
-            {t("hero.title")}
-          </motion.h1>
-
-          <motion.p
-            animate="animate"
-            className="text-xl md:text-2xl text-blue-200 max-w-2xl"
-            initial="initial"
-            transition={{ duration: 0.8, delay: 0.4 }}
-            variants={fadeIn}
-          >
-            {t("hero.subtitle")}
-          </motion.p>
-
-          <motion.div
-            animate="animate"
-            className="flex flex-wrap gap-4 pt-4"
-            initial="initial"
-            transition={{ duration: 0.8, delay: 0.6 }}
-            variants={fadeIn}
-          >
-            <a
-              className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
-              href="/knowledge-hub"
-            >
-              Explore Knowledge Hub
-            </a>
-            <a
-              className="px-6 py-3 border border-white text-white rounded-md hover:bg-white hover:text-blue-900 transition"
-              href="/contact"
-            >
-              Start a Project
-            </a>
-          </motion.div>
+        {/* Visual Element */}
+        <div className="w-full md:w-1/2 order-1 md:order-2">
+          <VisualComponent />
         </div>
 
-        {/* Visual Element */}
-        <motion.div
-          animate="animate"
-          className="w-full md:w-1/2 mt-8 md:mt-0"
-          initial="initial"
-          transition={{ duration: 0.8, delay: 0.8 }}
-          variants={fadeIn}
-        >
-          <VisualComponent />
-        </motion.div>
+        {/* Text Content - Custom landing page implementation */}
+        <div className="md:w-1/2 space-y-6 md:pr-8 order-2 md:order-1 mt-4 md:mt-0">
+          {/* Title with subtle framer-motion animation */}
+          <motion.h1
+            animate={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-7xl font-bold"
+            initial={{ opacity: 0.9, y: -5 }}
+            nonce={nonce}
+            transition={{
+              duration: 0.4,
+              ease: "easeOut",
+              opacity: { duration: 0.3 },
+            }}
+          >
+            {heroTitle}
+          </motion.h1>
+
+          {/* Subtitle with controlled animation */}
+          <motion.h2
+            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+            className="text-xl md:text-2xl text-purple-800/70 dark:text-purple-300/70 max-w-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            nonce={nonce}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            {heroSubtitle}
+          </motion.h2>
+
+          {/* Action buttons with synchronized animation */}
+          <motion.div
+            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+            className="flex flex-col md:flex-row gap-4 pt-2 pb-8 md:pb-0"
+            initial={{ opacity: 0, y: 20 }}
+            nonce={nonce}
+            transition={{ duration: 0.4, delay: 0.1 }}
+          >
+            <Button
+              asChild
+              className="w-full md:w-auto flex-1"
+              size="lg"
+              variant="cta"
+            >
+              <Link href="/knowledge-hub">Explore Knowledge Hub</Link>
+            </Button>
+            <Button
+              asChild
+              className="w-full md:w-auto flex-1"
+              size="lg"
+              variant="form"
+            >
+              <Link href="/contact">Start a Project</Link>
+            </Button>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

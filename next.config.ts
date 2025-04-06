@@ -51,11 +51,18 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**",
       },
-    ],
-    domains: [
-      'jerenyon-dev-cdn.b-cdn.net',
-      'app.usercentrics.eu',
-      'avatars.githubusercontent.com',
+      {
+        protocol: "https",
+        hostname: "app.usercentrics.eu",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   

@@ -1,20 +1,31 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+import { NonceContext } from "@/src/app/providers";
+
 export const BlueprintSphere = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const nonce = useContext(NonceContext);
+
+  // Adjust animation timing to match PageTitles component
+  useEffect(() => {
+    // Immediately start animations to match titles
+    setIsVisible(true);
+  }, []);
+
   return (
     <div className="relative h-[400px] sm:h-[450px] md:h-[500px] w-full">
-      {/* Blueprint-style visualization with adjusted viewBox for mobile */}
+      {/* Blueprint-style visualization with improved mobile responsiveness */}
       <svg
         className="absolute inset-0 w-full h-full"
-        preserveAspectRatio="xMidYMid meet" // Ensure proper scaling
-        viewBox="100 -30 600 670" // Adjusted viewBox to focus on the central area
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="50 -30 700 670" /* Expanded viewBox to show W and E indicators */
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Blueprint grid - fine lines, with limited area */}
+        {/* Basic grid - render immediately */}
         <defs>
           <pattern
             height="40"
@@ -45,212 +56,217 @@ export const BlueprintSphere = () => {
           </pattern>
         </defs>
 
-        {/* Expanded grid area to fit larger circle */}
-        <rect fill="url(#grid)" height="600" width="600" x="100" y="0" />
+        {/* Grid backdrop - render immediately */}
+        <rect fill="url(#grid)" height="600" width="700" x="50" y="0" />
 
-        {/* Enhanced circular blueprint elements */}
-        <motion.circle
-          animate={{ opacity: 1, scale: 1 }}
+        {/* Core circles without animations initially */}
+        <circle
           cx="400"
           cy="300"
           fill="none"
-          initial={{ opacity: 0, scale: 0.95 }}
           r="300"
           stroke="rgba(100,181,246,0.5)"
           strokeWidth="1"
-          transition={{ duration: 0.6, delay: 1.0 }}
-        />
-        <motion.circle
-          animate={{ opacity: 1, scale: 1 }}
-          cx="400"
-          cy="300"
-          fill="none"
-          initial={{ opacity: 0, scale: 0.95 }}
-          r="240"
-          stroke="rgba(100,181,246,0.4)"
-          strokeDasharray="5,3"
-          strokeWidth="0.8"
-          transition={{ duration: 0.6, delay: 1.2 }}
-        />
-        <motion.circle
-          animate={{ opacity: 1, scale: 1 }}
-          cx="400"
-          cy="300"
-          fill="none"
-          initial={{ opacity: 0, scale: 0.95 }}
-          r="210"
-          stroke="rgba(100,181,246,0.35)"
-          strokeDasharray="2,4"
-          strokeWidth="0.8"
-          transition={{ duration: 0.6, delay: 1.4 }}
-        />
-        <motion.circle
-          animate={{ opacity: 1, scale: 1 }}
-          cx="400"
-          cy="300"
-          fill="none"
-          initial={{ opacity: 0, scale: 0.95 }}
-          r="120"
-          stroke="rgba(100,181,246,0.3)"
-          strokeDasharray="3,5"
-          strokeWidth="0.8"
-          transition={{ duration: 0.6, delay: 1.6 }}
         />
 
-        {/* Technical measurement lines */}
-        <line
-          stroke="rgba(100,181,246,0.5)"
-          strokeDasharray="5,5"
-          strokeWidth="0.8"
-          x1="400"
-          x2="400"
-          y1="0"
-          y2="600"
-        />
-        <line
-          stroke="rgba(100,181,246,0.5)"
-          strokeDasharray="5,5"
-          strokeWidth="0.8"
-          x1="100"
-          x2="700"
-          y1="300"
-          y2="300"
-        />
+        {/* Enhanced elements that only animate after main content loaded */}
+        {isVisible && (
+          <>
+            <motion.circle
+              animate={{ opacity: 1 }}
+              cx="400"
+              cy="300"
+              fill="none"
+              initial={{ opacity: 0 }}
+              r="240"
+              stroke="rgba(100,181,246,0.4)"
+              strokeDasharray="5,3"
+              strokeWidth="0.8"
+              transition={{ duration: 0.5 }}
+            />
+            <motion.circle
+              animate={{ opacity: 1 }}
+              cx="400"
+              cy="300"
+              fill="none"
+              initial={{ opacity: 0 }}
+              r="210"
+              stroke="rgba(100,181,246,0.35)"
+              strokeDasharray="2,4"
+              strokeWidth="0.8"
+              transition={{ duration: 0.5, delay: 0.1 }}
+            />
+            <motion.circle
+              animate={{ opacity: 1 }}
+              cx="400"
+              cy="300"
+              fill="none"
+              initial={{ opacity: 0 }}
+              r="120"
+              stroke="rgba(100,181,246,0.3)"
+              strokeDasharray="3,5"
+              strokeWidth="0.8"
+              transition={{ duration: 0.5, delay: 0.2 }}
+            />
 
-        {/* Additional measurement details */}
-        <motion.path
-          animate={{ opacity: 1 }}
-          d="M 400 -15 L 405 -5 L 395 -5 Z"
-          fill="rgba(100,181,246,0.5)"
-          initial={{ opacity: 0 }}
-          transition={{ duration: 0.3, delay: 2.2 }}
-        />
-        <motion.path
-          animate={{ opacity: 1 }}
-          d="M 400 615 L 405 605 L 395 605 Z"
-          fill="rgba(100,181,246,0.5)"
-          initial={{ opacity: 0 }}
-          transition={{ duration: 0.3, delay: 2.2 }}
-        />
-        <motion.path
-          animate={{ opacity: 1 }}
-          d="M 85 300 L 95 305 L 95 295 Z"
-          fill="rgba(100,181,246,0.5)"
-          initial={{ opacity: 0 }}
-          transition={{ duration: 0.3, delay: 2.2 }}
-        />
-        <motion.path
-          animate={{ opacity: 1 }}
-          d="M 715 300 L 705 305 L 705 295 Z"
-          fill="rgba(100,181,246,0.5)"
-          initial={{ opacity: 0 }}
-          transition={{ duration: 0.3, delay: 2.2 }}
-        />
+            {/* Technical measurement lines - defer */}
+            <motion.g
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <line
+                stroke="rgba(100,181,246,0.5)"
+                strokeDasharray="5,5"
+                strokeWidth="0.8"
+                x1="400"
+                x2="400"
+                y1="0"
+                y2="600"
+              />
+              <line
+                stroke="rgba(100,181,246,0.5)"
+                strokeDasharray="5,5"
+                strokeWidth="0.8"
+                x1="50" /* Adjusted from 100 to 50 */
+                x2="750" /* Adjusted from 700 to 750 */
+                y1="300"
+                y2="300"
+              />
+            </motion.g>
 
-        {/* Coordinate markings */}
-        <motion.g
-          animate={{ opacity: 0.8 }}
-          className="coordinate-markings"
-          initial={{ opacity: 0 }}
-          opacity="0.8"
-          transition={{ duration: 0.5, delay: 2.3 }}
-        >
-          <text
-            fill="rgba(100,181,246,0.8)"
-            fontSize="12"
-            textAnchor="middle"
-            x="400"
-            y="-20"
-          >
-            N
-          </text>
-          <text
-            fill="rgba(100,181,246,0.8)"
-            fontSize="12"
-            textAnchor="middle"
-            x="400"
-            y="630"
-          >
-            S
-          </text>
-          <text
-            fill="rgba(100,181,246,0.8)"
-            fontSize="12"
-            textAnchor="middle"
-            x="725"
-            y="300"
-          >
-            E
-          </text>
-          <text
-            fill="rgba(100,181,246,0.8)"
-            fontSize="12"
-            textAnchor="middle"
-            x="75"
-            y="300"
-          >
-            W
-          </text>
-        </motion.g>
+            {/* Defer all decorative elements */}
+            <motion.g
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              {/* Additional measurement details - adjusted positions */}
+              <path
+                d="M 400 -15 L 405 -5 L 395 -5 Z"
+                fill="rgba(100,181,246,0.5)"
+              />
+              <path
+                d="M 400 615 L 405 605 L 395 605 Z"
+                fill="rgba(100,181,246,0.5)"
+              />
+              <path
+                d="M 65 300 L 75 305 L 75 295 Z" /* Adjusted from 85,95 to 65,75 */
+                fill="rgba(100,181,246,0.5)"
+              />
+              <path
+                d="M 735 300 L 725 305 L 725 295 Z" /* Adjusted from 715,705 to 735,725 */
+                fill="rgba(100,181,246,0.5)"
+              />
 
-        {/* Measurement annotations */}
-        <motion.g
-          animate={{ opacity: 1 }}
-          initial={{ opacity: 0 }}
-          transition={{ duration: 0.5, delay: 2.4 }}
-        >
-          <text fill="rgba(100,181,246,0.6)" fontSize="10" x="410" y="120">
-            300px
-          </text>
-          <text fill="rgba(100,181,246,0.6)" fontSize="10" x="410" y="180">
-            240px
-          </text>
-          <text fill="rgba(100,181,246,0.6)" fontSize="10" x="410" y="240">
-            210px
-          </text>
-          <text fill="rgba(100,181,246,0.6)" fontSize="10" x="410" y="280">
-            120px
-          </text>
-        </motion.g>
+              {/* Coordinate markings - adjusted positions */}
+              <g className="coordinate-markings" opacity="0.8">
+                <text
+                  fill="rgba(100,181,246,0.8)"
+                  fontSize="12"
+                  textAnchor="middle"
+                  x="400"
+                  y="-20"
+                >
+                  N
+                </text>
+                <text
+                  fill="rgba(100,181,246,0.8)"
+                  fontSize="12"
+                  textAnchor="middle"
+                  x="400"
+                  y="630"
+                >
+                  S
+                </text>
+                <text
+                  fill="rgba(100,181,246,0.8)"
+                  fontSize="12"
+                  textAnchor="middle"
+                  x="755" /* Adjusted from 725 to 755 */
+                  y="300"
+                >
+                  E
+                </text>
+                <text
+                  fill="rgba(100,181,246,0.8)"
+                  textAnchor="middle"
+                  x="45" /* Adjusted from 75 to 45 */
+                  y="300"
+                >
+                  W
+                </text>
+              </g>
 
-        {/* W ←→ E label */}
-        <motion.text
-          animate={{ opacity: 1 }}
-          fill="rgba(100,181,246,0.7)"
-          fontSize="10"
-          initial={{ opacity: 0 }}
-          textAnchor="middle"
-          transition={{ duration: 0.5, delay: 2.4 }}
-          x="400"
-          y="320"
-        >
-          W ←→ E
-        </motion.text>
+              {/* Measurement annotations */}
+              {/* <g>
+                <text
+                  fill="rgba(100,181,246,0.6)"
+                  fontSize="10"
+                  x="410"
+                  y="120">
+                  300px
+                </text>
+                <text
+                  fill="rgba(100,181,246,0.6)"
+                  fontSize="10"
+                  x="410"
+                  y="180">
+                  240px
+                </text>
+                <text
+                  fill="rgba(100,181,246,0.6)"
+                  fontSize="10"
+                  x="410"
+                  y="240">
+                  210px
+                </text>
+                <text
+                  fill="rgba(100,181,246,0.6)"
+                  fontSize="10"
+                  x="410"
+                  y="280">
+                  120px
+                </text>
+              </g> */}
+            </motion.g>
+          </>
+        )}
       </svg>
 
-      {/* Center image with better responsive sizing */}
+      {/* Center image with better performance and coordinated animation */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-        <div className="w-full max-w-[220px] xs:max-w-[240px] sm:max-w-[260px] md:max-w-[300px]">
+        <motion.div
+          animate={{
+            opacity: isVisible ? 1 : 0,
+            scale: isVisible ? 1 : 0.95,
+          }}
+          className="w-full max-w-[300px]"
+          initial={{ opacity: 0, scale: 0.95 }}
+          transition={{
+            duration: 0.6,
+            delay: 0.1,
+            ease: "easeOut",
+          }}
+        >
           <Image
             priority
-            alt="AI, Automation and Geospatial Intelligence intersection"
+            alt="Generative AI, Automation and Geospatial Intelligence intersection"
             className="object-contain z-10"
+            fetchPriority="high"
             height={300}
-            sizes="(max-width: 479px) 220px, (max-width: 639px) 240px, (max-width: 767px) 260px, 300px"
-            src="/assets/earth-globe-night.webp"
+            nonce={nonce}
+            sizes="300px"
+            src="https://jerenyon-dev-remote-pull.b-cdn.net/assets/earth-globe-night.webp"
             style={{
               width: "100%",
               height: "auto",
               maxWidth: "100%",
+              contentVisibility: "auto",
             }}
             width={300}
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-
-              target.style.display = "none";
-            }}
           />
-        </div>
+        </motion.div>
       </div>
     </div>
   );

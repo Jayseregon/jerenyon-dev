@@ -23,6 +23,7 @@ const buttonVariants = cva(
           "hover:bg-purple-800 dark:hover:bg-purple-950 hover:text-background dark:hover:text-foreground",
         link: "text-slate-900 underline-offset-4 hover:underline dark:text-slate-50",
         form: "w-full rounded-full bg-background text-foreground py-2 px-4 border border-purple-800 dark:border-purple-300 dark:hover:border-purple-950 hover:bg-purple-800 dark:hover:bg-purple-950 hover:text-background dark:hover:text-foreground focus:outline-hidden",
+        cta: "w-full rounded-full bg-purple-800 hover:bg-purple-700 text-foreground py-2 px-4 hover:bg-purple-800 dark:hover:bg-purple-950 hover:text-background dark:hover:text-foreground focus:outline-hidden",
       },
       size: {
         default: "h-9 px-4 py-2",
