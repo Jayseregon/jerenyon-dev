@@ -19,7 +19,7 @@ export default function RootLayoutStyling({ children, nonce }: Props) {
   return (
     <div
       className={clsx("relative flex flex-col", {
-        "h-screen overflow-hidden": isMainPage, // Prevent scrolling on main page
+        "h-screen": isMainPage,
         "min-h-screen": !isMainPage,
       })}
       nonce={nonce}
@@ -28,7 +28,7 @@ export default function RootLayoutStyling({ children, nonce }: Props) {
 
       <main
         className={clsx("grow", {
-          "w-full h-full overflow-hidden": isMainPage, // Force children to take screen space with no overflow
+          "w-full h-full": isMainPage,
         })}
         nonce={nonce}
       >

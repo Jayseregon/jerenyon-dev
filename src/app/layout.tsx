@@ -122,6 +122,11 @@ export default async function RootLayout({ children }: Props) {
         <Link href="//app.usercentrics.eu" nonce={nonce} rel="preconnect" />
         <Link href="//analytics.jerenyon.dev" nonce={nonce} rel="preconnect" />
         <Link
+          href="https://jerenyon-dev-remote-pull.b-cdn.net"
+          nonce={nonce}
+          rel="preconnect"
+        />
+        <Link
           as="document"
           href="/knowledge-hub"
           nonce={nonce}

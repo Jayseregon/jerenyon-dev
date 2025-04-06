@@ -2,16 +2,17 @@
 
 import React from "react";
 
-import { EmbeddingMap } from "@/src/components/embeddings/EmbeddingMap";
-import { RootGrid } from "src/components/embeddings/RootGrid";
-import { Hero } from "@/src/components/root/Hero";
+import { HeroSection } from "@/components/home/HeroSection";
+import { BlueprintSphere } from "@/components/home/BlueprintSphere";
 
 export default function RootPage() {
+  // Options: <BlueprintSphere /> or <ArmillarySphere />
+  const VisualComponent = BlueprintSphere;
+
   return (
-    <div className="w-screen h-screen overflow-hidden">
-      <RootGrid />
-      <EmbeddingMap />
-      <Hero />
+    <div className="flex items-center justify-center h-full">
+      {/* Hero Section */}
+      <HeroSection VisualComponent={VisualComponent} />
     </div>
   );
 }

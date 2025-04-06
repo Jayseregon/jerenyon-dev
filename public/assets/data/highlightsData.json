@@ -1,0 +1,30 @@
+{
+  "Generative AI": {
+    "keyword": "Generative AI",
+    "why": "Empowers Jerenyon to build AI-driven tools using LLMs, RAG, and automation for intelligent, scalable solutions."
+  },
+  "FastAPI": {
+    "keyword": "FastAPI",
+    "why": "Allows Jerenyon to develop fast, efficient APIs for AI applications and scalable cloud services."
+  },
+  "GIS": {
+    "keyword": "GIS",
+    "why": "Enables Jerenyon to integrate geoprocessing and spatial intelligence into AI-driven automation and analytics."
+  },
+  "Next.js": {
+    "keyword": "Next.js",
+    "why": "Powers Jerenyon's development of fast, scalable, and SEO-optimized web applications, including this platform."
+  },
+  "Automation": {
+    "keyword": "Automation",
+    "why": "Allows Jerenyon to eliminate manual bottlenecks, optimize development workflows, and focus on high-value innovation."
+  },
+  "Vector Databases": {
+    "keyword": "Vector Databases",
+    "why": "Enables Jerenyon to build advanced AI applications that leverage similarity search, RAG, and intelligent knowledge retrieval."
+  },
+  "GitHub": {
+    "keyword": "GitHub",
+    "why": "Provides Jerenyon with a robust foundation for managing code, deploying projects, and ensuring seamless development cycles."
+  }
+}

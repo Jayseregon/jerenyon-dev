@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Jerenyon Dev",
+  name: "Jerenyon",
   siteUrl: "https://www.jerenyon.dev",
   heroTitle: "Building the Future with AI & Automation",
   heroSubtitle:
@@ -67,12 +67,10 @@ export const siteConfig = {
     {
       label: "articles-and-tutorials",
       rootRef: "/knowledge-hub",
-      imgBg: "/assets/blogs-articles-cover.webp",
     },
     {
       label: "projects-showcase",
       rootRef: "/knowledge-hub",
-      imgBg: "/assets/projects-showcase-cover.webp",
     },
   ],
   links: {},

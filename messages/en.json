@@ -2,7 +2,11 @@
   "homepage": {
     "hero": {
       "title": "Building the Future",
-      "subtitle": "Bridging Generative AI, Automation, and Geospatial Intelligence for Smarter Solutions"
+      "subtitle": "Bridging Generative AI, Automation, and Geospatial Intelligence for Smarter Solutions",
+      "buttons": {
+        "knowledgeHub": "Explore Knowledge Hub",
+        "startProject": "Start a Project"
+      }
     }
   },
   "Utils": {
@@ -27,7 +31,7 @@
     "settingsSection": "Settings"
   },
   "footer": {
-    "copyright1": "Jerenyon Dev",
+    "copyright1": "Jerenyon",
     "copyright2": "All rights reserved",
     "google1": "This site is protected by reCAPTCHA and the Google ",
     "gpp": "Privacy Policy",
@@ -46,27 +50,27 @@
       "linkedin": "Connect on LinkedIn"
     },
     "hero": {
-      "title": "Creating Jerenyon Dev.",
-      "subtitle": "Geospatial expertise meets Generative AI: how & why I built Jerenyon Dev."
+      "title": "Creating Jerenyon.",
+      "subtitle": "Geospatial expertise meets Generative AI: how & why I built Jerenyon."
     },
     "sections": {
       "jerenyon-dev": {
-        "title": "The Story of Jerenyon Dev",
-        "subtitle": "Jerenyon Dev: Bridging Generative AI, Automation, and Geospatial Intelligence",
+        "title": "The Story of Jerenyon",
+        "subtitle": "Jerenyon: Bridging Generative AI, Automation, and Geospatial Intelligence",
         "paragraphs": {
-          "p1": "Jerenyon Dev is more than just a web development and automation service — it is a platform dedicated to integrating Generative AI, Automation, and Geospatial Intelligence. With a vision to simplify complex workflows, Jerenyon Dev delivers AI-powered automation systems and geospatial solutions that transform data into actionable insights and enhance decision-making.",
-          "p2": "Specializing in AI-augmented automation and spatial data processing, Jerenyon Dev builds intelligent tools, adaptable workflows, and scalable applications. From LLM-powered document processing to AI-driven data analysis and geospatial automation, Jerenyon Dev provides tailored solutions designed to streamline operations and drive innovation.",
-          "p3": "Beyond delivering technical solutions, Jerenyon Dev fosters knowledge-sharing and community. Through articles, tutorials, and project showcases, it offers practical insights into AI-enhanced automation, Python backend development, Next.js frontends, and geospatial intelligence — helping others explore the potential of these technologies.",
-          "p4": "With a commitment to continuous learning and cutting-edge research, Jerenyon Dev empowers businesses to harness AI and automation, staying ahead in an AI-driven world. Whether you seek to integrate Generative AI, automate complex workflows, or enhance geospatial capabilities, Jerenyon Dev is your partner for transformative digital solutions."
+          "p1": "Jerenyon is more than just a web development and automation service — it is a platform dedicated to integrating Generative AI, Automation, and Geospatial Intelligence. With a vision to simplify complex workflows, Jerenyon delivers AI-powered automation systems and geospatial solutions that transform data into actionable insights and enhance decision-making.",
+          "p2": "Specializing in AI-augmented automation and spatial data processing, Jerenyon builds intelligent tools, adaptable workflows, and scalable applications. From LLM-powered document processing to AI-driven data analysis and geospatial automation, Jerenyon provides tailored solutions designed to streamline operations and drive innovation.",
+          "p3": "Beyond delivering technical solutions, Jerenyon fosters knowledge-sharing and community. Through articles, tutorials, and project showcases, it offers practical insights into AI-enhanced automation, Python backend development, Next.js frontends, and geospatial intelligence — helping others explore the potential of these technologies.",
+          "p4": "With a commitment to continuous learning and cutting-edge research, Jerenyon empowers businesses to harness AI and automation, staying ahead in an AI-driven world. Whether you seek to integrate Generative AI, automate complex workflows, or enhance geospatial capabilities, Jerenyon is your partner for transformative digital solutions."
         }
       },
       "jeremie": {
-        "title": "The Mind Behind Jerenyon Dev",
-        "subtitle": "Introducing Jeremie, the Founder of Jerenyon Dev",
+        "title": "The Mind Behind Jerenyon",
+        "subtitle": "Introducing Jeremie, the Founder of Jerenyon",
         "paragraphs": {
           "p1": "I am an Automation Systems Engineer, specialized in Generative AI and Geospatial Intelligence, with a passion for building AI-driven automation systems and geospatial solutions. My journey began with a Master in Geography, evolving into expertise in backend development, automation, and AI integration. I focus on transforming complex data into accessible, decision-ready insights through intelligent, adaptable systems.",
           "p2": "With extensive experience in designing scalable applications and leading AI R&D initiatives, I specialize in LLMs, RAG architectures, and AI agent workflows. My approach emphasizes practical applications of AI — building tools that enhance automation and streamline business processes, rather than focusing on foundational model development.",
-          "p3": "Jerenyon Dev is my platform to merge Generative AI, Automation, and Geospatial Intelligence into impactful, real-world solutions. It also serves as a knowledge hub, where I share hands-on insights into AI-powered workflows, Python development, Next.js applications, and spatial data processing. Through this venture, my goal is to simplify complexity and deliver innovative, AI-enhanced digital solutions for developers and businesses alike."
+          "p3": "Jerenyon is my platform to merge Generative AI, Automation, and Geospatial Intelligence into impactful, real-world solutions. It also serves as a knowledge hub, where I share hands-on insights into AI-powered workflows, Python development, Next.js applications, and spatial data processing. Through this venture, my goal is to simplify complexity and deliver innovative, AI-enhanced digital solutions for developers and businesses alike."
         }
       }
     }
@@ -95,13 +99,13 @@
     "hubCategories": {
       "articles-and-tutorials": {
         "title": "Articles & Turorials",
-        "description": "Discover in-depth articles and practical guides by Jerenyon Dev.",
+        "description": "Discover in-depth articles and practical guides by Jerenyon.",
         "imgAlt": "Articles and Tutorials category card background.",
         "btnLabel": "See More"
       },
       "projects-showcase": {
         "title": "Projects Showcase",
-        "description": "Showcasing innovative solutions and tools built by Jerenyon Dev.",
+        "description": "Showcasing innovative solutions and tools built by Jerenyon.",
         "imgAlt": "Projects category card background.",
         "btnLabel": "See More"
       }
@@ -118,7 +122,7 @@
         "title": "Projects Showcase",
         "hero": {
           "title": "Innovative Solutions, Built with Passion.",
-          "subtitle": "Explore the tools and solutions that drive innovation at Jerenyon Dev."
+          "subtitle": "Explore the tools and solutions that drive innovation at Jerenyon."
         }
       }
     },
@@ -140,7 +144,7 @@
       "title": "Get in Touch.",
       "subtitle": {
         "line1": "Have a question, a project in mind, or need support?",
-        "line2": "Jerenyon Dev is here to help you move forward."
+        "line2": "Jerenyon is here to help you move forward."
       }
     },
     "firstName": "First Name",
@@ -231,7 +235,7 @@
       },
       "success": {
         "title": "Estimate Submitted!",
-        "line1": "Thank you for your interest in Jerenyon Dev.",
+        "line1": "Thank you for your interest in Jerenyon.",
         "line2": "We will review your request and get back to you shortly."
       }
     }
@@ -263,14 +267,14 @@
       "date": "Sept 2024 - Present",
       "label": "Founder & Full-Stack Engineer",
       "city": "Remote",
-      "company": "Jerenyon Dev",
-      "summary": "Founder and visionary behind Jerenyon Dev, delivering custom web development, automation, and AI-driven solutions.",
+      "company": "Jerenyon",
+      "summary": "Founder and visionary behind Jerenyon, delivering custom web development, automation, and AI-driven solutions.",
       "description": {
-        "p1": "Founded Jerenyon Dev to provide tailored automation tools, web development services, and innovative geospatial solutions.",
+        "p1": "Founded Jerenyon to provide tailored automation tools, web development services, and innovative geospatial solutions.",
         "p2": "Built scalable, full-stack applications using Python, Django, React, and Next.js and Typescript, with a focus on operational optimization and digital transformation.",
         "p3": "Leveraged advanced tools and libraries such as LangChain, OpenAI, Hugging Face models, and Vercel AI SDK to integrate cutting-edge AI capabilities, including generative AI systems and intelligent automation workflows.",
         "p4": "Designed cloud-native infrastructure with seamless deployments, leveraging Docker, Vercel, and advanced integrations such as Resend for modern communication.",
-        "p5": "Created Jerenyon Dev as a platform for showcasing technical expertise, sharing methodologies, and driving engagement through portfolio projects and blog posts."
+        "p5": "Created Jerenyon as a platform for showcasing technical expertise, sharing methodologies, and driving engagement through portfolio projects and blog posts."
       }
     },
     "item2": {
