@@ -151,11 +151,11 @@ export const BlueprintSphere = () => {
                 fill="rgba(100,181,246,0.5)"
               />
               <path
-                d="M 65 300 L 75 305 L 75 295 Z" 
+                d="M 65 300 L 75 305 L 75 295 Z"
                 fill="rgba(100,181,246,0.5)"
               />
               <path
-                d="M 735 300 L 725 305 L 725 295 Z" 
+                d="M 735 300 L 725 305 L 725 295 Z"
                 fill="rgba(100,181,246,0.5)"
               />
 
@@ -192,7 +192,7 @@ export const BlueprintSphere = () => {
                   fill="rgba(100,181,246,0.8)"
                   fontSize="13"
                   textAnchor="middle"
-                  x="45" 
+                  x="45"
                   y="302"
                 >
                   W
@@ -201,64 +201,86 @@ export const BlueprintSphere = () => {
 
               {/* Blueprint annotations */}
               <g>
-              <text
-                  fill="rgba(100,181,246,0.7)"
-                  fontSize="11"
-                  x="100"
-                  y="40">
+                <text fill="rgba(100,181,246,0.7)" fontSize="11" x="100" y="40">
                   Automation
                 </text>
                 <text
                   fill="rgba(100,181,246,0.7)"
                   fontSize="11"
+                  textAnchor="middle"
                   x="400"
                   y="50"
-                  textAnchor="middle">
+                >
                   Generative AI
                 </text>
                 <text
                   fill="rgba(100,181,246,0.7)"
                   fontSize="11"
                   x="600"
-                  y="130">
-                  <tspan x="600" dy="0">Retrieval</tspan>
-                  <tspan x="600" dy="14">Augmented</tspan>
-                  <tspan x="600" dy="14">Generation</tspan>
+                  y="130"
+                >
+                  <tspan dy="0" x="600">
+                    Retrieval
+                  </tspan>
+                  <tspan dy="14" x="600">
+                    Augmented
+                  </tspan>
+                  <tspan dy="14" x="600">
+                    Generation
+                  </tspan>
                 </text>
                 <text
                   fill="rgba(100,181,246,0.7)"
                   fontSize="11"
+                  textAnchor="end"
                   x="180"
                   y="200"
-                  textAnchor="end">
+                >
                   AI-Agents
                 </text>
                 <text
                   fill="rgba(100,181,246,0.7)"
                   fontSize="11"
+                  textAnchor="middle"
                   x="400"
                   y="550"
-                  textAnchor="middle">
-                  <tspan x="400" dy="0">Geospatial</tspan>
-                  <tspan x="400" dy="14">Intelligence</tspan>
+                >
+                  <tspan dy="0" x="400">
+                    Geospatial
+                  </tspan>
+                  <tspan dy="14" x="400">
+                    Intelligence
+                  </tspan>
                 </text>
                 <text
                   fill="rgba(100,181,246,0.7)"
                   fontSize="11"
+                  textAnchor="end"
                   x="200"
                   y="450"
-                  textAnchor="end">
-                  <tspan x="200" dy="0">Spatial</tspan>
-                  <tspan x="200" dy="14">Analysis</tspan>
+                >
+                  <tspan dy="0" x="200">
+                    Spatial
+                  </tspan>
+                  <tspan dy="14" x="200">
+                    Analysis
+                  </tspan>
                 </text>
                 <text
                   fill="rgba(100,181,246,0.7)"
                   fontSize="11"
                   x="620"
-                  y="410">
-                  <tspan x="620" dy="0">Model</tspan>
-                  <tspan x="620" dy="14">Context</tspan>
-                  <tspan x="620" dy="14">Protocol</tspan>
+                  y="410"
+                >
+                  <tspan dy="0" x="620">
+                    Model
+                  </tspan>
+                  <tspan dy="14" x="620">
+                    Context
+                  </tspan>
+                  <tspan dy="14" x="620">
+                    Protocol
+                  </tspan>
                 </text>
               </g>
             </motion.g>

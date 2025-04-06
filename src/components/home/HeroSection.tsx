@@ -78,7 +78,9 @@ export const HeroSection = ({ VisualComponent }: HeroSectionProps) => {
               size="lg"
               variant="cta"
             >
-              <Link href="/knowledge-hub">{t("hero.buttons.knowledgeHub")}</Link>
+              <Link href="/knowledge-hub">
+                {t("hero.buttons.knowledgeHub")}
+              </Link>
             </Button>
             <Button
               asChild
