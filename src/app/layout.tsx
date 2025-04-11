@@ -94,8 +94,7 @@ export default async function RootLayout({ children }: Props) {
       suppressHydrationWarning
       className="bg-background"
       lang={locale}
-      {...(nonce ? { nonce } : {})}
-    >
+      {...(nonce ? { nonce } : {})}>
       <Head>
         <meta
           content="width=device-width, initial-scale=1"
@@ -119,8 +118,16 @@ export default async function RootLayout({ children }: Props) {
           nonce={nonce}
           rel="preconnect"
         />
-        <Link href="//app.usercentrics.eu" nonce={nonce} rel="preconnect" />
-        <Link href="//analytics.jerenyon.dev" nonce={nonce} rel="preconnect" />
+        <Link
+          href="//app.usercentrics.eu"
+          nonce={nonce}
+          rel="preconnect"
+        />
+        <Link
+          href="//analytics.jerenyon.dev"
+          nonce={nonce}
+          rel="preconnect"
+        />
         <Link
           href="https://jerenyon-dev-remote-pull.b-cdn.net"
           nonce={nonce}
@@ -132,7 +139,11 @@ export default async function RootLayout({ children }: Props) {
           nonce={nonce}
           rel="prefetch"
         />
-        <Link href="/manifest.json" nonce={nonce} rel="manifest" />
+        <Link
+          href="/manifest.json"
+          nonce={nonce}
+          rel="manifest"
+        />
       </Head>
       <body
         className={clsx(
@@ -140,14 +151,12 @@ export default async function RootLayout({ children }: Props) {
           fontSans.variable,
           fontMono.variable,
           fontSerif.variable,
-          fontSansAlt.variable,
+          fontSansAlt.variable
         )}
-        nonce={nonce}
-      >
+        nonce={nonce}>
         <Providers
           nonce={nonce}
-          themeProps={{ attribute: "class", defaultTheme: "dark", children }}
-        >
+          themeProps={{ attribute: "class", defaultTheme: "dark", children }}>
           <NextIntlClientProvider messages={messages}>
             <RootLayoutStyling nonce={nonce}>
               {children}
@@ -157,9 +166,9 @@ export default async function RootLayout({ children }: Props) {
         </Providers>
         <Script
           async
-          data-website-id="27802530-4c86-4b3f-98c8-7df974a6e0e2"
-          src="https://analytics.jerenyon.dev/script.js"
           strategy="afterInteractive"
+          src="https://analytics.jayseregon.com/script.js"
+          data-website-id="653bb837-187d-444f-8ed9-67c1ce875fa3"
         />
 
         {/* Optimized cookie consent component */}
