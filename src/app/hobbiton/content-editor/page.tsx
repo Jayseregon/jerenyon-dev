@@ -2,7 +2,6 @@
 
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { Save, Trash, RefreshCcw, ImageOff, Loader2 } from "lucide-react";
-import { BlogPostCategory } from "@prisma/client";
 import { JSONContent } from "@tiptap/core";
 
 import { NonceContext } from "@/src/app/providers";
@@ -44,9 +43,6 @@ export default function ContentEditorPage() {
   const [published, setPublished] = useState(false);
   const [loading, setLoading] = useState(false);
   const [_titleError, setTitleError] = useState("");
-  const [category, setCategory] = useState<BlogPostCategory>(
-    BlogPostCategory.ARTICLE,
-  );
   const [tags, setTags] = useState<string[]>([]);
   const [existingTags, setExistingTags] = useState<Tag[]>([]);
   const [coverImage, setCoverImage] = useState<string>("");
@@ -76,20 +72,9 @@ export default function ContentEditorPage() {
     loadData();
   }, []);
 
-  // Group posts by category
-  const postsByCategory = posts.reduce(
-    (acc, post) => {
-      (acc[post.category] = acc[post.category] || []).push(post);
-
-      return acc;
-    },
-    {} as Record<BlogPostCategory, BlogPost[]>,
-  );
-
   const handleReset = () => {
     setTitle("");
     setContent({ type: "doc", content: [] });
-    setCategory(BlogPostCategory.ARTICLE);
     setSelectedPost(null);
     setTitleError("");
     setSummary("");
@@ -104,7 +89,6 @@ export default function ContentEditorPage() {
   const handlePostSelect = async (post: BlogPost) => {
     setSelectedPost(post);
     setTitle(post.title);
-    setCategory(post.category);
     setContent(JSON.parse(post.content));
     setSummary(post.summary);
     setPublished(post.published);
@@ -158,7 +142,6 @@ export default function ContentEditorPage() {
 
       const formData = Object.fromEntries(formDataEvent.entries()) as {
         title: string;
-        category: BlogPostCategory;
         summary: string;
         published: string;
       };
@@ -166,7 +149,6 @@ export default function ContentEditorPage() {
       const postData: PostDataProps = {
         title: formData.title,
         content: JSON.stringify(content),
-        category: formData.category,
         summary: formData.summary,
         published: formData.published === "true",
         tags: tags,
@@ -220,41 +202,37 @@ export default function ContentEditorPage() {
     <div className="flex h-screen">
       {/* Sidebar */}
       <div className="w-1/4 border-r border-purple-800/50 dark:border-purple-300/50 overflow-y-auto">
-        {Object.values(BlogPostCategory).map((category) => (
-          <div key={category}>
-            <h3 className="text-2xl font-bold text-foreground px-4 mt-4 mb-2">
-              {category}
-            </h3>
-            <ul className="text-start px-2">
-              {postsByCategory[category]?.map((post) => (
-                <li key={post.id}>
-                  <button
-                    className={`w-full text-left px-2 py-3 cursor-pointer rounded-lg ${
-                      selectedPost?.id === post.id
-                        ? "bg-purple-200 dark:bg-purple-800"
-                        : "hover:bg-purple-800/50"
-                    }`}
-                    onClick={() => handlePostSelect(post)}
+        <h3 className="text-2xl font-bold text-foreground px-4 mt-4 mb-2">
+          Blog Posts
+        </h3>
+        <ul className="text-start px-2">
+          {posts.map((post) => (
+            <li key={post.id}>
+              <button
+                className={`w-full text-left px-2 py-3 cursor-pointer rounded-lg ${
+                  selectedPost?.id === post.id
+                    ? "bg-purple-200 dark:bg-purple-800"
+                    : "hover:bg-purple-800/50"
+                }`}
+                onClick={() => handlePostSelect(post)}
+              >
+                <div className="flex justify-between items-center">
+                  <span className="text-foreground">{post.title}</span>
+                  <span
+                    className={`text-xs font-semibold px-2 py-1 rounded ${
+                      post.published ? "bg-green-500" : "bg-blue-500"
+                    } text-white`}
                   >
-                    <div className="flex justify-between items-center">
-                      <span className="text-foreground">{post.title}</span>
-                      <span
-                        className={`text-xs font-semibold px-2 py-1 rounded ${
-                          post.published ? "bg-green-500" : "bg-blue-500"
-                        } text-white`}
-                      >
-                        {post.published ? "Published" : "Draft"}
-                      </span>
-                    </div>
-                    <div className="text-xs text-purple-300 italic">
-                      {new Date(post.updatedAt).toLocaleDateString()}
-                    </div>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+                    {post.published ? "Published" : "Draft"}
+                  </span>
+                </div>
+                <div className="text-xs text-purple-300 italic">
+                  {new Date(post.updatedAt).toLocaleDateString()}
+                </div>
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
       {/* Editor */}
       <div className="w-3/4 p-4 overflow-y-auto">
@@ -268,7 +246,7 @@ export default function ContentEditorPage() {
           <div className="flex flex-row gap-4 w-full">
             <Input
               required
-              className="w-3/4"
+              className="w-full"
               id="post-title"
               name="title"
               placeholder="Title..."
@@ -279,22 +257,6 @@ export default function ContentEditorPage() {
                 setTitleError("");
               }}
             />
-            <Select
-              name="category"
-              value={category}
-              onValueChange={(value) => setCategory(value as BlogPostCategory)}
-            >
-              <SelectTrigger className="w-1/4">
-                <SelectValue placeholder="Select category" />
-              </SelectTrigger>
-              <SelectContent>
-                {Object.values(BlogPostCategory).map((cat) => (
-                  <SelectItem key={cat} value={cat}>
-                    {cat}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
 
             <div className="flex items-center justify-center gap-2">
               <Button

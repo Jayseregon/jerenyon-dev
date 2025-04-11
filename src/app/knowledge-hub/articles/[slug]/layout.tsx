@@ -16,7 +16,7 @@ export async function generateMetadata(props: {
 
   if (!post) return {};
 
-  const postUrl = `${baseUrl}/knowledge-hub/articles-and-tutorials/${post.slug}`;
+  const postUrl = `${baseUrl}/knowledge-hub/articles/${post.slug}`;
 
   return {
     title: `${post.title} | ${siteConfig.name}`,

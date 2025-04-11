@@ -97,32 +97,18 @@
       "line3": "Restez à l'écoute ! Et Merci pour votre patience !"
     },
     "hubCategories": {
-      "articles-and-tutorials": {
-        "title": "Articles & Tutoriels",
-        "description": "Découvrez des articles détaillés et des guides pratiques par Jerenyon.",
-        "imgAlt": "Carte d'arrière-plan de la catégorie Articles et Tutoriels.",
-        "btnLabel": "Voir Plus"
-      },
-      "projects-showcase": {
-        "title": "Présentations de Projets",
-        "description": "Exposition de solutions innovantes et d'outils développés par Jerenyon.",
-        "imgAlt": "Arrière-plan de la carte de catégorie Projets.",
+      "articles": {
+        "title": "Articles & Blogs",
+        "description": "Explorez des perspectives pratiques et des projets concrets.",
         "btnLabel": "Voir Plus"
       }
     },
     "subDashboards": {
-      "articles_and_tutorials": {
-        "title": "Articles & Tutoriels",
+      "articles": {
+        "title": "Articles & Blogs",
         "hero": {
-          "title": "Partager des idées et des expertises.",
-          "subtitle": "Des articles approfondis et des tutoriels pratiques pour donner vie à vos projets."
-        }
-      },
-      "projects_showcase": {
-        "title": "Présentations de Projets",
-        "hero": {
-          "title": "Solutions innovantes, conçues avec passion.",
-          "subtitle": "Découvrez les outils et solutions qui stimulent l'innovation chez Jerenyon."
+          "title": "Partage d'expertise pratique en IA et Automatisation",
+          "subtitle": "Plongez dans des analyses concrètes, des méthodologies et des leçons tirées de projets réels en IA et automatisation géospatiale."
         }
       }
     },

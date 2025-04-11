@@ -1,9 +1,9 @@
 "use server";
 
-import { BlogPostCategory, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { z } from "zod";
 
-import { BlogPost, PostDataProps, PostTypes } from "@/src/interfaces/Hub";
+import { BlogPost, PostDataProps } from "@/src/interfaces/Hub";
 import { refactorBlogPostsResponse } from "@/src/lib/actionHelpers";
 // import { revalidatePath } from "next/cache";
 
@@ -13,7 +13,6 @@ const prisma = new PrismaClient();
 const postDataSchema = z.object({
   title: z.string().min(1, "Title is required"),
   content: z.string().trim().min(1, "Content cannot be empty"),
-  category: z.nativeEnum(BlogPostCategory),
   summary: z
     .string()
     .trim()
@@ -76,7 +75,7 @@ export async function createPost(formData: PostDataProps) {
   try {
     // Validate the formData
     const data = postDataSchema.parse(formData);
-    const { title, content, category, summary, published } = data;
+    const { title, content, summary, published } = data;
 
     const slug = title
       .toLowerCase()
@@ -104,7 +103,6 @@ export async function createPost(formData: PostDataProps) {
           title,
           content,
           slug,
-          category,
           summary,
           published: published,
           publishedAt: new Date(
@@ -127,7 +125,6 @@ export async function createPost(formData: PostDataProps) {
           title,
           content,
           slug,
-          category,
           summary,
           published: published,
           publishedAt: null,
@@ -253,17 +250,10 @@ export async function deletePost(slug: string) {
   }
 }
 
-export async function getLatestArticlesAndProjects(postType: PostTypes) {
-  const postTypeMap: Record<PostTypes, BlogPostCategory> = {
-    "articles-and-tutorials": "ARTICLE" as BlogPostCategory,
-    "projects-showcase": "PROJECT" as BlogPostCategory,
-  };
-  const category = postTypeMap[postType];
-
+export async function getLatestArticles() {
   try {
     const data: BlogPost[] = await prisma.blogPost.findMany({
       where: {
-        category: category,
         published: true,
       },
       include: {
@@ -275,7 +265,7 @@ export async function getLatestArticlesAndProjects(postType: PostTypes) {
       },
     });
 
-    const res = refactorBlogPostsResponse(data, postType);
+    const res = refactorBlogPostsResponse(data);
 
     return res;
   } catch (error: any) {
@@ -291,7 +281,6 @@ export async function getPublishedArticles() {
   try {
     const data: BlogPost[] = await prisma.blogPost.findMany({
       where: {
-        category: "ARTICLE",
         published: true,
       },
       include: {
@@ -302,36 +291,11 @@ export async function getPublishedArticles() {
       },
     });
 
-    const res = refactorBlogPostsResponse(data, "articles-and-tutorials");
+    const res = refactorBlogPostsResponse(data);
 
     return res;
   } catch (error: any) {
     console.log("Error getting published articles:", error);
-
-    return [];
-  }
-}
-
-export async function getPublishedProjects() {
-  try {
-    const data: BlogPost[] = await prisma.blogPost.findMany({
-      where: {
-        category: "PROJECT",
-        published: true,
-      },
-      include: {
-        tags: true,
-      },
-      orderBy: {
-        publishedAt: "desc",
-      },
-    });
-
-    const res = refactorBlogPostsResponse(data, "projects-showcase");
-
-    return res;
-  } catch (error: any) {
-    console.log("Error getting published projects:", error);
 
     return [];
   }
@@ -374,9 +338,8 @@ export async function incrementLikes(slug: string) {
 
 export async function getSitemapPosts() {
   try {
-    const articles = await prisma.blogPost.findMany({
+    const posts = await prisma.blogPost.findMany({
       where: {
-        category: "ARTICLE",
         published: true,
       },
       select: {
@@ -385,21 +348,7 @@ export async function getSitemapPosts() {
       },
     });
 
-    const projects = await prisma.blogPost.findMany({
-      where: {
-        category: "PROJECT",
-        published: true,
-      },
-      select: {
-        slug: true,
-        updatedAt: true,
-      },
-    });
-
-    return {
-      articles,
-      projects,
-    };
+    return posts;
   } catch (error) {
     console.error("Error getting sitemap posts:", error);
 

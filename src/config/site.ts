@@ -65,13 +65,9 @@ export const siteConfig = {
       href: "/contact",
     },
   ],
-  hubCategories: [
+  knowledgeHub: [
     {
-      label: "articles-and-tutorials",
-      rootRef: "/knowledge-hub",
-    },
-    {
-      label: "projects-showcase",
+      label: "articles",
       rootRef: "/knowledge-hub",
     },
   ],

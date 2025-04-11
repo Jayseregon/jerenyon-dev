@@ -5,11 +5,14 @@ import { useTranslations } from "next-intl";
 import { siteConfig } from "@/src/config/site";
 import PageTitles from "@/src/components/root/PageTitles";
 import MainCategoryCard from "@/src/components/knowledge-hub/MainCategoryCard";
-import { PostTypes } from "@/src/interfaces/Hub";
 import { ReadingsSection } from "@/src/components/knowledge-hub/ReadingsSection";
 
 export default function KnowledgeHubPage() {
   const t = useTranslations("knowledge-hub");
+
+  // Get the articles category from siteConfig
+  const articlesCategory = siteConfig.knowledgeHub[0];
+  const articleHref = `${articlesCategory.rootRef}/${articlesCategory.label}`;
 
   return (
     <div className="px-8 sm:px-10 md:px-16">
@@ -28,17 +31,13 @@ export default function KnowledgeHubPage() {
       </h3>
 
       <div className="flex flex-col space-y-20 max-w-3xl mx-auto">
-        {siteConfig.hubCategories.map((category, index) => (
-          <MainCategoryCard
-            key={index}
-            articleCategory={category.label as PostTypes}
-            buttonText={t(`hubCategories.${category.label}.btnLabel`)}
-            footerText={t(`hubCategories.${category.label}.description`)}
-            href={`${category.rootRef}/${category.label}`}
-            subtitle="New"
-            title={t(`hubCategories.${category.label}.title`)}
-          />
-        ))}
+        <MainCategoryCard
+          buttonText={t(`hubCategories.${articlesCategory.label}.btnLabel`)}
+          footerText={t(`hubCategories.${articlesCategory.label}.description`)}
+          href={articleHref}
+          subtitle="New"
+          title={t(`hubCategories.${articlesCategory.label}.title`)}
+        />
       </div>
 
       <div className="py-3" />

@@ -4,22 +4,22 @@ import { useContext, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { BlogPostRefactor } from "@/src/interfaces/Hub";
-import { getPublishedProjects } from "@/actions/prisma/blogPosts/action";
+import { getPublishedArticles } from "@/actions/prisma/blogPosts/action";
 import { BlogPostsBoard } from "@/components/knowledge-hub/BlogPostsBoard";
 import PageTitles from "@/src/components/root/PageTitles";
 import { NonceContext } from "@/src/app/providers";
 
-export default function ProjectsShowcaseBoardPage() {
+export default function ArticlesBoardPage() {
   const nonce = useContext(NonceContext);
   const t = useTranslations("knowledge-hub");
-  const [projects, setProjects] = useState<BlogPostRefactor[]>([]);
+  const [articles, setArticles] = useState<BlogPostRefactor[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getPublishedProjects();
+      const data = await getPublishedArticles();
 
       if (data && data.length > 0) {
-        setProjects(data);
+        setArticles(data);
       }
     };
 
@@ -29,15 +29,15 @@ export default function ProjectsShowcaseBoardPage() {
   return (
     <div className="px-8 sm:px-10 md:px-16">
       <PageTitles
-        heroSubtitle={t("subDashboards.projects_showcase.hero.subtitle")}
-        heroTitle={t("subDashboards.projects_showcase.hero.title")}
+        heroSubtitle={t("subDashboards.articles.hero.subtitle")}
+        heroTitle={t("subDashboards.articles.hero.title")}
         nonce={nonce}
-        pageTitle={t("subDashboards.projects_showcase.title")}
+        pageTitle={t("subDashboards.articles.title")}
       />
 
       <div className="py-3" nonce={nonce} />
 
-      <BlogPostsBoard data={projects} nonce={nonce} />
+      <BlogPostsBoard data={articles} nonce={nonce} />
     </div>
   );
 }

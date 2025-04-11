@@ -97,32 +97,18 @@
       "line3": "Stay tuned! And Thank You for your patience!"
     },
     "hubCategories": {
-      "articles-and-tutorials": {
-        "title": "Articles & Turorials",
-        "description": "Discover in-depth articles and practical guides by Jerenyon.",
-        "imgAlt": "Articles and Tutorials category card background.",
-        "btnLabel": "See More"
-      },
-      "projects-showcase": {
-        "title": "Projects Showcase",
-        "description": "Showcasing innovative solutions and tools built by Jerenyon.",
-        "imgAlt": "Projects category card background.",
+      "articles": {
+        "title": "Blogposts & Articles",
+        "description": "Explore practical insights and real-world projects.",
         "btnLabel": "See More"
       }
     },
     "subDashboards": {
-      "articles_and_tutorials": {
-        "title": "Articles & Turorials",
+      "articles": {
+        "title": "Blogposts & Articles",
         "hero": {
-          "title": "Shared Insights and Expertise.",
-          "subtitle": "In-depth articles and hands-on tutorials to empower your projects."
-        }
-      },
-      "projects_showcase": {
-        "title": "Projects Showcase",
-        "hero": {
-          "title": "Innovative Solutions, Built with Passion.",
-          "subtitle": "Explore the tools and solutions that drive innovation at Jerenyon."
+          "title": "Sharing Practical AI & Automation Expertise",
+          "subtitle": "Dive into real-world insights, methodologies, and lessons learned from hands-on projects in AI and geospatial automation."
         }
       }
     },
