@@ -2,7 +2,7 @@
   "homepage": {
     "hero": {
       "title": "Construire le Futur",
-      "subtitle": "Relier IA Générative, Automatisation et Intelligence Géospatiale pour des Solutions Ingénieuses.",
+      "subtitle": "Là où l'IA Générative rencontre l'Automatisation Géospatiale",
       "buttons": {
         "knowledgeHub": "Explorer le Pôle Connaissance",
         "startProject": "Démarrer un Projet"
@@ -45,7 +45,7 @@
   },
   "about": {
     "title": "À Propos",
-    "button" : {
+    "button": {
       "download": "Télécharger mon CV",
       "linkedin": "Se connecter sur LinkedIn"
     },
@@ -58,7 +58,7 @@
         "title": "L'Histoire de Jerenyon",
         "subtitle": "Jerenyon : Relier l'IA Générative, l'Automatisation et l'Intelligence Géospatiale",
         "paragraphs": {
-          "p1": "Jerenyon est bien plus qu'un simple service de développement web et d'automatisation — c'est une plateforme dédiée à l'intégration de l'IA Générative, l'Automatisation et l'Intelligence Géospatiale. Avec une vision visant à simplifier les flux de travail complexes, Jerenyon fournit des systèmes d'automatisation alimentés par l'IA et des solutions géospatiales qui transforment les données en informations exploitables et améliorent la prise de décision.",
+          "p1": "Jerenyon est une platforme dédiée au développement web et d'automatisation — c'est une plateforme dédiée à l'intégration de l'IA Générative, l'Automatisation et l'Intelligence Géospatiale. Avec une vision visant à simplifier les flux de travail complexes, Jerenyon fournit des systèmes d'automatisation alimentés par l'IA et des solutions géospatiales qui transforment les données en informations exploitables et améliorent la prise de décision.",
           "p2": "Spécialisé dans l'automatisation augmentée par l'IA et le traitement des données spatiales, Jerenyon construit des outils intelligents, des flux de travail adaptables et des applications évolutives. Du traitement de documents alimenté par les LLMs à l'analyse de données pilotée par l'IA et l'automatisation géospatiale, Jerenyon propose des solutions sur mesure conçues pour rationaliser les opérations et stimuler l'innovation.",
           "p3": "Au-delà de la fourniture de solutions techniques, Jerenyon favorise le partage des connaissances et la communauté. À travers des articles, des tutoriels et des présentations de projets, il offre des aperçus pratiques sur l'automatisation améliorée par l'IA, le développement backend Python, les frontends Next.js et l'intelligence géospatiale — aidant les autres à explorer le potentiel de ces technologies.",
           "p4": "Avec un engagement envers l'apprentissage continu et la recherche de pointe, Jerenyon permet aux entreprises d'exploiter l'IA et l'automatisation, restant ainsi à l'avant-garde dans un monde guidé par l'IA. Que vous cherchiez à intégrer l'IA Générative, à automatiser des flux de travail complexes ou à améliorer vos capacités géospatiales, Jerenyon est votre partenaire pour des solutions numériques transformatives."
@@ -68,7 +68,7 @@
         "title": "L'Esprit derrière Jerenyon",
         "subtitle": "Présentation de Jérémie, le Fondateur de Jerenyon",
         "paragraphs": {
-          "p1": "Je suis un Ingénieur en Systèmes d'Automatisation, spécialisé en IA Générative et Intelligence Géospatiale, avec une passion pour la construction de systèmes d'automatisation pilotés par l'IA et de solutions géospatiales. Mon parcours a débuté avec un Master en Géographie, évoluant vers une expertise en développement backend, automatisation et intégration de l'IA. Je me concentre sur la transformation de données complexes en informations accessibles et prêtes à la décision grâce à des systèmes intelligents et adaptables.",
+          "p1": "Je suis un Ingénieur Logiciel, spécialisé en IA Générative et Intelligence Géospatiale, avec une passion pour la construction de systèmes d'automatisation pilotés par l'IA et de solutions géospatiales. Mon parcours a débuté avec un Master en Géographie, évoluant vers une expertise en développement backend, automatisation et intégration de l'IA. Je me concentre sur la transformation de données complexes en informations accessibles et prêtes à la décision grâce à des systèmes intelligents et adaptables.",
           "p2": "Avec une vaste expérience dans la conception d'applications évolutives et la direction d'initiatives de R&D en IA, je me spécialise dans les LLMs, les architectures RAG et les flux de travail des agents IA. Mon approche met l'accent sur les applications pratiques de l'IA — construire des outils qui améliorent l'automatisation et rationalisent les processus commerciaux, plutôt que de se concentrer sur le développement de modèles fondamentaux.",
           "p3": "Jerenyon est ma plateforme pour fusionner l'IA Générative, l'Automatisation et l'Intelligence Géospatiale en solutions concrètes et impactantes. Elle sert également de centre de connaissances, où je partage des idées pratiques sur les flux de travail alimentés par l'IA, le développement Python, les applications Next.js et le traitement des données spatiales. Grâce à cette entreprise, mon objectif est de simplifier la complexité et de fournir des solutions numériques innovantes et améliorées par l'IA pour les développeurs et les entreprises."
         }
@@ -265,16 +265,14 @@
     },
     "item1": {
       "date": "Sept 2024 - Présent",
-      "label": "Fondateur & Ingénieur Full-Stack",
+      "label": "Fondateur & Ingénieur Logiciel Full-Stack",
       "city": "Télétravail",
       "company": "Jerenyon",
-      "summary": "Fondateur et visionnaire derrière Jerenyon, offrant des solutions personnalisées de développement web, d'automatisation et basées sur l'IA.",
+      "summary": "Conception et développement d'outils d'automatisation alimentés par l'IA, combinant développement full-stack et expertise géospatiale pour fournir des applications web évolutives et des solutions innovantes.",
       "description": {
-        "p1": "Fondé Jerenyon pour fournir des outils d'automatisation sur mesure, des services de développement web et des solutions géospatiales innovantes.",
-        "p2": "Créé des applications full-stack évolutives en utilisant Python, Django, React, Next.js et TypeScript, en mettant l'accent sur l'optimisation opérationnelle et la transformation numérique.",
-        "p3": "Exploité des outils et bibliothèques avancés tels que LangChain, OpenAI, les modèles Hugging Face et le SDK Vercel AI pour intégrer des fonctionnalités d'IA de pointe, y compris des systèmes d'IA générative et des flux de travail d'automatisation intelligents.",
-        "p4": "Conçu une infrastructure cloud-native avec des déploiements fluides, en tirant parti de Docker, Vercel et d'intégrations avancées telles que Resend pour une communication moderne.",
-        "p5": "Créé Jerenyon comme une plateforme pour mettre en valeur une expertise technique, partager des méthodologies et stimuler l'engagement grâce à des projets de portfolio et des articles de blog."
+        "p1": "Conception et développement de Jerenyon, une plateforme qui présente et intègre l'automatisation basée sur l'IA avec des solutions géospatiales (FastAPI, Next.js, LangChain, CrewAI, ChromaDB, Neo4j).",
+        "p2": "Développement d'outils qui fusionnent l'IA générative (LLMs, RAG, agents IA) avec l'intelligence spatiale, pour développer des outils intelligents et débloquer des perspectives de cartographie et d'infrastructure de nouvelle génération.",
+        "p3": "Création et gestion d'un hub de connaissances pour partager des perspectives concrètes, des méthodologies pratiques et des leçons tirées de projets pratiques en IA et automatisation géospatiale."
       }
     },
     "item2": {
@@ -303,49 +301,48 @@
     },
     "item5": {
       "date": "Juin 2022 - Présent",
-      "label": "Ingénieur Full-Stack en Automatisation & Conseiller en Amélioration Continue",
+      "label": "Ingénieur Logiciel Full-Stack | Conseiller en Amélioration Continue",
       "company": "Telecon",
       "city": "Télétravail",
-      "summary": "Stimuler l'innovation et l'efficacité opérationnelle grâce à l'automatisation Python, l'intégration de LLMs, des workflows RAG, des solutions géospatiales et du développement full-stack pour des applications d'IA évolutives.",
+
+      "summary": "Stimuler l'innovation et l'automatisation grâce à des solutions basées sur l'IA, au développement full-stack et à l'expertise géospatiale pour améliorer l'efficacité opérationnelle et l'accessibilité des données.",
       "description": {
-        "p1": "Développé et déployé des outils alimentés par l'IA, dont un chatbot RAG et des agents IA avec LangChain, réduisant de 50% le temps de résolution manuelle des requêtes.",
-        "p2": "Conçu et déployé une plateforme d'automatisation basée sur le cloud, intégrant des backends Django conteneurisés et des frontends Next.js, rationalisant les processus et activant des capacités d'IA.",
-        "p3": "Développé des outils SaaS Python et frameworks d'automatisation, ainsi que des pipelines de données géospatiales, réduisant les efforts manuels de plus de 60% et améliorant l'efficacité du traitement de données géospatiales.",
-        "p4": "Dirigé des initiatives de R&D en IA/ML, intégrant des LLMs, LangChain et Hugging Face dans des applications live afin d'améliorer l'automatisation et l'analyse géospatiale.",
-        "p5": "Implémenté de manière stratégique des technologies de SIG, dans le cadre de la transformation numérique, automatisant les flux de travail pour des solutions pilotées par les données, réduisant jusqu'à 80% les délais de projet et améliorant la précision de la conception de réseau.",
-        "p6": "Construit et encadré une équipe de développement agile, promouvant l'autonomie, les meilleures pratiques en IA, Python, SIG et méthodologies logicielles modernes.",
-        "p7": "Géré l'infrastructure cloud Azure, en supervisant des applications web, des bases de données, des registres de conteneurs, la mise en réseau et les pipelines CI/CD pour un déploiement fluide."
+        "p1": "Développement et déploiement de solutions d'IA générative, y compris des chatbots RAG et des agents IA (LangChain, CrewAI, Neo4j), réduisant les temps de résolution manuelle des requêtes de 50 % et améliorant l'accessibilité des données.",
+        "p2": "Conception d'automatisation basée sur l'IA à l'aide de LangChain, Vercel AI SDK et de l'ingénierie des prompts pour rationaliser les processus et améliorer l'efficacité.",
+        "p3": "Direction de la conception, du développement et du déploiement d'une plateforme d'automatisation basée sur le cloud (Next.js, FastAPI, PostgreSQL, Docker, Azure) pour optimiser les processus, centraliser la documentation et intégrer les capacités de R&D.",
+        "p4": "Conception d'APIs évolutives et construction de pipelines d'automatisation complexes (GeoPandas, Shapely, ArcGIS API, FastAPI, Django, PostgreSQL) pour une intégration de services et un traitement de données fluides.",
+        "p5": "Direction de la transformation des flux de travail manuels en solutions géospatiales automatisées et axées sur les données, réduisant les délais des projets et améliorant la précision de la conception des réseaux.",
+        "p6": "Création et encadrement d'une équipe de développement agile, favorisant l'autonomie et promouvant les meilleures pratiques en IA, Python, GIS et les méthodologies logicielles modernes.",
+        "p7": "Gestion de l'infrastructure cloud Azure, supervision des applications web, des bases de données, des registres de conteneurs, de la mise en réseau et des pipelines CI/CD pour des déploiements fluides."
       }
     },
     "item6": {
       "date": "Sept 2021 - Présent",
-      "label": "Co-Fondateur & Ingénieur Full-Stack",
+      "label": "Co-Fondateur et Ingénieur Logiciel Full-Stack",
       "company": "NJAE Plume",
       "city": "Télétravail",
-      "summary": "Co-fondateur dirigeant la stratégie technique et le développement full-stack pour notre plateforme créative de commerce électronique.",
+      "summary": "Co-fondateur dirigeant la stratégie technique et du développement full-stack pour une plateforme de commerce électronique créative.",
       "description": {
-        "p1": "Transitionné NJAE Plume de WordPress vers une plateforme e-commerce personnalisée et évolutive basée sur Django, assurant une expérience fluide et conviviale.",
-        "p2": "Mise en place de solutions full-stack en utilisant Python, React et Postgres, en mettant l'accent sur une intégration API prête pour le futur des applications mobiles.",
-        "p3": "Supervisé la conception du backend et des bases de données pour optimiser les opérations, tout en garantissant des performances et une évolutivité élevées de la plateforme.",
-        "p4": "Assuré la gestion des activités commerciales, alignant l'innovation technique sur les objectifs stratégiques de croissance pour favoriser la réussite et stimuler la créativité."
+        "p1": "Direction du développement technique et de la mise en œuvre d'une plateforme de commerce électronique personnalisée (Next.js, Vercel, PostgreSQL, Stripe, Clerk, Bunny.net), transition depuis un système basé sur WordPress.",
+        "p2": "Conception de l'architecture de la plateforme et mise en œuvre de solutions full-stack pour prendre en charge la vente de produits numériques.",
+        "p3": "Définition de la stratégie de la pile technologique, en tirant parti de Python (FastAPI) et React (Next.js) pour créer une plateforme transparente et prête pour l'avenir.",
+        "p4": "Gestion des opérations commerciales, y compris les finances et la conformité réglementaire, pour rationaliser les processus et stimuler la croissance."
       }
     },
     "item7": {
       "date": "Juil 2018 - Juin 2022",
-      "label": "Concepteur de Réseau Fibre | Ingénieur en Automatisation SIG",
+      "label": "Ingénieur Automatisation GIS | Concepteur de Réseau Fibre",
       "company": "Telecon",
       "city": "Télétravail",
-      "summary": "Amélioration des flux de travail de conception de réseau fibre grâce à l'automatisation Python et à la technologie SIG, conduisant au développement d'une puissante plateforme basée sur Django.",
+      "summary": "Intégration de la conception de réseau fibre avec l'automatisation Python et la technologie GIS pour piloter la transformation numérique.",
       "description": {
-        "p1": "Transformé les flux de travail manuels sous CAD en intégrant des outils SIG et de l'automatisation Python, optimisant la conception du réseau et réduisant les erreurs humaines.",
-        "p2": "Développé une plateforme Django pour la gestion de projet et de rapports, rationalisant les opérations et accélérant la livraison de projets.",
-        "p3": "Construit des bases de données Postgres/PostGIS pour gérer des données géospatiales avancées, permettant des processus automatisés et des analyses robustes pour la planification du réseau fibre.",
-        "p4": "Créé des outils SaaS basés sur Python avec des interfaces graphiques conviviales pour le personnel non technique, améliorant l'accessibilité et l'efficacité opérationnelle.",
-        "p5": "Amélioré les flux de travail d'ingénierie grâce à des outils AutoLISP personnalisés, augmentant la productivité dans AutoCAD et AutoCAD Map 3D.",
-        "p6": "Mené des projets pilotes SIG, posant les bases d'une prise de décision basée sur les données et de l'automatisation au sein de l'organisation.",
-        "p7": "Collaboré efficacement avec des équipes multidisciplinaires, facilitant le transfert de connaissances, le mentorat, et promouvant une culture d'adoption technologique et d'amélioration continue."
+        "p1": "Conception de réseaux fibre pour les architectures type FTTx et PON.",
+        "p2": "Pilotage de l'intégration des technologies GIS (QGIS, AutoCAD Map 3D) et développement de modèles de géotraitement et d'outils AutoLISP personnalisés pour optimiser les flux de travail d'analyse spatiale et de conception.",
+        "p3": "Développement de solutions d'automatisation basées sur Python et d'outils SaaS sur site avec des GUI (PySide6, PyInstaller) pour rationaliser les processus et améliorer l'efficacité opérationnelle.",
+        "p4": "Mise en place de bases de données évolutives PostgreSQL/PostGIS sur Azure pour la gestion avancée des données géospatiales et le développement cloud."
       }
     },
+
     "item8": {
       "date": "2014 - 2016",
       "label": "Maîtrise ès sciences en Géographie (MSc)",

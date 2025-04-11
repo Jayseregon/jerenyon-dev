@@ -19,6 +19,7 @@ export const siteConfig = {
     "AI Agents",
     "Vector Databases",
     "LangChain",
+    "CrewAI",
     "Hugging Face",
     "Machine Learning",
     "Artificial Intelligence",
@@ -43,6 +44,7 @@ export const siteConfig = {
     "PostGIS",
     "MongoDB",
     "ChromaDB",
+    "Neo4j",
   ],
   icon: "/favicon.webp",
   navItems: [
