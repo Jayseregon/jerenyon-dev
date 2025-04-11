@@ -1,13 +1,11 @@
 import type { MouseEvent } from "react";
 
-import { BlogPostCategory } from "@prisma/client";
 import { Editor, JSONContent } from "@tiptap/react";
 
 export interface BlogPost {
   id: string;
   title: string;
   content: string;
-  category: BlogPostCategory;
   slug: string;
   createdAt: Date;
   updatedAt: Date;
@@ -40,7 +38,6 @@ export interface MainCategoryCardProps {
   subtitle: string;
   buttonText: string;
   footerText: string;
-  articleCategory: PostTypes;
   href: string;
 }
 
@@ -49,8 +46,6 @@ export interface PostPushCardProps {
   slug: string;
   title: string;
 }
-
-export type PostTypes = "articles-and-tutorials" | "projects-showcase";
 
 export interface BLogPostReaderProps {
   post: BlogPost;
@@ -65,7 +60,6 @@ export interface BlogPostPageTitleMotionProps {
 export interface PostDataProps {
   title: string;
   content: string;
-  category: BlogPostCategory;
   published: boolean;
   summary: string;
   tags: string[];

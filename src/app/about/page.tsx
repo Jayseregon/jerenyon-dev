@@ -70,7 +70,7 @@ export default function AboutPage() {
               size="lg"
               variant="form"
             >
-              <a download href="/assets/resume/cv-jeremie-bitsch-2025.pdf">
+              <a download href="/assets/resume/cv-jeremie-bitsch.pdf">
                 <FileDown className="h-4 w-4 mr-2" /> {t("button.download")}
               </a>
             </Button>

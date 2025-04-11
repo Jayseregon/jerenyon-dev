@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BlogPostRefactor, MainCategoryCardProps } from "@/interfaces/Hub";
-import { getLatestArticlesAndProjects } from "@/actions/prisma/blogPosts/action";
+import { getLatestArticles } from "@/actions/prisma/blogPosts/action";
 import { NonceContext } from "@/src/app/providers";
 
 import { BlogPostTags } from "./BlogPostTags";
@@ -24,7 +24,6 @@ const MainCategoryCard = ({
   subtitle,
   buttonText,
   footerText,
-  articleCategory,
   href,
 }: MainCategoryCardProps) => {
   const [articles, setArticles] = useState<BlogPostRefactor[]>([]);
@@ -33,7 +32,7 @@ const MainCategoryCard = ({
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const data = await getLatestArticlesAndProjects(articleCategory);
+      const data = await getLatestArticles();
 
       if (data && data.length > 0) {
         setArticles(data);
@@ -49,7 +48,7 @@ const MainCategoryCard = ({
         {title}
       </h2>
       <Card
-        className="relative text-start w-full border border-purple-800 dark:border-purple-300 overflow-hidden"
+        className="relative text-start w-full bg-purple-800/15 dark:bg-purple-300/15  border border-purple-800 dark:border-purple-300 overflow-hidden"
         nonce={nonce}
       >
         <CardHeader className="flex-col items-start px-4">

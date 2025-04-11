@@ -60,22 +60,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   // Fetch optimized blog posts for sitemap
-  const { articles, projects } = await getSitemapPosts();
+  const posts = await getSitemapPosts();
 
   // Blog post routes
-  const articleRoutes = articles.map((article) => ({
-    url: `${baseUrl}/knowledge-hub/articles-and-tutorials/${article.slug}`,
-    lastModified: new Date(article.updatedAt),
-    changeFrequency: "daily" as const,
-    priority: 0.7,
-  }));
-
-  const projectRoutes = projects.map((project) => ({
-    url: `${baseUrl}/knowledge-hub/projects-showcase/${project.slug}`,
-    lastModified: new Date(project.updatedAt),
-    changeFrequency: "daily" as const,
-    priority: 0.7,
-  }));
+  const postsRoutes = Array.isArray(posts)
+    ? posts.map((post) => ({
+        url: `${baseUrl}/knowledge-hub/articles/${post.slug}`,
+        lastModified: new Date(post.updatedAt),
+        changeFrequency: "daily" as const,
+        priority: 0.7,
+      }))
+    : [];
 
   // Combine all routes
   return [
@@ -94,7 +89,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority,
     })),
     // Dynamic blog post routes
-    ...articleRoutes,
-    ...projectRoutes,
+    ...postsRoutes,
   ];
 }

@@ -4,7 +4,6 @@ import { Heart, Eye } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { ErrorBoundary } from "react-error-boundary";
 import { useState, useEffect, useContext } from "react";
-import { BlogPostCategory } from "@prisma/client";
 import Image from "next/image";
 
 import {
@@ -19,7 +18,6 @@ import { Skeleton } from "@/components/ui/skeleton";
 import {
   BlogPostDrawerProps,
   BlogPostMetadataProps,
-  PostTypes,
 } from "@/src/interfaces/Hub";
 import { TiptapToC } from "@/src/components/hobbiton/TiptapToC";
 import { incrementLikes } from "@/actions/prisma/blogPosts/action";
@@ -56,11 +54,6 @@ const ErrorFallback = () => (
   <div className="p-4 text-red-500">Something went wrong loading the post.</div>
 );
 
-const categoryToPathMap: Record<BlogPostCategory, PostTypes> = {
-  ARTICLE: "articles-and-tutorials",
-  PROJECT: "projects-showcase",
-};
-
 export function BlogPostDrawer({
   isOpen,
   onOpenChange,
@@ -76,11 +69,10 @@ export function BlogPostDrawer({
   const [shareUrl, setShareUrl] = useState("");
 
   useEffect(() => {
-    const categoryPath = categoryToPathMap[post.category];
     const baseUrl = window.location.origin;
 
-    setShareUrl(`${baseUrl}/knowledge-hub/${categoryPath}/${post.slug}`);
-  }, [post.category, post.slug]);
+    setShareUrl(`${baseUrl}/knowledge-hub/articles/${post.slug}`);
+  }, [post.slug]);
 
   const handleLike = async () => {
     if (!isLiked) {

@@ -157,8 +157,8 @@ export default async function RootLayout({ children }: Props) {
         </Providers>
         <Script
           async
-          data-website-id="27802530-4c86-4b3f-98c8-7df974a6e0e2"
-          src="https://analytics.jerenyon.dev/script.js"
+          data-website-id="653bb837-187d-444f-8ed9-67c1ce875fa3"
+          src="https://analytics.jayseregon.com/script.js"
           strategy="afterInteractive"
         />
 

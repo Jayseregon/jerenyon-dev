@@ -2,7 +2,7 @@
   "homepage": {
     "hero": {
       "title": "Building the Future",
-      "subtitle": "Bridging Generative AI, Automation, and Geospatial Intelligence for Smarter Solutions",
+      "subtitle": "Where Generative AI Meets Geospatial Automation",
       "buttons": {
         "knowledgeHub": "Explore Knowledge Hub",
         "startProject": "Start a Project"
@@ -45,7 +45,7 @@
   },
   "about": {
     "title": "About",
-    "button" : {
+    "button": {
       "download": "Download my Resume",
       "linkedin": "Connect on LinkedIn"
     },
@@ -58,7 +58,7 @@
         "title": "The Story of Jerenyon",
         "subtitle": "Jerenyon: Bridging Generative AI, Automation, and Geospatial Intelligence",
         "paragraphs": {
-          "p1": "Jerenyon is more than just a web development and automation service — it is a platform dedicated to integrating Generative AI, Automation, and Geospatial Intelligence. With a vision to simplify complex workflows, Jerenyon delivers AI-powered automation systems and geospatial solutions that transform data into actionable insights and enhance decision-making.",
+          "p1": "Jerenyon is a platform dedicated to web development and automation — it is a platform dedicated to integrating Generative AI, Automation, and Geospatial Intelligence. With a vision to simplify complex workflows, Jerenyon delivers AI-powered automation systems and geospatial solutions that transform data into actionable insights and enhance decision-making.",
           "p2": "Specializing in AI-augmented automation and spatial data processing, Jerenyon builds intelligent tools, adaptable workflows, and scalable applications. From LLM-powered document processing to AI-driven data analysis and geospatial automation, Jerenyon provides tailored solutions designed to streamline operations and drive innovation.",
           "p3": "Beyond delivering technical solutions, Jerenyon fosters knowledge-sharing and community. Through articles, tutorials, and project showcases, it offers practical insights into AI-enhanced automation, Python backend development, Next.js frontends, and geospatial intelligence — helping others explore the potential of these technologies.",
           "p4": "With a commitment to continuous learning and cutting-edge research, Jerenyon empowers businesses to harness AI and automation, staying ahead in an AI-driven world. Whether you seek to integrate Generative AI, automate complex workflows, or enhance geospatial capabilities, Jerenyon is your partner for transformative digital solutions."
@@ -68,7 +68,7 @@
         "title": "The Mind Behind Jerenyon",
         "subtitle": "Introducing Jeremie, the Founder of Jerenyon",
         "paragraphs": {
-          "p1": "I am an Automation Systems Engineer, specialized in Generative AI and Geospatial Intelligence, with a passion for building AI-driven automation systems and geospatial solutions. My journey began with a Master in Geography, evolving into expertise in backend development, automation, and AI integration. I focus on transforming complex data into accessible, decision-ready insights through intelligent, adaptable systems.",
+          "p1": "I am an Software Engineer, specialized in Generative AI and Geospatial Intelligence, with a passion for building AI-driven automation systems and geospatial solutions. My journey began with a Master in Geography, evolving into expertise in backend development, automation, and AI integration. I focus on transforming complex data into accessible, decision-ready insights through intelligent, adaptable systems.",
           "p2": "With extensive experience in designing scalable applications and leading AI R&D initiatives, I specialize in LLMs, RAG architectures, and AI agent workflows. My approach emphasizes practical applications of AI — building tools that enhance automation and streamline business processes, rather than focusing on foundational model development.",
           "p3": "Jerenyon is my platform to merge Generative AI, Automation, and Geospatial Intelligence into impactful, real-world solutions. It also serves as a knowledge hub, where I share hands-on insights into AI-powered workflows, Python development, Next.js applications, and spatial data processing. Through this venture, my goal is to simplify complexity and deliver innovative, AI-enhanced digital solutions for developers and businesses alike."
         }
@@ -97,32 +97,18 @@
       "line3": "Stay tuned! And Thank You for your patience!"
     },
     "hubCategories": {
-      "articles-and-tutorials": {
-        "title": "Articles & Turorials",
-        "description": "Discover in-depth articles and practical guides by Jerenyon.",
-        "imgAlt": "Articles and Tutorials category card background.",
-        "btnLabel": "See More"
-      },
-      "projects-showcase": {
-        "title": "Projects Showcase",
-        "description": "Showcasing innovative solutions and tools built by Jerenyon.",
-        "imgAlt": "Projects category card background.",
+      "articles": {
+        "title": "Blogposts & Articles",
+        "description": "Explore practical insights and real-world projects.",
         "btnLabel": "See More"
       }
     },
     "subDashboards": {
-      "articles_and_tutorials": {
-        "title": "Articles & Turorials",
+      "articles": {
+        "title": "Blogposts & Articles",
         "hero": {
-          "title": "Shared Insights and Expertise.",
-          "subtitle": "In-depth articles and hands-on tutorials to empower your projects."
-        }
-      },
-      "projects_showcase": {
-        "title": "Projects Showcase",
-        "hero": {
-          "title": "Innovative Solutions, Built with Passion.",
-          "subtitle": "Explore the tools and solutions that drive innovation at Jerenyon."
+          "title": "Sharing Practical AI & Automation Expertise",
+          "subtitle": "Dive into real-world insights, methodologies, and lessons learned from hands-on projects in AI and geospatial automation."
         }
       }
     },
@@ -263,18 +249,17 @@
       "close": "Close",
       "empty": "No additional details available, yet."
     },
+
     "item1": {
       "date": "Sept 2024 - Present",
-      "label": "Founder & Full-Stack Engineer",
+      "label": "Founder & Full-Stack Software Engineer",
       "city": "Remote",
       "company": "Jerenyon",
-      "summary": "Founder and visionary behind Jerenyon, delivering custom web development, automation, and AI-driven solutions.",
+      "summary": "Building AI-powered automation tools that bridge full-stack development and geospatial expertise to deliver scalable web applications and practical innovation.",
       "description": {
-        "p1": "Founded Jerenyon to provide tailored automation tools, web development services, and innovative geospatial solutions.",
-        "p2": "Built scalable, full-stack applications using Python, Django, React, and Next.js and Typescript, with a focus on operational optimization and digital transformation.",
-        "p3": "Leveraged advanced tools and libraries such as LangChain, OpenAI, Hugging Face models, and Vercel AI SDK to integrate cutting-edge AI capabilities, including generative AI systems and intelligent automation workflows.",
-        "p4": "Designed cloud-native infrastructure with seamless deployments, leveraging Docker, Vercel, and advanced integrations such as Resend for modern communication.",
-        "p5": "Created Jerenyon as a platform for showcasing technical expertise, sharing methodologies, and driving engagement through portfolio projects and blog posts."
+        "p1": "Architected and developed Jerenyon, a platform showcasing and integrating AI-driven automation with geospatial solutions (FastAPI, Next.js, LangChain, CrewAI, ChromaDB, Neo4j).",
+        "p2": "Developing tools that merge Generative AI (LLMs, RAG, AI agents) with spatial intelligence to unlock next-gen mapping and infrastructure automation.",
+        "p3": "Building and curating a knowledge hub to share real-world insights, methodologies, and lessons from hands-on projects in AI and geospatial automation."
       }
     },
     "item2": {
@@ -303,47 +288,44 @@
     },
     "item5": {
       "date": "June 2022 - Present",
-      "label": "Full-Stack Automation Engineer & Continuous Improvement Advisor",
+      "label": "Full-Stack Software Engineer | Continuous Improvement Advisor",
       "company": "Telecon",
       "city": "Remote",
-      "summary": "Driving innovation and operational efficiency through Python automation and LLMs, RAG workflows, GIS-driven solutions, and full-stack development for scalable AI applications.",
+      "summary": "Driving innovation and automation through AI-driven solutions, full-stack development, and geospatial expertise to enhance operational efficiency and data accessibility.",
       "description": {
-        "p1": "Developed and deployed AI-powered tools, including RAG chatbot and AI agents with LangChain, achieving a 50% reduction in manual query resolution times.",
-        "p2": "Designed and deployed a cloud-based automation platform, integrating Dockerized Django backends and Next.js frontends, streamlining processes, and enabling AI capabilities.",
-        "p3": "Developed Python-powered SaaS tools and automation frameworks, and geospatial data pipelines, cutting manual efforts by over 60% and improving geospatial data processing efficiency.",
-        "p4": "Led AI/ML R&D initiatives, integrating LLMs, LangChain, and Hugging Face into real-world applications to enhance automation and geospatial analysis.",
-        "p5": "Strategically implemented GIS technologies, for digital transformation, automating workflows into data-driven solutions, reducing project timelines by up to 80% and improving network design accuracy.",
-        "p6": "Built and mentored an agile development team, fostering autonomy, best practices in AI, Python, GIS, and modern software methodologies.",
-        "p7": "Managed Azure cloud infrastructure, overseeing web apps, databases, container registries, networking, and CI/CD pipelines for seamless deployment."
+        "p1": "Developed and deployed Generative AI solutions, including RAG chatbots and AI agents (LangChain, CrewAI, ChromaDB, Neo4j), reducing manual query resolution time by 50% and improving data accessibility.",
+        "p2": "Engineered AI-driven automation workflows using LangChain, Vercel AI SDK, and prompt engineering to streamline processes and boost efficiency.",
+        "p3": "Spearheaded the design, development, and deployment of a cloud-based automation platform (Next.js, FastAPI, PostgreSQL, Docker, Azure) to optimize processes and centralize R&D capabilities.",
+        "p4": "Engineered scalable APIs and built complex automation pipelines (GeoPandas, Shapely, ArcGIS API, FastAPI, Django, PostgreSQL) for seamless service integration and data processing.",
+        "p5": "Led the transformation of manual workflows into automated, data-driven geospatial solutions, reducing project timelines and improving network design accuracy.",
+        "p6": "Built and mentored an agile development team, fostering autonomy and promoting modern software methodologies.",
+        "p7": "Managed Azure cloud infrastructure, overseeing web apps, databases, container registries, networking, and CI/CD pipelines for seamless deployments."
       }
     },
     "item6": {
       "date": "Sept 2021 - Present",
-      "label": "Co-Founder & Full-Stack Engineer",
+      "label": "Co-Founder & Full-Stack Software Engineer",
       "company": "NJAE Plume",
       "city": "Remote",
-      "summary": "Co-founder leading technical strategy and full-stack development for our creative e-commerce platform.",
+      "summary": "Leading technical strategy and full-stack development for a creative e-commerce platform.",
       "description": {
-        "p1": "Transitioned NJAE Plume from WordPress to a scalable custom e-commerce platform built with Django, ensuring a seamless and user-friendly experience.",
-        "p2": "Implemented full-stack solutions using Python, React, and Postgres, with a focus on future-ready API integration for mobile applications.",
-        "p3": "Led backend and database design for streamlined operations, while ensuring high performance and scalability of the platform.",
-        "p4": "Managed business operations, aligning technical innovation with strategic growth objectives to drive success and foster creativity."
+        "p1": "Led the technical development and implementation of a custom e-commerce platform (Next.js, Vercel, PostgreSQL, Stripe, Clerk, Bunny.net), transitioning from a WordPress-based system.",
+        "p2": "Designed the platform's architecture and implemented full-stack solutions to support the sale of digital products.",
+        "p3": "Defined the tech stack strategy, leveraging Python (FastAPI) and React (Next.js) to create a seamless, future-ready platform.",
+        "p4": "Managed business operations, including finances and regulatory compliance, to streamline processes and drive growth."
       }
     },
     "item7": {
       "date": "July 2018 - June 2022",
-      "label": "Fiber Network Designer | GIS Automation Engineer",
+      "label": "GIS Automation Engineer | Fiber Network Designer",
       "company": "Telecon",
       "city": "Montréal, QC",
-      "summary": "Enhanced fiber network design workflows through Python automation and GIS technology, leading to the development of a powerful Django-based platform.",
+      "summary": "Integrated fiber network design with Python automation and GIS technology to drive digital transformation.",
       "description": {
-        "p1": "Transformed manual CAD workflows by integrating GIS tools and Python automation, optimizing network design and reducing human error.",
-        "p2": "Developed a Django platform for project management and reporting, streamlining operations and accelerating project delivery.",
-        "p3": "Built Postgres/PostGIS databases for advanced geospatial data management, enabling automated processes and robust analytics for fiber network planning.",
-        "p4": "Created Python-based SaaS tools with user-friendly GUIs for non-technical staff, improving accessibility and operational efficiency.",
-        "p5": "Enhanced engineering workflows with custom AutoLISP tools, improving productivity in AutoCAD and AutoCAD Map 3D environments.",
-        "p6": "Pioneered GIS pilot projects, laying the foundation for data-driven decision-making and automation within the organization.",
-        "p7": "Collaborated effectively with multidisciplinary teams, facilitating knowledge transfer, mentoring, and fostering a culture of technological adoption and continuous improvement."
+        "p1": "Engineered and drafted fiber network designs for FTTx and PON architectures.",
+        "p2": "Pioneered the integration of GIS technologies (QGIS, AutoCAD Map 3D) and developed custom geoprocessing models and AutoLISP tools to optimize spatial analysis and design workflows.",
+        "p3": "Developed Python-based automation solutions and on-premise SaaS tools with GUIs (PySide6, PyInstaller) to streamline processes and enhance operational efficiency.",
+        "p4": "Established scalable PostgreSQL/PostGIS databases on Azure for advanced geospatial data management and cloud development."
       }
     },
     "item8": {
