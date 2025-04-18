@@ -2,10 +2,10 @@
 
 import { PrismaClient } from "@prisma/client";
 import { z } from "zod";
+import { revalidatePath } from "next/cache";
 
 import { BlogPost, PostDataProps } from "@/src/interfaces/Hub";
 import { refactorBlogPostsResponse } from "@/src/lib/actionHelpers";
-// import { revalidatePath } from "next/cache";
 
 const prisma = new PrismaClient();
 
@@ -141,7 +141,8 @@ export async function createPost(formData: PostDataProps) {
       });
     }
 
-    // revalidatePath("/hobbiton/content-editor");
+    revalidatePath("/hobbiton/content-editor");
+    revalidatePath("/knowledge-hub");
     return {
       message: "Post created successfully",
       ok: true,
@@ -203,7 +204,9 @@ export async function updatePost(slug: string, data: PostDataProps) {
       },
     });
 
-    // revalidatePath("/hobbiton/content-editor");
+    revalidatePath("/hobbiton/content-editor");
+    revalidatePath("/knowledge-hub");
+    revalidatePath(`/knowledge-hub/${slug}`);
     return {
       message: "Post updated successfully",
       ok: true,
@@ -232,7 +235,8 @@ export async function deletePost(slug: string) {
       where: { slug },
     });
 
-    // revalidatePath("/knowledge-hub");
+    revalidatePath("/hobbiton/content-editor");
+    revalidatePath("/knowledge-hub");
 
     return {
       message: "Post deleted successfully",
