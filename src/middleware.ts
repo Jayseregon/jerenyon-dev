@@ -11,7 +11,7 @@ function cspMiddleware(req: NextRequest): NextResponse {
   style-src 'self' 'nonce-${nonce}' 'unsafe-inline' 'unsafe-eval' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://vercel.live;
   img-src 'self' blob: data: https://jerenyon.dev https://www.jerenyon.dev https://jerenyon-dev-cdn.b-cdn.net https://jerenyon-dev-remote-pull.b-cdn.net https://app.usercentrics.eu https://uct.service.usercentrics.eu https://avatars.githubusercontent.com https://*.linkedin.com;
   font-src 'self' https://jerenyon.dev https://www.jerenyon.dev ;
-  connect-src 'self' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live https://fonts.gstatic.com https://consent-api.service.consent.usercentrics.eu https://graphql.usercentrics.eu https://*.linkedin.com https://analytics.jerenyon.dev https://aggregator.service.usercentrics.eu https://termageddon.ams3.cdn.digitaloceanspaces.com;
+  connect-src 'self' https://jerenyon.dev https://www.jerenyon.dev https://app.termageddon.com https://privacy-proxy.usercentrics.eu https://app.usercentrics.eu https://api.usercentrics.eu https://vercel.live https://fonts.gstatic.com https://consent-api.service.consent.usercentrics.eu https://graphql.usercentrics.eu https://*.linkedin.com https://analytics.jerenyon.dev https://aggregator.service.usercentrics.eu https://termageddon.ams3.cdn.digitaloceanspaces.com https://analytics.jayseregon.com;
   object-src 'none';
   base-uri 'self' https://jerenyon.dev https://www.jerenyon.dev ;
   form-action 'self' https://jerenyon.dev https://www.jerenyon.dev ;
